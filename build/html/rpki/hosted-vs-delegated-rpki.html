@@ -1,0 +1,113 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hosted versus Delegated RPKI &#8212; RPKI Tools  documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating Route Origin Authorisations" href="creating-roas.html" />
+    <link rel="prev" title="Route Origin Validation" href="route-origin-validation.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="creating-roas.html" title="Creating Route Origin Authorisations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="route-origin-validation.html" title="Route Origin Validation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="route-origin-validation.html"
+                        title="previous chapter">Route Origin Validation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="creating-roas.html"
+                        title="next chapter">Creating Route Origin Authorisations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rpki/hosted-vs-delegated-rpki.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hosted-versus-delegated-rpki">
+<h1>Hosted versus Delegated RPKI<a class="headerlink" href="#hosted-versus-delegated-rpki" title="Permalink to this headline">¶</a></h1>
+<p>The five RIRs are responsible for allocating IP addresses and Autonomous System Numbers in each of their regions. In most cases they allocate resources directly to their members, called Local Internet Registries (LIRs). In turn, LIRs assign resources to ISPs or end user organisations. There is an exception in the APNIC and LACNIC region, where in some countries allocations are handled through National Internet Registry (NIR) organisations to meet particular geographical needs. For example, JPNIC in Japan and NIC.br in Brazil provide these services on a national level.</p>
+<p>The RPKI certificate structure matches the allocation model. This means all RIRs run a Root Certificate Authority which has a self-signed root certificate containing all of the resources that they each manage. They issue child certificates to NIRs or LIRs who can, in turn, issue a certificate to each of their customers.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/RPKI-CA-Structure.svg"><img alt="The RPKI Certificate Authority Structure" src="../_images/RPKI-CA-Structure.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">An overview of the RPKI Certificate Authority Structure</span></p>
+</div>
+<p>To lower the entry barrier into the technology, each RIR offers a Hosted RPKI system. This allows members to log into a web-based customer portal and instruct the RPKI system to generate a certificate for them, which resides on the systems hosted by the RIR. While this offers some convenience for basic management, the LIR is not truly the holder of their own certificate. Operators who prefer more control, security and have better integration with their own systems can run their own child CA. This is model is usually referred to as Delegated RPKI.</p>
+<p>Using either the Hosted or Delegated RPKI, operators can create cryptographically validatable statements about their routing intent, e.g. which ASNs are authorised to originate their IP prefixes. These statements are called Route Origin Authorisations (ROAs).  Within a ROA, the operator can also specify what the maximum length of the prefix is that the AS is authorised to advertise. This is a way to enforce aggregation and prevent hijacking through the announcement of a more specific prefix.</p>
+<p>All certificates and ROAs are published in a distributed set of repositories. When using the Hosted RPKI system, this is a repository operated by the RIR. When an operator uses Delegated RPKI, they can either publish to a Publication Server that they host themselves, or they can ask a third party to do this on their behalf.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="creating-roas.html" title="Creating Route Origin Authorisations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="route-origin-validation.html" title="Route Origin Validation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, NLnet Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>

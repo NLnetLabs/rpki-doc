@@ -1,0 +1,118 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Using RPKI Data &#8212; RPKI Tools  documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Router Support" href="router-support.html" />
+    <link rel="prev" title="Creating Route Origin Authorisations" href="creating-roas.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="router-support.html" title="Router Support"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="creating-roas.html" title="Creating Route Origin Authorisations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="creating-roas.html"
+                        title="previous chapter">Creating Route Origin Authorisations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="router-support.html"
+                        title="next chapter">Router Support</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rpki/using-rpki-data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-rpki-data">
+<h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
+<p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the Trust Anchor that each of them provides.</p>
+<p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
+<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
+<p>When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:</p>
+<ul class="simple">
+<li>Valid: The route announcement is covered by at least one ROA</li>
+<li>Invalid: The prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS</li>
+<li>NotFound: The prefix in this announcement is not, or only partially covered by an existing ROA</li>
+</ul>
+<p>Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI INVALID.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/RPKI-Validation.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/RPKI-Validation.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">RPKI publication, data retrieval, validation and processing</span></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="router-support.html" title="Router Support"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="creating-roas.html" title="Creating Route Origin Authorisations"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, NLnet Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>

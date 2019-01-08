@@ -1,0 +1,108 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Creating Route Origin Authorisations &#8212; RPKI Tools  documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using RPKI Data" href="using-rpki-data.html" />
+    <link rel="prev" title="Hosted versus Delegated RPKI" href="hosted-vs-delegated-rpki.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="using-rpki-data.html" title="Using RPKI Data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hosted-vs-delegated-rpki.html" title="Hosted versus Delegated RPKI"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hosted-vs-delegated-rpki.html"
+                        title="previous chapter">Hosted versus Delegated RPKI</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="using-rpki-data.html"
+                        title="next chapter">Using RPKI Data</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rpki/creating-roas.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-route-origin-authorisations">
+<h1>Creating Route Origin Authorisations<a class="headerlink" href="#creating-route-origin-authorisations" title="Permalink to this headline">¶</a></h1>
+<p>A Route Origin Authorisation object consists of three elements: the AS Number that you authorise, the prefix that is being originated from it and, lastly, the Maximum Length (MaxLength), which determines the most specific prefix that the AS may originate out of the aggregate. Keep in mind that a single ROA makes the announcement of a prefix from an authorised AS valid, but at the same time, it makes the announcement from an unauthorised (hijacking) AS invalid. You should create as many ROAs as needed to make all legitimate announcements valid.</p>
+<p>There are several ways to authorise a BGP origin with a ROA. For example, you can authorise the entire aggregate to be originated – including all more specific announcements – with a single ROA. Or you can authorise each announcement with a ROA individually. While creating a single ROA seems convenient, it is not recommended.</p>
+<p>For example, if you are the holder of 10.0.0.0/18 and you announce the aggretate as well as several more specifics up to a /24 from AS64500, you could create a ROA for AS64500 authorising 10.0.0.0/18 and set the MaxLength to /24. However, if an adversary now spoofs your ASN and starts announcing any more specific out of your aggregate, they will all be seen as RPKI VALID, because there is a covering ROA for it.</p>
+<p>The best practice is to create a ROA for each announcement individually, and set the MaxLength to exactly the prefix length that you actually announce.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="using-rpki-data.html" title="Using RPKI Data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hosted-vs-delegated-rpki.html" title="Hosted versus Delegated RPKI"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >The Resource Public Key Infrastructure</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, NLnet Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>
