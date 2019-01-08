@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Using RPKI Data &#8212; RPKI Tools  documentation</title>
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -17,8 +17,15 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Router Support" href="router-support.html" />
-    <link rel="prev" title="Creating Route Origin Authorisations" href="creating-roas.html" /> 
+    <link rel="prev" title="Creating Route Origin Authorisations" href="creating-roas.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -34,7 +41,35 @@
         <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
       </ul>
-    </div>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-rpki-data">
+<h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
+<p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the Trust Anchor that each of them provides.</p>
+<p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
+<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
+<p>When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:</p>
+<ul class="simple">
+<li>Valid: The route announcement is covered by at least one ROA</li>
+<li>Invalid: The prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS</li>
+<li>NotFound: The prefix in this announcement is not, or only partially covered by an existing ROA</li>
+</ul>
+<p>Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI INVALID.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/RPKI-Validation.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/RPKI-Validation.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">RPKI publication, data retrieval, validation and processing</span></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
@@ -62,34 +97,6 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="using-rpki-data">
-<h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
-<p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the Trust Anchor that each of them provides.</p>
-<p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
-<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
-<p>When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:</p>
-<ul class="simple">
-<li>Valid: The route announcement is covered by at least one ROA</li>
-<li>Invalid: The prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS</li>
-<li>NotFound: The prefix in this announcement is not, or only partially covered by an existing ROA</li>
-</ul>
-<p>Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI INVALID.</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/RPKI-Validation.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/RPKI-Validation.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">RPKI publication, data retrieval, validation and processing</span></p>
-</div>
-</div>
-
-
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
