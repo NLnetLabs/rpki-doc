@@ -49,7 +49,7 @@
           <div class="body" role="main">
             
   <div class="section" id="using-rpki-data">
-<h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
+<span id="doc-rpki-relying-party"></span><h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
 <p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the Trust Anchor that each of them provides.</p>
 <p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
 <p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>

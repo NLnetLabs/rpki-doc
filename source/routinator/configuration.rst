@@ -1,3 +1,5 @@
+.. _doc_routinator_configuration:
+
 Configuration
 -------------
 

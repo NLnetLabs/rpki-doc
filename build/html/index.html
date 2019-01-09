@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Welcome to the RPKI Tools documentation. &#8212; RPKI Tools  documentation</title>
+    <title>RPKI documentation &#8212; RPKI Tools  documentation</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Resource Public Key Infrastructure" href="rpki/index.html" />
+    <link rel="next" title="About" href="about/index.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -32,7 +32,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="rpki/index.html" title="The Resource Public Key Infrastructure"
+          <a href="about/index.html" title="About"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">RPKI Tools  documentation</a> &#187;</li> 
       </ul>
@@ -43,20 +43,65 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="welcome-to-the-rpki-tools-documentation">
-<h1>Welcome to the RPKI Tools documentation.<a class="headerlink" href="#welcome-to-the-rpki-tools-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+  <div class="section" id="rpki-documentation">
+<h1>RPKI documentation<a class="headerlink" href="#rpki-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the documentation of the Resource Public Key Infrastructure (RPKI), the community-driven technology based on open standards that is aimed at making Internet routing more secure. If you are new to this documentation, we recommend that you read the <a class="reference internal" href="about/introduction.html#doc-about-intro"><span class="std std-ref">introduction page</span></a> to get an overview of what this documentation has to offer.</p>
+<p>The table of contents below and in the sidebar should let you easily access the documentation for your topic of interest. You can also use the search function in the top left corner.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This documentation is an open source project developed by the RPKI team at
+NLnet Labs, as well as the network operator community around the world. It
+means we always appreciate your feedback and improvements.</p>
+<p class="last">Submit an issue or pull request on the <a class="reference external" href="https://github.com/NLnetLabs/rpkidocs/issues">GitHub repository</a>, or send us a message on the
+<a class="reference external" href="https://nlnetlabs.nl/mailman/listinfo/rpki">RPKI mailing list</a>.</p>
+</div>
+<p>The main documentation is organised into the following sections:</p>
+<div class="toctree-wrapper compound" id="sec-general">
+<p class="caption"><span class="caption-text">General</span><a class="headerlink" href="#sec-general" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about/index.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/faq.html">FAQ</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="sec-rpki">
+<p class="caption"><span class="caption-text">RPKI Technology</span><a class="headerlink" href="#sec-rpki" title="Permalink to this toctree">¶</a></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rpki/index.html">The Resource Public Key Infrastructure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rpki/introduction.html">Introduction to RPKI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rpki/route-origin-validation.html">Route Origin Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/route-origin-validation.html">Expanding upon the Internet Routing Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/route-origin-validation.html#route-origin-validation">Route Origin Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rpki/using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rpki/router-support.html">Router Support</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="sec-creating-rpki-data">
+<p class="caption"><span class="caption-text">Creating RPKI data</span><a class="headerlink" href="#sec-creating-rpki-data" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="krill/index.html">Krill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="krill/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="krill/ca/index.html">Certificate Authority</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="krill/ca/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="krill/ca/api.html">API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="krill/pub/index.html">Publication Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="krill/pub/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="krill/pub/api.html">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="sec-using-rpki-data">
+<p class="caption"><span class="caption-text">Using RPKI data</span><a class="headerlink" href="#sec-using-rpki-data" title="Permalink to this toctree">¶</a></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="routinator/installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routinator/configuration.html">Configuration</a></li>
@@ -65,14 +110,6 @@
 </ul>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
-</div>
 
 
           </div>
@@ -80,15 +117,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to the RPKI Tools documentation.</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
   <h4>Next topic</h4>
-  <p class="topless"><a href="rpki/index.html"
-                        title="next chapter">The Resource Public Key Infrastructure</a></p>
+  <p class="topless"><a href="about/index.html"
+                        title="next chapter">About</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -119,7 +150,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="rpki/index.html" title="The Resource Public Key Infrastructure"
+          <a href="about/index.html" title="About"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">RPKI Tools  documentation</a> &#187;</li> 
       </ul>

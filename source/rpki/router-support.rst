@@ -1,3 +1,5 @@
+.. _doc_rpki_rtr:
+
 Router Support
 --------------
 

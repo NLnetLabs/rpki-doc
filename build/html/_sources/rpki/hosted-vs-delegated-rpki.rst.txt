@@ -1,3 +1,5 @@
+.. _doc_rpki_hosted_delegated:
+
 Hosted versus Delegated RPKI
 ----------------------------
 
@@ -5,7 +7,7 @@ The five RIRs are responsible for allocating IP addresses and Autonomous System 
 
 The RPKI certificate structure matches the allocation model. This means all RIRs run a Root Certificate Authority which has a self-signed root certificate containing all of the resources that they each manage. They issue child certificates to NIRs or LIRs who can, in turn, issue a certificate to each of their customers. 
 
-.. figure:: RPKI-CA-Structure.svg
+.. figure:: img/RPKI-CA-Structure.svg
     :align: center
     :width: 100%
     :alt: The RPKI Certificate Authority Structure

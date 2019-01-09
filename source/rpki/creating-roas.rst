@@ -1,3 +1,5 @@
+.. _doc_rpki_roas:
+
 Creating Route Origin Authorisations
 ------------------------------------
 

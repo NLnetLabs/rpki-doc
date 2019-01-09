@@ -1,0 +1,16 @@
+Krill
+-----
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Certificate Authority
+
+   installation
+   configuration
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Publication Server
+
+   installation
+   configuration

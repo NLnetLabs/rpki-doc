@@ -1,11 +1,13 @@
 Routinator
-----------
+==========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :name: toc-routinator
 
    installation
    configuration
-
-
+   
+.. history
+.. authors
+.. license

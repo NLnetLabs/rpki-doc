@@ -1,3 +1,5 @@
+.. _doc_rpki_relying_party:
+
 Using RPKI Data
 ---------------
 
@@ -15,7 +17,7 @@ When comparing the validated cache to all route announcements seen in BGP, it wi
 
 Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI INVALID.
 
-.. figure:: RPKI-Validation.svg
+.. figure:: img/RPKI-Validation.svg
     :align: center
     :width: 100%
     :alt: The RPKI Data Retrieval and Validation
