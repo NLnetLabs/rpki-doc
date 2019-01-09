@@ -10,7 +10,7 @@ Welcome to the documentation of the Resource Public Key Infrastructure (RPKI), t
 
 The table of contents below and in the sidebar should let you easily access the documentation for your topic of interest. You can also use the search function in the top left corner.
 
-.. note:: This documentation is an open source project developed by the RPKI team at 
+.. note:: This documentation is an open source project maintained by the RPKI team at 
           NLnet Labs, as well as the network operator community around the world. It 
           means we always appreciate your feedback and improvements.
           
