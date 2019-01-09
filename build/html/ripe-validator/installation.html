@@ -1,0 +1,119 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Installation &#8212; RPKI  documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="RIPE NCC RPKI Validator" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="RIPE NCC RPKI Validator"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">RIPE NCC RPKI Validator</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<span id="doc-ripe-validator-installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>We are not distributing binary packages just yet, but getting started with Routinator is really easy. There are three things you need: rsync, Rust and a C toolchain. You need rsync because the RPKI repository currently uses rsync as its main means of distribution. You need Rust because that’s what the Routinator has been written in. Some of the cryptographic primitives used by the Routinator require a C toolchain, so you need that, too.</p>
+<p>You can run Routinator on a UNIX-like operating system in just a couple of steps. Assuming you have rsync and the C toolchain but not yet Rust, here’s how you get the the application to run as an RTR server listening on 127.0.0.1 port 3323:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sh</span><span class="o">.</span><span class="n">rustup</span><span class="o">.</span><span class="n">rs</span> <span class="o">-</span><span class="n">sSf</span> <span class="o">|</span> <span class="n">sh</span>
+<span class="n">source</span> <span class="o">~/.</span><span class="n">cargo</span><span class="o">/</span><span class="n">env</span>
+<span class="n">cargo</span> <span class="n">install</span> <span class="n">routinator</span>
+<span class="n">routinator</span> <span class="n">rtrd</span> <span class="o">-</span><span class="n">l</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3323</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">RIPE NCC RPKI Validator</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/ripe-validator/installation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="RIPE NCC RPKI Validator"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >RIPE NCC RPKI Validator</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, NLnet Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>

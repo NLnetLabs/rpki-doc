@@ -45,8 +45,10 @@ The main documentation is organised into the following sections:
    :maxdepth: 2
    :caption: Using RPKI data
    :name: sec-using-rpki-data
-   
+
+   ripe-validator/index   
    routinator/index
+   rpki-client/index
    
 .. Indices and tables
 .. ------------------
