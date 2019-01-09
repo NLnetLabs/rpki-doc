@@ -82,8 +82,11 @@ html_theme = 'sphinx_rtd_theme'
 # documentation.
 #
 html_theme_options = {
-  'navigation_depth': 4, 
-  'includehidden': True
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
   }
 
 # Add any paths that contain custom static files (such as style sheets) here,
