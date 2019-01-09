@@ -1,3 +1,5 @@
+This readme was largely copied from the excellent [Godot](https://github.com/godotengine/godot-docs) documentation, with thanks to Juan Linietsky, Ariel Manzur and the Godot community.
+
 # RPKI documentation
 
 This repository contains the documentation for the RPKI technology, as well as the tools that NLnet Labs is developing for it,  in reStructuredText markup language (reST). They are meant to be parsed with the [Sphinx](http://sphinx-doc.org/) documentation builder to build the HTML documentation.
