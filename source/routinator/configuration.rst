@@ -3,7 +3,7 @@
 Configuration
 -------------
 
-* VPRS
-* RTRD
-* SLURM
-* Config file
+Placeholder
+
+* Step 1
+* Step 2

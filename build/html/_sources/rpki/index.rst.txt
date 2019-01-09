@@ -5,12 +5,12 @@ Resource Public Key Infrastructure (RPKI) is technology based on open standards 
 
 This section explains how to use RPKI within your BGP decision making workflow to sign your own routes and filter unauthorised routes advertised by others.
 
-The main documentation for the site is organized into the following chapters:
+The documentation is organised into the following chapters:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Resource Public Key Infrastructure (RPKI)
+   :maxdepth: 1
 
+   introduction
    route-origin-validation
    hosted-vs-delegated-rpki
    creating-roas

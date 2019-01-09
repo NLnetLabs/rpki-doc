@@ -3,4 +3,4 @@
 Installation
 ------------
 
-We are not distributing binary packages, but getting started with Krill is really easy. 
+Placeholder for Certificate Authority and Publication Server installation

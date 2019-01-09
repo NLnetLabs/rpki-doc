@@ -7,7 +7,7 @@ Operators who want to use RPKI data in their BGP decision making process have to
 
 Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn't pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache. 
 
-The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.
+The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.
 
 When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:
 

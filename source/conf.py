@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'RPKI Tools'
+project = u'RPKI'
 copyright = u'2019, NLnet Labs'
 author = u'The RPKI Team'
 
@@ -129,7 +129,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TheRPKIDocumentation.tex', u'The RPKI Documentation Documentation',
+    (master_doc, 'TheRPKIDocumentation.tex', u'The RPKI Documentation',
      u'Alex Band, Tim Bruijnzeels, Martin Hoffmann', 'manual'),
 ]
 

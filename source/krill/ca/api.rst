@@ -3,5 +3,7 @@
 API
 ---
 
-* Something
-* Something else
+Placeholder
+
+* Step 1
+* Step 2

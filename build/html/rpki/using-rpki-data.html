@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Using RPKI Data &#8212; RPKI Tools  documentation</title>
+    <title>Using RPKI Data &#8212; RPKI  documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="creating-roas.html" title="Creating Route Origin Authorisations"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 <span id="doc-rpki-relying-party"></span><h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
 <p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the Trust Anchor that each of them provides.</p>
 <p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
-<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Alcatel-Lucent, as well as BIRD and Quagga support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
+<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
 <p>When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:</p>
 <ul class="simple">
 <li>Valid: The route announcement is covered by at least one ROA</li>
@@ -113,7 +113,7 @@
         <li class="right" >
           <a href="creating-roas.html" title="Creating Route Origin Authorisations"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >The Resource Public Key Infrastructure</a> &#187;</li> 
       </ul>
     </div>

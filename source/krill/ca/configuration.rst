@@ -3,5 +3,7 @@
 Configuration
 -------------
 
+Placeholder
+
 * Step 1
 * Step 2

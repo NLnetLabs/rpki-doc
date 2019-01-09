@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Introduction &#8212; RPKI Tools  documentation</title>
+    <title>Introduction &#8212; RPKI  documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Expanding upon the Internet Routing Registry" href="route-origin-validation.html" />
+    <link rel="next" title="Route Origin Validation" href="route-origin-validation.html" />
     <link rel="prev" title="The Resource Public Key Infrastructure" href="index.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -33,12 +33,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="route-origin-validation.html" title="Expanding upon the Internet Routing Registry"
+          <a href="route-origin-validation.html" title="Route Origin Validation"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="The Resource Public Key Infrastructure"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Resource Public Key Infrastructure</a> &#187;</li> 
       </ul>
     </div>  
@@ -49,39 +49,16 @@
           <div class="body" role="main">
             
   <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to the documentation of the Resource Public Key Infrastructure (RPKI). Here, we aim to offer an overview of the RPKI technology itself, as well as the tools that NLnet Labs is developing for it.</p>
-<p>This page gives a broad overview of the RPKI and how it can help make Internet routing using the Border Gateway Protocol (BGP) more secure. This way, you will learn how RPKI can benefit your organisation, as well as helping others to be more secure on the Internet.</p>
-<div class="section" id="about-this-documentation">
-<h2>About this documentation<a class="headerlink" href="#about-this-documentation" title="Permalink to this headline">¶</a></h2>
-<p>This documentation is continuously written, corrected and edited. An initial version was written by Alex Band, Tim Bruijnzeels, Martin Hoffmann, Job Snijders, David Monosov and Melchior Aelmans. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. It is edited via text files in the
-<a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">reStructuredText</a> markup
-language and then compiled into a static website/offline document using the
-open source <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> tool.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You can contribute to the RPKI documentation by opening issue tickets
-or sending patches via pull requests on its GitHub
-<a class="reference external" href="https://github.com/NLnetLabs/rpkidoc">source repository</a>.</p>
-</div>
-<p>All the contents are under the permissive Creative Commons Attribution 3.0
-(<a class="reference external" href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a>) license.</p>
-</div>
-<div class="section" id="about-rpki">
-<h2>About RPKI<a class="headerlink" href="#about-rpki" title="Permalink to this headline">¶</a></h2>
+<span id="doc-rpki-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>The global routing system of the Internet consists of a number of functionally independent actors (Autonomous Systems) which use BGP (Border Gateway Protocol) to exchange routing information. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change. Changes easily propagate globally within a few minutes. One weakness of this system is that these changes cannot be validated against information existing outside of the BGP protocol itself.</p>
 <p>Resource Public Key Infrastructure (RPKI) is a way to define data in an out-of-band system such that the information that is exchanged by BGP can be validated to be correct. The RPKI standards were developed by the IETF (Internet Engineering Task Force) to describe some of the resources of the Internet’s routing and addressing scheme in a cryptographic system.</p>
 <p>RPKI is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. <a class="reference external" href="https://www.arin.net/resources/rpki/">ARIN</a>, <a class="reference external" href="https://www.apnic.net/community/security/resource-certification/">APNIC</a>, <a class="reference external" href="https://www.afrinic.net/resource-certification">AFRINIC</a>, <a class="reference external" href="https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki">LACNIC</a> and <a class="reference external" href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/">RIPE NCC</a>. Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as Route Origin Validation (ROV).</p>
-</div>
-<div class="section" id="organisation-of-the-documentation">
-<h2>Organisation of the documentation<a class="headerlink" href="#organisation-of-the-documentation" title="Permalink to this headline">¶</a></h2>
-<p>This documentation is organised in four main sections</p>
-<ul class="simple">
-<li>The <span class="xref std std-ref">sec-rpki</span> section contains information about RPKI itself</li>
-<li>The <span class="xref std std-ref">sec-krillc</span> section is about the Krill daemon, the RPKI Certificate Authority</li>
-<li>The <span class="xref std std-ref">sec-krilld</span> section is about the Krill Publication Server</li>
-<li>The <span class="xref std std-ref">sec-routinator</span> section is about the Routinator RPKI Relying Party Software.</li>
-</ul>
+<div class="section" id="expanding-upon-the-internet-routing-registry">
+<h2>Expanding upon the Internet Routing Registry<a class="headerlink" href="#expanding-upon-the-internet-routing-registry" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve been involved in default-free zone Internet engineering for any length of time, you’re probably familiar with RPSL, a routing policy specification language originally defined in <a class="reference external" href="https://tools.ietf.org/html/rfc2280">RFC2280</a> back in 1998. While RPSL has created considerable early enthusiasm and has seen some traction, the Internet was rapidly growing at the time, and the primary focus was on data availability rather than data trustworthiness. Everyone was busy opportunistically documenting the minimal policy that was necessary to “make things work” with the policy specification language parsing scripts of everyone else so that something would finally ping!</p>
+<p>Over time, this has created an extensive repository of obsolete data of uncertain validity spread across dozens of route registries around the world. Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language - resulting in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.</p>
+<p>RPKI aims to complement and expand upon this effort focusing primarily on trustworthiness, timeliness, and accuracy of data. RPKI ROAs are hierarchically delegated by RIRs based on strict criteria, and are cryptographically verifiable. This offers the Internet community an opportunity to build an up to date and accurate information of IP address origination data on the Internet.</p>
+<p>In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. RPKI solves these two problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world.</p>
 </div>
 </div>
 
@@ -94,9 +71,7 @@ or sending patches via pull requests on its GitHub
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#about-this-documentation">About this documentation</a></li>
-<li><a class="reference internal" href="#about-rpki">About RPKI</a></li>
-<li><a class="reference internal" href="#organisation-of-the-documentation">Organisation of the documentation</a></li>
+<li><a class="reference internal" href="#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +81,7 @@ or sending patches via pull requests on its GitHub
                         title="previous chapter">The Resource Public Key Infrastructure</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="route-origin-validation.html"
-                        title="next chapter">Expanding upon the Internet Routing Registry</a></p>
+                        title="next chapter">Route Origin Validation</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -137,12 +112,12 @@ or sending patches via pull requests on its GitHub
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="route-origin-validation.html" title="Expanding upon the Internet Routing Registry"
+          <a href="route-origin-validation.html" title="Route Origin Validation"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="The Resource Public Key Infrastructure"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">RPKI Tools  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">RPKI  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >The Resource Public Key Infrastructure</a> &#187;</li> 
       </ul>
     </div>

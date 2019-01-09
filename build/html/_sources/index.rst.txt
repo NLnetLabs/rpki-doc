@@ -15,7 +15,7 @@ The table of contents below and in the sidebar should let you easily access the 
           means we always appreciate your feedback and improvements.
           
           Submit an issue or pull request on the `GitHub repository
-          <https://github.com/NLnetLabs/rpkidocs/issues>`_, or send us a message on the
+          <https://github.com/NLnetLabs/rpkidoc/issues>`_, or send us a message on the
           `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. 
 
 The main documentation is organised into the following sections:
@@ -44,7 +44,7 @@ The main documentation is organised into the following sections:
 .. toctree::
    :maxdepth: 2
    :caption: Using RPKI data
-   :name: sec-using-rpki data
+   :name: sec-using-rpki-data
    
    routinator/index
    

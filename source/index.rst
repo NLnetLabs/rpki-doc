@@ -44,7 +44,7 @@ The main documentation is organised into the following sections:
 .. toctree::
    :maxdepth: 2
    :caption: Using RPKI data
-   :name: sec-using-rpki data
+   :name: sec-using-rpki-data
    
    routinator/index
    
