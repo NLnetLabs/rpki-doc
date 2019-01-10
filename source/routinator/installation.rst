@@ -4,10 +4,10 @@ Installation
 ============
 
 At this time, there are no binary packages for Routinator yet, but getting
-started with Routinator is really easy, using either `Cargo
+started is really easy using either `Cargo
 <https://crates.io/crates/routinator>`_, `Docker
-<https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the `source
-<https://github.com/NLnetLabs/routinator>`_. 
+<https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the
+`source <https://github.com/NLnetLabs/routinator>`_. 
 
 Quick Start
 -----------
@@ -23,7 +23,7 @@ you get the Routinator to run as an RTR server listening on 127.0.0.1 port
    cargo install routinator
    routinator rtrd -l 127.0.0.1:3323
 
-If you have an older version of the Routinator, you can update via
+If you have an older version of the Routinator, you can update via:
 
 .. code-block:: bash
 
@@ -65,14 +65,14 @@ require a C toolchain, so you need that, too.
 rsync
 """""
 
-Currently, Routinator requires the `rsync` executable to be in your path.
+Currently, Routinator requires the ``rsync`` executable to be in your path.
 We are not quite sure which particular version you need at the very least,
 but whatever is being shipped with current Linux and \*BSD distributions
 and macOS should be fine.
 
-On Windows, Routinator requires the `rsync` version that comes with
+On Windows, Routinator requires the ``rsync`` version that comes with
 `Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
-installation phase. And yes, Routinator totally works on Windows, too.
+installation phase. 
 
 If you don’t have rsync, please head to http://rsync.samba.org/
 
@@ -127,10 +127,10 @@ release version, you can run
    cargo install --git https://github.com/NLnetLabs/routinator.git
 
 If you want to update an installed version, you run the same command but
-add the ``-f`` flag (aka force) to approve overwriting the installed
+add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
 version.
 
 The command will build Routinator and install it in the same directory
-that cargo itself lives in (likely ``$HOME/.cargo/bin``).
-Which means Routinator will be in your path, too.
+that cargo itself lives in, likely ``$HOME/.cargo/bin``.This means 
+Routinator will be in your path, too.
 
