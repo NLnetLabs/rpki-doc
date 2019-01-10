@@ -71,7 +71,7 @@ but whatever is being shipped with current Linux and \*BSD distributions
 and macOS should be fine.
 
 On Windows, Routinator requires the `rsync` version that comes with
-[Cygwin](https://www.cygwin.com/) – make sure to select rsync during the
+`Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
 installation phase. And yes, Routinator totally works on Windows, too.
 
 If you don’t have rsync, please head to http://rsync.samba.org/
@@ -88,7 +88,7 @@ To install ``rustup`` and Rust, simply do:
 
 .. code-block:: bash
 
-curl https://sh.rustup.rs -sSf | sh
+   curl https://sh.rustup.rs -sSf | sh
 
 or, alternatively, get the file, have a look and then run it manually.
 Follow the instructions to get rustup and cargo, the rust build tool, into
@@ -98,7 +98,7 @@ You can update your Rust installation later by simply running
 
 .. code-block:: bash
 
-rustup update
+   rustup update
 
 
 C Toolchain
@@ -117,14 +117,14 @@ The easiest way to get Routinator is to leave it to cargo by saying
 
 .. code-block:: bash
 
-cargo install routinator
+   cargo install routinator
 
 If you want to try the master branch from the repository instead of a
 release version, you can run
 
 .. code-block:: bash
 
-cargo install --git https://github.com/NLnetLabs/routinator.git
+   cargo install --git https://github.com/NLnetLabs/routinator.git
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag (aka force) to approve overwriting the installed
