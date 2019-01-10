@@ -1,4 +1,8 @@
-This readme was largely copied from the excellent [Godot](https://github.com/godotengine/godot-docs) documentation, with thanks to Juan Linietsky, Ariel Manzur and the Godot community. For the moment, the content is published at [rpki.readthedocs.io](https://rpki.readthedocs.io/en/latest/) as we continue to build this and evaluate a definitive home. 
+[![Documentation Status](https://readthedocs.org/projects/rpki/badge/?version=latest)](https://rpki.readthedocs.io/en/latest/?badge=latest)
+
+This readme was largely copied from the excellent [Godot](https://github.com/godotengine/godot-docs) documentation, with thanks to Juan Linietsky, Ariel Manzur and the Godot community. 
+
+This documentation is published at [rpki.readthedocs.io](https://rpki.readthedocs.io/en/latest/).
 
 # RPKI documentation
 
