@@ -4,21 +4,21 @@ Configuration
 =============
 
 To get the Routinator running for your specific environment, there is a great
-number of things you can configure. To get an overview of all available
+number of elements you can configure. To get an overview of all available
 options, please refer to the manual page, which can be accessed via:
 
 .. code-block:: bash
 
    routinator man
 
-.. Tip:: The manual page is available online on the `NLnetLabs documentation
+.. Tip:: The manual page is available online on the `NLnet Labs documentation
 		 site <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
 
 Configuration file 
 ------------------
 
-Routinator can take its configuration from a file. You can specify such a
-configuration file via the ``-c`` option. If you don’t, Routinator will check
+The Routinator can take its configuration from a file. You can specify such a
+configuration file via the ``-c`` option. If you don’t, the Routinator will check
 if there is a file ``$HOME/.routinator.conf`` and if it exists, use it. If it
 doesn’t exist and there is no ``-c`` option, default values are used.
 
@@ -33,11 +33,20 @@ values can be found in the repository at `etc/routinator.conf
 Local Exceptions 
 ----------------
 
-If you would like to add exceptions to the validated RPKI data in the form of
-local filters and additions, you can specify this in a file using JSON
-notation according to the `SLURM <https://tools.ietf.org/html/rfc8416>`_ 
-standard. An full example file is provided below. This, along with an empty one
-is avialable in the repository at `/test/slurm <https://github.com/NLnetLabs/routinator/tree/master/test/slurm>`_.
+In some cases, you may want to override the global RPKI data set with your own
+local exceptions. For example, when a legitimate route announcement is
+inadvertently flagged as *invalid* due to a misconfigured ROA, you may want to
+temporarily accept it to give the operators an opportunity to resolve the
+issue.
+
+You can do this by specifying route origins that should be filtered out of the
+output, as well as origins that should be added, in a file using JSON notation
+according to the SLURM standard specified in `RFC 8416
+<https://tools.ietf.org/html/rfc8416>`_.
+
+A full example file is provided below. This, along with an empty one is
+available in the repository at `/test/slurm
+<https://github.com/NLnetLabs/routinator/tree/master/test/slurm>`_.
 
 .. code-block:: json
 
