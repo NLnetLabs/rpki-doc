@@ -1,12 +1,12 @@
 Routinator
 ==========
 
-.. figure:: img/Routinator_Wordmark.*
-     :align: left
-     :width: 350px
-        
-
 The Routinator is free, open source RPKI Relying Party software written in the Rust programming language. It is designed to be lightweight and have great portability. This means it can run on any Unix-like operating system, but also works on Microsoft Windows. Due to its lean design, it can run effortlessly on minimalist hardware such as a Raspberry Pi. 
+
+.. figure:: img/Routinator_Wordmark.*
+     :align: middle
+     :width: 350px
+
 
 The Routinator connects to the Trust Anchors of the five Regional Internet Registries (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all of the certificates and ROAs in their repositories and validates the signatures. It can feed the validated information to hardware routers supporting Route Origin Validation such as `Juniper <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`_, `Cisco <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html>`_ and `Nokia <https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`_, as well as serving software solutions like `BIRD <https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.11>`_ and `OpenBGPD <http://openbgpd.org>`_. Alternatively, Routinator can output the validated data in a number of useful formats, such as CSV, JSON and RPSL.
 
