@@ -47,7 +47,7 @@ rpsl       This format produces a list of RPSL objects with the authorisation in
            *mnt-by*, *created*, and *last-modified*, are present with more or less
            meaningful values.
 none       This format produces no output whatsoever.    
-=========  ============================================================================        
+=========  ===============================================================================        
 
 
 Usage
