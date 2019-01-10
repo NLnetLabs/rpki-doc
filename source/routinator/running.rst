@@ -50,29 +50,32 @@ none       This format produces no output whatsoever.
 =========  ===============================================================================        
 
 
-:csv 
+:csv: 
      The list is formatted as lines of comma-separated values of the prefix in
      slash notation, the maximum prefix length, the autonomous system number, 
      and an abbreviation for the trust anchor the entry is derived from. The 
      latter is the name of the TAL file  without the extension *.tal*. This is 
      the default format used if the ``-f`` option is missing.
-:json
+:json:
       The list is placed into a JSON object with a single  element *roas* which
-           contains an array of objects with four elements each: The autonomous system 
-           number of  the  network  authorised to originate a prefix in *asn*, the prefix
-           in slash notation in *prefix*, the maximum prefix length of the announced route
-           in *maxLength*, and the trust anchor from which the authorisation was derived 
-           in *ta*. This format is identical to that produced by the RIPE NCC Validator 
-           except for different naming of the trust anchor. The Routinator uses the name 
-           of the TAL file without the extension *.tal* whereas the RIPE NCC Validator 
-           has a dedicated name for each.
-:openbgpd   Choosing  this format causes the Routinator to produce a *roa-set*
-           configuration item for the OpenBGPD configuration.
-:rpsl       This format produces a list of RPSL objects with the authorisation in the
-           fields *route*, *origin*, and *source*. In addition, the fields *descr*,
-           *mnt-by*, *created*, and *last-modified*, are present with more or less
-           meaningful values.
-:none       This format produces no output whatsoever.    
+      contains an array of objects with four elements each: The autonomous system 
+      number of  the  network  authorised to originate a prefix in *asn*, the prefix
+      in slash notation in *prefix*, the maximum prefix length of the announced route
+      in *maxLength*, and the trust anchor from which the authorisation was derived 
+      in *ta*. This format is identical to that produced by the RIPE NCC Validator 
+      except for different naming of the trust anchor. The Routinator uses the name 
+      of the TAL file without the extension *.tal* whereas the RIPE NCC Validator 
+      has a dedicated name for each.
+:openbgpd:
+      Choosing  this format causes the Routinator to produce a *roa-set*
+      configuration item for the OpenBGPD configuration.
+:rpsl:
+      This format produces a list of RPSL objects with the authorisation in the
+      fields *route*, *origin*, and *source*. In addition, the fields *descr*,
+      *mnt-by*, *created*, and *last-modified*, are present with more or less
+      meaningful values.
+:none:
+      This format produces no output whatsoever.    
 
 
 
