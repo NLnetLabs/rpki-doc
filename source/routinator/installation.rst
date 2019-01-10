@@ -16,7 +16,7 @@ Assuming you have rsync and the C toolchain but not yet Rust, here’s how
 you get the Routinator to run as an RTR server listening on 127.0.0.1 port
 3323:
 
-:: code-block:: bash
+.. code-block:: bash
 
    curl https://sh.rustup.rs -sSf | sh
    source ~/.cargo/env
@@ -25,7 +25,7 @@ you get the Routinator to run as an RTR server listening on 127.0.0.1 port
 
 If you have an older version of the Routinator, you can update via
 
-:: code-block:: bash
+.. code-block:: bash
 
    cargo install -f routinator
 
@@ -42,7 +42,7 @@ The ARIN TAL RFC 7730 format file available at that URL will then need to
 be downloaded and mounted into the docker container as a replacement for
 the dummy arin.tal file that is shipped with Routinator.
 
-:: code-block:: bash
+.. code-block:: bash
 
    # Create a local directory for the RPKI cache
    sudo mkdir -p /etc/routinator/tals
