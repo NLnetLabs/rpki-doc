@@ -3,13 +3,13 @@
 Running
 =======
 
-There are currently two major functions of the Routinator: printing the
-list of valid route origins, also known as Validated ROA Payload (VRP),
-and providing the service for routers to access this list via a protocol
-known as RPKI-to-Router protocol (RTR).
+There are currently two major functions of the Routinator: printing the list
+of valid route origins, also known as Validated ROA Payload (VRP), and
+providing the service for routers to access this list via a protocol known as
+RPKI-to-Router protocol (RTR).
 
-These (and all other functions) of Routinator are accessible on the
-command line via sub-commands. The commands are:
+These and all other functions of Routinator are accessible on the command
+line via sub-commands. The commands are:
 
 :vrps:
      Produces a list of Validated ROA Payload
@@ -32,17 +32,17 @@ a list of Validated ROA Payload and use ``-v`` to increase the log level:
 
    routinator -v vrps
 
-When you run the Routinator for the very first time, it will create 
-``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the 
-five RIRs there, and then complain that ARIN’s TAL is in fact not really there.
+When you run the Routinator for the very first time, it will create
+``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the five RIRs
+there, and then complain that ARIN’s TAL is in fact not really there.
 
-Follow the instructions provided and try again. You can also add
-additional trust anchors by simple dropping their TAL file in RFC 7730
-format into ``$HOME/.rpki-cache/tals``.
+Follow the instructions provided and try again. You can also add additional
+trust anchors by simply dropping their TAL file in `RFC 7730 
+<https://tools.ietf.org/html/rfc7730>`_ format into ``$HOME/.rpki-cache/tals``.
 
-Now Routinator will rsync the entire RPKI repository to your machine
-(which will take a while during the first run), validate it and produce
-a long list of AS numbers and prefixes.
+Now, Routinator will rsync the entire RPKI repository to your machine (which
+will take a while during the first run), validate it and produce a long list
+of AS numbers and prefixes in the default CSV format.
 
 
 Printing a list of valid route origins
@@ -74,14 +74,21 @@ The Routinator can print a list of valid route origins in four different formats
       fields *route*, *origin*, and *source*. In addition, the fields *descr*,
       *mnt-by*, *created*, and *last-modified*, are present with more or less
       meaningful values.
+      
+For example, to get a file with with the validated ROA payload in JSON format, run:
+
+.. code-block:: bash
+
+   routinator vrps --format json --output roa.json
 
 
 Feeding a Router with RPKI-RTR
 ------------------------------
 
-Routinator supports RPKI-RTR as specified in RFC 8210 as well as the older
-version from RFC 6810. It will act as an RTR server if you start it with
-the ``rtrd`` sub-command. It will do so as a daemon and detach from your
+Routinator supports RPKI-RTR as specified in `RFC 8210 
+<https://tools.ietf.org/html/rfc8210>`_ as well as the older version from `RFC 6810 
+<https://tools.ietf.org/html/rfc7730>`_. It will act as an RTR server if you start 
+it with the ``rtrd`` sub-command. It will do so as a daemon and detach from your
 terminal unless you provide the ``-a`` (for attached) option.
 
 You can specify the address(es) to listen on via the ``-l`` (or ``--listen``)
