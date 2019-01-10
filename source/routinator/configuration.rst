@@ -2,6 +2,9 @@
 
 Configuration
 =============
+     
+.. Tip:: The manual page is available online on the `NLnetLabs documentation site
+         <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.    
 
 Routinator can take its configuration from a file. You can specify
 such a configuration file via the ``-c`` option. If you don’t, Routinator

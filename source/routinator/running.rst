@@ -17,12 +17,6 @@ command line via sub-commands. The commands are:
 :rtrd:
      Starts the RTR server
      
-:man:
-     Display the manual page  
-     
-.. Tip:: The manual page is available online on the `NLnetLabs documentation site
-         <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.    
-     
 First Launch
 ------------
 
@@ -32,7 +26,7 @@ First Launch
              (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
 
 To see if the Routinator is configured correctly, it is recommended to have it print
-a list of Validated ROA Payload and increase the log level using ``-v``:
+a list of Validated ROA Payload and use ``-v`` to increase the log level:
 
 .. code-block:: bash
 
