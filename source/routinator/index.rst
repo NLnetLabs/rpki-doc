@@ -9,6 +9,7 @@ Routinator is free, open source RPKI Relying Party software written in the Rust 
 
    installation
    configuration
+   running
    
 .. history
 .. authors
