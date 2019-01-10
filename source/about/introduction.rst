@@ -34,10 +34,10 @@ RPKI is a community-driven system in which open source software developers, rout
 Organisation of the documentation
 +++++++++++++++++++++++++++++++++
 
-This documentation is organised in four main sections 
+This documentation is organised in four main sections:
 
 - The :ref:`sec-general` section contains this introduction as well as
   information about the licensing, authors, etc. It also contains the :ref:`doc_faq`.
-- The :ref:`sec-rpki` section explain the RPKI technology and standards in orderf for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.
+- The :ref:`sec-rpki` section explains the RPKI technology and standards in order for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.
 - The section :ref:`sec-creating-rpki-data` is about Krill, the RPKI daemon that acts a Certificate Authority and Publication Server. If your organisation wants to run a self-hosted RPKI solution, this is what you should read.
 - The :ref:`sec-using-rpki-data` section covers the various Relying Party Software packages — also known as Validators — that can be used to download the global RPKI data set, validate it and use the result in your BGP decision making process.

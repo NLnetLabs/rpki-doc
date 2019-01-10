@@ -3,7 +3,7 @@
 Installation
 ============
 
-At this time, there are no binary packages for Routinator yet, but getting
+At this time there are no binary packages for the Routinator yet, but getting
 started is really easy using either `Cargo
 <https://crates.io/crates/routinator>`_, `Docker
 <https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the
@@ -35,10 +35,9 @@ Quick Start with Docker
 
 Due to the impracticality of complying with the ARIN TAL distribution terms
 in an unsupervised Docker environment, prior to launching the container it
-is necessary to first review and agree to the ARIN TAL terms available at
-https://www.arin.net/resources/rpki/tal.html
+is necessary to first confirm your acceptance of the `ARIN Relying Party Agreement (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
 
-The ARIN TAL RFC 7730 format file available at that URL will then need to
+The ARIN TAL file in RFC 7730 format available at that URL will then need to
 be downloaded and mounted into the docker container as a replacement for
 the dummy arin.tal file that is shipped with Routinator.
 
@@ -55,7 +54,10 @@ the dummy arin.tal file that is shipped with Routinator.
 Getting Started
 ---------------
 
-There are three things you need for Routinator: rsync, Rust and a C toolchain. You can install the Routinator on any Operating System when you can fulfil these requirements, so this includes any UNIX-like OS, as well as Microsoft Windows.
+There are three things you need for Routinator: rsync, Rust and a C toolchain.
+You can install the Routinator on any Operating System where you can fulfil
+these requirements, so this includes any UNIX-like OS, as well as Microsoft
+Windows.
 
 You need rsync because the RPKI repository currently uses rsync as its main
 means of distribution. You need Rust because that’s what the Routinator has
@@ -66,15 +68,15 @@ rsync
 """""
 
 Currently, Routinator requires the ``rsync`` executable to be in your path.
-We are not quite sure which particular version you need at the very least,
-but whatever is being shipped with current Linux and \*BSD distributions
-and macOS should be fine.
+Due to the nature of rsync, it is unclear which particular version you need at
+the very least, but whatever is being shipped with current Linux and \*BSD
+distributions and macOS should be fine.
 
 On Windows, Routinator requires the ``rsync`` version that comes with
 `Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
 installation phase. 
 
-If you don’t have rsync, please head to http://rsync.samba.org/
+If you don’t have rsync, please head to https://rsync.samba.org/
 
 Rust
 """"
@@ -90,11 +92,11 @@ To install ``rustup`` and Rust, simply do:
 
    curl https://sh.rustup.rs -sSf | sh
 
-or, alternatively, get the file, have a look and then run it manually.
+Alternatively, get the file, have a look and then run it manually.
 Follow the instructions to get rustup and cargo, the rust build tool, into
 your path.
 
-You can update your Rust installation later by simply running
+You can update your Rust installation later by simply running:
 
 .. code-block:: bash
 
@@ -131,6 +133,6 @@ add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
 version.
 
 The command will build Routinator and install it in the same directory
-that cargo itself lives in, likely ``$HOME/.cargo/bin``.This means 
+that cargo itself lives in, likely ``$HOME/.cargo/bin``. This means 
 Routinator will be in your path, too.
 

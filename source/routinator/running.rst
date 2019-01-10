@@ -45,7 +45,7 @@ will take a while during the first run), validate it and produce a long list
 of AS numbers and prefixes in the default CSV format.
 
 
-Printing a list of valid route origins
+Printing a List of Valid Route Origins
 --------------------------------------
 
 The Routinator can print a list of valid route origins in four different formats:
