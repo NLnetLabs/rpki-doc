@@ -1,7 +1,7 @@
 .. _doc_krill_pub_api:
 
 API
----
+===
 
 This application uses a JSON based REST (in the non-religious interpretation)
 API for managing all administrative tasks, such as managing the configured

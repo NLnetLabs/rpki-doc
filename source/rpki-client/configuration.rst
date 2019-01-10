@@ -1,7 +1,7 @@
 .. _doc_rpki_client_configuration:
 
 Configuration
--------------
+=============
 
 Placeholder
 

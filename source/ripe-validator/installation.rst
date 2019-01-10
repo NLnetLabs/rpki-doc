@@ -1,7 +1,7 @@
 .. _doc_ripe_validator_installation:
 
 Installation
-------------
+============
 
 Placeholder
 

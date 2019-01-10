@@ -1,7 +1,7 @@
 .. _doc_rpki_roas:
 
 Creating Route Origin Authorisations
-------------------------------------
+====================================
 
 A Route Origin Authorisation object consists of three elements: the AS Number that you authorise, the prefix that is being originated from it and, lastly, the Maximum Length (MaxLength), which determines the most specific prefix that the AS may originate out of the aggregate. Keep in mind that a single ROA makes the announcement of a prefix from an authorised AS valid, but at the same time, it makes the announcement from an unauthorised (hijacking) AS invalid. You should create as many ROAs as needed to make all legitimate announcements valid.
 

@@ -1,7 +1,7 @@
 .. _doc_krill_pub_configuration:
 
 Configuration
--------------
+=============
 
 Placeholder
 
