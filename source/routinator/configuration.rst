@@ -14,7 +14,7 @@ options, please refer to the manual page, which can be accessed via:
 .. Tip:: The manual page is available online on the `NLnet Labs documentation
 		 site <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
 
-Configuration file 
+Configuration File 
 ------------------
 
 The Routinator can take its configuration from a file. You can specify such a
