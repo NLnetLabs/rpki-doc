@@ -7,7 +7,7 @@ Publication Server
 The publication server is functional and conforms with the IETF standards,
 most notably:
 
-- `RFC8181 — Publication Protocol <https://tools.ietf.org/html/rfc8181>`_ -
+- `RFC8181 — Publication Protocol <https://tools.ietf.org/html/rfc8181>`_
 - `RFC8183 — Out-of-Band Setup Protocol <https://tools.ietf.org/html/rfc8183>`_
 
 This project also includes a publication client utility ``pubc`` that can be

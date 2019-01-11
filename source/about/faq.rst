@@ -3,8 +3,8 @@
 FAQ
 +++
 
-.. note::  This is a community-driven FAQ for RPKI, originally written by Alex Band
-           , Job Snijders, David Monosov and Melchior Aelmans. Network operators 
+.. note::  This is a community-driven FAQ for RPKI, originally written by Alex Band, 
+           Job Snijders, David Monosov and Melchior Aelmans. Network operators 
            around the world have contributed to these questions and answers. The 
            contents are available on `Github <https://github.com/NLnetLabs/rpki-faq>`_,
            allowing you to send a pull request with edits or additions, or fork the

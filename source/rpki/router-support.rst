@@ -3,10 +3,13 @@
 Router Support
 ==============
 
-Placeholder
+Various vendors, such as `Juniper
+<https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`_, `Cisco
+<https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html>`_ and `Nokia
+<https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`_, have implemented Route Origin Validation in their routers. In addition, various software solutions have support for RPKI as well, such as `BIRD
+<https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.13>`_ and `OpenBGPD
+<http://openbgpd.org>`_. 
 
-* Cisco
-* Juniper
-* Nokia
-* BIRD
-* OpenBGPD
+In most implementations, it is possible for the routers to set up a session with
+RPKI Relying Party software that supports the RPKI-RTR protocol. In some cases, such as OpenBGPD, the same result can be achieved through a 'static' configuration. The router will periodically fetch the Validated ROA Payload and allow operators to set up route maps based on the result.
+
