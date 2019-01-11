@@ -1,7 +1,7 @@
 .. _doc_rpki_hosted_delegated:
 
 Hosted versus Delegated RPKI
-----------------------------
+============================
 
 The five RIRs are responsible for allocating IP addresses and Autonomous System Numbers in each of their regions. In most cases they allocate resources directly to their members, called Local Internet Registries (LIRs). In turn, LIRs assign resources to ISPs or end user organisations. There is an exception in the APNIC and LACNIC region, where in some countries allocations are handled through National Internet Registry (NIR) organisations to meet particular geographical needs. For example, JPNIC in Japan and NIC.br in Brazil provide these services on a national level.
 

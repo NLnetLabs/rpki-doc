@@ -1,118 +1,345 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuration &#8212; RPKI  documentation</title>
-    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; RPKI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="API" href="api.html" />
-    <link rel="prev" title="Publication Server" href="index.html" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+    <link rel="next" title="Running" href="running.html" />
+    <link rel="prev" title="Publication Server" href="index.html" /> 
 
-  </head><body>
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="api.html" title="API"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Publication Server"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">RPKI  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Krill</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Publication Server</a> &#187;</li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> RPKI
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="configuration">
-<span id="doc-krill-pub-configuration"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<p>Placeholder</p>
-<ul class="simple">
-<li>Step 1</li>
-<li>Step 2</li>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#about-this-documentation">About this documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#about-rpki">About RPKI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#organisation-of-the-documentation">Organisation of the documentation</a></li>
 </ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/faq.html">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#rpki-mechanism">RPKI Mechanism</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-rpki-and-why-was-it-developed">What is RPKI and why was it developed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-thought-we-were-all-using-the-irr-to-check-route-origin-why-do-we-need-rpki-now">I thought we were all using the IRR to check route origin, why do we need RPKI now?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#why-are-we-investing-in-rpki-isnt-it-easier-to-just-fix-the-internet-routing-registry-irr-system">Why are we investing in RPKI, isn’t it easier to just fix the Internet Routing Registry (IRR) system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#is-it-true-that-bgp4-is-just-not-up-to-the-task-any-longer">Is it true that BGP4 is just not up to the task any longer?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#as-rpki-relies-on-x-509-pki-isnt-this-the-same-problem-with-untrustworthy-ssl-tls-certificate-authorities-all-over-again">As RPKI relies on X.509 PKI, isn’t this the same problem with untrustworthy SSL/TLS Certificate Authorities all over again?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-the-value-of-rpki-based-bgp-origin-validation-without-path-validation">What is the value of RPKI based BGP Origin Validation without Path Validation?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#when-comparing-the-roa-data-set-to-the-announcements-my-router-sees-what-are-possible-outcomes">When comparing the ROA data set to the announcements my router sees, what are possible outcomes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#ive-heard-the-term-route-leak-and-route-hijack-whats-the-difference">I’ve heard the term “route leak” and “route hijack”. What’s the difference?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#if-a-roa-is-cryptographically-invalid-will-it-make-my-route-invalid">If a ROA is cryptographically invalid, will it make my route invalid?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#operations-and-impact">Operations and Impact</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#will-my-router-have-a-problem-with-all-of-this-cryptographic-validation">Will my router have a problem with all of this cryptographic validation?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#does-rpki-reduce-the-bgp-convergence-speed-of-my-routers">Does RPKI reduce the BGP convergence speed of my routers?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#why-do-i-need-rsync-on-my-system-to-use-a-validator">Why do I need rsync on my system to use a validator?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#the-five-rirs-provide-a-hosted-rpki-system-so-why-would-i-want-to-run-a-delegated-rpki-system-myself-instead">The five RIRs provide a Hosted RPKI system, so why would I want to run a Delegated RPKI system myself instead?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#should-i-run-a-validator-myself-when-i-can-use-an-external-data-source-i-found-on-the-internet">Should I run a validator myself, when I can use an external data source I found on the Internet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#how-often-should-i-fetch-new-data-from-the-rpki-repositories">How often should I fetch new data from the RPKI repositories?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-if-the-rpki-system-becomes-unavailable-or-some-other-catastrophe-occurs-will-my-signed-prefixes-become-unreachable-to-others-will-other-prefixes-my-routers-learned-over-bgp-become-unreachable-for-me">What if the RPKI system becomes unavailable or some other catastrophe occurs, will my (signed) prefixes become unreachable to others? Will other prefixes my routers learned over BGP become unreachable for me?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-if-the-validator-i-use-crashes-and-my-router-stops-getting-a-feed-what-will-happen-to-the-prefixes-i-learn-over-bgp">What if the Validator I use crashes and my router stops getting a feed. What will happen to the prefixes I learn over BGP?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-dont-want-to-rely-on-the-rpki-data-set-in-all-cases-but-i-want-to-have-my-own-preferences-for-some-routes-what-can-i-do">I don’t want to rely on the RPKI data set in all cases, but I want to have my own preferences for some routes. What can I do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#is-there-any-point-in-signing-my-routes-with-roas-if-i-dont-validate-and-filter-myself">Is there any point in signing my routes with ROAs if I don’t validate and filter myself?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-the-global-adoption-and-data-quality-of-rpki-like">What is the global adoption and data quality of RPKI like?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-want-to-use-the-rpki-services-from-a-specific-rir-that-i-m-not-currently-a-member-of-can-i-transfer-my-resources">I want to use the RPKI services from a specific RIR that I’m not currently a member of. Can I transfer my resources?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#will-rpki-be-used-as-a-censorship-mechanism-allowing-governments-to-make-arbitrary-prefixes-unroutable-on-a-whim">Will RPKI be used as a censorship mechanism allowing governments to make arbitrary prefixes unroutable on a whim?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-are-the-long-term-plans-for-rpki">What are the long-term plans for RPKI?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">RPKI Technology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rpki/index.html">The Resource Public Key Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/route-origin-validation.html">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/route-origin-validation.html#path-validation">Path Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/using-rpki-data.html">Using RPKI Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/router-support.html">Router Support</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Krill</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#rust">Rust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#c-toolchain">C Toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#openssl">OpenSSL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ca/index.html">Certificate Authority</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Publication Server</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Using RPKI data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../routinator/index.html">Routinator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#quick-start-with-docker">Quick Start with Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#rsync">rsync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#rust">Rust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#c-toolchain">C Toolchain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/configuration.html#configuration-file">Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/configuration.html#local-exceptions">Local Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/running.html">Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#first-launch">First Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RPKI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Krill</a> &raquo;</li>
+        
+          <li><a href="index.html">Publication Server</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/krill/pub/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition note" id="doc-krill-pub-configuration">
+<p class="first admonition-title">Note</p>
+<p class="last">This part of the project is currently being built.
+Documentation will likely change significantly as the software evolves.</p>
+</div>
+<div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>Before you can run the publication server, you first have to create the work
+directories and copy the configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir data
+mkdir publishers
+cp defaults/krill.conf ./data
+</pre></div>
+</div>
+<p>After these steps, edit your <code class="docutils literal notranslate"><span class="pre">krill.conf</span></code> file and, at least, set a secret
+token for the <code class="docutils literal notranslate"><span class="pre">auth_token</span></code> key, at the end of the file — or — set the
+KRILL_AUTH_TOKEN environment variable when you start <code class="docutils literal notranslate"><span class="pre">krilld</span></code>.</p>
+<p>Other than that the defaults should be okay for local testing.</p>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="running.html" class="btn btn-neutral float-right" title="Running" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Publication Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NLnet Labs
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Publication Server</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="api.html"
-                        title="next chapter">API</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/krill/pub/configuration.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="api.html" title="API"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Publication Server"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">RPKI  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Krill</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Publication Server</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, NLnet Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

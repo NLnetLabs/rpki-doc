@@ -1,132 +1,895 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>API &#8212; RPKI  documentation</title>
-    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; RPKI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Routinator" href="../../routinator/index.html" />
-    <link rel="prev" title="Configuration" href="configuration.html" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+    <link rel="prev" title="Running" href="running.html" /> 
 
-  </head><body>
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../routinator/index.html" title="Routinator"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">RPKI  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Krill</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Publication Server</a> &#187;</li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> RPKI
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="api">
-<span id="doc-krill-pub-api"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#about-this-documentation">About this documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#about-rpki">About RPKI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/introduction.html#organisation-of-the-documentation">Organisation of the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/faq.html">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#rpki-mechanism">RPKI Mechanism</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-rpki-and-why-was-it-developed">What is RPKI and why was it developed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-thought-we-were-all-using-the-irr-to-check-route-origin-why-do-we-need-rpki-now">I thought we were all using the IRR to check route origin, why do we need RPKI now?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#why-are-we-investing-in-rpki-isnt-it-easier-to-just-fix-the-internet-routing-registry-irr-system">Why are we investing in RPKI, isn’t it easier to just fix the Internet Routing Registry (IRR) system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#is-it-true-that-bgp4-is-just-not-up-to-the-task-any-longer">Is it true that BGP4 is just not up to the task any longer?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#as-rpki-relies-on-x-509-pki-isnt-this-the-same-problem-with-untrustworthy-ssl-tls-certificate-authorities-all-over-again">As RPKI relies on X.509 PKI, isn’t this the same problem with untrustworthy SSL/TLS Certificate Authorities all over again?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-the-value-of-rpki-based-bgp-origin-validation-without-path-validation">What is the value of RPKI based BGP Origin Validation without Path Validation?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#when-comparing-the-roa-data-set-to-the-announcements-my-router-sees-what-are-possible-outcomes">When comparing the ROA data set to the announcements my router sees, what are possible outcomes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#ive-heard-the-term-route-leak-and-route-hijack-whats-the-difference">I’ve heard the term “route leak” and “route hijack”. What’s the difference?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#if-a-roa-is-cryptographically-invalid-will-it-make-my-route-invalid">If a ROA is cryptographically invalid, will it make my route invalid?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#operations-and-impact">Operations and Impact</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#will-my-router-have-a-problem-with-all-of-this-cryptographic-validation">Will my router have a problem with all of this cryptographic validation?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#does-rpki-reduce-the-bgp-convergence-speed-of-my-routers">Does RPKI reduce the BGP convergence speed of my routers?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#why-do-i-need-rsync-on-my-system-to-use-a-validator">Why do I need rsync on my system to use a validator?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#the-five-rirs-provide-a-hosted-rpki-system-so-why-would-i-want-to-run-a-delegated-rpki-system-myself-instead">The five RIRs provide a Hosted RPKI system, so why would I want to run a Delegated RPKI system myself instead?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#should-i-run-a-validator-myself-when-i-can-use-an-external-data-source-i-found-on-the-internet">Should I run a validator myself, when I can use an external data source I found on the Internet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#how-often-should-i-fetch-new-data-from-the-rpki-repositories">How often should I fetch new data from the RPKI repositories?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-if-the-rpki-system-becomes-unavailable-or-some-other-catastrophe-occurs-will-my-signed-prefixes-become-unreachable-to-others-will-other-prefixes-my-routers-learned-over-bgp-become-unreachable-for-me">What if the RPKI system becomes unavailable or some other catastrophe occurs, will my (signed) prefixes become unreachable to others? Will other prefixes my routers learned over BGP become unreachable for me?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-if-the-validator-i-use-crashes-and-my-router-stops-getting-a-feed-what-will-happen-to-the-prefixes-i-learn-over-bgp">What if the Validator I use crashes and my router stops getting a feed. What will happen to the prefixes I learn over BGP?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-dont-want-to-rely-on-the-rpki-data-set-in-all-cases-but-i-want-to-have-my-own-preferences-for-some-routes-what-can-i-do">I don’t want to rely on the RPKI data set in all cases, but I want to have my own preferences for some routes. What can I do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#is-there-any-point-in-signing-my-routes-with-roas-if-i-dont-validate-and-filter-myself">Is there any point in signing my routes with ROAs if I don’t validate and filter myself?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../about/faq.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-is-the-global-adoption-and-data-quality-of-rpki-like">What is the global adoption and data quality of RPKI like?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#i-want-to-use-the-rpki-services-from-a-specific-rir-that-i-m-not-currently-a-member-of-can-i-transfer-my-resources">I want to use the RPKI services from a specific RIR that I’m not currently a member of. Can I transfer my resources?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#will-rpki-be-used-as-a-censorship-mechanism-allowing-governments-to-make-arbitrary-prefixes-unroutable-on-a-whim">Will RPKI be used as a censorship mechanism allowing governments to make arbitrary prefixes unroutable on a whim?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../about/faq.html#what-are-the-long-term-plans-for-rpki">What are the long-term plans for RPKI?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">RPKI Technology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rpki/index.html">The Resource Public Key Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/route-origin-validation.html">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rpki/route-origin-validation.html#path-validation">Path Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/using-rpki-data.html">Using RPKI Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpki/router-support.html">Router Support</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Krill</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#rust">Rust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#c-toolchain">C Toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#openssl">OpenSSL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ca/index.html">Certificate Authority</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Publication Server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html">Running</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#command-line-interface">Command Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-responses">Error Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-end-points">API End Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-api-errors">Overview of API Errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Using RPKI data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../routinator/index.html">Routinator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#quick-start-with-docker">Quick Start with Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#rsync">rsync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#rust">Rust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../routinator/installation.html#c-toolchain">C Toolchain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/installation.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/configuration.html#configuration-file">Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/configuration.html#local-exceptions">Local Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../routinator/running.html">Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#first-launch">First Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../routinator/running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RPKI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Krill</a> &raquo;</li>
+        
+          <li><a href="index.html">Publication Server</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/krill/pub/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition note" id="doc-krill-pub-api">
+<p class="first admonition-title">Note</p>
+<p class="last">This part of the project is currently being built.
+Documentation will likely change significantly as the software evolves.</p>
+</div>
+<div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <p>This application uses a JSON based REST (in the non-religious interpretation)
 API for managing all administrative tasks, such as managing the configured
 publishers.</p>
-<p>The UI and CLI (to be) included with this application (will) use this API
-exclusively, i.e. there are no back doors being used. You can, of course, use
-this API directly from your own applications, or wrap things in your own UI
-if you want.</p>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<p>The forthcoming uswr  and CLI use this API exclusively, i.e. there are no back doors
+being used. You can, of course, use this API directly from your own
+applications, or wrap things in your own UI if you want.</p>
 <p>The API path includes a version. The idea is that we may add functionality, but
 will not introduce breaking changes to existing functionality. You may expect
 additional resources, and you may see additional data (json members) within
 resources. So, please make sure that you ignore what you don’t understand
 when using this API.</p>
-<p>The base uri for the API is:</p>
-<blockquote>
-<div><a class="reference external" href="http://localhost:3000/api/v1/">http://localhost:3000/api/v1/</a></div></blockquote>
-<p><em>NOTE:</em> Calls to the API have to include the api token as an <a class="reference external" href="https://tools.ietf.org/html/rfc6750#section-2.1">OAuth 2.0
-Bearer token</a> as a header, e.g.:</p>
-<blockquote>
-<div>Authorization: Bearer secret</div></blockquote>
+<p>The base uri for the API is:
+<a class="reference external" href="http://localhost:3000/api/v1/">http://localhost:3000/api/v1/</a></p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Calls to the API have to include the API token as an <a class="reference external" href="https://tools.ietf.org/html/rfc6750#section-2.1">OAuth 2.0
+Bearer token</a> as a
+header, e.g.:</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">Bearer</span> <span class="pre">secret</span></code></p>
+</div>
+</div>
+<div class="section" id="error-responses">
+<h2>Error Responses<a class="headerlink" href="#error-responses" title="Permalink to this headline">¶</a></h2>
+<p>The API may have to return errors. When this happens the generic response
+will have an HTTP status code, and include a json message with the following
+generic structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span> <span class="s2">&quot;code&quot;</span>: &lt;int&gt;, <span class="s2">&quot;msg&quot;</span>: <span class="s2">&quot;Specific error message&quot;</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>There are three categories of errors, each with their own HTTP status code
+and range of error codes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="40%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Category</th>
+<th class="head">Code Range</th>
+<th class="head">HTTP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>User Input</td>
+<td>1000-1999</td>
+<td>400</td>
+</tr>
+<tr class="row-odd"><td>Authorisation</td>
+<td>2000-2999</td>
+<td>403</td>
+</tr>
+<tr class="row-even"><td>Server Error</td>
+<td>3000-3999</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<p>Note however that this applies only the “admin” API. The <a class="reference external" href="https://tools.ietf.org/html/rfc8183">publication
+procotol</a>, and (in the future) <a class="reference external" href="https://tools.ietf.org/html/rfc6492">provisioning
+protocol</a>, have their own defined ways
+of dealing with errors.</p>
+</div>
+<div class="section" id="api-end-points">
+<h2>API End Points<a class="headerlink" href="#api-end-points" title="Permalink to this headline">¶</a></h2>
+<p>This section contains an overview of all API calls and specifies which errors may be expected for each.</p>
+<p>We will discuss all the API calls below, and we will mention which errors may
+be expected for each. An example CLI call is included wherever an API end-point
+is documented.</p>
+<div class="section" id="health-check">
+<h3>Health Check<a class="headerlink" href="#health-check" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="path">
+<h4>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1/health
+</pre></div>
+</div>
+</div>
+<div class="section" id="success-reply">
+<h4>Success Reply<a class="headerlink" href="#success-reply" title="Permalink to this headline">¶</a></h4>
+<p>HTTP code 200, empty body</p>
+</div>
+<div class="section" id="possible-error-replies">
+<h4>Possible Error Replies<a class="headerlink" href="#possible-error-replies" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-odd"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cli-example">
+<h4>CLI Example<a class="headerlink" href="#cli-example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>krillc --server http://localhost:3000/ --token secret health
+</pre></div>
+</div>
+<p>The exit code will be 0 if everything is okay, or 1 otherwise. There is no
+text output, except when errors occur.</p>
+</div>
+</div>
+<div class="section" id="publishers">
+<h3>Publishers<a class="headerlink" href="#publishers" title="Permalink to this headline">¶</a></h3>
+<p>Publishers are entities who are allowed to publish content using this
+publication server, as described in RFC 8181. Typically publishers will be
+RPKI Certificate  Authorities, however we also include a <code class="docutils literal notranslate"><span class="pre">pubc</span></code> binary that can
+act as a publisher, and that can synchronise any arbitrary directory with the
+publication server.</p>
+<p>The following ‘publishers’ end points are defined:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="8%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource</th>
+<th class="head">Method</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>/api/v1/publishers</td>
+<td>GET</td>
+<td>List all current publishers</td>
+</tr>
+<tr class="row-odd"><td>/api/v1/publishers</td>
+<td>POST</td>
+<td>Submit a new <a class="reference external" href="https://tools.ietf.org/html/rfc8183#section-5.2.3">publisher request</a></td>
+</tr>
+<tr class="row-even"><td>/api/v1/publishers/{handle}</td>
+<td>GET</td>
+<td>Show publisher details</td>
+</tr>
+<tr class="row-odd"><td>/api/v1/publishers/{handle}/id.cer</td>
+<td>GET</td>
+<td>Get publisher id certificate</td>
+</tr>
+<tr class="row-even"><td>/api/v1/publishers/{handle}/response.xml</td>
+<td>GET</td>
+<td>Get <a class="reference external" href="https://tools.ietf.org/html/rfc8183#section-5.2.4">repository response.xml</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="list-publishers">
+<h3>List Publishers<a class="headerlink" href="#list-publishers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Path<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1/publishers <span class="o">(</span>GET<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="success-reply-example">
+<h4>Success Reply Example<a class="headerlink" href="#success-reply-example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;publishers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;response.xml&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/publishers/alice/response.xml&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                  <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/publishers/alice&quot;</span>
+                <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Possible Error Replies<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-odd"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h4>CLI Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>krillc --server http://localhost:3000/ --token secret publishers list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="add-a-publisher">
+<h3>Add a Publisher<a class="headerlink" href="#add-a-publisher" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>Path<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1/publishers <span class="o">(</span>POST<span class="o">)</span>
+</pre></div>
+</div>
+<p>Post body: <a class="reference external" href="https://tools.ietf.org/html/rfc8183#section-5.2.3">‘publisher request’ XML file’</a></p>
+</div>
+<div class="section" id="id5">
+<h4>Success Reply<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>HTTP code 200, empty body</p>
+</div>
+<div class="section" id="id6">
+<h4>Possible Error Replies<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>400</td>
+<td>json</td>
+<td>Issue with input</td>
+</tr>
+<tr class="row-odd"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-even"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+<p>For the 400 errors you can expect the following error messages:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="41%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+<th class="head">Code Module</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1002</td>
+<td>Invalid RFC8183 Publisher Request</td>
+<td>PublisherRequestError</td>
+</tr>
+<tr class="row-odd"><td>1004</td>
+<td>Forward slash in publisher handle</td>
+<td>publishers::Error::ForwardSlashInHandle</td>
+</tr>
+<tr class="row-even"><td>1005</td>
+<td>Duplicate publisher handle</td>
+<td>publishers::Error::DuplicatePublisher</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h4>CLI Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>krillc --server http://localhost:3000/ --token secret publishers add --xml work/tmp/alice.xml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="publisher-details">
+<h3>Publisher Details<a class="headerlink" href="#publisher-details" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4>Path<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1/publishers/<span class="o">{</span>handle<span class="o">}</span> <span class="o">(</span>GET<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h4>Success Reply Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+<div class="section" id="id10">
+<h4>Possible Error Replies<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-odd"><td>404</td>
+<td>—</td>
+<td>Unknown Publisher</td>
+</tr>
+<tr class="row-even"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h4>CLI Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+</div>
+<div class="section" id="publisher-identity-certificate">
+<h3>Publisher Identity Certificate<a class="headerlink" href="#publisher-identity-certificate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h4>Path<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1//publishers/<span class="o">{</span>handle<span class="o">}</span>/id.cer  <span class="o">(</span>GET<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h4>Success Reply<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>The X509 Identity Certificate this publisher uses to sign CMS messages used
+in the publication and provisioning protocol.</p>
+</div>
+<div class="section" id="id14">
+<h4>Possible Error Replies<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-odd"><td>404</td>
+<td>—</td>
+<td>Unknown Publisher</td>
+</tr>
+<tr class="row-even"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h4>CLI Example<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+</div>
+<div class="section" id="publisher-response">
+<h3>Publisher Response<a class="headerlink" href="#publisher-response" title="Permalink to this headline">¶</a></h3>
+<p>Gets the <a class="reference external" href="https://tools.ietf.org/html/rfc8183#section-5.2.4">repository response.xml</a>
+for the specified publisher.</p>
+<div class="section" id="id17">
+<h4>Path<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/api/v1/publishers/<span class="o">{</span>handle<span class="o">}</span>/response.xml
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h4>Success Reply Example<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+<div class="section" id="id19">
+<h4>Possible Error Replies<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">http</th>
+<th class="head">body</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>403</td>
+<td>—</td>
+<td>Forbidden (wrong token)</td>
+</tr>
+<tr class="row-odd"><td>404</td>
+<td>—</td>
+<td>Unknown Publisher</td>
+</tr>
+<tr class="row-even"><td>500</td>
+<td>json</td>
+<td>Some server issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id20">
+<h4>CLI Example<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-api-errors">
+<h2>Overview of API Errors<a class="headerlink" href="#overview-of-api-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-input-codes">
+<h3>User Input Codes<a class="headerlink" href="#user-input-codes" title="Permalink to this headline">¶</a></h3>
+<p>The following user input errors may be returned:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="45%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+<th class="head">Code module</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1001</td>
+<td>Submitted Json cannot be parsed</td>
+<td>serde_json::Error</td>
+</tr>
+<tr class="row-odd"><td>1002</td>
+<td>Invalid RFC8183 Publisher Request</td>
+<td>PublisherRequestError</td>
+</tr>
+<tr class="row-even"><td>1003</td>
+<td>Issue with submitted publication XML</td>
+<td>pubmsg::MessageError</td>
+</tr>
+<tr class="row-odd"><td>1004</td>
+<td>Forward slash in publisher handle</td>
+<td>publishers::Error::ForwardSlashInHandle</td>
+</tr>
+<tr class="row-even"><td>1005</td>
+<td>Duplicate publisher handle</td>
+<td>publishers::Error::DuplicatePublisher</td>
+</tr>
+<tr class="row-odd"><td>1006</td>
+<td>Unknown publisher</td>
+<td>publishers::Error::UnknownPublisher</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="authorisation-codes">
+<h3>Authorisation Codes<a class="headerlink" href="#authorisation-codes" title="Permalink to this headline">¶</a></h3>
+<p>The following authorisation errors may be returned:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="51%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+<th class="head">Code module</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2001</td>
+<td>Submitted protocol CMS does not validate</td>
+<td>pubserver::Error::ValidationError</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="server-error-codes">
+<h3>Server Error Codes<a class="headerlink" href="#server-error-codes" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>The following server errors may be returned. These errors indicate that there</dt>
+<dd>is a bug, or operational issue (e.g. a disk cannot be written to) at the
+server side:</dd>
+</dl>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="49%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+<th class="head">Code module</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>3001</td>
+<td>Issue with storing/retrieving publisher</td>
+<td>pubserver::Error::PublisherStoreError</td>
+</tr>
+<tr class="row-odd"><td>3002</td>
+<td>Issue with updating repository</td>
+<td>pubserver::Error::RepositoryError</td>
+</tr>
+<tr class="row-even"><td>3003</td>
+<td>Issue with signing response CMS</td>
+<td>pubserver::Error::ResponderError</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../routinator/index.html" class="btn btn-neutral float-right" title="Routinator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="running.html" class="btn btn-neutral" title="Running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NLnet Labs
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="configuration.html"
-                        title="previous chapter">Configuration</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../../routinator/index.html"
-                        title="next chapter">Routinator</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/krill/pub/api.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../routinator/index.html" title="Routinator"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">RPKI  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Krill</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Publication Server</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, NLnet Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

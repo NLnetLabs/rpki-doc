@@ -10,17 +10,19 @@ This page gives a broad overview of the RPKI and how it can help make Internet r
 About this documentation
 ++++++++++++++++++++++++
 
-This documentation is continuously written, corrected and edited. An initial version was written by Alex Band, Tim Bruijnzeels, Martin Hoffmann, Job Snijders, David Monosov and Melchior Aelmans. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. It is edited via text files in the
+This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. It is edited via text files in the
 `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
 language and then compiled into a static website/offline document using the
-open source `Sphinx <http://www.sphinx-doc.org>`_ tool.
+open source `Sphinx <http://www.sphinx-doc.org>`_  and `ReadTheDocs
+<https://readthedocs.org/>`_ tools.
 
 .. note:: You can contribute to the RPKI documentation by opening issue tickets
           or sending patches via pull requests on its GitHub
           `source repository <https://github.com/NLnetLabs/rpki-doc>`_.
 
 All the contents are under the permissive Creative Commons Attribution 3.0
-(`CC-BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license.
+(`CC-BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license, with
+attribution to "The RPKI team at NLnet Labs and the RPKI community".
 
 About RPKI
 ++++++++++
@@ -34,10 +36,10 @@ RPKI is a community-driven system in which open source software developers, rout
 Organisation of the documentation
 +++++++++++++++++++++++++++++++++
 
-This documentation is organised in four main sections 
+This documentation is organised in four main sections:
 
 - The :ref:`sec-general` section contains this introduction as well as
   information about the licensing, authors, etc. It also contains the :ref:`doc_faq`.
-- The :ref:`sec-rpki` section explain the RPKI technology and standards in orderf for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.
+- The :ref:`sec-rpki` section explains the RPKI technology and standards in order for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.
 - The section :ref:`sec-creating-rpki-data` is about Krill, the RPKI daemon that acts a Certificate Authority and Publication Server. If your organisation wants to run a self-hosted RPKI solution, this is what you should read.
-- The :ref:`sec-using-rpki-data` section covers the Routinator, the Relying Party Software — also known as RPKI Validator — that can be used to download the global RPKI data set, validate it and use the result in your BGP decision making process.
+- The :ref:`sec-using-rpki-data` section covers Routinator, the Relying Party Software package — also known as RPKI Validator — that can be used to download the global RPKI data set, validate it and use the result in your BGP decision making process.

@@ -5,10 +5,9 @@ Installation
 
 At this point in time, and until a basic Certificate Authority is implemented,
 running Krill is interesting mostly for developers. This means the 
-instructions are somewhat developer centric.
-
-We will do proper packaging and a Docker image in the future, but for now you
-will need to check out the source code and compile a binary locally.
+instructions are somewhat developer centric. We will do proper packaging and a 
+Docker image in the future, but for now you will need to check out the source code
+and compile a binary locally.
 
 Getting Started
 ---------------

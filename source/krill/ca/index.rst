@@ -1,3 +1,6 @@
+.. Note::  This part of the project is currently being built. 
+           Documentation will likely change significantly as the software evolves.
+
 Certificate Authority
 =====================
 
@@ -5,5 +8,4 @@ This implementation allows operators to run their own Certificate Authority (CA)
 
 The software will support running the CA both upwards and downwards. Upwards means that operators can have multiple parents, such as ARIN, RIPE NCC, etc., simultaneously and transparently. Downwards means that the CA can issue to child organisations or customers who, in turn, run their own CA.
 
-.. Note::  This part of the project is currently being developed. Documentation will
-           be added as the software evolves.
+There is no running code at this time, so there is no documentation yet.

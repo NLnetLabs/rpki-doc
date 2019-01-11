@@ -1,7 +1,7 @@
 .. _doc_rpki_rov:
 
 Route Origin Validation
------------------------
+=======================
 
 Routing errors on the Internet can be classified as route leaks or route hijacks. A route leak is a propagation of one or more routing announcements that are beyond their intended scope. That is an announcement from an Autonomous System (AS) of a learned BGP route to another AS is in violation of the intended policies of the receiver, the sender, and/or one of the ASes along the preceding AS path.
 
@@ -18,7 +18,7 @@ Using the RPKI system, the legitimate holder of a block of IP addresses can make
 A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.
 
 Route Announcement Validity
-+++++++++++++++++++++++++++
+---------------------------
 
 When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. They can be:
 
@@ -29,7 +29,7 @@ When a network operator creates a ROA for a certain combination of origin AS and
 To understand how more specifics, less specifics and partial overlaps are treated, please refer to `section 2 of RFC 6811 <https://tools.ietf.org/html/rfc6811#section-2>`_.
 
 Path Validation
-+++++++++++++++
+---------------
 
 Currently, RPKI only provides origin validation. While path validation is a desirable characteristic, the existing RPKI origin validation functionality addresses a large portion of the problem surface. 
 
