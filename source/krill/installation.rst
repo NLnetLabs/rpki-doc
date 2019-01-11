@@ -59,7 +59,7 @@ should be as easy as running:
 
 .. code-block:: bash
 
-sudo apt-get install openssl
+    sudo apt-get install openssl
 
 On macOS you can use Homebrew or MacPorts to get started.
 
