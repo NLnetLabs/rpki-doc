@@ -54,12 +54,13 @@ files, you are probably good to go.
 OpenSSL
 """""""
 Your system will likely have a package manager that will allow you to
-install OpenSSL in a few easy steps. On most Linux distributions, this
-should be as easy as running:
+install OpenSSL in a few easy steps. For Krill, you will need both
+``openssl`` and ``openssl-dev``. On most Linux distributions, this
+should be as simple as running:
 
 .. code-block:: bash
 
-    sudo apt-get install openssl
+    sudo apt-get install openssl openssl-dev
 
 On macOS you can use Homebrew or MacPorts to get started.
 
