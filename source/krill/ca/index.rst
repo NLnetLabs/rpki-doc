@@ -7,10 +7,3 @@ The software will support running the CA both upwards and downwards. Upwards mea
 
 .. Note::  This part of the project is currently being developed. Documentation will
            be added as the software evolves.
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   configuration
-   api

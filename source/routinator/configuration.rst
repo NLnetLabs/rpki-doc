@@ -3,7 +3,7 @@
 Configuration 
 =============
 
-To get Routinator running for your specific environment, there is a great
+To get Routinator running for your specific environment, there are a great
 number of elements you can configure. To get an overview of all available
 options, please refer to the manual page, which can be accessed via:
 
