@@ -3,13 +3,13 @@
 Running
 =======
 
-There are currently two major functions of the Routinator: printing the list
+There are currently two major functions of Routinator: printing the list
 of valid route origins, also known as Validated ROA Payload (VRP), and
 providing the service for routers to access this list via a protocol known as
 RPKI-to-Router protocol (RTR).
 
 These and all other functions of Routinator are accessible on the command
-line via sub-commands. The commands are:
+line via sub-commands:
 
 :vrps:
      Produces a list of Validated ROA Payload
@@ -20,19 +20,19 @@ line via sub-commands. The commands are:
 First Launch
 ------------
 
-.. WARNING:: The Routinator comes pre-installed with the Trust Anchor Locators (TALs) 
+.. WARNING:: Routinator comes pre-installed with the Trust Anchor Locators (TALs) 
              of four out of the five RIRs. The ARIN TAL is not automatically loaded, 
-             as users must confirm their acceptance of the `ARIN Relying Party Agreement
-             (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
+             as users must first confirm their acceptance of the `ARIN Relying Party
+             Agreement (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
 
-To see if the Routinator is configured correctly, it is recommended to have it print
+To see if Routinator is configured correctly, it is recommended to have it print
 a list of Validated ROA Payload and use ``-v`` to increase the log level:
 
 .. code-block:: bash
 
    routinator -v vrps
 
-When you run the Routinator for the very first time, it will create
+When you run Routinator for the very first time, it will create
 ``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the five RIRs
 there, and then complain that ARIN’s TAL is in fact not really there.
 
@@ -48,7 +48,7 @@ of AS numbers and prefixes in the default CSV format.
 Printing a List of Valid Route Origins
 --------------------------------------
 
-The Routinator can print a list of valid route origins in four different formats:
+Routinator can print a list of valid route origins in four different formats:
 
 :csv: 
      The list is formatted as lines of comma-separated values of the prefix in
@@ -63,11 +63,11 @@ The Routinator can print a list of valid route origins in four different formats
       in slash notation in *prefix*, the maximum prefix length of the announced route
       in *maxLength*, and the trust anchor from which the authorisation was derived 
       in *ta*. This format is identical to that produced by the RIPE NCC Validator 
-      except for different naming of the trust anchor. The Routinator uses the name 
+      except for different naming of the trust anchor. Routinator uses the name 
       of the TAL file without the extension *.tal* whereas the RIPE NCC Validator 
       has a dedicated name for each.
 :openbgpd:
-      Choosing  this format causes the Routinator to produce a *roa-set*
+      Choosing  this format causes Routinator to produce a *roa-set*
       configuration item for the OpenBGPD configuration.
 :rpsl:
       This format produces a list of RPSL objects with the authorisation in the

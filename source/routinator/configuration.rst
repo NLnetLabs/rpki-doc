@@ -3,7 +3,7 @@
 Configuration 
 =============
 
-To get the Routinator running for your specific environment, there is a great
+To get Routinator running for your specific environment, there is a great
 number of elements you can configure. To get an overview of all available
 options, please refer to the manual page, which can be accessed via:
 
@@ -17,8 +17,8 @@ options, please refer to the manual page, which can be accessed via:
 Configuration File 
 ------------------
 
-The Routinator can take its configuration from a file. You can specify such a
-configuration file via the ``-c`` option. If you don’t, the Routinator will check
+Routinator can take its configuration from a file. You can specify such a
+configuration file via the ``-c`` option. If you don’t, Routinator will check
 if there is a file ``$HOME/.routinator.conf`` and if it exists, use it. If it
 doesn’t exist and there is no ``-c`` option, default values are used.
 
@@ -109,6 +109,6 @@ available in the repository at `/test/slurm
 	  }
 	}
 	
-Use the ``-x`` option to refer to your file with local exceptions. The 
-Routinator will re-read that file on every validation run, so you can simply
-update the file whenever your exceptions change.
+Use the ``-x`` option to refer to your file with local exceptions. Routinator 
+will re-read that file on every validation run, so you can simply update the 
+file whenever your exceptions change.

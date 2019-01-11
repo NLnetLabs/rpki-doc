@@ -3,7 +3,7 @@
 Installation
 ============
 
-At this time there are no binary packages for the Routinator yet, but getting
+At this time there are no binary packages for Routinator yet, but getting
 started is really easy using either `Cargo
 <https://crates.io/crates/routinator>`_, `Docker
 <https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the
@@ -23,7 +23,7 @@ you get the Routinator to run as an RTR server listening on 127.0.0.1 port
    cargo install routinator
    routinator rtrd -l 127.0.0.1:3323
 
-If you have an older version of the Routinator, you can update via:
+If you have an older version of Routinator, you can update via:
 
 .. code-block:: bash
 
@@ -37,7 +37,7 @@ Due to the impracticality of complying with the ARIN TAL distribution terms
 in an unsupervised Docker environment, prior to launching the container it
 is necessary to first confirm your acceptance of the `ARIN Relying Party Agreement (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
 
-The ARIN TAL file in RFC 7730 format available at that URL will then need to
+The ARIN TAL file in RFC 7730 format available at this URL will then need to
 be downloaded and mounted into the docker container as a replacement for
 the dummy arin.tal file that is shipped with Routinator.
 
@@ -112,17 +112,17 @@ set of packages to build from C sources. If you are unsure, try to run
 ``cc`` on a command line and if there’s a complaint about missing input
 files, you are probably good to go.
 
-Building and Running
---------------------
+Building
+--------
 
-The easiest way to get Routinator is to leave it to cargo by saying
+The easiest way to get Routinator is to leave it to cargo by saying:
 
 .. code-block:: bash
 
    cargo install routinator
 
 If you want to try the master branch from the repository instead of a
-release version, you can run
+release version, you can run:
 
 .. code-block:: bash
 
