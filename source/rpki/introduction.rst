@@ -46,15 +46,15 @@ In the APNIC and LACNIC regions, Internet number resources are allocated to Nati
 
     Internet number resource allocation hierarchy
 
-In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. This means IANA has the authoritative registration of resources to the five RIRs. Each RIR registers authoritative information on the allocations to NIRs and LIRs, and lastly LIRs record to which End User organisation they assigned resources.
+In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. This means IANA has the authoritative registration of resources allocated to the five RIRs. Each RIR registers authoritative information on the allocations to NIRs and LIRs, and lastly LIRs record to which End User organisation they assigned resources.
 
-As a result, the certificate hierarchy in RPKI follows the same structure as the allocation hierarchy, with the exception of the IANA level. IANA does not operate a single root Certificate Authority. Instead, the five RIRs each run a root CA.
+As a result, the certificate hierarchy in RPKI follows the same structure as the allocation hierarchy, with the exception of the IANA level. IANA does not operate a single root Certificate Authority (CA). Instead, the five RIRs each run a root CA.
 
 
 The "R" in RPKI stands for "Resource"
 -------------------------------------
 
-Because RPKI is used in the BGP routing context, a common misconception is that this is the "Routing" PKI. However, certificates in this PKI are called **resource** certificates and conform to the certificate profile for such certificates, as described in RFC 6487. 
+Because RPKI is used in the BGP routing context, a common misconception is that this is the "Routing" PKI. However, certificates in this PKI are called **resource** certificates and conform to the certificate profile for such certificates, as described in `RFC 6487 <https://tools.ietf.org/html/rfc6487>`_. 
 
 It's important to note that RPKI certificates do not attest to the identity of the subject. Certificates simply do not contain any identity information, this is what the five RIRs have a registry and a public whois database for. Therefore, the subject names used in certificates are not intended to be descriptive, and are nothing more than a hash.
 
@@ -70,7 +70,7 @@ RPKI is a community-driven system in which open source software developers, rout
 Expanding upon the Internet Routing Registry
 --------------------------------------------
 
-If you've been involved in default-free zone Internet engineering for any length of time, you're probably familiar with RPSL, a routing policy specification language originally defined in `RFC2280 <https://tools.ietf.org/html/rfc2280>`_ back in 1998. While RPSL has created considerable early enthusiasm and has seen some traction, the Internet was rapidly growing at the time, and the primary focus was on data availability rather than data trustworthiness. Everyone was busy opportunistically documenting the minimal policy that was necessary to "make things work" with the policy specification language parsing scripts of everyone else so that something would finally ping!
+If you've been involved in default-free zone Internet engineering for any length of time, you're probably familiar with RPSL, a routing policy specification language originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ back in 1998. While RPSL has created considerable early enthusiasm and has seen some traction, the Internet was rapidly growing at the time, and the primary focus was on data availability rather than data trustworthiness. Everyone was busy opportunistically documenting the minimal policy that was necessary to "make things work" with the policy specification language parsing scripts of everyone else so that something would finally ping!
 
 Over time, this has created an extensive repository of obsolete data of uncertain validity spread across dozens of route registries around the world. Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language - resulting in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.
 
