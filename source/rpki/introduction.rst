@@ -52,7 +52,7 @@ As a result, the certificate hierarchy in RPKI follows the same structure as the
 
 
 The "R" in RPKI stands for "Resource"
-"""""""""""""""""""""""""""""""""""""
+-------------------------------------
 
 Because RPKI is used in the BGP routing context, a common misconception is that this is the "Routing" PKI. However, certificates in this PKI are called **resource** certificates and conform to the certificate profile for such certificates, as described in RFC 6487. 
 
