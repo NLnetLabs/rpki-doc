@@ -3,11 +3,13 @@
 Introduction
 ============
 
-.. To understand RPKI and its purpose, there are two main concepts you need to grasp: First, the global of Internet number resources and secondly, the Border Gateway Protocol (BGP), the protocol designed to exchange routing information on the Internet.
+.. To understand RPKI and its purpose, there are two main concepts you need to grasp: First, the global allocation of Internet number resources and secondly, the Border Gateway Protocol (BGP), the protocol designed to exchange routing information on the Internet.
+
+To understand RPKI and its purpose, you need to first understand how Internet number resources are allocated globally.
 
 
-IP Address and Autonomous System Number Allocation
---------------------------------------------------
+Internet Number Resource Allocation
+-----------------------------------
 
 Before being formalised within an organisation, the allocation of Internet number resources, such as IP addresses and Autonomous System (AS) numbers, had been the responsibility of `Jon Postel <https://en.wikipedia.org/wiki/Jon_Postel>`_ at the Information Sciences Institute (ISI) of the University of Southern California (USC). He performed the role of `Internet Assigned Numbers Authority <https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority>`_ (IANA), which is presently a function of the `Internet Corporation for Assigned Names and Numbers <https://en.wikipedia.org/wiki/ICANN>`_ (ICANN).
 
@@ -37,7 +39,12 @@ Today, there are five RIRs responsible for the allocation and registration of In
 
 In the APNIC and LACNIC regions, Internet number resources are allocated to National Internet Registries (NIRs), such as NIC.br in Brazil and JPNIC in Japan, who allocate address space to its members or constituents, which are generally organised at a national level. In the rest of world, the RIRs allocated directly to their member organisations, typically referred to as Local Internet Registries (LIRs). Most LIRs are Internet service providers, enterprises, or academic institutions. LIRs either use the allocated IP address blocks themselves or assign them to End User organisations. 
 
-[ipv4_hierarchy.png]
+.. figure:: img/ip-allocation-structure.*
+    :align: center
+    :width: 100%
+    :alt: Internet number resource allocation hierarchy
+
+    Internet number resource allocation hierarchy
 
 In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. This means IANA has the authoritative registration of resources to the five RIRs. Each RIR registers authoritative information on the allocations to NIRs and LIRs, and lastly LIRs record to which End User organisation they assigned resources.
 
