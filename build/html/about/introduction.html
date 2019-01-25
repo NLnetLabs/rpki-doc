@@ -129,6 +129,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rpki/index.html">The Resource Public Key Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rpki/introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rpki/introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rpki/introduction.html#the-r-in-rpki-stands-for-resource">The “R” in RPKI stands for “Resource”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rpki/introduction.html#internet-routing">Internet Routing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../rpki/introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
 </ul>
 </li>
@@ -159,12 +162,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../krill/ca/index.html">Certificate Authority</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../krill/pub/index.html">Publication Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/configuration.html">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../krill/pub/configuration.html#make-work-directory-and-configure">Make work directory and configure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/running.html">Running</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/running.html#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/running.html">Running</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/api.html">API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/api.html">API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#error-responses">Error Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#api-end-points">API End Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#overview-of-api-errors">Overview of API Errors</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -270,15 +279,14 @@
 <p>This page gives a broad overview of the RPKI and how it can help make Internet routing using the Border Gateway Protocol (BGP) more secure. This way, you will learn how RPKI can benefit your organisation, as well as helping others to be more secure on the Internet.</p>
 <div class="section" id="about-this-documentation">
 <h2>About this documentation<a class="headerlink" href="#about-this-documentation" title="Permalink to this headline">¶</a></h2>
-<p>This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. It is edited via text files in the
-<a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">reStructuredText</a> markup
+<p>This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">reStructuredText</a> markup
 language and then compiled into a static website/offline document using the
 open source <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>  and <a class="reference external" href="https://readthedocs.org/">ReadTheDocs</a> tools.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can contribute to the RPKI documentation by opening issue tickets
-or sending patches via pull requests on its GitHub
-<a class="reference external" href="https://github.com/NLnetLabs/rpki-doc">source repository</a>.</p>
+<p class="last">You can contribute to the RPKI documentation by opening an issue
+or sending patches via pull requests on the <a class="reference external" href="https://github.com/NLnetLabs/rpki-doc">GitHub
+source repository</a>.</p>
 </div>
 <p>All the contents are under the permissive Creative Commons Attribution 3.0
 (<a class="reference external" href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a>) license, with
@@ -348,7 +356,6 @@ information about the licensing, authors, etc. It also contains the <a class="re
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

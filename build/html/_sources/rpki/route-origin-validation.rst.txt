@@ -13,7 +13,7 @@ With Route Origin Validation, operators want to answer the question:
 
     “*Is this particular BGP route announcement authorised by the legitimate holder of the address space?*”
 
-Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in the BGP. These statements are called Route Origin Authorisations (ROAs).
+Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
 
 A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.
 

@@ -10,15 +10,14 @@ This page gives a broad overview of the RPKI and how it can help make Internet r
 About this documentation
 ++++++++++++++++++++++++
 
-This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. It is edited via text files in the
-`reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
+This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
 language and then compiled into a static website/offline document using the
 open source `Sphinx <http://www.sphinx-doc.org>`_  and `ReadTheDocs
 <https://readthedocs.org/>`_ tools.
 
-.. note:: You can contribute to the RPKI documentation by opening issue tickets
-          or sending patches via pull requests on its GitHub
-          `source repository <https://github.com/NLnetLabs/rpki-doc>`_.
+.. note:: You can contribute to the RPKI documentation by opening an issue
+          or sending patches via pull requests on the `GitHub
+          source repository <https://github.com/NLnetLabs/rpki-doc>`_.
 
 All the contents are under the permissive Creative Commons Attribution 3.0
 (`CC-BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license, with

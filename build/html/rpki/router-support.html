@@ -129,6 +129,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">The Resource Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-r-in-rpki-stands-for-resource">The “R” in RPKI stands for “Resource”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-routing">Internet Routing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
 </ul>
 </li>
@@ -272,7 +275,7 @@
             
   <div class="section" id="router-support">
 <span id="doc-rpki-rtr"></span><h1>Router Support<a class="headerlink" href="#router-support" title="Permalink to this headline">¶</a></h1>
-<p>Various vendors, such as <a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Juniper</a>, <a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Cisco</a> and <a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Nokia</a>, have implemented Route Origin Validation in their routers. In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/?get_doc&amp;v=20&amp;f=bird-6.html#ss6.11">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>.</p>
+<p>Various vendors, such as <a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Juniper</a>, <a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Cisco</a> and <a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Nokia</a>, have implemented Route Origin Validation in their routers. In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/?get_doc&amp;v=20&amp;f=bird-6.html#ss6.13">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>.</p>
 <p>In most implementations, it is possible for the routers to set up a session with
 RPKI Relying Party software that supports the RPKI-RTR protocol. In some cases, such as OpenBGPD, the same result can be achieved through a ‘static’ configuration. The router will periodically fetch the Validated ROA Payload and allow operators to set up route maps based on the result.</p>
 </div>
@@ -322,7 +325,6 @@ RPKI Relying Party software that supports the RPKI-RTR protocol. In some cases, 
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

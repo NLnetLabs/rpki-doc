@@ -129,6 +129,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">The Resource Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-r-in-rpki-stands-for-resource">The “R” in RPKI stands for “Resource”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-routing">Internet Routing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
 </ul>
 </li>
@@ -159,12 +162,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../krill/ca/index.html">Certificate Authority</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../krill/pub/index.html">Publication Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/configuration.html">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../krill/pub/configuration.html#make-work-directory-and-configure">Make work directory and configure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/running.html">Running</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/running.html#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/running.html">Running</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../krill/pub/api.html">API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../krill/pub/api.html">API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#error-responses">Error Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#api-end-points">API End Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../krill/pub/api.html#overview-of-api-errors">Overview of API Errors</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -272,7 +281,7 @@
 <p>With Route Origin Validation, operators want to answer the question:</p>
 <blockquote>
 <div>“<em>Is this particular BGP route announcement authorised by the legitimate holder of the address space?</em>”</div></blockquote>
-<p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in the BGP. These statements are called Route Origin Authorisations (ROAs).</p>
+<p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).</p>
 <p>A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.</p>
 <div class="section" id="route-announcement-validity">
 <h2>Route Announcement Validity<a class="headerlink" href="#route-announcement-validity" title="Permalink to this headline">¶</a></h2>
@@ -339,7 +348,6 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   
