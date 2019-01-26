@@ -11,6 +11,7 @@ The documentation is organised into the following chapters:
    :maxdepth: 1
 
    introduction
+   bgp-routing
    route-origin-validation
    hosted-vs-delegated-rpki
    creating-roas
