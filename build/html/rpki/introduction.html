@@ -277,16 +277,16 @@
             
   <div class="section" id="introduction">
 <span id="doc-rpki-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>The purpose of RPKI is to issue cryptographic material that will allow Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and AS numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it.</p>
+<p>The purpose of Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and Autonomous System (AS) numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it.</p>
 <p>To understand the structure of this PKI and its and usage, we must first look at how Internet number resources are allocated globally.</p>
 <div class="section" id="internet-number-resource-allocation">
 <h2>Internet Number Resource Allocation<a class="headerlink" href="#internet-number-resource-allocation" title="Permalink to this headline">¶</a></h2>
-<p>Before being formalised within an organisation, the allocation of Internet number resources, such as IP addresses and Autonomous System (AS) numbers, had been the responsibility of <a class="reference external" href="https://en.wikipedia.org/wiki/Jon_Postel">Jon Postel</a>. At the time, he worked at the Information Sciences Institute (ISI) of the University of Southern California (USC). He performed the role of <a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority">Internet Assigned Numbers Authority</a> (IANA), which is presently a function of the <a class="reference external" href="https://en.wikipedia.org/wiki/ICANN">Internet Corporation for Assigned Names and Numbers</a> (ICANN).</p>
+<p>Before being formalised within an organisation, the allocation of Internet number resources, such as IP addresses and AS numbers, had been the responsibility of <a class="reference external" href="https://en.wikipedia.org/wiki/Jon_Postel">Jon Postel</a>. At the time, he worked at the Information Sciences Institute (ISI) of the University of Southern California (USC). He performed the role of <a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority">Internet Assigned Numbers Authority</a> (IANA), which is presently a function of the <a class="reference external" href="https://en.wikipedia.org/wiki/ICANN">Internet Corporation for Assigned Names and Numbers</a> (ICANN).</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/Jon_Postel.jpg"><img alt="Jon Postel in 1994, with map of Internet top-level domains" src="../_images/Jon_Postel.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-text">Jon Postel in 1994, with a map of Internet top-level domains</span></p>
 </div>
-<p>Initially, the IANA function was performed globally, but as the work volume grew due to the expansion of the Internet, <a class="reference external" href="https://en.wikipedia.org/wiki/Regional_Internet_registry">Regional Internet Registries</a> (RIRs) were established over the years to take on this responsibility on a regional level. Until the available pool of IPv4 ran out in 2011, this meant that periodically a large block of IPv4 address space (typically a /8) was allocated from IANA to the RIR, who would, in turn, allocate to their member organisations. IPv6 address blocks and AS Numbers are allocated in the same way.</p>
+<p>Initially, the IANA function was performed globally, but as the work volume grew due to the expansion of the Internet, <a class="reference external" href="https://en.wikipedia.org/wiki/Regional_Internet_registry">Regional Internet Registries</a> (RIRs) were established over the years to take on this responsibility on a regional level. Until the available pool of IPv4 depleted in 2011, this meant that periodically a large block of IPv4 address space (typically a /8) was allocated from IANA to the RIR, who would, in turn, allocate to their member organisations. IPv6 address blocks and AS Numbers are allocated in the same way.</p>
 <p>Today, there are five RIRs responsible for the allocation and registration of Internet number resources within a particular region of the world:</p>
 <ul class="simple">
 <li>The <a class="reference external" href="https://www.afrinic.net/">African Network Information Center</a> (AFRINIC) serves Africa</li>
@@ -313,15 +313,16 @@
 <a class="reference internal image-reference" href="../_images/RPKI-Chain-Of-Trust.svg"><img alt="The Chain of Trust in RPKI starting at the five RIRs" src="../_images/RPKI-Chain-Of-Trust.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">The Chain of Trust in RPKI, starting at the five RIRs</span></p>
 </div>
+<p>The digital certificates used in RPKI are based on X.509, standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>, along with extensions for IP addresses and AS identifiers described in <a class="reference external" href="https://tools.ietf.org/html/rfc3779">RFC 3779</a>. Because RPKI is used in the routing security context, a common misconception is that this is the “Routing” PKI. However, certificates in this PKI are called <strong>resource</strong> certificates and conform to the certificate profile described in <a class="reference external" href="https://tools.ietf.org/html/rfc6487">RFC 6487</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Because RPKI is used in the BGP routing context, a common misconception is
-that this is the “Routing” PKI. However, certificates in this PKI are called
-<strong>resource</strong> certificates and conform to the certificate profile for such
-certificates, as described in <a class="reference external" href="https://tools.ietf.org/html/rfc6487">RFC 6487</a>.</p>
+<p class="last">X.509 certificates are typically used for authenticating either an
+individual or, for example, a website. <strong>In RPKI, certificates
+do not include identity information</strong>, as their only purpose is to
+transfer the right to use Internet number resources.</p>
 </div>
-<p>The digital certificates used in RPKI are based on X.509, standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>, along with extensions for IP addresses and AS identifiers described in <a class="reference external" href="https://tools.ietf.org/html/rfc3779">RFC 3779</a>. X.509 certificates are typically used for authenticating either an individual or, for example, a website. In RPKI, X.509 certificates do not include identity information, as their only purpose is to transfer the right to use Internet number resources. For establishing identity, the RIRs have a registry and a public whois database.</p>
-<p>In the next sections, we will look at how RPKI can be used to make BGP routing more secure.</p>
+<p>In addition to RPKI not having any identity information, there is another important difference with commonly used X.509 PKIs, such as SSL/TLS. Instead of having to rely on a  vast number of Root Certificate Authorities which come pre-installed in a browser or an operating system, RPKI relies on just five Trust Anchors, run by the RIRs. These are well established, openly governed, not-for-profit organisations. Each organisation that wishes to get an RPKI resource certificate already has a contractual relationship with one or more of the RIRs.</p>
+<p>In conclusion, RPKI provides a mechanism to make strong, testable attestations about Internet number resources. In the next sections, we will look at how this can be used to make BGP routing more secure.</p>
 </div>
 </div>
 
