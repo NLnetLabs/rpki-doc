@@ -134,7 +134,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Internet Routing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#best-path-selection">Best Path Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bgp-best-path-selection">BGP Best Path Selection</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#preference-for-shortest-path">Preference for Shortest Path</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preference-for-most-specific-prefix">Preference for Most Specific Prefix</a></li>
 </ul>
@@ -289,12 +289,13 @@
 <p>An autonomous system is a set of Internet routable IP prefixes belonging to a network or a collection of networks that are all managed and supervised by a single entity or organisation. An AS utilizes a common routing policy controlled by the entity and is identified by a globally unique 16 or 32-bit number. The AS number (ASN) is assigned by one of the five Regional Internet Registries (RIRs), just like IP address blocks.</p>
 <p>The Border Gateway Protocol manages the routed peerings, prefix advertisement and routing of packets between different autonomous systems across the Internet. BGP uses the ASN to uniquely identify each system. In short, BGP is the routing protocol for AS paths across the Internet. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change, which easily propagate globally within a few minutes.</p>
 <p>Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is not authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of.</p>
-<div class="section" id="best-path-selection">
-<h2>Best Path Selection<a class="headerlink" href="#best-path-selection" title="Permalink to this headline">¶</a></h2>
-<p>BGP continuously and dynamically makes decisions about the best path is to reach a particular destination. Though there are many factors at play, two of them are the most important to keep in mind within this context.</p>
+<div class="section" id="bgp-best-path-selection">
+<h2>BGP Best Path Selection<a class="headerlink" href="#bgp-best-path-selection" title="Permalink to this headline">¶</a></h2>
+<p>BGP routing information includes the complete route to each destination. BGP uses the routing information to maintain a database of network reachability information, which it exchanges with other networks. For each prefix in the routing table, BGP continuously and dynamically makes decisions about the best path to reach a particular destination. After the best path is selected, the route is installed in the routing table.</p>
+<p>Though there are many factors at play, two of them are the most important to keep in mind throughout the next sections: the preference for shortest path and most specific IP prefix.</p>
 <div class="section" id="preference-for-shortest-path">
 <h3>Preference for Shortest Path<a class="headerlink" href="#preference-for-shortest-path" title="Permalink to this headline">¶</a></h3>
-<p>Out of all the possible routes that a router has in its Routing Information Base (RIB), BGP will always prefer the shortest path to its destination, minimising the amount of hops. When two matching prefixes are announced from two different networks on the Internet, BGP will route traffic to the destination that is topologically closest. This is an important feature of of BGP, but when configuration errors occur, it can also be the cause of reachability problems.</p>
+<p>Out of all the possible routes that a router has in its Routing Information Base (RIB), BGP will always prefer the shortest path to its destination, minimising the amount of hops. When two matching prefixes are announced from two different networks on the Internet, BGP will route traffic to the destination that is topologically closest. This is an important feature of BGP, but when configuration errors occur, it can also be the cause of reachability problems.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/hijack-shorter-path.svg"><img alt="When the same prefix is announced, the shortest path wins" src="../_images/hijack-shorter-path.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">When the announcement of a prefix is an exact match, the shortest path wins</span></p>
@@ -312,12 +313,17 @@
 </div>
 <div class="section" id="routing-errors">
 <h2>Routing Errors<a class="headerlink" href="#routing-errors" title="Permalink to this headline">¶</a></h2>
-<p>Routing errors on the Internet can be classified as route leaks or route hijacks. <a class="reference external" href="https://tools.ietf.org/html/rfc7908">RFC 7908</a> provides a working definition of a BGP route leak as:</p>
+<p>Routing errors on the Internet can be classified as route leaks or route hijacks. <a class="reference external" href="https://tools.ietf.org/html/rfc7908">RFC 7908</a> provides a working definition of a BGP route leak:</p>
 <blockquote>
-<div>The propagation of routing announcement(s) beyond their intended scope. That is, an
-announcement from an Autonomous System (AS) of a learned BGP route to another AS is
-in violation of the intended policies of the receiver, the sender, and/or one of the
-ASes along the preceding AS path.</div></blockquote>
+<div>A route leak is the propagation of routing announcement(s) beyond
+their intended scope.  That is, an announcement from an Autonomous
+System (AS) of a learned BGP route to another AS is in violation of
+the intended policies of the receiver, the sender, and/or one of the
+ASes along the preceding AS path.  The intended scope is usually
+defined by a set of local redistribution/filtering policies
+distributed among the ASes involved.  Often, these intended policies
+are defined in terms of the pair-wise peering business relationship
+between autonomous systems.</div></blockquote>
 <p>A route hijack, also called prefix hijack, or IP hijack, is unauthorised origination of a route.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -330,14 +336,15 @@ and may, in some cases, result in a denial of service or black hole.</p>
 <div class="section" id="mitigation-of-routing-errors">
 <h2>Mitigation of Routing Errors<a class="headerlink" href="#mitigation-of-routing-errors" title="Permalink to this headline">¶</a></h2>
 <p>One weakness of BGP is that routing errors cannot be easily be deduced from information within the protocol itself. For this reason, network operators have to carefully gauge what the intended routing policy of their peers is. As a result, it is imperative that networks employ filters to only accept legitimate traffic and drop everything else.</p>
-<p>There are several well known methods to achieve this. Certain backbone and private peers require a valid Letter of Agency (LOA) to be completed prior to allowing the announcement or re-announcement of IP address blocks. A more widely accepted method is the usage of the Internet Routing Registry (IRR), where operators can publish their routing policy. This allows other networks to set up filters accordingly.</p>
+<p>There are several well known methods to achieve this. Certain backbone and private peers require a valid Letter of Agency (LOA) to be completed prior to allowing the announcement or re-announcement of IP address blocks. A more widely accepted method is the use of Internet Routing Registry (IRR) databases, where operators can publish their routing policy. Both methods allows other networks to set up filters accordingly.</p>
 </div>
 <div class="section" id="the-internet-routing-registry">
 <h2>The Internet Routing Registry<a class="headerlink" href="#the-internet-routing-registry" title="Permalink to this headline">¶</a></h2>
-<p>The Internet Routing Registry (IRR) is a <a class="reference external" href="http://www.irr.net/docs/list.html">distributed set of databases</a> allowing network operators to describe routing intent. The IRR is used as verification mechanism of route origination and is widely deployed to prevent accidental or intentional routing disturbances.</p>
-<p>The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in <a class="reference external" href="https://tools.ietf.org/html/rfc2280">RFC 2280</a> in 1998. While RPSL has created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, and the primary focus was on data availability rather than data trustworthiness.</p>
-<p>Over time, this has created an extensive repository of obsolete data of uncertain validity, spread across dozens of route registries around the world. Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language. This resulted in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.</p>
-<p>This leaves the information about route origin as the most valuable attribute of the IRR. In so called <em>route</em> objects, operators can specify from which ASN they intend to announce a certain prefix. Based on these objects, other operators can define filters.</p>
+<p>The Internet Routing Registry (IRR) is a <a class="reference external" href="http://www.irr.net/docs/list.html">distributed set of databases</a> allowing network operators to describe routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances.</p>
+<p>The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in <a class="reference external" href="https://tools.ietf.org/html/rfc2280">RFC 2280</a> in 1998. While RPSL had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, which meant that the primary focus was on data availability rather than data trustworthiness.</p>
+<p>As explained earlier, only the Regional Internet Registries have authoritative information on the legitimate holder of an Internet number resource. This means that the entries in their IRR databases are authenticated, but they are not in any of the other routing registries. Over time, this has created an extensive repository of obsolete data of uncertain validity, spread across dozens of routing registries around the world.</p>
+<p>Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language. This resulted in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.</p>
+<p>This leaves the information about route origin as the most valuable attribute of the IRR. In so called <em>route</em> objects, operators can specify from which ASN they intend to announce a certain prefix. Based on these objects, other operators can define filters while keeping in mind that not all data is equally trustworthy.</p>
 <p>In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. RPKI solves these problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world. In the next sections we will look at how this is achieved.</p>
 </div>
 </div>
