@@ -11,7 +11,7 @@ An autonomous system is a set of Internet routable IP prefixes belonging to a ne
 
 The Border Gateway Protocol manages the routed peerings, prefix advertisement and routing of packets between different autonomous systems across the Internet. BGP uses the ASN to uniquely identify each system. In short, BGP is the routing protocol for AS paths across the Internet. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change, which easily propagate globally within a few minutes. 
 
-Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is not authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of. 
+Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is no authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of. 
 
 BGP Best Path Selection
 -----------------------
@@ -35,7 +35,7 @@ Out of all the possible routes that a router has in its Routing Information Base
 Preference for Most Specific Prefix
 """""""""""""""""""""""""""""""""""
 
-Regardless any local preference, path length or any other attributes, BGP will always prefer the most specific prefix that is announced. Again, this is an important feature, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
+Regardless any local preference, path length or any other attributes, when building the forwarding table, the router will always select most specific IP prefix available. This behaviour is important, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
 
 .. figure:: img/hijack-more-specific.*
     :align: center
