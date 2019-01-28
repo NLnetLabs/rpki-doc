@@ -13,10 +13,13 @@ The Border Gateway Protocol manages the routed peerings, prefix advertisement an
 
 Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is not authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of. 
 
+Best Path Selection
+-------------------
+
 BGP continuously and dynamically makes decisions about the best path is to reach a particular destination. Though there are many factors at play, two of them are the most important to keep in mind within this context.
 
 Preference for Shortest Path
-----------------------------
+""""""""""""""""""""""""""""
 
 Out of all the possible routes that a router has in its Routing Information Base (RIB), BGP will always prefer the shortest path to its destination, minimising the amount of hops. When two matching prefixes are announced from two different networks on the Internet, BGP will route traffic to the destination that is topologically closest. This is an important feature of of BGP, but when configuration errors occur, it can also be the cause of reachability problems.
 
@@ -28,7 +31,7 @@ Out of all the possible routes that a router has in its Routing Information Base
     When the announcement of a prefix is an exact match, the shortest path wins
 
 Preference for Most Specific Prefix
------------------------------------
+"""""""""""""""""""""""""""""""""""
 
 Out of all the possible routes that a router has learned, BGP will always prefer the most specific prefix that is announced, regardless of the path length. Again, this is an important feature, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
 
@@ -42,7 +45,7 @@ Out of all the possible routes that a router has learned, BGP will always prefer
 With this in mind, there are several problems that can arise as a result of this behavior.
 
 Routing Errors
-==============
+--------------
 
 Routing errors on the Internet can be classified as route leaks or route hijacks. `RFC 7908 <https://tools.ietf.org/html/rfc7908>`_ provides a working definition of a BGP route leak as: 
 
@@ -59,7 +62,7 @@ A route hijack, also called prefix hijack, or IP hijack, is unauthorised origina
           and may, in some cases, result in a denial of service or black hole.
 
 Mitigation of Routing Errors
-============================
+----------------------------
 
 One weakness of BGP is that routing errors cannot be easily be deduced from information within the protocol itself. For this reason, network operators have to carefully gauge what the intended routing policy of their peers is. As a result, it is imperative that networks employ filters to only accept legitimate traffic and drop everything else. 
 
