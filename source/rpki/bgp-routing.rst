@@ -7,7 +7,7 @@ Internet Routing
 
 The global routing system of the Internet consists of a number of functionally independent actors called autonomous systems (AS), which use the Border Gateway Protocol (BGP) to exchange routing information. 
 
-An autonomous system is a set of Internet routable IP prefixes belonging to a network or a collection of networks that are all managed and supervised by a single entity or organisation. An AS utilizes a common routing policy controlled by the entity and is identified by a globally unique 16 or 32-bit number. The AS number (ASN) is assigned by one of the five Regional Internet Registries (RIRs), just like IP address blocks.
+An autonomous system is a set of Internet routable IP prefixes belonging to a network or a collection of networks that are all managed and supervised by a single entity or organisation. An AS utilises a common routing policy controlled by the entity and is identified by a globally unique 16 or 32-bit number. The AS number (ASN) is assigned by one of the five Regional Internet Registries (RIRs), just like IP address blocks.
 
 The Border Gateway Protocol manages the routed peerings, prefix advertisement and routing of packets between different autonomous systems across the Internet. BGP uses the ASN to uniquely identify each system. In short, BGP is the routing protocol for AS paths across the Internet. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change, which easily propagate globally within a few minutes. 
 
@@ -44,7 +44,7 @@ Regardless any local preference, path length or any other attributes, when build
 
     Regardless of the path length, the announcement of a more specific prefix always wins
     
-With this in mind, there are several problems that can arise as a result of this behavior.
+With this in mind, there are several problems that can arise as a result of this behaviour.
 
 Routing Errors
 --------------
@@ -68,17 +68,19 @@ A route hijack, also called prefix hijack, or IP hijack, is the unauthorised ori
           through an unintended path. This may enable eavesdropping or traffic analysis
           and may, in some cases, result in a denial of service or black hole.
 
+Routing incidents occur every day. While several decades ago incidents were often accidental, in recent years they have become more malicious in nature. Some notable events were the `AS 7007 incident <https://en.wikipedia.org/wiki/AS_7007_incident>`_ in 1997, Pakistan's attempt to block YouTube access within their country, which resulted in `taking down YouTube entirely <https://www.ripe.net/publications/news/industry-developments/youtube-hijacking-a-ripe-ncc-ris-case-study>`_ in 2008, and lastly, the `almost 1,300 addresses for Amazon Route 53 that got rerouted <https://arstechnica.com/information-technology/2018/04/suspicious-event-hijacks-amazon-traffic-for-2-hours-steals-cryptocurrency/>`_ for two hours in order to steal cryptocurrency, in 2018.
+
 Mitigation of Routing Errors
 ----------------------------
 
 One weakness of BGP is that routing errors cannot be easily be deduced from information within the protocol itself. For this reason, network operators have to carefully gauge what the intended routing policy of their peers is. As a result, it is imperative that networks employ filters to only accept legitimate traffic and drop everything else. 
 
-There are several well known methods to achieve this. Certain backbone and private peers require a valid Letter of Agency (LOA) to be completed prior to allowing the announcement or re-announcement of IP address blocks. A more widely accepted method is the use of Internet Routing Registry (IRR) databases, where operators can publish their routing policy. Both methods allows other networks to set up filters accordingly.
+There are several well known methods to achieve this. Certain backbone and private peers require a valid Letter of Agency (LOA) to be completed prior to allowing the announcement or re-announcement of IP address blocks. A more widely accepted method is the use of Internet Routing Registry (IRR) databases, where operators can publish their routing policy. Both methods allow other networks to set up filters accordingly.
 
 The Internet Routing Registry
 -----------------------------
 
-The Internet Routing Registry (IRR) is a `distributed set of databases <http://www.irr.net/docs/list.html>`_ allowing network operators to describe routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances. 
+The Internet Routing Registry (IRR) is a `distributed set of databases <http://www.irr.net/docs/list.html>`_ allowing network operators to describe and query for routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances. 
 
 The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ in 1998. RPSL is a very expressive language, allowing for an extremely detailed description of routing policy. While IRR usage had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, which meant that the primary focus was on data availability rather than data trustworthiness.
 
@@ -88,4 +90,6 @@ Additionally, the RPSL language and supporting tools have proven to be too compl
 
 This leaves the information about route origin as the most valuable attribute of the IRR. In so called *route* objects, operators can specify from which ASN they intend to announce a certain prefix. Based on these objects, other operators can define filters while keeping in mind that not all data is equally trustworthy.
 
-In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. RPKI solves these problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world. In the next sections we will look at how this is achieved.
+In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. 
+
+RPKI solves these problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world. In the next sections we will look at how this is achieved.
