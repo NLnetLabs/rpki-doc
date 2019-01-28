@@ -35,7 +35,7 @@ Out of all the possible routes that a router has in its Routing Information Base
 Preference for Most Specific Prefix
 """""""""""""""""""""""""""""""""""
 
-Out of all the possible routes that a router has learned, BGP will always prefer the most specific prefix that is announced, regardless of the path length. Again, this is an important feature, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
+Regardless any local preference, path length or any other attributes, BGP will always prefer the most specific prefix that is announced. Again, this is an important feature, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
 
 .. figure:: img/hijack-more-specific.*
     :align: center
@@ -61,7 +61,7 @@ Routing errors on the Internet can be classified as route leaks or route hijacks
    are defined in terms of the pair-wise peering business relationship
    between autonomous systems.
    
-A route hijack, also called prefix hijack, or IP hijack, is unauthorised origination of a route. 
+A route hijack, also called prefix hijack, or IP hijack, is the unauthorised origination of a route. 
 
 .. note:: Route leaks and hijacks can be accidental or malicious, but most often arise 
           from **accidental misconfigurations**. The result can be redirection of traffic
@@ -80,7 +80,7 @@ The Internet Routing Registry
 
 The Internet Routing Registry (IRR) is a `distributed set of databases <http://www.irr.net/docs/list.html>`_ allowing network operators to describe routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances. 
 
-The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ in 1998. While RPSL had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, which meant that the primary focus was on data availability rather than data trustworthiness.
+The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ in 1998. RPSL is a very expressive language, allowing for an extremely detailed description of routing policy. While IRR usage had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, which meant that the primary focus was on data availability rather than data trustworthiness.
 
 As explained earlier, only the Regional Internet Registries have authoritative information on the legitimate holder of an Internet number resource. This means that the entries in their IRR databases are authenticated, but they are not in any of the other routing registries. Over time, this has created an extensive repository of obsolete data of uncertain validity, spread across dozens of routing registries around the world. 
 
