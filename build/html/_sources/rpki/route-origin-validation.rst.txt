@@ -3,13 +3,7 @@
 Route Origin Validation
 =======================
 
-Routing errors on the Internet can be classified as route leaks or route hijacks. A route leak is a propagation of one or more routing announcements that are beyond their intended scope. That is an announcement from an Autonomous System (AS) of a learned BGP route to another AS is in violation of the intended policies of the receiver, the sender, and/or one of the ASes along the preceding AS path.
-
-A route hijack is the unauthorised origination of a route. 
-
-Note that in either case, the cause may be accidental or malicious and in either case, the result can be path detours, redirection, or denial of services. For more information, please refer to `RFC 7908 <https://tools.ietf.org/html/rfc7908>`_.
-
-With Route Origin Validation, operators want to answer the question:
+Routing errors on the Internet can be classified as route leaks or route hijacks. With Route Origin Validation, operators want to answer the question:
 
     “*Is this particular BGP route announcement authorised by the legitimate holder of the address space?*”
 

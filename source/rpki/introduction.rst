@@ -55,9 +55,9 @@ In RPKI, resource certificates attest to the allocation by the issuer of IP addr
 .. figure:: img/RPKI-Chain-Of-Trust.*
     :align: center
     :width: 100%
-    :alt: The Chain of Trust in RPKI starting at the five RIRs
+    :alt: The chain of trust in RPKI starting at the five RIRs
 
-    The Chain of Trust in RPKI, starting at the five RIRs
+    The chain of trust in RPKI, starting at the five RIRs
 
 The digital certificates used in RPKI are based on X.509, standardised in `RFC 5280 <https://tools.ietf.org/html/rfc5280>`_, along with extensions for IP addresses and AS identifiers described in `RFC 3779 <https://tools.ietf.org/html/rfc3779>`_. Because RPKI is used in the routing security context, a common misconception is that this is the *Routing* PKI. However, certificates in this PKI are called *resource* certificates and conform to the certificate profile described in `RFC 6487 <https://tools.ietf.org/html/rfc6487>`_.  
 

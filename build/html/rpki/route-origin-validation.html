@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hosted versus Delegated RPKI" href="hosted-vs-delegated-rpki.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" /> 
+    <link rel="prev" title="Internet Routing" href="bgp-routing.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -130,9 +130,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">The Resource Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-r-in-rpki-stands-for-resource">The “R” in RPKI stands for “Resource”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-routing">Internet Routing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#mapping-the-resource-allocation-hierarchy-into-the-rpki">Mapping the Resource Allocation Hierarchy into the RPKI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html">Internet Routing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#preference-for-shortest-path">Preference for Shortest Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#preference-for-most-specific-prefix">Preference for Most Specific Prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#routing-errors">Routing Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#mitigation-of-routing-errors">Mitigation of Routing Errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Route Origin Validation</a><ul>
@@ -275,10 +283,7 @@
             
   <div class="section" id="route-origin-validation">
 <span id="doc-rpki-rov"></span><h1>Route Origin Validation<a class="headerlink" href="#route-origin-validation" title="Permalink to this headline">¶</a></h1>
-<p>Routing errors on the Internet can be classified as route leaks or route hijacks. A route leak is a propagation of one or more routing announcements that are beyond their intended scope. That is an announcement from an Autonomous System (AS) of a learned BGP route to another AS is in violation of the intended policies of the receiver, the sender, and/or one of the ASes along the preceding AS path.</p>
-<p>A route hijack is the unauthorised origination of a route.</p>
-<p>Note that in either case, the cause may be accidental or malicious and in either case, the result can be path detours, redirection, or denial of services. For more information, please refer to <a class="reference external" href="https://tools.ietf.org/html/rfc7908">RFC 7908</a>.</p>
-<p>With Route Origin Validation, operators want to answer the question:</p>
+<p>Routing errors on the Internet can be classified as route leaks or route hijacks. With Route Origin Validation, operators want to answer the question:</p>
 <blockquote>
 <div>“<em>Is this particular BGP route announcement authorised by the legitimate holder of the address space?</em>”</div></blockquote>
 <p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).</p>
@@ -314,7 +319,7 @@
         <a href="hosted-vs-delegated-rpki.html" class="btn btn-neutral float-right" title="Hosted versus Delegated RPKI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bgp-routing.html" class="btn btn-neutral" title="Internet Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
