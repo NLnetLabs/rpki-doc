@@ -1,20 +1,20 @@
 .. _doc_rpki_rov:
 
-Now that we've looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to proving path validation in the future.
+Now that we've looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future.
 
-Both origin validation and path validation are IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.
+Both origin validation and path validation are documented IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.
 
 Route Origin Validation
 =======================
 
+With route origin validation (ROV), the RPKI system tries to closely mimic what *route* objects in the IRR intend to do, but then in a more trustworthy manner. It also adds a couple of useful features.
 
-With Route Origin Validation, operators want to answer the question:
+Origin validation is currently the only functionality that is operationally used. The five RIRs provide functionality for it, there is open source software available for creation and publication of data, and all major router vendors have implemented ROV in their platforms. Various router software implementations offer support for it, as well. 
 
-    “Is this particular BGP route announcement authorised by the legitimate holder of the address space?”
+Route Origin Authorisations
+---------------------------
 
-Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
-
-A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.
+Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
 
 .. figure:: img/rpki-roa-creation.*
     :align: center
@@ -23,6 +23,24 @@ A ROA states which Autonomous System (AS) is authorised to originate a certain I
 
     Each CA can issue Route Origin Authorisations
 
+The creation of a ROA is solely tied to the IP address space that is listed on the certificate and not to the AS numbers. This means the holder of the certificate can authorise any AS to originate their prefix, not just their own autonomous systems. 
+
+Maximum Prefix Length
+"""""""""""""""""""""
+
+In addition to the origin AS and the prefix, the ROA contains a maximum length (maxLength) value. This is an attribute that a *route* object in RPSL doesn't have. Described in `RFC 6482 <https://tools.ietf.org/html/rfc6482>`_, the maxLength specifies the maximum length of the IP address prefix that the AS is authorised to advertise. This gives the holder of the prefix control over the level of deaggregation an AS is allowed to do. 
+
+For example, if a ROA authorises AS65536 to originate 192.0.1.0/24 and the maxLength is set to /25, the AS can originate a single /24 or two adjacent /25 blocks, but any more specific is unauthorised by the ROA. The notation that you will often encounter is ``192.0.1.0/24-25``, which means the prefix 192.0.1.0/24 with a maxLength of /25.
+
+.. WARNING:: According to `RFC 7115 <https://tools.ietf.org/html/rfc7115>`_, operators
+             should be conservative in use of maxLength in ROAs. For
+             example, if a prefix will have only a few sub-prefixes announced,
+             multiple ROAs for the specific announcements should be used as
+             opposed to one ROA with a long maxLength. **Liberal usage of maxLength 
+             opens up the network to a forged origin attack.** ROAs should be as precise
+             as possible, meaning they should match prefixes as announced in BGP.
+
+In a forged origin attack, a malicious actor spoofs the AS number of another network. With a minimal ROA length, the attack does not work for sub-prefixes that are not covered by overly long maxLength. For example, if, instead of 10.0.0.0/16-24, one issues 10.0.0.0/16 and 10.0.42.0/24, a forged origin attack cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is more likely to be noticed because of its size.
 
 Route Announcement Validity
 ---------------------------
