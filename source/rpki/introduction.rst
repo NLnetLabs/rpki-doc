@@ -3,7 +3,7 @@
 Introduction
 ============
 
-The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and Autonomous System (AS) numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it. 
+The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and autonomous system (AS) numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it. 
 
 To understand the structure of this PKI and its and usage, we must first look at how Internet number resources are allocated globally.
 

@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-RPKI documentation
+RPKI Documentation
 ==================
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI), the community-driven technology based on open standards that is aimed at making Internet routing more secure. If you are new to this documentation, we recommend that you read the :ref:`introduction page <doc_about_intro>` to get an overview of what this documentation has to offer.
@@ -21,7 +21,7 @@ The table of contents below and in the sidebar should let you easily access the 
 The main documentation is organised into the following sections:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: General
    :name: sec-general
 
@@ -29,7 +29,7 @@ The main documentation is organised into the following sections:
    about/faq
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: RPKI Technology
    :name: sec-rpki
 
@@ -43,14 +43,14 @@ The main documentation is organised into the following sections:
 
 .. toctree::
    :maxdepth: 3
-   :caption: Creating RPKI data
+   :caption: Creating RPKI Data
    :name: sec-creating-rpki-data
    
    krill/index
    
 .. toctree::
    :maxdepth: 2
-   :caption: Using RPKI data
+   :caption: Using RPKI Data
    :name: sec-using-rpki-data
 
    routinator/index

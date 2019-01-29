@@ -101,8 +101,6 @@ As explained earlier, only the Regional Internet Registries have authoritative i
 
 Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language. This resulted in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.
 
-This leaves the information about route origin as the most valuable attribute of the IRR. In so called *route* objects, operators can specify from which ASN they intend to announce a certain prefix. Based on these objects, other operators can define filters while keeping in mind that not all data is equally trustworthy.
-
 In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. 
 
 RPKI solves these problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world. In the next sections we will look at how this is achieved.

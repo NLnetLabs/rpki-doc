@@ -81,9 +81,9 @@
               <p class="caption"><span class="caption-text">General</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-rpki">About RPKI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-the-documentation">Organisation of the documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-resource-public-key-infrastructure">About Resource Public Key Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-this-documentation">Organisation of this Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/faq.html">FAQ</a><ul>
@@ -154,7 +154,7 @@
 <li class="toctree-l1"><a class="reference internal" href="using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="router-support.html">Router Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<p class="caption"><span class="caption-text">Creating RPKI Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../krill/index.html">Krill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../krill/installation.html">Installation</a><ul>
@@ -186,7 +186,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Using RPKI data</span></p>
+<p class="caption"><span class="caption-text">Using RPKI Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../routinator/installation.html">Installation</a><ul>
@@ -352,7 +352,6 @@ and may, in some cases, result in a denial of service or black hole.</p>
 </div>
 <p>As explained earlier, only the Regional Internet Registries have authoritative information on the legitimate holder of an Internet number resource. This means that the entries in their IRR databases are authenticated, but they are not in any of the other routing registries. Over time, this has created an expansive repository of obsolete data of uncertain validity, spread across dozens of routing registries around the world.</p>
 <p>Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language. This resulted in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.</p>
-<p>This leaves the information about route origin as the most valuable attribute of the IRR. In so called <em>route</em> objects, operators can specify from which ASN they intend to announce a certain prefix. Based on these objects, other operators can define filters while keeping in mind that not all data is equally trustworthy.</p>
 <p>In conclusion, the main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t.</p>
 <p>RPKI solves these problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world. In the next sections we will look at how this is achieved.</p>
 </div>

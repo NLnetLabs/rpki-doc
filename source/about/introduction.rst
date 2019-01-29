@@ -1,14 +1,14 @@
 .. _doc_about_intro:
 
 Introduction
-------------
+============
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI). Here, we aim to offer an overview of the RPKI technology itself, as well as the tools that NLnet Labs is developing for it. 
 
 This page gives a broad overview of the RPKI and how it can help make Internet routing using the Border Gateway Protocol (BGP) more secure. This way, you will learn how RPKI can benefit your organisation, as well as helping others to be more secure on the Internet.
 
-About this documentation
-++++++++++++++++++++++++
+About this Documentation
+------------------------
 
 This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
 language and then compiled into a static website/offline document using the
@@ -23,17 +23,15 @@ All the contents are under the permissive Creative Commons Attribution 3.0
 (`CC-BY 3.0 <https://creativecommons.org/licenses/by/3.0/>`_) license, with
 attribution to "The RPKI team at NLnet Labs and the RPKI community".
 
-About RPKI
-++++++++++
+About Resource Public Key Infrastructure
+----------------------------------------
 
-The global routing system of the Internet consists of a number of functionally independent actors (Autonomous Systems) which use BGP (Border Gateway Protocol) to exchange routing information. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change. Changes easily propagate globally within a few minutes. One weakness of this system is that these changes cannot be validated against information existing outside of the BGP protocol itself.
-
-Resource Public Key Infrastructure (RPKI) is a way to define data in an out-of-band system such that the information that is exchanged by BGP can be validated to be correct. The RPKI standards were developed by the IETF (Internet Engineering Task Force) to describe some of the resources of the Internet’s routing and addressing scheme in a cryptographic system.
+The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and autonomous system (AS) numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it. 
 
 RPKI is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. `ARIN <https://www.arin.net/resources/rpki/>`_, `APNIC <https://www.apnic.net/community/security/resource-certification/>`_, `AFRINIC <https://www.afrinic.net/resource-certification>`_, `LACNIC <https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki>`_ and `RIPE NCC <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/>`_. Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as Route Origin Validation (ROV).
 
-Organisation of the documentation
-+++++++++++++++++++++++++++++++++
+Organisation of this Documentation
+----------------------------------
 
 This documentation is organised in four main sections:
 
