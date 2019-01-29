@@ -130,16 +130,29 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">The Resource Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-r-in-rpki-stands-for-resource">The “R” in RPKI stands for “Resource”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#internet-routing">Internet Routing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#expanding-upon-the-internet-routing-registry">Expanding upon the Internet Routing Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#mapping-the-resource-allocation-hierarchy-into-the-rpki">Mapping the Resource Allocation Hierarchy into the RPKI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html">Internet Routing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#bgp-best-path-selection">BGP Best Path Selection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bgp-routing.html#preference-for-shortest-path">Preference for Shortest Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bgp-routing.html#preference-for-most-specific-prefix">Preference for Most Specific Prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#routing-errors">Routing Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#mitigation-of-routing-errors">Mitigation of Routing Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html">Route Origin Validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="route-origin-validation.html#maximum-prefix-length">Maximum Prefix Length</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hosted versus Delegated RPKI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating-roas.html">Creating Route Origin Authorisations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using-rpki-data.html">Using RPKI Data</a></li>
@@ -275,14 +288,7 @@
             
   <div class="section" id="hosted-versus-delegated-rpki">
 <span id="doc-rpki-hosted-delegated"></span><h1>Hosted versus Delegated RPKI<a class="headerlink" href="#hosted-versus-delegated-rpki" title="Permalink to this headline">¶</a></h1>
-<p>The five RIRs are responsible for allocating IP addresses and Autonomous System Numbers in each of their regions. In most cases they allocate resources directly to their members, called Local Internet Registries (LIRs). In turn, LIRs assign resources to ISPs or end user organisations. There is an exception in the APNIC and LACNIC region, where in some countries allocations are handled through National Internet Registry (NIR) organisations to meet particular geographical needs. For example, JPNIC in Japan and NIC.br in Brazil provide these services on a national level.</p>
-<p>The RPKI certificate structure matches the allocation model. This means all RIRs run a Root Certificate Authority which has a self-signed root certificate containing all of the resources that they each manage. They issue child certificates to NIRs or LIRs who can, in turn, issue a certificate to each of their customers.</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/RPKI-CA-Structure.svg"><img alt="The RPKI Certificate Authority Structure" src="../_images/RPKI-CA-Structure.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">An overview of the RPKI Certificate Authority Structure</span></p>
-</div>
 <p>To lower the entry barrier into the technology, each RIR offers a Hosted RPKI system. This allows members to log into a web-based customer portal and instruct the RPKI system to generate a certificate for them, which resides on the systems hosted by the RIR. While this offers some convenience for basic management, the LIR is not truly the holder of their own certificate. Operators who prefer more control, security and have better integration with their own systems can run their own child CA. This is model is usually referred to as Delegated RPKI.</p>
-<p>Using either the Hosted or Delegated RPKI, operators can create cryptographically validatable statements about their routing intent, e.g. which ASNs are authorised to originate their IP prefixes. These statements are called Route Origin Authorisations (ROAs).  Within a ROA, the operator can also specify what the maximum length of the prefix is that the AS is authorised to advertise. This is a way to enforce aggregation and prevent hijacking through the announcement of a more specific prefix.</p>
 <p>All certificates and ROAs are published in a distributed set of repositories. When using the Hosted RPKI system, this is a repository operated by the RIR. When an operator uses Delegated RPKI, they can either publish to a Publication Server that they host themselves, or they can ask a third party to do this on their behalf.</p>
 </div>
 
