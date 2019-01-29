@@ -134,12 +134,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bgp-routing.html">Internet Routing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#preference-for-shortest-path">Preference for Shortest Path</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#preference-for-most-specific-prefix">Preference for Most Specific Prefix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#bgp-best-path-selection">BGP Best Path Selection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bgp-routing.html#preference-for-shortest-path">Preference for Shortest Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bgp-routing.html#preference-for-most-specific-prefix">Preference for Most Specific Prefix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#routing-errors">Routing Errors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#mitigation-of-routing-errors">Mitigation of Routing Errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#routing-errors">Routing Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#mitigation-of-routing-errors">Mitigation of Routing Errors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
@@ -281,13 +282,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="route-origin-validation">
-<span id="doc-rpki-rov"></span><h1>Route Origin Validation<a class="headerlink" href="#route-origin-validation" title="Permalink to this headline">¶</a></h1>
-<p>Routing errors on the Internet can be classified as route leaks or route hijacks. With Route Origin Validation, operators want to answer the question:</p>
+  <p id="doc-rpki-rov">Now that we’ve looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to proving path validation in the future.</p>
+<p>Both origin validation and path validation are IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.</p>
+<div class="section" id="route-origin-validation">
+<h1>Route Origin Validation<a class="headerlink" href="#route-origin-validation" title="Permalink to this headline">¶</a></h1>
+<p>With Route Origin Validation, operators want to answer the question:</p>
 <blockquote>
-<div>“<em>Is this particular BGP route announcement authorised by the legitimate holder of the address space?</em>”</div></blockquote>
+<div>“Is this particular BGP route announcement authorised by the legitimate holder of the address space?”</div></blockquote>
 <p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).</p>
 <p>A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/rpki-roa-creation.svg"><img alt="RPKI ROA Creation" src="../_images/rpki-roa-creation.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">Each CA can issue Route Origin Authorisations</span></p>
+</div>
 <div class="section" id="route-announcement-validity">
 <h2>Route Announcement Validity<a class="headerlink" href="#route-announcement-validity" title="Permalink to this headline">¶</a></h2>
 <p>When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. They can be:</p>

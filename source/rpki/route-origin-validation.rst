@@ -1,15 +1,28 @@
 .. _doc_rpki_rov:
 
+Now that we've looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to proving path validation in the future.
+
+Both origin validation and path validation are IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.
+
 Route Origin Validation
 =======================
 
-Routing errors on the Internet can be classified as route leaks or route hijacks. With Route Origin Validation, operators want to answer the question:
 
-    “*Is this particular BGP route announcement authorised by the legitimate holder of the address space?*”
+With Route Origin Validation, operators want to answer the question:
+
+    “Is this particular BGP route announcement authorised by the legitimate holder of the address space?”
 
 Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
 
 A ROA states which Autonomous System (AS) is authorised to originate a certain IP address prefix. In addition, it can determine the maximum length of the prefix that the AS is authorised to advertise. By comparing the BGP announcements to published ROAs, a network operator can decide to accept the announcement, drop it or treat it in any other way they choose.
+
+.. figure:: img/rpki-roa-creation.*
+    :align: center
+    :width: 100%
+    :alt: RPKI ROA Creation
+
+    Each CA can issue Route Origin Authorisations
+
 
 Route Announcement Validity
 ---------------------------

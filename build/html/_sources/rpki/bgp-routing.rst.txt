@@ -11,7 +11,7 @@ An autonomous system is a set of Internet routable IP prefixes belonging to a ne
 
 The Border Gateway Protocol manages the routed peerings, prefix advertisement and routing of packets between different autonomous systems across the Internet. BGP uses the ASN to uniquely identify each system. In short, BGP is the routing protocol for AS paths across the Internet. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change, which easily propagate globally within a few minutes. 
 
-Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is no authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of. 
+Fundamentally, BGP is based on mutual trust between networks. When a network operator configures the routers in their AS, they specify which IP prefixes to originate and announce to their peers. There is no authentication or authorisation embedded within BGP. In principle, an operator can define any ASN as the origin and announce any prefix, also one they are not the holder of.
 
 BGP Best Path Selection
 -----------------------
@@ -68,7 +68,7 @@ A route hijack, also called prefix hijack, or IP hijack, is the unauthorised ori
           through an unintended path. This may enable eavesdropping or traffic analysis
           and may, in some cases, result in a denial of service or black hole.
 
-Routing incidents occur every day. While several decades ago incidents were often accidental, in recent years they have become more malicious in nature. Some notable events were the `AS 7007 incident <https://en.wikipedia.org/wiki/AS_7007_incident>`_ in 1997, Pakistan's attempt to block YouTube access within their country, which resulted in `taking down YouTube entirely <https://www.ripe.net/publications/news/industry-developments/youtube-hijacking-a-ripe-ncc-ris-case-study>`_ in 2008, and lastly, the `almost 1,300 addresses for Amazon Route 53 that got rerouted <https://arstechnica.com/information-technology/2018/04/suspicious-event-hijacks-amazon-traffic-for-2-hours-steals-cryptocurrency/>`_ for two hours in order to steal cryptocurrency, in 2018.
+Routing incidents occur every day. While several decades ago outages and redirections were often accidental, in recent years they have become more malicious in nature. Some notable events were the `AS 7007 incident <https://en.wikipedia.org/wiki/AS_7007_incident>`_ in 1997, Pakistan's attempt to block YouTube access within their country, which resulted in `taking down YouTube entirely <https://www.ripe.net/publications/news/industry-developments/youtube-hijacking-a-ripe-ncc-ris-case-study>`_ in 2008, and lastly, the `almost 1,300 addresses for Amazon Route 53 that got rerouted <https://arstechnica.com/information-technology/2018/04/suspicious-event-hijacks-amazon-traffic-for-2-hours-steals-cryptocurrency/>`_ for two hours in order to steal cryptocurrency, in 2018.
 
 Mitigation of Routing Errors
 ----------------------------
@@ -82,9 +82,22 @@ The Internet Routing Registry
 
 The Internet Routing Registry (IRR) is a `distributed set of databases <http://www.irr.net/docs/list.html>`_ allowing network operators to describe and query for routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances. 
 
-The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ in 1998. RPSL is a very expressive language, allowing for an extremely detailed description of routing policy. While IRR usage had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time, which meant that the primary focus was on data availability rather than data trustworthiness.
+The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in `RFC 2280 <https://tools.ietf.org/html/rfc2280>`_ in 1998. RPSL is a very expressive language, allowing for an extremely detailed description of routing policy. While IRR usage had created considerable enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time. This meant that the primary focus was on data availability rather than data trustworthiness.
 
-As explained earlier, only the Regional Internet Registries have authoritative information on the legitimate holder of an Internet number resource. This means that the entries in their IRR databases are authenticated, but they are not in any of the other routing registries. Over time, this has created an extensive repository of obsolete data of uncertain validity, spread across dozens of routing registries around the world. 
+In early years, it was considered a good practice to extensively document how incoming and outgoing traffic was treated by the network, but nowadays the most prevalent usage is to publish and query for *route* objects, describing from which ASN a prefix is intended to be originated. 
+
+::
+
+   route:          192.0.2.0/24
+   descr:          Examplenet announcement of 192.0.2.0/24
+   country:        NL
+   origin:         AS65536
+   mnt-by:         EXAMPLENET-MNT
+   mnt-routes:     EXAMPLENET-MNT
+   last-modified:  2018-08-30T07:50:19Z
+   source:         RIPE
+
+As explained earlier, only the Regional Internet Registries have authoritative information on the legitimate holder of an Internet number resource. This means that the entries in their IRR databases are authenticated, but they are not in any of the other routing registries. Over time, this has created an expansive repository of obsolete data of uncertain validity, spread across dozens of routing registries around the world. 
 
 Additionally, the RPSL language and supporting tools have proven to be too complex to consistently transpose policy into router configuration language. This resulted in most published RPSL data being neither sufficiently accurate and up to date for filtering purposes, nor sufficiently comprehensive or precise for being the golden master in router configuration.
 
