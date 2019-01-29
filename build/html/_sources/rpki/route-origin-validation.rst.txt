@@ -30,33 +30,48 @@ Maximum Prefix Length
 
 In addition to the origin AS and the prefix, the ROA contains a maximum length (maxLength) value. This is an attribute that a *route* object in RPSL doesn't have. Described in `RFC 6482 <https://tools.ietf.org/html/rfc6482>`_, the maxLength specifies the maximum length of the IP address prefix that the AS is authorised to advertise. This gives the holder of the prefix control over the level of deaggregation an AS is allowed to do. 
 
-For example, if a ROA authorises AS65536 to originate 192.0.1.0/24 and the maxLength is set to /25, the AS can originate a single /24 or two adjacent /25 blocks, but any more specific is unauthorised by the ROA. The notation that you will often encounter is ``192.0.1.0/24-25``, which means the prefix 192.0.1.0/24 with a maxLength of /25.
+For example, if a ROA authorises a certain AS to originate 192.0.1.0/24 and the maxLength is set to /25, the AS can originate a single /24 or two adjacent /25 blocks. Any more specific announcement is unauthorised by the ROA. Using this example, the shorthand notation for prefix and maxLength you will often encounter is ``192.0.1.0/24-25``.
 
 .. WARNING:: According to `RFC 7115 <https://tools.ietf.org/html/rfc7115>`_, operators
              should be conservative in use of maxLength in ROAs. For
              example, if a prefix will have only a few sub-prefixes announced,
              multiple ROAs for the specific announcements should be used as
-             opposed to one ROA with a long maxLength. **Liberal usage of maxLength 
-             opens up the network to a forged origin attack.** ROAs should be as precise
-             as possible, meaning they should match prefixes as announced in BGP.
+             opposed to one ROA with a long maxLength. 
+             
+             **Liberal usage of maxLength opens up the network to a forged origin
+             attack. ROAs should be as precise as possible, meaning they should 
+             match prefixes as announced in BGP.**
 
 In a forged origin attack, a malicious actor spoofs the AS number of another network. With a minimal ROA length, the attack does not work for sub-prefixes that are not covered by overly long maxLength. For example, if, instead of 10.0.0.0/16-24, one issues 10.0.0.0/16 and 10.0.42.0/24, a forged origin attack cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is more likely to be noticed because of its size.
 
 Route Announcement Validity
 ---------------------------
 
-When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. They can be:
+When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. `RFC 6811 <https://tools.ietf.org/html/rfc6811>`_ describes the possible statuses, which are:
 
-- Valid: The route announcement is covered by at least one ROA
-- Invalid: The prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS
-- NotFound: The prefix in this announcement is not, or only partially covered by an existing ROA
+Valid
+   The route announcement is covered by at least one ROA.
 
-To understand how more specifics, less specifics and partial overlaps are treated, please refer to `section 2 of RFC 6811 <https://tools.ietf.org/html/rfc6811#section-2>`_.
+Invalid
+   The prefix is announced from an unauthorised AS, or the announcement is more 
+   specific than is allowed by the maxLength set in a ROA that matches the 
+   prefix and AS.
+   
+NotFound
+   The prefix in this announcement is not, or only partially covered by an existing ROA.
+
+Anyone can download and validate the published certificates and ROAs and make routing decisions based on these three outcomes. As a general guideline, announcements with Valid origins should be preferred over those with NotFound or Invalid origins. Announcements with NotFound origins should be preferred over those with Invalid origins.
+
+As origin validation is deployed incrementally, the amount of IP address space that is covered by a ROA will gradually increase over time. Therefore, accepting the NotFound validity should be done for the foreseeable future. 
+
+For route origin validation to succeed in its objective, operators should drop all announcements that are marked as Invalid. Before deploying origin validation, operators should first analyse the effects of such a measure to avoid unintended results. Accepting Invalid announcements and merely giving them a lower preference should not be done, as the announcement will still propagate across the Internet, with possible harmful effects. 
+
+There may be an operational need to accept certain Invalids temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_, can be specified to achieve this. 
 
 Path Validation
----------------
+===============
 
-Currently, RPKI only provides origin validation. While path validation is a desirable characteristic, the existing RPKI origin validation functionality addresses a large portion of the problem surface. 
+Currently, RPKI only provides origin validation. While BGPsec path validation is a desirable characteristic and standardised in `RFC 8205 <https://tools.ietf.org/html/rfc8205>`_, real-world deployment may prove limited for the foreseeable future. However, RPKI origin validation functionality addresses a large portion of the problem surface. 
 
 For many networks, the most important prefixes can be found one AS hop away (coming from a specific peer, for example), and this is the case for large portions of the Internet from the perspective of a transit provider - entities which are ideally situated to act on RPKI data and accept only valid routes for redistribution. 
 
