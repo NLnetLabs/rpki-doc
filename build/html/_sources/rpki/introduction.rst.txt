@@ -12,7 +12,7 @@ Internet Number Resource Allocation
 
 Before being formalised within an organisation, the allocation of Internet number resources, such as IP addresses and AS numbers, had been the responsibility of `Jon Postel <https://en.wikipedia.org/wiki/Jon_Postel>`_. At the time, he worked at the Information Sciences Institute (ISI) of the University of Southern California (USC). He performed the role of `Internet Assigned Numbers Authority <https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority>`_ (IANA), which is presently a function of the `Internet Corporation for Assigned Names and Numbers <https://en.wikipedia.org/wiki/ICANN>`_ (ICANN).
 
-.. figure:: img/Jon_Postel.jpg
+.. figure:: img/jon-postel.jpg
     :align: center
     :width: 100%
     :alt: Jon Postel in 1994, with map of Internet top-level domains
@@ -29,12 +29,12 @@ Today, there are five RIRs responsible for the allocation and registration of In
 - The `Latin America and Caribbean Network Information Centre <https://www.lacnic.net/>`_ (LACNIC) serves most of the Caribbean and all of Latin America
 - The `Réseaux IP Européens Network Coordination Centre <https://www.ripe.net/>`_ (RIPE NCC) serves Europe, the Middle East, Russia, and parts of Central Asia
 
-.. figure:: img/Regional_Internet_Registries_world_map.*
+.. figure:: img/rir-world-map.*
     :align: center
     :width: 100%
-    :alt: Map of Regional Internet Registries
+    :alt: Service regions of the Regional Internet Registries
 
-    Map of Regional Internet Registries
+    The service regions of the five Regional Internet Registries
 
 In the APNIC and LACNIC regions, Internet number resources are in some cases allocated to National Internet Registries (NIRs), such as NIC.br in Brazil and JPNIC in Japan. NIRs allocate address space to its members or constituents, which are generally organised at a national level. In the rest of world, the RIRs allocate directly to their member organisations, typically referred to as Local Internet Registries (LIRs). Most LIRs are Internet service providers, enterprises, or academic institutions. LIRs either use the allocated IP address blocks themselves, or assign them to End User organisations. 
 
@@ -52,7 +52,7 @@ As illustrated, the IANA has the authoritative registration of `IPv4 <https://ww
 
 In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. As a result, the certificate hierarchy in RPKI follows the same structure as the Internet number resource allocation hierarchy, with the exception of the IANA level. At this time, IANA does not operate a single root certificate authority (CA). Instead, the five RIRs each run a root CA with a trust anchor from which a chain of trust for the resources they each manage is derived.
 
-.. figure:: img/RPKI-Chain-Of-Trust.*
+.. figure:: img/rpki-chain-of-trust.*
     :align: center
     :width: 100%
     :alt: The chain of trust in RPKI starting at the five RIRs

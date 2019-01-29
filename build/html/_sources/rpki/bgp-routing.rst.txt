@@ -25,7 +25,7 @@ Preference for Shortest Path
 
 Out of all the possible routes that a router has in its Routing Information Base (RIB), BGP will always prefer the shortest path to its destination, minimising the amount of hops. When two matching prefixes are announced from two different networks on the Internet, BGP will route traffic to the destination that is topologically closest. This is an important feature of BGP, but when configuration errors occur, it can also be the cause of reachability problems.
 
-.. figure:: img/hijack-shorter-path.*
+.. figure:: img/bgp-shorter-path.*
     :align: center
     :width: 100%
     :alt: When the same prefix is announced, the shortest path wins
@@ -37,7 +37,7 @@ Preference for Most Specific Prefix
 
 Regardless any local preference, path length or any other attributes, when building the forwarding table, the router will always select most specific IP prefix available. This behaviour is important, but creates the possibility for almost any network to attract someone else's traffic by announcing an overlapping more specific.
 
-.. figure:: img/hijack-more-specific.*
+.. figure:: img/bgp-more-specific.*
     :align: center
     :width: 100%
     :alt: A more specific prefix always wins

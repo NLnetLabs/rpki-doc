@@ -25,14 +25,21 @@ The main documentation is organised into the following sections:
    :caption: General
    :name: sec-general
 
-   about/index
+   about/introduction
+   about/faq
 
 .. toctree::
    :maxdepth: 2
    :caption: RPKI Technology
    :name: sec-rpki
 
-   rpki/index
+   rpki/introduction
+   rpki/bgp-routing
+   rpki/route-origin-validation
+   rpki/hosted-vs-delegated-rpki
+   rpki/creating-roas
+   rpki/using-rpki-data
+   rpki/router-support
 
 .. toctree::
    :maxdepth: 3
