@@ -11,7 +11,7 @@ Routinator connects to the Trust Anchors of the five Regional Internet
 Registries (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all
 of the certificates and ROAs in their repositories and validates the
 signatures. It can feed the validated information to hardware routers
-supporting Route Origin Validation such as `Juniper
+supporting route origin validation (ROV) such as `Juniper
 <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin
 -as-validation.html>`_, `Cisco
 <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/

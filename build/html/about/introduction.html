@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FAQ" href="faq.html" />
-    <link rel="prev" title="RPKI documentation" href="../index.html" /> 
+    <link rel="prev" title="RPKI Documentation" href="../index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -149,12 +149,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rpki/route-origin-validation.html#path-validation">Path Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpki/implementation-models.html">Implementation Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rpki/implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rpki/implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../rpki/using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rpki/router-support.html">Router Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../krill/index.html">Krill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../krill/installation.html">Installation</a><ul>
@@ -185,9 +188,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Using RPKI data</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../routinator/installation.html">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#quick-start">Quick Start</a></li>
@@ -299,8 +299,8 @@ attribution to “The RPKI team at NLnet Labs and the RPKI community”.</p>
 </div>
 <div class="section" id="about-resource-public-key-infrastructure">
 <h2>About Resource Public Key Infrastructure<a class="headerlink" href="#about-resource-public-key-infrastructure" title="Permalink to this headline">¶</a></h2>
-<p>The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and autonomous system (AS) numbers listed on the certificate. Using their resource certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it.</p>
-<p>RPKI is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. <a class="reference external" href="https://www.arin.net/resources/rpki/">ARIN</a>, <a class="reference external" href="https://www.apnic.net/community/security/resource-certification/">APNIC</a>, <a class="reference external" href="https://www.afrinic.net/resource-certification">AFRINIC</a>, <a class="reference external" href="https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki">LACNIC</a> and <a class="reference external" href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/">RIPE NCC</a>. Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which Autonomous System (AS) is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as Route Origin Validation (ROV).</p>
+<p>The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and autonomous system (AS) numbers listed on the certificate. Using their certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it. RPKI is used to make BGP routing more secure.</p>
+<p>RPKI is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. <a class="reference external" href="https://www.arin.net/resources/rpki/">ARIN</a>, <a class="reference external" href="https://www.apnic.net/community/security/resource-certification/">APNIC</a>, <a class="reference external" href="https://www.afrinic.net/resource-certification">AFRINIC</a>, <a class="reference external" href="https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki">LACNIC</a> and <a class="reference external" href="https://www.ripe.net/manage-ips-and-asns/resource-management/certification/">RIPE NCC</a>. Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which autonomous system (AS) is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as route origin validation (ROV).</p>
 </div>
 <div class="section" id="organisation-of-this-documentation">
 <h2>Organisation of this Documentation<a class="headerlink" href="#organisation-of-this-documentation" title="Permalink to this headline">¶</a></h2>
@@ -308,9 +308,8 @@ attribution to “The RPKI team at NLnet Labs and the RPKI community”.</p>
 <ul class="simple">
 <li>The <a class="reference internal" href="../index.html#sec-general"><span class="std std-ref">General</span></a> section contains this introduction as well as
 information about the licensing, authors, etc. It also contains the <a class="reference internal" href="faq.html#doc-faq"><span class="std std-ref">FAQ</span></a>.</li>
-<li>The <a class="reference internal" href="../index.html#sec-rpki"><span class="std std-ref">RPKI Technology</span></a> section explains the RPKI technology and standards in order for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.</li>
-<li>The section <a class="reference internal" href="../index.html#sec-creating-rpki-data"><span class="std std-ref">Creating RPKI data</span></a> is about Krill, the RPKI daemon that acts a Certificate Authority and Publication Server. If your organisation wants to run a self-hosted RPKI solution, this is what you should read.</li>
-<li>The <a class="reference internal" href="../index.html#sec-using-rpki-data"><span class="std std-ref">Using RPKI data</span></a> section covers Routinator, the Relying Party Software package — also known as RPKI Validator —&nbsp;that can be used to download the global RPKI data set, validate it and use the result in your BGP decision making process.</li>
+<li>The <a class="reference internal" href="../index.html#sec-rpki-tech"><span class="std std-ref">RPKI Technology</span></a> section explains the RPKI technology and standards in order for you to get a good sense of the requirements and moving parts. It will help you choose the right RPKI solution for your organisation, with regards to generating, publishing and using RPKI data.</li>
+<li>The <a class="reference internal" href="../index.html#sec-rpki-tools"><span class="std std-ref">RPKI Tools</span></a> section is about the software that NLnet Labs develops for RPKI. Firstly, there is Krill, the RPKI Certificate Authority and Publication Server daemon. If your organisation wants to run a self-hosted RPKI solution, this is what you should read. Secondly, there is a section on Routinator, the Relying Party Software package — also known as RPKI Validator —&nbsp;that can be used to download the global RPKI data set, validate it and use the result in your BGP decision making process.</li>
 </ul>
 </div>
 </div>
@@ -326,7 +325,7 @@ information about the licensing, authors, etc. It also contains the <a class="re
         <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="RPKI documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral" title="RPKI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

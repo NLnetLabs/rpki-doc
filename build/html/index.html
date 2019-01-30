@@ -148,12 +148,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/route-origin-validation.html#path-validation">Path Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpki/implementation-models.html">Implementation Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpki/implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/router-support.html">Router Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Creating RPKI Data</span></p>
+<p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="krill/index.html">Krill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="krill/installation.html">Installation</a><ul>
@@ -184,9 +187,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Using RPKI Data</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="routinator/installation.html">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="routinator/installation.html#quick-start">Quick Start</a></li>
@@ -293,46 +293,59 @@ the world. We always appreciate your feedback and improvements.</p>
 <div class="toctree-wrapper compound" id="sec-general">
 <p class="caption"><span class="caption-text">General</span><a class="headerlink" href="#sec-general" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/introduction.html#about-this-documentation">About this Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/introduction.html#about-resource-public-key-infrastructure">About Resource Public Key Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/introduction.html#organisation-of-this-documentation">Organisation of this Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about/faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/faq.html#rpki-mechanism">RPKI Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/faq.html#operations-and-impact">Operations and Impact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/faq.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="toctree-wrapper compound" id="sec-rpki">
-<p class="caption"><span class="caption-text">RPKI Technology</span><a class="headerlink" href="#sec-rpki" title="Permalink to this toctree">¶</a></p>
+<div class="toctree-wrapper compound" id="sec-rpki-tech">
+<p class="caption"><span class="caption-text">RPKI Technology</span><a class="headerlink" href="#sec-rpki-tech" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rpki/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/bgp-routing.html">Internet Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/route-origin-validation.html">Route Origin Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpki/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpki/introduction.html#internet-number-resource-allocation">Internet Number Resource Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/introduction.html#mapping-the-resource-allocation-hierarchy-into-the-rpki">Mapping the Resource Allocation Hierarchy into the RPKI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpki/bgp-routing.html">Internet Routing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpki/bgp-routing.html#bgp-best-path-selection">BGP Best Path Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/bgp-routing.html#routing-errors">Routing Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/bgp-routing.html#mitigation-of-routing-errors">Mitigation of Routing Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpki/route-origin-validation.html">Route Origin Validation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpki/route-origin-validation.html#route-origin-authorisations">Route Origin Authorisations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/route-origin-validation.html#path-validation">Path Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rpki/creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpki/implementation-models.html">Implementation Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpki/implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpki/implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rpki/router-support.html">Router Support</a></li>
 </ul>
 </div>
-<div class="toctree-wrapper compound" id="sec-creating-rpki-data">
-<p class="caption"><span class="caption-text">Creating RPKI Data</span><a class="headerlink" href="#sec-creating-rpki-data" title="Permalink to this toctree">¶</a></p>
+<div class="toctree-wrapper compound" id="sec-rpki-tools">
+<p class="caption"><span class="caption-text">RPKI Tools</span><a class="headerlink" href="#sec-rpki-tools" title="Permalink to this toctree">¶</a></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="krill/index.html">Krill</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="krill/installation.html">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="krill/installation.html#getting-started">Getting Started</a></li>
-<li class="toctree-l3"><a class="reference internal" href="krill/installation.html#building">Building</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="krill/installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="krill/ca/index.html">Certificate Authority</a></li>
-<li class="toctree-l2"><a class="reference internal" href="krill/pub/index.html">Publication Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="krill/pub/configuration.html">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="krill/pub/running.html">Running</a></li>
-<li class="toctree-l3"><a class="reference internal" href="krill/pub/api.html">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="krill/pub/index.html">Publication Server</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound" id="sec-using-rpki-data">
-<p class="caption"><span class="caption-text">Using RPKI Data</span><a class="headerlink" href="#sec-using-rpki-data" title="Permalink to this toctree">¶</a></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="routinator/installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routinator/configuration.html">Configuration</a></li>

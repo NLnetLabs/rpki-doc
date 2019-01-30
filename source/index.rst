@@ -21,7 +21,7 @@ The table of contents below and in the sidebar should let you easily access the 
 The main documentation is organised into the following sections:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: General
    :name: sec-general
 
@@ -29,32 +29,24 @@ The main documentation is organised into the following sections:
    about/faq
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: RPKI Technology
-   :name: sec-rpki
+   :name: sec-rpki-tech
 
    rpki/introduction
    rpki/bgp-routing
    rpki/route-origin-validation
-   rpki/hosted-vs-delegated-rpki
-   rpki/creating-roas
+   rpki/implementation-models
    rpki/using-rpki-data
    rpki/router-support
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Creating RPKI Data
-   :name: sec-creating-rpki-data
+   :maxdepth: 2
+   :caption: RPKI Tools
+   :name: sec-rpki-tools
    
    krill/index
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Using RPKI Data
-   :name: sec-using-rpki-data
-
    routinator/index
-
    
 .. Indices and tables
 .. ------------------

@@ -81,9 +81,9 @@
               <p class="caption"><span class="caption-text">General</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-rpki">About RPKI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-the-documentation">Organisation of the documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-resource-public-key-infrastructure">About Resource Public Key Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-this-documentation">Organisation of this Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/faq.html">FAQ</a><ul>
@@ -149,12 +149,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="creating-roas.html">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementation-models.html">Implementation Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="router-support.html">Router Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../krill/index.html">Krill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../krill/installation.html">Installation</a><ul>
@@ -185,9 +188,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Using RPKI data</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../routinator/installation.html">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#quick-start">Quick Start</a></li>
@@ -313,7 +313,7 @@
 <p>As illustrated, the IANA has the authoritative registration of <a class="reference external" href="https://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml">IPv4</a>, <a class="reference external" href="https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml">IPv6</a> and <a class="reference external" href="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml">AS Number</a> resources that are allocated to the five RIRs. Each RIR <a class="reference external" href="https://www.nro.net/about/rirs/statistics/">registers</a> authoritative information on the allocations to NIRs and LIRs, and lastly, LIRs record to which End User organisation they assigned resources.</p>
 <p>In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. As a result, the certificate hierarchy in RPKI follows the same structure as the Internet number resource allocation hierarchy, with the exception of the IANA level. At this time, IANA does not operate a single root certificate authority (CA). Instead, the five RIRs each run a root CA with a trust anchor from which a chain of trust for the resources they each manage is derived.</p>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/rpki-chain-of-trust.svg"><img alt="The chain of trust in RPKI starting at the five RIRs" src="../_images/rpki-chain-of-trust.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="../_images/rpki-trust-chain.svg"><img alt="The chain of trust in RPKI starting at the five RIRs" src="../_images/rpki-trust-chain.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">The chain of trust in RPKI, starting at the five RIRs</span></p>
 </div>
 <p>The digital certificates used in RPKI are based on X.509, standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>, along with extensions for IP addresses and AS identifiers described in <a class="reference external" href="https://tools.ietf.org/html/rfc3779">RFC 3779</a>. Because RPKI is used in the routing security context, a common misconception is that this is the <em>Routing</em> PKI. However, certificates in this PKI are called <em>resource</em> certificates and conform to the certificate profile described in <a class="reference external" href="https://tools.ietf.org/html/rfc6487">RFC 6487</a>.</p>

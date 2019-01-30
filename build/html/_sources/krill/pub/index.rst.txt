@@ -1,5 +1,5 @@
-.. Note::  This part of the project is currently being built. 
-           Documentation will likely change significantly as the software evolves.
+.. WARNING::  This part of the project is currently being built. 
+              Documentation will likely change significantly as the software evolves.
 
 Publication Server
 ==================

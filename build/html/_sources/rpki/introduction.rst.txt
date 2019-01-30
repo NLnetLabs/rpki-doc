@@ -52,7 +52,7 @@ As illustrated, the IANA has the authoritative registration of `IPv4 <https://ww
 
 In RPKI, resource certificates attest to the allocation by the issuer of IP addresses or AS numbers to the subject. As a result, the certificate hierarchy in RPKI follows the same structure as the Internet number resource allocation hierarchy, with the exception of the IANA level. At this time, IANA does not operate a single root certificate authority (CA). Instead, the five RIRs each run a root CA with a trust anchor from which a chain of trust for the resources they each manage is derived.
 
-.. figure:: img/rpki-chain-of-trust.*
+.. figure:: img/rpki-trust-chain.*
     :align: center
     :width: 100%
     :alt: The chain of trust in RPKI starting at the five RIRs

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating Route Origin Authorisations &mdash; RPKI  documentation</title>
+  <title>Implementation Models &mdash; RPKI  documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using RPKI Data" href="using-rpki-data.html" />
-    <link rel="prev" title="Hosted versus Delegated RPKI" href="hosted-vs-delegated-rpki.html" /> 
+    <link rel="prev" title="Route Origin Validation" href="route-origin-validation.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -81,9 +81,9 @@
               <p class="caption"><span class="caption-text">General</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-rpki">About RPKI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-the-documentation">Organisation of the documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-this-documentation">About this Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#about-resource-public-key-infrastructure">About Resource Public Key Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/introduction.html#organisation-of-this-documentation">Organisation of this Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/faq.html">FAQ</a><ul>
@@ -149,12 +149,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hosted-vs-delegated-rpki.html">Hosted versus Delegated RPKI</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating Route Origin Authorisations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implementation Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hosted-rpki">Hosted RPKI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delegated-rpki">Delegated RPKI</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="using-rpki-data.html">Using RPKI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="router-support.html">Router Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Creating RPKI data</span></p>
+<p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../krill/index.html">Krill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../krill/installation.html">Installation</a><ul>
@@ -185,9 +188,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Using RPKI data</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../routinator/index.html">Routinator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../routinator/installation.html">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#quick-start">Quick Start</a></li>
@@ -259,13 +259,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Creating Route Origin Authorisations</li>
+      <li>Implementation Models</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/rpki/creating-roas.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rpki/implementation-models.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -278,12 +278,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="creating-route-origin-authorisations">
-<span id="doc-rpki-roas"></span><h1>Creating Route Origin Authorisations<a class="headerlink" href="#creating-route-origin-authorisations" title="Permalink to this headline">¶</a></h1>
-<p>A Route Origin Authorisation object consists of three elements: the AS Number that you authorise, the prefix that is being originated from it and, lastly, the Maximum Length (MaxLength), which determines the most specific prefix that the AS may originate out of the aggregate. Keep in mind that a single ROA makes the announcement of a prefix from an authorised AS valid, but at the same time, it makes the announcement from an unauthorised (hijacking) AS invalid. You should create as many ROAs as needed to make all legitimate announcements valid.</p>
-<p>There are several ways to authorise a BGP origin with a ROA. For example, you can authorise the entire aggregate to be originated – including all more specific announcements – with a single ROA. Or you can authorise each announcement with a ROA individually. While creating a single ROA seems convenient, it is not recommended.</p>
-<p>For example, if you are the holder of 10.0.0.0/18 and you announce the aggretate as well as several more specifics up to a /24 from AS64500, you could create a ROA for AS64500 authorising 10.0.0.0/18 and set the MaxLength to /24. However, if an adversary now spoofs your ASN and starts announcing any more specific out of your aggregate, they will all be seen as RPKI VALID, because there is a covering ROA for it.</p>
-<p>The best practice is to create a ROA for each announcement individually, and set the MaxLength to exactly the prefix length that you actually announce.</p>
+  <div class="section" id="implementation-models">
+<span id="doc-implementation-models"></span><h1>Implementation Models<a class="headerlink" href="#implementation-models" title="Permalink to this headline">¶</a></h1>
+<p>RPKI is designed to allow every resource holder generate and publish cryptographic material on their own systems. This is commonly referred to as delegated RPKI. To offer a turn-key solution, each RIR also offers a hosted RPKI system in their member portals. Both models have their own advantages, based on the specific requirements of the organisation using the system.</p>
+<div class="section" id="hosted-rpki">
+<h2>Hosted RPKI<a class="headerlink" href="#hosted-rpki" title="Permalink to this headline">¶</a></h2>
+<p>To lower the entry barrier into the RPKI technology, each RIR offers a Hosted RPKI system. This allows members to log into a web-based member portal and instruct the RPKI system to generate a certificate for them, which resides on the systems hosted by the RIR.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/ripe-ncc-hosted-rpki.png"><img alt="Example of the Hosted RPKI interface by the RIPE NCC" src="../_images/ripe-ncc-hosted-rpki.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Example of the Hosted RPKI interface by the RIPE NCC</span></p>
+</div>
+<p>While this offers some convenience for basic management, the LIR is not truly the holder of their own certificate.</p>
+<p>All certificates and ROAs are published in a distributed set of repositories. When using the Hosted RPKI system, this is a repository operated by the RIR.</p>
+</div>
+<div class="section" id="delegated-rpki">
+<h2>Delegated RPKI<a class="headerlink" href="#delegated-rpki" title="Permalink to this headline">¶</a></h2>
+<p>Operators who prefer more control and have better integration with their own systems can run their own child CA. This is model is usually referred to as Delegated RPKI.</p>
+<p>When an operator uses Delegated RPKI, they can either publish to a Publication Server that they host themselves, or they can ask a third party to do this on their behalf.</p>
+</div>
 </div>
 
 
@@ -297,7 +309,7 @@
         <a href="using-rpki-data.html" class="btn btn-neutral float-right" title="Using RPKI Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="hosted-vs-delegated-rpki.html" class="btn btn-neutral" title="Hosted versus Delegated RPKI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="route-origin-validation.html" class="btn btn-neutral" title="Route Origin Validation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
