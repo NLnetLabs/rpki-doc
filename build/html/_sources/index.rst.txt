@@ -38,7 +38,7 @@ The main documentation is organised into the following sections:
    rpki/route-origin-validation
    rpki/implementation-models
    rpki/using-rpki-data
-   rpki/router-support
+   rpki/router-configuration
 
 .. toctree::
    :maxdepth: 2

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Router Support" href="router-support.html" />
+    <link rel="next" title="Router Configuration" href="router-configuration.html" />
     <link rel="prev" title="Implementation Models" href="implementation-models.html" /> 
 
   
@@ -155,7 +155,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using RPKI Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="router-support.html">Router Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -281,17 +281,30 @@
   <div class="section" id="using-rpki-data">
 <span id="doc-rpki-relying-party"></span><h1>Using RPKI Data<a class="headerlink" href="#using-rpki-data" title="Permalink to this headline">¶</a></h1>
 <p>Operators who want to use RPKI data in their BGP decision making process have to fetch and validate all of the published data. As with any Public Key Infrastructure, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five RIRs. When you want to retrieve all RPKI data, you connect to the trust anchor that each of them provides.</p>
-<p>Relying Party software, also known as an RPKI Validator, will start retrieval at each of the RIR Trust Anchors and follow the certificate tree in order to fetch all published certificates and ROAs. Any object that doesn’t pass cryptographic validation will be discarded. All remaining information will result in a list of AS Numbers, IP prefixes and maximum prefix length, known as the validated cache.</p>
-<p>The data from the validated cache can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing an RPKI validated cache. Alternatively, Relying Party software can export the validated cache in various useful formats for processing outside of the router in order to set up filters.</p>
-<p>When comparing the validated cache to all route announcements seen in BGP, it will have an effect on their RPKI validity. They can be:</p>
-<ul class="simple">
-<li>Valid: The route announcement is covered by at least one ROA</li>
-<li>Invalid: The prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS</li>
-<li>NotFound: The prefix in this announcement is not, or only partially covered by an existing ROA</li>
-</ul>
-<p>Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI INVALID.</p>
+<p>There are various open source relying party software packages, also known as RPKI validators, available in order to download, validate and process RPKI data. Please note that most RPKI validators come preinstalled with trust anchor locators for all RIRs except the one for ARIN, as they require users to first review and agree to their <a class="reference external" href="https://www.arin.net/resources/rpki/tal.html">Relying Party Agreement</a>.</p>
+<p>When the validator runs, it will start retrieval at each of the RIR trust anchors and follow the certificate tree in order to fetch all published certificates and ROAs. The validator will then verify the signatures on all objects and output the valid route origins, known as the validated ROA payload (VRP), or validated cache, as a list.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Objects that do not pass cryptographic validation are discarded. Any
+statements made about route origins are not considered, as if a ROA
+was never published. As a result, an invalid ROA will not affect any
+route announcements.</p>
+</div>
+<p>The validated data can be fed directly into RPKI-capable routers via the RPKI-RTR protocol. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing the payload. Alternatively, most validators can export the payload in various useful formats for processing outside of the router, in order to set up filters.</p>
+<p>When comparing the VRPs to the route announcements seen in BGP by the configured router, it will have an effect on their RPKI validity. They can be:</p>
+<dl class="docutils">
+<dt>Valid</dt>
+<dd>The route announcement is covered by at least one ROA.</dd>
+<dt>Invalid</dt>
+<dd>The prefix is announced from an unauthorised AS, or the announcement is more
+specific than is allowed by the maxLength set in a ROA that matches the
+prefix and AS.</dd>
+<dt>NotFound</dt>
+<dd>The prefix in this announcement is not, or only partially covered by an existing ROA.</dd>
+</dl>
+<p>Based on these outcomes, operators can make an informed decision what to do with the BGP route announcements they see. For RPKI to succeed in its objective, operators should at least drop all announcements that are RPKI Invalid.</p>
 <div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/rpki-validation.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/rpki-validation.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="../_images/rpki-relying-party-process.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/rpki-relying-party-process.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">RPKI publication, data retrieval, validation and processing</span></p>
 </div>
 </div>
@@ -304,7 +317,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="router-support.html" class="btn btn-neutral float-right" title="Router Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="router-configuration.html" class="btn btn-neutral float-right" title="Router Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="implementation-models.html" class="btn btn-neutral" title="Implementation Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Router Support &mdash; RPKI  documentation</title>
+  <title>Router Configuration &mdash; RPKI  documentation</title>
   
 
   
@@ -155,7 +155,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="using-rpki-data.html">Using RPKI Data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Router Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Router Configuration</a></li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -259,13 +259,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Router Support</li>
+      <li>Router Configuration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/rpki/router-support.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rpki/router-configuration.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -278,11 +278,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="router-support">
-<span id="doc-rpki-rtr"></span><h1>Router Support<a class="headerlink" href="#router-support" title="Permalink to this headline">¶</a></h1>
-<p>Various vendors, such as <a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Juniper</a>, <a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Cisco</a> and <a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Nokia</a>, have implemented Route Origin Validation in their routers. In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/?get_doc&amp;v=20&amp;f=bird-6.html#ss6.13">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>.</p>
-<p>In most implementations, it is possible for the routers to set up a session with
-RPKI Relying Party software that supports the RPKI-RTR protocol. In some cases, such as OpenBGPD, the same result can be achieved through a ‘static’ configuration. The router will periodically fetch the Validated ROA Payload and allow operators to set up route maps based on the result.</p>
+  <div class="section" id="router-configuration">
+<span id="doc-rpki-rtr"></span><h1>Router Configuration<a class="headerlink" href="#router-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Several router vendors participated in the development of the RPKI standards in the IETF, ensuring the technology offered an end-to-end solution for route origin validation. The RPKI to Router protocol (RPKI-RTR), standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc6810">RFC 6810</a>, was specifically designed to deliver validated prefix origin data to routers. This, as well as origin validation functionality, is currently available in the following platforms:</p>
+<dl class="docutils">
+<dt>Juniper</dt>
+<dd>Junos version 12.2 and newer (<a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Documentation</a>)</dd>
+<dt>Cisco</dt>
+<dd>IOS release 15.2 and newer, as well as Cisco IOS/XR since release 4.3.2. (<a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Documentation</a>)</dd>
+<dt>Nokia</dt>
+<dd>Release R12.0R4 and newer, running on the 7210 SAS, 7750 SR, 7950 XRS and the VSR. (<a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Documentation</a>)</dd>
+</dl>
+<p>In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>. In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the Validated ROA Payload and allow operators to set up route maps based on the result.</p>
 </div>
 
 
