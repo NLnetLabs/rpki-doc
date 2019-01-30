@@ -290,17 +290,17 @@ started is really easy using either <a class="reference external" href="https://
 <p>Assuming you have rsync and the C toolchain but not yet Rust, here’s how
 you get the Routinator to run as an RTR server listening on 127.0.0.1 port
 3323:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://sh.rustup.rs -sSf <span class="p">|</span> sh
-<span class="nb">source</span> ~/.cargo/env
-cargo install routinator
-routinator rtrd -l <span class="m">127</span>.0.0.1:3323
+<pre class="highlight"><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">curl https://sh.rustup.rs -sSf <span class="p">|</span> sh</span>
+<span class="prompt1"><span class="nb">source</span> ~/.cargo/env</span>
+<span class="prompt1">cargo install routinator</span>
+<span class="prompt1">routinator rtrd -l <span class="m">127</span>.0.0.1:3323</span>
+</pre><p>If you have an older version of Routinator, you can update via:</p>
+<pre class="highlight"><span class="prompt1">cargo install -f routinator</span>
 </pre></div>
-</div>
-<p>If you have an older version of Routinator, you can update via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install -f routinator
-</pre></div>
-</div>
-</div>
 <div class="section" id="quick-start-with-docker">
 <h2>Quick Start with Docker<a class="headerlink" href="#quick-start-with-docker" title="Permalink to this headline">¶</a></h2>
 <p>Due to the impracticality of complying with the ARIN TAL distribution terms

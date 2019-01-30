@@ -16,7 +16,7 @@ Assuming you have rsync and the C toolchain but not yet Rust, here’s how
 you get the Routinator to run as an RTR server listening on 127.0.0.1 port
 3323:
 
-.. code-block:: bash
+.. prompt:: bash $
 
    curl https://sh.rustup.rs -sSf | sh
    source ~/.cargo/env
@@ -25,7 +25,7 @@ you get the Routinator to run as an RTR server listening on 127.0.0.1 port
 
 If you have an older version of Routinator, you can update via:
 
-.. code-block:: bash
+.. prompt:: bash $
 
    cargo install -f routinator
 
