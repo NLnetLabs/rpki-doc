@@ -1,4 +1,4 @@
-.. _doc_rpki_rov:
+.. _doc_rpki_origin_validation:
 
 Now that we've looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future.
 
@@ -47,26 +47,24 @@ In a forged origin attack, a malicious actor spoofs the AS number of another net
 Route Announcement Validity
 ---------------------------
 
-When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. `RFC 6811 <https://tools.ietf.org/html/rfc6811>`_ describes the possible statuses, which are:
+When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. Once a ROA is validated, the resulting object contains an IP prefix, a maximum length, and an origin AS number. This object is referred to as validated ROA payload (VRP). 
+
+When comparing VRPs to route announcements seen in BGP, `RFC 6811 <https://tools.ietf.org/html/rfc6811>`_ describes their possible statuses, which are:
 
 Valid
-   The route announcement is covered by at least one ROA.
+   The route announcement is covered by at least one VRP. The term *covered* means that
+   the prefix in the route announcement is equal, or more specific than the prefix in the
+   VRP.
 
 Invalid
    The prefix is announced from an unauthorised AS, or the announcement is more 
-   specific than is allowed by the maxLength set in a ROA that matches the 
+   specific than is allowed by the maxLength set in a VRP that matches the 
    prefix and AS.
    
 NotFound
-   The prefix in this announcement is not, or only partially covered by an existing ROA.
+   The prefix in this announcement is not, or only partially covered by a VRP.
 
-Anyone can download and validate the published certificates and ROAs and make routing decisions based on these three outcomes. As a general guideline, announcements with Valid origins should be preferred over those with NotFound or Invalid origins. Announcements with NotFound origins should be preferred over those with Invalid origins.
-
-As origin validation is deployed incrementally, the amount of IP address space that is covered by a ROA will gradually increase over time. Therefore, accepting the NotFound validity should be done for the foreseeable future. 
-
-For route origin validation to succeed in its objective, operators should drop all announcements that are marked as Invalid. Before deploying origin validation, operators should first analyse the effects of such a measure to avoid unintended results. Accepting Invalid announcements and merely giving them a lower preference should not be done, as the announcement will still propagate across the Internet, with possible harmful effects. 
-
-There may be an operational need to accept certain Invalids temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_, can be specified to achieve this. 
+Anyone can download and validate the published certificates and ROAs and make routing decisions based on these three outcomes. In the :ref:`doc_rpki_relying_party` section, we'll cover how this works in practice.
 
 Path Validation
 ===============
@@ -79,4 +77,4 @@ Furthermore, the vast majority of route hijacks are unintentional, and are cause
 
 Origin validation would mitigate most of these problems, offering immediate value of the system. While a malicious party could still take advantage of the lack of path validation, widespread RPKI implementation would make such instances easier to pinpoint and address.
 
-With origin validation being deployed in more and more places, there are several efforts to build upon this to offer out-of-band path validation. Autonomous System Provider Authorisation (ASPA) currently has the most traction in the IETF, defined in these drafts: `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
+With origin validation being deployed in more and more places, there are several efforts to build upon this to offer out-of-band path validation. Autonomous system provider authorisation (ASPA) currently has the most traction in the IETF, and is described in these drafts: `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
