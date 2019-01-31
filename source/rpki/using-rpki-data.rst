@@ -10,7 +10,7 @@ Operators who want to deploy route origin validation in their BGP decision makin
 Connecting to the Trust Anchor
 ------------------------------
 
-When you want to retrieve all RPKI data, you connect to the trust anchor that each RIR provides. The root certificate contains pointers to its children, which contain pointers to their children, and so on. These certificates, and other cryptographic material such as ROAs, can be published in the repository that the RIR provides, or a repository operated by an organisation who either runs delegated RPKI themselves, or provides a repository as a service. As a person who wants to fetch and validate the data, formally known as a relying party, it is not a concern where data is published. By simply connecting to the trust anchor, the chain of trust is followed automatically.
+When you want to retrieve all RPKI data, you connect to the trust anchor that each RIR provides. The root certificate contains pointers to its children, which contain pointers to their children, and so on. These certificates, and other cryptographic material such as ROAs, can be published in the repository that the RIR provides, or a repository operated by an organisation who either runs delegated RPKI themselves, or hosts a repository as a service. As a person who wants to fetch and validate the data, formally known as a relying party, it is not a concern where data is published. By simply connecting to the trust anchor, the chain of trust is followed automatically.
 
 The RIR trust anchor is found through a static trust anchor locator (TAL), which is a very  simple file that contains a URL to retrieve the trust anchor and a public key to verify its authenticity. The reason the TAL exists is because it's very likely that the contents of the self signed root certificate change, due to resource transfers between RIRs. By using a TAL, the data in the trust anchor can change, without it needing to be redistributed.
 
@@ -37,7 +37,7 @@ Fetching and verification of data should be performed periodically, in order to 
 Validating Routes
 -----------------
 
-As explained previously, when comparing VRPs to the route announcements seen in BGP, it will have an effect on their RPKI validity state. They can be:
+As explained, when comparing VRPs to the route announcements seen in BGP, it will have an effect on their RPKI validity state. They can be:
 
 Valid
    The route announcement is covered by at least one VRP. The term *covered* means that
@@ -80,6 +80,6 @@ The RPKI validated cache can be fed directly into RPKI-capable routers via the R
 
     RPKI publication, data retrieval, validation and processing
 
-Please keep in mind that an RPKI validator is software that fetches cryptographic material from the outside world. For it to do this, it needs at least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases, the processed data is fed to a router via RPKI-RTR over a clear channel, as it's running in your local network. There is currently no widespread support for SSH, TLS, or other encryption standards. Please take appropriate care when implementing. Lastly, it is recommended to run multiple validator instances as a failover measure.
+Please keep in mind that the RPKI validator software you run in your network fetches cryptographic material from the outside world. To do this, it needs at least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases, the processed data is fed to a router via RPKI-RTR over a clear channel, as it's running in your local network. There is currently no widespread support for SSH, TLS, or other encryption standards. Please take appropriate care when implementing. Lastly, it is recommended to run multiple validator instances as a failover measure.
 
 In the :ref:`doc_rpki_rtr` section we will look at which routers support route origin validation, and how to get started with each.

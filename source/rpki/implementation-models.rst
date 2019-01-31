@@ -26,12 +26,12 @@ Despite these variations, if you are an organisation with a single ASN and a han
 Delegated RPKI
 --------------
 
-Operators who prefer more control and have better integration with their own systems can run their own child CA. This is model is usually referred to as delegated RPKI. 
+Operators who prefer more control and have better integration with their systems can run their own child CA. This is model is usually referred to as delegated RPKI. 
 
-In this model, the certificate authority that manages object signing is functionally separated from the publication of cryptographic material. This means that an organisation can run their own CA and either publish themselves, or delegate this responsibility to a third party, such as a hosting company or cloud provider. 
+In this model, the certificate authority that manages object signing is functionally separated from the publication of cryptographic material. This means that an organisation can run a CA and either publish themselves, or delegate this responsibility to a third party, such as a hosting company or cloud provider. 
 
-There may be various reasons for organisations to choose this model. For example, this may be useful for organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their own CA and manage ROAs themselves.
+There may be various reasons for organisations to choose this model. For example, this may be useful for organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their a CA on their systems and manage ROAs themselves.
 
-Alternatively, enterprises who manage large amounts of address space across various RIRs, may not want to manage ROAs on up to five different web interfaces. Instead they might prefer to be operationally independent from the RIR and manage everything from within one package this is tightly integrated with IP address management and provisioning systems. 
+Alternatively, enterprises who manage large amounts of address space across various RIRs, may not want to manage ROAs in up to five different web interfaces. Instead, they might prefer to be operationally independent from the RIR and manage everything from within one package this is tightly integrated with IP address management and provisioning systems. 
 
 Lastly, in the LACNIC and APNIC regions there are several National Internet Registries who provide registration services on a national level to their members and constituents. They also need to be operationally independent and run a certificate authority as a child of their RIR.

@@ -284,8 +284,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p id="doc-rpki-origin-validation">Now that we’ve looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future.</p>
-<p>Both origin validation and path validation are documented IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.</p>
+  <p id="doc-rpki-origin-validation">Now that we’ve looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure.</p>
+<p>RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future. Both origin validation and path validation are documented IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.</p>
 <div class="section" id="route-origin-validation">
 <h1>Route Origin Validation<a class="headerlink" href="#route-origin-validation" title="Permalink to this headline">¶</a></h1>
 <p>With route origin validation (ROV), the RPKI system tries to closely mimic what <em>route</em> objects in the IRR intend to do, but then in a more trustworthy manner. It also adds a couple of useful features.</p>
