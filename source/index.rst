@@ -12,11 +12,15 @@ The table of contents below and in the sidebar should let you easily access the 
 
 .. note:: This documentation is an open source project maintained by the RPKI team at 
           NLnet Labs, with contributions from  the network operator community around 
-          the world. We always appreciate your feedback and improvements.
+          the world. We always appreciate your feedback and improvements. 
           
           You can submit an issue or pull request on the `GitHub repository
           <https://github.com/NLnetLabs/rpkidoc/issues>`_, or post a message on the
-          `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. 
+          `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you
+          are interested in providing a translation for this project, please
+          read `this guide 
+          <https://docs.readthedocs.io/en/latest/guides/manage-translations.html>`_
+          to get started.
 
 The main documentation is organised into the following sections:
 
