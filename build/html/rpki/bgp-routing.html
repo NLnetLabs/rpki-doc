@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Route Origin Validation" href="route-origin-validation.html" />
+    <link rel="next" title="Securing BGP" href="securing-bgp.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
 
   
@@ -140,15 +140,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html">Route Origin Validation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#maximum-prefix-length">Maximum Prefix Length</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-bgp.html">Securing BGP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#route-origin-validation">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="securing-bgp.html#maximum-prefix-length">Maximum Prefix Length</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-announcement-validity">Route Announcement Validity</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#path-validation">Path Validation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="implementation-models.html">Implementation Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
@@ -284,9 +287,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p id="doc-rpki-bgp-routing">To understand how RPKI is used to make Internet routing more secure, we must first look at how routing works, what the weaknesses are and which elements RPKI can currently help protect against.</p>
-<div class="section" id="internet-routing">
-<h1>Internet Routing<a class="headerlink" href="#internet-routing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="internet-routing">
+<span id="doc-rpki-bgp-routing"></span><h1>Internet Routing<a class="headerlink" href="#internet-routing" title="Permalink to this headline">¶</a></h1>
+<p>To understand how RPKI is used to make Internet routing more secure, we must first look at how routing works, what the weaknesses are and which elements RPKI can currently help protect against.</p>
 <p>The global routing system of the Internet consists of a number of functionally independent actors called autonomous systems (AS), which use the Border Gateway Protocol (BGP) to exchange routing information.</p>
 <p>An autonomous system is a set of Internet routable IP prefixes belonging to a network or a collection of networks that are all managed and supervised by a single entity or organisation. An AS utilises a common routing policy controlled by the entity and is identified by a globally unique 16 or 32-bit number. The AS number (ASN) is assigned by one of the five Regional Internet Registries (RIRs), just like IP address blocks.</p>
 <p>The Border Gateway Protocol manages the routed peerings, prefix advertisement and routing of packets between different autonomous systems across the Internet. BGP uses the ASN to uniquely identify each system. In short, BGP is the routing protocol for AS paths across the Internet. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change, which easily propagate globally within a few minutes.</p>
@@ -371,7 +374,7 @@ and may, in some cases, result in a denial of service or black hole.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="route-origin-validation.html" class="btn btn-neutral float-right" title="Route Origin Validation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="securing-bgp.html" class="btn btn-neutral float-right" title="Securing BGP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

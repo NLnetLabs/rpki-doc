@@ -1,18 +1,23 @@
-.. _doc_rpki_origin_validation:
+.. _doc_rpki_securing_bgp:
+
+Securing BGP
+============
 
 Now that we've looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure. 
 
 RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future. Both origin validation and path validation are documented IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.
 
+.. _rov:
+
 Route Origin Validation
-=======================
+-----------------------
 
 With route origin validation (ROV), the RPKI system tries to closely mimic what *route* objects in the IRR intend to do, but then in a more trustworthy manner. It also adds a couple of useful features.
 
 Origin validation is currently the only functionality that is operationally used. The five RIRs provide functionality for it, there is open source software available for creation and publication of data, and all major router vendors have implemented ROV in their platforms. Various router software implementations offer support for it, as well. 
 
 Route Origin Authorisations
----------------------------
+"""""""""""""""""""""""""""
 
 Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
 
@@ -25,8 +30,10 @@ Using the RPKI system, the legitimate holder of a block of IP addresses can make
 
 The creation of a ROA is solely tied to the IP address space that is listed on the certificate and not to the AS numbers. This means the holder of the certificate can authorise any AS to originate their prefix, not just their own autonomous systems. 
 
+Once an organisation starts authorising announcements with RPKI, it is imperative that ROAs are created for all route origins from a certain prefix, including the more specifics announced by other business units or customers. 
+
 Maximum Prefix Length
-"""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~
 
 In addition to the origin AS and the prefix, the ROA contains a maximum length (maxLength) value. This is an attribute that a *route* object in RPSL doesn't have. Described in `RFC 6482 <https://tools.ietf.org/html/rfc6482>`_, the maxLength specifies the maximum length of the IP address prefix that the AS is authorised to advertise. This gives the holder of the prefix control over the level of deaggregation an AS is allowed to do. 
 
@@ -45,7 +52,7 @@ For example, if a ROA authorises a certain AS to originate 192.0.1.0/24 and the 
 In a forged origin attack, a malicious actor spoofs the AS number of another network. With a minimal ROA length, the attack does not work for sub-prefixes that are not covered by overly long maxLength. For example, if, instead of 10.0.0.0/16-24, one issues 10.0.0.0/16 and 10.0.42.0/24, a forged origin attack cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is more likely to be noticed because of its size.
 
 Route Announcement Validity
----------------------------
+"""""""""""""""""""""""""""
 
 When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. Once a ROA is validated, the resulting object contains an IP prefix, a maximum length, and an origin AS number. This object is referred to as validated ROA payload (VRP). 
 
@@ -67,7 +74,7 @@ NotFound
 Anyone can download and validate the published certificates and ROAs and make routing decisions based on these three outcomes. In the :ref:`doc_rpki_relying_party` section, we'll cover how this works in practice.
 
 Path Validation
-===============
+---------------
 
 Currently, RPKI only provides origin validation. While BGPsec path validation is a desirable characteristic and standardised in `RFC 8205 <https://tools.ietf.org/html/rfc8205>`_, real-world deployment may prove limited for the foreseeable future. However, RPKI origin validation functionality addresses a large portion of the problem surface. 
 

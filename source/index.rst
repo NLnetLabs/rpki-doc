@@ -39,7 +39,7 @@ The main documentation is organised into the following sections:
 
    rpki/introduction
    rpki/bgp-routing
-   rpki/route-origin-validation
+   rpki/securing-bgp
    rpki/implementation-models
    rpki/using-rpki-data
    rpki/router-configuration

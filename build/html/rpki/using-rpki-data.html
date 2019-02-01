@@ -140,15 +140,18 @@
 <li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html">Route Origin Validation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#maximum-prefix-length">Maximum Prefix Length</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-bgp.html">Securing BGP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#route-origin-validation">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="securing-bgp.html#maximum-prefix-length">Maximum Prefix Length</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-announcement-validity">Route Announcement Validity</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#path-validation">Path Validation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="implementation-models.html">Implementation Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="implementation-models.html#hosted-rpki">Hosted RPKI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation-models.html#delegated-rpki">Delegated RPKI</a></li>
@@ -290,7 +293,7 @@
 <p>Operators who want to deploy route origin validation in their BGP decision making process have to fetch and validate all of the published RPKI data. As with any PKI, you have to start with one or more entities you are prepared to trust. In the case of RPKI, these are the five Regional Internet Registries.</p>
 <div class="section" id="connecting-to-the-trust-anchor">
 <h2>Connecting to the Trust Anchor<a class="headerlink" href="#connecting-to-the-trust-anchor" title="Permalink to this headline">¶</a></h2>
-<p>When you want to retrieve all RPKI data, you connect to the trust anchor that each RIR provides. The root certificate contains pointers to its children, which contain pointers to their children, and so on. These certificates, and other cryptographic material such as ROAs, can be published in the repository that the RIR provides, or a repository operated by an organisation who either runs delegated RPKI themselves, or provides a repository as a service. As a person who wants to fetch and validate the data, formally known as a relying party, it is not a concern where data is published. By simply connecting to the trust anchor, the chain of trust is followed automatically.</p>
+<p>When you want to retrieve all RPKI data, you connect to the trust anchor that each RIR provides. The root certificate contains pointers to its children, which contain pointers to their children, and so on. These certificates, and other cryptographic material such as ROAs, can be published in the repository that the RIR provides, or a repository operated by an organisation who either runs delegated RPKI themselves, or hosts a repository as a service. As a person who wants to fetch and validate the data, formally known as a relying party, it is not a concern where data is published. By simply connecting to the trust anchor, the chain of trust is followed automatically.</p>
 <p>The RIR trust anchor is found through a static trust anchor locator (TAL), which is a very  simple file that contains a URL to retrieve the trust anchor and a public key to verify its authenticity. The reason the TAL exists is because it’s very likely that the contents of the self signed root certificate change, due to resource transfers between RIRs. By using a TAL, the data in the trust anchor can change, without it needing to be redistributed.</p>
 </div>
 <div class="section" id="fetching-and-verifying">
@@ -312,7 +315,7 @@ this term because <em>validity</em> is used elsewhere in a different context.</p
 </div>
 <div class="section" id="validating-routes">
 <h2>Validating Routes<a class="headerlink" href="#validating-routes" title="Permalink to this headline">¶</a></h2>
-<p>As explained previously, when comparing VRPs to the route announcements seen in BGP, it will have an effect on their RPKI validity state. They can be:</p>
+<p>As explained in the <a class="reference internal" href="securing-bgp.html#rov"><span class="std std-ref">Route Origin Validation</span></a> section, when comparing VRPs to the route announcements seen in BGP, it will have an effect on their RPKI validity state. They can be:</p>
 <dl class="docutils">
 <dt>Valid</dt>
 <dd>The route announcement is covered by at least one VRP. The term <em>covered</em> means that
@@ -326,6 +329,7 @@ prefix and AS.</dd>
 <dd>The prefix in this announcement is not, or only partially covered by a VRP.</dd>
 </dl>
 <p>Please carefully note the use of the word <em>validity</em>. Because RPKI revolves around signing and validating cryptographic objects, it’s easy to confuse this term with the validity state of a BGP announcement. As mentioned, it can occur that a ROA doesn’t pass cryptographic verification, for example because it expired. As a result, it is discarded and will not affect any BGP announcement. In turn, only a validated ROA payload—sometimes referred to as ‘valid ROA’—can make a BGP announcement Valid or Invalid.</p>
+<p>A route announcement may be covered by several VRPs. For example, there may be a VRP for the aggregate announcement, which overlaps with a customer announcement of a more specific prefix from a different AS. The route announcement will be Valid as long as there is one covering VRP that authorises it.</p>
 <p>Based on the three validity outcomes, operators can make an informed decision what to do with the BGP route announcements they see. As a general guideline, announcements with Valid origins should be preferred over those with NotFound or Invalid origins. Announcements with NotFound origins should be preferred over those with Invalid origins.</p>
 <p>As origin validation is deployed incrementally, the amount of IP address space that is covered by a ROA will gradually increase over time. Therefore, accepting the NotFound validity should be done for the foreseeable future.</p>
 <div class="admonition important">
@@ -347,7 +351,7 @@ harmful effects.</p>
 <a class="reference internal image-reference" href="../_images/rpki-relying-party-process.svg"><img alt="The RPKI Data Retrieval and Validation" src="../_images/rpki-relying-party-process.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">RPKI publication, data retrieval, validation and processing</span></p>
 </div>
-<p>Please keep in mind that an RPKI validator is software that fetches cryptographic material from the outside world. For it to do this, it needs at least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases, the processed data is fed to a router via RPKI-RTR over a clear channel, as it’s running in your local network. There is currently no widespread support for SSH, TLS, or other encryption standards. Please take appropriate care when implementing. Lastly, it is recommended to run multiple validator instances as a failover measure.</p>
+<p>Please keep in mind that the RPKI validator software you run in your network fetches cryptographic material from the outside world. To do this, it needs at least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases, the processed data is fed to a router via RPKI-RTR over a clear channel, as it’s running in your local network. There is currently no widespread support for SSH, TLS, or other encryption standards. Please take appropriate care when implementing. Lastly, it is recommended to run multiple validator instances as a failover measure.</p>
 <p>In the <a class="reference internal" href="router-configuration.html#doc-rpki-rtr"><span class="std std-ref">Router Configuration</span></a> section we will look at which routers support route origin validation, and how to get started with each.</p>
 </div>
 </div>

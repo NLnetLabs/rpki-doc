@@ -33,7 +33,7 @@ RPKI is a community-driven system in which open source software developers, rout
 Organisation of this Documentation
 ----------------------------------
 
-This documentation is organised in four main sections:
+This documentation is organised into three main sections:
 
 - The :ref:`sec-general` section contains this introduction as well as
   information about the licensing, authors, etc. It also contains the :ref:`doc_faq`.

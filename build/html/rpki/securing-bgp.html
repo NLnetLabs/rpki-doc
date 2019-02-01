@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Router Configuration &mdash; RPKI  documentation</title>
+  <title>Securing BGP &mdash; RPKI  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Krill" href="../krill/index.html" />
-    <link rel="prev" title="Using RPKI Data" href="using-rpki-data.html" /> 
+    <link rel="next" title="Implementation Models" href="implementation-models.html" />
+    <link rel="prev" title="Internet Routing" href="bgp-routing.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -140,16 +140,16 @@
 <li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="securing-bgp.html">Securing BGP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#route-origin-validation">Route Origin Validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="securing-bgp.html#maximum-prefix-length">Maximum Prefix Length</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Securing BGP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#route-origin-validation">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#route-origin-authorisations">Route Origin Authorisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#maximum-prefix-length">Maximum Prefix Length</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#route-announcement-validity">Route Announcement Validity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#path-validation">Path Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-validation">Path Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="implementation-models.html">Implementation Models</a><ul>
@@ -164,7 +164,7 @@
 <li class="toctree-l2"><a class="reference internal" href="using-rpki-data.html#feeding-routers">Feeding Routers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Router Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -268,13 +268,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Router Configuration</li>
+      <li>Securing BGP</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/rpki/router-configuration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rpki/securing-bgp.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -287,18 +287,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="router-configuration">
-<span id="doc-rpki-rtr"></span><h1>Router Configuration<a class="headerlink" href="#router-configuration" title="Permalink to this headline">¶</a></h1>
-<p>Several router vendors participated in the development of the RPKI standards in the IETF, ensuring the technology offered an end-to-end solution for route origin validation. The RPKI to Router protocol (RPKI-RTR), standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc6810">RFC 6810</a>, was specifically designed to deliver validated prefix origin data to routers. This, as well as origin validation functionality, is currently available in the following platforms:</p>
+  <div class="section" id="securing-bgp">
+<span id="doc-rpki-securing-bgp"></span><h1>Securing BGP<a class="headerlink" href="#securing-bgp" title="Permalink to this headline">¶</a></h1>
+<p>Now that we’ve looked at how the RPKI structure is built and understand the basics of Internet routing, we can look at how RPKI can be used to make BGP more secure.</p>
+<p>RPKI provides a set of building blocks allowing for various levels of protection of the routing system. The initial goal is to provide route origin validation, offering a stepping stone to providing path validation in the future. Both origin validation and path validation are documented IETF standards. In addition, there are drafts describing autonomous system provider authorisation, aimed at providing a more lightweight, incremental approach to path validation.</p>
+<div class="section" id="route-origin-validation">
+<span id="rov"></span><h2>Route Origin Validation<a class="headerlink" href="#route-origin-validation" title="Permalink to this headline">¶</a></h2>
+<p>With route origin validation (ROV), the RPKI system tries to closely mimic what <em>route</em> objects in the IRR intend to do, but then in a more trustworthy manner. It also adds a couple of useful features.</p>
+<p>Origin validation is currently the only functionality that is operationally used. The five RIRs provide functionality for it, there is open source software available for creation and publication of data, and all major router vendors have implemented ROV in their platforms. Various router software implementations offer support for it, as well.</p>
+<div class="section" id="route-origin-authorisations">
+<h3>Route Origin Authorisations<a class="headerlink" href="#route-origin-authorisations" title="Permalink to this headline">¶</a></h3>
+<p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/rpki-roa-creation.svg"><img alt="RPKI ROA Creation" src="../_images/rpki-roa-creation.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">Each CA can issue Route Origin Authorisations</span></p>
+</div>
+<p>The creation of a ROA is solely tied to the IP address space that is listed on the certificate and not to the AS numbers. This means the holder of the certificate can authorise any AS to originate their prefix, not just their own autonomous systems.</p>
+<p>Once an organisation starts authorising announcements with RPKI, it is imperative that ROAs are created for all route origins from a certain prefix, including the more specifics announced by other business units or customers.</p>
+<div class="section" id="maximum-prefix-length">
+<h4>Maximum Prefix Length<a class="headerlink" href="#maximum-prefix-length" title="Permalink to this headline">¶</a></h4>
+<p>In addition to the origin AS and the prefix, the ROA contains a maximum length (maxLength) value. This is an attribute that a <em>route</em> object in RPSL doesn’t have. Described in <a class="reference external" href="https://tools.ietf.org/html/rfc6482">RFC 6482</a>, the maxLength specifies the maximum length of the IP address prefix that the AS is authorised to advertise. This gives the holder of the prefix control over the level of deaggregation an AS is allowed to do.</p>
+<p>For example, if a ROA authorises a certain AS to originate 192.0.1.0/24 and the maxLength is set to /25, the AS can originate a single /24 or two adjacent /25 blocks. Any more specific announcement is unauthorised by the ROA. Using this example, the shorthand notation for prefix and maxLength you will often encounter is <code class="docutils literal notranslate"><span class="pre">192.0.1.0/24-25</span></code>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>According to <a class="reference external" href="https://tools.ietf.org/html/rfc7115">RFC 7115</a>, operators
+should be conservative in use of maxLength in ROAs. For
+example, if a prefix will have only a few sub-prefixes announced,
+multiple ROAs for the specific announcements should be used as
+opposed to one ROA with a long maxLength.</p>
+<p class="last"><strong>Liberal usage of maxLength opens up the network to a forged origin
+attack. ROAs should be as precise as possible, meaning they should
+match prefixes as announced in BGP.</strong></p>
+</div>
+<p>In a forged origin attack, a malicious actor spoofs the AS number of another network. With a minimal ROA length, the attack does not work for sub-prefixes that are not covered by overly long maxLength. For example, if, instead of 10.0.0.0/16-24, one issues 10.0.0.0/16 and 10.0.42.0/24, a forged origin attack cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is more likely to be noticed because of its size.</p>
+</div>
+</div>
+<div class="section" id="route-announcement-validity">
+<h3>Route Announcement Validity<a class="headerlink" href="#route-announcement-validity" title="Permalink to this headline">¶</a></h3>
+<p>When a network operator creates a ROA for a certain combination of origin AS and prefix, this will have an effect on the RPKI validity of one or more route announcements. Once a ROA is validated, the resulting object contains an IP prefix, a maximum length, and an origin AS number. This object is referred to as validated ROA payload (VRP).</p>
+<p>When comparing VRPs to route announcements seen in BGP, <a class="reference external" href="https://tools.ietf.org/html/rfc6811">RFC 6811</a> describes their possible statuses, which are:</p>
 <dl class="docutils">
-<dt>Juniper</dt>
-<dd>Junos version 12.2 and newer (<a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Documentation</a>)</dd>
-<dt>Cisco</dt>
-<dd>IOS release 15.2 and newer, as well as Cisco IOS/XR since release 4.3.2. (<a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Documentation</a>)</dd>
-<dt>Nokia</dt>
-<dd>Release R12.0R4 and newer, running on the 7210 SAS, 7750 SR, 7950 XRS and the VSR. (<a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Documentation</a>)</dd>
+<dt>Valid</dt>
+<dd>The route announcement is covered by at least one VRP. The term <em>covered</em> means that
+the prefix in the route announcement is equal, or more specific than the prefix in the
+VRP.</dd>
+<dt>Invalid</dt>
+<dd>The prefix is announced from an unauthorised AS, or the announcement is more
+specific than is allowed by the maxLength set in a VRP that matches the
+prefix and AS.</dd>
+<dt>NotFound</dt>
+<dd>The prefix in this announcement is not, or only partially covered by a VRP.</dd>
 </dl>
-<p>In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>. In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result.</p>
+<p>Anyone can download and validate the published certificates and ROAs and make routing decisions based on these three outcomes. In the <a class="reference internal" href="using-rpki-data.html#doc-rpki-relying-party"><span class="std std-ref">Using RPKI Data</span></a> section, we’ll cover how this works in practice.</p>
+</div>
+</div>
+<div class="section" id="path-validation">
+<h2>Path Validation<a class="headerlink" href="#path-validation" title="Permalink to this headline">¶</a></h2>
+<p>Currently, RPKI only provides origin validation. While BGPsec path validation is a desirable characteristic and standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc8205">RFC 8205</a>, real-world deployment may prove limited for the foreseeable future. However, RPKI origin validation functionality addresses a large portion of the problem surface.</p>
+<p>For many networks, the most important prefixes can be found one AS hop away (coming from a specific peer, for example), and this is the case for large portions of the Internet from the perspective of a transit provider - entities which are ideally situated to act on RPKI data and accept only valid routes for redistribution.</p>
+<p>Furthermore, the vast majority of route hijacks are unintentional, and are caused by ‘fat-fingering’, where an operator accidently originates a prefix they are not the holder of.</p>
+<p>Origin validation would mitigate most of these problems, offering immediate value of the system. While a malicious party could still take advantage of the lack of path validation, widespread RPKI implementation would make such instances easier to pinpoint and address.</p>
+<p>With origin validation being deployed in more and more places, there are several efforts to build upon this to offer out-of-band path validation. Autonomous system provider authorisation (ASPA) currently has the most traction in the IETF, and is described in these drafts: <a class="reference external" href="https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile">draft-azimov-sidrops-aspa-profile</a> and <a class="reference external" href="https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification">draft-azimov-sidrops-aspa-verification</a>.</p>
+</div>
 </div>
 
 
@@ -309,10 +359,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../krill/index.html" class="btn btn-neutral float-right" title="Krill" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implementation-models.html" class="btn btn-neutral float-right" title="Implementation Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="using-rpki-data.html" class="btn btn-neutral" title="Using RPKI Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bgp-routing.html" class="btn btn-neutral" title="Internet Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

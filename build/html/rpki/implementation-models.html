@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using RPKI Data" href="using-rpki-data.html" />
-    <link rel="prev" title="Route Origin Validation" href="route-origin-validation.html" /> 
+    <link rel="prev" title="Securing BGP" href="securing-bgp.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -140,15 +140,18 @@
 <li class="toctree-l2"><a class="reference internal" href="bgp-routing.html#the-internet-routing-registry">The Internet Routing Registry</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html">Route Origin Validation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="route-origin-validation.html#maximum-prefix-length">Maximum Prefix Length</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-bgp.html">Securing BGP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#route-origin-validation">Route Origin Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-origin-authorisations">Route Origin Authorisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="securing-bgp.html#maximum-prefix-length">Maximum Prefix Length</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="route-origin-validation.html#route-announcement-validity">Route Announcement Validity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securing-bgp.html#route-announcement-validity">Route Announcement Validity</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="route-origin-validation.html#path-validation">Path Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="securing-bgp.html#path-validation">Path Validation</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Implementation Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#hosted-rpki">Hosted RPKI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delegated-rpki">Delegated RPKI</a></li>
@@ -300,10 +303,10 @@
 </div>
 <div class="section" id="delegated-rpki">
 <h2>Delegated RPKI<a class="headerlink" href="#delegated-rpki" title="Permalink to this headline">¶</a></h2>
-<p>Operators who prefer more control and have better integration with their own systems can run their own child CA. This is model is usually referred to as delegated RPKI.</p>
-<p>In this model, the certificate authority that manages object signing is functionally separated from the publication of cryptographic material. This means that an organisation can run their own CA and either publish themselves, or delegate this responsibility to a third party, such as a hosting company or cloud provider.</p>
-<p>There may be various reasons for organisations to choose this model. For example, this may be useful for organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their own CA and manage ROAs themselves.</p>
-<p>Alternatively, enterprises who manage large amounts of address space across various RIRs, may not want to manage ROAs on up to five different web interfaces. Instead they might prefer to be operationally independent from the RIR and manage everything from within one package this is tightly integrated with IP address management and provisioning systems.</p>
+<p>Operators who prefer more control and have better integration with their systems can run their own child CA. This is model is usually referred to as delegated RPKI.</p>
+<p>In this model, the certificate authority that manages object signing is functionally separated from the publication of cryptographic material. This means that an organisation can run a CA and either publish themselves, or delegate this responsibility to a third party, such as a hosting company or cloud provider.</p>
+<p>There may be various reasons for organisations to choose this model. For example, this may be useful for organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their a CA on their systems and manage ROAs themselves.</p>
+<p>Alternatively, enterprises who manage large amounts of address space across various RIRs, may not want to manage ROAs in up to five different web interfaces. Instead, they might prefer to be operationally independent from the RIR and manage everything from within one package this is tightly integrated with IP address management and provisioning systems.</p>
 <p>Lastly, in the LACNIC and APNIC regions there are several National Internet Registries who provide registration services on a national level to their members and constituents. They also need to be operationally independent and run a certificate authority as a child of their RIR.</p>
 </div>
 </div>
@@ -319,7 +322,7 @@
         <a href="using-rpki-data.html" class="btn btn-neutral float-right" title="Using RPKI Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="route-origin-validation.html" class="btn btn-neutral" title="Route Origin Validation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="securing-bgp.html" class="btn btn-neutral" title="Securing BGP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

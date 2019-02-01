@@ -15,7 +15,7 @@ Nokia
    Release R12.0R4 and newer, running on the 7210 SAS, 7750 SR, 7950 XRS and the VSR. (`Documentation <https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`__)   
    
 In addition, various software solutions have support for RPKI as well, such as `BIRD
-<https://bird.network.cz/>`_ and `OpenBGPD <http://openbgpd.org>`_. In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the Validated ROA Payload and allow operators to set up route maps based on the result.
+<https://bird.network.cz/>`_ and `OpenBGPD <http://openbgpd.org>`_. In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result.
 
 .. Juniper
 .. -------
