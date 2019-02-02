@@ -29,7 +29,7 @@ Certificate Authority Software
 
 `Krill <https://nlnetlabs.nl/projects/rpki/krill/>`_
    RPKI Certificate Authority software by NLnet Labs, written in the Rust 
-   programming language.
+   programming language. Available late 2019.
 
 `rpkid <https://github.com/dragonresearch/rpki.net>`_
    RPKI Certificate Authority software by Dragon Research Labs, written in 
