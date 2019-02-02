@@ -165,6 +165,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#supporting-tools">Supporting Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#insights-and-statistics">Insights and Statistics</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -328,8 +335,8 @@ prefix and AS.</dd>
 <dt>NotFound</dt>
 <dd>The prefix in this announcement is not, or only partially covered by a VRP.</dd>
 </dl>
-<p>Please carefully note the use of the word <em>validity</em>. Because RPKI revolves around signing and validating cryptographic objects, it’s easy to confuse this term with the validity state of a BGP announcement. As mentioned, it can occur that a ROA doesn’t pass cryptographic verification, for example because it expired. As a result, it is discarded and will not affect any BGP announcement. In turn, only a validated ROA payload—sometimes referred to as ‘valid ROA’—can make a BGP announcement Valid or Invalid.</p>
-<p>A route announcement may be covered by several VRPs. For example, there may be a VRP for the aggregate announcement, which overlaps with a customer announcement of a more specific prefix from a different AS. The route announcement will be Valid as long as there is one covering VRP that authorises it.</p>
+<p>Please carefully note the use of the word <em>validity</em>. Because RPKI revolves around signing and verifying cryptographic objects, it’s easy to confuse this term with the validity state of a BGP announcement. As mentioned, it can occur that a ROA doesn’t pass cryptographic verification, for example because it expired. As a result, it is discarded and will not affect any BGP announcement. In turn, only a validated ROA payload—sometimes referred to as ‘valid ROA’—can make a BGP announcement Valid or Invalid.</p>
+<p>A route announcement may be covered by several VRPs. For example, there may be a VRP for the aggregate announcement, which overlaps with a customer announcement of a more specific prefix from a different AS. A route announcement will be Valid as long as there is one covering VRP that authorises it.</p>
 <p>Based on the three validity outcomes, operators can make an informed decision what to do with the BGP route announcements they see. As a general guideline, announcements with Valid origins should be preferred over those with NotFound or Invalid origins. Announcements with NotFound origins should be preferred over those with Invalid origins.</p>
 <p>As origin validation is deployed incrementally, the amount of IP address space that is covered by a ROA will gradually increase over time. Therefore, accepting the NotFound validity should be done for the foreseeable future.</p>
 <div class="admonition important">
@@ -342,7 +349,7 @@ merely giving them a lower preference should not be done, as they
 will still propagate across the Internet, with possible
 harmful effects.</p>
 </div>
-<p>There may be an operational need to accept certain Invalids temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc8416">RFC 8416</a>, can be specified to achieve this.</p>
+<p>There may be an operational need to accept certain Invalid announcements temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc8416">RFC 8416</a>, can be specified to achieve this.</p>
 </div>
 <div class="section" id="feeding-routers">
 <h2>Feeding Routers<a class="headerlink" href="#feeding-routers" title="Permalink to this headline">¶</a></h2>

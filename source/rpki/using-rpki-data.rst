@@ -52,9 +52,9 @@ Invalid
 NotFound
    The prefix in this announcement is not, or only partially covered by a VRP.
 
-Please carefully note the use of the word *validity*. Because RPKI revolves around signing and validating cryptographic objects, it's easy to confuse this term with the validity state of a BGP announcement. As mentioned, it can occur that a ROA doesn't pass cryptographic verification, for example because it expired. As a result, it is discarded and will not affect any BGP announcement. In turn, only a validated ROA payload—sometimes referred to as 'valid ROA'—can make a BGP announcement Valid or Invalid.
+Please carefully note the use of the word *validity*. Because RPKI revolves around signing and verifying cryptographic objects, it's easy to confuse this term with the validity state of a BGP announcement. As mentioned, it can occur that a ROA doesn't pass cryptographic verification, for example because it expired. As a result, it is discarded and will not affect any BGP announcement. In turn, only a validated ROA payload—sometimes referred to as 'valid ROA'—can make a BGP announcement Valid or Invalid.
 
-A route announcement may be covered by several VRPs. For example, there may be a VRP for the aggregate announcement, which overlaps with a customer announcement of a more specific prefix from a different AS. The route announcement will be Valid as long as there is one covering VRP that authorises it.
+A route announcement may be covered by several VRPs. For example, there may be a VRP for the aggregate announcement, which overlaps with a customer announcement of a more specific prefix from a different AS. A route announcement will be Valid as long as there is one covering VRP that authorises it.
 
 Based on the three validity outcomes, operators can make an informed decision what to do with the BGP route announcements they see. As a general guideline, announcements with Valid origins should be preferred over those with NotFound or Invalid origins. Announcements with NotFound origins should be preferred over those with Invalid origins.
 
@@ -68,7 +68,7 @@ As origin validation is deployed incrementally, the amount of IP address space t
                will still propagate across the Internet, with possible
                harmful effects. 
 
-There may be an operational need to accept certain Invalids temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_, can be specified to achieve this. 
+There may be an operational need to accept certain Invalid announcements temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_, can be specified to achieve this. 
 
 Feeding Routers
 ---------------

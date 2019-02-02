@@ -165,6 +165,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#supporting-tools">Supporting Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#insights-and-statistics">Insights and Statistics</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -289,10 +296,10 @@
             
   <div class="section" id="implementation-models">
 <span id="doc-implementation-models"></span><h1>Implementation Models<a class="headerlink" href="#implementation-models" title="Permalink to this headline">¶</a></h1>
-<p>RPKI is designed to allow every resource holder generate and publish cryptographic material on their own systems. This is commonly referred to as delegated RPKI. To offer a turn-key solution, each RIR also offers a hosted RPKI system in their member portals. Both models have their own advantages, based on the specific requirements of the organisation using the system.</p>
+<p>RPKI is designed to allow every resource holder to generate and publish cryptographic material on their own systems. This is commonly referred to as delegated RPKI. To offer a turn-key solution, each RIR also offers a hosted RPKI system in their member portals. Both models have their own advantages, based on the specific requirements of the organisation using the system.</p>
 <div class="section" id="hosted-rpki">
 <h2>Hosted RPKI<a class="headerlink" href="#hosted-rpki" title="Permalink to this headline">¶</a></h2>
-<p>When the five RIRs committed to offer RPKI services around 2008, it was clear that there would be an early adopters phase for a considerable amount of time. Given the past experiences with IPv6 and DNSSEC uptake, the RIRs decided to offer a hosted RPKI solution to lower the entry barrier into the technology. This way, organisations could easily get operational experience with the technology, without having to manage a certificate authority themselves.</p>
+<p>In 2008, when the five RIRs committed to start offering RPKI services, it was clear that there would be an early adopters phase for a considerable amount of time. Given the past experiences with IPv6 and DNSSEC uptake, the RIRs decided to offer a hosted RPKI solution to lower the entry barrier into the technology. This way, organisations could easily get operational experience with the technology, without having to manage a certificate authority themselves.</p>
 <p>Hosted RPKI offers a fair balance between ease-of-use, maintenance and flexibility. It allows users to log into their RIR member portal and request a resource certificate, which is securely hosted on the servers of the RIR. All cryptographic operations, such as key roll overs, are automated. The certificates and ROA are published in repositories hosted by the RIR. In short, there is nothing that the user has to manage, apart from creating and maintaining ROAs.</p>
 <p>The functionality and user interfaces of the hosted RPKI implementations vary greatly across the five RIRs. Some automate nearly everything, and ROAs can be created based on the announcements that are seen in BGP using the resources on the certificate. In other implementations, ROAs have to be created manually and individually signed with a separate key.</p>
 <p>Despite these variations, if you are an organisation with a single ASN and a handful of statically announced IP address blocks that are not delegated to customers, hosted RPKI is sufficient for most use cases.</p>

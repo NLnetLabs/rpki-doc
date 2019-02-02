@@ -5,7 +5,7 @@ Krill
 =====
 
 Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon, 
-featuring a Certificate Authority and Publication Server, written in Rust. 
+featuring a Certificate Authority and Publication Server, written by NLnet Labs in the Rust programming language.
 
 This implementation will allow operators to run their own Certificate Authority (CA) as a child of a Regional Internet Registry or a different parent, such as a National Internet Registry (NIR) or Enterprise. The CA will allow operators to generate and publish their own cryptographic material, including all certificates and ROAs.
 

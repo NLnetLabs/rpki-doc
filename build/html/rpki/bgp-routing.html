@@ -165,6 +165,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#supporting-tools">Supporting Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#insights-and-statistics">Insights and Statistics</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -346,7 +353,7 @@ and may, in some cases, result in a denial of service or black hole.</p>
 </div>
 <div class="section" id="the-internet-routing-registry">
 <h2>The Internet Routing Registry<a class="headerlink" href="#the-internet-routing-registry" title="Permalink to this headline">¶</a></h2>
-<p>The Internet Routing Registry (IRR) is a <a class="reference external" href="http://www.irr.net/docs/list.html">distributed set of databases</a> allowing network operators to describe and query for routing intent. The IRR is used as verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances.</p>
+<p>The Internet Routing Registry (IRR) is a <a class="reference external" href="http://www.irr.net/docs/list.html">distributed set of databases</a> allowing network operators to describe and query for routing intent. The IRR is used as a verification mechanism of route origination and is widely, though not universally, deployed to prevent accidental or intentional routing disturbances.</p>
 <p>The notation used in the IRR is the Routing Policy Specification Language (RPSL), which was originally defined in <a class="reference external" href="https://tools.ietf.org/html/rfc2280">RFC 2280</a> in 1998. RPSL is a very expressive language, allowing for an extremely detailed description of routing policy. While IRR usage had created considerable early enthusiasm and has seen quite some traction, the Internet was rapidly growing at the time. This meant that the primary focus was on data availability rather than data trustworthiness.</p>
 <p>In later years, it was considered a good practice to extensively document how incoming and outgoing traffic was treated by the network, but nowadays the most prevalent usage is to publish and query for <em>route</em> objects, describing from which ASN a prefix is intended to be originated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">route</span><span class="p">:</span>          <span class="mf">192.0</span><span class="o">.</span><span class="mf">2.0</span><span class="o">/</span><span class="mi">24</span>
