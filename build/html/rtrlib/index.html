@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Routinator &mdash; RPKI  documentation</title>
+  <title>RTRlib &mdash; RPKI  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
-    <link rel="prev" title="API" href="../krill/pub/api.html" /> 
+    <link rel="next" title="About" href="about.html" />
+    <link rel="prev" title="Running" href="../routinator/running.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -205,57 +205,57 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Routinator</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../routinator/index.html">Routinator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../routinator/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#quick-start-with-docker">Quick Start with Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../routinator/installation.html#rsync">rsync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../routinator/installation.html#rust">Rust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../routinator/installation.html#c-toolchain">C Toolchain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/installation.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../routinator/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/configuration.html#configuration-file">Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/configuration.html#local-exceptions">Local Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../routinator/running.html">Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#first-launch">First Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RTRlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about.html">About</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="about.html#in-a-nutshell">In a Nutshell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about.html#why-do-i-need-the-rtrlib">Why do I need the RTRlib?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about.html#supported-rfcs">Supported RFCs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about.html#community">Community</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#quick-start">Quick Start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#quick-start-with-docker">Quick Start with Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#getting-started">Getting Started</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="installation.html#rsync">rsync</a></li>
-<li class="toctree-l4"><a class="reference internal" href="installation.html#rust">Rust</a></li>
-<li class="toctree-l4"><a class="reference internal" href="installation.html#c-toolchain">C Toolchain</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#building">Building</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration-file">Configuration File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration.html#local-exceptions">Local Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="running.html">Running</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#first-launch">First Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#apple-macos">Apple macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#archlinux">Archlinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#debian">Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#gentoo">Gentoo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-source">From Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#getting-started">Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#building">Building</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#additional-cmake-options-and-targets">Additional <code class="docutils literal notranslate"><span class="pre">cmake</span></code> Options and Targets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rtrlib/index.html">RTRlib</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rtrlib/about.html">About</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#in-a-nutshell">In a Nutshell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#why-do-i-need-the-rtrlib">Why do I need the RTRlib?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#license">License</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#supported-rfcs">Supported RFCs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#community">Community</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../rtrlib/installation.html">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#apple-macos">Apple macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#archlinux">Archlinux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#debian">Debian</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#gentoo">Gentoo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#from-source">From Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#getting-started">Getting Started</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#building">Building</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#additional-cmake-options-and-targets">Additional <code class="docutils literal notranslate"><span class="pre">cmake</span></code> Options and Targets</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../rtrlib/tools.html">RTRlib Command Line Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rtr-client">RTRlib RTR Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rov-validator">RTRlib ROV Validator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">RTRlib Command Line Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#rtrlib-rtr-client">RTRlib RTR Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#rtrlib-rov-validator">RTRlib ROV Validator</a></li>
 </ul>
 </li>
 </ul>
@@ -305,13 +305,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Routinator</li>
+      <li>RTRlib</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/routinator/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rtrlib/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -324,54 +324,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="routinator">
-<h1>Routinator<a class="headerlink" href="#routinator" title="Permalink to this headline">¶</a></h1>
-<p>Routinator is free, open source RPKI Relying Party software written by NLnet Labs in the
-Rust programming language.</p>
-<p>Routinator is designed to be lightweight and have great
-portability. This means it can run on any Unix-like operating system, but also
-works on Microsoft Windows. Due to its lean design, it can run effortlessly on
-minimalist hardware such as a Raspberry Pi.</p>
-<p>Routinator connects to the Trust Anchors of the five Regional Internet
-Registries (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all
-of the certificates and ROAs in their repositories and validates the
-signatures. It can feed the validated information to hardware routers
-supporting route origin validation (ROV) such as <a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Juniper</a>, <a class="reference external" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html">Cisco</a> and <a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Nokia</a>, as well as
-serving software solutions like <a class="reference external" href="https://bird.network.cz/?get_doc&amp;v=20&amp;f=bird-6.html#ss6.11">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>. Alternatively, Routinator can output the validated
-data in a number of useful formats, such as CSV, JSON and RPSL.</p>
-<p>When choosing a system to run Routinator on, please note that the application
-was designed to have a small footprint. The current version consumes as little
-as 14MB of RAM and cryptographic validation of the RPKI data set only takes a
-few seconds on modest hardware.</p>
-<p>If you run into a problem with Routinator or you have a feature request,
-please <a class="reference external" href="https://github.com/NLnetLabs/routinator/issues">create an issue on Github</a>. We are also happy to
-accept your pull requests. For general discussion and exchanging operational
-experiences we provide a <a class="reference external" href="https://nlnetlabs.nl/mailman/listinfo/rpki">mailing list</a>. This is also the place where
-we will announce releases of the application and updates on the project.</p>
-<p>You can follow the adventures of Routinator on <a class="reference external" href="https://twitter.com/routinator3000">Twitter</a> and listen to its favourite songs on
-<a class="reference external" href="https://open.spotify.com/user/alex.band/playlist/1DkYwN4e4tq73LGAeUykA1?si=AXNn9GkpQ4a-q5skG1yiYQ">Spotify</a>.</p>
-<div class="toctree-wrapper compound" id="toc-routinator">
+  <div class="section" id="rtrlib">
+<span id="id1"></span><h1>RTRlib<a class="headerlink" href="#rtrlib" title="Permalink to this headline">¶</a></h1>
+<p>This is the user handbook of the RTRlib. It provides guidance on how to use
+the library for development and gives an overview of some command line tools
+that are based on RTRlib. Further information can be found on the RTRlib
+website <a class="footnote-reference" href="#rtrlib-web" id="id2">[1]</a> and its source code repository on Github
+<a class="footnote-reference" href="#rtrlib-git" id="id3">[2]</a>.</p>
+<div class="toctree-wrapper compound" id="toc-rtrlib">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about.html#in-a-nutshell">In a Nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#why-do-i-need-the-rtrlib">Why do I need the RTRlib?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#supported-rfcs">Supported RFCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#community">Community</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#quick-start">Quick Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#quick-start-with-docker">Quick Start with Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#apple-macos">Apple macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#archlinux">Archlinux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#debian">Debian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#gentoo">Gentoo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-source">From Source</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html#local-exceptions">Local Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running.html#first-launch">First Launch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">RTRlib Command Line Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#rtrlib-rtr-client">RTRlib RTR Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#rtrlib-rov-validator">RTRlib ROV Validator</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="rtrlib-web" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Project website – <a class="reference external" href="https://rtrlib.realmv6.org">https://rtrlib.realmv6.org</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="rtrlib-git" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Source code on Github – <a class="reference external" href="https://github.com/rtrlib/rtrlib">https://github.com/rtrlib/rtrlib</a></td></tr>
+</tbody>
+</table>
 </div>
 
 
@@ -382,10 +379,10 @@ we will announce releases of the application and updates on the project.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../krill/pub/api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../routinator/running.html" class="btn btn-neutral" title="Running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

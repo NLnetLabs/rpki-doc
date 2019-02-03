@@ -166,12 +166,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#supporting-tools">Supporting Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#insights-and-statistics">Insights and Statistics</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -226,6 +227,35 @@
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#first-launch">First Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rtrlib/index.html">RTRlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/about.html">About</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#in-a-nutshell">In a Nutshell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#why-do-i-need-the-rtrlib">Why do I need the RTRlib?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#supported-rfcs">Supported RFCs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#community">Community</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#apple-macos">Apple macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#archlinux">Archlinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#debian">Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#gentoo">Gentoo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#from-source">From Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#getting-started">Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#building">Building</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#additional-cmake-options-and-targets">Additional <code class="docutils literal notranslate"><span class="pre">cmake</span></code> Options and Targets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/tools.html">RTRlib Command Line Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rtr-client">RTRlib RTR Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rov-validator">RTRlib ROV Validator</a></li>
 </ul>
 </li>
 </ul>
@@ -307,7 +337,7 @@
 <p>Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/rpki-roa-creation.svg"><img alt="RPKI ROA Creation" src="../_images/rpki-roa-creation.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">Each CA can issue Route Origin Authorisations</span></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Each CA can issue Route Origin Authorisations</span></p>
 </div>
 <p>The creation of a ROA is solely tied to the IP address space that is listed on the certificate and not to the AS numbers. This means the holder of the certificate can authorise any AS to originate their prefix, not just their own autonomous systems.</p>
 <p>Once an organisation starts authorising announcements with RPKI, it is imperative that ROAs are created for all route origins from a certain prefix, including the more specifics announced by other business units or customers.</p>

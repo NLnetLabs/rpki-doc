@@ -54,6 +54,13 @@ This page provides an overview of all documents published in the IETF in relatio
 `RFC 8416`_
    Simplified Local Internet Number Resource Management with the RPKI (SLURM)
 
+`draft-azimov-sidrops-aspa-profile`_ 
+   A Profile for Autonomous System Provider Authorization
+
+`draft-azimov-sidrops-aspa-verification`_
+   Verification of AS_PATH Using the Resource Certificate Public Key
+   Infrastructure and Autonomous System Provider Authorization
+
 
 
 .. _`RFC 5280`: https://tools.ietf.org/html/rfc5280
@@ -76,3 +83,5 @@ This page provides an overview of all documents published in the IETF in relatio
 .. _`RFC 8182`: https://tools.ietf.org/html/rfc8182
 .. _`RFC 8210`: https://tools.ietf.org/html/rfc8210
 .. _`RFC 8416`: https://tools.ietf.org/html/rfc8416
+.. _`draft-azimov-sidrops-aspa-profile`: https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile
+.. _`draft-azimov-sidrops-aspa-verification`: https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification

@@ -166,12 +166,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="router-configuration.html">Router Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#supporting-tools">Supporting Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#insights-and-statistics">Insights and Statistics</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
 </ul>
 <p class="caption"><span class="caption-text">RPKI Tools</span></p>
 <ul>
@@ -226,6 +227,35 @@
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#first-launch">First Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#printing-a-list-of-valid-route-origins">Printing a List of Valid Route Origins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../routinator/running.html#feeding-a-router-with-rpki-rtr">Feeding a Router with RPKI-RTR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rtrlib/index.html">RTRlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/about.html">About</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#in-a-nutshell">In a Nutshell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#why-do-i-need-the-rtrlib">Why do I need the RTRlib?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#supported-rfcs">Supported RFCs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/about.html#community">Community</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#apple-macos">Apple macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#archlinux">Archlinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#debian">Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#gentoo">Gentoo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/installation.html#from-source">From Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#getting-started">Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#building">Building</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rtrlib/installation.html#additional-cmake-options-and-targets">Additional <code class="docutils literal notranslate"><span class="pre">cmake</span></code> Options and Targets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rtrlib/tools.html">RTRlib Command Line Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rtr-client">RTRlib RTR Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtrlib/tools.html#rtrlib-rov-validator">RTRlib ROV Validator</a></li>
 </ul>
 </li>
 </ul>
@@ -310,7 +340,7 @@
 <p>Out of all the possible routes that a router has in its Routing Information Base (RIB), BGP will always prefer the shortest path to its destination, minimising the amount of hops. When two matching prefixes are announced from two different networks on the Internet, BGP will route traffic to the destination that is topologically closest. This is an important feature of BGP, but when configuration errors occur, it can also be the cause of reachability problems.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/bgp-shorter-path.svg"><img alt="When the same prefix is announced, the shortest path wins" src="../_images/bgp-shorter-path.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">When the announcement of a prefix is an exact match, the shortest path wins</span></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">When the announcement of a prefix is an exact match, the shortest path wins</span></p>
 </div>
 </div>
 <div class="section" id="preference-for-most-specific-prefix">
@@ -318,7 +348,7 @@
 <p>Regardless any local preference, path length or any other attributes, when building the forwarding table, the router will always select most specific IP prefix available. This behaviour is important, but creates the possibility for almost any network to attract someone else’s traffic by announcing an overlapping more specific.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/bgp-more-specific.svg"><img alt="A more specific prefix always wins" src="../_images/bgp-more-specific.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">Regardless of the path length, the announcement of a more specific prefix always wins</span></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Regardless of the path length, the announcement of a more specific prefix always wins</span></p>
 </div>
 <p>With this in mind, there are several problems that can arise as a result of this behaviour.</p>
 </div>
