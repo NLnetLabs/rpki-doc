@@ -9,11 +9,11 @@ Relying Party Software
 ----------------------
 
 `rcynic <https://github.com/dragonresearch/rpki.net>`_
-   "Cynical rsync", software to fetch and validate RPKI certificates, written
-   in the Python programming language.
+   "Cynical rsync", software to fetch and validate RPKI certificates by Dragon
+   Research Labs, written in the Python programming language.
 
 `RIPE NCC RPKI Validator <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources>`_
-   Full-featured RPKI relying party software written by the RIPE NCC 
+   Full-featured RPKI relying party software, written by the RIPE NCC 
    in the Java programming language.
 
 `Routinator <https://nlnetlabs.nl/projects/rpki/routinator/>`_
@@ -49,7 +49,7 @@ Supporting Tools
    using the the Go programming language. This project is maintained by Louis 
    Poinsignon at Cloudflare.
 
-`RTRLib <https://github.com/rtrlib/rtrlib>`_
+`RTRLib <http://rtrlib.realmv6.org>`_
    The RTRlib implements the client-side of the RPKI-RTR protocol (RFC
    6810, RFC 8210) and BGP Prefix Origin Validation (RFC 6811). This also
    enables the maintenance of router keys, which are required to
