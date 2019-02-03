@@ -44,7 +44,6 @@ The main documentation is organised into the following sections:
    rpki/using-rpki-data
    rpki/router-configuration
    rpki/resources
-   rpki/documents
 
 .. toctree::
    :maxdepth: 2

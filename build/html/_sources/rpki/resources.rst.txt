@@ -70,3 +70,12 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
+
+IETF Documents
+--------------
+
+Most of the original work on RPKI standardisation for both origin and path validation was done in the `Secure Inter-Domain Routing (sidr) <https://tools.ietf.org/wg/sidr/>`_ working group. After the work was completed, the working group was concluded.
+
+Since then, the `SIDR Operations (sidrops) <https://tools.ietf.org/wg/sidrops/>`_ working group was formed. This working group develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.
+
+All relevant drafts and standards can be found in the archives of these two working groups, with a few exceptions, such as `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
