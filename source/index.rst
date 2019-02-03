@@ -53,6 +53,7 @@ The main documentation is organised into the following sections:
    
    krill/index
    routinator/index
+   rtrlib/index
    
 .. Indices and tables
 .. ------------------

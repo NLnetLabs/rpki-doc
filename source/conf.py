@@ -42,6 +42,9 @@ extensions = [
     'sphinx.ext.todo', 
 ]
 
+# If true, figures, tables and code-blocks are automatically numbered if they have a caption.
+numfig = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../templates']
 
