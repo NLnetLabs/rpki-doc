@@ -3,7 +3,7 @@
 Resources
 =========
 
-This page provides an overview of all well known open source projects that support RPKI. It includes tools, statistics and measurements projects in alphabetical order.
+This page provides an overview of all well known open source projects that support RPKI. It includes tools, statistics and measurements projects in alphabetical order. Finally, there is an overview of all work in the Internet Engineering Task Force relevant to RPKI.
 
 Relying Party Software
 ----------------------
@@ -49,7 +49,7 @@ Supporting Tools
    using the the Go programming language. This project is maintained by Louis 
    Poinsignon at Cloudflare.
 
-`RTRLib <http://rtrlib.realmv6.org>`_
+:ref:`rtrlib`
    The RTRlib implements the client-side of the RPKI-RTR protocol (RFC
    6810, RFC 8210) and BGP Prefix Origin Validation (RFC 6811). This also
    enables the maintenance of router keys, which are required to
@@ -65,11 +65,11 @@ Insights and Statistics
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
+- `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
 - `Global country statistics <https://lirportal.ripe.net/certification/content/static/statistics/world-roas.html>`_, by RIPE NCC
-- `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
-- `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
+- `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 
 IETF Documents
 --------------
