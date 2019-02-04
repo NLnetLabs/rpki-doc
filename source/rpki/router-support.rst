@@ -1,7 +1,7 @@
 .. _doc_rpki_rtr:
 
-Router Configuration
-====================
+Router Support
+==============
 
 Several router vendors participated in the development of the RPKI standards in the IETF, ensuring the technology offered an end-to-end solution for route origin validation. The RPKI to Router protocol (RPKI-RTR) is standardised in `RFC 6810 <https://tools.ietf.org/html/rfc6810>`_ (v0) and `RFC 8210 <https://tools.ietf.org/html/rfc8210>`_ (v1). Is it specifically designed to deliver validated prefix origin data to routers. This, as well as origin validation functionality, is currently available in on various hardware platforms and software solutions.
 
@@ -34,4 +34,4 @@ In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result c
 protocol, as well as route origin validation. RTRlib powers RPKI in BGP software routers such as `FRR <https://frrouting.org/>`_. In a nutshell, it maintains data
 from RPKI relying party software and allows to verify whether
 an autonomous system (AS) is the legitimate origin AS, based on the fetched
-valid ROA data. It is prepared for BGPsec path validation. `BGP‑SRx <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_ by NIST is a prototype that can perform similar functions.
+valid ROA data. `BGP‑SRx <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_ by NIST is a prototype that can perform similar functions.

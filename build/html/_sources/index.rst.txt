@@ -42,7 +42,7 @@ The main documentation is organised into the following sections:
    rpki/securing-bgp
    rpki/implementation-models
    rpki/using-rpki-data
-   rpki/router-configuration
+   rpki/router-support
    rpki/resources
 
 .. toctree::
