@@ -164,7 +164,11 @@
 <li class="toctree-l2"><a class="reference internal" href="using-rpki-data.html#feeding-routers">Feeding Routers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Router Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Router Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-solutions">Hardware Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-solutions">Software Solutions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#relying-party-software">Relying Party Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#certificate-authority-software">Certificate Authority Software</a></li>
@@ -326,7 +330,9 @@
             
   <div class="section" id="router-configuration">
 <span id="doc-rpki-rtr"></span><h1>Router Configuration<a class="headerlink" href="#router-configuration" title="Permalink to this headline">¶</a></h1>
-<p>Several router vendors participated in the development of the RPKI standards in the IETF, ensuring the technology offered an end-to-end solution for route origin validation. The RPKI to Router protocol (RPKI-RTR), standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc6810">RFC 6810</a>, was specifically designed to deliver validated prefix origin data to routers. This, as well as origin validation functionality, is currently available in the following platforms:</p>
+<p>Several router vendors participated in the development of the RPKI standards in the IETF, ensuring the technology offered an end-to-end solution for route origin validation. The RPKI to Router protocol (RPKI-RTR) is standardised in <a class="reference external" href="https://tools.ietf.org/html/rfc6810">RFC 6810</a> (v0) and <a class="reference external" href="https://tools.ietf.org/html/rfc8210">RFC 8210</a> (v1). Is it specifically designed to deliver validated prefix origin data to routers. This, as well as origin validation functionality, is currently available in on various hardware platforms and software solutions.</p>
+<div class="section" id="hardware-solutions">
+<h2>Hardware Solutions<a class="headerlink" href="#hardware-solutions" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>Juniper — <a class="reference external" href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Documentation</a></dt>
 <dd>Junos version 12.2 and newer</dd>
@@ -335,7 +341,23 @@
 <dt>Nokia — <a class="reference external" href="https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&amp;cp=22_4_7_2&amp;anchor=d2e5366">Documentation</a></dt>
 <dd>Release R12.0R4 and newer, running on the 7210 SAS, 7750 SR, 7950 XRS and the VSR.</dd>
 </dl>
-<p>In addition, various software solutions have support for RPKI as well, such as <a class="reference external" href="https://bird.network.cz/">BIRD</a> and <a class="reference external" href="http://openbgpd.org">OpenBGPD</a>. In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result.</p>
+</div>
+<div class="section" id="software-solutions">
+<h2>Software Solutions<a class="headerlink" href="#software-solutions" title="Permalink to this headline">¶</a></h2>
+<p>Various software solutions have support for origin validation:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bird.network.cz/">BIRD</a></li>
+<li><a class="reference external" href="http://openbgpd.org">OpenBGPD</a></li>
+<li><a class="reference external" href="https://frrouting.org/">FRRouting</a></li>
+<li><a class="reference external" href="https://osrg.github.io/gobgp/">GoBGP</a></li>
+</ul>
+<p>In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result. Relying party software such as <a class="reference internal" href="../routinator/index.html#doc-routinator"><span class="std std-ref">Routinator</span></a> can export validated data in a format that OpenBGPD can parse.</p>
+<p><a class="reference internal" href="../rtrlib/index.html#rtrlib"><span class="std std-ref">RTRlib</span></a> is a C library that implements the client side of the RPKI-RTR
+protocol, as well as route origin validation. RTRlib powers RPKI in BGP software routers such as <a class="reference external" href="https://frrouting.org/">FRR</a>. In a nutshell, it maintains data
+from RPKI relying party software and allows to verify whether
+an autonomous system (AS) is the legitimate origin AS, based on the fetched
+valid ROA data. It is prepared for BGPsec path validation. <a class="reference external" href="https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype">BGP‑SRx</a> by NIST is a prototype that can perform similar functions.</p>
+</div>
 </div>
 
 

@@ -12,7 +12,7 @@ options, please refer to the manual page, which can be accessed via:
    routinator man
 
 .. Tip:: The manual page is available online on the `NLnet Labs documentation
-		 site <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
+         site <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
 
 Configuration File 
 ------------------
