@@ -8,7 +8,7 @@ Several router vendors participated in the development of the RPKI standards in 
 Hardware Solutions
 ------------------
 
-Juniper — `Documentation <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`__
+Juniper — `Documentation <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`__ — `Day One Book <https://www.juniper.net/uk/en/training/jnbooks/day-one/deploying-bgp-routing-security/>`_
    Junos version 12.2 and newer
       
 Cisco — `Documentation <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html>`__

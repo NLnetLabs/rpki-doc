@@ -48,6 +48,9 @@ numfig = True
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../templates']
 
+locale_dirs = ['locale/']   #path is example but recommended.
+gettext_compact = False     #optional.
+
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
@@ -136,7 +139,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'TheRPKIDocumentation.tex', u'The RPKI Documentation',
-     u'Alex Band, Tim Bruijnzeels, Martin Hoffmann', 'manual'),
+     u'Alex Band, Tim Bruijnzeels, Martin Hoffmann and the RPKI Community', 'manual'),
 ]
 
 
