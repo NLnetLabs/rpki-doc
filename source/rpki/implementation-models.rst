@@ -7,6 +7,13 @@ RPKI is designed to allow every resource holder to generate and publish cryptogr
 
 No matter what implementation model you choose, it always a good idea to publish ROAs for your BGP announcements. Even when you are still evaluating how to deploy RPKI within your organisation, the benefits are immediate. Others can already filter based on what you publish, offering protection for you and other Internet users. For example, in case someone inadvertently announces your address space from their AS, it will be flagged as Invalid and dropped by everyone who has deployed route origin validation.
 
+.. Important:: Once you start authorising announcements with RPKI, it is
+               imperative that ROAs are created for all route origins from the
+               prefixes you hold, including more specifics announced
+               by other business units or customers. In addition, RPKI should
+               become a standard part of operations, ensuring staff is trained
+               and ROAs are continually monitored and maintained.
+
 Hosted RPKI
 -----------
 

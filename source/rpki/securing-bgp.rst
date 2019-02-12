@@ -30,8 +30,6 @@ Using the RPKI system, the legitimate holder of a block of IP addresses can make
 
 The creation of a ROA is solely tied to the IP address space that is listed on the certificate and not to the AS numbers. This means the holder of the certificate can authorise any AS to originate their prefix, not just their own autonomous systems. 
 
-Once an organisation starts authorising announcements with RPKI, it is imperative that ROAs are created for all route origins from a certain prefix, including the more specifics announced by other business units or customers. 
-
 Maximum Prefix Length
 ~~~~~~~~~~~~~~~~~~~~~
 
