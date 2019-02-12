@@ -61,14 +61,18 @@ Based on the three validity outcomes, operators can make an informed decision wh
 As origin validation is deployed incrementally, the amount of IP address space that is covered by a ROA will gradually increase over time. Therefore, accepting the NotFound validity should be done for the foreseeable future. 
 
 .. Important:: **For route origin validation to succeed in its objective, operators should
-               drop all BGP announcements that are marked as Invalid.** Before deploying
-               origin validation, operators should first analyse the effects of such a
-               measure to avoid unintended results. Accepting Invalid announcements and
-               merely giving them a lower preference should not be done, as they 
-               will still propagate across the Internet, with possible
-               harmful effects. 
+               ultimately drop all BGP announcements that are marked as Invalid.** 
+               Before taking this step, organisations should first analyse the
+               effects of such a measure to avoid unintended results. Initially accepting
+               Invalid announcements and giving them a lower preference, as well as
+               tagging them with a BGP community is a good first step to measure this.
 
-There may be an operational need to accept certain Invalid announcements temporarily. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. Local overrides, standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_, can be specified to achieve this. 
+Local Overrides
+---------------
+
+Sometimes there is an operational need to accept Invalid announcements temporarily. Local overrides allow you to manage your own exceptions to the validated cache. This ensures that you remain in full control of the VRPs used by your routers. For example, if an Invalid origin is the result of a misconfigured ROA, you may accept it until the operator in question has resolved the issue. A format named SLURM is available for this, which is standardised in `RFC 8416 <https://tools.ietf.org/html/rfc8416>`_.
+
+SLURM provides several ways to achieve exceptions. First, you can add a VRP specifically for the affected route by specifying the correct ASN, prefix and maximum length. Secondly, you can filter out an existing VRP, thereby moving the route back to NotFound state. In general, the former is the safer way, as it deals better with changing ROAs. Lastly, it is possible to allow all routes from a certain ASN or prefix. It is advised to use overrides with care, as liberal usage may have unintended consequences.
 
 Feeding Routers
 ---------------
@@ -81,6 +85,8 @@ The RPKI validated cache can be fed directly into RPKI-capable routers via the R
     :alt: The RPKI Data Retrieval and Validation
 
     RPKI publication, data retrieval, validation and processing
+
+Note that your router does not perform any of the cryptographic validation, this is all handled by the relying party software. In addition, using RPKI causes minimal overhead for routers and has a negligible influence on convergence speed. Validation happens in parallel with route learning for new prefixes which are not yet in the cache. Those prefixes will be marked as Valid, Invalid, or NotFound as the information becomes available, after which the correct policy is applied.
 
 Please keep in mind that the RPKI validator software you run in your network fetches cryptographic material from the outside world. To do this, it needs at least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases, the processed data is fed to a router via RPKI-RTR over a clear channel, as it's running in your local network. There is currently no widespread support for SSH, TLS, or other encryption standards. Please take appropriate care when implementing. Lastly, it is recommended to run multiple validator instances as a failover measure.
 
