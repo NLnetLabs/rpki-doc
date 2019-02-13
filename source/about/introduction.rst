@@ -26,7 +26,7 @@ attribution to "The RPKI team at NLnet Labs and the RPKI community".
 About Resource Public Key Infrastructure
 ----------------------------------------
 
-Resource Public Key Infrastructure (RPKI) revolves around the right to use Internet number resources, such as IP addresses and autonomous system (AS) numbers. In this PKI, the legitimate holder of a block of IP addresses or AS numbers can obtain a resource certificate. Using the certificate, they can make authoritative, signed statements about the resources listed on it. 
+RPKI allows holders of Internet number resources to make verifiable statements about how they intend to use their resources. To achieve this, it uses a public key infrastructure that creates a chain of resource certificates that follows the same structure as the way IP addresses and AS numbers are handed down.
 
 RPKI is used to make Internet routing more secure. It is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. `ARIN <https://www.arin.net/resources/rpki/>`_, `APNIC <https://www.apnic.net/community/security/resource-certification/>`_, `AFRINIC <https://www.afrinic.net/resource-certification>`_, `LACNIC <https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki>`_ and `RIPE NCC <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/>`_. 
 
