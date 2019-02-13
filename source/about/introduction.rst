@@ -10,7 +10,7 @@ This page gives a broad overview of the RPKI and how it can help make Internet r
 About this Documentation
 ------------------------
 
-This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, many additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
+This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
 language and then compiled into a static website/offline document using the
 open source `Sphinx <http://www.sphinx-doc.org>`_  and `ReadTheDocs
 <https://readthedocs.org/>`_ tools.
@@ -26,9 +26,11 @@ attribution to "The RPKI team at NLnet Labs and the RPKI community".
 About Resource Public Key Infrastructure
 ----------------------------------------
 
-The purpose of the Resource Public Key Infrastructure (RPKI) is to issue cryptographic material that allows Internet number resource holders to digitally prove they have the right to use the IPv4 and IPv6 addresses and autonomous system (AS) numbers listed on the certificate. Using their certificate, the legitimate holder can make authoritative, signed statements about the resources listed on it. RPKI is used to make BGP routing more secure.
+Resource Public Key Infrastructure (RPKI) revolves around the right to use Internet number resources, such as IP addresses and autonomous system (AS) numbers. In this PKI, the legitimate holder of a block of IP addresses or AS numbers can obtain a resource certificate. Using the certificate, they can make authoritative, signed statements about the resources listed on it. 
 
-RPKI is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. `ARIN <https://www.arin.net/resources/rpki/>`_, `APNIC <https://www.apnic.net/community/security/resource-certification/>`_, `AFRINIC <https://www.afrinic.net/resource-certification>`_, `LACNIC <https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki>`_ and `RIPE NCC <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/>`_. Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative statement about which autonomous system (AS) is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as route origin validation (ROV).
+RPKI is used to make Internet routing more secure. It is a community-driven system in which open source software developers, router vendors and all five Regional Internet Registries (RIRs) participate, i.e. `ARIN <https://www.arin.net/resources/rpki/>`_, `APNIC <https://www.apnic.net/community/security/resource-certification/>`_, `AFRINIC <https://www.afrinic.net/resource-certification>`_, `LACNIC <https://www.lacnic.net/640/2/lacnic/general-information-resource-certification-system-rpki>`_ and `RIPE NCC <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/>`_. 
+
+Currently, RPKI is used to let the legitimate holder of a block of IP addresses make an authoritative statement about which AS is authorised to originate their prefix in the BGP. In turn, other network operators can download and validate these statements and make routing decisions based on them. This process is referred to as route origin validation (ROV). This provides a stepping stone to provide path validation in the future.
 
 Organisation of this Documentation
 ----------------------------------
