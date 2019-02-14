@@ -6,6 +6,8 @@
 RPKI Documentation
 ==================
 
+.. image:: https://img.shields.io/github/last-commit/NLnetLabs/rpki-doc.svg?label=last%20updated&style=flat-square
+
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI), the community-driven technology based on open standards that is aimed at making Internet routing more secure. If you are new to this documentation, we recommend that you read the :ref:`introduction page <doc_about_intro>` to get an overview of what this documentation has to offer.
 
 The table of contents below and in the sidebar should let you easily access the documentation for your topic of interest. You can also use the search function in the top left corner.
