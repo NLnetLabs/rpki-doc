@@ -28,7 +28,7 @@ Various software solutions have support for origin validation:
 - `FRRouting <https://frrouting.org/>`_
 - `GoBGP <https://osrg.github.io/gobgp/>`_
 
-In some cases, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result. Relying party software such as :ref:`doc_routinator` can export validated data in a format that OpenBGPD can parse.
+In some solutions, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result. Relying party software such as :ref:`doc_routinator` can export validated data in a format that OpenBGPD can parse.
 
 :ref:`rtrlib` is a C library that implements the client side of the RPKI-RTR
 protocol, as well as route origin validation. RTRlib powers RPKI in BGP software routers such as `FRR <https://frrouting.org/>`_. In a nutshell, it maintains data

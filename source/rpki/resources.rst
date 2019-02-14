@@ -78,4 +78,4 @@ Most of the original work on RPKI standardisation for both origin and path valid
 
 Since then, the `SIDR Operations (sidrops) <https://tools.ietf.org/wg/sidrops/>`_ working group was formed. This working group develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.
 
-All relevant drafts and standards can be found in the archives of these two working groups, with a few exceptions, such as `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
+All relevant drafts and standards can be found in the archives of these two working groups, with a few exceptions, such as `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_, `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_ and `draft-ietf-grow-rpki-as-cones <https://tools.ietf.org/html/draft-ietf-grow-rpki-as-cones>`_.

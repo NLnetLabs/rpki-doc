@@ -19,7 +19,7 @@ Origin validation is currently the only functionality that is operationally used
 Route Origin Authorisations
 """""""""""""""""""""""""""
 
-Using the RPKI system, the legitimate holder of a block of IP addresses can make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
+Using the RPKI system, the legitimate holder of a block of IP addresses can use their resource certificate to make an authoritative, signed statement about which autonomous system is authorised to originate their prefix in BGP. These statements are called Route Origin Authorisations (ROAs).
 
 .. figure:: img/rpki-roa-creation.*
     :align: center

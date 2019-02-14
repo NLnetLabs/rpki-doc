@@ -63,7 +63,7 @@ As origin validation is deployed incrementally, the amount of IP address space t
 .. Important:: **For route origin validation to succeed in its objective, operators should
                ultimately drop all BGP announcements that are marked as Invalid.** 
                Before taking this step, organisations should first analyse the
-               effects of such a measure to avoid unintended results. Initially accepting
+               effects of doing this, to avoid unintended results. Initially accepting
                Invalid announcements and giving them a lower preference, as well as
                tagging them with a BGP community is a good first step to measure this.
 
