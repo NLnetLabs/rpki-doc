@@ -3,14 +3,14 @@
 Introduction
 ============
 
-Welcome to the documentation of the Resource Public Key Infrastructure (RPKI). Here, we aim to offer an overview of the RPKI technology itself, as well as the tools that NLnet Labs is developing for it. 
+Welcome to the documentation of the Resource Public Key Infrastructure (RPKI). Here, we aim to offer an overview of the RPKI technology itself, as well as the tools that NLnet Labs and others are developing for it. 
 
 This page gives a broad overview of the RPKI and how it can help make Internet routing using the Border Gateway Protocol (BGP) more secure. This way, you will learn how RPKI can benefit your organisation, as well as helping others to be more secure on the Internet.
 
 About this Documentation
 ------------------------
 
-This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, additions from the network operators community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
+This documentation is continuously written, corrected and edited by the RPKI team at NLnet Labs. An initial version was written by Alex Band, Tim Bruijnzeels and Martin Hoffmann. Over time, additions from the network operator community, researchers and interested parties around the world were contributed. The documentation is edited via text files in the `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_ markup
 language and then compiled into a static website/offline document using the
 open source `Sphinx <http://www.sphinx-doc.org>`_  and `ReadTheDocs
 <https://readthedocs.org/>`_ tools.
