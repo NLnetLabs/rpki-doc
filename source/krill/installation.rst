@@ -53,15 +53,51 @@ files, you are probably good to go.
 OpenSSL
 """""""
 Your system will likely have a package manager that will allow you to
-install OpenSSL in a few easy steps. For Krill, you will need both
-``openssl`` and ``openssl-dev``. On most Linux distributions, this
-should be as simple as running:
+install OpenSSL in a few easy steps. For Krill, you will need ``libssl-dev``,
+sometimes called ``openssl-dev``. On debian like Linux distributions, 
+this should be as simple as running:
 
 .. code-block:: bash
 
-    sudo apt-get install openssl openssl-dev
+    sudo apt-get install -y libssl-dev
+
+Note: we use Ubuntu xenial (16.04.5 LTS) in our Travis CI environment.
 
 On macOS you can use Homebrew or MacPorts to get started.
+
+Nodejs and Yarn
+"""""""""""""""
+
+Note: this applies to the enrico-ui branch only at this time, but this
+will be merged to master soon. 
+
+Fear not. There is no need to run nodejs when you run krill!
+
+However, nodejs and yarn are used for development of the Vue.js based
+user interface. Vue.js uses small components in development. The stuff
+that you find under ``./ui/dev/src``. As part of the build process these
+components are used to generate minified HTML, CSS and JS under the 
+``./ui/dist`` folder.
+
+So, when you build krill locally you will need some additional packages.
+The following works on Ubuntu xenial:
+
+.. code-block:: bash
+
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt update
+  sudo apt-get install -y nodejs
+  sudo apt-get install -y yarn
+
+
+Note that once  we build binary versions you will not need nodejs on your
+system. Secondly, for now we have one Krill project that includes both
+the UI and the API. We may split the project in future if it turns out
+that there are users who do not need the UI, and prefer a more light-weight
+version. 
+
 
 Building
 --------
@@ -73,7 +109,14 @@ cargo:
 
     git clone git@github.com:NLnetLabs/krill.git
     cd $project
-    cargo build
+    cargo build --release
+
+If you want to see the tests run, you can use the following cargo option:
+
+.. code-block:: bash
+
+    cargo test
+
 
 The package will contain three brinaries: ``krilld``, ``krillc`` and ``pubc``.
 Choose the executable to start using the ``--bin`` flag, e.g.:
