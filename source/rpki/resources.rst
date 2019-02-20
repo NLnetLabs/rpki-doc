@@ -8,6 +8,9 @@ This page provides an overview of all well known open source projects that suppo
 Relying Party Software
 ----------------------
 
+`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_
+   Cloudflare's Relying Party software, written in the Go programming language.
+
 `rcynic <https://github.com/dragonresearch/rpki.net>`_
    "Cynical rsync", software to fetch and validate RPKI certificates by Dragon
    Research Labs, written in the Python programming language.

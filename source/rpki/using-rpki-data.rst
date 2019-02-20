@@ -19,7 +19,7 @@ Fetching and Verifying
 
 Various open source relying party software packages, also known as RPKI validators, are available in order to download, verify and process RPKI data. Please note that most RPKI validators come preinstalled with TALs for all RIRs except the one for ARIN, as they require users to first review and agree to their `Relying Party Agreement <https://www.arin.net/resources/rpki/tal.html>`_.
 
-When the validator runs, it will start retrieval at each of the RIR trust anchors and follow the chain of trust to fetch all published certificates and ROAs. Fetching data is currently done via rsync. RIRs and software developers are gradually migrating to the RPKI Repository Delta Protocol (RRDP) for retrieval, standardised in `RFC 8182 <https://tools.ietf.org/html/rfc8182>`_. This protocol uses HTTPS, which makes development and implementation easier, and opens up possibilities for Content Delivery Networks to participate in serving RPKI data. 
+When the validator runs, it will start retrieval at each of the RIR trust anchors and follows the chain of trust to fetch all published certificates and ROAs. Fetching data is currently done via rsync. RIRs and software developers are gradually migrating to the RPKI Repository Delta Protocol (RRDP) for retrieval, standardised in `RFC 8182 <https://tools.ietf.org/html/rfc8182>`_. This protocol uses HTTPS, which makes development and implementation easier, and opens up possibilities for Content Delivery Networks to participate in serving RPKI data. 
 
 Once the data has been downloaded, the validator will verify the signatures on all objects and output the valid route origins as a list. Each object in this list contains an IP prefix, a maximum length, and an origin AS number. This object is referred to as validated ROA payload (VRP). The collection of VRPs is known as the validated cache.
 
@@ -77,7 +77,7 @@ SLURM provides several ways to achieve exceptions. First, you can add a VRP spec
 Feeding Routers
 ---------------
 
-The RPKI validated cache can be fed directly into RPKI-capable routers via the RPKI to Router Protocol (RPKI-RTR), described in `RFC 8210 <https://tools.ietf.org/html/rfc8210>`_. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing the validated cache. Alternatively, most validators can export the cache in various useful formats for processing outside of the router, in order to set up filters.
+The validated cache can be fed directly into RPKI-capable routers via the RPKI to Router Protocol (RPKI-RTR), described in `RFC 8210 <https://tools.ietf.org/html/rfc8210>`_. Many routers, including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing the validated cache. Alternatively, most validators can export the cache in various useful formats for processing outside of the router, in order to set up filters.
 
 .. figure:: img/rpki-relying-party-process.*
     :align: center
