@@ -3,7 +3,7 @@
 Resources
 =========
 
-This page provides an overview of all well known open source projects that support RPKI. It includes tools, statistics and measurements projects in alphabetical order. Finally, there is an overview of all work in the Internet Engineering Task Force relevant to RPKI.
+This page provides an overview of all well known open source projects that support RPKI. It includes tools, statistics, measurements projects and presentations about operational experiences. Finally, there is an overview of all work in the Internet Engineering Task Force relevant to RPKI.
 
 Relying Party Software
 ----------------------
@@ -73,6 +73,18 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `Global country statistics <https://lirportal.ripe.net/certification/content/static/statistics/world-roas.html>`_, by RIPE NCC
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
+
+Operational Experiences
+-----------------------
+
+`Dropping RPKI invalid routes in a service provider network <https://pc.nanog.org/static/published/meetings/NANOG75/1956/20190219_Levy_Lightning_Talk_Dropping_v1.pdf>`_
+   Lighting talk by Nimrod Levy - AT&T, NANOG 75, February 2019
+   
+`RPKI and BGP: our path to securing Internet Routing <https://blog.cloudflare.com/rpki-details/>`_
+   Blog post by Jérôme Fleury & Louis Poinsignon - Cloudflare, September 2018
+   
+`RPKI For Managers <https://www.youtube.com/watch?v=vrzl__yGqLE>`_
+   Presentation by Niels Raijer - Fusix Networks, NLNOG Day 2018, September 2018
 
 IETF Documents
 --------------
