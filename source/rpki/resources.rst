@@ -77,8 +77,8 @@ There are several initiatives that measure the adoption and data quality of RPKI
 Operational Experiences
 -----------------------
 
-`Dropping RPKI invalid routes in a service provider network <https://pc.nanog.org/static/published/meetings/NANOG75/1956/20190219_Levy_Lightning_Talk_Dropping_v1.pdf>`_
-   Lighting talk by Nimrod Levy - AT&T, NANOG 75, February 2019
+`Dropping RPKI invalid routes in a service provider network <https://www.youtube.com/watch?v=DkUZvlj1wCk>`_
+   Lightning talk by Nimrod Levy - AT&T, NANOG 75, February 2019
    
 `RPKI and BGP: our path to securing Internet Routing <https://blog.cloudflare.com/rpki-details/>`_
    Blog post by Jérôme Fleury & Louis Poinsignon - Cloudflare, September 2018
