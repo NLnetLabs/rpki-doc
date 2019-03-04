@@ -49,13 +49,15 @@ These are well established and openly governed organisations. Each operator that
 What is the value of RPKI based BGP Origin Validation without Path Validation?
 ------------------------------------------------------------------------------
 
-While Path Validation is a desirable characteristic, the existing RPKI origin validation functionality addresses a large portion of the problem surface. 
+While Path Validation is a desirable characteristic, the existing RPKI origin validation functionality addresses a large portion of the problem surface.
 
-For many networks, the most important prefixes can be found one AS hop away (coming from a specific peer, for example), and this is the case for large portions of the Internet from the perspective of a transit provider - entities which are ideally situated to act on RPKI data and accept only valid routes for redistribution. 
+Existing operational and economic incentives ensure that the most important prefixes for each network are seen via the shortest AS path possible. One such example are network operators setting a higher local preference for prefixes learned via an Internet exchange or private peers ("peerlock"). This reduces the risk that an invalid route could win the BGP route selection process even if it originates from an impersonated but correct origin AS.
 
-Furthermore, the vast majority of route hijacks are unintentional, and are caused by ‘fat-fingering’, where an operator accidently originates a prefix they are not the holder of. 
+For transit providers, direct interconnections and short AS paths are a defining characteristic, positioning them ideally to act on RPKI data and accept only valid routes for redistribution.
 
-Origin Validation would mitigate most of these problems, offering immediate value of the system. While a malicious party could still take advantage of the lack of path validation, widespread RPKI implementation would make such instances easier to pinpoint and address.
+Furthermore, operational experience suggests that the vast majority of route hijacks are unintentional rather than malicious, and are caused by ‘fat-fingering’, where an operator accidentally originates a prefix they are not the holder of. Origin Validation would mitigate many of these problems.
+
+While a malicious party willing to intentionally impersonate the origin AS could still take advantage of the lack of Path Validation in some circumstances, widespread RPKI Origin Validation implementation would make such instances easier to pinpoint and address.
 
 When comparing the ROA data set to the announcements my router sees, what are possible outcomes?
 ------------------------------------------------------------------------------------------------
