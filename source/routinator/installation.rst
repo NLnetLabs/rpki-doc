@@ -3,6 +3,15 @@
 Installation
 ============
 
+Routinator is built to be lean and is capable of running on minimalist
+hardware, such as the Raspberry Pi. At this time, the size of the global
+RPKI data set is about 300MB. Cryptographic validation of all certificates
+and ROAs takes Routinator less than 2 seconds on modest hardware. 
+
+When choosing a system to run Routinator on, make sure you have 1GB of 
+available RAM and 1GB of disk space. This will give you ample margin for
+the RPKI repositories to grow over time, as adoption increases.
+
 At this time there are no binary packages for Routinator yet, but getting
 started is really easy using either `Cargo
 <https://crates.io/crates/routinator>`_, `Docker
