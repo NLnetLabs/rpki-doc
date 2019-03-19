@@ -44,7 +44,7 @@ Quick Start with Docker
 
 Due to the impracticality of complying with the ARIN TAL distribution terms
 in an unsupervised Docker environment, prior to launching the container it
-is necessary to first confirm your acceptance of the `ARIN Relying Party Agreement (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
+is necessary to first confirm your acceptance of the `ARIN Relying Party Agreement (RPA) <https://www.arin.net/resources/manage/rpki/tal/>`_. 
 
 The ARIN TAL file in RFC 7730 format available at this URL will then need to
 be downloaded and mounted into the docker container as a replacement for

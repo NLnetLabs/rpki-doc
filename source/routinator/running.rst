@@ -34,15 +34,14 @@ a list of Validated ROA Payload and use ``-v`` to increase the log level:
 
 When you run Routinator for the very first time, it will create
 ``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the five RIRs
-there, and then complain that ARIN’s TAL is in fact not really there.
+there, and then complain that ARIN’s TAL is in fact not really there. Follow the
+instructions provided and try again. 
 
-Follow the instructions provided and try again. You can also add additional
-trust anchors by simply dropping their TAL file in `RFC 7730 
-<https://tools.ietf.org/html/rfc7730>`_ format into ``$HOME/.rpki-cache/tals``.
+Now, Routinator will rsync the entire RPKI repository to your machine, validate it and produce a list of AS numbers and prefixes in the default CSV format. From a cold start,
+this process will take about two minutes.
 
-Now, Routinator will rsync the entire RPKI repository to your machine (which
-will take a while during the first run), validate it and produce a long list
-of AS numbers and prefixes in the default CSV format.
+A `demonstration video <https://youtu.be/6vUg96hPpuI>`_ is available on YouTube,
+with extra verbosity enabled.
 
 
 Printing a List of Valid Route Origins
@@ -114,3 +113,7 @@ minutes, the above command becomes:
 .. code-block:: bash
 
     routinator rtrd -a -l 192.0.2.13:3323 -l [2001:0DB8::13]:3323 --refresh=900
+    
+Note that by default, communication between Routinator and the router using
+the RPKI-RTR protocol is done via plain TCP. In the next section, there is an 
+explanation how to secure the transport using either SSH or TLS.
