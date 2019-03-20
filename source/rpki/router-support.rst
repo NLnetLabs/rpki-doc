@@ -27,6 +27,7 @@ Various software solutions have support for origin validation:
 - `OpenBGPD <http://openbgpd.org>`_
 - `FRRouting <https://frrouting.org/>`_
 - `GoBGP <https://osrg.github.io/gobgp/>`_
+- `VyOS <https://www.vyos.io>`_
 
 In some solutions, such as OpenBGPD, RPKI-RTR is not available but the same result can be achieved through a static configuration. The router will periodically fetch the validated cache and allow operators to set up route maps based on the result. Relying party software such as :ref:`doc_routinator` can export validated data in a format that OpenBGPD can parse.
 
