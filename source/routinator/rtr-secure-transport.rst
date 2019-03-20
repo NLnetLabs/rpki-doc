@@ -18,7 +18,7 @@ or across a non-trusted network.
 SSH transport for RPKI-RTR
 --------------------------
 
-SSH trasnport for RPKI-RTR can be configured with the help of `netcat <http://netcat.sourceforge.net/>`_
+SSH transport for RPKI-RTR can be configured with the help of `netcat <http://netcat.sourceforge.net/>`_
 and `OpenSSH <https://www.openssh.com/>`_.
 
 Begin by installing the ``openssh-server`` and ``netcat`` packages.
