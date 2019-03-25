@@ -33,11 +33,11 @@ The functionality and user interfaces of the hosted RPKI implementations vary gr
 Functional differences across RIRs
 """"""""""""""""""""""""""""""""""
 
-This section provides an overview of the functionality each RIR provides to help users manage RPKI, which is summarised in the table below. First, it indicates if the RPKI system supports setting up delegated RPKI, so users can run their own certificate authority if they want.
+This section provides an overview of the functionality each RIR provides to help users manage RPKI, which is summarised in the table below. 
 
-For using the hosted RPKI system, there is an overview if multiple users can be authorised to manage RPKI using the hosted system, and whether they can authenticate using two-factors. To make management of ROAs easier, some systems provide a list of all announcements with certified address space that are seen by BGP route collectors, such as the `RIPE Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_.
+First, the table indicates if the RPKI system supports setting up delegated RPKI, so users can run their own certificate authority if they want. When using the hosted RPKI system, there is an overview if multiple users can be authorised to manage ROAs, and whether they can authenticate using two-factors. 
 
-ROAs have an explicit start and end validity date, but in some cases it is possible to automatically renew the ROAs, so that they are valid for as long as there is an entry in the web interface. In addition, it may be possible to synchronise the management of *"route"* objects in the IRR with the ROAs that are created. Lastly, an application programming interface (API) may be provided to make batch processing easier.
+To make management of ROAs easier, some systems provide a list of all announcements with certified address space that are seen by BGP route collectors, such as the `RIPE Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_. ROAs have an explicit start and end validity date, but in some cases it is possible to automatically renew the ROAs, so that they are valid for as long as there is an entry in the web interface. In addition, it may be possible to synchronise the management of *"route"* objects in the IRR with the ROAs that are created. Lastly, an application programming interface (API) may be provided to make batch processing easier.
 
 To improve retrieval of published RPKI data by relying party software, the `RPKI Repository Delta Protocol (RRDP) protocol <https://tools.ietf.org/html/rfc8182>`_ was developed. Support for this standard is listed as well.
 
@@ -47,7 +47,7 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 | Support for delegated |  Yes     | Yes      | Yes      | No [1]_  | Yes [2]_ |
 | RPKI                  |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Multi-user support    |  Yes     | No [3]_  | Yes      | No       | Yes      |
+| Multi-user support    |  Yes     | Yes [3]_ | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Two-factor            |  Yes     | No       | Yes [4]_ | No       | Yes      |
 | authentication        |          |          |          |          |          |
@@ -60,13 +60,13 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 | Match "route" objects |  Yes     | No       | No       | No       | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| API                   |  Yes     | No       | Yes [6]_ | No       | Yes      |
+| API                   |  No      | No       | Yes [6]_ | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 
 .. [1] Coming late 2019.
-.. [2] By request only.
+.. [2] Currently upon request only.
 .. [3] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
 .. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [5] Explicit opt-in feature.
