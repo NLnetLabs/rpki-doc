@@ -21,16 +21,58 @@ In 2008, when the five RIRs committed to start offering RPKI services, it was cl
 
 Hosted RPKI offers a fair balance between ease-of-use, maintenance and flexibility. It allows users to log into their RIR member portal and request a resource certificate, which is securely hosted on the servers of the RIR. All cryptographic operations, such as key roll overs, are automated. The certificates and ROA are published in repositories hosted by the RIR. In short, there is nothing that the user has to manage, apart from creating and maintaining ROAs.
 
-The functionality and user interfaces of the hosted RPKI implementations vary greatly across the five RIRs. Some automate nearly everything, and ROAs can be created based on the announcements that are seen in BGP using the resources on the certificate. In other implementations, ROAs have to be created manually and individually signed with a separate key.
-
-Despite these variations, if you are an organisation with a single ASN and a handful of statically announced IP address blocks that are not delegated to customers, hosted RPKI is sufficient for most use cases.
-
 .. figure:: img/ripe-ncc-hosted-rpki.png
     :align: center
     :width: 100%
     :alt: Example of the Hosted RPKI interface by the RIPE NCC
 
     Example of the Hosted RPKI interface of the RIPE NCC
+
+The functionality and user interfaces of the hosted RPKI implementations vary greatly across the five RIRs. Despite these variations, if you are an organisation with a single ASN and a handful of statically announced IP address blocks that are not delegated to customers, hosted RPKI is sufficient for most use cases.
+
+Functional differences across RIRs
+""""""""""""""""""""""""""""""""""
+
+This section provides an overview of the functionality each RIR provides to help users manage RPKI, which is summarised in the table below. First, it indicates if the RPKI system supports setting up delegated RPKI, so users can run their own certificate authority if they want.
+
+For using the hosted RPKI system, there is an overview if multiple users can be authorised to manage RPKI using the hosted system, and whether they can authenticate using two-factors. To make management of ROAs easier, some systems provide a list of all announcements with certified address space that are seen by BGP route collectors, such as the `RIPE Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_.
+
+ROAs have an explicit start and end validity date, but in some cases it is possible to automatically renew the ROAs, so that they are valid for as long as there is an entry in the web interface. In addition, it may be possible to synchronise the management of *"route"* objects in the IRR with the ROAs that are created. Lastly, an application programming interface (API) may be provided to make batch processing easier.
+
+To improve retrieval of published RPKI data by relying party software, the `RPKI Repository Delta Protocol (RRDP) protocol <https://tools.ietf.org/html/rfc8182>`_ was developed. Support for this standard is listed as well.
+
++-----------------------+----------+----------+----------+----------+----------+
+|                       | APNIC    | AFRINIC  | ARIN     | LACNIC   | RIPE NCC |
++=======================+==========+==========+==========+==========+==========+
+| Support for delegated |  Yes     | Yes      | Yes      | No [1]_  | Yes [2]_ |
+| RPKI                  |          |          |          |          |          |
++-----------------------+----------+----------+----------+----------+----------+
+| Multi-user support    |  Yes     | No [3]_  | Yes      | No       | Yes      |
++-----------------------+----------+----------+----------+----------+----------+
+| Two-factor            |  Yes     | No       | Yes [4]_ | No       | Yes      |
+| authentication        |          |          |          |          |          |
++-----------------------+----------+----------+----------+----------+----------+
+| BGP route collector   |  Yes     | No       | No       | Yes      | Yes      |
+| suggestions           |          |          |          |          |          |
++-----------------------+----------+----------+----------+----------+----------+
+| Auto-renew ROAs       |  Yes     | No       | No       | Yes [5]_ | Yes      |
++-----------------------+----------+----------+----------+----------+----------+
+| Match "route" objects |  Yes     | No       | No       | No       | No       |
+| with ROAs             |          |          |          |          |          |
++-----------------------+----------+----------+----------+----------+----------+
+| API                   |  Yes     | No       | Yes [6]_ | No       | Yes      |
++-----------------------+----------+----------+----------+----------+----------+
+| Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
++-----------------------+----------+----------+----------+----------+----------+
+
+.. [1] Coming late 2019.
+.. [2] By request only.
+.. [3] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
+.. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
+.. [5] Explicit opt-in feature.
+.. [6] Only possible to create ROAs; no list, update or delete.
+
+A final differentiator is the publication interval of each RIR repository. Please keep in mind that once a ROA is created by a user in one of the hosted systems, it can take between several minutes up to `multiple hours <https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_ before the object is published and available for download, depending on the RIR system you use.
 
 Delegated RPKI
 --------------

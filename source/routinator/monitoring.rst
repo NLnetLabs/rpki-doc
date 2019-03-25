@@ -8,8 +8,8 @@ addition to the RTR service. The primary goal of this service is
 to allow integration into monitoring systems, such as `Prometheus <https://prometheus.io/>`_. For this reason, the service does not
 support HTTPS and should only be used within the local network.
 
-Monitoring a Routinator instance can be done using the ``listen-http``
-configuration option or command line parameter. For Prometheus, `port 9556 <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
+Monitoring can enabled using the ``listen-http`` configuration option 
+or command line parameter. For Prometheus, `port 9556 <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
 is allocated for this use. A Routinator instance with monitoring on this port can be launched using the following command:
 
 .. code-block:: bash
