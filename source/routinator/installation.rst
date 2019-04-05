@@ -55,7 +55,7 @@ Sytem Requirements
 Routinator is built to be lean and is capable of running on minimalist
 hardware, such as the Raspberry Pi. At this time, the size of the global
 RPKI data set is about 300MB and cryptographic validation of it takes 
-Routinator 2.3 seconds on a quad-core i7. 
+Routinator just 2.3 seconds on a quad-core i7. 
 
 When choosing a system to run Routinator on, make sure you have 512MB of 
 available memory and 1GB of disk space. This will give you ample margin for
@@ -79,13 +79,12 @@ rsync
 Currently, Routinator requires the ``rsync`` executable to be in your path.
 Due to the nature of rsync, it is unclear which particular version you need at
 the very least, but whatever is being shipped with current Linux and \*BSD
-distributions and macOS should be fine.
+distributions and macOS should be fine. Alternatively, you can download rsync
+from `its website <https://rsync.samba.org/>`_.
 
 On Windows, Routinator requires the ``rsync`` version that comes with
 `Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
 installation phase. 
-
-If you don’t have rsync, please head to https://rsync.samba.org/
 
 C Toolchain
 """""""""""
@@ -115,9 +114,7 @@ To install ``rustup`` and Rust, simply do:
 
    curl https://sh.rustup.rs -sSf | sh
 
-Alternatively, get the file, have a look and then run it manually.
-Follow the instructions to get rustup and cargo, the rust build tool, into
-your path.
+Alternatively, visit the `official Rust website <https://www.rust-lang.org/tools/install>`_ for other installation methods.
 
 You can update your Rust installation later by simply running:
 
@@ -125,10 +122,29 @@ You can update your Rust installation later by simply running:
 
    rustup update
 
-In a few cases, ``rustup`` may be unavailable for your platform
-or fails to install correctly. One such case is CentOS 6, where
-you will end up with a long list of error messages about missing 
-assembler instructions. This is because the assembler shipped with 
+For some platforms, rustup cannot provide binary releases to install
+directly. The `Rust Platform Support
+<https://forge.rust-lang.org/platform-support.html>`_ page lists
+several platforms where official binary releases are not available,
+but Rust is still guaranteed to build. However, automated tests
+are not run so it’s not guaranteed to produce a working build, but 
+these platforms often work to quite a good degree.
+
+One such example that is especially relevant for the routing community
+is OpenBSD. On this platform, `patches
+<https://github.com/openbsd/ports/tree/master/lang/rust/patches>`_ are 
+required to get Rust running correctly, but these are well maintained 
+and offer the latest version of Rust quite quickly. 
+
+Rust can be installed on OpenBSD by running:
+
+.. code-block:: bash
+
+   pkg_add rust
+
+Another example where the standard installation method does not work is
+CentOS 6, where you will end up with a long list of error messages about 
+missing assembler instructions. This is because the assembler shipped with 
 CentOS 6 is too old.
 
 You can get the necessary version by installing the `Developer Toolset 
