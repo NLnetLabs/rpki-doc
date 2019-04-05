@@ -28,7 +28,8 @@ in the same notation that is used by the optional configuration file, e.g.
 
 You can override these defaults, as well as configure a great number of
 additional options using either command line arguments or via the 
-configuration file.
+configuration file. The most common options will be explained in the
+next section.
 
 To get an overview of all available options, please refer to the manual 
 page, which can be viewed by running ``routinator man``. Alternatively,
@@ -40,12 +41,12 @@ Using a Configuration File
 Routinator can take its configuration from a file. You can specify such a
 configuration file via the ``-c`` option. If you don’t, Routinator will check
 if there is a file ``$HOME/.routinator.conf`` and if it exists, use it. If it
-doesn’t exist and there is no ``-c`` option, default values are used.
+doesn’t exist and there is no ``-c`` option, the default values are used.
 
-The configuration file is a `TOML file <https://github.com/toml-lang/toml>`_.
-Its entries are named similarly to the command line options. A complete 
-sample configuration file showing all the default values can be found in the 
-repository at `etc/routinator.conf
+For specifying configuration options, Routinator uses a `TOML file
+<https://github.com/toml-lang/toml>`_. Its entries are named similarly to the
+command line options. A complete sample configuration file showing all the 
+default values can be found in the repository at `etc/routinator.conf
 <https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf>`_.
 
 Applying Local Exceptions

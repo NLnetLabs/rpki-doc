@@ -20,7 +20,7 @@ here’s how you get Routinator to run as an RTR server listening on 127.0.0.1 p
    curl https://sh.rustup.rs -sSf | sh
    source ~/.cargo/env
    cargo install routinator
-   routinator rtrd -l 127.0.0.1:3323
+   routinator rtrd -al 127.0.0.1:3323
 
 If you have an older version of Routinator, you can update via:
 
@@ -55,7 +55,7 @@ Sytem Requirements
 Routinator is built to be lean and is capable of running on minimalist
 hardware, such as the Raspberry Pi. At this time, the size of the global
 RPKI data set is about 300MB and cryptographic validation of it takes 
-Routinator just 2.3 seconds on a quad-core i7. 
+Routinator 2.3 seconds on a quad-core i7. 
 
 When choosing a system to run Routinator on, make sure you have 512MB of 
 available memory and 1GB of disk space. This will give you ample margin for
@@ -99,7 +99,7 @@ Rust
 """"
 
 The Rust compiler runs on, and compiles to, a great number of platforms,
-though not all platforms are equally supported. The official `Rust 
+though not all of them are equally supported. The official `Rust 
 Platform Support <https://forge.rust-lang.org/platform-support.html>`_
 page provides an overview of the various support levels.
 
@@ -116,7 +116,7 @@ To install ``rustup`` and Rust, simply do:
 
 Alternatively, visit the `official Rust website <https://www.rust-lang.org/tools/install>`_ for other installation methods.
 
-You can update your Rust installation later by simply running:
+You can update your Rust installation later by running:
 
 .. code-block:: bash
 
@@ -187,15 +187,15 @@ Routinator will be in your path, too.
 Building a Statically Linked Routinator
 """""""""""""""""""""""""""""""""""""""
 
-While Rust binaries are mostly statically linked, they depend on libc
-which, as least as glibc that is standard on Linux systems, is somewhat
+While Rust binaries are mostly statically linked, they depend on ``libc``
+which, as least as ``glibc`` that is standard on Linux systems, is somewhat
 difficult to link statically. This is why Routinator binaries are actually
-dynamically linked on glibc systems and can only be transferred between
-systems with the same glibc versions.
+dynamically linked on ``glibc`` systems and can only be transferred between
+systems with the same ``glibc`` versions.
 
 However, Rust can build binaries based on the alternative implementation
 named musl that can easily be statically linked. Building such binaries is
-easy with rustup. You need to install musl and the correct musl target
+easy with ``rustup``. You need to install musl and the correct musl target
 such as ``x86_64-unknown-linux-musl`` for x86\_64 Linux systems. Then you
 can just build Routinator for that target.
 

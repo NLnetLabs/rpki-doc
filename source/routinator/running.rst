@@ -34,8 +34,21 @@ a list of Validated ROA Payload and use ``-v`` to increase the log level:
 
 When you run Routinator for the very first time, it will create
 ``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the five RIRs
-there, and then complain that ARIN’s TAL is in fact not really there. Follow the
-instructions provided and try again. 
+there, and then complain that ARIN’s TAL is in fact not really there:
+
+.. code-block:: text
+
+   $ routinator -v vrps
+   MISSING TRUST ANCHOR LOCATOR
+   The trust anchor locator (TAL) in file
+      /home/me/.rpki-cache/tals/arin.tal
+   has not been installed. Please go to
+      https://www.arin.net/resources/rpki/tal.html
+   and download the TAL in RFC 7730 format. Place the downloaded file at
+      /home/me/.rpki-cache/tals/arin.tal
+   Routinator will refuse to run until you have done that.
+
+Follow the instructions provided and try again. 
 
 Now, Routinator will rsync the entire RPKI repository to your machine, validate it and produce a list of AS numbers and prefixes in the default CSV format. From a cold start,
 this process will take about two minutes.
