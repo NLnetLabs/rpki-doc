@@ -122,13 +122,13 @@ You can update your Rust installation later by simply running:
 
    rustup update
 
-For some platforms, rustup cannot provide binary releases to install
+For some platforms, ``rustup`` cannot provide binary releases to install
 directly. The `Rust Platform Support
 <https://forge.rust-lang.org/platform-support.html>`_ page lists
 several platforms where official binary releases are not available,
-but Rust is still guaranteed to build. However, automated tests
-are not run so it’s not guaranteed to produce a working build, but 
-these platforms often work to quite a good degree.
+but Rust is still guaranteed to build. For these platforms, automated 
+tests are not run so it’s not guaranteed to produce a working build, but 
+they often work to quite a good degree.
 
 One such example that is especially relevant for the routing community
 is OpenBSD. On this platform, `patches
