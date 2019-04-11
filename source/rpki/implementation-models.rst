@@ -37,9 +37,11 @@ This section provides an overview of the functionality each RIR provides to help
 
 First, the table indicates if the RPKI system supports setting up delegated RPKI, so users can run their own certificate authority if they want. When using the hosted RPKI system, there is an overview if multiple users can be authorised to manage ROAs, and whether they can authenticate using two-factors. 
 
-To make management of ROAs easier, some systems provide a list of all announcements with certified address space that are seen by BGP route collectors, such as the `RIPE Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_. ROAs have an explicit start and end validity date, but in some cases it is possible to automatically renew the ROAs, so that they are valid for as long as there is an entry in the web interface. In addition, it may be possible to synchronise the management of *"route"* objects in the IRR with the ROAs that are created. Lastly, an application programming interface (API) may be provided to make batch processing easier.
+To make management of ROAs easier, some systems provide a list of all announcements with certified address space that are seen by BGP route collectors, such as the `RIPE Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_. ROAs have an explicit start and end validity date, but in some cases it is possible to automatically renew the ROAs, so that they are valid for as long as there is an entry in the web interface. In addition, it may be possible to synchronise the management of *"route"* objects in the IRR with the ROAs that are created. An application programming interface (API) may be provided to make batch processing easier.
 
-To improve retrieval of published RPKI data by relying party software, the `RPKI Repository Delta Protocol (RRDP) protocol <https://tools.ietf.org/html/rfc8182>`_ was developed. Support for this standard is listed as well.
+To improve retrieval of published RPKI data by relying party software, the `RPKI Repository Delta Protocol (RRDP) protocol <https://tools.ietf.org/html/rfc8182>`_ was developed. Support for this standard is listed as well. 
+
+Lastly, `nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_ refers to the inability for a party to dispute or deny having performed an action.
 
 +-----------------------+----------+----------+----------+----------+----------+
 |                       | APNIC    | AFRINIC  | ARIN     | LACNIC   | RIPE NCC |
@@ -64,7 +66,7 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 +-----------------------+----------+----------+----------+----------+----------+
 | Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Nonrepudiation [7_]   |  No      | No       | Yes      | No       | No       |
+| Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
 
 .. [1] Coming late 2019.
@@ -73,7 +75,6 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 .. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [5] Explicit opt-in feature.
 .. [6] Only possible to create ROAs; no list, update or delete.
-.. [7] `Nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_ refers to the inability for a party to dispute or deny having performed an action.
 
 A final differentiator is the publication interval of each RIR repository. Please keep in mind that once a ROA is created by a user in one of the hosted systems, it can take between several minutes up to `multiple hours <https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_ before the object is published and available for download, depending on the RIR system you use.
 
