@@ -64,6 +64,8 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 +-----------------------+----------+----------+----------+----------+----------+
 | Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
+| Nonrepudiation [7_]   |  No      | No       | Yes      | No       | No       |
++-----------------------+----------+----------+----------+----------+----------+
 
 .. [1] Coming late 2019.
 .. [2] Currently upon request only.
@@ -71,6 +73,7 @@ To improve retrieval of published RPKI data by relying party software, the `RPKI
 .. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [5] Explicit opt-in feature.
 .. [6] Only possible to create ROAs; no list, update or delete.
+.. [7] `Nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_ refers to the inability for a party to dispute or deny having performed an action.
 
 A final differentiator is the publication interval of each RIR repository. Please keep in mind that once a ROA is created by a user in one of the hosted systems, it can take between several minutes up to `multiple hours <https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_ before the object is published and available for download, depending on the RIR system you use.
 
