@@ -160,7 +160,7 @@ What is the global adoption and data quality of RPKI like?
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
-- `RPKI Analytics <https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/>`__, NLnet Labs
+- `RPKI Analytics <https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/>`__, by NLnet Labs
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
 - `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
