@@ -162,7 +162,6 @@ There are several initiatives that measure the adoption and data quality of RPKI
 
 - `RPKI Analytics <https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/>`__, NLnet Labs
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
-- `Global country statistics <https://lirportal.ripe.net/certification/content/static/statistics/world-roas.html>`_, by RIPE NCC
 - `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
