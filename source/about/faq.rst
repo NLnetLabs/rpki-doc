@@ -6,7 +6,7 @@ FAQ
 .. note::  This is a community-driven FAQ for RPKI, originally written by Alex Band, 
            Job Snijders, David Monosov and Melchior Aelmans. Network operators 
            around the world have contributed to these questions and answers. The 
-           contents are available on `Github <https://github.com/NLnetLabs/rpki-faq>`_,
+           contents are available on `Github <https://github.com/NLnetLabs/rpki-doc/blob/master/source/about/faq.rst>`_,
            allowing you to send a pull request with edits or additions, or fork the
            contents for usage elsewhere.
 
@@ -160,6 +160,7 @@ What is the global adoption and data quality of RPKI like?
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
+- `RPKI Analytics <https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/>`__, NLnet Labs
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
 - `Global country statistics <https://lirportal.ripe.net/certification/content/static/statistics/world-roas.html>`_, by RIPE NCC
 - `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
