@@ -69,7 +69,7 @@ Lastly, `nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-mus
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
 
-.. [1] Coming late 2019.
+.. [1] Coming `June 2019 <https://www.lacnic.net/innovaportal/file/3635/1/12-updown_rpki_lacnic.pdf>`_.
 .. [2] Currently upon request only.
 .. [3] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
 .. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
