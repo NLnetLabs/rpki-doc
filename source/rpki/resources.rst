@@ -63,6 +63,19 @@ Supporting Tools
    Hamburg University of Applied Sciences, under the supervision of Matthias Wählisch
    and Thomas Schmidt. It is now a community project.
 
+`pmacct <http://pmacct.net>`_
+   pmacct is a small set of multi-purpose passive network monitoring tools. 
+   It can account, classify, aggregate, replicate and export forwarding-plane 
+   data, i.e. IPv4 and IPv6 traffic; collect and correlate control-plane data 
+   via BGP and BMP; collect and correlate RPKI data; collect infrastructure 
+   data via Streaming Telemetry.
+   
+   The pmacct toolset can perform RPKI Origin Validation and present
+   the outcome as a property in the flow aggregation process. Because it
+   separates out the various types kinds of (invalid) BGP announcements, 
+   operators can a good grasp on how their connectivity to the rest of the
+   Internet would look like after deploying a "invalid == reject" policy.
+
 Insights and Statistics
 -----------------------
 
