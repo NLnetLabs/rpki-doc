@@ -87,6 +87,7 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
+- `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
 
 Operational Experiences
 -----------------------
