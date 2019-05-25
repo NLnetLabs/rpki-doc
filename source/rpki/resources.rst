@@ -24,8 +24,9 @@ Relying Party Software
    designed to have a small footprint and great portability.
 
 `RPSTIR <https://github.com/bgpsecurity/rpstir/>`_
-   Relying Party Security Technology for Internet Routing (RPSTIR) software
-   by Raytheon BBN Technologies, written in the C programming language.
+   Relying Party Security Technology for Internet Routing (RPSTIR) software, 
+   initially written by Raytheon BBN Technologies in the C programming language,
+   now maintained by ZDNS.
 
 Certificate Authority Software
 ------------------------------
