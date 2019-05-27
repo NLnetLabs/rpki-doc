@@ -12,7 +12,7 @@ started is really easy using either `Cargo
 Quick Start
 -----------
 
-Assuming you have rsync and the C toolchain but not yet Rust 1.30 or newer,
+Assuming you have rsync and the C toolchain but not yet Rust 1.34 or newer,
 here’s how you get Routinator to run as an RTR server listening on 127.0.0.1 port 3323:
 
 .. code-block:: bash
@@ -104,7 +104,7 @@ Platform Support <https://forge.rust-lang.org/platform-support.html>`_
 page provides an overview of the various support levels.
 
 While some system distributions include Rust as system packages, 
-Routinator relies on a relatively new version of Rust, currently 1.30 or 
+Routinator relies on a relatively new version of Rust, currently 1.34 or 
 newer. We therefore suggest to use the canonical Rust installation via a
 tool called ``rustup``.
 
