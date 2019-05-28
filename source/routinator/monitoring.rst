@@ -18,7 +18,9 @@ is allocated for this use. A Routinator instance with monitoring on this port ca
 
 On the ``/metrics`` path, Routinator will expose the number of valid ROAs seen for each trust anchor, as well as the total number of validated ROA payloads (VRPs) for each. 
 
-In addition, several counters are available that indicate when the last update was started, when it finished and what the duration was. This will allow you to tigger alerts, for example when the update duration is taking longer than your refresh interval.
+In addition, several counters are available that indicate when the last update was started, when it finished and what the duration was. This will allow you to tigger alerts, for example when the update duration is taking longer than your refresh interval. 
+
+Lastly, the current RTR serial number is exposed, allowing you to check if this matches the serial number your connected router has. On Juniper routers you can verify the serial number with the command ``show validation session detail``, on Cisco routers with ``show ip bgp rpki server`` and on Nokia routers with ``show router origin-validation rpki-session detail``.
 
 .. code-block:: text
 
@@ -49,6 +51,10 @@ In addition, several counters are available that indicate when the last update w
    # HELP last_update_done seconds since last update finished
    # TYPE gauge
    last_update_done 520
+   
+   # HELP serial current RTR serial number
+   # TYPE gauge
+   serial 0
 
 The service supports several other GET requests, with the following paths:
 
@@ -66,3 +72,6 @@ The service supports several other GET requests, with the following paths:
 
 :/version:
      Returns the version of the Routinator instance
+
+:/status:
+     Returns the health status of the application
