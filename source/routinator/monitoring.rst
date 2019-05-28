@@ -10,17 +10,36 @@ support HTTPS and should only be used within the local network.
 
 Monitoring can enabled using the ``listen-http`` configuration option 
 or command line parameter. For Prometheus, `port 9556 <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
-is allocated for this use. A Routinator instance with monitoring on this port can be launched using the following command:
+is allocated for this use. A Routinator instance with monitoring on 
+this port can be launched using the following command:
 
 .. code-block:: bash
 
    routinator rtrd -a -l 192.0.2.13:3323 -l [2001:0DB8::13]:3323 --listen-http 192.0.2.13:9556
 
-On the ``/metrics`` path, Routinator will expose the number of valid ROAs seen for each trust anchor, as well as the total number of validated ROA payloads (VRPs) for each. 
+On the ``/metrics`` path, Routinator will expose the number of valid 
+ROAs seen for each trust anchor, as well as the total number of validated 
+ROA payloads (VRPs) for each. 
 
-In addition, several counters are available that indicate when the last update was started, when it finished and what the duration was. This will allow you to tigger alerts, for example when the update duration is taking longer than your refresh interval. 
+In addition, several counters are available that indicate when the last 
+update was started, when it finished and what the duration was. This will 
+allow you to tigger alerts, for example when the update duration is taking
+longer than your refresh interval. 
 
-Lastly, the current RTR serial number is exposed, allowing you to check if this matches the serial number your connected router has. On Juniper routers you can verify the serial number with the command ``show validation session detail``, on Cisco routers with ``show ip bgp rpki server`` and on Nokia routers with ``show router origin-validation rpki-session detail``.
+Lastly, the current RTR serial number is exposed, allowing you to check if 
+this matches the serial number your connected router has. You can verify the
+serial number on your router with these commands:
+
+:Juniper:
+     ``show validation session detail``
+
+:Cisco: 
+     ``show ip bgp rpki server``
+
+:Nokia:
+     ``show router origin-validation rpki-session detail``
+
+This is an example of the output of the ``/metrics`` endpoint:
 
 .. code-block:: text
 
@@ -54,9 +73,16 @@ Lastly, the current RTR serial number is exposed, allowing you to check if this 
    
    # HELP serial current RTR serial number
    # TYPE gauge
-   serial 0
+   serial 42
 
 The service supports several other GET requests, with the following paths:
+
+:/status:
+     Returns the information from the ``/metrics`` endpoint in a more 
+     friendly format
+
+:/version:
+     Returns the version of the Routinator instance
 
 :/csv:
      Returns the current set of VRPs in csv output format
@@ -69,9 +95,3 @@ The service supports several other GET requests, with the following paths:
 
 :/rpsl:
      Returns the current set of VRPs in rpsl output format
-
-:/version:
-     Returns the version of the Routinator instance
-
-:/status:
-     Returns the health status of the application
