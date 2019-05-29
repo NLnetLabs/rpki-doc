@@ -3,19 +3,17 @@
 Monitoring
 ==========
 
-When run in ``rtrd`` mode, Routinator can provide an HTTP service in
-addition to the RTR service. The primary goal of this service is
-to allow integration into monitoring systems, such as `Prometheus <https://prometheus.io/>`_. For this reason, the service does not
-support HTTPS and should only be used within the local network.
+The HTTP server in Routinator provides endpoints for monitoring the application. A data format specifically for `Prometheus
+<https://prometheus.io/>`_ is available, as well as `dedicated port 9556
+<https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_.
 
-Monitoring can enabled using the ``listen-http`` configuration option 
-or command line parameter. For Prometheus, `port 9556 <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
-is allocated for this use. A Routinator instance with monitoring on 
-this port can be launched using the following command:
+This means it may be a good idea to run the HTTP server alongside
+the RTR server. To launch Routinator in server mode on 192.0.2.13 with RTR
+running on port 3323 and HTTP on 9556, use the following command:
 
 .. code-block:: bash
 
-   routinator rtrd -a -l 192.0.2.13:3323 -l [2001:0DB8::13]:3323 --listen-http 192.0.2.13:9556
+   routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
 On the ``/metrics`` path, Routinator will expose the number of valid 
 ROAs seen for each trust anchor, as well as the total number of validated 
@@ -26,9 +24,9 @@ update was started, when it finished and what the duration was. This will
 allow you to tigger alerts, for example when the update duration is taking
 longer than your refresh interval. 
 
-Lastly, the current RTR serial number is exposed, allowing you to check if 
-this matches the serial number your connected router has. You can verify the
-serial number on your router with these commands:
+Lastly, the current serial number for RPKI-RTR is exposed. This number is used
+to notify connected routers that new data is available. The number Routinator
+has should match the serial on your connected router. You can verify this on your router with using the following command:
 
 :Juniper:
      ``show validation session detail``
@@ -75,7 +73,7 @@ This is an example of the output of the ``/metrics`` endpoint:
    # TYPE gauge
    serial 42
 
-The service supports several other GET requests, with the following paths:
+The HTTP service has two additional endpoints on the following paths:
 
 :/status:
      Returns the information from the ``/metrics`` endpoint in a more 
@@ -83,15 +81,3 @@ The service supports several other GET requests, with the following paths:
 
 :/version:
      Returns the version of the Routinator instance
-
-:/csv:
-     Returns the current set of VRPs in csv output format
-
-:/json:
-     Returns the current set of VRPs in json output format
-
-:/openbgpd:
-     Returns the current set of VRPs in openbgpd output format
-
-:/rpsl:
-     Returns the current set of VRPs in rpsl output format
