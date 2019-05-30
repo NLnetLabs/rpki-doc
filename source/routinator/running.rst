@@ -121,6 +121,33 @@ For example, to get a file with with the validated ROA payload in JSON format, r
 
    routinator vrps --format json --output authorisedroutes.json
 
+Filtering
+"""""""""
+
+In case you are looking for specific information in the output, Routinator allows
+filtering to see if a prefix or ASN is covered or matched by a VRP. You can do this
+using the ``--filter-prefix`` and ``--filter-asn`` flags. 
+
+When using the ``--filter-prefix``, the result will include VRPs regardless of their
+ASN and MaxLength. Both filter flags can be combined and used multiple times in a 
+single query and will be treated as a logical *"or"*.
+
+In the example, we'll add the ``-n`` flag to ensure the repository is not updated 
+before producing the result but it is taken from the current cache:
+
+.. code-block:: bash
+
+   routinator vrps -n --filter-prefix 185.49.140.0/24
+   ASN,IP Prefix,Max Length,Trust Anchor
+   AS199664,185.49.140.0/22,22,ripe
+
+.. code-block:: bash
+
+   routinator vrps -n --filter-asn AS199664
+   ASN,IP Prefix,Max Length,Trust Anchor
+   AS199664,185.49.140.0/22,22,ripe
+   AS199664,2a04:b900::/29,29,ripe
+
 Running the HTTP Service
 ------------------------
 
