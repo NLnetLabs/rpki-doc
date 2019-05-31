@@ -3,8 +3,8 @@
 Running
 =======
 
-The first thing you need to do before running Routinator for the first time, is to 
-prepare its working environment. You do this using the ``init`` command:
+Before running Routinator for the first time, you must prepare its working environment.
+You do this using the ``init`` command:
 
 .. code-block:: bash
 
@@ -12,16 +12,22 @@ prepare its working environment. You do this using the ``init`` command:
 
 This will prepare both the directory for the local RPKI cache, as well as the Trust
 Anchor Locator (TAL) directory. By default, both directories will be located under
-``$HOME/.rpki-cache``, but you can change their locations via command line options.
+``$HOME/.rpki-cache``, but you can change their locations via the command line 
+options ``--repository-dir`` and ``--tal-dir``.
 
 TALs provide hints for the trust anchor certificates to be used both to
-discover and validate all RPKI content. The five TALs that are necessary
-for RPKI are bundled with Routinator and installed by the ``init`` command.
-However, the one from the North American RIR ARIN requires you to agree to
-their `Relying Party Agreement <https://www.arin.net/resources/manage/rpki/tal/>`_
-before you can use it. Running the ``init`` command will provide you with 
-instructions where to find the agreement and how to express your acceptance of 
-its terms.
+discover and validate all RPKI content. The five TALs — one for each Regional
+Internet Registry (RIR) — that are necessary for RPKI are bundled with Routinator 
+and installed by the ``init`` command.
+
+.. WARNING:: Using the TAL from the North American RIR ARIN requires you to agree to
+             their `Relying Party Agreement
+             <https://www.arin.net/resources/manage/rpki/tal/>`_ before you can use it.
+             Running the ``init`` command will provide you with instructions where to 
+             find the agreement and how to express your acceptance of its terms.
+
+First Launch
+------------
 
 After the initialisation has completed, you can start using Routinator in two ways. 
 Routinator can perform RPKI validation as a one-time operation and print a Validated ROA Payload (VRP) list in various formats, or it can run as a service that periodically
@@ -67,7 +73,7 @@ minutes.
 Printing a List of VRPs
 -----------------------
 
-Routinator can produce Validated ROA Payload (VRP) list in five different formats,
+Routinator can produce a Validated ROA Payload (VRP) list in five different formats,
 which are either printed to standard output or saved to a file:
 
 :csv: 
@@ -162,10 +168,12 @@ The application will stay attached to your terminal unless you provide the ``-d`
      Returns the current set of VRPs in rpsl output format
 
 Please note that this server is intended to run on your internal network and doesn't
-offer HTTPS natively. If this is a requirement, you can for example run Routinator behind an `nginx <https://www.nginx.com>`_ reverse proxy. 
+offer HTTPS natively. If this is a requirement, you can for example run Routinator 
+behind an `nginx <https://www.nginx.com>`_ reverse proxy. 
 
-Also, the HTTP server also provides paths that allow you to monitor Routinator, so it 
-may be desirable to have the HTTP server running alongside the RTR server. For more information, please refer to the :ref:`doc_routinator_monitoring` section.
+Also, the HTTP server also provides paths that allow you to monitor Routinator, so it
+may be desirable to have the HTTP server running alongside the RTR server. For more
+information, please refer to the :ref:`doc_routinator_monitoring` section.
 
 Running the RTR Service
 -----------------------
