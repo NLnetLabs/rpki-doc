@@ -3,6 +3,27 @@
 Running
 =======
 
+The first thing you need to do before running Routinator for the first time, is to 
+prepare its working environment. You do this using the ``init`` command:
+
+.. code-block:: bash
+
+   routinator init
+
+This will prepare both the directory for the local RPKI cache, as well as the Trust
+Anchor Locator (TAL) directory. By default, both directories will be located under
+``$HOME/.rpki-cache``, but you can change their locations via command line options.
+
+TALs provide hints for the trust anchor certificates to be used both to
+discover and validate all RPKI content. The five TALs that are necessary
+for RPKI are bundled with Routinator and installed by the ``init`` command.
+However, the one from the North American RIR ARIN requires you to agree to
+their `Relying Party Agreement <https://www.arin.net/resources/manage/rpki/tal/>`_
+before you can use it. Running the ``init`` command will provide you with 
+instructions where to find the agreement and how to express your acceptance of 
+its terms.
+
+After the initialisation has completed, you can start using Routinator in two ways. 
 Routinator can perform RPKI validation as a one-time operation and print a Validated ROA Payload (VRP) list in various formats, or it can run as a service that periodically
 fetches RPKI data, verifies it and makes the result available via the RPKI-RTR protocol,
 and via the built-in HTTP server.
@@ -30,53 +51,18 @@ line via sub-commands:
 :server:
      Starts the daemon that periodically fetches and verifies RPKI data, after
      which it exposes the VRPs via RPKI-RTR, HTTP, or both.
-     
-First Launch
-------------
 
-.. WARNING:: Routinator comes pre-installed with the Trust Anchor Locators (TALs) 
-             of four out of the five RIRs. The ARIN TAL is not automatically loaded, 
-             as users must first confirm their acceptance of the `ARIN Relying Party
-             Agreement (RPA) <https://www.arin.net/resources/rpki/tal.html>`_. 
-
-To see if Routinator is configured correctly, it is recommended to have it print
-a Validated ROA Payload (VRP) list and use ``-v`` to increase the log level:
+To see if Routinator has been initialised correctly, it is recommended to perform an initial test run. You can do this by having Routinator print a Validated ROA Payload
+(VRP) list with the ``vrps`` sub-command, and using ``-v`` to increase the log level. 
 
 .. code-block:: bash
 
    routinator -v vrps
 
-When you run Routinator for the very first time, it will create
-``$HOME/.rpki-cache``, put the Trust Anchor Locators (TALs) of the five RIRs
-there, and then complain that ARIN’s TAL is in fact not really there:
-
-.. code-block:: text
-
-   $ routinator -v vrps
-   MISSING TRUST ANCHOR LOCATOR
-   
-   The trust anchor locator (TAL) in file
-   
-      /home/me/.rpki-cache/tals/arin.tal
-      
-   has not been installed. Please go to
-   
-      https://www.arin.net/resources/rpki/tal.html
-      
-   and download the TAL in RFC 7730 format. Place the downloaded file at
-   
-      /home/me/.rpki-cache/tals/arin.tal
-      
-   Routinator will refuse to run until you have done that.
-
-Follow the instructions provided and try again. 
-
-Now, Routinator will rsync the entire RPKI repository to your machine, validate it and produce a list of AS numbers and prefixes in the default CSV format. From a cold start,
-this process will take about two minutes.
-
-A `demonstration video <https://youtu.be/6vUg96hPpuI>`_ is available on YouTube,
-with extra verbosity enabled.
-
+Now, you can see how Routinator downloads the entire RPKI repository to your machine,
+validates it and produces a list of AS numbers and prefixes in the default CSV format
+which is sent to standard output. From a cold start, this process will take about two
+minutes.
 
 Printing a List of VRPs
 -----------------------

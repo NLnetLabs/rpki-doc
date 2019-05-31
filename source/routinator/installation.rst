@@ -21,6 +21,8 @@ port 3323:
    curl https://sh.rustup.rs -sSf | sh
    source ~/.cargo/env
    cargo install routinator
+   routinator init
+   # Follow instructions provided
    routinator server --rtr 127.0.0.1:3323
 
 If you have an older version of Routinator, you can update via:
