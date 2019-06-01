@@ -3,11 +3,11 @@
 Installation
 ============
 
-At this time there are no binary packages for Routinator yet, but getting
-started is really easy using either `Cargo
+Getting started with Routinator is really easy using either `Cargo
 <https://crates.io/crates/routinator>`_, `Docker
 <https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the
-`source <https://github.com/NLnetLabs/routinator>`_.
+`source <https://github.com/NLnetLabs/routinator>`_. Binary packages are
+`coming soon <https://www.nlnetlabs.nl/pipermail/rpki/2019-May/000049.html>`_.
 
 Quick Start
 -----------
