@@ -14,8 +14,10 @@ such as a Raspberry Pi.
 Routinator connects to the Trust Anchors of the five Regional Internet Registries 
 (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all of the certificates
 and ROAs in the various repositories, verifies the signatures and makes the result available for use in the BGP workflow. It can perform RPKI validation as a one-time
-operation and store the result on disk in CSV, JSON, RPSL format, or run as a service
-that periodically fetches and verifies RPKI data. The data is then served via the built-in HTTP server, or fetched from RPKI-capable routers via the RPKI-RTR protocol.
+operation and store the result on disk in formats such as CSV, JSON and RPSL, or run 
+as a service that periodically fetches and verifies RPKI data. The data is then served
+via the built-in HTTP server, or fetched from RPKI-capable routers via the RPKI-RTR
+protocol.
 
 If you run into a problem with Routinator or you have a feature request,
 please `create an issue on Github
@@ -38,8 +40,8 @@ AXNn9GkpQ4a-q5skG1yiYQ>`_.
    installation
    running
    rtr-secure-transport
-   monitoring
    configuration
+   monitoring
    
 .. history
 .. authors

@@ -37,28 +37,27 @@ Quick Start with Docker
 
 Due to the impracticality of complying with the ARIN TAL distribution terms
 in an unsupervised Docker environment, prior to launching the container it
-is necessary to first confirm your acceptance of the `ARIN Relying Party Agreement (RPA) <https://www.arin.net/resources/manage/rpki/tal/>`_. 
-
-The ARIN TAL file in RFC 7730 format available at this URL will then need to
-be downloaded and mounted into the docker container as a replacement for
-the dummy arin.tal file that is shipped with Routinator.
+is necessary to first review and agree to the `ARIN Relying Party Agreement
+(RPA) <https://www.arin.net/resources/manage/rpki/tal/>`_. If you
+agree to the terms, you can let the Routinator Docker image install the TALs
+into a mounted volume that is later reused for the server:
 
 .. code-block:: bash
 
    # Create a local directory for the RPKI cache
    sudo mkdir -p /etc/routinator/tals
-   # Fetch the ARIN TAL (after agreeing to the distribution terms as described above)
-   sudo wget https://www.arin.net/resources/manage/rpki/arin-rfc7730.tal -P /etc/routinator/tals
-   # Launch a detached container named 'routinator' (will listen on 0.0.0.0:3323 and expose that port)
-   sudo docker run -d --name routinator -p 3323:3323 -v /etc/routinator/tals/arin-rfc7730.tal:/root/.rpki-cache/tals/arin.tal nlnetlabs/routinator
+   # Review the ARIN terms.
+   # Run a disposable contains to install TALs.
+   sudo docker run --rm -v /etc/routinator/tals:/root/.rpki-cache/tals
+   nlnetlabs/routinator init -f --accept-arin-rpa
+   # Launch the final detached container named 'routinator' (will listen on 0.0.0.0:3323 and expose that port)
+   sudo docker run -d --name routinator -p 3323:3323 -v /etc/routinator/tals:/root/.rpki-cache/tals nlnetlabs/routinator
 
 Sytem Requirements
 ------------------
 
-Routinator is built to be lean and is capable of running on minimalist
-hardware, such as the Raspberry Pi. At this time, the size of the global
-RPKI data set is about 300MB and cryptographic validation of it takes 
-Routinator 2.3 seconds on a quad-core i7. 
+At this time, the size of the global RPKI data set is about 300MB. Cryptographic
+validation of it takes Routinator about 2 seconds on a quad-core i7. 
 
 When choosing a system to run Routinator on, make sure you have 512MB of 
 available memory and 1GB of disk space. This will give you ample margin for
@@ -67,11 +66,11 @@ the RPKI repositories to grow over time, as adoption increases.
 Getting Started
 ---------------
 
-There are three things you need for Routinator: rsync, a C toolchain and Rust.
-You can install Routinator on any system where you can fulfil these
-requirements.
+There are three things you need to install and run Routinator: rsync, a C
+toolchain and Rust. You can install Routinator on any system where you can
+fulfil these requirements.
 
-You need rsync because the RPKI repository currently uses rsync as its main
+You need rsync because most RPKI repositories currently use it as its main
 means of distribution. Some of the cryptographic primitives used by
 Routinator require a C toolchain. Lastly, you need Rust because that’s the
 programming language that Routinator has been written in.

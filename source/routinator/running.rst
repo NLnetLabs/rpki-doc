@@ -29,10 +29,11 @@ and installed by the ``init`` command.
 First Launch
 ------------
 
-After the initialisation has completed, you can start using Routinator in two ways. 
-Routinator can perform RPKI validation as a one-time operation and print a Validated ROA Payload (VRP) list in various formats, or it can run as a service that periodically
-fetches RPKI data, verifies it and makes the result available via the RPKI-RTR protocol,
-and via the built-in HTTP server.
+After the initialisation has completed, you can start using Routinator in two ways.
+It can perform RPKI validation as a one-time operation and print a Validated ROA
+Payload (VRP) list in various formats, or it can run as a service that periodically
+fetches RPKI data, verifies it and makes the result available via the RPKI-RTR 
+protocol, and via the built-in HTTP server.
 
 When launched as a daemon, routers with support for route origin validation (ROV) 
 can connect to Routinator to fetch the processed data. This includes hardware 
@@ -125,7 +126,7 @@ ASN and MaxLength. Both filter flags can be combined and used multiple times in 
 single query and will be treated as a logical *"or"*.
 
 In the example, we'll add the ``-n`` flag to ensure the repository is not updated 
-before producing the result but it is taken from the current cache:
+before producing the result, but it is taken from the current cache:
 
 .. code-block:: bash
 
@@ -171,8 +172,8 @@ Please note that this server is intended to run on your internal network and doe
 offer HTTPS natively. If this is a requirement, you can for example run Routinator 
 behind an `nginx <https://www.nginx.com>`_ reverse proxy. 
 
-Also, the HTTP server also provides paths that allow you to monitor Routinator, so it
-may be desirable to have the HTTP server running alongside the RTR server. For more
+Lastly, the HTTP server provides paths that allow you to monitor Routinator, so it
+may be desirable to have HTTP running alongside the RTR server. For more
 information, please refer to the :ref:`doc_routinator_monitoring` section.
 
 Running the RTR Service
