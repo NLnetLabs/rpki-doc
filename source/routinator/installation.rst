@@ -47,11 +47,13 @@ into a mounted volume that is later reused for the server:
    # Create a local directory for the RPKI cache
    sudo mkdir -p /etc/routinator/tals
    # Review the ARIN terms.
-   # Run a disposable contains to install TALs.
-   sudo docker run --rm -v /etc/routinator/tals:/root/.rpki-cache/tals
-   nlnetlabs/routinator init -f --accept-arin-rpa
-   # Launch the final detached container named 'routinator' (will listen on 0.0.0.0:3323 and expose that port)
-   sudo docker run -d --name routinator -p 3323:3323 -v /etc/routinator/tals:/root/.rpki-cache/tals nlnetlabs/routinator
+   # Run a disposable container to install TALs.
+   sudo docker run --rm -v /etc/routinator/tals:/root/.rpki-cache/tals \
+      nlnetlabs/routinator init -f --accept-arin-rpa
+   # Launch the final detached container named 'routinator' exposing RTR on
+   # port 3323 and HTTP on port 9556
+   sudo docker run -d --name routinator -p 3323:3323 -p 9556:9556 \
+      -v /etc/routinator/tals:/root/.rpki-cache/tals nlnetlabs/routinator
 
 Sytem Requirements
 ------------------
