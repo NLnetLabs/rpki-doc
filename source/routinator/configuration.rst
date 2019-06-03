@@ -5,15 +5,20 @@ Configuration
 
 Routinator has a number of default settings, such as the location where files
 are stored, the refresh interval, and the log level. You can view these
-settings by running ``routinator config``. It will return the list of defaults
-in the same notation that is used by the optional configuration file, e.g.
+settings by running:
+
+.. code-block:: text
+
+   routinator config 
+   
+It will return the list of defaults in the same notation that is used by the optional configuration file, which will be largely similar to this:
 
 .. code-block:: text
 
    exceptions = []
-   expire = 600
+   expire = 7200
    history-size = 10
-   listen-tcp = ["127.0.0.1:3323"]
+   http-listen = []
    log = "default"
    log-level = "WARN"
    refresh = 3600
@@ -21,15 +26,17 @@ in the same notation that is used by the optional configuration file, e.g.
    retry = 600
    rsync-command = "rsync"
    rsync-count = 4
+   rsync-timeout = 600
+   rtr-listen = []
    strict = false
    syslog-facility = "daemon"
+   systemd-listen = false
    tal-dir = "/Users/me/.rpki-cache/tals"
    validation-threads = 4
 
 You can override these defaults, as well as configure a great number of
 additional options using either command line arguments or via the 
-configuration file. The most common options will be explained in the
-next section.
+configuration file. 
 
 To get an overview of all available options, please refer to the manual 
 page, which can be viewed by running ``routinator man``. Alternatively,
@@ -39,7 +46,7 @@ Using a Configuration File
 --------------------------
 
 Routinator can take its configuration from a file. You can specify such a
-configuration file via the ``-c`` option. If you don’t, Routinator will check
+config file via the ``-c`` option. If you don’t, Routinator will check
 if there is a file ``$HOME/.routinator.conf`` and if it exists, use it. If it
 doesn’t exist and there is no ``-c`` option, the default values are used.
 
@@ -48,6 +55,40 @@ For specifying configuration options, Routinator uses a `TOML file
 command line options. A complete sample configuration file showing all the 
 default values can be found in the repository at `etc/routinator.conf
 <https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf>`_.
+
+For example, if you want Routinator to refresh every 15 minutes and run as
+an RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
+providing an HTTP server on port 9556, simply take the output from 
+``routinator config`` and change the ``refresh``, ``rtr-listen`` and
+``http-listen`` values in your favourite text editor:
+
+.. code-block:: text
+
+   exceptions = []
+   expire = 7200
+   history-size = 10
+   http-listen = ["192.0.2.13:9556", "[2001:0DB8::13]:9556"]
+   log = "default"
+   log-level = "WARN"
+   refresh = 900
+   repository-dir = "/Users/me/.rpki-cache/repository"
+   retry = 600
+   rsync-command = "rsync"
+   rsync-count = 4
+   rsync-timeout = 600
+   rtr-listen = ["192.0.2.13:3323", "[2001:0DB8::13]:3323"]
+   strict = false
+   syslog-facility = "daemon"
+   systemd-listen = false
+   tal-dir = "/Users/me/.rpki-cache/tals"
+   validation-threads = 4
+
+After saving this file as ``.routinator.conf`` in your home directory, you can 
+start Routinator with:
+
+.. code-block:: bash
+
+   routinator server
 
 Applying Local Exceptions
 -------------------------

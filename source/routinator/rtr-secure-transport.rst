@@ -15,8 +15,8 @@ Implementations, however, do exist, and a secure transport could be valuable
 in situations where the RPKI relying party is provided as a public service,
 or across a non-trusted network.
 
-SSH transport for RPKI-RTR
---------------------------
+SSH Transport
+-------------
 
 SSH transport for RPKI-RTR can be configured with the help of `netcat <http://netcat.sourceforge.net/>`_
 and `OpenSSH <https://www.openssh.com/>`_.
@@ -27,7 +27,7 @@ Install Routinator and ensure it is running in RTR listener mode on localhost:
 
 .. code-block:: bash
 
-   routinator rtrd -a -l 127.0.0.1:3323
+   routinator server --rtr 127.0.0.1:3323
 
 Create a username and a password for the router to log into the host with,
 such as ``rpki``.
@@ -59,8 +59,8 @@ An example router-side configuration for a device running IOS-XR:
      transport ssh port 22
 
 
-TLS transport for RPKI-RTR
---------------------------
+TLS Transport
+-------------
 
 TLS transport for RPKI-RTR can be configured with the help of `stunnel <https://www.stunnel.org/>`_.
 
@@ -70,7 +70,7 @@ Install Routinator and ensure it is running in RTR listener mode on localhost:
 
 .. code-block:: bash
 
-   routinator rtrd -a -l 127.0.0.1:3323
+   routinator server --rtr 127.0.0.1:3323
 
 Acquire (via for example `letsencrypt <https://letsencrypt.org/>`_) or generate
 an SSL certificate. In the example below, an SSL certificate for

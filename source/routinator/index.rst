@@ -3,34 +3,21 @@
 Routinator
 ==========
 
-Routinator is free, open source RPKI Relying Party software written by NLnet Labs in the
-Rust programming language. 
+Routinator is free, open source RPKI Relying Party software written by `NLnet Labs
+<https://nlnetlabs.nl>`_ in the `Rust programming language <https://www.rust-lang.org>`_.
 
-Routinator is designed to be lightweight and have great
-portability. This means it can run on any Unix-like operating system, but also
-works on Microsoft Windows. Due to its lean design, it can run effortlessly on
-minimalist hardware such as a Raspberry Pi.
+The application is designed to be lightweight and have great portability. This 
+means it can run on any Unix-like operating system, but also works on Microsoft 
+Windows. Due to its lean design, it can run effortlessly on minimalist hardware 
+such as a Raspberry Pi.
 
-Routinator connects to the Trust Anchors of the five Regional Internet
-Registries (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all
-of the certificates and ROAs in their repositories and validates the
-signatures. It can feed the validated information to hardware routers
-supporting route origin validation (ROV) such as `Juniper
-<https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin
--as-validation.html>`_, `Cisco
-<https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/
-15-s/irg-15-s-book/irg-origin-as.html>`_ and `Nokia
-<https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%
-2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`_, as well as
-serving software solutions like `BIRD
-<https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.11>`_ and `OpenBGPD
-<http://openbgpd.org>`_. Alternatively, Routinator can output the validated
-data in a number of useful formats, such as CSV, JSON and RPSL.
-
-When choosing a system to run Routinator on, please note that the application
-was designed to have a small footprint. The current version consumes as little
-as 14MB of RAM and cryptographic validation of the RPKI data set only takes a
-few seconds on modest hardware.
+Routinator connects to the Trust Anchors of the five Regional Internet Registries 
+(RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all of the certificates
+and ROAs in the various repositories, verifies the signatures and makes the result available for use in the BGP workflow. It can perform RPKI validation as a one-time
+operation and store the result on disk in formats such as CSV, JSON and RPSL, or run 
+as a service that periodically fetches and verifies RPKI data. The data is then served
+via the built-in HTTP server, or fetched from RPKI-capable routers via the RPKI-RTR
+protocol.
 
 If you run into a problem with Routinator or you have a feature request,
 please `create an issue on Github
@@ -51,9 +38,9 @@ AXNn9GkpQ4a-q5skG1yiYQ>`_.
    :name: toc-routinator
 
    installation
-   configuration
    running
    rtr-secure-transport
+   configuration
    monitoring
    
 .. history
