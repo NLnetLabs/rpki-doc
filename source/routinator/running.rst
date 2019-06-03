@@ -59,17 +59,18 @@ line via sub-commands:
      Starts the daemon that periodically fetches and verifies RPKI data, after
      which it exposes the VRPs via RPKI-RTR, HTTP, or both.
 
-To see if Routinator has been initialised correctly, it is recommended to perform an initial test run. You can do this by having Routinator print a Validated ROA Payload
-(VRP) list with the ``vrps`` sub-command, and using ``-v`` to increase the log level. 
+To see if Routinator has been initialised correctly, it is recommended to perform an initial test run. You can do this by having Routinator print a validated ROA payload
+(VRP) list with the ``vrps`` sub-command, and using ``-v`` to increase the log level
+to ``INFO`` to see if Routinator establishes rsync connections as expected.
 
 .. code-block:: bash
 
    routinator -v vrps
 
-Now, you can see how Routinator downloads the entire RPKI repository to your machine,
-validates it and produces a list of AS numbers and prefixes in the default CSV format
-which is sent to standard output. From a cold start, this process will take about two
-minutes.
+Now, you can see how Routinator connects to the five RPKI trust anchors, downloads
+the the contents of the repositories to your machine, validates it and produces a 
+list of validated ROA payloads in the default CSV format to standard output. From a
+cold start, this process will take about two minutes.
 
 Printing a List of VRPs
 -----------------------
