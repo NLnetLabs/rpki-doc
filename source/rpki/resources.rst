@@ -5,7 +5,7 @@ Resources
 
 This page provides an overview of projects that support RPKI. It includes, statistics, measurements projects and presentations about operational experiences. Finally, there is an overview of all work in the Internet Engineering Task Force relevant to RPKI.
 
-The :ref:`doc_tools` section an overview of all available software packages for RPKI.
+The :ref:`doc_tools` page an overview of all available tools for using RPKI.
 
 Insights and Statistics
 -----------------------

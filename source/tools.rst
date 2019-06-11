@@ -53,7 +53,7 @@ Supporting Tools
 
 `GoRTR <https://github.com/cloudflare/gortr>`_
    An open-source implementation of RPKI to Router protocol (RFC 6810)
-   using the the Go programming language. This project is maintained by Louis 
+   using the Go programming language. This project is maintained by Louis 
    Poinsignon at Cloudflare.
 
 :ref:`rtrlib`
@@ -78,4 +78,4 @@ Supporting Tools
    the outcome as a property in the flow aggregation process. Because it
    separates out the various types kinds of (invalid) BGP announcements, 
    operators can a good grasp on how their connectivity to the rest of the
-   Internet would look like after deploying a "invalid == reject" policy.
+   Internet would look like after deploying a *"invalid == reject"* policy.
