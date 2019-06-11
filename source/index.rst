@@ -52,6 +52,7 @@ The main documentation is organised into the following sections:
    :caption: RPKI Tools
    :name: sec-rpki-tools
    
+   tools
    krill/index
    routinator/index
    rtrlib/index
