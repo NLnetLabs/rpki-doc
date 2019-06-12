@@ -30,6 +30,9 @@ Operational Experiences
    
 `RPKI For Managers <https://www.youtube.com/watch?v=vrzl__yGqLE>`_
    Presentation by Niels Raijer - Fusix Networks, NLNOG Day 2018, September 2018
+   
+`RPKI at IXP Route Servers <https://ripe78.ripe.net/archives/video/53/>`_
+   Presentation by Nick Hilliard - INEX, RIPE 78, May 2019
 
 IETF Documents
 --------------
