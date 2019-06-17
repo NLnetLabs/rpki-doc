@@ -25,6 +25,10 @@ Relying Party Software
 `Routinator <https://nlnetlabs.nl/projects/rpki/routinator/>`_
    RPKI relying party software written by NLnet Labs in the Rust programming language,
    designed to have a small footprint and great portability.
+   
+`rpki-client(8) <https://github.com/kristapsdz/rpki-client>`_
+   rpki-client is written in C as part of the rpki-client(1) project, an RPKI validator
+   for OpenBSD.
 
 `RPSTIR <https://github.com/bgpsecurity/rpstir/>`_
    Relying Party Security Technology for Internet Routing (RPSTIR) software, 
