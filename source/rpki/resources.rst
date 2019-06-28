@@ -7,8 +7,31 @@ This page provides an overview of projects that support RPKI. It includes, stati
 
 The :ref:`doc_tools` page an overview of all available tools for using RPKI.
 
-Insights and Statistics
+Examples of BGP Hijacks
 -----------------------
+
+`How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today <https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/>`_
+   Cloudflare Blog, 24 June 2019
+
+`BGP / DNS Hijacks Target Payment Systems <https://blogs.oracle.com/internetintelligence/bgp-dns-hijacks-target-payment-systems>`_
+   Oracle Internet Intelligence, 3 August 2018
+
+`Shutting down the BGP Hijack Factory <https://dyn.com/blog/shutting-down-the-bgp-hijack-factory/>`_
+   Oracle Dyn, 10 July 2018
+
+`Suspicious event hijacks Amazon traffic for 2 hours, steals cryptocurrency <https://arstechnica.com/information-technology/2018/04/suspicious-event-hijacks-amazon-traffic-for-2-hours-steals-cryptocurrency/>`_
+   Ars Technica, 24 April 2018
+
+`Popular Destinations rerouted to Russia <https://bgpmon.net/popular-destinations-rerouted-to-russia/>`_
+   BGPmon, 12 December 2017 
+
+`Insecure routing redirects YouTube to Pakistan <https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/>`_
+   Ars Technica, 25 February 2008
+   
+
+
+RPKI Insights and Statistics
+----------------------------
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
