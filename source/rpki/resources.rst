@@ -22,6 +22,9 @@ There are several initiatives that measure the adoption and data quality of RPKI
 Operational Experiences
 -----------------------
 
+`Wikimedia RPKI Validation Implementation <https://phabricator.wikimedia.org/T220669>`_
+   Documentation by Arzhel Younsi describing RPKI validator and router configuration
+
 `Dropping RPKI invalid routes in a service provider network <https://www.youtube.com/watch?v=DkUZvlj1wCk>`_
    Lightning talk by Nimrod Levy - AT&T, NANOG 75, February 2019
    
