@@ -41,37 +41,37 @@ This is an example of the output of the ``/metrics`` endpoint:
 
 .. code-block:: text
 
-   # HELP valid_roas number of valid ROAs seen
-   # TYPE valid_roas gauge
-   valid_roas{tal="afrinic"} 270
-   valid_roas{tal="apnic"} 2902
-   valid_roas{tal="arin"} 4769
-   valid_roas{tal="lacnic"} 2323
-   valid_roas{tal="ripe"} 9787
-   
-   # HELP vrps_total total number of VRPs seen
-   # TYPE vrps_total gauge
-   vrps_total{tal="afrinic"} 399
-   vrps_total{tal="apnic"} 20318
-   vrps_total{tal="arin"} 6220
-   vrps_total{tal="lacnic"} 6564
-   vrps_total{tal="ripe"} 53548
-   
-   # HELP last_update_start seconds since last update started
-   # TYPE gauge
-   last_update_start 568
-   
-   # HELP last_update_duration duration in seconds of last update
-   # TYPE gauge
-   last_update_duration 47
-   
-   # HELP last_update_done seconds since last update finished
-   # TYPE gauge
-   last_update_done 520
-   
-   # HELP serial current RTR serial number
-   # TYPE gauge
-   serial 42
+   # HELP routinator_valid_roas number of valid ROAs seen
+   # TYPE routinator_valid_roas gauge
+   routinator_valid_roas{tal="afrinic"} 338
+   routinator_valid_roas{tal="lacnic"} 2435
+   routinator_valid_roas{tal="apnic"} 3187
+   routinator_valid_roas{tal="ripe"} 10779
+   routinator_valid_roas{tal="arin"} 4964
+
+   # HELP routinator_vrps_total total number of VRPs seen
+   # TYPE routinator_vrps_total gauge
+   routinator_vrps_total{tal="afrinic"} 459
+   routinator_vrps_total{tal="lacnic"} 7042
+   routinator_vrps_total{tal="apnic"} 21941
+   routinator_vrps_total{tal="ripe"} 56909
+   routinator_vrps_total{tal="arin"} 6621
+
+   # HELP routinator_last_update_start seconds since last update started
+   # TYPE routinator_last_update_start gauge
+   routinator_last_update_start 568
+
+   # HELP routinator_last_update_duration duration in seconds of last update
+   # TYPE routinator_last_update_duration gauge
+   routinator_last_update_duration 47
+
+   # HELP routinator_last_update_done seconds since last update finished
+   # TYPE routinator_last_update_done gauge
+   routinator_last_update_done 520
+
+   # HELP routinator_serial current RTR serial number
+   # TYPE routinator_serial gauge
+   routinator_serial 42
 
 The HTTP service has two additional endpoints on the following paths:
 

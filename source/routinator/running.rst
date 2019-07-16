@@ -3,32 +3,6 @@
 Running
 =======
 
-Before running Routinator for the first time, you must prepare its working environment.
-You do this using the ``init`` command:
-
-.. code-block:: bash
-
-   routinator init
-
-This will prepare both the directory for the local RPKI cache, as well as the Trust
-Anchor Locator (TAL) directory. By default, both directories will be located under
-``$HOME/.rpki-cache``, but you can change their locations via the command line 
-options ``--repository-dir`` and ``--tal-dir``.
-
-TALs provide hints for the trust anchor certificates to be used both to
-discover and validate all RPKI content. The five TALs — one for each Regional
-Internet Registry (RIR) — that are necessary for RPKI are bundled with Routinator 
-and installed by the ``init`` command.
-
-.. WARNING:: Using the TAL from the North American RIR ARIN requires you to agree to
-             their `Relying Party Agreement
-             <https://www.arin.net/resources/manage/rpki/tal/>`_ before you can use it.
-             Running the ``init`` command will provide you with instructions where to 
-             find the agreement and how to express your acceptance of its terms.
-
-First Launch
-------------
-
 After the initialisation has completed, you can start using Routinator in two ways.
 It can perform RPKI validation as a one-time operation and print a Validated ROA
 Payload (VRP) list in various formats, or it can run as a service that periodically
@@ -58,19 +32,6 @@ line via sub-commands:
 :server:
      Starts the daemon that periodically fetches and verifies RPKI data, after
      which it exposes the VRPs via RPKI-RTR, HTTP, or both.
-
-To see if Routinator has been initialised correctly, it is recommended to perform an initial test run. You can do this by having Routinator print a validated ROA payload
-(VRP) list with the ``vrps`` sub-command, and using ``-v`` to increase the log level
-to ``INFO`` to see if Routinator establishes rsync connections as expected.
-
-.. code-block:: bash
-
-   routinator -v vrps
-
-Now, you can see how Routinator connects to the five RPKI trust anchors, downloads
-the the contents of the repositories to your machine, validates it and produces a 
-list of validated ROA payloads in the default CSV format to standard output. From a
-cold start, this process will take about two minutes.
 
 Printing a List of VRPs
 -----------------------
@@ -103,6 +64,11 @@ which are either printed to standard output or saved to a file:
 :openbgpd:
       Choosing  this format causes Routinator to produce a *roa-set*
       configuration item for the OpenBGPD configuration.
+:summary:
+      This format produces a summary of the content of the RPKI repository. For
+      each trust anchor, it will print the number of verified ROAs and VRPs. Note
+      that this format does not take filters into account. It will always provide
+      numbers for the complete repository.
 :rpsl:
       This format produces a list of RPSL objects with the authorisation in the
       fields *route*, *origin*, and *source*. In addition, the fields *descr*,
