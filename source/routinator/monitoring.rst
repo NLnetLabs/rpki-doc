@@ -24,7 +24,7 @@ update was started, when it finished and what the duration was. This will
 allow you to tigger alerts, for example when the update duration is taking
 longer than your refresh interval. 
 
-Lastly, the current serial number for RPKI-RTR is exposed. This number is used
+The current serial number for RPKI-RTR is also exposed. This number is used
 to notify connected routers that new data is available. The number Routinator
 has should match the serial on your connected router. You can verify this on your router with using the following command:
 
@@ -36,6 +36,10 @@ has should match the serial on your connected router. You can verify this on you
 
 :Nokia:
      ``show router origin-validation rpki-session detail``
+
+Lastly, the endpoint provides several gauges related to rsync, such as the `exit
+code <https://lxadm.com/Rsync_exit_codes>`_ and the duration of fetching the
+data in each RPKI repository.
 
 This is an example of the output of the ``/metrics`` endpoint:
 
@@ -72,6 +76,35 @@ This is an example of the output of the ``/metrics`` endpoint:
    # HELP routinator_serial current RTR serial number
    # TYPE routinator_serial gauge
    routinator_serial 42
+   
+   # HELP routinator_rsync_status exit status of rsync command
+   # TYPE routinator_rsync_status gauge
+   routinator_rsync_status{uri="rsync://rpki-repository.nic.ad.jp/ap/"} 0
+   routinator_rsync_status{uri="rsync://rpki.apnic.net/repository/"} 0
+   routinator_rsync_status{uri="rsync://rpkica.twnic.tw/rpki/"} 0
+   routinator_rsync_status{uri="rsync://ca.rg.net/rpki/"} 0
+   routinator_rsync_status{uri="rsync://rpki.cnnic.cn/rpki/"} 0
+   routinator_rsync_status{uri="rsync://rpki.afrinic.net/repository/"} 0
+   routinator_rsync_status{uri="rsync://rpki.apnic.net/member_repository/"} 0
+   routinator_rsync_status{uri="rsync://rpki.arin.net/repository/"} 0
+   routinator_rsync_status{uri="rsync://repository.lacnic.net/rpki/"} 0
+   routinator_rsync_status{uri="rsync://rpki.ripe.net/repository/"} 0
+   routinator_rsync_status{uri="rsync://rpki.ripe.net/ta/"} 0
+
+         
+   # HELP routinator_rsync_duration duration of rsync in seconds
+   # TYPE routinator_rsync_duration gauge
+   routinator_rsync_duration{uri="rsync://rpki-repository.nic.ad.jp/ap/"} 3.050
+   routinator_rsync_duration{uri="rsync://rpki.apnic.net/repository/"} 3.839
+   routinator_rsync_duration{uri="rsync://rpkica.twnic.tw/rpki/"} 4.201
+   routinator_rsync_duration{uri="rsync://ca.rg.net/rpki/"} 1.543
+   routinator_rsync_duration{uri="rsync://rpki.cnnic.cn/rpki/"} 4.603
+   routinator_rsync_duration{uri="rsync://rpki.afrinic.net/repository/"} 2.512
+   routinator_rsync_duration{uri="rsync://rpki.apnic.net/member_repository/"} 6.496
+   routinator_rsync_duration{uri="rsync://rpki.arin.net/repository/"} 6.516
+   routinator_rsync_duration{uri="rsync://repository.lacnic.net/rpki/"} 10.506
+   routinator_rsync_duration{uri="rsync://rpki.ripe.net/repository/"} 11.766
+   routinator_rsync_duration{uri="rsync://rpki.ripe.net/ta/"} 0.129
 
 The HTTP service has two additional endpoints on the following paths:
 

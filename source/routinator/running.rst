@@ -3,11 +3,12 @@
 Running
 =======
 
-After the initialisation has completed, you can start using Routinator in two ways.
+After the initialisation has completed, you can start using Routinator in several ways.
 It can perform RPKI validation as a one-time operation and print a Validated ROA
-Payload (VRP) list in various formats, or it can run as a service that periodically
-fetches RPKI data, verifies it and makes the result available via the RPKI-RTR 
-protocol, and via the built-in HTTP server.
+Payload (VRP) list in various formats, it can return the validity of a specific
+announcement, or it can run as a service that periodically fetches RPKI data, verifies
+it and makes the result available via the RPKI-RTR protocol, and via the built-in HTTP
+server.
 
 When launched as a daemon, routers with support for route origin validation (ROV) 
 can connect to Routinator to fetch the processed data. This includes hardware 
@@ -28,6 +29,10 @@ line via sub-commands:
 :vrps:
      Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the 
      specified format.
+
+:validate:
+     Outputs the RPKI validity for a specific announcement by supplying Routinator
+     with an ASN and a prefix. 
      
 :server:
      Starts the daemon that periodically fetches and verifies RPKI data, after
@@ -64,16 +69,16 @@ which are either printed to standard output or saved to a file:
 :openbgpd:
       Choosing  this format causes Routinator to produce a *roa-set*
       configuration item for the OpenBGPD configuration.
-:summary:
-      This format produces a summary of the content of the RPKI repository. For
-      each trust anchor, it will print the number of verified ROAs and VRPs. Note
-      that this format does not take filters into account. It will always provide
-      numbers for the complete repository.
 :rpsl:
       This format produces a list of RPSL objects with the authorisation in the
       fields *route*, *origin*, and *source*. In addition, the fields *descr*,
       *mnt-by*, *created*, and *last-modified*, are present with more or less
       meaningful values.
+:summary:
+      This format produces a summary of the content of the RPKI repository. For
+      each trust anchor, it will print the number of verified ROAs and VRPs. Note
+      that this format does not take filters into account. It will always provide
+      numbers for the complete repository.
 
 For example, to get a file with with the validated ROA payload in JSON format, run:
 
@@ -93,21 +98,71 @@ ASN and MaxLength. Both filter flags can be combined and used multiple times in 
 single query and will be treated as a logical *"or"*. When using ``--filter-asn``,
 you can use both ``AS64511`` and ``64511`` as the notation.
 
-In the example, we'll add the ``-n`` flag to ensure the repository is not updated 
-before producing the result, but it is taken from the current cache:
+In the example, we'll add the ``--noupdate`` or ``-n`` flag to ensure the repository
+is not updated before producing the result, but it is taken from the current cache.
 
 .. code-block:: bash
 
-   routinator vrps -n --filter-prefix 185.49.140.0/24
+   routinator vrps --noupdate --filter-prefix 93.175.146.0/24
    ASN,IP Prefix,Max Length,Trust Anchor
-   AS199664,185.49.140.0/22,22,ripe
+   AS12654,93.175.146.0/24,24,ripe
 
 .. code-block:: bash
 
-   routinator vrps -n --filter-asn 199664
+   routinator vrps --noupdate --filter-asn 196615
    ASN,IP Prefix,Max Length,Trust Anchor
-   AS199664,185.49.140.0/22,22,ripe
-   AS199664,2a04:b900::/29,29,ripe
+   AS196615,2001:7fb:fd03::/48,48,ripe
+   AS196615,93.175.147.0/24,24,ripe
+
+
+Validity Checker
+----------------
+
+You can check the RPKI origin validation status of a specific BGP announcement using the
+``validate`` command and by supplying the ASN and prefix. In the example, we'll add
+the ``--noupdate`` or ``-n`` flag to ensure the repository is not updated before 
+producing the result, but it is taken from the current cache.
+
+.. code-block:: bash
+
+   routinator validate --noupdate --asn 12654 --prefix 93.175.147.0/24
+   Invalid
+
+A detailed analysis on the reasoning behind the validation is printed in  JSON format
+including lists of the VPRs that caused the particular result.
+
+.. code-block:: json
+
+   routinator validate --noupdate --json --asn 12654 --prefix 93.175.147.0/24
+   {
+     "validated_route": {
+      "route": {
+        "origin_asn": "AS12654",
+        "prefix": "93.175.147.0/24"
+      },
+      "validity": {
+        "state": "Invalid",
+        "reason": "as",
+        "description": "At least one VRP Covers the Route Prefix, but no VRP ASN matches the route origin ASN",
+        "VRPs": {
+         "matched": [
+         ],
+         "unmatched_as": [
+           {
+            "asn": "AS196615",
+            "prefix": "93.175.147.0/24",
+            "max_length": "24"
+           }
+
+         ],
+         "unmatched_length": [
+         ]      }
+      }
+     }
+   }
+
+If you run the HTTP service, this information is also available at the ``/validity``
+endpoint.
 
 Running the HTTP Service
 ------------------------
@@ -135,6 +190,11 @@ The application will stay attached to your terminal unless you provide the ``-d`
 
 :/rpsl:
      Returns the current set of VRPs in rpsl output format
+
+:/validity:
+     Returns the RPKI origin validation status of a specific BGP announcement by
+     supplying the ASN and prefix in the path, e.g.
+     ``/validity?asn=12654&prefix=93.175.147.0/24``
 
 Please note that this server is intended to run on your internal network and doesn't
 offer HTTPS natively. If this is a requirement, you can for example run Routinator 
