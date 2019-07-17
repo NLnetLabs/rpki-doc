@@ -110,7 +110,7 @@ The HTTP service has two additional endpoints on the following paths:
 
 :/status:
      Returns the information from the ``/metrics`` endpoint in a more 
-     friendly format
+     concise format
 
 :/version:
      Returns the version of the Routinator instance

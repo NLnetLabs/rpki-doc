@@ -7,8 +7,8 @@ After the initialisation has completed, you can start using Routinator in severa
 It can perform RPKI validation as a one-time operation and print a Validated ROA
 Payload (VRP) list in various formats, it can return the validity of a specific
 announcement, or it can run as a service that periodically fetches RPKI data, verifies
-it and makes the result available via the RPKI-RTR protocol, and via the built-in HTTP
-server.
+it and makes the resulting data set available via the RPKI-RTR protocol, and via the
+built-in HTTP server.
 
 When launched as a daemon, routers with support for route origin validation (ROV) 
 can connect to Routinator to fetch the processed data. This includes hardware 
@@ -98,18 +98,17 @@ ASN and MaxLength. Both filter flags can be combined and used multiple times in 
 single query and will be treated as a logical *"or"*. When using ``--filter-asn``,
 you can use both ``AS64511`` and ``64511`` as the notation.
 
-In the example, we'll add the ``--noupdate`` or ``-n`` flag to ensure the repository
-is not updated before producing the result, but it is taken from the current cache.
-
+A validation run will be started before returning the result, making sure you get the
+latest information. If you would like a result from the current cache, you can use the ``--noupdate`` or ``-n`` flag.
 .. code-block:: bash
 
-   routinator vrps --noupdate --filter-prefix 93.175.146.0/24
+   routinator vrps --filter-prefix 93.175.146.0/24
    ASN,IP Prefix,Max Length,Trust Anchor
    AS12654,93.175.146.0/24,24,ripe
 
 .. code-block:: bash
 
-   routinator vrps --noupdate --filter-asn 196615
+   routinator vrps --filter-asn 196615
    ASN,IP Prefix,Max Length,Trust Anchor
    AS196615,2001:7fb:fd03::/48,48,ripe
    AS196615,93.175.147.0/24,24,ripe
@@ -119,13 +118,14 @@ Validity Checker
 ----------------
 
 You can check the RPKI origin validation status of a specific BGP announcement using the
-``validate`` command and by supplying the ASN and prefix. In the example, we'll add
-the ``--noupdate`` or ``-n`` flag to ensure the repository is not updated before 
-producing the result, but it is taken from the current cache.
+``validate`` subcommand and by supplying the ASN and prefix. A validation run will be
+started before returning the result, making sure you get the latest information. If you
+would like a result from the current cache, you can use the ``--noupdate`` or ``-n`` 
+flag.
 
 .. code-block:: bash
 
-   routinator validate --noupdate --asn 12654 --prefix 93.175.147.0/24
+   routinator validate --asn 12654 --prefix 93.175.147.0/24
    Invalid
 
 A detailed analysis on the reasoning behind the validation is printed in  JSON format
@@ -133,7 +133,7 @@ including lists of the VPRs that caused the particular result.
 
 .. code-block:: json
 
-   routinator validate --noupdate --json --asn 12654 --prefix 93.175.147.0/24
+   routinator validate --json --asn 12654 --prefix 93.175.147.0/24
    {
      "validated_route": {
       "route": {
