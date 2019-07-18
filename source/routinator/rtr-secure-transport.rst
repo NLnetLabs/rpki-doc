@@ -1,7 +1,7 @@
 .. _doc_routinator_rtr_secure_transport:
 
-Secure transports for RPKI-RTR 
-==============================
+RTR Secure Transports
+=====================
 
 These instructions were contributed by `wk on Github <https://github.com/NLnetLabs/routinator/blob/master/doc/transports.md>`_.
 
