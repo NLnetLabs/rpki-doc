@@ -39,8 +39,8 @@ AXNn9GkpQ4a-q5skG1yiYQ>`_.
 
    installation
    initialisation
-   running
-   rtr-secure-transport
+   interactive
+   daemon
    configuration
    monitoring
    
