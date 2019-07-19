@@ -4,7 +4,7 @@ Running as a Daemon
 ===================
 
 Routinator can run as a service that periodically fetches RPKI data, verifies
-it and makes the resulting data set available both via the RPKI-RTR protocol and through
+it and makes the resulting data set available via the RPKI-RTR protocol and through
 the built-in HTTP server. You can start the Routinator service using the ``server``
 sub-command.
 
@@ -45,12 +45,17 @@ Please note that this server is intended to run on your internal network and doe
 offer HTTPS natively. If this is a requirement, you can for example run Routinator 
 behind an `nginx <https://www.nginx.com>`_ reverse proxy. 
 
-Lastly, the HTTP server provides paths that allow you to monitor Routinator, so it
-may be desirable to have HTTP running alongside the RTR server. For more
-information, please refer to the :ref:`doc_routinator_monitoring` section.
+Lastly, the HTTP server provides paths that allow you to monitor Routinator itself and
+the data it processes, so it may be desirable to have HTTP running alongside the RTR
+server. For more information, please refer to the :ref:`doc_routinator_monitoring`
+section.
 
 The RTR Service
 ---------------
+
+Routinator supports RPKI-RTR as specified in `RFC 8210
+<https://tools.ietf.org/html/rfc8210>`_ as well as the older version described in
+`RFC 6810 <https://tools.ietf.org/html/rfc7730>`_.
 
 When launched as an RTR server, routers with support for route origin validation (ROV)
 can connect to Routinator to fetch the processed data. This includes hardware 
@@ -65,11 +70,9 @@ software solutions like `BIRD <https://bird.network.cz/>`_, `GoBGP <https://osrg
 data is also available in a number of useful output formats, such as 
 CSV, JSON, RPSL and a format specifically for `OpenBGPD <http://openbgpd.org>`_.
 
-Routinator supports RPKI-RTR as specified in `RFC 8210
-<https://tools.ietf.org/html/rfc8210>`_ as well as the older version from `RFC 6810 
-<https://tools.ietf.org/html/rfc7730>`_. Like the HTTP server, the RTR server is not
-started by default, nor does it have a default host or port. Thus, in order to start
-the RTR server at 192.0.2.13 and 2001:0DB8::13 on port 3323, run this command:
+Like the HTTP server, the RTR server is not started by default, nor does it have a
+default host or port. Thus, in order to start the RTR server at 192.0.2.13 and
+2001:0DB8::13 on port 3323, run this command:
 
 .. code-block:: bash
 
@@ -90,8 +93,8 @@ validate every 15 minutes, the above command becomes:
    routinator server --rtr 192.0.2.13:3323 --rtr [2001:0DB8::13]:3323 --refresh=900
     
 Communication between Routinator and the router using the RPKI-RTR protocol is done
-via plain TCP. In the next section, there is an explanation how to secure the transport
-using either SSH or TLS.
+via plain TCP. Below, there is an explanation how to secure the transport using either
+SSH or TLS.
 
 Secure Transports
 """""""""""""""""
@@ -102,11 +105,11 @@ These instructions were contributed by `wk on Github <https://github.com/NLnetLa
 secure transports for RPKI-RTR that can be used to secure communication
 between a router and a RPKI relying party.
 
-Subsequent survey in the form of `RFC7128 <https://tools.ietf.org/html/rfc7128#page-7>`_
-suggests these secure transport have not been widely implemented.
-Implementations, however, do exist, and a secure transport could be valuable
-in situations where the RPKI relying party is provided as a public service,
-or across a non-trusted network.
+However, the RPKI Router Implementation Report documented in `RFC7128
+<https://tools.ietf.org/html/rfc7128#page-7>`_ suggests these secure transports 
+have not been widely implemented. Implementations, however, do exist, and a secure
+transport could be valuable in situations where the RPKI relying party is provided
+as a public service, or across a non-trusted network.
 
 SSH Transport
 +++++++++++++
@@ -116,7 +119,7 @@ and `OpenSSH <https://www.openssh.com/>`_.
 
 Begin by installing the ``openssh-server`` and ``netcat`` packages.
 
-Install Routinator and ensure it is running in RTR listener mode on localhost:
+Make sure Routinator is running as an RTR server on localhost:
 
 .. code-block:: bash
 
@@ -159,7 +162,7 @@ TLS transport for RPKI-RTR can be configured with the help of `stunnel <https://
 
 Begin by installing the ``stunnel`` package.
 
-Install Routinator and ensure it is running in RTR listener mode on localhost:
+Make sure Routinator is running as an RTR server on localhost:
 
 .. code-block:: bash
 
@@ -183,4 +186,4 @@ or equivalent:
    accept = 323
    connect = 127.0.0.1:3323
 
-Restart stunnel.
+Restart ``stunnel`` to complete the process.

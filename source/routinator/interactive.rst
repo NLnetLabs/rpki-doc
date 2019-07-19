@@ -27,13 +27,13 @@ which are either printed to standard output or saved to a file:
       slash notation, the maximum prefix length, the autonomous system number, 
       and an abbreviation for the trust anchor the entry is derived from. The 
       latter is the name of the TAL file  without the extension *.tal*. This is 
-      the default format used if the ``-f`` option is missing.
+      the default format used if the ``--format`` or ``-f`` option is missing.
 :csvext: 
       This is an extended version of the *csv* format, which was used by the RIPE
       NCC RPKI Validator 1.x. Each line contains these comma-separated values: the
       rsync URI of the ROA the line is taken from (or "N/A" if it isn't from a ROA),
       the autonomous system number, the prefix in slash notation, the maximum prefix
-      length, the not-before date and not-after date of the validity of the ROA.
+      length, and lastly the not-before and not-after date of the validity of the ROA.
 :json:
       The list is placed into a JSON object with a single  element *roas* which
       contains an array of objects with four elements each: The autonomous system 
@@ -125,8 +125,10 @@ flag.
    routinator validate --asn 12654 --prefix 93.175.147.0/24
    Invalid
 
-A detailed analysis on the reasoning behind the validation is printed in  JSON format
-including lists of the VPRs that caused the particular result.
+A detailed analysis of the reasoning behind the validation outcome is printed in JSON
+format. In case of an Invalid state, whether this because the announcement is originated
+by an unauthorised AS, or if the prefix is more specific than the maximum prefix
+length allows. Lastly, a complete list of VRPs that caused the result is included.
 
 .. code-block:: text
 

@@ -13,8 +13,8 @@ Quick Start
 -----------
 
 Assuming you have rsync and the C toolchain but not yet Rust 1.34 or newer,
-here’s how you get Routinator to run as an RTR server listening on 127.0.0.1
-port 3323:
+here’s how you get Routinator to run as an RTR server listening on 192.0.2.13
+port 3323 and an HTTP server listening on port 9556:
 
 .. code-block:: bash
 
@@ -23,7 +23,7 @@ port 3323:
    cargo install routinator
    routinator init
    # Follow instructions provided
-   routinator server --rtr 127.0.0.1:3323
+   routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
 If you have an older version of Routinator, you can update via:
 
@@ -31,12 +31,18 @@ If you have an older version of Routinator, you can update via:
 
    cargo install -f routinator
 
+If you want to try the master branch from the repository instead of a
+release version, you can run:
+
+.. code-block:: bash
+
+   cargo install --git https://github.com/NLnetLabs/routinator.git
 
 Quick Start with Docker
 -----------------------
 
 Due to the impracticality of complying with the ARIN TAL distribution terms
-in an unsupervised Docker environment, prior to launching the container it
+in an unsupervised Docker environment, before launching the container it
 is necessary to first review and agree to the `ARIN Relying Party Agreement
 (RPA) <https://www.arin.net/resources/manage/rpki/tal/>`_. If you
 agree to the terms, you can let the Routinator Docker image install the TALs
