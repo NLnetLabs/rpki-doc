@@ -61,8 +61,8 @@ into a mounted volume that is later reused for the server:
    sudo docker run -d --name routinator -p 3323:3323 -p 9556:9556 \
       -v /etc/routinator/tals:/root/.rpki-cache/tals nlnetlabs/routinator
 
-Sytem Requirements
-------------------
+System Requirements
+-------------------
 
 At this time, the size of the global RPKI data set is about 300MB. Cryptographic
 validation of it takes Routinator about 2 seconds on a quad-core i7. 
