@@ -24,7 +24,7 @@ resources. So, please make sure that you ignore what you don't understand
 when using this API.
 
 The base uri for the API is:
-http://localhost:3000/api/v1/
+https://localhost:3000/api/v1/
 
 .. Important::  Calls to the API have to include the API token as an `OAuth 2.0 
                 Bearer token <https://tools.ietf.org/html/rfc6750#section-2.1>`_ as a
@@ -99,7 +99,7 @@ CLI Example
 
 .. code-block:: bash
 
-    krillc --server http://localhost:3000/ --token secret health
+    krill_admin --server https://localhost:3000/ --token secret health
 
 The exit code will be 0 if everything is okay, or 1 otherwise. There is no 
 text output, except when errors occur.
@@ -176,7 +176,7 @@ CLI Example
 
 .. code-block:: bash
 
-    krillc --server http://localhost:3000/ --token secret publishers list
+    krill_admin --server https://localhost:3000/ --token secret publishers list
 
 
 Add a Publisher
@@ -223,7 +223,7 @@ CLI Example
 
 .. code-block:: bash
 
-   krillc --server http://localhost:3000/ --token secret publishers add --xml work/tmp/alice.xml
+   krill_admin --server https://localhost:3000/ --token secret publishers add --xml work/tmp/alice.xml
 
 Publisher Details
 """""""""""""""""
