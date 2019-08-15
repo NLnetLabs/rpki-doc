@@ -30,13 +30,13 @@ used by running:
 
 .. code-block:: bash
 
-   ./target/debug krillc
+   ./target/debug krill_admin
 
 To get an overview of all supported options run:
 
 .. code-block:: bash
 
-   ./target/debug krillc --help
+   ./target/debug krill_admin --help
 
 Which will print something like this:
 
@@ -63,4 +63,6 @@ Which will print something like this:
 		              exit code 1 in case of any issues
 		help          Prints this message or the help of the given subcommand(s)
 		publishers    Manage publishers
+		rfc8181       Manage RFC8181 clients
+		trustanchor   Manage embedded Trust Anchor (used for testing)
 
