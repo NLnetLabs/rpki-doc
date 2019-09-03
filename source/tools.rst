@@ -11,6 +11,9 @@ that help deployment and integration.
 Relying Party Software
 ----------------------
 
+`Fort Validator <https://github.com/NICMx/FORT-validator>`_
+   MIT-licensed Relying Party software by NIC.mx, written in C.
+
 `OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_
    Cloudflare's Relying Party software, written in the Go programming language.
 
