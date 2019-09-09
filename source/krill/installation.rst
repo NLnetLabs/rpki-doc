@@ -68,11 +68,14 @@ On macOS you can use Homebrew or MacPorts to get started.
 Nodejs and Yarn
 """""""""""""""
 
-Fear not. There is no need to run nodejs when you run krill!
+Fear not I. There is no need to run nodejs when you run krill!
 
-However, nodejs and yarn are used for development of the Vue.js based
-user interface. Vue.js uses small components in development. The stuff
-that you find under ``./ui/dev/src``. As part of the build process these
+Fear not II. We have plans to use vue.js as a static library, and
+remove the dependency on Nodejs and Yarn altogether. 
+
+However, for the moment, nodejs and yarn are used for development of
+the Vue.js based user interface. Vue.js uses small components in development.
+The stuff that you find under ``./ui/dev/src``. As part of the build process these
 components are used to generate minified HTML, CSS and JS under the 
 ``./ui/dist`` folder.
 
@@ -90,10 +93,7 @@ The following works on Ubuntu xenial:
 
 
 Note that once we build binary versions you will not need nodejs on your
-system. Secondly, for now we have one Krill project that includes both
-the UI and the API. We may split the project in future if it turns out
-that there are users who do not need the UI, and prefer a more light-weight
-version. 
+system. 
 
 
 Building
@@ -106,13 +106,18 @@ cargo:
 
     git clone git@github.com:NLnetLabs/krill.git
     cd $project
-    cargo build --release
 
-If you want to see the tests run, you can use the following cargo option:
+For now, compile the static HTML pages:
 
 .. code-block:: bash
 
-    cargo test
+    daemon/build-dist.sh
+
+Now you can build the krill binaries from the Rust source:
+
+.. code-block:: bash
+
+    cargo build --release
 
 
 This will build the following binaries:
