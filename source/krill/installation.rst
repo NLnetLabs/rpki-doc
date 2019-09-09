@@ -68,9 +68,6 @@ On macOS you can use Homebrew or MacPorts to get started.
 Nodejs and Yarn
 """""""""""""""
 
-Note: this applies to the enrico-ui branch only at this time, but this
-will be merged to master soon. 
-
 Fear not. There is no need to run nodejs when you run krill!
 
 However, nodejs and yarn are used for development of the Vue.js based
@@ -92,7 +89,7 @@ The following works on Ubuntu xenial:
   sudo apt-get install -y yarn
 
 
-Note that once  we build binary versions you will not need nodejs on your
+Note that once we build binary versions you will not need nodejs on your
 system. Secondly, for now we have one Krill project that includes both
 the UI and the API. We may split the project in future if it turns out
 that there are users who do not need the UI, and prefer a more light-weight
@@ -118,9 +115,11 @@ If you want to see the tests run, you can use the following cargo option:
     cargo test
 
 
-The package will contain three brinaries: ``krilld``, ``krillc`` and ``pubc``.
-Choose the executable to start using the ``--bin`` flag, e.g.:
+This will build the following binaries:
 
 .. code-block:: bash
 
-    cargo run --bin krilld
+   target/release/krilld
+   target/release/krill_admin
+
+You can copy these binaries to a location of your convenience of run them from this directory.

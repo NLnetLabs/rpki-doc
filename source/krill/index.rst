@@ -21,8 +21,10 @@ The Publication Server in Krill can also be run as an independent component. Thi
 
 If you want to know more about the project planning, please have a look at the
 high level `roadmap <https://nlnetlabs.nl/projects/rpki/project-plan/>`_ on
-our website, or get at a more detailed overview of the `milestones <https://github.com/NLnetLabs/krill/milestones?direction=asc&sort=due_date&state=open>`_
-on GitHub. If you have any questions, comments or ideas, you are welcome  to discuss them
+our website, or get at a more detailed overview of the `releases <https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
+on GitHub.
+
+If you have any questions, comments or ideas, you are welcome  to discuss them
 on our `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel 
 free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub.
 
@@ -31,8 +33,6 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
    :name: toc-krill
 
    installation
-   ca/index
-   pub/index
    
 .. history
 .. authors
