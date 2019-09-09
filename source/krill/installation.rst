@@ -3,11 +3,14 @@
 Installation
 ============
 
-At this point in time, and until a basic Certificate Authority is implemented,
-running Krill is interesting mostly for developers. This means the 
-instructions are somewhat developer centric. We will do proper packaging and a 
-Docker image in the future, but for now you will need to check out the source code
-and compile a binary locally.
+At this point in time Krill is still under heavy development, and our main
+focus is on functionality, rather that packaging. The structure of the Krill
+binaries, as well as configuration files, are still subject to changes.
+
+We will have a Docker image very soon - we have a test version working. Other
+than that you will have to check out the source code and compile a binary
+locally.
+
 
 Getting Started
 ---------------

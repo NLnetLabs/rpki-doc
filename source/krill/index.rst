@@ -33,6 +33,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
    :name: toc-krill
 
    installation
+   running
    
 .. history
 .. authors
