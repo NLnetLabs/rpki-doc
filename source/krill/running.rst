@@ -28,15 +28,14 @@ Admin Token
 
 You will need to generate your own secret token (password) before
 you can run krill. If you do not supply a token, Krill will refuse
-to start, with the following message:
+to start and complain with the following message:
 
 .. code-block:: text
 
-   You MUST provide a value for the master API key, either
-   by setting "auth_token" in the config file, or by setting
-   the KRILL_AUTH_TOKEN environment variable.
+   You MUST provide a value for the master API key, either by setting "auth_token" in the 
+   config file, or by setting the KRILL_AUTH_TOKEN environment variable.
 
-There is no default for this, because we want to avoid that people
+There is no default token, because we want to avoid that people
 run with default passwords. So, make up a nice one, and either
 add it to your config file, or use the ENV variable if you prefer.
 
@@ -55,10 +54,10 @@ We recommend, at least for now, that you run Krill with this
 default, and use a proxy server such as nginx if you intend to
 make Krill available to the internet. Industry standard proxy
 servers such as nginx are much better suited to deal with the
-sometimes-not-so-well-meaning people on the internet, and will
-generally implement best practices regarding HTTPS.
+sometimes-not-so-well-meaning people on the internet, and implement
+best practices regarding HTTPS.
 
-Also, setting up a recognised HTTPS certificate, e.g. through
+Also, setting up a widely accepted HTTPS certificate, e.g. through
 Letsencrypt, is well documented for these servers.
  
 
@@ -66,11 +65,36 @@ Embedded Trust Anchor
 ---------------------
 
 For testing purposes you may want to run Krill with an embedded
-test Trust Anchor. To do so, add the following line to your
-krill.conf file:
+test Trust Anchor (TA). Using a TA will allow you to create your
+own test Certificate Authority (CA) and with a locally signed
+certificate. This is useful when learning how to deploy and use
+Krill.
+
+To use the embedded TA add the following line to your ``krill.conf`` file:
 
 .. code-block:: text
 
    use_ta = true
+
+The Trust Anchor Locator (TAL) for this TA can be retrieved from
+Krill at: ``https://<yourhost>/ta/ta.tal``
+
+You can use this TAL in a Relying Party (RP) tool, such as routinator, to
+validate the ROAs you create. But, note that no one else will have this
+TAL, so this is useful for testing only.
+
+At this moment there is no way to disable the embedded TA once
+it's created. We may add this later, but for now we recommend that
+you use this option only on instances that you are prepared to use
+for testing only.
+
+
+
+
+
+
+
+
+
 
 
