@@ -3,11 +3,9 @@
 Installation
 ============
 
-Getting started with Routinator is really easy using either `Cargo
-<https://crates.io/crates/routinator>`_, `Docker
-<https://hub.docker.com/r/nlnetlabs/routinator/>`_, or building from the
-`source <https://github.com/NLnetLabs/routinator>`_. Binary packages are
-`coming soon <https://www.nlnetlabs.nl/pipermail/rpki/2019-May/000049.html>`_.
+Getting started with Routinator is really easy either building from `Cargo
+<https://crates.io/crates/routinator>`_ or running with `Docker
+<https://hub.docker.com/r/nlnetlabs/routinator/>`_.
 
 Quick Start
 -----------
@@ -102,7 +100,8 @@ C Toolchain
 Some of the libraries Routinator depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
 set of packages to build from C sources. For example, 
-``apt-get install gcc`` will install the C toolchain on Debian/Ubuntu.
+``apt-install build-essential`` will install everything you need on 
+Debian/Ubuntu.
 
 If you are unsure, try to run ``cc`` on a command line and if there’s a 
 complaint about missing input files, you are probably good to go. 

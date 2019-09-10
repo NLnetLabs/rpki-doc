@@ -43,15 +43,24 @@ You can update your Rust installation later by simply running:
 
    rustup update
 
+To get started you need Cargo's bin directory ($HOME/.cargo/bin) in your PATH 
+environment variable. To configure your current shell, run 
+
+.. code-block:: bash
+
+source $HOME/.cargo/env
 
 C Toolchain
 """""""""""
 
 Some of the libraries Krill depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
-set of packages to build from C sources. If you are unsure, try to run
-``cc`` on a command line and if there’s a complaint about missing input
-files, you are probably good to go.
+set of packages to build from C sources. For example, 
+``apt install build-essential`` will install everything you need 
+on Debian/Ubuntu.
+
+If you are unsure, try to run ``cc`` on a command line and if there’s a 
+complaint about missing input files, you are probably good to go. 
 
 OpenSSL
 """""""
@@ -63,6 +72,7 @@ this should be as simple as running:
 .. code-block:: bash
 
     sudo apt-get install -y libssl-dev
+    sudo apt-get install openssl
 
 Note: we use Ubuntu xenial (16.04.5 LTS) in our Travis CI environment.
 
