@@ -3,17 +3,107 @@
 Installation
 ============
 
-At this point in time Krill is still under heavy development, and our main
-focus is on functionality, rather that packaging. The structure of the Krill
-binaries, as well as configuration files, are still subject to changes.
+You can either build Krill from sources with Cargo or run it using Docker, both
+are quite easy.
 
-We will have a Docker image very soon - we have a test version working. Other
-than that you will have to check out the source code and compile a binary
-locally.
+Quick Start with Docker
+-----------------------
+
+To start Krill:
+
+.. code-block:: bash
+
+    docker run -d --name krill -p 127.0.0.1:3000:3000 \
+      -e KRILL_LOG_LEVEL=debug \
+      -v krill_data:/var/krill/data/ \
+      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
+      nlnetlabs/krill:v0.1.0
+
+Now obtain the generated authentication token by running:
+
+.. code-block:: bash
+
+    $ docker logs krill 2>&1 | fgrep token
+    docker-krill: Securing Krill daemon with token <SOME_TOKEN>
+
+Using a Bash alias with ``<SOME_TOKEN>`` you can easily interact with the
+locally running Krill daemon via its command-line interface (CLI):
+
+.. code-block:: bash
+
+    $ alias ka='docker exec krill krill_admin \
+      -s https://127.0.0.1:3000/ \
+      -t <SOME_TOKEN>'
+
+    $ ka cas list
+    {
+      "cas": []
+    }
+
+Using Dockerized ``krill_admin`` to manage remote Krill instances:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The Docker image can also be used to run ``krill_admin`` without a Krill
+server. With the help of a shell alias this becomes quite easy:
+
+.. code-block:: bash
+
+  $ alias ka_remote='docker run --rm \
+    -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.1.0 krill_admin \
+    -s https://<some.domain>/ \
+    -t <SOME_TOKEN>'
+
+  $ ka_remote cas list
+
+Note: The ``-v`` volume mount is optional, but without it you will not be able
+to pass files to ``krill_admin`` which some subcommands require, e.g.
+
+.. code-block:: bash
+
+  $ ka cas roas -h child update -d /tmp/ka/delta.in
+
+Using a HTTPS proxy in front of Dockerized Krill
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+Use ``docker run -e KRILL_FQDN=some.domain`` to set the Krill ``service_uri``
+and ``rsync_base`` configuration setting. This tells Krill which base URL to
+use when generating self references to ensure that clients are directed back to
+the HTTPS proxy in front of Krill rather than to Krill itself, as Krill should
+not be exposed to insecure networks.
+
+Serving Dockerized Krill data files via rsync
+"""""""""""""""""""""""""""""""""""""""""""""
+
+Krill serves generated data files via the RRDP and rsync protocols. The example
+invocation of Dockerized Krill above used ``-v /tmp/krill_rsync:/var/krill/data/repo/rsync``
+to write rsync files to host directory ``/tmp/krill_rsync``.
+
+Krill does not have its own rsync server. To serve these files via the rsync
+protocol you must run an rsync server yourself and configure it to serve these
+files. Or you can run an `rsyncd server Docker container<https://hub.docker.com/search?q=rsyncd&type=image>`_
+that mounts the Krill rsync data volume via ``-v krill_rsync:/var/krill/data/repo/rsync``.
+
+Further configuration
+"""""""""""""""""""""
+
+The Krill Docker image supports the following additional environment variables
+which map to the following ``krill.conf`` settings:
+
+- ``KRILL_AUTH_TOKEN`` - sets ``auth_token``.
+- ``KRILL_FQDN`` - sets ``service_uri`` and ``rsync_base``.
+- ``KRILL_LOG_LEVEL`` - sets ``log_level``.
+- ``KRILL_USE_TA`` - sets ``use_ta``.
+
+Providing your own configuration file
+"""""""""""""""""""""""""""""""""""""
+
+Provide ``docker run -v /tmp/krill.conf:/var/krill/data/krill.conf`` will
+instruct Docker to replace the default config file used by Docker Krill with
+the file ``/tmp/krill.conf`` on your host computer.`
 
 
-Getting Started
----------------
+Installing with Cargo
+---------------------
 
 There are three things you need for Krill: Rust, a C toolchain and OpenSSL.
 You can install the Krill on any Operating System where you can fulfil these
