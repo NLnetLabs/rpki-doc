@@ -59,6 +59,98 @@ best practices regarding HTTPS.
 
 Also, setting up a widely accepted HTTPS certificate, e.g. through
 Letsencrypt, is well documented for these servers.
+
+
+Minimal Configuration
+---------------------
+
+Krill uses defaults that are sensible for development. Some of these
+may also fine if you are testing Krill locally. However you should
+review the following.
+
+Public IP and Port
+""""""""""""""""""
+
+We recommend that you keep the following settings, and use a proxy server
+if you want to expose Krill to other users:
+
+.. code-block:: text
+
+   # Specify the ip address and port number that the server will use.
+   #ip             = "localhost"
+   #port           = 3000
+
+
+Data
+""""
+
+By default Krill will expect a directory called ``data`` relative to its
+working directory:
+
+.. code-block:: text
+
+   # Specify the directory where the publication server will store its data.
+   # Note that clustering through a shared data directory is not supported.
+   # But, we plan to look into a proper clustering solution later.
+   #data_dir       = "./data"
+
+You should probably change this to use an absolute path instead.
+
+Krill will create a number of subdirectories under this ``data_dir`` for various
+purposes:
+
++-------------+-------------------------------------------------------------------------------+
+| Directory   | Contains                                                                      |
++-------------+-------------------------------------------------------------------------------+
+| cas         | The state of all CAs in this Krill instance.                                  |
++-------------+-------------------------------------------------------------------------------+
+| ssl         | The HTTPS key pair and certificate.                                           |
++-------------+-------------------------------------------------------------------------------+
+| proxy       | The state of remote publishers. (will be deprecated)                          |
++-------------+-------------------------------------------------------------------------------+
+| publishers  | The state of all publishers in this Krill instance.                           |
++-------------+-------------------------------------------------------------------------------+
+| repo-server | The state of the repository server (client info, and published objects)       |
++-------------+-------------------------------------------------------------------------------+
+| repo/rsync/ | Published RPKI objects that should be made available through an rsync server. |
++-------------+-------------------------------------------------------------------------------+
+| repo/rrdp/  | Published RPKI objects in RRDP (RFC8182) XML format.                          |
++-------------+-------------------------------------------------------------------------------+
+
+
+Service and Certificate URIs
+""""""""""""""""""""""""""""
+
+The ``rsync_base`` setting should match the URI of your rsync server, as this is put on
+any certificates, manifests and ROAs that Krill will create. The ``service_uri`` setting
+is used to determine the URI for the RRDP notification file used on certificates, but it's
+also used to determine the public URI that will be included in responses to delegated
+remote child CAs that you may delegate resources to:
+
+.. code-block:: text
+
+   # Specify the base rsync repository for this server. Publishers will get
+   # a base URI that is based on the 'publisher_handle' in the XML file.
+   #
+   # Note, you should set up an rsync daemon to expose $data_dir/rsync to serve
+   # this data. The uri defined here should match the module name in your rsync
+   # configuration.
+   #rsync_base     = "rsync://localhost/repo/"
+   
+   # Specify the base public URI to this service. Other URIs will be derived
+   # from this:
+   #  <BASE_URI>rrdp/notification.xml     (pub point or rrdp)
+   #  <BASE_URI>rrdp/<session>/<version>/snapshot.xml
+   #  <BASE_URI>rrdp/<session>/<version>/delta.xml
+   #  <BASE_URI>ta/ta.cer                 (on TAL for embedded TA)
+   #  <BASE_URI>rfc6492                   (for remote children)
+   #
+   # MUST end with a slash.
+   #service_uri  = "http://localhost:3000/"
+
+
+
+
  
 
 Embedded Trust Anchor
