@@ -34,7 +34,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
 
    installation
    running
-   
+   using-cli
 .. history
 .. authors
 .. license
