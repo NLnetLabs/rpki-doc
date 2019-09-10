@@ -286,6 +286,7 @@ We will add Json support later, but for the moment Krill expects ROA updates in 
 following file format:
 
 .. code-block:: text
+
    # Some comment
      # Indented comment
 
