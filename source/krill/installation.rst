@@ -48,7 +48,7 @@ environment variable. To configure your current shell, run
 
 .. code-block:: bash
 
-source $HOME/.cargo/env
+   source $HOME/.cargo/env
 
 C Toolchain
 """""""""""
