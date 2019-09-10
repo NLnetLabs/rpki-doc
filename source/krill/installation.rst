@@ -80,7 +80,7 @@ to write rsync files to host directory ``/tmp/krill_rsync``.
 
 Krill does not have its own rsync server. To serve these files via the rsync
 protocol you must run an rsync server yourself and configure it to serve these
-files. Or you can run an `rsyncd server Docker container<https://hub.docker.com/search?q=rsyncd&type=image>`_
+files. Or you can run an `rsyncd Docker container<https://hub.docker.com/search?q=rsyncd&type=image>`_ 
 that mounts the Krill rsync data volume via ``-v krill_rsync:/var/krill/data/repo/rsync``.
 
 Further configuration
@@ -97,7 +97,7 @@ which map to the following ``krill.conf`` settings:
 Providing your own configuration file
 """""""""""""""""""""""""""""""""""""
 
-Provide ``docker run -v /tmp/krill.conf:/var/krill/data/krill.conf`` will
+Providing ``-v /tmp/krill.conf:/var/krill/data/krill.conf`` to the Docker run command will
 instruct Docker to replace the default config file used by Docker Krill with
 the file ``/tmp/krill.conf`` on your host computer.`
 
