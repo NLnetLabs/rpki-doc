@@ -208,7 +208,7 @@ cargo:
 .. code-block:: bash
 
     git clone git@github.com:NLnetLabs/krill.git
-    cd $project
+    cd krill
 
 For now, compile the static HTML pages:
 
