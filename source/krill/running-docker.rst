@@ -98,7 +98,7 @@ to pass files to ``krill_admin`` which some subcommands require, e.g.
 Proxy and HTTPS
 ---------------
 
-As advised in :ref:`doc_krill_xrunning` you are advised to run Krill behind an
+As advised in :ref:`doc_krill_xrunning` you should run Krill behind an
 industry standard proxy server such as nginx.
 
 Service and Certificate URIs
