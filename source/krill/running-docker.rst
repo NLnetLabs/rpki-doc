@@ -152,7 +152,7 @@ Sharing via a named volume:
 Logging
 -------
 
-Krill usually logs to a file by default. Docker Krill however logs by default
+Krill logs to a file by default. Docker Krill however logs by default
 to stderr so that you can see the output using the ``docker logs`` command.
 
 At the default ``warn`` log level Krill doesn't output anything unless there is
@@ -197,4 +197,4 @@ own and take complete control:
    docker run -v /tmp/krill.conf:/var/krill/data/krill.conf
    
 This will instruct Docker to replace the default config file used by Docker
-Krill with the file ``/tmp/krill.conf`` on your host computer.`
+Krill with the file ``/tmp/krill.conf`` on your host computer.
