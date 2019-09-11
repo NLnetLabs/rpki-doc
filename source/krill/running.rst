@@ -65,7 +65,7 @@ Minimal Configuration
 ---------------------
 
 Krill uses defaults that are sensible for development. Some of these
-may also fine if you are testing Krill locally. However you should
+may also be fine if you are testing Krill locally. However you should
 review the following.
 
 Public IP and Port
