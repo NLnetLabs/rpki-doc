@@ -134,8 +134,8 @@ Some of the data files written by Krill to its data directory are intended to
 be shared with external clients via the rsync protocol. To make this possible
 with Docker Krill you can either:
 
-* Mount the rsync data directory in the host and run rsyncd on the host.
-* Share the rsync data with another `Docker container which runs rsyncd <https://hub.docker.com/search?q=rsyncd&type=image>`_, *OR*
+* Mount the rsync data directory in the host and run rsyncd on the host, *OR*
+* Share the rsync data with another `Docker container which runs rsyncd <https://hub.docker.com/search?q=rsyncd&type=image>`_
 
 Mounting the data in a host directory:
 
