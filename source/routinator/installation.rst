@@ -100,7 +100,7 @@ C Toolchain
 Some of the libraries Routinator depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
 set of packages to build from C sources. For example, 
-``apt-install build-essential`` will install everything you need on 
+``apt install build-essential`` will install everything you need on 
 Debian/Ubuntu.
 
 If you are unsure, try to run ``cc`` on a command line and if there’s a 
