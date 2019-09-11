@@ -9,25 +9,18 @@ are quite easy.
 Quick Start with Docker
 -----------------------
 
-To start Krill:
+The NLnet Labs provided Docker container for Krill allows you to use Krill just
+as you would with Cargo but without needing to build from sources first, you
+only need Docker.
+
+To fetch and run Krill:
 
 .. code-block:: bash
 
-    docker run -d --name krill -p 127.0.0.1:3000:3000 \
-      -e KRILL_LOG_LEVEL=debug \
-      -v krill_data:/var/krill/data/ \
-      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
-      nlnetlabs/krill:v0.1.0
+    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.1.0
 
-Now obtain the generated authentication token by running:
-
-.. code-block:: bash
-
-    $ docker logs krill 2>&1 | fgrep token
-    docker-krill: Securing Krill daemon with token <SOME_TOKEN>
-
-Using a Bash alias with ``<SOME_TOKEN>`` you can easily interact with the
-locally running Krill daemon via its command-line interface (CLI):
+With a shell alias interacting with Krill via ``krill_admin`` is then as
+easy as:
 
 .. code-block:: bash
 
@@ -40,66 +33,9 @@ locally running Krill daemon via its command-line interface (CLI):
       "cas": []
     }
 
-Using Dockerized ``krill_admin`` to manage remote Krill instances:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-The Docker image can also be used to run ``krill_admin`` without a Krill
-server. With the help of a shell alias this becomes quite easy:
-
-.. code-block:: bash
-
-  $ alias ka_remote='docker run --rm \
-    -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.1.0 krill_admin \
-    -s https://<some.domain>/ \
-    -t <SOME_TOKEN>'
-
-  $ ka_remote cas list
-
-Note: The ``-v`` volume mount is optional, but without it you will not be able
-to pass files to ``krill_admin`` which some subcommands require, e.g.
-
-.. code-block:: bash
-
-  $ ka cas roas -h child update -d /tmp/ka/delta.in
-
-Using a HTTPS proxy in front of Dockerized Krill
-""""""""""""""""""""""""""""""""""""""""""""""""
-
-Use ``docker run -e KRILL_FQDN=some.domain`` to set the Krill ``service_uri``
-and ``rsync_base`` configuration setting. This tells Krill which base URL to
-use when generating self references to ensure that clients are directed back to
-the HTTPS proxy in front of Krill rather than to Krill itself, as Krill should
-not be exposed to insecure networks.
-
-Serving Dockerized Krill data files via rsync
-"""""""""""""""""""""""""""""""""""""""""""""
-
-Krill serves generated data files via the RRDP and rsync protocols. The example
-invocation of Dockerized Krill above used ``-v /tmp/krill_rsync:/var/krill/data/repo/rsync``
-to write rsync files to host directory ``/tmp/krill_rsync``.
-
-Krill does not have its own rsync server. To serve these files via the rsync
-protocol you must run an rsync server yourself and configure it to serve these
-files. Or you can run an `rsyncd Docker container<https://hub.docker.com/search?q=rsyncd&type=image>`_ 
-that mounts the Krill rsync data volume via ``-v krill_rsync:/var/krill/data/repo/rsync``.
-
-Further configuration
-"""""""""""""""""""""
-
-The Krill Docker image supports the following additional environment variables
-which map to the following ``krill.conf`` settings:
-
-- ``KRILL_AUTH_TOKEN`` - sets ``auth_token``.
-- ``KRILL_FQDN`` - sets ``service_uri`` and ``rsync_base``.
-- ``KRILL_LOG_LEVEL`` - sets ``log_level``.
-- ``KRILL_USE_TA`` - sets ``use_ta``.
-
-Providing your own configuration file
-"""""""""""""""""""""""""""""""""""""
-
-Providing ``-v /tmp/krill.conf:/var/krill/data/krill.conf`` to the Docker run command will
-instruct Docker to replace the default config file used by Docker Krill with
-the file ``/tmp/krill.conf`` on your host computer.`
+To get the most out of Krill you will want to run Docker and Krill with
+additional arguments. See :ref:`doc_krill_xrunning` and :ref:`doc_krill_running_docker`
+for more information.
 
 
 Installing with Cargo

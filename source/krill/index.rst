@@ -34,6 +34,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
 
    installation
    running
+   running-docker
    using-cli
 .. history
 .. authors
