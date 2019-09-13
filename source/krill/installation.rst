@@ -97,8 +97,7 @@ this should be as simple as running:
 
 .. code-block:: bash
 
-    sudo apt-get install -y libssl-dev
-    sudo apt-get install openssl
+    sudo apt-get install -y libssl-dev openssl pkg-config
 
 Note: we use Ubuntu xenial (16.04.5 LTS) in our Travis CI environment.
 
