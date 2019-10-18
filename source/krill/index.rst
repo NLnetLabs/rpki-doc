@@ -1,23 +1,43 @@
-.. WARNING::  This part of the project is currently being built. 
+.. WARNING::  This part of the project is currently being built.
               Documentation will likely change significantly as the software evolves.
 
 Krill
 =====
 
-Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon, 
-featuring a Certificate Authority and Publication Server, written by NLnet Labs in the Rust programming language.
+Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
+featuring a Certification Authority (CA) and Publication Server, written by NLnet Labs
+in the Rust programming language.
 
-This implementation will allow operators to run their own Certificate Authority (CA) as a child of a Regional Internet Registry or a different parent, such as a National Internet Registry (NIR) or Enterprise. The CA will allow operators to generate and publish their own cryptographic material, including all certificates and ROAs.
+In the context of Krill we refer to a CA as unit that represents an organisational unit,
+e.g. your company. This CA will typically have a single parent Certification Authority, like
+the RIR/NIR that you have registered IP addresses and/or AS numbers with. However, you
+may have multiple parents. It's also possible to delegate resources down children of your
+own, e.g. business units, departments, members or clients.
 
-The software will support running the CA both upwards and downwards. Upwards means that operators can have multiple parents, such as ARIN, RIPE NCC, etc., simultaneously and transparently. Downwards means that the CA can issue to child organisations or customers who, in turn, run their own CA.
+Resources that you receive from each of your parents will each go on separate X509
+certificates, and in fact you might even get resources from a single parent assigned to
+you on different certificates. These certificates are often referred to as "CA certificates",
+which can be somewhat confusing with regards to the term CA. A "CA certificate" is simply
+a certificate that is allowed to sign delegated certificates in the RPKI. And an
+'organisational' CA, as described above, will typically have one or many CA certificates.
 
-The CA is intended for:
+So, here we always talk about 'organisational' CAs when we talk about CAs. In fact
+the main reason of being for Krill is that it let's you think about your organisation
+at this higher level, while Krill will deal with the management of lower level CA
+certificates, and all the other moving parts that are used in the RPKI.
+
+Krill is intended for:
 
 - Operators who require easier RPKI management that is integrated with their own systems in a better way, instead of relying on the web-based user interface that the RIRs offer with the hosted systems
 - Operators who are security conscious and require that they are the only ones in possession of the private key of a system they use
 - Operators who want to be operationally independent from the parent RIR, such as NIRs or Enterprises
 
-The Publication Server in Krill can also be run as an independent component. This can be used by organisations who want to offer publication of RPKI data as a service. This way, it will allow operators to do the publication of their certificates and ROAs themselves, or let a third party such as a Content Delivery Network do it.
+Currently Krill has an embedded publication server. However, the next planned
+release will allow Krill to offer a publication server to others, and will allow
+CAs in Krill to use a remote publication server.
+
+Krill currently features an API and a CLI. A UI, based on the API, is planned for
+the near future, and will probably be released as a separate project.
 
 If you want to know more about the project planning, please have a look at the
 high level `roadmap <https://nlnetlabs.nl/projects/rpki/project-plan/>`_ on
@@ -25,7 +45,7 @@ our website, or get at a more detailed overview of the `releases <https://github
 on GitHub.
 
 If you have any questions, comments or ideas, you are welcome  to discuss them
-on our `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel 
+on our `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel
 free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub.
 
 .. toctree::
@@ -36,6 +56,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
    running
    running-docker
    using-cli
+   manage-cas
 .. history
 .. authors
 .. license
