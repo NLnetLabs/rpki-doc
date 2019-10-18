@@ -419,8 +419,36 @@ API json response:
 
 .. code-block:: text
 
-   $krillc roas list --format json
+   $ krillc roas list --format json
    [
      "10.0.0.0/24 => 64496",
      "10.1.0.0/16-20 => 64496"
    ]
+
+
+History
+"""""""
+
+You can show the history of all the things that happened to your CA:
+
+.. code-block:: text
+
+   $ krillc history
+   id: ca version: 0 details: Initialised with cert (hash): b088916107d2a2ed27a521441557e9315dbdb58d, base_uri: rsync://krilltest.do.nlnetlabs.nl/repo/ca/, rpki notify: https://krilltest.do.nlnetlabs.nl/rrdp/notification.xml
+   id: ca version: 1 details: added RFC6492 parent 'ripencc'
+   id: ca version: 2 details: added resource class with name '0'
+   id: ca version: 3 details: requested certificate for key (hash) '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' under resource class '0'
+   id: ca version: 4 details: activating pending key '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' under resource class '0'
+   id: ca version: 5 details: added route authorization: '185.49.140.0/22 => 8587'
+   id: ca version: 6 details: added route authorization: '2a04:b900::/29 => 8587'
+   id: ca version: 7 details: added route authorization: '185.49.140.0/22 => 199664'
+   id: ca version: 8 details: added route authorization: '2a04:b900::/29 => 199664'
+   id: ca version: 9 details: updated ROAs under resource class '0' added: 2a04:b900::/29 => 8587 185.49.140.0/22 => 8587 185.49.140.0/22 => 199664 2a04:b900::/29 => 199664
+   id: ca version: 10 details: updated objects under resource class '0' key: '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' added: 326130343a623930303a3a2f3239203d3e2038353837.roa 326130343a623930303a3a2f3239203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e2038353837.roa  updated: 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.crl 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.mft  withdrawn:
+
+Equivalent API call:
+
+.. code-block:: text
+
+   GET: https://localhost:3000/api/v1/cas/ca/history
+   Headers: Bearer: secret
