@@ -83,10 +83,10 @@ which would be 323. But as this is a privileged port, you would need to be runni
 Routinator as root when otherwise there is no reason to do that. The application will
 stay attached to your terminal unless you provide the ``-d`` (for daemon) option.
 
-By default, the repository will be updated and re-validated every hour as per the
-recommendation in the RFC. You can change this via the ``--refresh`` option and specify
-the interval between re-validations in seconds. That is, if you rather have Routinator
-validate every 15 minutes, the above command becomes:
+By default, the repository will be updated and re-validated every 10 minutes. You 
+can change this via the ``--refresh`` option and specify the interval between 
+re-validations in seconds. That is, if you rather have Routinator validate every 
+15 minutes, the above command becomes:
 
 .. code-block:: bash
 
