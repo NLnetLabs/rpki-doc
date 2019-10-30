@@ -128,4 +128,4 @@ This will build the following binaries:
    target/release/krilld
    target/release/krill_admin
 
-You can copy these binaries to a location of your convenience of run them from this directory.
+You can copy these binaries to a location of your convenience or run them from this directory.
