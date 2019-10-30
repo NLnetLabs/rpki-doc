@@ -15,12 +15,12 @@ can be found, relative to where you cloned krill, under: ``./daemon/defaults/kri
 You will notice that this file contains comments only. I.e. it
 documents default configuration settings. In order to override
 the Krill config you should create your own ``krill.conf`` file
-and use the ``--config`` directive when you start ``krilld``:
+and use the ``--config`` directive when you start ``krill``:
 
 
 .. code-block:: bash
 
-   krilld --config <path-to-config>
+   krill --config <path-to-config>
 
 
 Admin Token

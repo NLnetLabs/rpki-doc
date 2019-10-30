@@ -34,14 +34,14 @@ extra things like log level and volume mounts (more on this below).
      -e KRILL_AUTH_TOKEN=5tT8I7ygoDh9k8I \
      -v krill_data:/var/krill/data/ \
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
-     nlnetlabs/krill:v0.1.0
+     nlnetlabs/krill:v0.2.0
 
 Admin Token
 -----------
 
 By default Docker Krill secures itself with an automatically generated admin
 token. You will need to obtain this token from the Docker logs in order to
-manage Krill via the API or the ``krill_admin`` CLI tool.
+manage Krill via the API or the ``krillc`` CLI tool.
 
 .. code-block:: bash
 
@@ -64,36 +64,40 @@ locally running Krill daemon via its command-line interface (CLI):
 
 .. code-block:: bash
 
-   $ alias ka='docker exec krill krill_admin \
-     -s https://127.0.0.1:3000/ \
-     -t <SOME_TOKEN>'
+    $ alias krillc='docker exec \
+      -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
+      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
+      krill krillc'
 
-   $ ka cas list
-   {
-     "cas": []
-   }
+    $ krillc list -f json
+    {
+      "cas": []
+    }
 
 Remote
 """"""
 
-The Docker image can also be used to run ``krill_admin`` to manage remote
+The Docker image can also be used to run ``krillc`` to manage remote
 Krill servers. Using a shell alias simplifies this considerably:
 
 .. code-block:: bash
 
-   $ alias ka_remote='docker run --rm \
-     -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.1.0 krill_admin \
-     -s https://<some.domain>/ \
-     -t <SOME_TOKEN>'
+    $ alias krillc='docker run --rm \
+      -e KRILL_CLI_SERVER=https://some.domain/ \
+      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
+      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.2.0 krillc'
 
-   $ ka_remote cas list
+   $ krillc list -f json
+   {
+      "cas": []
+}
 
 Note: The ``-v`` volume mount is optional, but without it you will not be able
-to pass files to ``krill_admin`` which some subcommands require, e.g.
+to pass files to ``krillc`` which some subcommands require, e.g.
 
 .. code-block:: bash
 
-   $ ka cas roas -h child update -d /tmp/ka/delta.in
+   $ krillc roas update --ca my_ca --delta /tmp/delta.in
 
 Proxy and HTTPS
 ---------------

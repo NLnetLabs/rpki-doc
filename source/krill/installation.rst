@@ -17,18 +17,19 @@ To fetch and run Krill:
 
 .. code-block:: bash
 
-    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.1.0
+    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.2.0
 
-With a shell alias interacting with Krill via ``krill_admin`` is then as
+With a shell alias interacting with Krill via ``krillc`` is then as
 easy as:
 
 .. code-block:: bash
 
-    $ alias ka='docker exec krill krill_admin \
-      -s https://127.0.0.1:3000/ \
-      -t <SOME_TOKEN>'
+    $ alias krillc='docker exec \
+      -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
+      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
+      krill krillc'
 
-    $ ka cas list
+    $ krillc list -f json
     {
       "cas": []
     }
@@ -125,7 +126,7 @@ This will build the following binaries:
 
 .. code-block:: bash
 
-   target/release/krilld
-   target/release/krill_admin
+   target/release/krill
+   target/release/krillc
 
 You can copy these binaries to a location of your convenience or run them from this directory.
