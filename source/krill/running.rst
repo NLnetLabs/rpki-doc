@@ -58,7 +58,7 @@ sometimes-not-so-well-meaning people on the internet, and implement
 best practices regarding HTTPS.
 
 Also, setting up a widely accepted HTTPS certificate, e.g. through
-Letsencrypt, is well documented for these servers.
+Let's Encrypt, is well documented for these servers.
 
 
 Minimal Configuration
