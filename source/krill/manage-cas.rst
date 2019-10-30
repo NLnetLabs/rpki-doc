@@ -70,7 +70,7 @@ command:
 
 .. code-block:: bash
 
-   krillc list
+   $ krillc list
    ta
    ca
 
