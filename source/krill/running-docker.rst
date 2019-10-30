@@ -175,8 +175,8 @@ see something like the following in the logs:
 Docker Krill environment variable reference
 -------------------------------------------
 
-The Krill Docker image supports the following environment variables which map
-to the following ``krill.conf`` settings:
+The Krill Docker image supports the following Docker environment variables
+which map to the following ``krill.conf`` settings:
 
 +----------------------+------------------------------------+
 | Environment variable | Equivalent Krill config setting    |
@@ -189,6 +189,12 @@ to the following ``krill.conf`` settings:
 +----------------------+------------------------------------+
 | ``KRILL_USE_TA``     | ``use_ta``                         |
 +----------------------+------------------------------------+
+
+To set these environment variables use ``-e`` when invoking ``docker``, e.g.:
+
+.. code-block:: bash
+
+   docker run -e KRILL_FQDN=https://some.domain/
 
 Using a config file
 -------------------
