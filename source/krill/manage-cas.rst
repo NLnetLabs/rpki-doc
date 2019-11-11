@@ -23,7 +23,7 @@ repeat command line arguments for these:
 
 .. code-block:: bash
 
-   $ export KRILL_CLI_SERVER="https://localhost:3000"
+   $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="change-the-combination-on-my-luggage"
    $ export KRILL_CLI_MY_CA="ca"
 
