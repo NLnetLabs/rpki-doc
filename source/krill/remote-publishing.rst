@@ -101,7 +101,7 @@ The default text output just shows the handle of the publisher, the hash of its
 identity certificate key, and the rsync URI jail under which the publisher is
 allowed to publish objects.
 
-The API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -160,7 +160,7 @@ You can remove a CA using the following command:
 
   $ krillc publishers remove --publisher ca
 
-Equivalent API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -209,7 +209,7 @@ use the following:
     <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
   </repository_response>
 
-The API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -269,7 +269,7 @@ of issues:
     444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
     874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
 
-API call:
+The equivalent API call:
 
 .. code-block:: text
 
