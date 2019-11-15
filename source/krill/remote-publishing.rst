@@ -103,7 +103,7 @@ allowed to publish objects.
 
 The API call:
 
-.. code-block: text
+.. code-block:: text
 
   $ krillc publishers show --publisher ca --api
   GET: https://localhost:3000/api/v1/publishers/ca
@@ -114,7 +114,7 @@ were published and the full ID certificate used by the publisher. Note that
 even embedded Krill CAs will have such a certificate, even if they access the
 repository server locally.
 
-.. code-block: json
+.. code-block:: json
 
   {
     "handle": "ca",
