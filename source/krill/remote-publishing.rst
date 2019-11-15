@@ -1,4 +1,4 @@
-Remote Publishing
+:DRemote Publishing
 =================
 
 By default Krill CAs use an embedded repository server for the publication of
@@ -13,7 +13,7 @@ roles.
 Krill as Repository Server
 """"""""""""""""""""""""""
 
-The Repository functions for Krill can be accessed through the `publishers`
+The repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
 .. code-block:: text
@@ -112,7 +112,7 @@ The API call:
 The json response includes a lot more information, including the files which
 were published and the full ID certificate used by the publisher. Note that
 even embedded Krill CAs will have such a certificate, even if they access the
-Repository server locally.
+repository server locally.
 
 .. code-block: json
 
@@ -222,10 +222,10 @@ Known issue: if you try this for a CA which does not exist you get an
 "Access Forbidden" response. This will be fixed in a future release.
 
 
-Publish at a remote Repository
+Publish at a Remote Repository
 """"""""""""""""""""""""""""""
 
-Controlling your CA's Repository Server is done through the `repo` subcommand
+Controlling your CA's repository server is done through the `repo` subcommand
 of the CLI:
 
 .. code-block:: text
@@ -311,7 +311,7 @@ API response:
     }
   }
 
-And in case the Repository Server cannot be reached:
+And in case the repository server cannot be reached:
 
 .. code-block:: text
 
@@ -345,7 +345,7 @@ Show Publisher Request
 """"""""""""""""""""""
 
 You can use the following to show the RFC8183 Publisher Request XML for a CA. You
-will need to hand this over to your remote Repository so that they can add your
+will need to hand this over to your remote repository so that they can add your
 CA:
 
 .. code-block:: bash
