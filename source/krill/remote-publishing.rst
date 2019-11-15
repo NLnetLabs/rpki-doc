@@ -16,7 +16,7 @@ Krill as Repository Server
 The repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers --help
 
@@ -46,7 +46,7 @@ You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
 remote (RFC 8181 compliant) publishers:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers list
   Publishers: ta, ca
@@ -91,7 +91,7 @@ Show Publisher Details
 You can show the full details of a publisher, including the files that they
 published, using the CLI:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers show --publisher ta
   handle: ta
@@ -103,7 +103,7 @@ allowed to publish objects.
 
 The equivalent API call:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers show --publisher ca --api
   GET: https://localhost:3000/api/v1/publishers/ca
@@ -156,7 +156,7 @@ this).
 
 You can remove a CA using the following command:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers remove --publisher ca
 
@@ -177,13 +177,13 @@ Add a Publisher
 In order to add a publisher you have to get its RFC 8183 Pulisher Request XML,
 and hand it over to the server:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
 
 The equivalent API call submits the XML as JSON:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml --api
 
@@ -202,7 +202,7 @@ Show Repository Response
 In order to show the RFC 8183 Repository Response XML for a specific publisher
 use the following:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc publishers response --publisher ca
   <repository_response xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca" service_uri="https://localhost:3000/rfc8181/ca" sia_base="rsync://localhost/repo/ca/" rrdp_notification_uri="https://localhost:3000/rrdp/notification.xml">
@@ -228,7 +228,7 @@ Publish at a Remote Repository
 Controlling your CA's repository server is done through the `repo` subcommand
 of the CLI:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo --help
   krillc-repo
@@ -255,7 +255,7 @@ as well as what is has published at the location. Krill will issue an actual
 `list` query to the repository and give back the response, or an error in case
 of issues:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo show
   Repository Details:
@@ -313,7 +313,7 @@ API response:
 
 And in case the repository server cannot be reached:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo show
   Repository Details:
@@ -348,7 +348,7 @@ You can use the following to show the RFC 8183 Publisher Request XML for a CA. Y
 will need to hand this over to your remote repository so that they can add your
 CA:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo request
   <publisher_request xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca">
@@ -387,7 +387,7 @@ any currently signed objects.
 
 To start a migration you can use the following:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo update rfc8183 [file]
 
@@ -419,7 +419,7 @@ server over the RFC 8181 protocol.
 
 But, suppose that you did, you would now see this:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo show
   Repository Details:
@@ -436,7 +436,7 @@ But no worries.. this can be fixed.
 First, you may want to migrate back to using the embedded repository without
 the RFC 8181 protocol overhead:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc repo update embedded
 
@@ -455,7 +455,7 @@ will automatically re-sync whenever there is an update like a renewal of
 manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
 can for that *all* Krill CAs re-sync using the following:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ krillc bulk sync
 
