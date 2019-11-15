@@ -44,7 +44,7 @@ List Publishers
 
 You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
-remote (RFC8181 compliant) publishers:
+remote (RFC 8181 compliant) publishers:
 
 .. code-block:: bash
 
@@ -174,7 +174,7 @@ is not known (this will be fixed).
 Add a Publisher
 """""""""""""""
 
-In order to add a publisher you have to get its RFC8183 Pulisher Request XML,
+In order to add a publisher you have to get its RFC 8183 Pulisher Request XML,
 and hand it over to the server:
 
 .. code-block:: bash
@@ -199,7 +199,7 @@ The equivalent API call submits the XML as JSON:
 Show Repository Response
 """"""""""""""""""""""""
 
-In order to show the RFC8183 Repository Response XML for a specific publisher
+In order to show the RFC 8183 Repository Response XML for a specific publisher
 use the following:
 
 .. code-block:: bash
@@ -344,7 +344,7 @@ Or JSON:
 Show Publisher Request
 """"""""""""""""""""""
 
-You can use the following to show the RFC8183 Publisher Request XML for a CA. You
+You can use the following to show the RFC 8183 Publisher Request XML for a CA. You
 will need to hand this over to your remote repository so that they can add your
 CA:
 
@@ -393,7 +393,7 @@ To start a migration you can use the following:
 
 If no file is specified the CLI will try to read the XML from STDIN.
 
-The API expects that the RFC8183 Repository Response is represented in a JSON
+The API expects that the RFC 8183 Repository Response is represented in a JSON
 format:
 
 .. code-block:: text
@@ -415,7 +415,7 @@ Note that if you were using an embedded repository, and you instruct your CA
 to connect to the embedded repository, but set up as a *remote*, then you will
 find that you have no more published objects - because.. Krill tries to clean
 up the old repository, and we assume that you would not try to use an embedded
-server over the RFC8181 protocol.
+server over the RFC 8181 protocol.
 
 But, suppose that you did, you would now see this:
 
@@ -434,7 +434,7 @@ But, suppose that you did, you would now see this:
 But no worries.. this can be fixed.
 
 First, you may want to migrate back to using the embedded repository without
-the RFC8181 protocol overhead:
+the RFC 8181 protocol overhead:
 
 .. code-block:: bash
 
