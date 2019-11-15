@@ -1,8 +1,8 @@
 Manage CA(s)
 ============
 
-In this section we will explain how to use the CLI to manage 'organisational' CAs
-in Krill:
+In this section we will explain how to use the CLI to manage 'organisational'
+CAs in Krill:
 
 * Add a CA to Krill
 * Add a parent to a CA
@@ -11,8 +11,8 @@ in Krill:
 * View the status of a CA
 * Perform a key roll
 
-If you just want to try out Krill you can set "use_ta" to "true" in your krill.conf,
-or use an env variable:
+If you just want to try out Krill you can set "use_ta" to "true" in your
+`krill.conf`, or use an env variable:
 
 .. code-block:: text
 
@@ -34,9 +34,9 @@ equivalent arguments.
 Add a CA
 """"""""
 
-When adding a CA you need to choose a "handle", essentially just a name. The term "handle"
-comes from RFC 8183 and is used in the communication protocol between CAs and CAs and
-publication servers.
+When adding a CA you need to choose a "handle", essentially just a name. The
+term "handle" comes from RFC 8183 and is used in the communication protocol
+between CAs and CAs and publication servers.
 
 Example:
 
@@ -102,7 +102,8 @@ Example API Response:
 Show CA Details
 """""""""""""""
 
-You can use the following to show the details of the embedded TA, if you enabled it:
+You can use the following to show the details of the embedded TA, if you enabled
+it:
 
 .. code-block:: text
 
@@ -111,9 +112,16 @@ You can use the following to show the details of the embedded TA, if you enabled
    
    Base uri: rsync://localhost:3000/repo/ta/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
+<<<<<<< HEAD
    
    Parents:
    ta This CA is a TA
+=======
+
+   Parents:
+   Handle: ta Kind: This CA is a TA
+
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Resource Class: 0
    Parent: ta
    State: active
@@ -122,9 +130,19 @@ You can use the following to show the details of the embedded TA, if you enabled
        IPv4: 0.0.0.0/0
        IPv6: ::/0
    Current objects:
+<<<<<<< HEAD
      6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.crl
      6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.mft
    
+=======
+     FC434F8B249656B4E61EA7DD84A11E9AFDF20718.cer
+     B889C931F2AD6615E46614DFD1736B34F6770C5F.mft
+     1B4919B96E0D90854A0F603F33993D9D23458D59.cer
+     B889C931F2AD6615E46614DFD1736B34F6770C5F.crl
+     57FAFA0DD288CA67372592811746398ECC2B123C.cer
+     281E18225EE6DCEB8E98C0A7FB596242BFE64B13.cer
+
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Children:
    <none>
 
@@ -151,10 +169,69 @@ The equivalent API call:
    GET: https://localhost:3000/api/v1/cas/ca
    Headers: Bearer: secret
 
-API response:
+Example API response (for CA with a parent, resources, and ROAs):
 
-.. code-block:: text
+.. code-block:: json
 
+  {
+    "handle": "ca",
+    "repo_info": {
+      "base_uri": "rsync://localhost/repo/ca/",
+      "rpki_notify": "https://localhost:3000/rrdp/notification.xml"
+    },
+    "parents": [
+      {
+        "handle": "ta",
+        "kind": "Rfc6492"
+      }
+    ],
+    "resources": {
+      "0": {
+        "name_space": "0",
+        "parent_handle": "ta",
+        "keys": {
+          "Active": {
+            "key_id": "281E18225EE6DCEB8E98C0A7FB596242BFE64B13",
+            "incoming_cert": {
+              "cert": "<base64>",
+              "uri": "rsync://localhost/repo/ta/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.cer",
+              "resources": {
+                "asn": "",
+                "v4": "10.0.0.0/16",
+                "v6": ""
+              }
+            },
+            "request": null
+          }
+        },
+        "current_objects": {
+          "31302e302e302e302f32302d3234203d3e20313233.roa": {
+            "content": "<base64>",
+            "serial": "500818991801591400706513376347844650289443803392",
+            "expires": "2020-11-15T11:26:50Z"
+          },
+          "281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft": {
+            "content": "<base64>",
+            "serial": "29403160129361170354835706470736861578878990534",
+            "expires": "2019-11-17T04:00:00Z"
+          },
+          "31302e302e3132382e302f32302d3234203d3e20313233.roa": {
+            "content": "<base64>",
+            "serial": "373707353386080573894228388862527022761681457819",
+            "expires": "2020-11-15T11:26:50Z"
+          },
+          "281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl": {
+            "content": "<base64>",
+            "serial": "6",
+            "expires": "2019-11-17T04:00:00Z"
+          }
+        }
+      }
+    },
+    "children": []
+  }
+
+<<<<<<< HEAD
    {
      "handle": "ca",
      "repo_info": {
@@ -165,19 +242,21 @@ API response:
      "resources": {},
      "children": []
    }
+=======
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 
 Add a Child to the embedded TA
 """"""""""""""""""""""""""""""
 
-If you are using an embedded TA for testing then you will first need to add your new
-CA "ca" to it. Krill supports two communication modes:
+If you are using an embedded TA for testing then you will first need to add your
+new CA "ca" to it. Krill supports two communication modes:
 
 1. embedded, meaning the both the parent and child CA live in the same Krill
 2. rfc6492, meaning that the official RFC protocol is used
 
-Here we will document the second option. It's slightly less efficient, but it's the
-same as what you would need to delegate from your CA to remote CAs.
+Here we will document the second option. It's slightly less efficient, but it's
+the same as what you would need to delegate from your CA to remote CAs.
 
 Step 1: RFC 8183 request XML
 ---------------------------
@@ -319,9 +398,16 @@ Now you should see that your "child" is certified:
    
    Base uri: rsync://localhost:3000/repo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
+<<<<<<< HEAD
    
    Parents:
    ripencc RFC 6492 Parent
+=======
+
+   Parents:
+   Handle: ta Kind: RFC 6492 Parent
+
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Resource Class: 0
    Parent: ripencc
    State: active
@@ -376,12 +462,30 @@ You can then add this to your CA:
 .. code-block:: text
 
    $ krillc roas update --delta ./roas.txt
+<<<<<<< HEAD
    Status: 400 Bad Request, Error: {"code":2402,"msg":"Invalid ROA delta: removing a definition which is unknown"}
 
 And as you can see Krill gives an error because you cannot remove authorization "10.0.3.0/24 => 64496" as you do not have it.
 
 If you remove the "R:" line and submit again, then you should see no response, and no
 error.
+=======
+
+Possible responses are an empty body, and http code 200 if you accessed the API
+directly, or one of the following errors in case your ROA delta is inconsistent
+with your current set:
+
+.. code-block:: text
+
+  Status: 400 Bad Request, Error: {"code":2401,"msg":"Invalid ROA delta: adding a definition which is already present"}
+  Status: 400 Bad Request, Error: {"code":2402,"msg":"Invalid ROA delta: removing a definition which is unknown"}
+  Status: 400 Bad Request, Error: {"code":2403,"msg":"Invalid ROA delta: not all resources held."}
+
+
+If you followed the steps above then you would get an error, because there is no
+authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
+then you should see no response, and no error.
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 The API equivalent for sending updates uses JSON rather than the above text format:
 
@@ -390,6 +494,7 @@ The API equivalent for sending updates uses JSON rather than the above text form
    POST: https://localhost:3000/api/v1/cas/ca/routes
    Headers: Bearer: secret
    Body: {
+<<<<<<< HEAD
        "added": [
            {
                "asn": 64496,
@@ -408,6 +513,16 @@ The API equivalent for sending updates uses JSON rather than the above text form
            }
        ]
     }
+=======
+      "added": [
+        {"asn": 64496, "prefix": "192.168.0.0/16", "max_length": 20},
+        {"asn": 64496, "prefix": "192.168.1.0/24"}
+      ],
+      "removed": [
+        {"asn": 64496, "prefix": "192.168.3.0/24"}
+      ]
+   }
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 
 List Route Authorizations
@@ -434,6 +549,7 @@ API JSON response:
 
    $ krillc roas list --format json
    [
+<<<<<<< HEAD
        {
            "asn": 64496,
            "prefix": "10.0.0.0/24"
@@ -443,6 +559,17 @@ API JSON response:
            "prefix": "10.1.0.0/16",
            "max_length": 20
        }
+=======
+     {
+       "asn": 64496,
+       "prefix": "10.0.0.0/24"
+     },
+     {
+       "asn": 64496,
+       "prefix": "10.1.0.0/16",
+       "max_length": 20
+     }
+>>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    ]
 
 
