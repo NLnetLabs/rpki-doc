@@ -58,7 +58,7 @@ The equivalent API call:
   GET: https://localhost:3000/api/v1/publishers
   Headers: Bearer: secret
 
-Example json response:
+Example JSON response:
 
 .. code-block:: json
 
@@ -109,7 +109,7 @@ The API call:
   GET: https://localhost:3000/api/v1/publishers/ca
   Headers: Bearer: secret
 
-The json response includes a lot more information, including the files which
+The JSON response includes a lot more information, including the files which
 were published and the full ID certificate used by the publisher. Note that
 even embedded Krill CAs will have such a certificate, even if they access the
 repository server locally.
@@ -181,7 +181,7 @@ and hand it over to the server:
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
 
-The equivalent API call submits the XML as json:
+The equivalent API call submits the XML as JSON:
 
 .. code-block:: text
 
@@ -324,7 +324,7 @@ And in case the repository server cannot be reached:
   Currently published:
     Error contacting repo! => Unknown publisher 'ca'
 
-Or json:
+Or JSON:
 
 .. code-block:: json
 
