@@ -453,7 +453,7 @@ Re-syncing CAs with Repository
 If your CAs have somehow become out of sync with their repository, then they
 will automatically re-sync whenever there is an update like a renewal of
 manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
-can for that *all* Krill CAs re-sync using the following:
+can force that *all* Krill CAs re-sync using the following:
 
 .. code-block:: text
 
