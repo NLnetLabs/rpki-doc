@@ -1,4 +1,4 @@
-:DRemote Publishing
+:Remote Publishing
 =================
 
 By default Krill CAs use an embedded repository server for the publication of
