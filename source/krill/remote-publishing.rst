@@ -16,7 +16,7 @@ Krill as Repository Server
 The repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc publishers --help
 
@@ -103,7 +103,7 @@ allowed to publish objects.
 
 The equivalent API call:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc publishers show --publisher ca --api
   GET: https://localhost:3000/api/v1/publishers/ca
@@ -183,7 +183,7 @@ and hand it over to the server:
 
 The equivalent API call submits the XML as JSON:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml --api
 
@@ -228,7 +228,7 @@ Publish at a Remote Repository
 Controlling your CA's repository server is done through the `repo` subcommand
 of the CLI:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc repo --help
   krillc-repo
@@ -313,7 +313,7 @@ API response:
 
 And in case the repository server cannot be reached:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc repo show
   Repository Details:
@@ -419,7 +419,7 @@ server over the RFC 8181 protocol.
 
 But, suppose that you did, you would now see this:
 
-.. code-block:: text
+.. code-block:: bash
 
   $ krillc repo show
   Repository Details:
