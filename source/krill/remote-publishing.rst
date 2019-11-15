@@ -13,7 +13,7 @@ roles.
 Krill as Repository Server
 """"""""""""""""""""""""""
 
-The Repository functions for krill can be accessed through the `publishers`
+The Repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
 .. code-block:: text
@@ -42,8 +42,8 @@ subcommand in the CLI:
 List Publishers
 """""""""""""""
 
-You can list all publishers in krill using the command below. Note, that the
-list of publishers will include any embedded krill CAs as well as any possible
+You can list all publishers in Krill using the command below. Note, that the
+list of publishers will include any embedded Krill CAs as well as any possible
 remote (RFC8181 compliant) publishers:
 
 .. code-block:: bash
@@ -148,10 +148,10 @@ You can remove Publishers. If you remove a publisher, then all of its content
 will be removed as well and the publisher will no longer be allowed to publish.
 
 Note that you can do this without the publisher's knowledge, nor consent, even
-for embedded krill CAs. With great power comes great responsibility.. That said,
+for embedded Krill CAs. With great power comes great responsibility.. That said,
 you can always add a publisher again (also embedded publishers), and once a
 publisher can connect to your repository again, it should be able to figure out
-that it needs to re-publish all its content (krill CAs will always check for
+that it needs to re-publish all its content (Krill CAs will always check for
 this).
 
 You can remove a CA using the following command:
@@ -372,7 +372,7 @@ your CAs will assume that they use the embedded publication server. So, in order
 to use a remote server you will have to use this process to change over.
 
 Changing repositories is actually more complicated than one might think, but
-fortunately it's all automated. When you ask krill to change, the following
+fortunately it's all automated. When you ask Krill to change, the following
 steps will be executed:
 
 * check that the new repository can be reached, and this ca is authorized
@@ -453,7 +453,7 @@ Re-syncing CAs with Repository
 If your CAs have somehow become out of sync with their repository, then they
 will automatically re-sync whenever there is an update like a renewal of
 manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
-can for that *all* krill CAs re-sync using the following:
+can for that *all* Krill CAs re-sync using the following:
 
 .. code-block:: bash
 
