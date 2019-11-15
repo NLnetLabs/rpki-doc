@@ -14,14 +14,14 @@ in Krill:
 If you just want to try out Krill you can set "use_ta" to "true" in your krill.conf,
 or use an env variable:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ export KRILL_USE_TA="true"
 
 You may also wish to set the following variables, so that you don't have to
 repeat command line arguments for these:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="change-the-combination-on-my-luggage"
@@ -68,7 +68,7 @@ List CAs
 You can list all handles (names) for the existing CAs in krill using the following
 command:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ krillc list
    ta
@@ -179,16 +179,16 @@ CA "ca" to it. Krill supports two communication modes:
 Here we will document the second option. It's slightly less efficient, but it's the
 same as what you would need to delegate from your CA to remote CAs.
 
-Step 1: RFC8183 request XML
+Step 1: RFC 8183 request XML
 ---------------------------
 
-First you will need to get the RFC8183 request XML from your child:
+First you will need to get the RFC 8183 request XML from your child:
 
 .. code-block:: text
 
    $ krillc parents myid > myid.xml
 
-Equivalent API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -196,7 +196,7 @@ Equivalent API call:
    Headers: content-type: application/xml
    Headers: Bearer: secret
 
-API Response: RFC8183 request XML
+API Response: RFC 8183 request XML
 
 Step 2: Add child "ca" to "ta"
 ------------------------------
@@ -204,11 +204,11 @@ Step 2: Add child "ca" to "ta"
 To add a child, you will need to:
   1. choose a unique local name (handle) that the parent will use for the child
   2. choose initial resources (asn, ipv4, ipv6)
-  3. have an RFC8183 request
+  3. have an RFC 8183 request
 
 And in this case we also need to override the ENV variable and indicate that we
 want to add this child to the CA "ta". The following command will add the child,
-and the RFC8183 XML from the "ta":
+and the RFC 8183 XML from the "ta":
 
 .. code-block:: text
 
@@ -217,7 +217,7 @@ and the RFC8183 XML from the "ta":
                          --asn "" --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
                          --rfc8183 data/myid.xml > parent-res.xml
 
-However, if you are using the API, then you need to send the RFC8183 request as
+However, if you are using the API, then you need to send the RFC 8183 request as
 an equivalent JSON structure (the CLI does this under the hood):
 
 .. code-block:: text
@@ -240,7 +240,7 @@ an equivalent JSON structure (the CLI does this under the hood):
       }
   }
 
-The default response is the RFC8183 parent response XML file. Or, if you set
+The default response is the RFC 8183 parent response XML file. Or, if you set
 `--format json` you will get the plain API reponse:
 
 .. code-block:: text
@@ -264,7 +264,7 @@ If you need the response again, you can ask the "ta" again:
 
    $ krillc children response --ca "ta" --child "ca"
 
-Equivalent API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -291,7 +291,7 @@ name. Some parents do this to ensure unicity.
 
    $ krillc parents add --parent ripencc --rfc8183 ./parent-res.xml
 
-Equivalent API call:
+The equivalent API call:
 
 .. code-block:: text
 
@@ -385,7 +385,7 @@ remove the authorizaion "10.0.3.0/24 => 64496", because you did not have this.
 If you remove the line and submit again, then you should see no response, and no
 error.
 
-The API equivalent for sending updates uses json rather than the above text format:
+The API equivalent for sending updates uses JSON rather than the above text format:
 
 .. code-block:: text
 
@@ -415,7 +415,7 @@ API call:
    GET: https://localhost:3000/api/v1/cas/ca
    Headers: Bearer: secret
 
-API json response:
+API JSON response:
 
 .. code-block:: text
 
@@ -446,7 +446,7 @@ You can show the history of all the things that happened to your CA:
    id: ca version: 9 details: updated ROAs under resource class '0' added: 2a04:b900::/29 => 8587 185.49.140.0/22 => 8587 185.49.140.0/22 => 199664 2a04:b900::/29 => 199664
    id: ca version: 10 details: updated objects under resource class '0' key: '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' added: 326130343a623930303a3a2f3239203d3e2038353837.roa 326130343a623930303a3a2f3239203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e2038353837.roa  updated: 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.crl 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.mft  withdrawn:
 
-Equivalent API call:
+The equivalent API call:
 
 .. code-block:: text
 
