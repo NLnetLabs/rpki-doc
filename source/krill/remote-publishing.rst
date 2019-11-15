@@ -459,7 +459,7 @@ can force that *all* Krill CAs re-sync using the following:
 
   $ krillc bulk sync
 
-API:
+The equivalent API call:
 
 .. code-block:: text
 
