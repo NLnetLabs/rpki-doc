@@ -51,7 +51,7 @@ The equivalent API call:
 
    POST: https://localhost:3000/api/v1/cas
    Headers: Bearer: secret
-   Body: {"handle":"ca","pub_mode":"Embedded"}
+   Body: {"handle":"ca"}
 
 
 API Response: <empty> (Status: 200)
@@ -109,12 +109,12 @@ You can use the following to show the details of the embedded TA, if you enabled
    $ krillc show --ca ta
 
    Name:     ta
-
-   Base uri: rsync://localhost/repo/ta/
+   
+   Base uri: rsync://localhost:3000/repo/ta/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-
-   Parent:  ta, Kind: This CA is a TA
-
+   
+   Parents:
+   ta This CA is a TA
    Resource Class: 0
    Parent: ta
    State: active
@@ -123,9 +123,9 @@ You can use the following to show the details of the embedded TA, if you enabled
        IPv4: 0.0.0.0/0
        IPv6: ::/0
    Current objects:
-     C5661FF39DE17AB24B8C3486F2E4565CDF86A1A8.crl
-     C5661FF39DE17AB24B8C3486F2E4565CDF86A1A8.mft
-
+     6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.crl
+     6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.mft
+   
    Children:
    <none>
 
@@ -136,10 +136,12 @@ Or for your new CA:
    $ krillc show
 
    Name:     ca
-
-   Base uri: rsync://localhost/repo/ca/
+   
+   Base uri: rsync://localhost:3000/repo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-
+   
+   Parents:
+   <none>
    Children:
    <none>
 
@@ -156,14 +158,13 @@ API response:
 
    {
      "handle": "ca",
-     "base_repo": {
+     "repo_info": {
        "base_uri": "rsync://localhost/repo/ca/",
        "rpki_notify": "https://localhost:3000/rrdp/notification.xml"
      },
-     "parents": {},
+     "parents": [],
      "resources": {},
-     "children": {},
-     "route_authorizations": []
+     "children": []
    }
 
 
@@ -214,8 +215,8 @@ and the RFC 8183 XML from the "ta":
 
    $ krillc children add --ca ta \
                          --child ca \
-                         --asn "" --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
-                         --rfc8183 data/myid.xml > parent-res.xml
+                         --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
+                         --rfc8183 myid.xml > parent-res.xml
 
 However, if you are using the API, then you need to send the RFC 8183 request as
 an equivalent JSON structure (the CLI does this under the hood):
@@ -268,7 +269,7 @@ The equivalent API call:
 
 .. code-block:: text
 
-   GET: https://localhost:3000/api/v1/cas/ta/parent_contact/ca
+   GET: https://localhost:3000/api/v1/cas/ta/children/ca/contact
    Headers: Bearer: secret
 
 
@@ -305,7 +306,7 @@ The equivalent API call:
             "id_cert": "BASE64 of parent ID cert",
             "parent_handle": "ta",
             "child_handle": "ca",
-            "service_uri": { "Https":"https://localhost:3000/rfc6492/ta" }
+            "service_uri": "Https":"https://localhost:3000/rfc6492/ta"
           }
         }
       }
@@ -315,24 +316,25 @@ Now you should see that your "child" is certified:
 .. code-block:: text
 
    $ krillc show
+
    Name:     ca
-
-   Base uri: rsync://localhost/repo/ca/
+   
+   Base uri: rsync://localhost:3000/repo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-
-   Parent:  ripencc, Kind: RFC 6492 Parent
-
+   
+   Parents:
+   ripencc RFC 6492 Parent
    Resource Class: 0
    Parent: ripencc
    State: active
        Resources:
-       ASNs:
+       ASNs: 
        IPv4: 10.0.0.0/8
        IPv6: 2001:db8::/32
    Current objects:
-     787AD8DE4176761479C3CF9DE3496D80A1B34C9C.crl
-     787AD8DE4176761479C3CF9DE3496D80A1B34C9C.mft
-
+     48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl
+     48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft
+   
    Children:
    <none>
 
@@ -376,13 +378,11 @@ You can then add this to your CA:
 .. code-block:: text
 
    $ krillc roas update --delta ./roas.txt
-   Status: 400 Bad Request, Error: {"code":3005,"msg":"General CA Server issue."}
+   Status: 400 Bad Request, Error: {"code":2402,"msg":"Invalid ROA delta: removing a definition which is unknown"}
 
-And as you can see Krill gives an unfriendly response. We created an issue (#118)
-to improve this message, but what it is really trying to say is that you cannot
-remove the authorizaion "10.0.3.0/24 => 64496", because you did not have this.
+And as you can see Krill gives an error because you cannot remove authorization "10.0.3.0/24 => 64496" as you do not have it.
 
-If you remove the line and submit again, then you should see no response, and no
+If you remove the "R:" line and submit again, then you should see no response, and no
 error.
 
 The API equivalent for sending updates uses JSON rather than the above text format:
@@ -392,9 +392,24 @@ The API equivalent for sending updates uses JSON rather than the above text form
    POST: https://localhost:3000/api/v1/cas/ca/routes
    Headers: Bearer: secret
    Body: {
-      "added": ["192.168.0.0/16-20 => 64496","192.168.1.0/24 => 64496"],
-      "removed": ["192.168.3.0/24 => 64496"]
-   }
+       "added": [
+           {
+               "asn": 64496,
+               "prefix": "10.0.0.0/24"
+           },
+           {
+               "asn": 64496,
+               "prefix": "10.1.0.0/16",
+               "max_length": 20
+           }
+       ],
+       "removed": [
+           {
+               "asn": 64496,
+               "prefix": "10.0.3.0/24"
+           }
+       ]
+    }
 
 
 List Route Authorizations
@@ -405,14 +420,14 @@ You can list Route Authorizations as well:
 .. code-block:: text
 
    $ krillc roas list
-   10.1.0.0/16-20 => 64496
    10.0.0.0/24 => 64496
+   10.1.0.0/16-20 => 64496
 
-API call:
+The equivalent API call:
 
 .. code-block:: text
 
-   GET: https://localhost:3000/api/v1/cas/ca
+   GET: https://localhost:3000/api/v1/cas/ca/routes
    Headers: Bearer: secret
 
 API JSON response:
@@ -421,9 +436,17 @@ API JSON response:
 
    $ krillc roas list --format json
    [
-     "10.0.0.0/24 => 64496",
-     "10.1.0.0/16-20 => 64496"
+       {
+           "asn": 64496,
+           "prefix": "10.0.0.0/24"
+       },
+       {
+           "asn": 64496,
+           "prefix": "10.1.0.0/16",
+           "max_length": 20
+       }
    ]
+
 
 
 History
@@ -434,17 +457,15 @@ You can show the history of all the things that happened to your CA:
 .. code-block:: text
 
    $ krillc history
-   id: ca version: 0 details: Initialised with cert (hash): b088916107d2a2ed27a521441557e9315dbdb58d, base_uri: rsync://krilltest.do.nlnetlabs.nl/repo/ca/, rpki notify: https://krilltest.do.nlnetlabs.nl/rrdp/notification.xml
-   id: ca version: 1 details: added RFC6492 parent 'ripencc'
+   id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
+   id: ca version: 1 details: added RFC6492 parent 'ripencc' 
    id: ca version: 2 details: added resource class with name '0'
-   id: ca version: 3 details: requested certificate for key (hash) '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' under resource class '0'
-   id: ca version: 4 details: activating pending key '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' under resource class '0'
-   id: ca version: 5 details: added route authorization: '185.49.140.0/22 => 8587'
-   id: ca version: 6 details: added route authorization: '2a04:b900::/29 => 8587'
-   id: ca version: 7 details: added route authorization: '185.49.140.0/22 => 199664'
-   id: ca version: 8 details: added route authorization: '2a04:b900::/29 => 199664'
-   id: ca version: 9 details: updated ROAs under resource class '0' added: 2a04:b900::/29 => 8587 185.49.140.0/22 => 8587 185.49.140.0/22 => 199664 2a04:b900::/29 => 199664
-   id: ca version: 10 details: updated objects under resource class '0' key: '687F2C64BE9D3D9F5B839458119D4AE40B015A8A' added: 326130343a623930303a3a2f3239203d3e2038353837.roa 326130343a623930303a3a2f3239203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e20313939363634.roa 3138352e34392e3134302e302f3232203d3e2038353837.roa  updated: 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.crl 687F2C64BE9D3D9F5B839458119D4AE40B015A8A.mft  withdrawn:
+   id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
+   id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
+   id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
+   id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
+   id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496 
+   id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn: 
 
 The equivalent API call:
 
