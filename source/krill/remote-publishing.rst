@@ -42,7 +42,7 @@ subcommand in the CLI:
 List Publishers
 """""""""""""""
 
-You can list all publishers in Krill using the command below. Note, that the
+You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
 remote (RFC8181 compliant) publishers:
 
