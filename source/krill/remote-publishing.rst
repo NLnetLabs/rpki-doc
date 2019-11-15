@@ -1,7 +1,7 @@
 Remote Publishing
 =================
 
-By default Krill CAs use an embedded repository server to for the publication of
+By default Krill CAs use an embedded repository server for the publication of
 RPKI objects. However, you may want to use a repository server hosted by a third
 party for your CA - this way you can outsource the burden of 24/7 availability
 of the repository. Or, you may want to allow delegated CAs (e.g. your customers,
