@@ -107,7 +107,6 @@ You can use the following to show the details of the embedded TA, if you enabled
 .. code-block:: text
 
    $ krillc show --ca ta
-
    Name:     ta
    
    Base uri: rsync://localhost:3000/repo/ta/
@@ -316,7 +315,6 @@ Now you should see that your "child" is certified:
 .. code-block:: text
 
    $ krillc show
-
    Name:     ca
    
    Base uri: rsync://localhost:3000/repo/ca/

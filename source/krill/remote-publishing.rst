@@ -19,7 +19,6 @@ subcommand in the CLI:
 .. code-block:: text
 
   $ krillc publishers --help
-
   krillc-publishers
   Manage publishers in Krill.
 
@@ -186,7 +185,6 @@ The equivalent API call submits the XML as JSON:
 .. code-block:: text
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml --api
-
   POST: https://localhost:3000/api/v1/publishers
   Headers: Bearer: secret
   Body: {
