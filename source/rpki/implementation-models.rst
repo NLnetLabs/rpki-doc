@@ -81,7 +81,7 @@ A final differentiator is the publication interval of each RIR repository. Pleas
 Delegated RPKI
 --------------
 
-Operators who prefer more control and have better integration with their systems can run their own child CA. This is model is usually referred to as delegated RPKI. 
+Operators who prefer more control and have better integration with their systems can run their own child CA. This model is usually referred to as delegated RPKI. 
 
 In this model, the certificate authority that manages object signing is functionally separated from the publication of cryptographic material. This means that an organisation can run a CA and either publish themselves, or delegate this responsibility to a third party, such as a hosting company or cloud provider. 
 
