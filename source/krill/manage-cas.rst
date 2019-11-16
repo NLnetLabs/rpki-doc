@@ -109,19 +109,13 @@ it:
 
    $ krillc show --ca ta
    Name:     ta
-   
+
    Base uri: rsync://localhost:3000/repo/ta/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-<<<<<<< HEAD
-   
-   Parents:
-   ta This CA is a TA
-=======
 
    Parents:
    Handle: ta Kind: This CA is a TA
 
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Resource Class: 0
    Parent: ta
    State: active
@@ -130,11 +124,6 @@ it:
        IPv4: 0.0.0.0/0
        IPv6: ::/0
    Current objects:
-<<<<<<< HEAD
-     6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.crl
-     6E4ADECC02095CCC26D98C36717CFAF3A5AC506E.mft
-   
-=======
      FC434F8B249656B4E61EA7DD84A11E9AFDF20718.cer
      B889C931F2AD6615E46614DFD1736B34F6770C5F.mft
      1B4919B96E0D90854A0F603F33993D9D23458D59.cer
@@ -142,7 +131,6 @@ it:
      57FAFA0DD288CA67372592811746398ECC2B123C.cer
      281E18225EE6DCEB8E98C0A7FB596242BFE64B13.cer
 
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Children:
    <none>
 
@@ -153,10 +141,10 @@ Or for your new CA:
    $ krillc show
 
    Name:     ca
-   
+
    Base uri: rsync://localhost:3000/repo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-   
+
    Parents:
    <none>
    Children:
@@ -231,19 +219,6 @@ Example API response (for CA with a parent, resources, and ROAs):
     "children": []
   }
 
-<<<<<<< HEAD
-   {
-     "handle": "ca",
-     "repo_info": {
-       "base_uri": "rsync://localhost/repo/ca/",
-       "rpki_notify": "https://localhost:3000/rrdp/notification.xml"
-     },
-     "parents": [],
-     "resources": {},
-     "children": []
-   }
-=======
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 
 Add a Child to the embedded TA
@@ -259,7 +234,7 @@ Here we will document the second option. It's slightly less efficient, but it's
 the same as what you would need to delegate from your CA to remote CAs.
 
 Step 1: RFC 8183 request XML
----------------------------
+----------------------------
 
 First you will need to get the RFC 8183 request XML from your child:
 
@@ -395,30 +370,24 @@ Now you should see that your "child" is certified:
 
    $ krillc show
    Name:     ca
-   
+
    Base uri: rsync://localhost:3000/repo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-<<<<<<< HEAD
-   
-   Parents:
-   ripencc RFC 6492 Parent
-=======
 
    Parents:
    Handle: ta Kind: RFC 6492 Parent
 
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    Resource Class: 0
    Parent: ripencc
    State: active
        Resources:
-       ASNs: 
+       ASNs:
        IPv4: 10.0.0.0/8
        IPv6: 2001:db8::/32
    Current objects:
      48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl
      48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft
-   
+
    Children:
    <none>
 
@@ -462,14 +431,6 @@ You can then add this to your CA:
 .. code-block:: text
 
    $ krillc roas update --delta ./roas.txt
-<<<<<<< HEAD
-   Status: 400 Bad Request, Error: {"code":2402,"msg":"Invalid ROA delta: removing a definition which is unknown"}
-
-And as you can see Krill gives an error because you cannot remove authorization "10.0.3.0/24 => 64496" as you do not have it.
-
-If you remove the "R:" line and submit again, then you should see no response, and no
-error.
-=======
 
 Possible responses are an empty body, and http code 200 if you accessed the API
 directly, or one of the following errors in case your ROA delta is inconsistent
@@ -485,7 +446,6 @@ with your current set:
 If you followed the steps above then you would get an error, because there is no
 authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 The API equivalent for sending updates uses JSON rather than the above text format:
 
@@ -494,26 +454,6 @@ The API equivalent for sending updates uses JSON rather than the above text form
    POST: https://localhost:3000/api/v1/cas/ca/routes
    Headers: Bearer: secret
    Body: {
-<<<<<<< HEAD
-       "added": [
-           {
-               "asn": 64496,
-               "prefix": "10.0.0.0/24"
-           },
-           {
-               "asn": 64496,
-               "prefix": "10.1.0.0/16",
-               "max_length": 20
-           }
-       ],
-       "removed": [
-           {
-               "asn": 64496,
-               "prefix": "10.0.3.0/24"
-           }
-       ]
-    }
-=======
       "added": [
         {"asn": 64496, "prefix": "192.168.0.0/16", "max_length": 20},
         {"asn": 64496, "prefix": "192.168.1.0/24"}
@@ -522,7 +462,6 @@ The API equivalent for sending updates uses JSON rather than the above text form
         {"asn": 64496, "prefix": "192.168.3.0/24"}
       ]
    }
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
 
 
 List Route Authorizations
@@ -549,17 +488,6 @@ API JSON response:
 
    $ krillc roas list --format json
    [
-<<<<<<< HEAD
-       {
-           "asn": 64496,
-           "prefix": "10.0.0.0/24"
-       },
-       {
-           "asn": 64496,
-           "prefix": "10.1.0.0/16",
-           "max_length": 20
-       }
-=======
      {
        "asn": 64496,
        "prefix": "10.0.0.0/24"
@@ -569,7 +497,6 @@ API JSON response:
        "prefix": "10.1.0.0/16",
        "max_length": 20
      }
->>>>>>> Update Krill "manage CA" section with 0.3.0 updates.
    ]
 
 
@@ -583,14 +510,14 @@ You can show the history of all the things that happened to your CA:
 
    $ krillc history
    id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
-   id: ca version: 1 details: added RFC6492 parent 'ripencc' 
+   id: ca version: 1 details: added RFC6492 parent 'ripencc'
    id: ca version: 2 details: added resource class with name '0'
    id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
    id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
    id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
    id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
-   id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496 
-   id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn: 
+   id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
+   id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
 
 The equivalent API call:
 
