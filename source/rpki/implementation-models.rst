@@ -46,35 +46,34 @@ Lastly, `nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-mus
 +-----------------------+----------+----------+----------+----------+----------+
 |                       | APNIC    | AFRINIC  | ARIN     | LACNIC   | RIPE NCC |
 +=======================+==========+==========+==========+==========+==========+
-| Support for delegated |  Yes     | Yes      | Yes      | No [1]_  | Yes [2]_ |
+| Support for delegated |  Yes     | Yes      | Yes      | No [1]_  | Yes      |
 | RPKI                  |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Multi-user support    |  Yes     | Yes [3]_ | Yes      | No       | Yes      |
+| Multi-user support    |  Yes     | Yes [2]_ | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Two-factor            |  Yes     | No       | Yes [4]_ | No       | Yes      |
+| Two-factor            |  Yes     | No       | Yes [3]_ | No       | Yes      |
 | authentication        |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | BGP route collector   |  Yes     | No       | No       | Yes      | Yes      |
 | suggestions           |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Auto-renew ROAs       |  Yes     | No       | No       | Yes [5]_ | Yes      |
+| Auto-renew ROAs       |  Yes     | No       | No       | Yes [4]_ | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Match "route" objects |  Yes     | No       | No       | No       | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| API                   |  No      | No       | Yes [6]_ | No       | Yes      |
+| API                   |  No      | No       | Yes [5]_ | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
 
-.. [1] Coming `June 2019 <https://www.lacnic.net/innovaportal/file/3635/1/12-updown_rpki_lacnic.pdf>`_.
-.. [2] Currently upon request only.
-.. [3] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
-.. [4] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
-.. [5] Explicit opt-in feature.
-.. [6] Only possible to create ROAs; no list, update or delete.
+.. [1] Coming Late 2019.
+.. [2] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
+.. [3] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
+.. [4] Explicit opt-in feature.
+.. [5] Only possible to create ROAs; no list, update or delete.
 
 A final differentiator is the publication interval of each RIR repository. Please keep in mind that once a ROA is created by a user in one of the hosted systems, it can take between several minutes up to `multiple hours <https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_ before the object is published and available for download, depending on the RIR system you use.
 
