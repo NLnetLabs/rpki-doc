@@ -17,8 +17,8 @@ Relying Party Software
 `OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_
    Cloudflare's Relying Party software, written in the Go programming language.
 
-`rcynic <https://github.com/dragonresearch/rpki.net>`_
-   "Cynical rsync", software to fetch and validate RPKI certificates by Dragon
+`Dragon Research Labs Validating Cache <https://github.com/dragonresearch/rpki.net>`_
+   Software to fetch and validate RPKI certificates and serve them to routers by Dragon
    Research Labs, written in the Python programming language.
 
 `RIPE NCC RPKI Validator <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources>`_
@@ -45,7 +45,7 @@ Certificate Authority Software
    RPKI Certificate Authority software by NLnet Labs, written in the Rust 
    programming language. Available late 2019.
 
-`rpkid <https://github.com/dragonresearch/rpki.net>`_
+`Dragon Research Labs Certificate Authority <https://github.com/dragonresearch/rpki.net>`_
    RPKI Certificate Authority software by Dragon Research Labs, written in 
    the Python programming language.
 
