@@ -12,15 +12,15 @@ Welcome to the documentation of the Resource Public Key Infrastructure (RPKI), t
 
 The table of contents below and in the sidebar should let you easily access the documentation for your topic of interest. You can also use the search function in the top left corner.
 
-.. note:: This documentation is an open source project maintained by the RPKI team at 
-          NLnet Labs, with contributions from  the network operator community around 
-          the world. We always appreciate your feedback and improvements. 
-          
+.. note:: This documentation is an open source project maintained by the RPKI team at
+          NLnet Labs, with contributions from  the network operator community around
+          the world. We always appreciate your feedback and improvements.
+
           You can submit an issue or pull request on the `GitHub repository
           <https://github.com/NLnetLabs/rpkidoc/issues>`_, or post a message on the
           `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you
           are interested in providing a translation for this project, please
-          read `this guide 
+          read `this guide
           <https://docs.readthedocs.io/en/latest/guides/manage-translations.html>`_
           to get started.
 
@@ -33,6 +33,7 @@ The main documentation is organised into the following sections:
 
    about/introduction
    about/faq
+   about/help
 
 .. toctree::
    :maxdepth: 2
@@ -51,12 +52,12 @@ The main documentation is organised into the following sections:
    :maxdepth: 2
    :caption: RPKI Tools
    :name: sec-rpki-tools
-   
+
    tools
    krill/index
    routinator/index
    rtrlib/index
-   
+
 .. Indices and tables
 .. ------------------
 ..
