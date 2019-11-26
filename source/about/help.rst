@@ -39,7 +39,7 @@ The only entity that can make any changes to the ROA is the RIR-listed owner of 
 * LACNIC http://milacnic.lacnic.net/
 * ARIN https://account.arin.net/public/login
 * RIPE NCC https://my.ripe.net/
-* APNIC https://login.apnic.net/my.policy
+* APNIC https://myapnic.net
 * AFRINIC https://my.afrinic.net/login
 
 It is important to note that initially, for there to be an invalid ROA, someone must have already entered into one of the above portals and made an ROA for the IP space in question.  There is no way for it to have to been done by itself.  In other words, there must already be an account at the RIR that is linked to the owner of the IP space.
