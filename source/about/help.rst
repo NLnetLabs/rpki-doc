@@ -23,18 +23,18 @@ What happens next?
 ------------------
 Any operator is free to get that list of ROAs from the RIRs and use that to tell their routers to take action based on the ROA.  A particular announcement will generally have one of three states:
 
-* Unknown
-This is the default state if no ROA has been made for the announcement.  It is expected that all operators will allow these routes to be installed in their routers.
+NotFound (a.k.a. Unknown)
+   This is the default state if no ROA has been made for the announcement.  It is expected that all operators will allow these routes to be installed in their routers.
 
-* Valid
-This is the state if the ROA and route announcement matches.  It is expected that all operators will allow these routes to be installed in their routers.  It is possible they may up-preference these routes.
+Valid
+   This is the state if the ROA and route announcement matches.  It is expected that all operators will allow these routes to be installed in their routers.  It is possible they may up-preference these routes.
 
-* Invalid
-This is the state if the ROA and route announcement are different.  They either differ in originaating ASN or prefix length that is announced.  If an operator is using RPKI in a strict fashion, odds are good that this announcement will not be installed into their routers
+Invalid
+   This is the state if the ROA and route announcement are different.  They either differ in originating ASN or is more specific than is allowed by the maximum prefix length that is set in the ROA.  If an operator is using RPKI in a strict fashion, odds are good that this announcement will not be installed into their routers.
 
-What can I do about my route having a Invalid ROA?
---------------------------------------------------
-The only entity that can make any changes to the ROA is the RIR-listed owner of the space.  Each RIR has a portal where the ROAs that are maintained by that RIR can be edited:
+What can I do about my route having an Invalid state?
+-----------------------------------------------------
+The only entity that can make any changes to the ROA is the RIR-listed owner of the IP space. Most likely the owner of the IP space has created their ROAs in the Hosted RPKI interface of the RIR, which is part of their respective member portals:
 
 * LACNIC http://milacnic.lacnic.net/
 * ARIN https://account.arin.net/public/login
