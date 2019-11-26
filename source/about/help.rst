@@ -1,5 +1,5 @@
-RPKI Quick Help
-===============
+Quick Help
+==========
 
 If you're reading this page, chances are you find yourself in a situation where you've been told by someone that your RPKI ROAs make your routes invalid and you don't know what that means.  The aim of the content on this page is to point you in the right direction and provide further resources that can be of assistance.  This page is not meant for experts, and many technicalities will be glossed over in order to be able to provide easy to understand answers for all knowledge levels.
 
