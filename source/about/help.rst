@@ -5,7 +5,7 @@ If you're reading this page, chances are you find yourself in a situation where 
 
 What is RPKI or ROA?
 --------------------
-RPKI stands for Resource Public Key Infrastructure, ROA stands for Route Origination Authorization.
+RPKI stands for Resource Public Key Infrastructure, ROA stands for Route Origination Authorisation.
 
 What do they do?
 ----------------
@@ -13,15 +13,15 @@ They provide a method for the originator of a route to assert they are the corre
 
 How does it work?
 -----------------
-The "root" assigner of all IP space (v4+v6) is IANA.  They have delegated this space to one of the RIRs (ARIN,RIPE,APNIC,LACNIC, and AFRINIC).  In turn, those RIRs assign the space to other entities. Each RIR has a portal where the owner of the space can assert the origination ASN, which then generates a ROA for that particular combination of route and origination ASN.  This ROA is then published out by the RIR so that anyone can view them.
+The "root" assigner of all IP space (v4+v6) is IANA.  They have delegated this space to one of the RIRs (ARIN, RIPE NCC, APNIC, LACNIC, and AFRINIC).  In turn, those RIRs assign the space to other entities. Each RIR has a portal where the owner of the space can assert the origination ASN, which then generates a ROA for that particular combination of route and origination ASN.  This ROA is then published out by the RIR so that anyone can view them.
 
 What is in a ROA?
 -----------------
-A ROA consists of a route, max length, min length, and originating ASN.
+A ROA is a signed statement that consists of a prefix, a maxium prefix length, and originating ASN.
 
 What happens next?
 ------------------
-Any operator is free to get that list of ROAs from the RIRs and use that to tell their routers to take action based on the ROA.  A particular announcement will generally have one of 3 states:
+Any operator is free to get that list of ROAs from the RIRs and use that to tell their routers to take action based on the ROA.  A particular announcement will generally have one of three states:
 
 * Unknown
 This is the default state if no ROA has been made for the announcement.  It is expected that all operators will allow these routes to be installed in their routers.
@@ -38,7 +38,7 @@ The only entity that can make any changes to the ROA is the RIR-listed owner of 
 
 * LACNIC http://milacnic.lacnic.net/
 * ARIN https://account.arin.net/public/login
-* RIPE https://access.ripe.net/
+* RIPE NCC https://my.ripe.net/
 * APNIC https://login.apnic.net/my.policy
 * AFRINIC https://my.afrinic.net/login
 
