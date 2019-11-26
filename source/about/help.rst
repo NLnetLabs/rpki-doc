@@ -1,11 +1,11 @@
 RPKI Quick Help
 ===============
 
-If you're reading this page, chances are you find yourself in a situation where you've been told by someone that your routes have invalid ROAs and you don't know what that means.  The aim of the content on this page is to point you in the right direction and provide further resources that can be of assistance.  This page is not meant for experts, and many technicalities will be glossed over in order to be able to provide easy to understand answers for all knowledge levels.
+If you're reading this page, chances are you find yourself in a situation where you've been told by someone that your RPKI ROAs make your routes invalid and you don't know what that means.  The aim of the content on this page is to point you in the right direction and provide further resources that can be of assistance.  This page is not meant for experts, and many technicalities will be glossed over in order to be able to provide easy to understand answers for all knowledge levels.
 
 What is RPKI or ROA?
 --------------------
-RPKI stands for Resource Public Key Infrastructure, ROA stands for Route Origination Authorisation.
+RPKI stands for Resource Public Key Infrastructure, ROA stands for Route Origin Authorisation.
 
 What do they do?
 ----------------
@@ -17,7 +17,7 @@ The "root" assigner of all IP space (v4+v6) is IANA.  They have delegated this s
 
 What is in a ROA?
 -----------------
-A ROA is a signed statement that consists of a prefix, a maxium prefix length, and originating ASN.
+A ROA is a signed statement that consists of a prefix, a maximum prefix length, and originating ASN.
 
 What happens next?
 ------------------
@@ -36,10 +36,10 @@ What can I do about my route having an Invalid state?
 -----------------------------------------------------
 The only entity that can make any changes to the ROA is the RIR-listed owner of the IP space. Most likely the owner of the IP space has created their ROAs in the Hosted RPKI interface of the RIR, which is part of their respective member portals:
 
-* LACNIC http://milacnic.lacnic.net/
-* ARIN https://account.arin.net/public/login
-* RIPE NCC https://my.ripe.net/
-* APNIC https://myapnic.net
-* AFRINIC https://my.afrinic.net/login
+* LACNIC: http://milacnic.lacnic.net/
+* ARIN: https://account.arin.net/public/login
+* RIPE NCC: https://my.ripe.net/
+* APNIC: https://myapnic.net
+* AFRINIC: https://my.afrinic.net/login
 
-It is important to note that initially, for there to be an invalid ROA, someone must have already entered into one of the above portals and made an ROA for the IP space in question.  There is no way for it to have to been done by itself.  In other words, there must already be an account at the RIR that is linked to the owner of the IP space.
+It is important to note that initially, for there to be an RPKI Invalid route, someone must have already entered into one of the above portals and made a ROA for the IP space in question.  There is no way for it to have to been done by itself.  In other words, there must already be an account at the RIR that is linked to the owner of the IP space.
