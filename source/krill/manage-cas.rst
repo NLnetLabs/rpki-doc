@@ -280,7 +280,7 @@ name. Some parents do this to ensure unicity.
     .. tab-container:: api
        :title: api
 
-       See: :krill_api_ca_post:`POST /v1/cas/{ca_handle}/parents <cas~1{ca_handle}~1parents>`
+       See: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
 
 Now you should see that your "child" is certified:
 
@@ -332,7 +332,7 @@ Now you should see that your "child" is certified:
     .. tab-container:: api
        :title: api
 
-       See: :krill_api_ca_get:`GET /v1/cas/{ca_handle} <cas~1{ca_handle}>`
+       See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
 Add a real CA as your parent
 """"""""""""""""""""""""""""
@@ -382,7 +382,7 @@ You can then add this to your CA:
     .. tab-container:: api
        :title: api
 
-       See: :krill_api_route_post:`POST /v1/cas/{ca_handle}/routes <cas~1{ca_handle}~1routes>`
+       See: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
 If you followed the steps above then you would get an error, because there is no
 authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
@@ -408,7 +408,7 @@ You can list Route Authorizations as well:
     .. tab-container:: api
        :title: api
 
-       See: :krill_api_route_get:`GET /v1/cas/{ca_handle}/routes <cas~1{ca_handle}~1routes>`
+       See: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
 
 History
@@ -437,4 +437,4 @@ You can show the history of all the things that happened to your CA:
     .. tab-container:: api
        :title: api
 
-       See: :krill_api_ca_get:`GET /v1/cas/{ca_handle}/history <cas~1{ca_handle}~1history>`
+       See: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`
