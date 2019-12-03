@@ -50,16 +50,17 @@ into a mounted volume that is later reused for the server:
 
 .. code-block:: bash
 
-   # Create a local directory for the RPKI cache
-   sudo mkdir -p /etc/routinator/tals
+   # Create a Docker volume to persist TALs in
+   sudo docker volume create routinator-tals
    # Review the ARIN terms.
    # Run a disposable container to install TALs.
-   sudo docker run --rm -v /etc/routinator/tals:/root/.rpki-cache/tals \
-      nlnetlabs/routinator init -f --accept-arin-rpa
+   sudo docker run --rm -v routinator-tals:/home/routinator/.rpki-cache/tals \
+       nlnetlabs/routinator init -f --accept-arin-rpa
    # Launch the final detached container named 'routinator' exposing RTR on
    # port 3323 and HTTP on port 9556
-   sudo docker run -d --name routinator -p 3323:3323 -p 9556:9556 \
-      -v /etc/routinator/tals:/root/.rpki-cache/tals nlnetlabs/routinator
+   sudo docker run -d --restart=unless-stopped --name routinator -p 3323:3323 \
+        -p 9556:9556 -v routinator-tals:/home/routinator/.rpki-cache/tals \
+        nlnetlabs/routinator
 
 System Requirements
 -------------------
