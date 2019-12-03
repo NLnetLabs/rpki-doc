@@ -99,23 +99,29 @@ You should probably change this to use an absolute path instead.
 Krill will create a number of subdirectories under this ``data_dir`` for various
 purposes:
 
-+-------------+-------------------------------------------------------------------------------+
-| Directory   | Contains                                                                      |
-+-------------+-------------------------------------------------------------------------------+
-| cas         | The state of all CAs in this Krill instance.                                  |
-+-------------+-------------------------------------------------------------------------------+
-| ssl         | The HTTPS key pair and certificate.                                           |
-+-------------+-------------------------------------------------------------------------------+
-| proxy       | The state of remote publishers. (will be deprecated)                          |
-+-------------+-------------------------------------------------------------------------------+
-| publishers  | The state of all publishers in this Krill instance.                           |
-+-------------+-------------------------------------------------------------------------------+
-| repo-server | The state of the repository server (client info, and published objects)       |
-+-------------+-------------------------------------------------------------------------------+
-| repo/rsync/ | Published RPKI objects that should be made available through an rsync server. |
-+-------------+-------------------------------------------------------------------------------+
-| repo/rrdp/  | Published RPKI objects in RRDP (RFC8182) XML format.                          |
-+-------------+-------------------------------------------------------------------------------+
++----------------------------+-------------------------------------------------------------------------------+
+| Directory                  | Contains                                                                      |
++----------------------------+-------------------------------------------------------------------------------+
+| cas                        | The state of all CAs in this Krill instance.                                  |
++----------------------------+-------------------------------------------------------------------------------+
+| keys                       |                                                                               |
++----------------------------+-------------------------------------------------------------------------------+
+| pubd                       | The state of all publishers in this Krill instance.                           |
++----------------------------+-------------------------------------------------------------------------------+
+| repo/rsync/current         | Published RPKI objects that should be made available through an rsync server. |
++----------------------------+-------------------------------------------------------------------------------+
+| repo/rrdp                  | Published RPKI objects in RRDP (RFC8182) XML format.                          |
++----------------------------+-------------------------------------------------------------------------------+
+| rfc6492/<ca>/sent/<parent> | All messages sent by CA to parent, and replies.                               |
++----------------------------+-------------------------------------------------------------------------------+
+| rfc6492/<ca>/rcvd/<child>  | All messages received by CA from child, and replies.                          |
++----------------------------+-------------------------------------------------------------------------------+
+| rfc8181/<ca>               | All messages sent by CA to repository, and replies.                           |
++----------------------------+-------------------------------------------------------------------------------+
+| rfc8181/<publisher>        | All messages received by repository from publisher, and replies.              |
++----------------------------+-------------------------------------------------------------------------------+
+| ssl                        | The HTTPS key pair and certificate.                                           |
++----------------------------+-------------------------------------------------------------------------------+
 
 
 Service and Certificate URIs
@@ -136,22 +142,22 @@ remote child CAs that you may delegate resources to:
    # this data. The uri defined here should match the module name in your rsync
    # configuration.
    #rsync_base     = "rsync://localhost/repo/"
-   
+
    # Specify the base public URI to this service. Other URIs will be derived
    # from this:
-   #  <BASE_URI>rrdp/notification.xml     (pub point or rrdp)
-   #  <BASE_URI>rrdp/<session>/<version>/snapshot.xml
-   #  <BASE_URI>rrdp/<session>/<version>/delta.xml
-   #  <BASE_URI>ta/ta.cer                 (on TAL for embedded TA)
+   #  <BASE_URI>api/v1/...                (api)
+   #  <BASE_URI>rfc8181                   (for remote publishers)
    #  <BASE_URI>rfc6492                   (for remote children)
+   #  <BASE_URI>rrdp/..                   (override with rddp_service_uri)
+   #  <BASE_URI>ta/ta.cer                 (on TAL for embedded TA)
    #
    # MUST end with a slash.
-   #service_uri  = "http://localhost:3000/"
+   #service_uri  = "https://localhost:3000/"
 
+   # Use the following if you want to use another public URI to access the RRDP files,
+   # e.g. because you serve them as raw files from another machine with a web server.
+   #rrdp_service_uri = "service_uri/rrdp"
 
-
-
- 
 
 Embedded Trust Anchor
 ---------------------
@@ -179,14 +185,3 @@ At this moment there is no way to disable the embedded TA once
 it's created. We may add this later, but for now we recommend that
 you use this option only on instances that you are prepared to use
 for testing only.
-
-
-
-
-
-
-
-
-
-
-

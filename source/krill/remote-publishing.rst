@@ -16,26 +16,31 @@ Krill as Repository Server
 The repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers --help
-  krillc-publishers
-  Manage publishers in Krill.
+    .. tab-container:: cli
+       :title: krillc
 
-  USAGE:
-      krillc publishers [SUBCOMMAND]
+       .. code-block:: text
 
-  FLAGS:
-      -h, --help       Prints help information
-      -V, --version    Prints version information
-
-  SUBCOMMANDS:
-    add         Add a publisher.
-    help        Prints this message or the help of the given subcommand(s)
-    list        List all publishers.
-    remove      Remove a publisher.
-    response    Show RFC8183 Repository Response for a publisher.
-    show        Show details for a publisher.
+          $ krillc publishers --help
+          krillc-publishers
+          Manage publishers in Krill.
+        
+          USAGE:
+              krillc publishers [SUBCOMMAND]
+        
+          FLAGS:
+              -h, --help       Prints help information
+              -V, --version    Prints version information
+        
+          SUBCOMMANDS:
+            add         Add a publisher.
+            help        Prints this message or the help of the given subcommand(s)
+            list        List all publishers.
+            remove      Remove a publisher.
+            response    Show RFC8183 Repository Response for a publisher.
+            show        Show details for a publisher.
 
 
 List Publishers
@@ -45,44 +50,21 @@ You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
 remote (RFC 8181 compliant) publishers:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers list
-  Publishers: ta, ca
+    .. tab-container:: cli
+       :title: krillc
 
-The equivalent API call:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc publishers list
+          Publishers: ta, ca
 
-  GET: https://localhost:3000/api/v1/publishers
-  Headers: Bearer: secret
+    .. tab-container:: api
+       :title: api
 
-Example JSON response:
+       See: :krill_api_pub_get:`GET /v1/publishers <publishers>`
 
-.. code-block:: json
-
-  {
-    "publishers": [
-      {
-        "id": "ta",
-        "links": [
-          {
-            "rel": "self",
-            "link": "/api/v1/publishers/ta"
-          }
-        ]
-      },
-      {
-        "id": "ca",
-        "links": [
-          {
-            "rel": "self",
-            "link": "/api/v1/publishers/ca"
-          }
-        ]
-      }
-    ]
-  }
 
 Show Publisher Details
 """"""""""""""""""""""
@@ -90,54 +72,30 @@ Show Publisher Details
 You can show the full details of a publisher, including the files that they
 published, using the CLI:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers show --publisher ta
-  handle: ta
-  id: 5ce21ed116540a22c562f45dae8f2eb5a3c13ceebase uri: rsync://localhost/repo/ta/
+    .. tab-container:: cli
+       :title: krillc
+
+       .. code-block:: text
+
+          $ krillc publishers show --publisher ta
+          handle: ta
+          id: 5ce21ed116540a22c562f45dae8f2eb5a3c13ceebase uri: rsync://localhost/repo/ta/
+
+    .. tab-container:: api
+       :title: api
+
+       See: :krill_api_pub_get:`GET /v1/publishers/ca <publishers~1{publisher_handle}>`
 
 The default text output just shows the handle of the publisher, the hash of its
 identity certificate key, and the rsync URI jail under which the publisher is
 allowed to publish objects.
 
-The equivalent API call:
-
-.. code-block:: text
-
-  $ krillc publishers show --publisher ca --api
-  GET: https://localhost:3000/api/v1/publishers/ca
-  Headers: Bearer: secret
-
 The JSON response includes a lot more information, including the files which
 were published and the full ID certificate used by the publisher. Note that
 even embedded Krill CAs will have such a certificate, even if they access the
 repository server locally.
-
-.. code-block:: json
-
-  {
-    "handle": "ca",
-    "id_cert": "<base64 of DER encoded certificate>",
-    "base_uri": "rsync://localhost/repo/ca/",
-    "current_files": [
-      {
-        "base64": "<base64 of object>",
-        "uri": "rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa"
-      },
-      {
-        "base64": "<base64 of object>",
-        "uri": "rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa"
-      },
-      {
-        "base64": "<base64 of object>",
-        "uri": "rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl"
-      },
-      {
-        "base64": "<base64 of object>",
-        "uri": "rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft"
-      }
-    ]
-  }
 
 
 Remove a Publisher
@@ -155,19 +113,19 @@ this).
 
 You can remove a CA using the following command:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers remove --publisher ca
+    .. tab-container:: cli
+       :title: krillc
 
-The equivalent API call:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc publishers remove --publisher ca
 
-  DELETE: https://localhost:3000/api/v1/publishers/ca
-  Headers: Bearer: secret
+    .. tab-container:: api
+       :title: api
 
-There is no response to this command. Not even an error in case the publisher
-is not known (this will be fixed).
+       See: :krill_api_pub_delete:`DELETE /v1/publishers/ca <publishers~1{publisher_handle}>`
 
 
 Add a Publisher
@@ -176,22 +134,19 @@ Add a Publisher
 In order to add a publisher you have to get its RFC 8183 Pulisher Request XML,
 and hand it over to the server:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
+    .. tab-container:: cli
+       :title: krillc
 
-The equivalent API call submits the XML as JSON:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
 
-  $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml --api
-  POST: https://localhost:3000/api/v1/publishers
-  Headers: Bearer: secret
-  Body: {
-     "tag":null",
-     "publisher_handle":"ca",
-     "id_cert":"<base64 of DER encoded certificate>"
-     }
+    .. tab-container:: api
+       :title: api
+
+       See: :krill_api_pub_post:`POST /v1/publishers <publishers>`
 
 
 Show Repository Response
@@ -200,24 +155,22 @@ Show Repository Response
 In order to show the RFC 8183 Repository Response XML for a specific publisher
 use the following:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc publishers response --publisher ca
-  <repository_response xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca" service_uri="https://localhost:3000/rfc8181/ca" sia_base="rsync://localhost/repo/ca/" rrdp_notification_uri="https://localhost:3000/rrdp/notification.xml">
-    <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
-  </repository_response>
+    .. tab-container:: cli
+       :title: krillc
 
-The equivalent API call:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc publishers response --publisher ca
+          <repository_response xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca" service_uri="https://localhost:3000/rfc8181/ca" sia_base="rsync://localhost/repo/ca/" rrdp_notification_uri="https://localhost:3000/rrdp/notification.xml">
+            <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
+          </repository_response>
 
-  GET: https://localhost:3000/api/v1/publishers/ca/response.xml
-  Headers: Bearer: secret
+    .. tab-container:: api
+       :title: api
 
-Note that JSON output is not supported as the RFC standard is XML.
-
-Known issue: if you try this for a CA which does not exist you get an
-"Access Forbidden" response. This will be fixed in a future release.
+       See: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{publisher_handle}~1response.{format}>`
 
 
 Publish at a Remote Repository
@@ -226,24 +179,30 @@ Publish at a Remote Repository
 Controlling your CA's repository server is done through the `repo` subcommand
 of the CLI:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo --help
-  krillc-repo
-  Manage the repository for your CA.
+    .. tab-container:: cli
+       :title: krillc
 
-  USAGE:
-      krillc repo [SUBCOMMAND]
+       .. code-block:: text
 
-  FLAGS:
-      -h, --help       Prints help information
-      -V, --version    Prints version information
-
-  SUBCOMMANDS:
-    help       Prints this message or the help of the given subcommand(s)
-    request    Show RFC8183 Publisher Request.
-    show       Show current repo config and state.
-    update     Change which repository this CA uses.
+          $ krillc repo --help
+          krillc-repo
+          Manage the repository for your CA.
+        
+          USAGE:
+              krillc repo [SUBCOMMAND]
+        
+          FLAGS:
+              -h, --help       Prints help information
+              -V, --version    Prints version information
+        
+          SUBCOMMANDS:
+            help       Prints this message or the help of the given subcommand(s)
+            request    Show RFC8183 Publisher Request.
+            show       Show current repo config.
+            state      Show current repo state.
+            update     Change which repository this CA uses.
 
 Show repository for CA
 """""""""""""""""""""""
@@ -253,90 +212,29 @@ as well as what is has published at the location. Krill will issue an actual
 `list` query to the repository and give back the response, or an error in case
 of issues:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo show
-  Repository Details:
-    type:        embedded
-    base_uri:    rsync://localhost/repo/ca/
-    rpki_notify: https://localhost:3000/rrdp/notification.xml
+    .. tab-container:: cli
+       :title: krillc
 
-  Currently published:
-    c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
-    557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
-    444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
-    874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
+       .. code-block:: text
 
-The equivalent API call:
+         $ krillc repo show
+         Repository Details:
+           type:        embedded
+           base_uri:    rsync://localhost/repo/ca/
+           rpki_notify: https://localhost:3000/rrdp/notification.xml
+       
+         Currently published:
+           c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
+           557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
+           444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
+           874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
 
-.. code-block:: text
+    .. tab-container:: api
+       :title: api
 
-  GET: https://localhost:3000/api/v1/cas/ca/repo/
-  Headers: Bearer: secret
-
-API response:
-
-.. code-block:: json
-
-  {
-    "contact": {
-      "Embedded": {
-        "base_uri": "rsync://localhost/repo/ca/",
-        "rpki_notify": "https://localhost:3000/rrdp/notification.xml"
-      }
-    },
-    "state": {
-      "List": {
-        "elements": [
-          {
-            "uri": "rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft",
-            "hash": "c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd"
-          },
-          {
-            "uri": "rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa",
-            "hash": "557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8"
-          },
-          {
-            "uri": "rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl",
-            "hash": "444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336"
-          },
-          {
-            "uri": "rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa",
-            "hash": "874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d"
-          }
-        ]
-      }
-    }
-  }
-
-And in case the repository server cannot be reached:
-
-.. code-block:: text
-
-  $ krillc repo show
-  Repository Details:
-    type:        embedded
-    base_uri:    rsync://localhost/repo/ca/
-    rpki_notify: https://localhost:3000/rrdp/notification.xml
-
-  Currently published:
-    Error contacting repo! => Unknown publisher 'ca'
-
-Or JSON:
-
-.. code-block:: json
-
-  {
-    "contact": {
-      "Embedded": {
-        "base_uri": "rsync://localhost/repo/ca/",
-        "rpki_notify": "https://localhost:3000/rrdp/notification.xml"
-      }
-    },
-    "state": {
-      "Error": "Unknown publisher 'ca'"
-    }
-  }
+       See: :krill_api_ca_get:`GET /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 
 
 Show Publisher Request
@@ -346,19 +244,22 @@ You can use the following to show the RFC 8183 Publisher Request XML for a CA. Y
 will need to hand this over to your remote repository so that they can add your
 CA:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo request
-  <publisher_request xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca">
-    <publisher_bpki_ta>your CA ID cert DER in base64</publisher_bpki_ta>
-  </publisher_request>
+    .. tab-container:: cli
+       :title: krillc
 
-API:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc repo request
+          <publisher_request xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca">
+            <publisher_bpki_ta>your CA ID cert DER in base64</publisher_bpki_ta>
+          </publisher_request>
 
-  GET: https://localhost:3000/api/v1/cas/ca/repo/request
-  Headers: Bearer: secret
+    .. tab-container:: api
+       :title: api
+
+       See: :krill_api_ca_get:`GET /v1/cas/ca/repo/request.json <cas~1{ca_handle}~1repo~1request.{format}>`
 
 
 Change Repository for a CA
@@ -385,29 +286,21 @@ any currently signed objects.
 
 To start a migration you can use the following:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo update rfc8183 [file]
+    .. tab-container:: cli
+       :title: krillc
+
+       .. code-block:: text
+
+          $ krillc repo update rfc8183 [file]
+
+    .. tab-container:: api
+       :title: api
+
+       See: :krill_api_ca_post:`POST /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 
 If no file is specified the CLI will try to read the XML from STDIN.
-
-The API expects that the RFC 8183 Repository Response is represented in a JSON
-format:
-
-.. code-block:: text
-
-  POST: https://localhost:3000/api/v1/cas/ca/repo/
-  Headers: Bearer: secret
-  Body: {
-    "Rfc8181": {
-      "tag": null,
-      "publisher_handle": "ca",
-      "id_cert": "<base64 of cert>",
-      "service_uri": {"Https": "https://localhost:3000/rfc8181/ca"},
-      "repo_info": {"base_uri":"rsync://localhost/repo/ca/","rpki_notify":"https://localhost:3000/rrdp/notification.xml"}
-    }
-  }
-
 
 Note that if you were using an embedded repository, and you instruct your CA
 to connect to the embedded repository, but set up as a *remote*, then you will
@@ -417,26 +310,36 @@ server over the RFC 8181 protocol.
 
 But, suppose that you did, you would now see this:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo show
-  Repository Details:
-    type:        remote
-    service uri: https://localhost:3000/rfc8181/ca
-    base_uri:    rsync://localhost/repo/ca/
-    rpki_notify: https://localhost:3000/rrdp/notification.xml
+    .. tab-container:: cli
+       :title: krillc
 
-  Currently published:
-    <nothing>
+       .. code-block:: text
+
+          $ krillc repo show
+          Repository Details:
+            type:        remote
+            service uri: https://localhost:3000/rfc8181/ca
+            base_uri:    rsync://localhost/repo/ca/
+            rpki_notify: https://localhost:3000/rrdp/notification.xml
+        
+          Currently published:
+            <nothing>
 
 But no worries.. this can be fixed.
 
 First, you may want to migrate back to using the embedded repository without
 the RFC 8181 protocol overhead:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc repo update embedded
+    .. tab-container:: cli
+       :title: krillc
+
+       .. code-block:: text
+
+          $ krillc repo update embedded
 
 But this does not solve your problem just yet. Or well, it will re-publish
 everything under the new embedded repository, but then it will clean up the
@@ -453,14 +356,16 @@ will automatically re-sync whenever there is an update like a renewal of
 manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
 can force that *all* Krill CAs re-sync using the following:
 
-.. code-block:: text
+.. content-tabs::
 
-  $ krillc bulk sync
+    .. tab-container:: cli
+       :title: krillc
 
-The equivalent API call:
+       .. code-block:: text
 
-.. code-block:: text
+          $ krillc bulk sync
 
-  POST: https://localhost:3000/api/v1/cas/resync_all
-  Headers: Bearer: secret
-  Body: <empty>
+    .. tab-container:: api
+       :title: api
+
+       See: :krill_api_ca_post:`POST /v1/cas/resync_all <cas~1resync_all>`

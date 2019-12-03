@@ -17,7 +17,7 @@ To fetch and run Krill:
 
 .. code-block:: bash
 
-    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.3.0
+    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.4.0
 
 With a shell alias interacting with Krill via ``krillc`` is then as
 easy as:
