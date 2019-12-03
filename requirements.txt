@@ -1,1 +1,1 @@
-sphinxcontrib-contentui==0.2.4
+sphinxcontrib-contentui==0.2.2
