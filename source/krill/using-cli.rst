@@ -5,7 +5,7 @@
 Using the Krill CLI
 ===================
 
-The Krill CLI is a wrapper around the [Krill API](http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.0/doc/openapi.yaml) which is based on Json over HTTPS.
+The Krill CLI is a wrapper around the :ref:`Krill API<_doc_krill_using_api>` which is based on Json over HTTPS.
 To use the CLI you need to invoke `krillc` followed by one or more subcommands,
 and some arguments. Help is built-in:
 
