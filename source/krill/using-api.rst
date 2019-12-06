@@ -1,3 +1,5 @@
+.. _doc_krill_using_api:
+
 Using the Krill API
 ===================
 
