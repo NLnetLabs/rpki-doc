@@ -10,7 +10,7 @@ directory is.
 
 You can have a look at all possible configuration directives in
 the packaged version of the default configuration file. This file
-can be found, relative to where you cloned krill, under: ``./daemon/defaults/krill.conf``.
+can be found, relative to where you cloned krill, under: ``./defaults/krill.conf``.
 
 You will notice that this file contains comments only. I.e. it
 documents default configuration settings. In order to override
