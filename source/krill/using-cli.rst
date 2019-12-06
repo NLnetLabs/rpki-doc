@@ -1,7 +1,3 @@
-.. WARNING::  The CLI has grown organically and will most likely see an overhaul
-              before Krill 1.0 is released. Functionality will remain mostly the
-              same, but subcommands and options will change.
-
 Using the Krill CLI
 ===================
 
