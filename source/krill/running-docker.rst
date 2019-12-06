@@ -172,8 +172,8 @@ see something like the following in the logs:
    ...
    docker-krill: End of dump
 
-Docker Krill environment variable reference
--------------------------------------------
+Environment variables
+---------------------
 
 The Krill Docker image supports the following Docker environment variables
 which map to the following ``krill.conf`` settings:
