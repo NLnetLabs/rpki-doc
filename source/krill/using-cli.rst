@@ -5,7 +5,7 @@
 Using the Krill CLI
 ===================
 
-The Krill CLI is a wrapper around the Krill API which is based on Json over HTTPS.
+The Krill CLI is a wrapper around the Krill API which is based on JSON over HTTPS.
 To use the CLI you need to invoke `krillc` followed by one or more subcommands,
 and some arguments. Help is built-in:
 
