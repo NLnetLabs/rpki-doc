@@ -53,6 +53,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
    running
    running-docker
    using-cli
+   using-api
    manage-cas
    remote-publishing
 .. history
