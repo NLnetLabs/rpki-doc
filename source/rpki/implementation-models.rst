@@ -64,7 +64,7 @@ Lastly, `nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-mus
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  No      | No       | Yes [5]_ | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Publication via RRDP  |  Yes     | No       | No       | No       | Yes      |
+| Publication via RRDP  |  Yes     | No [6]_  | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
@@ -74,6 +74,7 @@ Lastly, `nonrepudiation <https://www.arin.net/resources/manage/rpki/faq/#why-mus
 .. [3] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [4] Explicit opt-in feature.
 .. [5] Only possible to create ROAs; no list, update or delete.
+.. [6] Coming `Q1 2020 <https://afrinic.net/blog/495-rpki-delta-protocol-rrdp-as-a-future-replacement-of-rsync-in-rpki>`_
 
 A final differentiator is the publication interval of each RIR repository. Please keep in mind that once a ROA is created by a user in one of the hosted systems, it can take between several minutes up to `multiple hours <https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_ before the object is published and available for download, depending on the RIR system you use.
 
