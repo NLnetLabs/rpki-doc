@@ -194,7 +194,7 @@ todo_include_todos = True
 
 # -- Options for extlinks extension
 
-krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.0/doc/openapi.yaml'
+krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.1/doc/openapi.yaml'
 extlinks = {
     'krill_api_ca_get':         (krill_api_docs_base + '#tag/Certificate-Authorities/paths/~1%s/get', None),
     'krill_api_ca_post':        (krill_api_docs_base + '#tag/Certificate-Authorities/paths/~1%s/post', None),
