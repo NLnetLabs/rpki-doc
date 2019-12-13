@@ -113,7 +113,7 @@ cargo:
 
 .. code-block:: bash
 
-    git clone git@github.com:NLnetLabs/krill.git --branch v0.4.1
+    git clone git@github.com:NLnetLabs/krill.git --branch v0.4.1 --depth 1
     cd krill
 
 Now you can build the krill binaries from the Rust source:
