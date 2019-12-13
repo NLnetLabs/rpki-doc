@@ -34,7 +34,7 @@ extra things like log level and volume mounts (more on this below).
      -e KRILL_AUTH_TOKEN=5tT8I7ygoDh9k8I \
      -v krill_data:/var/krill/data/ \
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
-     nlnetlabs/krill:v0.4.0
+     nlnetlabs/krill:v0.4.1
 
 Admin Token
 -----------
@@ -85,7 +85,7 @@ Krill servers. Using a shell alias simplifies this considerably:
     $ alias krillc='docker run --rm \
       -e KRILL_CLI_SERVER=https://some.domain/ \
       -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
-      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.0 krillc'
+      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.1 krillc'
 
    $ krillc list -f json
    {
