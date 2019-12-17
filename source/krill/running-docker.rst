@@ -35,7 +35,7 @@ extra things like log level and volume mounts (more on this below).
      -e TZ=Europe/Amsterdam \
      -v krill_data:/var/krill/data/ \
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
-     nlnetlabs/krill:v0.4.1
+     nlnetlabs/krill:v0.4.2
 
 .. note::
    The Docker container by default uses UTC time. If you need to use a
@@ -91,7 +91,7 @@ Krill servers. Using a shell alias simplifies this considerably:
     $ alias krillc='docker run --rm \
       -e KRILL_CLI_SERVER=https://some.domain/ \
       -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
-      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.1 krillc'
+      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.2 krillc'
 
    $ krillc list -f json
    {

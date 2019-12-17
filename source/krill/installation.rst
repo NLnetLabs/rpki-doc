@@ -17,7 +17,7 @@ To fetch and run Krill:
 
 .. code-block:: bash
 
-    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.4.1
+    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.4.2
 
 With a shell alias interacting with Krill via ``krillc`` is then as
 easy as:
@@ -113,7 +113,7 @@ cargo:
 
 .. code-block:: bash
 
-    git clone git@github.com:NLnetLabs/krill.git --branch v0.4.1 --depth 1
+    git clone git@github.com:NLnetLabs/krill.git --branch v0.4.2 --depth 1
     cd krill
 
 Now you can build the krill binaries from the Rust source:
