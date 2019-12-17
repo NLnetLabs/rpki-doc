@@ -37,7 +37,7 @@ Krill currently features an `API <http://redocly.github.io/redoc/?url=https://ra
 the near future, and will probably be released as a separate project.
 
 If you want to know more about the project planning, please have a look at the
-high level `roadmap <https://nlnetlabs.nl/projects/rpki/project-plan/>`_ on
+high level `roadmap <https://lists.nlnetlabs.nl/projects/rpki/project-plan/>`_ on
 our website, or get at a more detailed overview of the `releases <https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
 on GitHub.
 
