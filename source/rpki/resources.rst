@@ -22,6 +22,9 @@ There are several initiatives that measure the adoption and data quality of RPKI
 Operational Experiences
 -----------------------
 
+`Using RPKI with IXP Manager <https://docs.ixpmanager.org/features/rpki/>`_
+   Documentation to set up Routinator, OctoRPKI and the RIPE NCC Validator with BIRD 2.x
+
 `Use Routinator with Cisco IOS-XR <https://beufa.net/blog/rpki-use-routinator-rtr-cache-validator-cisco-ios-xr/>`_
    Blog post by Fabien Vincent
 
