@@ -89,6 +89,7 @@ Backup / Restore Krill
 ----------------------
 
 To back-up Krill we recommend that you:
+
 * stop Krill
 * backup the `DATA_DIR`
 * start Krill
@@ -149,6 +150,7 @@ Set up your Krill CA
 
 So you got Krill running and configured as above. Now it's time to set up your
 own Certification Authority (CA) in Krill. This involves the following steps:
+
 * create your CA
 * retrieve your CA's 'child request'
 * retrieve your CA's 'publisher request'
