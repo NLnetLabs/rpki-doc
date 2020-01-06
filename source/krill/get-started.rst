@@ -59,12 +59,11 @@ saved your `krill.conf` file there.
 .. code-block:: bash
 
   #!/bin/bash
-
-  export KRILL="krill"
-  export DATA_DIR="/path/to/data"
-  export KRILL_PID="$DATA_DIR/krill.pid"
-  export CONF="$DATA_DIR/krill.conf"
-  export SCRIPT_OUT="$DATA_DIR/process.log"
+  KRILL="krill"
+  DATA_DIR="/path/to/data"
+  KRILL_PID="$DATA_DIR/krill.pid"
+  CONF="$DATA_DIR/krill.conf"
+  SCRIPT_OUT="$DATA_DIR/process.log"
 
   nohup $KRILL -c $CONF >$SCRIPT_OUT 2>&1 &
   echo $! > $KRILL_PID
@@ -74,9 +73,8 @@ And then you can use the following, equally naive script, to stop it:
 .. code-block:: bash
 
   #!/bin/bash
-
-  export DATA_DIR="/path/to/data"
-  export KRILL_PID="$DATA_DIR/krill.pid"
+  DATA_DIR="/path/to/data"
+  KRILL_PID="$DATA_DIR/krill.pid"
 
   kill `cat $KRILL_PID`
 
