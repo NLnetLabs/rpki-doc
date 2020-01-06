@@ -19,7 +19,7 @@ Krill data_dir.
 
 Note, you can find a full example config file with defaults `here <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
-We recommend that you do NOT make krill available publicly. I.e. you can use the
+We recommend that you do NOT make Krill available publicly. I.e. you can use the
 default where Krill will expose its API on `https://localhost:3000/` only. You
 do not need to have Krill available externally, unless you mean to provide certificates or
 a publication server to third parties.
@@ -49,7 +49,7 @@ where applicable, or not use the `KRILL_CLI_MY_CA` environment variable.
 Start or Stop Krill
 -------------------
 
-There is no standard script to start / stop krill yet. We will add this in the
+There is no standard script to start / stop Krill yet. We will add this in the
 near future.
 
 For now you could use something like the following, naive, script to start Krill.
@@ -135,7 +135,7 @@ read the Changelog to be sure.
 
 That being said the normal process would be to:
 
-* install the new version of krill
+* install the new version of Krill
 * stop the running Krill instance
 * start Krill again, using the new binary, and the same config
 
