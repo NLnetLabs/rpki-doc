@@ -7,11 +7,7 @@ parent CA, using a publication point provided by the parent.
 Configure Krill
 ---------------
 
-You will need to create a minimum configuration file for Krill. At a minimum you
-should set your admin token, and you probably want to configure the path to Krill's
-data directory.
-
-Create a configuration file and set the following directives, using your own
+Create a configuration file containing the following directives, using your own
 values of course. You can give this file any name and store it anywhere, but
 here we will assume you will use the name `krill.conf` and store it under your
 Krill data_dir.
@@ -25,11 +21,11 @@ Note, you can find a full example config file with defaults `here <https://githu
 
 We recommend that you do NOT make krill available publicly. I.e. you can use the
 default where Krill will expose its API on `https://localhost:3000/` only. You
-do not need to have Krill available, unless you mean to provide certificates or
+do not need to have Krill available externally, unless you mean to provide certificates or
 a publication server to third parties.
 
 You can then set up the following environment variables so that you can easily
-use the Krill CLI on the same machine where KRILL is running:
+use the Krill CLI on the same machine where Krill is running:
 
 .. code-block:: bash
 
@@ -41,13 +37,13 @@ Note, that you *can* use the CLI from another machine, but then you will need to
 set up a proxy server in front of Krill and make sure that it has a real HTTPS
 certificate.
 
-You can use any name for your 'MY_CA' as long as it contains the only the
+You can use any name for your 'MY_CA' as long as it contains only the
 following characters: `a-zA-Z0-9_`
 
-Setting this name in an ENV variable saves a lot of typing down the line. In the
+Using environment variables saves a lot of typing down the line. In the
 somewhat unlikely event where you will need to manage multiple CAs under a single
-Krill instance, you can either override the default ca using the `--ca` option
-where applicable, or not use the ENV variable.
+Krill instance, you can either override the default CA using the `--ca` option
+where applicable, or not use the `KRILL_CLI_MY_CA` environment variable.
 
 
 Start or Stop Krill
@@ -56,9 +52,9 @@ Start or Stop Krill
 There is no standard script to start / stop krill yet. We will add this in the
 near future.
 
-For now you could use something like the following, naive, script to start krill.
+For now you could use something like the following, naive, script to start Krill.
 Just update the DATA_DIR variable to your real data directory, and make sure you
-saved the your `krill.conf` file there.
+saved your `krill.conf` file there.
 
 .. code-block:: bash
 
@@ -88,13 +84,13 @@ And then you can use the following, equally naive script, to stop it:
 Backup / Restore Krill
 ----------------------
 
-To back-up Krill we recommend that you:
+To back-up Krill:
 
 * stop Krill
 * backup the `DATA_DIR`
 * start Krill
 
-So, we recommend that you stop Krill, because there can be a race condition where
+We recommend that you stop Krill because there can be a race condition where
 Krill was just in the middle of saving its state after performing a background
 operation. We will most likely add a process in future that will allow you to
 back up Krill in a consistent state while it is running.
@@ -112,9 +108,9 @@ CA under an RIR / NIR parent the following sub-directories are relevant:
 +---------+------------------------------------------------------+
 | Dir     | Purpose                                              |
 +=========+======================================================+
-| ssl     | Contains the https key and cert used by Krill        |
+| ssl     | Contains the HTTPS key and cert used by Krill        |
 +---------+------------------------------------------------------+
-| cas     | Contains the history of your CA in raw json format   |
+| cas     | Contains the history of your CA in raw JSON format   |
 +---------+------------------------------------------------------+
 | rfc6492 | Contains all messages exchanged with your parent     |
 +---------+------------------------------------------------------+
@@ -122,13 +118,13 @@ CA under an RIR / NIR parent the following sub-directories are relevant:
 +---------+------------------------------------------------------+
 
 The space used by the latter two dirs can grow significantly over time. We think
-it may be a good idea to have an audit trail of all these exchanges. But if
+it may be a good idea to have an audit trail of all these exchanges. However, if
 space is a concern you can safely archive or delete the contents of these two
 directories.
 
 In a future version of Krill we will most likely only store the exchanges where
 either an error was returned, or your Krill instance asked for a change to be
-done at the parent side: like requesting a new certificate, or publishing an
+made at the parent side: like requesting a new certificate, or publishing an
 object. The noise from the periodic exchanges where your CA asks the parent for
 its entitlements will then no longer be logged.
 
@@ -140,6 +136,7 @@ configuration files and saved data from version 0.4.1 and above. However, please
 read the Changelog to be sure.
 
 That being said the normal process would be to:
+
 * install the new version of krill
 * stop the running Krill instance
 * start Krill again, using the new binary, and the same config
@@ -158,7 +155,7 @@ own Certification Authority (CA) in Krill. This involves the following steps:
 * save the 'parent response'
 * upload the 'publisher request' to your publisher (usually your parent)
 * save the 'repository response'
-* update the repository for you CA using the 'repository response'
+* update the repository for your CA using the 'repository response'
 * add the parent using the 'parent response'
 
 
