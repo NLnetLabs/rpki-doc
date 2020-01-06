@@ -32,9 +32,15 @@ extra things like log level and volume mounts (more on this below).
      -e KRILL_LOG_LEVEL=debug \
      -e KRILL_FQDN=some.domain \
      -e KRILL_AUTH_TOKEN=5tT8I7ygoDh9k8I \
+     -e TZ=Europe/Amsterdam \
      -v krill_data:/var/krill/data/ \
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
-     nlnetlabs/krill:v0.4.1
+     nlnetlabs/krill:v0.4.2
+
+.. note::
+   The Docker container by default uses UTC time. If you need to use a
+   different time zone you can set this using the TZ environment variable as
+   shown in the example above.
 
 Admin Token
 -----------
@@ -85,7 +91,7 @@ Krill servers. Using a shell alias simplifies this considerably:
     $ alias krillc='docker run --rm \
       -e KRILL_CLI_SERVER=https://some.domain/ \
       -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
-      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.1 krillc'
+      -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.2 krillc'
 
    $ krillc list -f json
    {

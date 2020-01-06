@@ -29,7 +29,7 @@ Krill is intended for:
 - Operators who are security conscious and require that they are the only ones in possession of the private key of a system they use
 - Operators who want to be operationally independent from the parent RIR, such as NIRs or Enterprises
 
-Krill currently features an `API <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.1/doc/openapi.yaml>`_ and a CLI. A UI, based on the API, is planned for
+Krill currently features an `API <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_ and a CLI. A UI, based on the API, is planned for
 the near future, and will probably be released as a separate project.
 
 If you want to know more about the project planning, please have a look at the
