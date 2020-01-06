@@ -48,6 +48,7 @@ free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub
    installation
    running
    running-docker
+   get-started
    using-cli
    using-api
    manage-cas
