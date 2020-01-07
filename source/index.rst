@@ -18,7 +18,7 @@ The table of contents below and in the sidebar should let you easily access the 
 
           You can submit an issue or pull request on the `GitHub repository
           <https://github.com/NLnetLabs/rpkidoc/issues>`_, or post a message on the
-          `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you
+          `RPKI mailing list <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_. If you
           are interested in providing a translation for this project, please
           read `this guide
           <https://docs.readthedocs.io/en/latest/guides/manage-translations.html>`_
