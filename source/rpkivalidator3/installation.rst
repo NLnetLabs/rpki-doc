@@ -15,7 +15,7 @@ RIPE NCC provides a total of four options for installations:
 CentOS
 ------
 
-We've set up a repository with CentOS 7 RPMs for Prod builds. 
+We have set up a repository with CentOS 7 RPMs for Prod builds. 
 You can add the repository to your system as follows:
 
 .. code-block:: bash
@@ -23,27 +23,27 @@ You can add the repository to your system as follows:
    sudo yum-config-manager --add-repo https://ftp.ripe.net/tools/rpki/validator3/prod/centos7/ripencc-rpki-prod.repo
 
 
-You may have to install 'yum-utils' first:
+You might have to install 'yum-utils' first:
 
 .. code-block:: bash
 
     sudo yum install yum-utils
 
 
-Install RPKI Validator:
+Install the RPKI Validator:
 
 .. code-block:: bash
 
     sudo yum install rpki-validator
 
 
-Install RPKI-RTR server:
+Install the RPKI-RTR Server:
 
 .. code-block:: bash
 
     sudo yum install rpki-rtr-server
 
-Then run and enable the services:
+Run and enable the services:
 
 .. code-block:: bash
 
@@ -56,7 +56,7 @@ Then run and enable the services:
     sudo systemctl start rpki-rtr-server
 
 
-You can monitor the logs:
+To monitor the logs:
 
 .. code-block:: bash
 
@@ -64,11 +64,11 @@ You can monitor the logs:
     sudo journalctl -f -u rpki-rtr-server
 
 
-RPKI Validator 3.1 will be running on: http://localhost:8080/
+The RPKI Validator 3.1 will be running on http://localhost:8080/
 
-RPKI-RTR Server will be running on: http://localhost:8081/
+The RPKI-RTR Server will be running on http://localhost:8081/
 
-You can also explore the API here: http://localhost:8080/swagger-ui.html
+You can also explore the API at http://localhost:8080/swagger-ui.html
 
 
 .. _deb:
@@ -76,25 +76,25 @@ You can also explore the API here: http://localhost:8080/swagger-ui.html
 Debian
 ------
 
-The Debian packages for rpki-validator and rpki-rtr server can be found here: https://ftp.ripe.net/ripe/tools/rpki/validator3/prod/deb/
+The Debian packages for the RPKI Validator and RPKI-RTR Server can be found at: https://ftp.ripe.net/ripe/tools/rpki/validator3/prod/deb/
 
 Download the suitable package and proceed with the installation:
 
 
-Install RPKI Validator:
+Install the RPKI Validator:
 
 .. code-block:: bash
 
     sudo apt install ./rpki-validator-3-latest.deb
 
 
-Install RPKI-RTR server:
+Install the RPKI-RTR Server:
 
 .. code-block:: bash
 
     sudo apt install ./rpki-rtr-server-latest.deb
 
-Then run and enable the services:
+Run and enable the services:
 
 .. code-block:: bash
 
@@ -107,7 +107,7 @@ Then run and enable the services:
     sudo systemctl start rpki-rtr-server
 
 
-You can monitor the logs:
+To monitor the logs:
 
 .. code-block:: bash
 
@@ -115,11 +115,11 @@ You can monitor the logs:
     sudo journalctl -f -u rpki-rtr-server
 
 
-RPKI Validator 3.1 will be running on: http://localhost:8080/
+The RPKI Validator 3.1 will be running on http://localhost:8080/
 
-RPKI-RTR Server will be running on: http://localhost:8081/
+The RPKI-RTR Server will be running on http://localhost:8081/
 
-You can also explore the API here: http://localhost:8080/swagger-ui.html
+You can also explore the API at http://localhost:8080/swagger-ui.html
 
 
 .. _tgz:
@@ -127,28 +127,28 @@ You can also explore the API here: http://localhost:8080/swagger-ui.html
 Generic build
 -------------
 
-You can find generic production builds here: https://ftp.ripe.net/tools/rpki/validator3/prod/generic/
+You can find generic production builds at: https://ftp.ripe.net/tools/rpki/validator3/prod/generic/
 Download the suitable package and unpack it.
 
-To run validator generic build:
+To run the RPKI Validator generic build:
 
 .. code-block:: bash
 
     ./rpki-validator-3.sh
 
 
-To run rtr generic build:
+To run the RPKI-RTR generic build:
 
 .. code-block:: bash
 
     ./rpki-rtr-server.sh
 
 
-RPKI Validator 3.1 will be running on: http://localhost:8080/
+The RPKI Validator 3.1 will be running on http://localhost:8080/
 
-RPKI-RTR Server will be running on: http://localhost:8081/
+The RPKI-RTR Server will be running on http://localhost:8081/
 
-You can also explore the API here: http://localhost:8080/swagger-ui.html
+You can also explore the API at http://localhost:8080/swagger-ui.html
 
 
 .. _docker:
@@ -172,9 +172,9 @@ To run the generic alpine based image:
     docker run --name validator-3-alpine -p 8080:8080 -d ripencc/rpki-validator-3-docker:alpine
 
 
-RPKI Validator 3.1 will be running on: http://localhost:8080/
+The RPKI Validator 3.1 will be running on: http://localhost:8080/
 
-More info here: https://hub.docker.com/r/ripencc/rpki-validator-3-docker
+More info can be found at https://hub.docker.com/r/ripencc/rpki-validator-3-docker
 
 
 
@@ -182,23 +182,26 @@ More info here: https://hub.docker.com/r/ripencc/rpki-validator-3-docker
 
 Extra TALs
 ------------------
-By default the validator will have TAs installed for AFRINIC, APNIC, LACNIC, RIPE NCC, but not ARIN.
 
-You can add download the ARIN TAL here. 
-Any of the formats will work, but the "RIPE NCC RPKI Validator" one will ensure that the TA will have a friendly name "ARIN". 
+By default, the Validator will have Trust Anchor Locators (TALs) installed for AFRINIC, APNIC, LACNIC, RIPE NCC, but not ARIN.
 
-To upload it you can use the following script:
+You can download the ARIN TAL at https://www.arin.net/resources/manage/rpki/tal/
+
+Any of the formats will work, but the "RIPE NCC RPKI Validator format" will ensure that the TAL will have a friendly name like "ARIN".
+
+
+You can use the following script to upload it:
 
 .. code-block:: bash
 
     ./upload-tal.sh arin-ripevalidator.tal http://localhost:8080/
 
 
-The script should be in the root folder if you unpacked the generic build, or in /usr/bin if you installed using RPM/Debian package. 
+The script should be in the root folder if you unpacked the generic build, or in */usr/bin* if you installed it using RPM/Debian package. 
 
 Alternatively, you can put extra TAL files to the preconfigured-tals directory of the RPKI Validator installation. 
 This directory is scanned on the start and all the parseable TALs are picked up for validation. 
-For RPM/Debian package installation the directory is /var/lib/rpki-validator-3/preconfigured-tals/.
+For the RPM/Debian package installation the directory is */var/lib/rpki-validator-3/preconfigured-tals/*.
 
 
 
