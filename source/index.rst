@@ -57,6 +57,7 @@ The main documentation is organised into the following sections:
    krill/index
    routinator/index
    rtrlib/index
+   rpkivalidator3/index
 
 .. Indices and tables
 .. ------------------
