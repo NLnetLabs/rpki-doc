@@ -12,23 +12,26 @@ defining a role to deploy Routinator on Ubuntu.
 Quick Start
 -----------
 
-Assuming you have rsync and the C toolchain but not yet Rust 1.34 or newer,
-here’s how you get Routinator to run as an RTR server listening on 192.0.2.13
-port 3323 and an HTTP server listening on port 9556:
+Assuming you have a newly installed Debian or Ubuntu machine, you will 
+need to install rsync, the C toolchain and Rust. You can then install 
+Routinator and start it up as an RTR server listening on 127.0.0.1 port
+3323 and HTTP on port 9556:
 
 .. code-block:: bash
 
-   curl https://sh.rustup.rs -sSf | sh
+   apt install rsync build-essential
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    source ~/.cargo/env
    cargo install routinator
    routinator init
    # Follow instructions provided
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
-If you have an older version of Routinator, you can update via:
+If you have an older version of Rust and Routinator, you can update via:
 
 .. code-block:: bash
 
+   rustup update
    cargo install -f routinator
 
 If you want to try the master branch from the repository instead of a
@@ -65,10 +68,10 @@ into a mounted volume that is later reused for the server:
 System Requirements
 -------------------
 
-At this time, the size of the global RPKI data set is about 300MB. Cryptographic
+At this time, the size of the global RPKI data set is about 500MB. Cryptographic
 validation of it takes Routinator about 2 seconds on a quad-core i7.
 
-When choosing a system to run Routinator on, make sure you have 512MB of
+When choosing a system to run Routinator on, make sure you have 1GB of
 available memory and 1GB of disk space. This will give you ample margin for
 the RPKI repositories to grow over time, as adoption increases.
 
@@ -126,7 +129,7 @@ To install ``rustup`` and Rust, simply do:
 
 .. code-block:: bash
 
-   curl https://sh.rustup.rs -sSf | sh
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 Alternatively, visit the `official Rust website <https://www.rust-lang.org/tools/install>`_ for other installation methods.
 
