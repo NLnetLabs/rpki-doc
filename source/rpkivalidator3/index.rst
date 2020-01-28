@@ -48,7 +48,7 @@ System Requirements
 -------------------
 
 You will need a UNIX-like system with OpenJDK 8 or higher and rsync. 
-You will also need at least 1.5GB available on your server (2GB in total if you also run the RPKI-RTR server). 
+You will also need at least 1.5GB of RAM available on your server (2GB in total if you also run the RPKI-RTR server). 
 One (virtual) CPU should be enough. 
 The repository objects are stored in a file-based database, rather than in memory, for which we recommend at least 10GB of available disk space.
 
