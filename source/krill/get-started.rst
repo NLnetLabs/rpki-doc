@@ -139,6 +139,18 @@ That being said the normal process would be to:
 * stop the running Krill instance
 * start Krill again, using the new binary, and the same config
 
+Note that after a restart you may see a message like this in your logfile:
+
+.. code-block:: text
+
+  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error: 'missing field `stats` at line 296 column 1'. Will fall back to events.
+
+You can ignore this message. Krill is telling you that the definition of a struct has
+changed and therefore it cannot use the snapshot.json file that it normally uses
+for efficiency. Instead it needs to build up the current state by explicitly
+re-applying all the events that happened to your CA and/or embedded publication
+server.
+
 
 Set up your Krill CA
 --------------------
