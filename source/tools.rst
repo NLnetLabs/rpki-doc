@@ -86,3 +86,7 @@ Supporting Tools
    separates out the various types kinds of (invalid) BGP announcements, 
    operators can a good grasp on how their connectivity to the rest of the
    Internet would look like after deploying a *"invalid == reject"* policy.
+
+`rpki-ov-checker <https://github.com/job/rpki-ov-checker>`_
+   rpki-ov-checker is a small tool to show what prefixes with what AS Origins
+   are impacted by the RFC 6811 Origin Validation procedure.
