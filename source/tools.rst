@@ -52,6 +52,10 @@ Certificate Authority Software
 Supporting Tools
 ----------------
 
+`rpki-ov-checker <https://github.com/job/rpki-ov-checker>`_
+   rpki-ov-checker is an open source utility to quickly analyse BGP RIB dumps
+   and the potential impact of deploying "invalid is reject" routing policies.
+   
 `BGP-SRx <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_
    SRx is an open source reference implementation and research platform by the 
    National Institute for Standards and Technology (NIST). It is intended for 
