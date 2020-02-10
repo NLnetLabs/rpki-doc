@@ -1,3 +1,7 @@
+.. _column-content:
+
+.. container:: left-col
+
 Manage CA(s)
 ============
 
