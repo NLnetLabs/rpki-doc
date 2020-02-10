@@ -2,44 +2,45 @@ Krill
 =====
 
 Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
-featuring a Certification Authority (CA) and Publication Server, written by NLnet Labs
-in the Rust programming language.
+featuring a Certificate Authority (CA) and publication server, written by NLnet
+Labs in the Rust programming language.
 
-In the context of Krill we refer to a CA as unit that represents an organisational unit,
-e.g. your company. This CA will typically have a single parent Certification Authority, like
-the RIR/NIR that you have registered IP addresses and/or AS numbers with. However, you
-may have multiple parents. It's also possible to delegate resources down children of your
-own, e.g. business units, departments, members or clients.
+Using Krill, you can run your own RPKI Certificate Authority as a child of one
+or more parent CAs, usually a Regional Internet Registry (RIR) or National
+Internet Registry (NIR). With Krill you can have multiple parent CAs
+seamlessly and transparently. This is especially convenient if your organisation
+holds address space in several RIR regions, as it can all be managed as a
+single pool.
 
-Resources that you receive from each of your parents will each go on separate X509
-certificates, and in fact you might even get resources from a single parent assigned to
-you on different certificates. These certificates are often referred to as "CA certificates",
-which can be somewhat confusing with regards to the term CA. A "CA certificate" is simply
-a certificate that is allowed to sign delegated certificates in the RPKI. And an
-'organisational' CA, as described above, will typically have one or many CA certificates.
+Krill can also act as a parent for child CAs. This means you can delegate
+resources down children of your own, e.g. business units, departments, members
+or clients, who, in turn, manage ROAs themselves.
 
-So, here we always talk about 'organisational' CAs when we talk about CAs. In fact
-the main reason of being for Krill is that it let's you think about your organisation
-at this higher level, while Krill will deal with the management of lower level CA
-certificates, and all the other moving parts that are used in the RPKI.
+Lastly, Krill features a separate publication server. This means you can either
+publish your certificate and ROAs with a third party, such as your NIR or RIR,
+or you publish them yourself. In the latter case, you will need to run Krill
+alongside a publicly available Rsyncd and HTTPS server.
 
-Krill is intended for:
+Summarising, Krill is intended for:
 
-- Operators who require easier RPKI management that is integrated with their own systems in a better way, instead of relying on the web-based user interface that the RIRs offer with the hosted systems
-- Operators who are security conscious and require that they are the only ones in possession of the private key of a system they use
-- Operators who want to be operationally independent from the parent RIR, such as NIRs or Enterprises
+- Organisations which do not want to rely on the web interface of the hosted systems that the RIRs offer, but require RPKI management that is integrated with their own systems
+- Organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their own CA and manage ROAs themselves
+- Organisations that manage address space from multiple RIRs. Using Krill, they can manage all ROAs for all resources seamlessly within one system
+- Organisations who want to be operationally independent from their parent RIR, such as NIRs or Enterprises
 
-Krill currently features an `API <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_ and a CLI. A UI, based on the API, is planned for
-the near future, and will probably be released as a separate project.
+Krill currently can be managed from the command line, through an `API
+<http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_
+and with a user interface. The UI for Krill is developed as a separate, optional
+project named `Lagosta <https://github.com/NLnetLabs/lagosta>`_ which uses
+Vue.js as Javascript framework and Element as UI framework.
 
-If you want to know more about the project planning, please have a look at the
-high level `roadmap <https://lists.nlnetlabs.nl/projects/rpki/project-plan/>`_ on
-our website, or get at a more detailed overview of the `releases <https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
-on GitHub.
-
-If you have any questions, comments or ideas, you are welcome  to discuss them
-on our `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel
-free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub.
+If you want to know more about the development of Krill, please have a look at
+the `project plan
+<https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
+on GitHub. If you have any questions, comments or ideas, you are welcome  to
+discuss them on our `RPKI mailing list
+<https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel free to `create an issue
+<https://github.com/NLnetLabs/krill/issues>`_ on GitHub.
 
 .. toctree::
    :maxdepth: 2

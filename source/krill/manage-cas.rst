@@ -1,7 +1,3 @@
-.. _column-content:
-
-.. container:: left-col
-
 Manage CA(s)
 ============
 
@@ -41,13 +37,13 @@ Add a CA
 When adding a CA you need to choose a handle, essentially just a name. The
 term "handle" comes from RFC 8183 and is used in the communication protocol
 between parent and child CAs, as well as CAs and publication servers. For the
-handle you can use alphanumerical characters, dashes or underscores. 
+handle you can use alphanumerical characters, dashes or underscores.
 
 The handle you select is not published in the RPKI but used as identification to
-parent and child CAs you interact with. You should choose a handle that helps 
-others recognise your organisation. Once set, the handle canot be be changed 
-as it would interfere with the communication between parent and child CAs, as 
-well as the publication respository.
+parent and child CAs you interact with. You should choose a handle that helps
+others recognise your organisation. Once set, the handle cannot be be changed
+as it would interfere with the communication between parent and child CAs, as
+well as the publication repository.
 
 .. content-tabs::
 
@@ -320,7 +316,7 @@ Now you should see that your "child" is certified:
           Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
 
           Total resources:
-              ASNs: 
+              ASNs:
               IPv4: 10.0.0.0/8
               IPv6: 2001:db8::/32
 
@@ -330,7 +326,7 @@ Now you should see that your "child" is certified:
           Resource Class: 0
           Parent: ripencc
           State: active    Resources:
-              ASNs: 
+              ASNs:
               IPv4: 10.0.0.0/8
               IPv6: 2001:db8::/32
           Current objects:
@@ -339,7 +335,7 @@ Now you should see that your "child" is certified:
 
           Children:
           <none>
-          
+
     .. tab-container:: api
        :title: api
 
