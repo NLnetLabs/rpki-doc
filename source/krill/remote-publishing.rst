@@ -16,24 +16,19 @@ Krill as Repository Server
 The repository functions for Krill can be accessed through the `publishers`
 subcommand in the CLI:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
        .. code-block:: text
 
           $ krillc publishers --help
           krillc-publishers
           Manage publishers in Krill.
-        
+
           USAGE:
               krillc publishers [SUBCOMMAND]
-        
+
           FLAGS:
               -h, --help       Prints help information
               -V, --version    Prints version information
-        
+
           SUBCOMMANDS:
             add         Add a publisher.
             help        Prints this message or the help of the given subcommand(s)
@@ -50,19 +45,15 @@ You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
 remote (RFC 8181 compliant) publishers:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc publishers list
           Publishers: ta, ca
 
-    .. tab-container:: api
-       :title: api
-
+API
+---
        See: :krill_api_pub_get:`GET /v1/publishers <publishers>`
 
 
@@ -101,11 +92,11 @@ repository server locally.
 Remove a Publisher
 """"""""""""""""""
 
-You can remove Publishers. If you remove a publisher, then all of its content
-will be removed as well and the publisher will no longer be allowed to publish.
+You can remove publishers. If you do, then all of its content will be removed
+as well and the publisher will no longer be allowed to publish.
 
 Note that you can do this without the publisher's knowledge, nor consent, even
-for embedded Krill CAs. With great power comes great responsibility.. That said,
+for embedded Krill CAs. With great power comes great responsibility. That said,
 you can always add a publisher again (also embedded publishers), and once a
 publisher can connect to your repository again, it should be able to figure out
 that it needs to re-publish all its content (Krill CAs will always check for
@@ -189,14 +180,14 @@ of the CLI:
           $ krillc repo --help
           krillc-repo
           Manage the repository for your CA.
-        
+
           USAGE:
               krillc repo [SUBCOMMAND]
-        
+
           FLAGS:
               -h, --help       Prints help information
               -V, --version    Prints version information
-        
+
           SUBCOMMANDS:
             help       Prints this message or the help of the given subcommand(s)
             request    Show RFC8183 Publisher Request.
@@ -224,7 +215,7 @@ of issues:
            type:        embedded
            base_uri:    rsync://localhost/repo/ca/
            rpki_notify: https://localhost:3000/rrdp/notification.xml
-       
+
          Currently published:
            c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
            557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
@@ -323,7 +314,7 @@ But, suppose that you did, you would now see this:
             service uri: https://localhost:3000/rfc8181/ca
             base_uri:    rsync://localhost/repo/ca/
             rpki_notify: https://localhost:3000/rrdp/notification.xml
-        
+
           Currently published:
             <nothing>
 

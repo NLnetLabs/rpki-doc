@@ -3,7 +3,7 @@
 Running Krill with Docker
 =========================
 
-This page explains the additional features and differences compared to running 
+This page explains the additional features and differences compared to running
 Krill with Cargo that you need to be aware of when running Krill with Docker.
 
 Read :ref:`doc_krill_xrunning` before reading this page.
@@ -12,7 +12,9 @@ Get Docker
 ----------
 
 If you do not already have Docker installed, follow the platform specific
-installation instructions via the links in the Docker offical `"Supported platforms" documentation <https://docs.docker.com/install/#supported-platforms>`_.
+installation instructions via the links in the Docker official `"Supported
+platforms" documentation
+<https://docs.docker.com/install/#supported-platforms>`_.
 
 Fetching and running Krill
 --------------------------
@@ -20,8 +22,9 @@ Fetching and running Krill
 The ``docker run`` command will automatically fetch the Krill image the first
 time you use it, and so there is no installation step in the traditional sense.
 
-The ``docker run`` command can take `many arguments <https://docs.docker.com/engine/reference/run/>`_
-and can be a bit overwhelming at first.
+The ``docker run`` command can take `many arguments
+<https://docs.docker.com/engine/reference/run/>`_ and can be a bit overwhelming
+at first.
 
 The command below runs Krill in the background and shows how to configure a few
 extra things like log level and volume mounts (more on this below).
@@ -54,10 +57,9 @@ manage Krill via the API or the ``krillc`` CLI tool.
     $ docker logs krill 2>&1 | fgrep token
     docker-krill: Securing Krill daemon with token <SOME_TOKEN>
 
-You can pre-configure the token via the ``auth_token`` Krill config
-file setting, or if you don't want to provide a config file you can
-also use the Docker environment variable ``KRILL_AUTH_TOKEN`` as 
-shown above.
+You can pre-configure the token via the ``auth_token`` Krill config file
+setting, or if you don't want to provide a config file you can also use the
+Docker environment variable ``KRILL_AUTH_TOKEN`` as  shown above.
 
 Running the Krill CLI
 ---------------------
@@ -83,8 +85,8 @@ locally running Krill daemon via its command-line interface (CLI):
 Remote
 """"""
 
-The Docker image can also be used to run ``krillc`` to manage remote
-Krill servers. Using a shell alias simplifies this considerably:
+The Docker image can also be used to run ``krillc`` to manage remote Krill
+servers. Using a shell alias simplifies this considerably:
 
 .. code-block:: bash
 
@@ -109,7 +111,7 @@ Proxy and HTTPS
 ---------------
 
 As advised in :ref:`doc_krill_xrunning` you should run Krill behind an
-industry standard proxy server such as nginx.
+industry standard proxy server such as Nginx.
 
 Service and Certificate URIs
 """"""""""""""""""""""""""""
@@ -205,12 +207,12 @@ To set these environment variables use ``-e`` when invoking ``docker``, e.g.:
 Using a config file
 -------------------
 
-Via a volume mount you can replace the Docker Krill config file with your 
+Via a volume mount you can replace the Docker Krill config file with your
 own and take complete control:
 
 .. code-block:: bash
 
    docker run -v /tmp/krill.conf:/var/krill/data/krill.conf
-   
+
 This will instruct Docker to replace the default config file used by Docker
 Krill with the file ``/tmp/krill.conf`` on your host computer.

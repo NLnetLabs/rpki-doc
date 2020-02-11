@@ -40,7 +40,6 @@ release = u''
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'sphinxcontrib.contentui',
     'sphinx.ext.extlinks',
 ]
 

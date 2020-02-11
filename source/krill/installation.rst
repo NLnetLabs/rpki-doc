@@ -8,9 +8,8 @@ You can either build Krill from sources with Cargo or run it using Docker.
 Quick Start with Docker
 -----------------------
 
-The NLnet Labs provided Docker container for Krill allows you to use Krill just
-as you would with Cargo but without needing to build from sources first, you
-only need Docker.
+The Docker container for Krill allows you to use it just as you would with Cargo
+but without needing to build from sources first.
 
 To fetch and run Krill:
 
@@ -82,8 +81,8 @@ C Toolchain
 Some of the libraries Krill depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
 set of packages to build from C sources. For example,
-``apt install build-essential`` will install everything you need
-on Debian/Ubuntu.
+``apt install build-essential`` will install everything you need on
+Debian/Ubuntu.
 
 If you are unsure, try to run ``cc`` on a command line and if there’s a
 complaint about missing input files, you are probably good to go.
@@ -92,14 +91,14 @@ OpenSSL
 """""""
 Your system will likely have a package manager that will allow you to
 install OpenSSL in a few easy steps. For Krill, you will need ``libssl-dev``,
-sometimes called ``openssl-dev``. On debian like Linux distributions,
+sometimes called ``openssl-dev``. On Debian-like Linux distributions,
 this should be as simple as running:
 
 .. code-block:: bash
 
-    sudo apt-get install -y libssl-dev openssl pkg-config
+    sudo apt install -y libssl-dev openssl pkg-config
 
-Note: we use Ubuntu xenial (16.04.5 LTS) in our Travis CI environment.
+Note: we use Ubuntu Xenial (16.04.5 LTS) in our Travis CI environment.
 
 On macOS you can use Homebrew or MacPorts to get started.
 
@@ -115,7 +114,7 @@ cargo:
     git clone git@github.com:NLnetLabs/krill.git --branch v0.4.2 --depth 1
     cd krill
 
-Now you can build the krill binaries from the Rust source:
+Now you can build the Krill binaries from the Rust source:
 
 .. code-block:: bash
 
@@ -128,4 +127,5 @@ This will build the following binaries:
    target/release/krill
    target/release/krillc
 
-You can copy these binaries to a location of your convenience or run them from this directory.
+You can copy these binaries to a location of your convenience or run them from
+this directory.

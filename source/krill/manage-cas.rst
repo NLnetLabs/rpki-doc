@@ -12,7 +12,7 @@ CAs in Krill:
 * Perform a key roll
 
 If you just want to try out Krill you can set "use_ta" to "true" in your
-`krill.conf`, or use an env variable:
+`krill.conf`, or use an environment variable:
 
 .. code-block:: text
 
@@ -59,11 +59,10 @@ well as the publication repository.
 
        See: :krill_api_ca_post:`POST /v1/cas <cas>`
 
-When a CA has been added, it is registered to publish locally in the Krill instance where
-it exists, but other than that it has no configuration yet. In order to do anything useful
-with a CA you will first have to add at least one parent to it, and then most likely
-some Route Authorizations and/or Child CAs.
-
+When a CA has been added, it is registered to publish locally in the Krill
+instance where it exists, but other than that it has no configuration yet. In
+order to do anything useful with a CA you will first have to add at least one
+parent to it, and then most likely some Route Authorizations and/or child CAs.
 
 List CAs
 """"""""
@@ -344,24 +343,17 @@ Now you should see that your "child" is certified:
 Add a real CA as your parent
 """"""""""""""""""""""""""""
 
-Similar to above, except that you only need to generate the XML in step 1, hand it over
-to your parent CA through whatever function they provide, and then get the response.xml
-from them and add it your child as described in step 3.
+Similar to above, except that you only need to generate the XML in step 1, hand
+it over to your parent CA through whatever function they provide, and then get
+the response.xml from them and add it your child as described in step 3.
 
 
 ROAs
 """"
 
-At this point you probably want to manage some ROAs!
-
-Krill lets users configure Route Authorizations, i.e. the intent to authorise a Prefix you
-hold, up to a maximum length to be announced by an ASN. Krill will make sure that the actual
-ROA objects are created. Krill will also refuse to accept authorizations for prefixes you
-don't hold.
-
-
-Update ROAs
-"""""""""""
+Krill lets users create Route Origin Authorizations (ROAs), the signed objects
+that state which Autonomous System (AS) is authorized to originate one of your
+prefixes, along with the maximum prefix length it may have.
 
 You can update ROAs through the command line by submitting a plain text file
 with the following format:
@@ -395,11 +387,10 @@ If you followed the steps above then you would get an error, because there is no
 authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
 
+List ROAs
+"""""""""
 
-List Route Authorizations
-"""""""""""""""""""""""""
-
-You can list Route Authorizations as well:
+You can list Route Origin Authorizations as well:
 
 .. content-tabs::
 

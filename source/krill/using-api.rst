@@ -31,8 +31,8 @@ and domain name for your Krill server.
    # Import the OpenAPI generated Krill client library
    import krill_api
    from krill_api import *
-   
-   # Create a configuration for the client library telling it how to connet to
+
+   # Create a configuration for the client library telling it how to connect to
    # the Krill server
    krill_api_config = krill_api.Configuration()
    krill_api_config.access_token = '<YOUR KRILL API TOKEN>'
@@ -40,13 +40,13 @@ and domain name for your Krill server.
    krill_api_config.verify_ssl = True
    krill_api_config.assert_hostname = False
    krill_api_config.cert_file = None
-   
+
    # Create a Krill API client
    krill_api_client = krill_api.ApiClient(krill_api_config)
-   
+
    # Get the client helper for the Certificate Authority set of Krill API endpoints
    krill_ca_api = CertificateAuthoritiesApi(krill_api_client)
-   
+
    # Query Krill for the list of configured CAs
    print(krill_ca_api.cas_get())
 
@@ -56,18 +56,18 @@ Now generate the Krill client library:
 
    GENDIR=/tmp/gen
    VENVDIR=/tmp/venv
-   
+
    mkdir -p $GENDIR
-   
+
    wget -O $GENDIR/openapi.yaml https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml
-   
+
    docker run --rm -v $GENDIR:/local \
        openapitools/openapi-generator-cli generate \
        -i /local/openapi.yaml \
        -g python \
        -o /local/out \
        --additional-properties=packageName=krill_api
-   
+
    python3 -m venv $VENVDIR
    source $VENVDIR/bin/activate
    pip3 install wheel
@@ -79,7 +79,7 @@ And then run the sample client program:
 
    python3 /tmp/krill_test.py
 
-To learn more about using your OpenAPI generated client library consult the 
+To learn more about using your OpenAPI generated client library consult the
 `README.md` file that is created in the generated client library directory, e.g.
 `$GENDIR/out/README.md` in the example above.
 
