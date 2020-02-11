@@ -45,17 +45,14 @@ others recognise your organisation. Once set, the handle cannot be be changed
 as it would interfere with the communication between parent and child CAs, as
 well as the publication repository.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc add
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_post:`POST /v1/cas <cas>`
 
@@ -70,19 +67,16 @@ List CAs
 You can list all handles (names) for the existing CAs in krill using the following
 command:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc list
           ta
           ca
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas <cas>`
 
@@ -92,11 +86,8 @@ Show CA Details
 You can use the following to show the details of the embedded TA, if you enabled
 it:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc show --ca ta
@@ -137,20 +128,15 @@ it:
           Children:
           <none>
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ta <cas~1{ca_handle}>`
 
 Or for your new CA:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
-       .. code-block:: text
-
+CLI
+---
           $ krillc show
           Name:     ca
 
@@ -175,8 +161,8 @@ Or for your new CA:
           Children:
           <none>
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
@@ -195,19 +181,16 @@ the same as what you would need to delegate from your CA to remote CAs.
 Step 1: RFC 8183 request XML
 ----------------------------
 
-First you will need to get the RFC 8183 request XML from your child:
+First you will need to get the RFC 8183 request XML from your child.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc parents myid > myid.xml
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
 
@@ -223,11 +206,8 @@ And in this case we also need to override the ENV variable and indicate that we
 want to add this child to the CA "ta". The following command will add the child,
 and the RFC 8183 XML from the "ta":
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc children add --ca ta \
@@ -235,9 +215,8 @@ and the RFC 8183 XML from the "ta":
                                 --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
                                 --rfc8183 myid.xml > parent-res.xml
 
-    .. tab-container:: api
-       :title: api
-
+API
+---
        See: :krill_api_ca_post:`POST /v1/cas/ta/children <cas~1{ca_handle}~1children>`
 
 The default response is the RFC 8183 parent response XML file. Or, if you set
@@ -245,17 +224,14 @@ The default response is the RFC 8183 parent response XML file. Or, if you set
 
 If you need the response again, you can ask the "ta" again:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc children response --ca "ta" --child "ca"
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ta/children/ca/contact <cas~1{ca_handle}~1children~1{child_handle}~1contact>`
 
@@ -274,26 +250,21 @@ for the parent (parent_handle attribute), and do not be surprised or alarmed if
 the parent refers to your ca (child_handle attribute) by some seemingly random
 name. Some parents do this to ensure unicity.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc parents add --parent ripencc --rfc8183 ./parent-res.xml
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
 
 Now you should see that your "child" is certified:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
@@ -335,8 +306,8 @@ Now you should see that your "child" is certified:
           Children:
           <none>
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
@@ -369,17 +340,14 @@ with the following format:
 
 You can then add this to your CA:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
          $ krillc roas update --delta ./roas.txt
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
@@ -392,19 +360,16 @@ List ROAs
 
 You can list Route Origin Authorizations as well:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc roas list
           10.0.0.0/24 => 64496
           10.1.0.0/16-20 => 64496
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
@@ -414,10 +379,8 @@ History
 
 You can show the history of all the things that happened to your CA:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
@@ -432,7 +395,7 @@ You can show the history of all the things that happened to your CA:
           id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
           id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`

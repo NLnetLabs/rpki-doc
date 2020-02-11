@@ -19,8 +19,8 @@ The following arguments are expected by most subcommands:
           [-f, --format text|json|none]   (default text)
           [-c, --ca <ca_name>]            (for ca specific subcommands)
 
-You can set default values for these arguments in ENV variables, to make it a bit
-easier/concise to use the CLI:
+You can set default values for these arguments in ENV variables, to make it a
+bit easier/concise to use the CLI:
 
 +---------------------+------------------------------------------------------+
 | Variable            | Argument                                             |

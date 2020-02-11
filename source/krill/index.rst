@@ -23,10 +23,16 @@ alongside a publicly available Rsyncd and HTTPS server.
 
 Summarising, Krill is intended for:
 
-- Organisations who do not wish to rely on the web interface of the hosted systems that the RIRs offer, but require RPKI management that is integrated with their own systems
-- Organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their own CA and manage ROAs themselves
-- Organisations that manage address space from multiple RIRs. Using Krill, they can manage all ROAs for all resources seamlessly within one system
-- Organisations who want to be operationally independent from their parent RIR, such as NIRs or Enterprises
+  - Organisations who do not wish to rely on the web interface of the hosted
+    systems that the RIRs offer, but require RPKI management that is integrated
+    with their own systems
+  - Organisations that need to be able to delegate RPKI to their customers or
+    different business units, so that that they can run their own CA and manage
+    ROAs themselves
+  - Organisations that manage address space from multiple RIRs. Using Krill,
+    they can manage all ROAs for all resources seamlessly within one system
+  - Organisations who want to be operationally independent from their parent
+    RIR, such as NIRs or Enterprises
 
 Krill currently can be managed from the command line, through an `API
 <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_

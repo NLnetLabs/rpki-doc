@@ -43,7 +43,7 @@ List Publishers
 
 You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
-remote (RFC 8181 compliant) publishers:
+remote (RFC 8181 compliant) publishers.
 
 CLI
 ---
@@ -61,12 +61,10 @@ Show Publisher Details
 """"""""""""""""""""""
 
 You can show the full details of a publisher, including the files that they
-published, using the CLI:
+published.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
@@ -74,8 +72,8 @@ published, using the CLI:
           handle: ta
           id: 5ce21ed116540a22c562f45dae8f2eb5a3c13ceebase uri: rsync://localhost/repo/ta/
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_pub_get:`GET /v1/publishers/ca <publishers~1{publisher_handle}>`
 
@@ -102,20 +100,15 @@ publisher can connect to your repository again, it should be able to figure out
 that it needs to re-publish all its content (Krill CAs will always check for
 this).
 
-You can remove a CA using the following command:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
           $ krillc publishers remove --publisher ca
 
-    .. tab-container:: api
-       :title: api
-
+API
+---
        See: :krill_api_pub_delete:`DELETE /v1/publishers/ca <publishers~1{publisher_handle}>`
 
 
@@ -125,17 +118,15 @@ Add a Publisher
 In order to add a publisher you have to get its RFC 8183 Pulisher Request XML,
 and hand it over to the server:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
           $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_pub_post:`POST /v1/publishers <publishers>`
 
@@ -146,20 +137,16 @@ Show Repository Response
 In order to show the RFC 8183 Repository Response XML for a specific publisher
 use the following:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
-       .. code-block:: text
+CLI
+---
 
           $ krillc publishers response --publisher ca
           <repository_response xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca" service_uri="https://localhost:3000/rfc8181/ca" sia_base="rsync://localhost/repo/ca/" rrdp_notification_uri="https://localhost:3000/rrdp/notification.xml">
             <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
           </repository_response>
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{publisher_handle}~1response.{format}>`
 
@@ -169,13 +156,6 @@ Publish at a Remote Repository
 
 Controlling your CA's repository server is done through the `repo` subcommand
 of the CLI:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
-       .. code-block:: text
 
           $ krillc repo --help
           krillc-repo
@@ -201,14 +181,10 @@ Show repository for CA
 You can use the following to show which repository server your CA is using,
 as well as what is has published at the location. Krill will issue an actual
 `list` query to the repository and give back the response, or an error in case
-of issues:
+of issues.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
-       .. code-block:: text
+CLI
+---
 
          $ krillc repo show
          Repository Details:
@@ -222,8 +198,8 @@ of issues:
            444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
            874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 
@@ -233,12 +209,10 @@ Show Publisher Request
 
 You can use the following to show the RFC 8183 Publisher Request XML for a CA. You
 will need to hand this over to your remote repository so that they can add your
-CA:
+CA.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+---
 
        .. code-block:: text
 
@@ -247,8 +221,8 @@ CA:
             <publisher_bpki_ta>your CA ID cert DER in base64</publisher_bpki_ta>
           </publisher_request>
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca/repo/request.json <cas~1{ca_handle}~1repo~1request.{format}>`
 
@@ -275,19 +249,17 @@ In short, Krill performs a sanity check that the new repository can be used,
 and then tries to migrate there in a way that will not lead to invalidating
 any currently signed objects.
 
-To start a migration you can use the following:
+To start a migration you can use the following.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+CLI
+--
 
        .. code-block:: text
 
           $ krillc repo update rfc8183 [file]
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_post:`POST /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 
@@ -300,11 +272,6 @@ up the old repository, and we assume that you would not try to use an embedded
 server over the RFC 8181 protocol.
 
 But, suppose that you did, you would now see this:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
 
        .. code-block:: text
 
@@ -323,11 +290,6 @@ But no worries.. this can be fixed.
 First, you may want to migrate back to using the embedded repository without
 the RFC 8181 protocol overhead:
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
        .. code-block:: text
 
           $ krillc repo update embedded
@@ -345,18 +307,15 @@ Re-syncing CAs with Repository
 If your CAs have somehow become out of sync with their repository, then they
 will automatically re-sync whenever there is an update like a renewal of
 manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
-can force that *all* Krill CAs re-sync using the following:
+can force that *all* Krill CAs re-sync using the following.
 
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
-
+CLI
+---
        .. code-block:: text
 
           $ krillc bulk sync
 
-    .. tab-container:: api
-       :title: api
+API
+---
 
        See: :krill_api_ca_post:`POST /v1/cas/resync_all <cas~1resync_all>`

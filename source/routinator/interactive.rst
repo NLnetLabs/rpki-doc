@@ -9,12 +9,12 @@ announcement. These functions are accessible on the command line via the followi
 sub-commands:
 
 :vrps:
-     Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the 
+     Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the
      specified format.
 
 :validate:
      Outputs the RPKI validity for a specific announcement by supplying Routinator
-     with an ASN and a prefix. 
+     with an ASN and a prefix.
 
 Printing a List of VRPs
 -----------------------
@@ -22,13 +22,13 @@ Printing a List of VRPs
 Routinator can produce a Validated ROA Payload (VRP) list in five different formats,
 which are either printed to standard output or saved to a file:
 
-:csv: 
+:csv:
       The list is formatted as lines of comma-separated values of the prefix in
-      slash notation, the maximum prefix length, the autonomous system number, 
-      and an abbreviation for the trust anchor the entry is derived from. The 
-      latter is the name of the TAL file  without the extension *.tal*. This is 
+      slash notation, the maximum prefix length, the autonomous system number,
+      and an abbreviation for the trust anchor the entry is derived from. The
+      latter is the name of the TAL file  without the extension *.tal*. This is
       the default format used if the ``--format`` or ``-f`` option is missing.
-:csvext: 
+:csvext:
       This is an extended version of the *csv* format, which was used by the RIPE
       NCC RPKI Validator 1.x. Each line contains these comma-separated values: the
       rsync URI of the ROA the line is taken from (or "N/A" if it isn't from a ROA),
@@ -36,13 +36,13 @@ which are either printed to standard output or saved to a file:
       length, and lastly the not-before and not-after date of the validity of the ROA.
 :json:
       The list is placed into a JSON object with a single  element *roas* which
-      contains an array of objects with four elements each: The autonomous system 
+      contains an array of objects with four elements each: The autonomous system
       number of  the  network  authorised to originate a prefix in *asn*, the prefix
       in slash notation in *prefix*, the maximum prefix length of the announced route
-      in *maxLength*, and the trust anchor from which the authorisation was derived 
-      in *ta*. This format is identical to that produced by the RIPE NCC Validator 
-      except for different naming of the trust anchor. Routinator uses the name 
-      of the TAL file without the extension *.tal* whereas the RIPE NCC Validator 
+      in *maxLength*, and the trust anchor from which the authorisation was derived
+      in *ta*. This format is identical to that produced by the RIPE NCC Validator
+      except for different naming of the trust anchor. Routinator uses the name
+      of the TAL file without the extension *.tal* whereas the RIPE NCC Validator
       has a dedicated name for each.
 :openbgpd:
       Choosing  this format causes Routinator to produce a *roa-set*
@@ -83,12 +83,12 @@ Filtering
 
 In case you are looking for specific information in the output, Routinator allows
 filtering to see if a prefix or ASN is covered or matched by a VRP. You can do this
-using the ``--filter-asn`` and ``--filter-prefix`` flags. 
+using the ``--filter-asn`` and ``--filter-prefix`` flags.
 
 When using ``--filter-asn``, you can use both ``AS64511`` and ``64511`` as the notation.
 With ``--filter-prefix``, the result will include VRPs regardless of their
-ASN and MaxLength. Both filter flags can be combined and used multiple times in a 
-single query and will be treated as a logical *"or"*. 
+ASN and MaxLength. Both filter flags can be combined and used multiple times in a
+single query and will be treated as a logical *"or"*.
 
 A validation run will be started before returning the result, making sure you get the
 latest information. If you would like a result from the current cache, you can use the ``--noupdate`` or ``-n`` flag.
@@ -117,7 +117,7 @@ Validity Checker
 You can check the RPKI origin validation status of a specific BGP announcement using the
 ``validate`` subcommand and by supplying the ASN and prefix. A validation run will be
 started before returning the result, making sure you get the latest information. If you
-would like a result from the current cache, you can use the ``--noupdate`` or ``-n`` 
+would like a result from the current cache, you can use the ``--noupdate`` or ``-n``
 flag.
 
 .. code-block:: bash
