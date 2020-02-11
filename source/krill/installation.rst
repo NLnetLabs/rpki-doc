@@ -3,6 +3,11 @@
 Installation
 ============
 
+Getting started with Krill is quite easy either building from Cargo or running
+with Docker. In case you intend to serve your RPKI certificate and ROAs to the
+world yourself or you want to offer this as a service to others, you will also
+need to have a public Rsyncd and HTTPS web server available.
+
 System Requirements
 -------------------
 
@@ -23,38 +28,6 @@ certainly not necessary and at this point not even possible.
           using the smallest Virtual Machine they could find (2 CPU / 2GB RAM /
           60GB disk).
 
-Quick Start with Docker
------------------------
-
-The Docker container for Krill allows you to use it just as you would with Cargo
-but without needing to build from sources first.
-
-To fetch and run Krill:
-
-.. code-block:: bash
-
-    docker run --name krill -p 127.0.0.1:3000:3000 nlnetlabs/krill:v0.4.2
-
-With a shell alias interacting with Krill via ``krillc`` is then as
-easy as:
-
-.. code-block:: bash
-
-    $ alias krillc='docker exec \
-      -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
-      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
-      krill krillc'
-
-    $ krillc list -f json
-    {
-      "cas": []
-    }
-
-To get the most out of Krill you will want to run Docker and Krill with
-additional arguments. See :ref:`doc_krill_xrunning` and
-:ref:`doc_krill_running_docker` for more information.
-
-
 Installing with Cargo
 ---------------------
 
@@ -64,6 +37,11 @@ requirements, but we will assume that you will run this on a UNIX-like OS.
 
 Rust
 """"
+
+The Rust compiler runs on, and compiles to, a great number of platforms,
+though not all of them are equally supported. The official `Rust
+Platform Support <https://forge.rust-lang.org/platform-support.html>`_
+page provides an overview of the various support levels.
 
 While some system distributions include Rust as system packages,
 Krill relies on a relatively new version of Rust, currently 1.30 or
@@ -76,22 +54,54 @@ To install ``rustup`` and Rust, simply do:
 
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-Alternatively, get the file, have a look and then run it manually.
-Follow the instructions to get rustup and cargo, the rust build tool, into
-your path.
+Alternatively, visit the `official Rust website
+<https://www.rust-lang.org/tools/install>`_ for other installation methods.
 
-You can update your Rust installation later by simply running:
+You can update your Rust installation later by running:
 
 .. code-block:: bash
 
    rustup update
 
-To get started you need Cargo's bin directory ($HOME/.cargo/bin) in your PATH
-environment variable. To configure your current shell, run
+For some platforms, ``rustup`` cannot provide binary releases to install
+directly. The `Rust Platform Support
+<https://forge.rust-lang.org/platform-support.html>`_ page lists
+several platforms where official binary releases are not available,
+but Rust is still guaranteed to build. For these platforms, automated
+tests are not run so it’s not guaranteed to produce a working build, but
+they often work to quite a good degree.
+
+One such example that is especially relevant for the routing community
+is OpenBSD. On this platform, `patches
+<https://github.com/openbsd/ports/tree/master/lang/rust/patches>`_ are
+required to get Rust running correctly, but these are well maintained
+and offer the latest version of Rust quite quickly.
+
+Rust can be installed on OpenBSD by running:
 
 .. code-block:: bash
 
+   pkg_add rust
+
+Another example where the standard installation method does not work is
+CentOS 6, where you will end up with a long list of error messages about
+missing assembler instructions. This is because the assembler shipped with
+CentOS 6 is too old.
+
+You can get the necessary version by installing the `Developer Toolset 6
+<https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_ from the
+`Software Collections
+<https://wiki.centos.org/AdditionalResources/Repositories/SCL>`_ repository. On
+a virgin system, you can install Rust using these steps:
+
+.. code-block:: bash
+
+   sudo yum install centos-release-scl
+   sudo yum install devtoolset-6
+   scl enable devtoolset-6 bash
+   curl https://sh.rustup.rs -sSf | sh
    source $HOME/.cargo/env
+
 
 C Toolchain
 """""""""""
