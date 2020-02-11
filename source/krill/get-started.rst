@@ -1,11 +1,10 @@
 Getting Started with Krill
 ==========================
 
-This page describes how to get started with Krill in a common scenario:
-running as a child of a Regional or National Internet Registry (RIR or NIR)
-parent, using a publication point provided by the parent.
-
-In later sections, each component will be described in more detail.
+This page describes how to get started with Krill in a common scenario: running
+as a child of a Regional or National Internet Registry (RIR or NIR) parent,
+using a publication point provided by the parent. In later sections, each
+component will be described in more detail.
 
 Configuration
 -------------
@@ -45,8 +44,8 @@ Note that you can use the CLI from another machine, but then you will need to
 set up a proxy server in front of Krill and make sure that it has a real TLS
 certificate.
 
-Starting and Stopping Krill
----------------------------
+Start and Stop the Daemon
+-------------------------
 
 There is no standard script to start / stop Krill yet. We will add this in the
 near future.
@@ -125,8 +124,8 @@ made at the parent side: like requesting a new certificate, or publishing an
 object. The periodic exchanges where your CA asks the parent for its
 entitlements will then no longer be logged.
 
-Upgrading
----------
+Upgrade
+-------
 
 It is our goal that future versions of Krill will continue to work with the
 configuration files and saved data from version 0.4.1 and above. However, please
@@ -197,8 +196,8 @@ to itself, and your CA. Krill will make sure that it uses these names in the
 communication with the parent. There is no need for these names to be the same.
 
 
-Managing Route Origin Authorisations (ROAs)
--------------------------------------------
+Managing Route Origin Authorisations
+------------------------------------
 
 Krill lets users create Route Origin Authorisations (ROAs), the signed objects
 that state which Autonomous System (AS) is authorised to originate one of your
@@ -225,9 +224,6 @@ You can then add this to your CA:
 If you followed the steps above then you would get an error, because there is no
 authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
-
-Listing ROAs
-""""""""""""
 
 You can list ROAs in the following way:
 

@@ -11,9 +11,9 @@ need to have a public Rsyncd and HTTPS web server available.
 System Requirements
 -------------------
 
-The system requirements for itself are Krill are minimal. The cryptographic
-operations that need to be performed by the Krill CA have a negligible
-performance and memory impact on any modern day machine.
+The system requirements for Krill are quite minimal. The cryptographic
+operations that need to be performed by the Certificate Authority have a
+negligible performance and memory impact on any modern day machine.
 
 When you publish ROAs yourself using the Krill publication server in combination
 with Rsyncd and a web server of your choice, you will see traffic from several
@@ -31,7 +31,7 @@ Installing with Cargo
 ---------------------
 
 There are three things you need for Krill: Rust, a C toolchain and OpenSSL.
-You can install the Krill on any Operating System where you can fulfil these
+You can install Krill on any Operating System where you can fulfil these
 requirements, but we will assume that you will run this on a UNIX-like OS.
 
 Rust
@@ -101,7 +101,6 @@ a virgin system, you can install Rust using these steps:
    curl https://sh.rustup.rs -sSf | sh
    source $HOME/.cargo/env
 
-
 C Toolchain
 """""""""""
 
@@ -125,16 +124,15 @@ this should be as simple as running:
 
     sudo apt install -y libssl-dev openssl pkg-config
 
-Note: we use Ubuntu Xenial (16.04.5 LTS) in our Travis CI environment.
-
-On macOS you can use Homebrew or MacPorts to get started.
-
+    .. Note:: For reference, NLnet Labs uses Ubuntu Xenial (16.04.5 LTS) in
+              their Travis CI environment. The production instance runs on
+              Debian 10.2.
 
 Building
 --------
 
 The easiest way to get Krill is to clone the repository and build it using
-cargo:
+Cargo:
 
 .. code-block:: bash
 

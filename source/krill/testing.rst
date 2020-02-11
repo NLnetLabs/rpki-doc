@@ -1,15 +1,21 @@
-Managing your CA
-================
+Running a Test Environment
+==========================
 
-In this section we will explain how to use the CLI to manage 'organisational'
-CAs in Krill:
+If you want to get operational experience with Krill before before configuring a
+production parent, you can run with an embedded TA which you can give any
+address space you want. You can generate your own Trust Anchor for it, which can
+be added to your Relying Party software in order to validate the objects you
+have published locally.
 
-  * Add a CA to Krill
-  * Add a parent to a CA
-  * Add a child to a CA
-  * Manage Route Authorizations (ROAs) in a CA
-  * View the status of a CA
-  * Perform a key roll
+Setting up the Configuration
+----------------------------
+
+To run Krill in test mode you can set "use_ta" to "true" in your
+```krill.conf``, or use an environment variable:
+
+.. code-block:: text
+
+   $ export KRILL_USE_TA="true"
 
 You may also wish to set the following variables, so that you don't have to
 repeat command line arguments for these:
@@ -159,7 +165,7 @@ API
 
        See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
-Add a Child to the embedded TA
+Add a Child to the Embedded TA
 """"""""""""""""""""""""""""""
 
 If you are using an embedded TA for testing then you will first need to add your
@@ -303,14 +309,6 @@ API
 ---
 
        See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
-
-Add a real CA as your parent
-""""""""""""""""""""""""""""
-
-Similar to above, except that you only need to generate the XML in step 1, hand
-it over to your parent CA through whatever function they provide, and then get
-the response.xml from them and add it your child as described in step 3.
-
 
 ROAs
 """"

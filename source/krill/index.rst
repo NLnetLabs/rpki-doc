@@ -36,9 +36,8 @@ Summarising, Krill is intended for:
 
 Krill currently can be managed from the command line, through an `API
 <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_
-and with a user interface. The UI for Krill is developed as a separate, optional
-project named `Lagosta <https://github.com/NLnetLabs/lagosta>`_ which uses
-Vue.js as Javascript framework and Element as UI framework.
+and with a user interface. The UI for Krill is available as a separate, optional
+project named `Lagosta <https://github.com/NLnetLabs/lagosta>`_.
 
 If you want to know more about the development of Krill, please have a look at
 the `project plan
@@ -60,6 +59,7 @@ discuss them on our `RPKI mailing list
    using-api
    manage-cas
    remote-publishing
+   testing
 .. history
 .. authors
 .. license
