@@ -17,7 +17,8 @@ Krill data_dir.
   data_dir       = "/path/to/data"
   auth_token     = "your-secret"
 
-Note, you can find a full example config file with defaults `here <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
+Note, you can find a full example config file with defaults `here
+<https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
 We recommend that you do NOT make Krill available publicly. I.e. you can use the
 default where Krill will expose its API on `https://localhost:3000/` only. You
@@ -40,10 +41,10 @@ certificate.
 You can use any name for your 'MY_CA' as long as it contains only the
 following characters: `a-zA-Z0-9_`
 
-Using environment variables saves a lot of typing down the line. In the
-somewhat unlikely event where you will need to manage multiple CAs under a single
-Krill instance, you can either override the default CA using the `--ca` option
-where applicable, or not use the `KRILL_CLI_MY_CA` environment variable.
+Using environment variables saves a lot of typing down the line. In the somewhat
+unlikely event where you will need to manage multiple CAs under a single Krill
+instance, you can either override the default CA using the `--ca` option where
+applicable, or not use the `KRILL_CLI_MY_CA` environment variable.
 
 
 Start or Stop Krill
@@ -52,9 +53,9 @@ Start or Stop Krill
 There is no standard script to start / stop Krill yet. We will add this in the
 near future.
 
-For now you could use something like the following, naive, script to start Krill.
-Just update the DATA_DIR variable to your real data directory, and make sure you
-saved your `krill.conf` file there.
+For now you could use something like the following, naive, script to start
+Krill. Just update the DATA_DIR variable to your real data directory, and make
+sure you saved your `krill.conf` file there.
 
 .. code-block:: bash
 

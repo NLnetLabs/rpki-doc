@@ -198,9 +198,9 @@ Step 2: Add child "ca" to "ta"
 ------------------------------
 
 To add a child, you will need to:
-  1. choose a unique local name (handle) that the parent will use for the child
-  2. choose initial resources (asn, ipv4, ipv6)
-  3. have an RFC 8183 request
+  1. Choose a unique local name (handle) that the parent will use for the child
+  2. Choose initial resources (asn, ipv4, ipv6)
+  3. Have an RFC 8183 request
 
 And in this case we also need to override the ENV variable and indicate that we
 want to add this child to the CA "ta". The following command will add the child,
