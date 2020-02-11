@@ -1,28 +1,32 @@
 Getting Started with Krill
 ==========================
 
-Here we will go through the steps to get started with Krill under an RIR or NIR
-parent CA, using a publication point provided by the parent.
+This page describes how to get started with Krill in a common scenario:
+running as a child of a Regional or National Internet Registry (RIR or NIR)
+parent, using a publication point provided by the parent.
 
-Configure Krill
----------------
+In later sections, each component will be described in more detail.
 
-Create a configuration file containing the following directives, using your own
-values of course. You can give this file any name and store it anywhere, but
-here we will assume you will use the name `krill.conf` and store it under your
-Krill data_dir.
+Configuration
+-------------
+
+After the installation has completed, first create a configuration file
+containing the following directives, using your own values. You can give this
+file any name and store it anywhere, but here we will assume you will use the
+name ``krill.conf`` and store it under your Krill data_dir.
 
 .. code-block:: text
 
   data_dir       = "/path/to/data"
   auth_token     = "your-secret"
 
-Note, you can find a full example config file with defaults `here
+Note, you can find a full example configuration file with defaults in `the
+GitHub repository
 <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
-We recommend that you do NOT make Krill available publicly. I.e. you can use the
-default where Krill will expose its API on `https://localhost:3000/` only. You
-do not need to have Krill available externally, unless you mean to provide
+We recommend that you do **not** make Krill available publicly. You can use
+the default where Krill will expose its API on ``https://localhost:3000/`` only.
+You do not need to have Krill available externally, unless you mean to provide
 certificates or a publication server to third parties.
 
 You can then set up the following environment variables so that you can easily
@@ -34,28 +38,22 @@ use the Krill CLI on the same machine where Krill is running:
   export KRILL_CLI_SERVER="https://localhost:3000/"
   export KRILL_CLI_MY_CA="<your-ca-name>"
 
-Note, that you *can* use the CLI from another machine, but then you will need to
-set up a proxy server in front of Krill and make sure that it has a real HTTPS
+For you CA name, you can use alphanumeric characters, dashes and underscores,
+i.e. ``a-zA-Z0-9_``.
+
+Note that you can use the CLI from another machine, but then you will need to
+set up a proxy server in front of Krill and make sure that it has a real TLS
 certificate.
 
-You can use any name for your 'MY_CA' as long as it contains only the
-following characters: `a-zA-Z0-9_`
-
-Using environment variables saves a lot of typing down the line. In the somewhat
-unlikely event where you will need to manage multiple CAs under a single Krill
-instance, you can either override the default CA using the `--ca` option where
-applicable, or not use the `KRILL_CLI_MY_CA` environment variable.
-
-
-Start or Stop Krill
--------------------
+Starting and Stopping Krill
+---------------------------
 
 There is no standard script to start / stop Krill yet. We will add this in the
 near future.
 
-For now you could use something like the following, naive, script to start
-Krill. Just update the DATA_DIR variable to your real data directory, and make
-sure you saved your `krill.conf` file there.
+For now you could use the following example script to start Krill. Make sure to
+update the ``DATA_DIR`` variable to your real data directory, and make sure you
+saved your ``krill.conf`` file there.
 
 .. code-block:: bash
 
@@ -69,7 +67,7 @@ sure you saved your `krill.conf` file there.
   nohup $KRILL -c $CONF >$SCRIPT_OUT 2>&1 &
   echo $! > $KRILL_PID
 
-And then you can use the following, equally naive script, to stop it:
+You can use the following sample script to stop Krill:
 
 .. code-block:: bash
 
@@ -80,13 +78,13 @@ And then you can use the following, equally naive script, to stop it:
   kill `cat $KRILL_PID`
 
 
-Backup / Restore Krill
-----------------------
+Backup and Restore
+------------------
 
 To back-up Krill:
 
 * stop Krill
-* backup the `DATA_DIR`
+* backup the ``DATA_DIR``
 * start Krill
 
 We recommend that you stop Krill because there can be a race condition where
@@ -94,15 +92,15 @@ Krill was just in the middle of saving its state after performing a background
 operation. We will most likely add a process in future that will allow you to
 back up Krill in a consistent state while it is running.
 
-To restore Krill just restore the `DATA_DIR` and make sure that you refer to it
-in the configuration file that you use for your Krill instance.
+To restore Krill just restore the ``DATA_DIR`` and make sure that you refer to
+it in the configuration file that you use for your Krill instance.
 
 
-Disk Space used by Krill
-------------------------
+Used Disk Space
+---------------
 
-Krill stores all of its data under the `DATA_DIR`. For users who will operate a
-CA under an RIR / NIR parent the following sub-directories are relevant:
+Krill stores all of its data under the ``DATA_DIR``. For users who will operate
+a CA under an RIR / NIR parent the following sub-directories are relevant:
 
 +---------+------------------------------------------------------+
 | Dir     | Purpose                                              |
@@ -116,58 +114,59 @@ CA under an RIR / NIR parent the following sub-directories are relevant:
 | rfc8181 | Contains all messages exchanged with your repository |
 +---------+------------------------------------------------------+
 
-The space used by the latter two dirs can grow significantly over time. We think
-it may be a good idea to have an audit trail of all these exchanges. However, if
-space is a concern you can safely archive or delete the contents of these two
-directories.
+The space used by the latter two directories can grow significantly over time.
+We think it may be a good idea to have an audit trail of all these exchanges.
+However, if space is a concern you can safely archive or delete the contents of
+these two directories.
 
 In a future version of Krill we will most likely only store the exchanges where
 either an error was returned, or your Krill instance asked for a change to be
 made at the parent side: like requesting a new certificate, or publishing an
-object. The noise from the periodic exchanges where your CA asks the parent for
-its entitlements will then no longer be logged.
+object. The periodic exchanges where your CA asks the parent for its
+entitlements will then no longer be logged.
 
-Upgrade Krill
--------------
+Upgrading
+---------
 
 It is our goal that future versions of Krill will continue to work with the
 configuration files and saved data from version 0.4.1 and above. However, please
-read the Changelog to be sure.
+read the changelog to be sure.
 
-That being said the normal process would be to:
+The normal process would be to:
 
-* install the new version of Krill
-* stop the running Krill instance
-* start Krill again, using the new binary, and the same config
+  * Install the new version of Krill
+  * Stop the running Krill instance
+  * Start Krill again, using the new binary, and the same configuration
 
-Note that after a restart you may see a message like this in your logfile:
+Note that after a restart you may see a message like this in your log file:
 
 .. code-block:: text
 
-  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error: 'missing field `stats` at line 296 column 1'. Will fall back to events.
+  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not
+  deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error:
+  'missing field `stats` at line 296 column 1'. Will fall back to events.
 
-You can ignore this message. Krill is telling you that the definition of a
-struct has changed and therefore it cannot use the snapshot.json file that it
+You can safely ignore this message. Krill is telling you that the definition of
+a struct has changed and therefore it cannot use the snapshot.json file that it
 normally uses for efficiency. Instead it needs to build up the current state by
 explicitly re-applying all the events that happened to your CA and/or embedded
 publication server.
 
-Set up your Krill CA
---------------------
+Setting up Your Certificate Authority
+-------------------------------------
 
 So you got Krill running and configured as above. Now it's time to set up your
 own Certificate Authority (CA) in Krill. This involves the following steps:
 
-* create your CA
-* retrieve your CA's 'child request'
-* retrieve your CA's 'publisher request'
-* upload the 'child request' to your parent
-* save the 'parent response'
-* upload the 'publisher request' to your publisher (usually your parent)
-* save the 'repository response'
-* update the repository for your CA using the 'repository response'
-* add the parent using the 'parent response'
-
+  * Create your CA
+  * Retrieve your CA's 'child request'
+  * Retrieve your CA's 'publisher request'
+  * Upload the 'child request' to your parent
+  * Save the 'parent response'
+  * Upload the 'publisher request' to your publisher (usually your parent)
+  * Save the 'repository response'
+  * Update the repository for your CA using the 'repository response'
+  * Add the parent using the 'parent response'
 
 .. code-block:: bash
 
@@ -180,7 +179,7 @@ own Certificate Authority (CA) in Krill. This involves the following steps:
   # retrieve your CA's 'publisher request'
   krillc repo request > publisher_request.xml
 
-Then upload the XML files to your parent. And save the response XML files.
+Next, upload the XML files to your parent and save the response XML files.
 
 .. code-block:: bash
 
@@ -190,19 +189,19 @@ Then upload the XML files to your parent. And save the response XML files.
   # add the parent using the 'parent response'
   krillc parents add --parent myparent --rfc8183 ./parent-response.xml
 
-Note that you can use any local name for `--parent`. This is the name that Krill
-will show to you. Similarly Krill will use your local CA name which you set in
-the `KRILL_CLI_MY_CA` ENV variable. However, the parent response includes the
-names (or handles as they are called in the RFC) by which it refers to itself,
-and your CA. Krill will make sure that it uses these names in the communication
-with the parent. There is no need for these names to be the same.
+Note that you can use any local name for ``--parent``. This is the name that
+Krill will show to you. Similarly, Krill will use your local CA name which you
+set in the ```KRILL_CLI_MY_CA`` ENV variable. However, the parent response
+includes the names (or handles as they are called in the RFC) by which it refers
+to itself, and your CA. Krill will make sure that it uses these names in the
+communication with the parent. There is no need for these names to be the same.
 
 
-Managing Route Origin Authorizations (ROAs)
-"""""""""""""""""""""""""""""""""""""""""""
+Managing Route Origin Authorisations (ROAs)
+-------------------------------------------
 
-Krill lets users create Route Origin Authorizations (ROAs), the signed objects
-that state which Autonomous System (AS) is authorized to originate one of your
+Krill lets users create Route Origin Authorisations (ROAs), the signed objects
+that state which Autonomous System (AS) is authorised to originate one of your
 prefixes, along with the maximum prefix length it may have.
 
 You can update ROAs through the command line by submitting a plain text file
@@ -215,38 +214,22 @@ with the following format:
 
    A: 10.0.0.0/24 => 64496
    A: 10.1.0.0/16-20 => 64496   # Add prefix with max length
-   R: 10.0.3.0/24 => 64496      # Remove existing authorization
+   R: 10.0.3.0/24 => 64496      # Remove existing authorisation
 
 You can then add this to your CA:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
 
        .. code-block:: text
 
          $ krillc roas update --delta ./roas.txt
 
-    .. tab-container:: api
-       :title: api
-
-       See: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
-
 If you followed the steps above then you would get an error, because there is no
-authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
+authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
 
-
-List ROAs
-"""""""""
+Listing ROAs
+""""""""""""
 
 You can list ROAs in the following way:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
 
        .. code-block:: text
 
@@ -254,21 +237,11 @@ You can list ROAs in the following way:
           10.0.0.0/24 => 64496
           10.1.0.0/16-20 => 64496
 
-    .. tab-container:: api
-       :title: api
+Displaying History
+------------------
 
-       See: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
-
-
-History
-"""""""
-
-You can show the history of all the things that happened to your CA:
-
-.. content-tabs::
-
-    .. tab-container:: cli
-       :title: krillc
+You can show the history of all the things that happened to your CA using the
+``history`` command.
 
        .. code-block:: text
 
@@ -282,8 +255,3 @@ You can show the history of all the things that happened to your CA:
           id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
           id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
           id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
-
-    .. tab-container:: api
-       :title: api
-
-       See: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`

@@ -53,9 +53,9 @@ discuss them on our `RPKI mailing list
    :name: toc-krill
 
    installation
+   get-started
    running
    running-docker
-   get-started
    using-cli
    using-api
    manage-cas

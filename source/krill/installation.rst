@@ -16,7 +16,7 @@ operations that need to be performed by the Krill CA have a negligible
 performance and memory impact on any modern day machine.
 
 When you publish ROAs yourself using the Krill publication server in combination
-with Rsyncd and a webserver of your choice, you will see traffic from several
+with Rsyncd and a web server of your choice, you will see traffic from several
 hundred relying party software tools querying every few minutes. The total
 amount of traffic is also negligible for any modern day situation.
 
@@ -25,8 +25,7 @@ well protected but a Hardware Security Module (HSM) to store the keys is
 certainly not necessary and at this point not even possible.
 
 .. Note:: For reference, NLnet Labs runs Krill and serves ROAs to the world
-          using the smallest Virtual Machine they could find (2 CPU / 2GB RAM /
-          60GB disk).
+          using a 2 CPU / 2GB RAM / 60GB disk virtual machine.
 
 Installing with Cargo
 ---------------------
