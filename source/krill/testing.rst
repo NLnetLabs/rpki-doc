@@ -29,9 +29,8 @@ repeat command line arguments for these:
 In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.
 
-
 Add a CA
-""""""""
+--------
 
 When adding a CA you need to choose a handle, essentially just a name. The
 term "handle" comes from RFC 8183 and is used in the communication protocol
@@ -45,13 +44,13 @@ as it would interfere with the communication between parent and child CAs, as
 well as the publication repository.
 
 CLI
----
+"""
        .. code-block:: text
 
           $ krillc add
 
 API
----
+"""
 
        See: :krill_api_ca_post:`POST /v1/cas <cas>`
 
@@ -61,13 +60,13 @@ order to do anything useful with a CA you will first have to add at least one
 parent to it, and then most likely some Route Authorizations and/or child CAs.
 
 List CAs
-""""""""
+--------
 
 You can list all handles (names) for the existing CAs in krill using the following
 command:
 
 CLI
----
+"""
        .. code-block:: text
 
           $ krillc list
@@ -75,18 +74,18 @@ CLI
           ca
 
 API
----
+"""
 
        See: :krill_api_ca_get:`GET /v1/cas <cas>`
 
 Show CA Details
-"""""""""""""""
+---------------
 
 You can use the following to show the details of the embedded TA, if you enabled
 it:
 
 CLI
----
+"""
        .. code-block:: text
 
           $ krillc show --ca ta
@@ -128,45 +127,12 @@ CLI
           <none>
 
 API
----
+"""
 
        See: :krill_api_ca_get:`GET /v1/cas/ta <cas~1{ca_handle}>`
 
-Or for your new CA:
-
-CLI
----
-          $ krillc show
-          Name:     ca
-
-          Base uri: rsync://localhost/repo/ca/
-          RRDP uri: https://localhost:3000/rrdp/notification.xml
-
-          ID cert PEM:
-          -----BEGIN CERTIFICATE-----
-          MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
-          RDA4RUI5MTk5NkJFNkFERDNGOEYyQzUzQTUxNTg4RTY4NDJCMCAXDTE5MTIwMzEy
-          ..
-          zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
-          +qLiXg2G+8s8u/1PW7PVYg==
-          -----END CERTIFICATE-----
-
-          Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
-
-          Total resources: <none>
-
-          Parents:
-          <none>
-          Children:
-          <none>
-
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
-
 Add a Child to the Embedded TA
-""""""""""""""""""""""""""""""
+------------------------------
 
 If you are using an embedded TA for testing then you will first need to add your
 new CA "ca" to it. Krill supports two communication modes:

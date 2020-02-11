@@ -7,7 +7,7 @@ CAs in Krill:
   * Add a CA to Krill
   * Add a parent to a CA
   * Add a child to a CA
-  * Manage Route Authorizations (ROAs) in a CA
+  * Manage Route Authorisations (ROAs) in a CA
   * View the status of a CA
   * Perform a key roll
 
@@ -24,8 +24,8 @@ In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.
 
 
-Add a CA
-""""""""
+Adding Your CA
+--------------
 
 When adding a CA you need to choose a handle, essentially just a name. The
 term "handle" comes from RFC 8183 and is used in the communication protocol
@@ -38,198 +38,86 @@ others recognise your organisation. Once set, the handle cannot be be changed
 as it would interfere with the communication between parent and child CAs, as
 well as the publication repository.
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc add
+  $ krillc add
 
-API
----
-
-       See: :krill_api_ca_post:`POST /v1/cas <cas>`
+API Call: :krill_api_ca_post:`POST /v1/cas <cas>`
 
 When a CA has been added, it is registered to publish locally in the Krill
 instance where it exists, but other than that it has no configuration yet. In
 order to do anything useful with a CA you will first have to add at least one
-parent to it, and then most likely some Route Authorizations and/or child CAs.
+parent to it, followed by some Route Origin Authorisations and/or child CAs.
 
-List CAs
-""""""""
+Listing CAs
+-----------
 
-You can list all handles (names) for the existing CAs in krill using the following
-command:
+You can list all handles (names) for the existing CAs in krill using the
+following command:
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc list
-          ta
-          ca
+  $ krillc list
+  ta
+  ca
 
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas <cas>`
+API Call: :krill_api_ca_get:`GET /v1/cas <cas>`
 
 Show CA Details
-"""""""""""""""
+---------------
 
-You can use the following to show the details of the embedded TA, if you enabled
-it:
+You can use the following command to show the details of your new CA:
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc show --ca ta
-          Name:     ta
+  $ krillc show
+  Name:     ca
 
-          Base uri: rsync://localhost/repo/ta/
-          RRDP uri: https://localhost:3000/rrdp/notification.xml
+  Base uri: rsync://localhost/repo/ca/
+  RRDP uri: https://localhost:3000/rrdp/notification.xml
 
-          ID cert PEM:
-          -----BEGIN CERTIFICATE-----
-          MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2MUE1
-          QkIzNDBBMDM4M0U4NDdENjI0MThDQUMwOTIxQUJCN0M4NTU1MCAXDTE5MTIwMzEx
-          ..
-          Yge7BolTITNX8XBzDdTr91TgUKEtDEGlNh6sYOONJW9rQxZIsDIdTeBoPSQKCdXk
-          D13RgMxQSjycIfAeIBo9yg==
-          -----END CERTIFICATE-----
+  ID cert PEM:
+  -----BEGIN CERTIFICATE-----
+  MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
+  RDA4RUI5MTk5NkJFNkFERDNGOEYyQzUzQTUxNTg4RTY4NDJCMCAXDTE5MTIwMzEy
+  ..
+  zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
+  +qLiXg2G+8s8u/1PW7PVYg==
+  -----END CERTIFICATE-----
 
-          Hash: 85041ff6bf2d8edf4e02c716e8be9f4dd49e2cc8aa578213556072bab75575ee
+  Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
 
-          Total resources:
-              ASNs: AS0-AS4294967295
-              IPv4: 0.0.0.0/0
-              IPv6: ::/0
+  Total resources: <none>
 
-          Parents:
-          Handle: ta Kind: This CA is a TA
+  Parents:
+  <none>
+  Children:
+  <none>
 
-          Resource Class: 0
-          Parent: ta
-          State: active    Resources:
-              ASNs: AS0-AS4294967295
-              IPv4: 0.0.0.0/0
-              IPv6: ::/0
-          Current objects:
-            1529A3C0E47EA38C1101DECDD6330E932E3AB98F.crl
-            1529A3C0E47EA38C1101DECDD6330E932E3AB98F.mft
+API Call: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
-          Children:
-          <none>
+Adding a Parent to your CA
+--------------------------
 
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ta <cas~1{ca_handle}>`
-
-Or for your new CA:
-
-CLI
----
-          $ krillc show
-          Name:     ca
-
-          Base uri: rsync://localhost/repo/ca/
-          RRDP uri: https://localhost:3000/rrdp/notification.xml
-
-          ID cert PEM:
-          -----BEGIN CERTIFICATE-----
-          MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
-          RDA4RUI5MTk5NkJFNkFERDNGOEYyQzUzQTUxNTg4RTY4NDJCMCAXDTE5MTIwMzEy
-          ..
-          zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
-          +qLiXg2G+8s8u/1PW7PVYg==
-          -----END CERTIFICATE-----
-
-          Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
-
-          Total resources: <none>
-
-          Parents:
-          <none>
-          Children:
-          <none>
-
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
-
-Add a Child to the embedded TA
-""""""""""""""""""""""""""""""
-
-If you are using an embedded TA for testing then you will first need to add your
-new CA "ca" to it. Krill supports two communication modes:
-
-1. embedded, meaning the both the parent and child CA live in the same Krill
-2. rfc6492, meaning that the official RFC protocol is used
-
-Here we will document the second option. It's slightly less efficient, but it's
-the same as what you would need to delegate from your CA to remote CAs.
+You can now add a parent to your Certificate Authority. You do this by
+generating a request file, which needs to be provided to your parent. Each RIR
+and some NIRs offer the option to run Delegated RPKI. You will need to log into
+their respective portals, upload the XML request file and in return you will
+receive a response file which you need to supply to Krill.
 
 Step 1: RFC 8183 request XML
-----------------------------
+""""""""""""""""""""""""""""
 
 First you will need to get the RFC 8183 request XML from your child.
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc parents myid > myid.xml
+  $ krillc parents myid > myid.xml
 
-API
----
+API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
 
-       See: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
-
-Step 2: Add child "ca" to "ta"
-------------------------------
-
-To add a child, you will need to:
-  1. Choose a unique local name (handle) that the parent will use for the child
-  2. Choose initial resources (asn, ipv4, ipv6)
-  3. Have an RFC 8183 request
-
-And in this case we also need to override the ENV variable and indicate that we
-want to add this child to the CA "ta". The following command will add the child,
-and the RFC 8183 XML from the "ta":
-
-CLI
----
-       .. code-block:: text
-
-          $ krillc children add --ca ta \
-                                --child ca \
-                                --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
-                                --rfc8183 myid.xml > parent-res.xml
-
-API
----
-       See: :krill_api_ca_post:`POST /v1/cas/ta/children <cas~1{ca_handle}~1children>`
-
-The default response is the RFC 8183 parent response XML file. Or, if you set
-`--format json` you will get the plain API reponse.
-
-If you need the response again, you can ask the "ta" again:
-
-CLI
----
-       .. code-block:: text
-
-          $ krillc children response --ca "ta" --child "ca"
-
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ta/children/ca/contact <cas~1{ca_handle}~1children~1{child_handle}~1contact>`
-
-Step 3: Add parent "ta" to "ca"
--------------------------------
+Step 2: Add parent "ta" to "ca"
+"""""""""""""""""""""""""""""""
 
 You can now add "ta" as a parent to your CA "ca". You need to choose a locally
 unique handle that your CA will use to refer to this parent. Here we simply use
@@ -237,86 +125,67 @@ the handle "ta" again, but in case you have multiple parents you may want to
 refer to them by names that make sense in your context.
 
 Note that whichever handle you choose, your CA will use the handles that the
-parent response included for itself *and* for your CA in its comminication with
+parent response included for itself *and* for your CA in its communication with
 this parent. I.e. you may want to inspect the response and use the same handle
 for the parent (parent_handle attribute), and do not be surprised or alarmed if
 the parent refers to your ca (child_handle attribute) by some seemingly random
 name. Some parents do this to ensure unicity.
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc parents add --parent ripencc --rfc8183 ./parent-res.xml
+  $ krillc parents add --parent ripencc --rfc8183 ./parent-res.xml
 
-API
----
-
-       See: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
+API Call: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
 
 Now you should see that your "child" is certified:
 
-CLI
----
+.. code-block:: text
 
-       .. code-block:: text
+  $ krillc show
+  Name:     ca
 
-          $ krillc show
-          Name:     ca
+  Base uri: rsync://localhostrepo/ca/
+  RRDP uri: https://localhost:3000/rrdp/notification.xml
 
-          Base uri: rsync://localhostrepo/ca/
-          RRDP uri: https://localhost:3000/rrdp/notification.xml
+  ID cert PEM:
+  -----BEGIN CERTIFICATE-----
+  MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
+  RDA4RUI5MTk5NkJFNkFERDNGOEYyQzUzQTUxNTg4RTY4NDJCMCAXDTE5MTIwMzEy
+  ..
+  zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
+  +qLiXg2G+8s8u/1PW7PVYg==
+  -----END CERTIFICATE-----
 
-          ID cert PEM:
-          -----BEGIN CERTIFICATE-----
-          MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
-          RDA4RUI5MTk5NkJFNkFERDNGOEYyQzUzQTUxNTg4RTY4NDJCMCAXDTE5MTIwMzEy
-          ..
-          zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
-          +qLiXg2G+8s8u/1PW7PVYg==
-          -----END CERTIFICATE-----
+  Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
 
-          Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
+  Total resources:
+      ASNs: 64496
+      IPv4: 192.0.2.0/24
+      IPv6: 2001:db8::/32
 
-          Total resources:
-              ASNs:
-              IPv4: 10.0.0.0/8
-              IPv6: 2001:db8::/32
+  Parents:
+  Handle: ripencc Kind: RFC 6492 Parent
 
-          Parents:
-          Handle: ripencc Kind: RFC 6492 Parent
+  Resource Class: 0
+  Parent: ripencc
+  State: active    Resources:
+      ASNs: 64496
+      IPv4: 192.0.2.0/24
+      IPv6: 2001:db8::/32
+  Current objects:
+    553A7C2E751CA0B04B49CB72E30EB5684F861987.crl
+    553A7C2E751CA0B04B49CB72E30EB5684F861987.mft
 
-          Resource Class: 0
-          Parent: ripencc
-          State: active    Resources:
-              ASNs:
-              IPv4: 10.0.0.0/8
-              IPv6: 2001:db8::/32
-          Current objects:
-            553A7C2E751CA0B04B49CB72E30EB5684F861987.crl
-            553A7C2E751CA0B04B49CB72E30EB5684F861987.mft
+  Children:
+  <none>
 
-          Children:
-          <none>
-
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
-
-Add a real CA as your parent
-""""""""""""""""""""""""""""
-
-Similar to above, except that you only need to generate the XML in step 1, hand
-it over to your parent CA through whatever function they provide, and then get
-the response.xml from them and add it your child as described in step 3.
-
+API Call: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 
 ROAs
-""""
+----
 
-Krill lets users create Route Origin Authorizations (ROAs), the signed objects
-that state which Autonomous System (AS) is authorized to originate one of your
+Krill lets users create Route Origin Authorisations (ROAs), the signed objects
+that state which Autonomous System (AS) is authorised to originate one of your
 prefixes, along with the maximum prefix length it may have.
 
 You can update ROAs through the command line by submitting a plain text file
@@ -327,68 +196,49 @@ with the following format:
    # Some comment
      # Indented comment
 
-   A: 10.0.0.0/24 => 64496
-   A: 10.1.0.0/16-20 => 64496   # Add prefix with max length
-   R: 10.0.3.0/24 => 64496      # Remove existing authorization
+   A: 192.0.2.0/24 => 64496
+   A: 2001:db8::/32-48 => 64496   # Add prefix with max length
+   R: 198.51.100.0/24 => 64496    # Remove existing authorisation
 
 You can then add this to your CA:
 
-CLI
----
-       .. code-block:: text
+.. code-block:: text
 
-         $ krillc roas update --delta ./roas.txt
+ $ krillc roas update --delta ./roas.txt
 
-API
----
-
-       See: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
+API Call: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
 If you followed the steps above then you would get an error, because there is no
-authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
-then you should see no response, and no error.
+authorisation for ``198.51.100.0/24 => 64496``. If you remove the line and
+submit again, then you should see no response and no error.
 
-List ROAs
-"""""""""
+You can list Route Origin Authorisations as well:
 
-You can list Route Origin Authorizations as well:
+.. code-block:: text
 
-CLI
----
-       .. code-block:: text
+  $ krillc roas list
+  192.0.2.0/24 => 64496
+  2001:db8::/32-48 => 64496
 
-          $ krillc roas list
-          10.0.0.0/24 => 64496
-          10.1.0.0/16-20 => 64496
-
-API
----
-
-       See: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
+API Call: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
 
 History
-"""""""
+-------
 
 You can show the history of all the things that happened to your CA:
 
-CLI
----
+.. code-block:: text
 
-       .. code-block:: text
+  $ krillc history
+  id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
+  id: ca version: 1 details: added RFC6492 parent 'ripencc'
+  id: ca version: 2 details: added resource class with name '0'
+  id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
+  id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
+  id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
+  id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
+  id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
+  id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
 
-          $ krillc history
-          id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
-          id: ca version: 1 details: added RFC6492 parent 'ripencc'
-          id: ca version: 2 details: added resource class with name '0'
-          id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-          id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-          id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
-          id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
-          id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
-          id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
-
-API
----
-
-       See: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`
+API Call: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`
