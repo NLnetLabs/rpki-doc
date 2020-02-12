@@ -208,18 +208,19 @@ with the following format:
 
 .. code-block:: text
 
-   # Some comment
-     # Indented comment
+ # Some comment
+   # Indented comment
 
-   A: 10.0.0.0/24 => 64496
-   A: 10.1.0.0/16-20 => 64496   # Add prefix with max length
-   R: 10.0.3.0/24 => 64496      # Remove existing authorisation
+  A: 192.0.2.0/24 => 64496
+  A: 2001:db8::/32-48 => 64496   # Add prefix with max length
+  R: 198.51.100.0/24 => 64496    # Remove existing authorisation
 
 You can then add this to your CA:
 
-       .. code-block:: text
+.. code-block:: text
 
-         $ krillc roas update --delta ./roas.txt
+ $ krillc roas update --delta ./roas.txt
+
 
 If you followed the steps above then you would get an error, because there is no
 authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
@@ -227,11 +228,12 @@ then you should see no response, and no error.
 
 You can list ROAs in the following way:
 
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc roas list
-          10.0.0.0/24 => 64496
-          10.1.0.0/16-20 => 64496
+  $ krillc roas list
+  192.0.2.0/24 => 64496
+  2001:db8::/32-48 => 64496
+
 
 Displaying History
 ------------------
@@ -239,15 +241,13 @@ Displaying History
 You can show the history of all the things that happened to your CA using the
 ``history`` command.
 
-       .. code-block:: text
+.. code-block:: text
 
-          $ krillc history
-          id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
-          id: ca version: 1 details: added RFC6492 parent 'ripencc'
-          id: ca version: 2 details: added resource class with name '0'
-          id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-          id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-          id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
-          id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
-          id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
-          id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
+  $ krillc history
+  id: ca version: 0 details: Initialised with ID key hash: 69ee7ef4dae43cd1dcd9ee65b8a1c7fd0c2499c3
+  id: ca version: 1 details: added RFC6492 parent 'ripencc'
+  id: ca version: 2 details: added resource class with name '0'
+  id: ca version: 3 details: requested certificate for key (hash) 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 4 details: activating pending key 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 5 details: added route authorization: '192.0.2.0/24 => 64496'
+  id: ca version: 6 details: added route authorization: '2001:db8::/32 => 64496'
