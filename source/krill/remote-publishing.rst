@@ -13,7 +13,7 @@ roles.
 Krill as Repository Server
 --------------------------
 
-The repository functions for Krill can be accessed through the `publishers`
+The repository functions for Krill can be accessed through the ``publishers``
 subcommand in the CLI:
 
 .. code-block:: text
@@ -127,7 +127,7 @@ API Call: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{
 Publish at a Remote Repository
 ------------------------------
 
-Controlling your CA's repository server is done through the `repo` subcommand
+Controlling your CA's repository server is done through the ``repo`` subcommand
 of the CLI:
 
 .. code-block:: text
