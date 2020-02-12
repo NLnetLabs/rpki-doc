@@ -124,9 +124,9 @@ this should be as simple as running:
 
     sudo apt install -y libssl-dev openssl pkg-config
 
-    .. Note:: For reference, NLnet Labs uses Ubuntu Xenial (16.04.5 LTS) in
-              their Travis CI environment. The production instance runs on
-              Debian 10.2.
+.. Note:: For reference, NLnet Labs uses Ubuntu Xenial (16.04.5 LTS) in
+          their Travis CI environment. The production instance runs on
+          Debian 10.2.
 
 Building
 --------

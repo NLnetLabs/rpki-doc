@@ -17,8 +17,8 @@ repeat command line arguments for these:
 .. code-block:: text
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
-   $ export KRILL_CLI_TOKEN="change-the-combination-on-my-luggage"
-   $ export KRILL_CLI_MY_CA="ca"
+   $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
+   $ export KRILL_CLI_MY_CA="Acme-Corp-HQ"
 
 In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.
@@ -142,10 +142,10 @@ Now you should see that your "child" is certified:
 .. code-block:: text
 
   $ krillc show
-  Name:     ca
+  Name:     Acme-Corp-HQ
 
-  Base uri: rsync://localhostrepo/ca/
-  RRDP uri: https://localhost:3000/rrdp/notification.xml
+  Base uri: rsync://rsync.rpki.example.net/repo/ca/
+  RRDP uri: https://rrdp.rpki.example.net/rrdp/notification.xml
 
   ID cert PEM:
   -----BEGIN CERTIFICATE-----
