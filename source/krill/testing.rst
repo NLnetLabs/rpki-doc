@@ -23,8 +23,8 @@ repeat command line arguments for these:
 .. code-block:: text
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
-   $ export KRILL_CLI_TOKEN="change-the-combination-on-my-luggage"
-   $ export KRILL_CLI_MY_CA="ca"
+   $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
+   $ export KRILL_CLI_MY_CA="Acme-Corp-International"
 
 In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.

@@ -1,7 +1,7 @@
 .. _doc_krill_xrunning:
 
-Running Krill
-=============
+Running the Daemon
+==================
 
 Krill has an embedded web server, and saves its status on disk as json files.
 Krill does not depend on any database, but will need to be configured and told
@@ -50,13 +50,13 @@ By default Krill will generate a 2048 bit RSA key and self-signed certificate
 when it's first started.
 
 We recommend, at least for now, that you run Krill with this default, and use a
-proxy server such as Nginx if you intend to make Krill available to the
-internet. Industry standard proxy servers such as Nginx are much better suited
-to deal with the sometimes-not-so-well-meaning people on the internet, and
-implement best practices regarding HTTPS.
+proxy server such as Nginx or Apache if you intend to make Krill available to
+the internet. Industry standard proxy servers are much better suited to deal
+with the sometimes-not-so-well-meaning people on the Internet, and implement
+best practices regarding HTTPS.
 
-Also, setting up a widely accepted HTTPS certificate, e.g. through Let's
-Encrypt, is well documented for these servers.
+Also, setting up a widely accepted HTTPS certificate such as Let's Encrypt is
+well documented for these servers.
 
 Minimal Configuration
 ---------------------
@@ -72,9 +72,9 @@ if you want to expose Krill to other users:
 
 .. code-block:: text
 
-   # Specify the ip address and port number that the server will use.
-   #ip             = "localhost"
-   #port           = 3000
+  # Specify the ip address and port number that the server will use.
+  #ip             = "localhost"
+  #port           = 3000
 
 
 Data

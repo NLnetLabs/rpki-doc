@@ -1,7 +1,7 @@
 .. _doc_krill_running_docker:
 
-Running Krill with Docker
-=========================
+Running with Docker
+===================
 
 This page explains the additional features and differences compared to running
 Krill with Cargo that you need to be aware of when running Krill with Docker.
@@ -33,8 +33,8 @@ extra things like log level and volume mounts (more on this below).
 
    $ docker run -d --name krill -p 127.0.0.1:3000:3000 \
      -e KRILL_LOG_LEVEL=debug \
-     -e KRILL_FQDN=some.domain \
-     -e KRILL_AUTH_TOKEN=5tT8I7ygoDh9k8I \
+     -e KRILL_FQDN=rpki.example.net \
+     -e KRILL_AUTH_TOKEN=correct-horse-battery-staple \
      -e TZ=Europe/Amsterdam \
      -v krill_data:/var/krill/data/ \
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
@@ -74,7 +74,7 @@ locally running Krill daemon via its command-line interface (CLI):
 
     $ alias krillc='docker exec \
       -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
-      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
+      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \
       krill krillc'
 
     $ krillc list -f json
@@ -91,8 +91,8 @@ servers. Using a shell alias simplifies this considerably:
 .. code-block:: bash
 
     $ alias krillc='docker run --rm \
-      -e KRILL_CLI_SERVER=https://some.domain/ \
-      -e KRILL_CLI_TOKEN=<SOME_TOKEN> \
+      -e KRILL_CLI_SERVER=https://rpki.example.net/ \
+      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \
       -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.4.2 krillc'
 
    $ krillc list -f json
@@ -202,7 +202,7 @@ To set these environment variables use ``-e`` when invoking ``docker``, e.g.:
 
 .. code-block:: bash
 
-   docker run -e KRILL_FQDN=https://some.domain/
+   docker run -e KRILL_FQDN=https://rpki.example.net/
 
 Using a config file
 -------------------

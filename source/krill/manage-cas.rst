@@ -18,7 +18,7 @@ repeat command line arguments for these:
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
-   $ export KRILL_CLI_MY_CA="Acme-Corp-HQ"
+   $ export KRILL_CLI_MY_CA="Acme-Corp-International"
 
 In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.
@@ -58,8 +58,7 @@ following command:
 .. code-block:: text
 
   $ krillc list
-  ta
-  ca
+  Acme-Corp-International
 
 API Call: :krill_api_ca_get:`GET /v1/cas <cas>`
 
@@ -71,7 +70,7 @@ You can use the following command to show the details of your new CA:
 .. code-block:: text
 
   $ krillc show
-  Name:     ca
+  Name:     Acme-Corp-International
 
   Base uri: rsync://localhost/repo/ca/
   RRDP uri: https://localhost:3000/rrdp/notification.xml
@@ -105,8 +104,14 @@ and some NIRs offer the option to run Delegated RPKI. You will need to log into
 their respective portals, upload the XML request file and in return you will
 receive a response file which you need to supply to Krill.
 
-Step 1: RFC 8183 request XML
-""""""""""""""""""""""""""""
+* LACNIC: http://milacnic.lacnic.net/
+* ARIN: https://account.arin.net/public/login
+* RIPE NCC: https://my.ripe.net/
+* APNIC: https://myapnic.net
+* AFRINIC: https://my.afrinic.net/login
+
+Step 1: Get the Request XML File
+""""""""""""""""""""""""""""""""
 
 First you will need to get the RFC 8183 request XML from your child.
 
@@ -116,13 +121,12 @@ First you will need to get the RFC 8183 request XML from your child.
 
 API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
 
-Step 2: Add parent "ta" to "ca"
+Step 2: Add a Parent to Your CA
 """""""""""""""""""""""""""""""
 
-You can now add "ta" as a parent to your CA "ca". You need to choose a locally
-unique handle that your CA will use to refer to this parent. Here we simply use
-the handle "ta" again, but in case you have multiple parents you may want to
-refer to them by names that make sense in your context.
+You can now add parent to your CA "Acme-Corp-International". You need to choose
+a locally unique handle that your CA will use to refer to this parent. Here we
+use the handle "ripencc" as an example.
 
 Note that whichever handle you choose, your CA will use the handles that the
 parent response included for itself *and* for your CA in its communication with
@@ -142,7 +146,7 @@ Now you should see that your "child" is certified:
 .. code-block:: text
 
   $ krillc show
-  Name:     Acme-Corp-HQ
+  Name:     Acme-Corp-International
 
   Base uri: rsync://rsync.rpki.example.net/repo/ca/
   RRDP uri: https://rrdp.rpki.example.net/rrdp/notification.xml
@@ -231,14 +235,13 @@ You can show the history of all the things that happened to your CA:
 .. code-block:: text
 
   $ krillc history
-  id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
+  id: ca version: 0 details: Initialised with ID key hash: 69ee7ef4dae43cd1dcd9ee65b8a1c7fd0c2499c3
   id: ca version: 1 details: added RFC6492 parent 'ripencc'
   id: ca version: 2 details: added resource class with name '0'
-  id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-  id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-  id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
-  id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
-  id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
-  id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
+  id: ca version: 3 details: requested certificate for key (hash) 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 4 details: activating pending key 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 5 details: added route authorization: '192.0.2.0/24 => 64496'
+  id: ca version: 6 details: added route authorization: '2001:db8::/32 => 64496'
+
 
 API Call: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`

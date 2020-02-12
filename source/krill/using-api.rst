@@ -1,7 +1,7 @@
 .. _doc_krill_using_api:
 
-Using the Krill API
-===================
+Using the API
+=============
 
 The Krill API is a primarily JSON based REST-like HTTPS API with `bearer token
 <https://swagger.io/docs/specification/authentication/bearer-authentication/>`_

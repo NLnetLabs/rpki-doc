@@ -1,5 +1,5 @@
-Getting Started with Krill
-==========================
+Getting Started
+===============
 
 This page describes how to get started with Krill in a common scenario: running
 as a child of a Regional or National Internet Registry (RIR or NIR) parent,
@@ -17,7 +17,7 @@ name ``krill.conf`` and store it under your Krill data_dir.
 .. code-block:: text
 
   data_dir       = "/path/to/data"
-  auth_token     = "your-secret"
+  auth_token     = "correct-horse-battery-staple"
 
 Note, you can find a full example configuration file with defaults in `the
 GitHub repository
@@ -33,9 +33,9 @@ use the Krill CLI on the same machine where Krill is running:
 
 .. code-block:: bash
 
-  export KRILL_CLI_TOKEN="<your-token>"
+  export KRILL_CLI_TOKEN="correct-horse-battery-staple"
   export KRILL_CLI_SERVER="https://localhost:3000/"
-  export KRILL_CLI_MY_CA="<your-ca-name>"
+  export KRILL_CLI_MY_CA="Acme-Corp-International"
 
 For you CA name, you can use alphanumeric characters, dashes and underscores,
 i.e. ``a-zA-Z0-9_``.
