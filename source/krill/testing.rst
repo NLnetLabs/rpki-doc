@@ -1,3 +1,5 @@
+.. _doc_krill_testing:
+
 Running a Test Environment
 ==========================
 

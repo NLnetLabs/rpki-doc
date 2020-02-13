@@ -104,11 +104,11 @@ and some NIRs offer the option to run Delegated RPKI. You will need to log into
 their respective portals, upload the XML request file and in return you will
 receive a response file which you need to supply to Krill.
 
-* LACNIC: http://milacnic.lacnic.net/
-* ARIN: https://account.arin.net/public/login
-* RIPE NCC: https://my.ripe.net/
+* AFRINIC: https://my.afrinic.net/
 * APNIC: https://myapnic.net
-* AFRINIC: https://my.afrinic.net/login
+* ARIN: https://account.arin.net/
+* LACNIC: http://milacnic.lacnic.net/
+* RIPE NCC: https://my.ripe.net/
 
 Step 1: Get the Request XML File
 """"""""""""""""""""""""""""""""
@@ -120,6 +120,15 @@ First you will need to get the RFC 8183 request XML from your child.
   $ krillc parents myid > myid.xml
 
 API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
+
+.. Warning:: ARIN does not support the RFC 8183 key exchange format yet, but
+             they do have it `on their roadmap
+             <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_.
+             You can still configure Delegated RPKI by transforming your request
+             XML using `this XSL file
+             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl`_
+             or `this form
+             <https://sed.js.org/?gist=3f08fb293c8825855bb26f2865161575>`_ before uploading it to ARIN.
 
 Step 2: Add a Parent to Your CA
 """""""""""""""""""""""""""""""
