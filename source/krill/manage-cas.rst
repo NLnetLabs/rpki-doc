@@ -126,9 +126,10 @@ API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}
              <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_.
              You can still configure Delegated RPKI by transforming your request
              XML using `this XSL file
-             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl`_
+             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_
              or `this form
-             <https://sed.js.org/?gist=3f08fb293c8825855bb26f2865161575>`_ before uploading it to ARIN.
+             <https://sed.js.org/?gist=3f08fb293c8825855bb26f2865161575>`_
+             before uploading it to ARIN.
 
 Step 2: Add a Parent to Your CA
 """""""""""""""""""""""""""""""
