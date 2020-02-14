@@ -8,6 +8,52 @@ with Docker. In case you intend to serve your RPKI certificate and ROAs to the
 world yourself or you want to offer this as a service to others, you will also
 need to have a public Rsyncd and HTTPS web server available.
 
+Quick Start
+-----------
+
+Assuming you have a newly installed Debian or Ubuntu machine, you will need to
+install OpenSSL, the C toolchain and Rust. You can then install Krill using
+Cargo.
+
+You can then create a data directory in a location of your choice, generate a
+basic configuration file specifying a token of your choice and referring to the
+data directory you just created. Finally, start Krill pointing to your
+configuration file.
+
+.. code-block:: bash
+
+  apt install build-essential libssl-dev openssl pkg-config curl
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  source ~/.cargo/env
+  cargo install krill
+  mkdir ~/data
+  krillc config simple --token correct-battery-horse-staple --data ~/data/ > ~/data/krill.conf
+  krill -c ~/data/krill.conf
+
+Krill now exposes its user interface and API on ``https://localhost:3000``
+using a self-signed TLS certificate. You can go to this address in a web
+browser, accept the certificate warning and you can start configuring your RPKI
+Certificate Authority.
+
+If you have an older version of Rust and Krill, you can update via:
+
+.. code-block:: bash
+
+   rustup update
+   cargo install -f krill
+
+If you want to try the master branch from the repository instead of a
+release version, you can run:
+
+.. code-block:: bash
+
+   cargo install --git https://github.com/NLnetLabs/krill.git
+
+.. Note:: Using a fully qualified domain name, configuring a real TLS
+          certificate such as Let's Encrypt, running on a different port and
+          exposing Krill securely to other machines is all possible, but goes
+          beyond the scope of this Quick Start.
+
 System Requirements
 -------------------
 
@@ -122,7 +168,7 @@ this should be as simple as running:
 
 .. code-block:: bash
 
-    sudo apt install -y libssl-dev openssl pkg-config
+    apt install libssl-dev openssl pkg-config
 
 .. Note:: For reference, NLnet Labs uses Ubuntu Xenial (16.04.5 LTS) in
           their Travis CI environment. The production instance runs on
@@ -131,26 +177,23 @@ this should be as simple as running:
 Building
 --------
 
-The easiest way to get Krill is to clone the repository and build it using
-Cargo:
+TThe easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-    git clone git@github.com:NLnetLabs/krill.git --branch v0.4.2 --depth 1
-    cd krill
+   cargo install routinator
 
-Now you can build the Krill binaries from the Rust source:
-
-.. code-block:: bash
-
-    cargo build --release
-
-This will build the following binaries:
+If you want to try the master branch from the repository instead of a
+release version, you can run:
 
 .. code-block:: bash
 
-   target/release/krill
-   target/release/krillc
+   cargo install --git https://github.com/NLnetLabs/krill.git
 
-You can copy these binaries to a location of your convenience or run them from
-this directory.
+If you want to update an installed version, you run the same command but
+add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
+version.
+
+The command will build Routinator and install it in the same directory
+that cargo itself lives in, likely ``$HOME/.cargo/bin``. This means
+Routinator will be in your path, too.

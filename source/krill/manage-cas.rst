@@ -104,11 +104,11 @@ and some NIRs offer the option to run Delegated RPKI. You will need to log into
 their respective portals, upload the XML request file and in return you will
 receive a response file which you need to supply to Krill.
 
-* AFRINIC: https://my.afrinic.net/
+* AFRINIC: https://my.afrinic.net
 * APNIC: https://myapnic.net
-* ARIN: https://account.arin.net/
-* LACNIC: http://milacnic.lacnic.net/
-* RIPE NCC: https://my.ripe.net/
+* ARIN: https://account.arin.net
+* LACNIC: https://milacnic.lacnic.net
+* RIPE NCC: https://my.ripe.net
 
 Step 1: Get the Request XML File
 """"""""""""""""""""""""""""""""
