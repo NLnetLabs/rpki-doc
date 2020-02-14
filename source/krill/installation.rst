@@ -177,11 +177,11 @@ this should be as simple as running:
 Building
 --------
 
-TThe easiest way to get Krill is to leave it to cargo by saying:
+The easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install routinator
+   cargo install krill
 
 If you want to try the master branch from the repository instead of a
 release version, you can run:
