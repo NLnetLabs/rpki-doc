@@ -12,13 +12,13 @@ Quick Start
 -----------
 
 Assuming you have a newly installed Debian or Ubuntu machine, you will need to
-install OpenSSL, the C toolchain and Rust. You can then install Krill using
-Cargo.
+install the C toolchain, OpenSSL, curl and Rust. You can then install Krill
+using Cargo.
 
-You can then create a data directory in a location of your choice, generate a
-basic configuration file specifying a token of your choice and referring to the
-data directory you just created. Finally, start Krill pointing to your
-configuration file.
+After the installation has completed, create a data directory in a location of
+your choice. Next, generate a basic configuration file specifying a secret token
+and make sure to refer to the data directory you just created. Finally, start
+Krill pointing to your configuration file.
 
 .. code-block:: bash
 
@@ -32,7 +32,7 @@ configuration file.
 
 Krill now exposes its user interface and API on ``https://localhost:3000``
 using a self-signed TLS certificate. You can go to this address in a web
-browser, accept the certificate warning and you can start configuring your RPKI
+browser, accept the certificate warning and start configuring your RPKI
 Certificate Authority.
 
 If you have an older version of Rust and Krill, you can update via:
