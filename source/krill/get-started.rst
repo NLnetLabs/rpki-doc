@@ -1,48 +1,26 @@
 Getting Started
 ===============
 
-This page describes how to get started with Krill in a common scenario: running
-as a child of a Regional or National Internet Registry (RIR or NIR) parent,
-using a publication point provided by the parent. In later sections, each
-component will be described in more detail.
+After the installation has completed, there are just two things you need to configure before you can start using Krill. First, you will need a a data directory, which will store everything Krill needs to run. Secondly, you will need to create a basic configuration file, specifying a secret token and the location of your data directory.
 
 Configuration
 -------------
 
-After the installation has completed, first create a configuration file
-containing the following directives, using your own values. You can give this
-file any name and store it anywhere, but here we will assume you will use the
-name ``krill.conf`` and store it under your Krill data_dir.
-
-.. code-block:: text
-
-  data_dir       = "/path/to/data"
-  auth_token     = "correct-horse-battery-staple"
-
-Note, you can find a full example configuration file with defaults in `the
-GitHub repository
-<https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
-
-We recommend that you do **not** make Krill available publicly. You can use
-the default where Krill will expose its API on ``https://localhost:3000/`` only.
-You do not need to have Krill available externally, unless you mean to provide
-certificates or a publication server to third parties.
-
-You can then set up the following environment variables so that you can easily
-use the Krill CLI on the same machine where Krill is running:
+The first step is to choose where you data directory is going to live and to create it. In this example we are simply creating it in our home directory.
 
 .. code-block:: bash
 
-  export KRILL_CLI_TOKEN="correct-horse-battery-staple"
-  export KRILL_CLI_SERVER="https://localhost:3000/"
-  export KRILL_CLI_MY_CA="Acme-Corp-Intl"
+  mkdir ~/data
 
-For you CA name, you can use alphanumeric characters, dashes and underscores,
-i.e. ``a-zA-Z0-9_``.
+Krill can generate a basic configuration file for you. We are going to specify the two required directives, a secret token and the path to the data directory, and then store it in this directory.
 
-Note that you can use the CLI from another machine, but then you will need to
-set up a proxy server in front of Krill and make sure that it has a real TLS
-certificate.
+.. code-block:: bash
+
+  krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
+
+You can find a full example configuration file with defaults in `the
+GitHub repository
+<https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
 Start and Stop the Daemon
 -------------------------
@@ -76,6 +54,25 @@ You can use the following sample script to stop Krill:
 
   kill `cat $KRILL_PID`
 
+Proxy and HTTPS
+---------------
+
+.. Warning:: We recommend that you do **not** make Krill available publicly.
+             You can use the default where Krill will expose its CLI, API and
+             UI on ``https://localhost:3000/`` only. You do not need to have
+             Krill available externally, unless you mean to provide
+             certificates or a publication server to third parties.
+
+Krill uses HTTPS and refuses to do plain HTTP. In theory Krill should be able to
+use a key pair and corresponding certificate signed by a web TA. However, this
+is untested.
+
+By default Krill will generate a 2048 bit RSA key and self-signed certificate
+when it's first started.
+
+We recommend that you run Krill with this default, and use a proxy server such
+as Nginx or Apache if you intend to make Krill available to the Internet. Also, setting up a widely accepted HTTPS certificate such as Let's Encrypt is
+well documented for these servers.
 
 Backup and Restore
 ------------------
@@ -150,104 +147,3 @@ a struct has changed and therefore it cannot use the snapshot.json file that it
 normally uses for efficiency. Instead it needs to build up the current state by
 explicitly re-applying all the events that happened to your CA and/or embedded
 publication server.
-
-Setting up Your Certificate Authority
--------------------------------------
-
-So you got Krill running and configured as above. Now it's time to set up your
-own Certificate Authority (CA) in Krill. This involves the following steps:
-
-  * Create your CA
-  * Retrieve your CA's 'child request'
-  * Retrieve your CA's 'publisher request'
-  * Upload the 'child request' to your parent
-  * Save the 'parent response'
-  * Upload the 'publisher request' to your publisher (usually your parent)
-  * Save the 'repository response'
-  * Update the repository for your CA using the 'repository response'
-  * Add the parent using the 'parent response'
-
-.. code-block:: bash
-
-  # Add CA
-  krillc add
-
-  # retrieve your CA's 'child request'
-  krillc parents myid > child_request.xml
-
-  # retrieve your CA's 'publisher request'
-  krillc repo request > publisher_request.xml
-
-Next, upload the XML files to your parent and save the response XML files.
-
-.. code-block:: bash
-
-  # update the repository for you CA using the 'repository response'
-  krillc repo update rfc8183 repository_response.xml
-
-  # add the parent using the 'parent response'
-  krillc parents add --parent myparent --rfc8183 ./parent-response.xml
-
-Note that you can use any local name for ``--parent``. This is the name that
-Krill will show to you. Similarly, Krill will use your local CA name which you
-set in the ```KRILL_CLI_MY_CA`` ENV variable. However, the parent response
-includes the names (or handles as they are called in the RFC) by which it refers
-to itself, and your CA. Krill will make sure that it uses these names in the
-communication with the parent. There is no need for these names to be the same.
-
-
-Managing Route Origin Authorisations
-------------------------------------
-
-Krill lets users create Route Origin Authorisations (ROAs), the signed objects
-that state which Autonomous System (AS) is authorised to originate one of your
-prefixes, along with the maximum prefix length it may have.
-
-You can update ROAs through the command line by submitting a plain text file
-with the following format:
-
-.. code-block:: text
-
- # Some comment
-   # Indented comment
-
-  A: 192.0.2.0/24 => 64496
-  A: 2001:db8::/32-48 => 64496   # Add prefix with max length
-  R: 198.51.100.0/24 => 64496    # Remove existing authorisation
-
-You can then add this to your CA:
-
-.. code-block:: text
-
- $ krillc roas update --delta ./roas.txt
-
-
-If you followed the steps above then you would get an error, because there is no
-authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
-then you should see no response, and no error.
-
-You can list ROAs in the following way:
-
-.. code-block:: text
-
-  $ krillc roas list
-  192.0.2.0/24 => 64496
-  2001:db8::/32-48 => 64496
-
-
-Displaying History
-------------------
-
-You can show the history of all the things that happened to your CA using the
-``history`` command.
-
-.. code-block:: text
-
-  $ krillc history
-  id: ca version: 0 details: Initialised with ID key hash: 69ee7ef4dae43cd1dcd9ee65b8a1c7fd0c2499c3
-  id: ca version: 1 details: added RFC6492 parent 'ripencc'
-  id: ca version: 2 details: added resource class with name '0'
-  id: ca version: 3 details: requested certificate for key (hash) 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
-  id: ca version: 4 details: activating pending key 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
-  id: ca version: 5 details: added route authorization: '192.0.2.0/24 => 64496'
-  id: ca version: 6 details: added route authorization: '2001:db8::/32 => 64496'

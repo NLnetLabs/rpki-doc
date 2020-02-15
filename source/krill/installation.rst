@@ -15,10 +15,11 @@ Assuming you have a newly installed Debian or Ubuntu machine, you will need to
 install the C toolchain, OpenSSL, curl and Rust. You can then install Krill
 using Cargo.
 
-After the installation has completed, create a data directory in a location of
-your choice. Next, generate a basic configuration file specifying a `secret
-token <https://xkcd.com/936/>`_ and make sure to refer to the data directory you
-just created. Finally, start Krill pointing to your configuration file.
+After the installation has completed, first create a data directory in a
+location of your choice. Next, generate a basic configuration file specifying a
+`secret token <https://xkcd.com/936/>`_ and make sure to refer to the data
+directory you just created. Finally, start Krill pointing to your configuration
+file.
 
 .. code-block:: bash
 
@@ -28,7 +29,7 @@ just created. Finally, start Krill pointing to your configuration file.
   cargo install krill
   mkdir ~/data
   krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
-  krill -c ~/data/krill.conf
+  krill --config ~/data/krill.conf
 
 Krill now exposes its user interface and API on ``https://localhost:3000``
 using a self-signed TLS certificate. You can go to this address in a web

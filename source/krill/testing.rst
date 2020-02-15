@@ -26,7 +26,7 @@ repeat command line arguments for these:
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
-   $ export KRILL_CLI_MY_CA="Acme-Corp-International"
+   $ export KRILL_CLI_MY_CA="Acme-Corp-Intl"
 
 In the examples below we assume that the ENV variables are set and we omit the
 equivalent arguments.

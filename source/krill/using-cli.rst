@@ -1,6 +1,32 @@
 Using the CLI
 =============
 
+For most use cases, the user interface is the easiest way to use Krill. Most
+operations, including creating a CA, connecting to a Regional or National
+Internet Registry parent and publication server, as well as managing ROAs can be
+done from the UI.
+
+Some aspects of Krill can currently only be configured using the command line
+interface. The most important are the configuration to publish certificates and
+ROAs using your own publication server, and secondly setting up child CAs of
+your own.
+
+You can then set up the following environment variables so that you can easily
+use the Krill CLI on the same machine where Krill is running:
+
+.. code-block:: bash
+
+  export KRILL_CLI_TOKEN="correct-horse-battery-staple"
+  export KRILL_CLI_SERVER="https://localhost:3000/"
+  export KRILL_CLI_MY_CA="Acme-Corp-Intl"
+
+For you CA name, you can use alphanumeric characters, dashes and underscores,
+i.e. ``a-zA-Z0-9_``.
+
+Note that you can use the CLI from another machine, but then you will need to
+set up a proxy server in front of Krill and make sure that it has a real TLS
+certificate.
+
 The Krill CLI is a wrapper around the :ref:`Krill API<doc_krill_using_api>`
 which is based on JSON over HTTPS. To use the CLI you need to invoke `krillc`
 followed by one or more subcommands, and some arguments. Help is built-in:
@@ -39,5 +65,101 @@ value you set in the ENV. Krill will give you a friendly error message if you
 did not set the applicable ENV variable, and don't include the command line
 argument equivalent.
 
-We will explain the use of various subcommands in the section where we talk
-about managing your CA(s) in Krill.
+Setting up Your Certificate Authority
+-------------------------------------
+
+After you got Krill running and configured, it's time to set up your
+own Certificate Authority (CA) in Krill. This involves the following steps:
+
+  * Create your CA
+  * Retrieve your CA's 'child request'
+  * Retrieve your CA's 'publisher request'
+  * Upload the 'child request' to your parent
+  * Save the 'parent response'
+  * Upload the 'publisher request' to your publisher (usually your parent)
+  * Save the 'repository response'
+  * Update the repository for your CA using the 'repository response'
+  * Add the parent using the 'parent response'
+
+.. code-block:: bash
+
+  # Add CA
+  krillc add
+
+  # retrieve your CA's 'child request'
+  krillc parents myid > child_request.xml
+
+  # retrieve your CA's 'publisher request'
+  krillc repo request > publisher_request.xml
+
+Next, upload the XML files to your parent and save the response XML files.
+
+.. code-block:: bash
+
+  # update the repository for you CA using the 'repository response'
+  krillc repo update rfc8183 repository_response.xml
+
+  # add the parent using the 'parent response'
+  krillc parents add --parent myparent --rfc8183 ./parent-response.xml
+
+Note that you can use any local name for ``--parent``. This is the name that
+Krill will show to you. Similarly, Krill will use your local CA name which you
+set in the ```KRILL_CLI_MY_CA`` ENV variable. However, the parent response
+includes the names (or handles as they are called in the RFC) by which it refers
+to itself, and your CA. Krill will make sure that it uses these names in the
+communication with the parent. There is no need for these names to be the same.
+
+Managing Route Origin Authorisations
+------------------------------------
+
+Krill lets users create Route Origin Authorisations (ROAs), the signed objects
+that state which Autonomous System (AS) is authorised to originate one of your
+prefixes, along with the maximum prefix length it may have.
+
+You can update ROAs through the command line by submitting a plain text file
+with the following format:
+
+.. code-block:: text
+
+ # Some comment
+   # Indented comment
+
+  A: 192.0.2.0/24 => 64496
+  A: 2001:db8::/32-48 => 64496   # Add prefix with max length
+  R: 198.51.100.0/24 => 64496    # Remove existing authorisation
+
+You can then add this to your CA:
+
+.. code-block:: text
+
+ $ krillc roas update --delta ./roas.txt
+
+
+If you followed the steps above then you would get an error, because there is no
+authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
+then you should see no response, and no error.
+
+You can list ROAs in the following way:
+
+.. code-block:: text
+
+  $ krillc roas list
+  192.0.2.0/24 => 64496
+  2001:db8::/32-48 => 64496
+
+Displaying History
+------------------
+
+You can show the history of all the things that happened to your CA using the
+``history`` command.
+
+.. code-block:: text
+
+  $ krillc history
+  id: ca version: 0 details: Initialised with ID key hash: 69ee7ef4dae43cd1dcd9ee65b8a1c7fd0c2499c3
+  id: ca version: 1 details: added RFC6492 parent 'ripencc'
+  id: ca version: 2 details: added resource class with name '0'
+  id: ca version: 3 details: requested certificate for key (hash) 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 4 details: activating pending key 'D5EE85EF047010771547FE3ACFE4316503B8EC6F' under resource class '0'
+  id: ca version: 5 details: added route authorization: '192.0.2.0/24 => 64496'
+  id: ca version: 6 details: added route authorization: '2001:db8::/32 => 64496'

@@ -21,6 +21,9 @@ certificate and ROAs with a third party, such as your NIR or RIR, or you publish
 them yourself. In the latter case, you will need to run Krill alongside a
 publicly available Rsyncd and HTTPS server.
 
+Krill can be managed from the command line, through an API and with a web user
+interface.
+
 Summarising, Krill is intended for:
 
   - Organisations who do not wish to rely on the web interface of the hosted
@@ -33,11 +36,6 @@ Summarising, Krill is intended for:
     they can manage all ROAs for all resources seamlessly within one system
   - Organisations who want to be operationally independent from their parent
     RIR, such as NIRs or Enterprises
-
-Krill can be managed from the command line, through an `API
-<http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_
-and with a user interface. The UI for Krill is developed as a separate project
-named `Lagosta <https://github.com/NLnetLabs/lagosta>`_.
 
 If you want to know more about the development of Krill, please have a look at
 the `project plan
@@ -53,11 +51,9 @@ discuss them on our `RPKI mailing list
 
    installation
    get-started
-   running
    running-docker
    using-cli
    using-api
-   manage-cas
    remote-publishing
    testing
 .. history
