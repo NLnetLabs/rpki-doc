@@ -13,13 +13,13 @@ holds address space in several RIR regions, as it can all be managed as a
 single pool.
 
 Krill can also act as a parent for child CAs. This means you can delegate
-resources down to children of your own, e.g. business units, departments,
-members or clients, who, in turn, manage ROAs themselves.
+resources down to children of your own, such as business units, departments,
+members or customers, who, in turn, manage ROAs themselves.
 
-Lastly, Krill features a separate publication server so you can either
-publish your certificate and ROAs with a third party, such as your NIR or RIR,
-or you publish them yourself. In the latter case, you will need to run Krill
-alongside a publicly available Rsyncd and HTTPS server.
+Lastly, Krill features a publication server so you can either publish your
+certificate and ROAs with a third party, such as your NIR or RIR, or you publish
+them yourself. In the latter case, you will need to run Krill alongside a
+publicly available Rsyncd and HTTPS server.
 
 Summarising, Krill is intended for:
 
@@ -34,10 +34,10 @@ Summarising, Krill is intended for:
   - Organisations who want to be operationally independent from their parent
     RIR, such as NIRs or Enterprises
 
-Krill currently can be managed from the command line, through an `API
+Krill can be managed from the command line, through an `API
 <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.4.2/doc/openapi.yaml>`_
-and with a user interface. The UI for Krill is available as a separate, optional
-project named `Lagosta <https://github.com/NLnetLabs/lagosta>`_.
+and with a user interface. The UI for Krill is developed as a separate project
+named `Lagosta <https://github.com/NLnetLabs/lagosta>`_.
 
 If you want to know more about the development of Krill, please have a look at
 the `project plan

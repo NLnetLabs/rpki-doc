@@ -16,9 +16,9 @@ install the C toolchain, OpenSSL, curl and Rust. You can then install Krill
 using Cargo.
 
 After the installation has completed, create a data directory in a location of
-your choice. Next, generate a basic configuration file specifying a secret token
-and make sure to refer to the data directory you just created. Finally, start
-Krill pointing to your configuration file.
+your choice. Next, generate a basic configuration file specifying a `secret
+token <https://xkcd.com/936/>`_ and make sure to refer to the data directory you
+just created. Finally, start Krill pointing to your configuration file.
 
 .. code-block:: bash
 
@@ -27,13 +27,13 @@ Krill pointing to your configuration file.
   source ~/.cargo/env
   cargo install krill
   mkdir ~/data
-  krillc config simple --token correct-battery-horse-staple --data ~/data/ > ~/data/krill.conf
+  krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
   krill -c ~/data/krill.conf
 
 Krill now exposes its user interface and API on ``https://localhost:3000``
 using a self-signed TLS certificate. You can go to this address in a web
 browser, accept the certificate warning and start configuring your RPKI
-Certificate Authority.
+Certificate Authority. A Prometheus endpoint is available at ``/metrics``.
 
 If you have an older version of Rust and Krill, you can update via:
 
@@ -65,10 +65,6 @@ When you publish ROAs yourself using the Krill publication server in combination
 with Rsyncd and a web server of your choice, you will see traffic from several
 hundred relying party software tools querying every few minutes. The total
 amount of traffic is also negligible for any modern day situation.
-
-In terms of cryptographic security, you should make sure that the machine is
-well protected but a Hardware Security Module (HSM) to store the keys is
-certainly not necessary and at this point not even possible.
 
 .. Note:: For reference, NLnet Labs runs Krill and serves ROAs to the world
           using a 2 CPU / 2GB RAM / 60GB disk virtual machine.
@@ -170,10 +166,6 @@ this should be as simple as running:
 
     apt install libssl-dev openssl pkg-config
 
-.. Note:: For reference, NLnet Labs uses Ubuntu Xenial (16.04.5 LTS) in
-          their Travis CI environment. The production instance runs on
-          Debian 10.2.
-
 Building
 --------
 
@@ -194,6 +186,6 @@ If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
 version.
 
-The command will build Routinator and install it in the same directory
+The command will build Krill and install it in the same directory
 that cargo itself lives in, likely ``$HOME/.cargo/bin``. This means
-Routinator will be in your path, too.
+Krill will be in your path, too.

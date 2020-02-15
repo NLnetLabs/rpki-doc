@@ -35,7 +35,7 @@ use the Krill CLI on the same machine where Krill is running:
 
   export KRILL_CLI_TOKEN="correct-horse-battery-staple"
   export KRILL_CLI_SERVER="https://localhost:3000/"
-  export KRILL_CLI_MY_CA="Acme-Corp-International"
+  export KRILL_CLI_MY_CA="Acme-Corp-Intl"
 
 For you CA name, you can use alphanumeric characters, dashes and underscores,
 i.e. ``a-zA-Z0-9_``.
@@ -47,7 +47,7 @@ certificate.
 Start and Stop the Daemon
 -------------------------
 
-There is no standard script to start / stop Krill yet. We will add this in the
+There is no standard script to start and stop Krill yet. We will add this in the
 near future.
 
 For now you could use the following example script to start Krill. Make sure to
