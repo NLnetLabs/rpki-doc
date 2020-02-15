@@ -1,14 +1,15 @@
+.. _doc_krill_using_ui:
+
 Using the UI
 ============
 
-For most use cases, the user interface is the easiest way to use Krill. Most
-operations, including creating a CA, connecting to a Regional or National
-Internet Registry parent and publication server, as well as managing ROAs can be
-done from the UI.
+For most use cases, the user interface is the easiest way to use Krill. Creating
+a CA, connecting to a Regional or National Internet Registry parent and
+publication server, as well as managing ROAs can all be done from the UI.
 
 You can access the user interface in a browser on the server running Krill at ``https://localhost:3000``. By default, Krill generates a self-signed TLS certificate, so you will have to accept the security warning that your browser will give you.
 
-If you want to access the UI from a different computer, you can either set up a reverse proxy on your server running Krill, or set up local port forwarding with SSH, for example:
+If you want to access the UI from a different computer, you can either set up a reverse proxy on your server running Krill, or set up local port forwarding with SSH from your computer, for example:
 
 .. code-block:: bash
 

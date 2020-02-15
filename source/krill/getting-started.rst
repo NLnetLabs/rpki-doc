@@ -1,3 +1,5 @@
+.. _doc_krill_getting_started:
+
 Getting Started
 ===============
 
@@ -6,7 +8,7 @@ After the installation has completed, there are just two things you need to conf
 Configuration
 -------------
 
-The first step is to choose where you data directory is going to live and to create it. In this example we are simply creating it in our home directory.
+The first step is to choose where your data directory is going to live and to create it. In this example we are simply creating it in our home directory.
 
 .. code-block:: bash
 
@@ -25,12 +27,10 @@ GitHub repository
 Start and Stop the Daemon
 -------------------------
 
-There is no standard script to start and stop Krill yet. We will add this in the
-near future.
-
-For now you could use the following example script to start Krill. Make sure to
-update the ``DATA_DIR`` variable to your real data directory, and make sure you
-saved your ``krill.conf`` file there.
+There is currently no standard script to start and stop Krill. You could use the
+following example script to start Krill. Make sure to update the ``DATA_DIR``
+variable to your real data directory, and make sure you saved your
+``krill.conf`` file there.
 
 .. code-block:: bash
 
@@ -57,16 +57,15 @@ You can use the following sample script to stop Krill:
 Proxy and HTTPS
 ---------------
 
-Krill uses HTTPS and refuses to do plain HTTP. In theory Krill should be able to
-use a key pair and corresponding certificate signed by a web TA. However, this
-is untested.
-
-By default Krill will generate a 2048 bit RSA key and self-signed certificate
-when it's first started.
+Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
+2048 bit RSA key and self-signed certificate when it's first started. In theory
+Krill should be able to use a key pair and corresponding certificate signed by a
+web TA. However, this is untested.
 
 We recommend that you run Krill with this default, and use a proxy server such
-as Nginx or Apache if you intend to make Krill available to the Internet. Also, setting up a widely accepted HTTPS certificate such as Let's Encrypt is
-well documented for these servers.
+as Nginx or Apache if you intend to make Krill available to the Internet. Also,
+setting up a widely accepted HTTPS certificate such as Let's Encrypt is well
+documented for these servers.
 
 .. Warning:: We recommend that you do **not** make Krill available publicly.
              You can use the default where Krill will expose its CLI, API and
@@ -90,7 +89,6 @@ back up Krill in a consistent state while it is running.
 
 To restore Krill just put back your data directory and make sure that you refer
 to it in the configuration file that you use for your Krill instance.
-
 
 Used Disk Space
 ---------------

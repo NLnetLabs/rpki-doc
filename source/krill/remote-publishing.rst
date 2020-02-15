@@ -1,3 +1,5 @@
+.. _doc_krill_remote_publishing:
+
 Remote Publishing
 =================
 

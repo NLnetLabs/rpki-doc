@@ -1,18 +1,14 @@
+.. _doc_krill_using_cli:
+
 Using the CLI
 =============
 
-For most use cases, the user interface is the easiest way to use Krill. Most
-operations, including creating a CA, connecting to a Regional or National
-Internet Registry parent and publication server, as well as managing ROAs can be
-done from the UI.
+Every function of Krill can be controlled from the command line interface (CLI).
+The Krill CLI is a wrapper around the :ref:`Krill API<doc_krill_using_api>`
+which is based on JSON over HTTPS.
 
-Some aspects of Krill can currently only be configured using the command line
-interface. The most important are the configuration to publish certificates and
-ROAs using your own publication server, and secondly setting up child CAs of
-your own.
-
-You can then set up the following environment variables so that you can easily
-use the Krill CLI on the same machine where Krill is running:
+It's convenient to set up the following environment variables so that you can
+easily use the Krill CLI on the same machine where Krill is running:
 
 .. code-block:: bash
 
@@ -20,16 +16,15 @@ use the Krill CLI on the same machine where Krill is running:
   export KRILL_CLI_SERVER="https://localhost:3000/"
   export KRILL_CLI_MY_CA="Acme-Corp-Intl"
 
-For you CA name, you can use alphanumeric characters, dashes and underscores,
+For your CA name, you can use alphanumeric characters, dashes and underscores,
 i.e. ``a-zA-Z0-9_``.
 
 Note that you can use the CLI from another machine, but then you will need to
 set up a proxy server in front of Krill and make sure that it has a real TLS
 certificate.
 
-The Krill CLI is a wrapper around the :ref:`Krill API<doc_krill_using_api>`
-which is based on JSON over HTTPS. To use the CLI you need to invoke `krillc`
-followed by one or more subcommands, and some arguments. Help is built-in:
+To use the CLI you need to invoke ``krillc`` followed by one or more
+subcommands, and some arguments. Help is built-in:
 
 .. code-block:: bash
 
@@ -133,7 +128,6 @@ You can then add this to your CA:
 .. code-block:: text
 
  $ krillc roas update --delta ./roas.txt
-
 
 If you followed the steps above then you would get an error, because there is no
 authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,

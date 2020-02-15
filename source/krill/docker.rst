@@ -14,12 +14,11 @@ installation instructions via the links in the Docker official `"Supported
 platforms" documentation
 <https://docs.docker.com/install/#supported-platforms>`_.
 
-Fetching and running Krill
+Fetching and Running Krill
 --------------------------
 
 The ``docker run`` command will automatically fetch the Krill image the first
 time you use it, and so there is no installation step in the traditional sense.
-
 The ``docker run`` command can take `many arguments
 <https://docs.docker.com/engine/reference/run/>`_ and can be a bit overwhelming
 at first.
@@ -108,16 +107,15 @@ to pass files to ``krillc`` which some subcommands require, e.g.
 Proxy and HTTPS
 ---------------
 
-Krill uses HTTPS and refuses to do plain HTTP. In theory Krill should be able to
-use a key pair and corresponding certificate signed by a web TA. However, this
-is untested.
-
-By default Krill will generate a 2048 bit RSA key and self-signed certificate
-when it's first started.
+Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
+2048 bit RSA key and self-signed certificate when it's first started. In theory
+Krill should be able to use a key pair and corresponding certificate signed by a
+web TA. However, this is untested.
 
 We recommend that you run Krill with this default, and use a proxy server such
-as Nginx or Apache if you intend to make Krill available to the Internet. Also, setting up a widely accepted HTTPS certificate such as Let's Encrypt is
-well documented for these servers.
+as Nginx or Apache if you intend to make Krill available to the Internet. Also,
+setting up a widely accepted HTTPS certificate such as Let's Encrypt is well
+documented for these servers.
 
 .. Warning:: We recommend that you do **not** make Krill available publicly.
              You can use the default where Krill will expose its CLI, API and
@@ -126,7 +124,7 @@ well documented for these servers.
              certificates or a publication server to third parties.
 
 Service and Certificate URIs
-""""""""""""""""""""""""""""
+----------------------------
 
 The Krill ``service_uri`` and ``rsync_base`` config file settings can be
 configured via the Docker environment variable ``KRILL_FQDN`` as shown in
@@ -192,7 +190,7 @@ see something like the following in the logs:
    ...
    docker-krill: End of dump
 
-Environment variables
+Environment Variables
 ---------------------
 
 The Krill Docker image supports the following Docker environment variables
@@ -216,7 +214,7 @@ To set these environment variables use ``-e`` when invoking ``docker``, e.g.:
 
    docker run -e KRILL_FQDN=https://rpki.example.net/
 
-Using a config file
+Using a Config File
 -------------------
 
 Via a volume mount you can replace the Docker Krill config file with your

@@ -15,14 +15,14 @@ running on port 3323 and HTTP on 9556, use the following command:
 
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
-On the ``/metrics`` path, Routinator will expose the number of valid 
-ROAs seen for each trust anchor, as well as the total number of validated 
-ROA payloads (VRPs) for each. 
+On the ``/metrics`` path, Routinator will expose the number of valid
+ROAs seen for each trust anchor, as well as the total number of validated
+ROA payloads (VRPs) for each.
 
-In addition, several counters are available that indicate when the last 
-update was started, when it finished and what the duration was. This will 
+In addition, several counters are available that indicate when the last
+update was started, when it finished and what the duration was. This will
 allow you to tigger alerts, for example when the update duration is taking
-longer than your refresh interval. 
+longer than your refresh interval.
 
 The current serial number for RPKI-RTR is also exposed. This number is used
 to notify connected routers that new data is available. The number Routinator
@@ -31,7 +31,7 @@ has should match the serial on your connected router. You can verify this on you
 :Juniper:
      ``show validation session detail``
 
-:Cisco: 
+:Cisco:
      ``show ip bgp rpki server``
 
 :Nokia:
@@ -76,7 +76,7 @@ This is an example of the output of the ``/metrics`` endpoint:
    # HELP routinator_serial current RTR serial number
    # TYPE routinator_serial gauge
    routinator_serial 42
-   
+
    # HELP routinator_rsync_status exit status of rsync command
    # TYPE routinator_rsync_status gauge
    routinator_rsync_status{uri="rsync://rpki-repository.nic.ad.jp/ap/"} 0
@@ -91,7 +91,7 @@ This is an example of the output of the ``/metrics`` endpoint:
    routinator_rsync_status{uri="rsync://rpki.ripe.net/repository/"} 0
    routinator_rsync_status{uri="rsync://rpki.ripe.net/ta/"} 0
 
-         
+
    # HELP routinator_rsync_duration duration of rsync in seconds
    # TYPE routinator_rsync_duration gauge
    routinator_rsync_duration{uri="rsync://rpki-repository.nic.ad.jp/ap/"} 3.050
@@ -109,7 +109,7 @@ This is an example of the output of the ``/metrics`` endpoint:
 The HTTP service has two additional endpoints on the following paths:
 
 :/status:
-     Returns the information from the ``/metrics`` endpoint in a more 
+     Returns the information from the ``/metrics`` endpoint in a more
      concise format
 
 :/version:

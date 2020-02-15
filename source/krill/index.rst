@@ -2,8 +2,9 @@ Krill
 =====
 
 Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
-featuring a Certificate Authority (CA) and publication server, written by NLnet
-Labs in the Rust programming language.
+featuring a Certificate Authority (CA) and publication server, written by `NLnet
+Labs <https://nlnetlabs.nl>`_ in the `Rust programming language
+<https://www.rust-lang.org>`_.
 
 Using Krill, you can run your own RPKI Certificate Authority as a child of one
 or more parent CAs, usually a Regional Internet Registry (RIR) or National
@@ -21,8 +22,8 @@ certificate and ROAs with a third party, such as your NIR or RIR, or you publish
 them yourself. In the latter case, you will need to run Krill alongside a
 publicly available Rsyncd and HTTPS server.
 
-Krill can be managed from the command line, through an API and with a web user
-interface.
+Krill can be managed with a web user interface, from the command line and
+through an API.
 
 Summarising, Krill is intended for:
 
@@ -50,11 +51,12 @@ discuss them on our `RPKI mailing list
    :name: toc-krill
 
    installation
-   get-started
-   running-docker
-   using-ui
-   using-cli
-   using-api
+   getting-started
+   ui
+   cli
+   api
+   docker
+   monitoring
    remote-publishing
    testing
 .. history
