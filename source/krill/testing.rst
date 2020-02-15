@@ -13,7 +13,7 @@ Setting up the Configuration
 ----------------------------
 
 To run Krill in test mode you can set "use_ta" to "true" in your
-```krill.conf``, or use an environment variable:
+``krill.conf``, or use an environment variable:
 
 .. code-block:: text
 

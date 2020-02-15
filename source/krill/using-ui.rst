@@ -10,9 +10,9 @@ You can access the user interface in a browser on the server running Krill at ``
 
 If you want to access the UI from a different computer, you can either set up a reverse proxy on your server running Krill, or set up local port forwarding with SSH, for example:
 
-..code-block: bash
+.. code-block:: bash
 
- ssh -L 3000:localhost:3000 user@krill.example.net
+  ssh -L 3000:localhost:3000 user@krill.example.net
 
 Initial Setup
 -------------
