@@ -57,12 +57,6 @@ You can use the following sample script to stop Krill:
 Proxy and HTTPS
 ---------------
 
-.. Warning:: We recommend that you do **not** make Krill available publicly.
-             You can use the default where Krill will expose its CLI, API and
-             UI on ``https://localhost:3000/`` only. You do not need to have
-             Krill available externally, unless you mean to provide
-             certificates or a publication server to third parties.
-
 Krill uses HTTPS and refuses to do plain HTTP. In theory Krill should be able to
 use a key pair and corresponding certificate signed by a web TA. However, this
 is untested.
@@ -74,22 +68,28 @@ We recommend that you run Krill with this default, and use a proxy server such
 as Nginx or Apache if you intend to make Krill available to the Internet. Also, setting up a widely accepted HTTPS certificate such as Let's Encrypt is
 well documented for these servers.
 
+.. Warning:: We recommend that you do **not** make Krill available publicly.
+             You can use the default where Krill will expose its CLI, API and
+             UI on ``https://localhost:3000/`` only. You do not need to have
+             Krill available externally, unless you mean to provide
+             certificates or a publication server to third parties.
+
 Backup and Restore
 ------------------
 
 To back-up Krill:
 
-* stop Krill
-* backup the ``DATA_DIR``
-* start Krill
+* Stop Krill
+* Backup your data directory
+* Start Krill
 
 We recommend that you stop Krill because there can be a race condition where
 Krill was just in the middle of saving its state after performing a background
 operation. We will most likely add a process in future that will allow you to
 back up Krill in a consistent state while it is running.
 
-To restore Krill just restore the ``DATA_DIR`` and make sure that you refer to
-it in the configuration file that you use for your Krill instance.
+To restore Krill just put back your data directory and make sure that you refer
+to it in the configuration file that you use for your Krill instance.
 
 
 Used Disk Space

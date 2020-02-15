@@ -52,6 +52,7 @@ discuss them on our `RPKI mailing list
    installation
    get-started
    running-docker
+   using-ui
    using-cli
    using-api
    remote-publishing

@@ -6,8 +6,6 @@ Running with Docker
 This page explains the additional features and differences compared to running
 Krill with Cargo that you need to be aware of when running Krill with Docker.
 
-Read :ref:`doc_krill_xrunning` before reading this page.
-
 Get Docker
 ----------
 
