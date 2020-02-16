@@ -60,21 +60,41 @@ value you set in the ENV. Krill will give you a friendly error message if you
 did not set the applicable ENV variable, and don't include the command line
 argument equivalent.
 
+RIR and NIR Exchanges
+---------------------
+
+To complete the process described here you will need to have access to the
+member portal of one or more of the RIRs or NIRs you hold resources in. Each of
+them provides an interface for setting up Delegated RPKI.
+
+At this time, none of the RIRs offer a repository service, nor does any other
+third party. Only the Brazilian registry NIC.br provides an RPKI repository
+server for their members. As a result, in most cases you will have to publish
+your certificate and ROAs yourself.
+
+.. Warning:: ARIN does not support the RFC 8183 key exchange format yet, but
+             they do have it `on their roadmap
+             <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_.
+             You can still configure Delegated RPKI by transforming your request
+             XML before uploading it to ARIN, as well as the response file you
+             get in return using `this XSL file
+             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_.
+
 Setting up Your Certificate Authority
 -------------------------------------
 
 After you got Krill running and configured, it's time to set up your
 own Certificate Authority (CA) in Krill. This involves the following steps:
 
-  * Create your CA
-  * Retrieve your CA's 'child request'
-  * Retrieve your CA's 'publisher request'
-  * Upload the 'child request' to your parent
-  * Save the 'parent response'
-  * Upload the 'publisher request' to your publisher (usually your parent)
-  * Save the 'repository response'
-  * Update the repository for your CA using the 'repository response'
-  * Add the parent using the 'parent response'
+- Create your CA
+- Retrieve your CA's 'child request'
+- Retrieve your CA's 'publisher request'
+- Upload the 'publisher request' to your publisher
+- Save the 'repository response'
+- Update the repository for your CA using the 'repository response'
+- Upload the 'child request' to your parent
+- Save the 'parent response'
+- Add the parent using the 'parent response'
 
 .. code-block:: bash
 
@@ -87,7 +107,8 @@ own Certificate Authority (CA) in Krill. This involves the following steps:
   # retrieve your CA's 'publisher request'
   krillc repo request > publisher_request.xml
 
-Next, upload the XML files to your parent and save the response XML files.
+Next, upload the publisher request XML file to your publication server provider
+and save the response XML file.
 
 .. code-block:: bash
 

@@ -52,7 +52,7 @@ The first screen will ask you for the secret token you configured for Krill.
 
     Enter your secret token to access Krill
 
-Next, you will see the Welcome screen when you can create your Certificate
+Next, you will see the Welcome screen where you can create your Certificate
 Authority. It will be used to configure Delegated RPKI with one or multiple
 parent CAs, usually your Regional or National Internet Registry.
 
@@ -73,10 +73,10 @@ Repository Setup
 Before you can configure a parent CA, you first need to set up a repository so
 that your parent knows where your certificate will be published.
 
-In case you are using a third party repository, such as one provided by your RIR
-or NIR, copy the publisher request XML and provide it to your repository
-provider. If  you configured your own publication server using the CLI, this
-page will simply show your repository details.
+In case you are using a third party repository copy the publisher request XML
+and supply it to your publication server provider. If you configured your own
+publication server using the CLI, this page will simply show your repository
+details.
 
 .. figure:: img/krill-ui-publisher-request.png
     :align: center
@@ -123,7 +123,7 @@ ROA Configuration
 -----------------
 
 After successfully setting up the parent exchange, you are now running Delegated
-RPKI! You can now start creating ROA for the resources you see in the pane on
+RPKI. You can now start creating ROA for the resources you see in the pane on
 the right.
 
 .. figure:: img/krill-ui-roa-resources.png
