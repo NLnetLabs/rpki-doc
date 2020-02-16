@@ -3,18 +3,25 @@
 Getting Started
 ===============
 
-After the installation has completed, there are just two things you need to configure before you can start using Krill. First, you will need a a data directory, which will store everything Krill needs to run. Secondly, you will need to create a basic configuration file, specifying a secret token and the location of your data directory.
+After the installation has completed, there are just two things you need to
+configure before you can start using Krill. First, you will need a a data
+directory, which will store everything Krill needs to run. Secondly, you will
+need to create a basic configuration file, specifying a secret token and the
+location of your data directory.
 
 Configuration
 -------------
 
-The first step is to choose where your data directory is going to live and to create it. In this example we are simply creating it in our home directory.
+The first step is to choose where your data directory is going to live and to
+create it. In this example we are simply creating it in our home directory.
 
 .. code-block:: bash
 
   mkdir ~/data
 
-Krill can generate a basic configuration file for you. We are going to specify the two required directives, a secret token and the path to the data directory, and then store it in this directory.
+Krill can generate a basic configuration file for you. We are going to specify
+the two required directives, a secret token and the path to the data directory,
+and then store it in this directory.
 
 .. code-block:: bash
 

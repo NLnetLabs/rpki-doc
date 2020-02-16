@@ -3,8 +3,9 @@
 Monitoring
 ==========
 
-The HTTP server in Routinator provides endpoints for monitoring the application. A data format specifically for `Prometheus
-<https://prometheus.io/>`_ is available, as well as `dedicated port 9556
+The HTTP server in Routinator provides endpoints for monitoring the application.
+A data format specifically for `Prometheus <https://prometheus.io/>`_ is
+available, as well as `dedicated port 9556
 <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_.
 
 This means it may be a good idea to run the HTTP server alongside
@@ -15,18 +16,19 @@ running on port 3323 and HTTP on 9556, use the following command:
 
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
-On the ``/metrics`` path, Routinator will expose the number of valid
-ROAs seen for each trust anchor, as well as the total number of validated
-ROA payloads (VRPs) for each.
+On the ``/metrics`` path, Routinator will expose the number of valid ROAs seen
+for each trust anchor, as well as the total number of validated ROA payloads
+(VRPs) for each.
 
-In addition, several counters are available that indicate when the last
-update was started, when it finished and what the duration was. This will
-allow you to tigger alerts, for example when the update duration is taking
-longer than your refresh interval.
+In addition, several counters are available that indicate when the last update
+was started, when it finished and what the duration was. This will allow you to
+tigger alerts, for example when the update duration is taking longer than your
+refresh interval.
 
-The current serial number for RPKI-RTR is also exposed. This number is used
-to notify connected routers that new data is available. The number Routinator
-has should match the serial on your connected router. You can verify this on your router with using the following command:
+The current serial number for RPKI-RTR is also exposed. This number is used to
+notify connected routers that new data is available. The number Routinator has
+should match the serial on your connected router. You can verify this on your
+router with using the following command:
 
 :Juniper:
      ``show validation session detail``
