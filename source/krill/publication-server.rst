@@ -46,6 +46,8 @@ ensures the syntax is correct, as for example trailing slashes are required.
 Use this command with your own values, using domain names pointing to servers
 that are publicly reachable.
 
+.. code-block:: text
+
   krillc config repo \
      --token correct-horse-battery-staple \
      --data ~/data/ \
@@ -65,11 +67,11 @@ Krill CA can write, and your repository servers can read. Alternatively, you can
 synchronise the contents of these directories in another way, such as
 Rsyncing them over every couple of minutes.
 
-If you are using a shared file system, please note that the Rsync
-``/current`` directory cannot be the mount point. Krill tries to write the
-entire repository to a new folder under ``$DATA_DIR/repo/rsync`` and then
-renames it. This is done to minimise issues with files being updated while
-relying party software is fetching data.
+If you are using a shared file system, please note that the Rsync ``/current``
+directory cannot be the mount point. Krill tries to write the entire repository
+to a new folder under ``$DATA_DIR/repo/rsync`` and then renames it. This is done
+to minimise issues with files being updated while relying party software is
+fetching data.
 
 The next step is to configure your Rsync deamons to expose a 'module' for your
 files. Make sure that the Rsync URI including the 'module' matches the
