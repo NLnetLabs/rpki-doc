@@ -151,7 +151,7 @@ You can then add this to your CA:
  $ krillc roas update --delta ./roas.txt
 
 If you followed the steps above then you would get an error, because there is no
-authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
+authorisation for 198.51.100.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
 
 You can list ROAs in the following way:

@@ -19,11 +19,8 @@ members or customers, who, in turn, manage ROAs themselves.
 
 Lastly, Krill features a publication server so you can either publish your
 certificate and ROAs with a third party, such as your NIR or RIR, or you publish
-them yourself. In the latter case, you will need to run Krill alongside a
-publicly available Rsyncd and HTTPS server.
-
-Krill can be managed with a web user interface, from the command line and
-through an API.
+them yourself. Krill can be managed with a web user interface, from the command
+line and through an API.
 
 Summarising, Krill is intended for:
 
@@ -38,13 +35,16 @@ Summarising, Krill is intended for:
   - Organisations who want to be operationally independent from their parent
     RIR, such as NIRs or Enterprises
 
+Krill offers all features needed to be used in production environments. The
+toolset is actively being developed with new releases every couple of weeks.
 If you want to know more about the development of Krill, please have a look at
 the `project plan
 <https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
 on GitHub. If you have any questions, comments or ideas, you are welcome  to
 discuss them on our `RPKI mailing list
 <https://nlnetlabs.nl/mailman/listinfo/rpki>`_, or feel free to `create an issue
-<https://github.com/NLnetLabs/krill/issues>`_ on GitHub.
+<https://github.com/NLnetLabs/krill/issues>`_ on GitHub. Krill is distributed
+under the Mozilla Public License 2.0.
 
 .. toctree::
    :maxdepth: 2

@@ -15,14 +15,14 @@ Setting up the Configuration
 To run Krill in test mode you can set "use_ta" to "true" in your
 ``krill.conf``, or use an environment variable:
 
-.. code-block:: text
+.. code-block:: bash
 
    $ export KRILL_USE_TA="true"
 
 You may also wish to set the following variables, so that you don't have to
 repeat command line arguments for these:
 
-.. code-block:: text
+.. code-block:: bash
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"

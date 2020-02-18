@@ -65,14 +65,14 @@ Proxy and HTTPS
 ---------------
 
 Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
-2048 bit RSA key and self-signed certificate when it's first started. In theory
-Krill should be able to use a key pair and corresponding certificate signed by a
-web TA. However, this is untested.
+2048 bit RSA key and self-signed certificate when it's first started. It
+should be able to use a key pair and corresponding certificate signed by a web
+TA. Replacing the self-signed certificate with a Let's Encrypt certificate
+worked, but has not been tested extensively.
 
-We recommend that you run Krill with this default, and use a proxy server such
-as Nginx or Apache if you intend to make Krill available to the Internet. Also,
-setting up a widely accepted HTTPS certificate such as Let's Encrypt is well
-documented for these servers.
+For a robust solution, we recommend that you use a proxy server such as Nginx or
+Apache if you intend to make Krill available to the Internet. Also, setting up a
+widely accepted HTTPS certificate is well documented for these servers.
 
 .. Warning:: We recommend that you do **not** make Krill available publicly.
              You can use the default where Krill will expose its CLI, API and
