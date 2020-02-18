@@ -33,7 +33,8 @@ ROAs available to the world.
 At this time, none of the RIRs offer RPKI publication as a service for members,
 though some have it on their roadmap. Currently, only the Brazilian registry
 NIC.br provides an RPKI repository server for their members. As a result, in
-most cases you will have to publish your certificate and ROAs yourself.
+most cases you will have to publish your certificate and ROAs yourself, as
+described in the :ref:`doc_krill_publication_server` section.
 
 Member Portals
 --------------
