@@ -20,26 +20,6 @@ SSH from your computer, for example:
 
   ssh -L 3000:localhost:3000 user@krillserver.example.net
 
-RIR and NIR Exchanges
----------------------
-
-To complete the process described here you will need to have access to the
-member portal of one or more of the RIRs or NIRs you hold resources in. Each of
-them provides an interface for setting up Delegated RPKI.
-
-At this time, none of the RIRs offer a repository service, nor does any other
-third party. Only the Brazilian registry NIC.br provides an RPKI repository
-server for their members. As a result, in most cases you will have to publish
-your certificate and ROAs yourself.
-
-.. Warning:: ARIN does not support the RFC 8183 key exchange format yet, but
-             they do have it `on their roadmap
-             <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_.
-             You can still configure Delegated RPKI by transforming your request
-             XML using the toggle in the Krill UI. The response file should be
-             transformed using `this XSL file
-             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_ before providing it to Krill.
-
 Initial Setup
 -------------
 

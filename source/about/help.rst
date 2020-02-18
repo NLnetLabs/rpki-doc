@@ -36,10 +36,10 @@ What can I do about my route having an Invalid state?
 -----------------------------------------------------
 The only entity that can make any changes to the ROA is the RIR-listed owner of the IP space. Most likely the owner of the IP space has created their ROAs in the Hosted RPKI interface of the RIR, which is part of their respective member portals:
 
-* LACNIC: http://milacnic.lacnic.net
-* ARIN: https://account.arin.net
-* RIPE NCC: https://my.ripe.net
-* APNIC: https://myapnic.net
 * AFRINIC: https://my.afrinic.net
+* APNIC: https://myapnic.net
+* ARIN: https://account.arin.net
+* LACNIC: http://milacnic.lacnic.net
+* RIPE NCC: https://my.ripe.net
 
 It is important to note that initially, for there to be an RPKI Invalid route, someone must have already entered into one of the above portals and made a ROA for the IP space in question.  There is no way for it to have to been done by itself.  In other words, there must already be an account at the RIR that is linked to the owner of the IP space.
