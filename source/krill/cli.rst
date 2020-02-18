@@ -60,26 +60,6 @@ value you set in the ENV. Krill will give you a friendly error message if you
 did not set the applicable ENV variable, and don't include the command line
 argument equivalent.
 
-RIR and NIR Exchanges
----------------------
-
-To complete the process described here you will need to have access to the
-member portal of one or more of the RIRs or NIRs you hold resources in. Each of
-them provides an interface for setting up Delegated RPKI.
-
-At this time, none of the RIRs offer a repository service, nor does any other
-third party. Only the Brazilian registry NIC.br provides an RPKI repository
-server for their members. As a result, in most cases you will have to publish
-your certificate and ROAs yourself.
-
-.. Warning:: ARIN does not support the RFC 8183 key exchange format yet, but
-             they do have it `on their roadmap
-             <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_.
-             You can still configure Delegated RPKI by transforming your request
-             XML before uploading it to ARIN, as well as the response file you
-             get in return using `this XSL file
-             <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_.
-
 Setting up Your Certificate Authority
 -------------------------------------
 
