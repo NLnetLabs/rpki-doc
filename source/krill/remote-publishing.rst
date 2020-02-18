@@ -4,13 +4,10 @@ Remote Publishing
 =================
 
 By default Krill CAs use an embedded repository server for the publication of
-RPKI objects. However, you may want to use a repository server hosted by a third
-party for your CA - this way you can outsource the burden of 24/7 availability
-of the repository. Or, you may want to allow delegated CAs (e.g. your customers,
-or other business units) to publish at a repository server that you manage.
-
-In this section we will explain how to set up Krill to perform either of those
-roles.
+RPKI objects. However, you may want to allow delegated CAs (e.g. your customers,
+or other business units) to publish at a repository server that you manage. In
+addition, running the repository separately from the CA offers flexibility in
+changing publication strategy and redundancy.
 
 Krill as Repository Server
 --------------------------

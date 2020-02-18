@@ -5,7 +5,7 @@ Publication Server
 
 It is highly recommended to use an RPKI publication server provided by your
 parent CA, if available. This relieves you of the responsibility to keep a
-public Rsync and web server available at all time.
+public Rsync and web server available at all times.
 
 It could also be considered good for the RPKI ecosystem as a whole to have at
 least some centralisation of publication. If Relying Party software around the
@@ -40,30 +40,32 @@ Using the Embedded Repository
              instance running as a repository only, as described in
              :ref:`doc_krill_remote_publishing`.
 
-Krill can use an embedded repository to publish RPKI objects. You will need to
-set the following directives in the config file, using domain names pointing to
-servers that are publicly reachable:
+Krill can use an embedded repository to publish RPKI objects. It can generate
+the required configuration for you using the ``krillc config`` subcommand. This
+ensures the syntax is correct, as for example trailing slashes are required.
+Use this command with your own values, using domain names pointing to servers
+that are publicly reachable.
 
-.. code-block:: text
-
-   repo_enabled = false
-   rsync_base = "rsync://rpki.example.net/repo/"
-   rrdp_service_uri = "https://rpki.example.net/rrdp/"
+  krillc config repo \
+     --token correct-horse-battery-staple \
+     --data ~/data/ \
+     --rrdp "https://rpki.example.net/rrdp/" \
+     --rsync "rsync://rpki.example.net/repo/" > krill.conf
 
 Krill will write the repository files under its data directory:
 
 .. code-block:: text
 
    $DATA_DIR/repo/rsync/current/    Contains the files for Rsync
-   $DATA_DIR/repo/rrdp/             Contains the files for HTTPS (RRDP as the protocol is called in the RFC)
+   $DATA_DIR/repo/rrdp/             Contains the files for HTTPS (RRDP)
 
 You can share the contents of these directories with your repository servers in
-various ways. You can have a redundant shared filesystem where the Krill CA can
-write, and your repository servers can read. You can also synchronise the
-contents of these directories in another way. For example, you could Rsync them
-over every couple of minutes.
+various ways. It is possible to have a redundant shared file system where the
+Krill CA can write, and your repository servers can read. Alternatively, you can
+synchronise the contents of these directories in another way, such as
+Rsyncing them over every couple of minutes.
 
-If you are using a shared filesystem, then please note that the Rsync
+If you are using a shared file system, please note that the Rsync
 ``/current`` directory cannot be the mount point. Krill tries to write the
 entire repository to a new folder under ``$DATA_DIR/repo/rsync`` and then
 renames it. This is done to minimise issues with files being updated while
