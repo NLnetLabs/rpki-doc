@@ -11,10 +11,6 @@ The fundamental principe is the same with each of them: the RIR or NIR needs to
 establish who you are, which resources you are entitled to and where your
 RPKI certificate and ROAs will be published.
 
-.. Note:: Keep in mind that your RPKI certificate does not contain any identity
-          information. It only contains the resources you hold and the signature
-          of the RIR or NIR parent CA to validate this claim.
-
 Your identity, permissions and entitlements are all managed by the registry and
 exposed via their respective member portals. The rest of the information is
 exchanged in two XML files. You  will need to provide a child request generated
@@ -27,8 +23,8 @@ Hosted Publication Server
 Your RIR or NIR may also provide an RPKI publication server. You are free to
 publish your certificate and ROAs anywhere you like, so a third party may
 provide an RPKI publication server as well. To use this service you will need to
-an additional exchange. You need to provide a publisher request file and in
-return you will receive a repository response.
+do an additional exchange. You need to generate and provide a publisher request
+file and in return you will receive a repository response.
 
 Using an RPKI publication server relieves you of the responsibility to keep
 a public Rsync and web server running at all times to make your certificate and
@@ -36,7 +32,7 @@ ROAs available to the world.
 
 At this time, none of the RIRs offer RPKI publication as a service for members,
 though some have it on their roadmap. Currently, only the Brazilian registry
-NIC.br provides an RPKI repository server for their members.  As a result, in
+NIC.br provides an RPKI repository server for their members. As a result, in
 most cases you will have to publish your certificate and ROAs yourself.
 
 Member Portals

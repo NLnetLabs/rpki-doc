@@ -53,12 +53,13 @@ under the Mozilla Public License 2.0.
    installation
    getting-started
    parent-interactions
+   publication-server
+   remote-publishing
    ui
    cli
    api
    docker
    monitoring
-   remote-publishing
    testing
 .. history
 .. authors

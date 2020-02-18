@@ -67,8 +67,9 @@ with Rsyncd and a web server of your choice, you will see traffic from several
 hundred relying party software tools querying every few minutes. The total
 amount of traffic is also negligible for any modern day situation.
 
-.. Note:: For reference, NLnet Labs runs Krill and serves ROAs to the world
-          using a 2 CPU / 2GB RAM / 60GB disk virtual machine.
+.. Note:: For reference, NLnet Labs runs Krill in production and serves ROAs to
+          the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. We
+          successfully tested Krill on a Raspberry Pi 4 with 2GB RAM.
 
 Installing with Cargo
 ---------------------
