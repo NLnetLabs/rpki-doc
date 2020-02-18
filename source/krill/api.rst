@@ -23,7 +23,7 @@ The raw `OpenAPI 3.0.2 specification
 description of the API is available in the Krill source repository (`v0.4.2 link
 <https://github.com/NLnetLabs/krill/blob/v0.4.2/doc/openapi.yaml>`_).
 
-Generating client code
+Generating Client Code
 ----------------------
 
 The `OpenAPI Generator <https://openapi-generator.tech/>`_ can generate client

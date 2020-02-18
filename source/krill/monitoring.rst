@@ -4,10 +4,10 @@ Monitoring
 ==========
 
 The HTTPS server in Krill provides endpoints for monitoring the application. A
-data format specifically for `Prometheus <https://prometheus.io/>`_ is
-available, as well as `dedicated port 9657
-<https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_, if
-desired.
+data format specifically for `Prometheus <https://prometheus.io/>`_ is available
+and `dedicated port 9657
+<https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_ has
+been reserved.
 
 On the ``/metrics`` path, Krill will expose the timestamp when the daemon was
 started, the number of CAs you have configured, the number of ROAs and children

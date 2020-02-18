@@ -104,24 +104,6 @@ to pass files to ``krillc`` which some subcommands require, e.g.
 
    $ krillc roas update --ca my_ca --delta /tmp/delta.in
 
-Proxy and HTTPS
----------------
-
-Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
-2048 bit RSA key and self-signed certificate in ``/ssl`` in the data directory
-when it is first started. Replacing the self-signed certificate with a
-TLS certificate issued by a CA worked, but has not been tested extensively.
-
-For a robust solution, we recommend that you use a proxy server such as Nginx or
-Apache if you intend to make Krill available to the Internet. Also, setting up a
-widely accepted TLS certificate is well documented for these servers.
-
-.. Warning:: We recommend that you do **not** make Krill available publicly.
-             You can use the default where Krill will expose its CLI, API and
-             UI on ``https://localhost:3000/`` only. You do not need to have
-             Krill available externally, unless you intend to provide
-             certificates or a publication server to third parties.
-
 Service and Certificate URIs
 ----------------------------
 

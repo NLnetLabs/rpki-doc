@@ -40,8 +40,8 @@ The following arguments are expected by most subcommands:
           [-f, --format text|json|none]   (default text)
           [-c, --ca <ca_name>]            (for ca specific subcommands)
 
-You can set default values for these arguments in ENV variables, to make it a
-bit easier/concise to use the CLI:
+You can set default values for these arguments in environment variables, to make
+it a bit easier to use the CLI:
 
 +---------------------+------------------------------------------------------+
 | Variable            | Argument                                             |
@@ -55,6 +55,13 @@ bit easier/concise to use the CLI:
 | KRILL_CLI_MY_CA     | -c, --ca                                             |
 +---------------------+------------------------------------------------------+
 
+For example:
+
+.. code-block:: bash
+
+  export KRILL_CLI_TOKEN="correct-horse-battery-staple"
+  export KRILL_CLI_MY_CA="Acme-Corp-Intl"
+
 If you do use the command line argument equivalents, you will override whatever
 value you set in the ENV. Krill will give you a friendly error message if you
 did not set the applicable ENV variable, and don't include the command line
@@ -63,8 +70,8 @@ argument equivalent.
 Setting up Your Certificate Authority
 -------------------------------------
 
-After you got Krill running and configured, it's time to set up your
-own Certificate Authority (CA) in Krill. This involves the following steps:
+After Krill is running and configured, you can set up the Certificate Authority.
+This involves the following steps:
 
 - Create your CA
 - Retrieve your CA's 'child request'

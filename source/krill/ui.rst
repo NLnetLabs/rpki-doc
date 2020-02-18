@@ -80,7 +80,8 @@ Parent Setup
 
 After successfully configuring the repository, the next step is to configure
 your parent CA. Copy the child request XML and provide it to your parent, i.e.
-your RIR or NIR.
+your RIR or NIR. If you are an ARIN member, make sure to toggle the "ARIN
+Compatible" option.
 
 .. figure:: img/krill-ui-child-request.png
     :align: center
@@ -103,8 +104,8 @@ ROA Configuration
 -----------------
 
 After successfully setting up the parent exchange, you are now running Delegated
-RPKI. You can now start creating ROA for the resources you see in the pane on
-the right.
+RPKI. You can start creating ROAs for the resources you see in the pane on the
+right.
 
 .. figure:: img/krill-ui-roa-resources.png
     :align: center
