@@ -43,11 +43,20 @@ If you hold resources in one or more RIR or NIR regions, you will need to have
 access to the respective member portals and the permission to configure
 Delegated RPKI.
 
-* AFRINIC: my.afrinic.net
-* APNIC: myapnic.net
-* ARIN: account.arin.net
-* LACNIC: milacnic.lacnic.net
-* RIPE NCC: my.ripe.net
+  :AFRINIC:
+       https://my.afrinic.net
+
+  :APNIC:
+       https://myapnic.net
+
+  :ARIN:
+       https://account.arin.net
+
+  :LACNIC:
+       https://milacnic.lacnic.net
+
+  :RIPE NCC:
+       https://my.ripe.net
 
 Some RIRs have a few considerations to keep in mind.
 
