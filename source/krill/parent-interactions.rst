@@ -5,7 +5,7 @@ RIR and NIR Interactions
 
 In almost all cases, you will interact with one or more Regional Internet
 Registries (RIRs) or National Internet Registries (NIRs) when setting up
-Delegated RPKI.
+delegated RPKI.
 
 The fundamental principe is the same with each of them: the RIR or NIR needs to
 establish who you are, which resources you are entitled to and where your
@@ -41,7 +41,7 @@ Member Portals
 
 If you hold resources in one or more RIR or NIR regions, you will need to have
 access to the respective member portals and the permission to configure
-Delegated RPKI.
+delegated RPKI.
 
   :AFRINIC:
        https://my.afrinic.net
@@ -60,13 +60,24 @@ Delegated RPKI.
 
 Some RIRs have a few considerations to keep in mind.
 
+APNIC
+"""""
+
+If you are already using the Hosted RPKI service provided by APNIC and you would
+like to switch to delegated RPKI, there is currently no option for this with
+MyAPNIC. Please open a ticket with the APNIC help desk to resolve this.
+
+Please note that APNIC offers RPKI publication as a service upon request. It is
+highly recommended to make use of this, as it relieves you of the need to run a
+highly available repository yourself.
+
 ARIN
 """"
 
 ARIN does not support the RFC 8183 key exchange format yet, but they do have it
 `on their roadmap
 <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_. You can
-still configure Delegated RPKI by transforming your request XML into the format
+still configure delegated RPKI by transforming your request XML into the format
 that ARIN accepts. You can do this with the toggle in the user interface or by
 using `this XSL file
 <https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_.
@@ -81,6 +92,13 @@ using `this XSL file
 Krill will accept both the old and standardised key exchange format, so there
 is no need to transform the response file you get from ARIN.
 
+LACNIC
+""""""
+
+Although LACNIC offers delegated RPKI, this is not possible to configure this in
+their member portal. While the procedures are still being defined, please open a
+ticket via hostmaster@lacnic.net to get started.
+
 RIPE NCC
 """"""""
 
@@ -94,7 +112,7 @@ presented with a choice if you would like to use Hosted or Non-Hosted RPKI.
 
     RIPE NCC RPKI setup screen
 
-If you want to set up Delegated RPKI with Krill, you will have to choose
+If you want to set up delegated RPKI with Krill, you will have to choose
 "Non-Hosted". If you are already using the Hosted service and you would like to
 switch, then there is currently no option for that in the RIPE NCC portal.
 
@@ -102,14 +120,3 @@ Make a note of the ROAs you created and then send an email to rpki@ripe.net
 requesting your Hosted CA to be deleted, making sure to mention your
 registration id. After deletion, you will land on the setup screen from where
 you can choose Non-Hosted RPKI.
-
-APNIC
-"""""
-
-If you are already using the Hosted RPKI service provided by APNIC and you would
-like to switch to Delegated RPKI, there is currently no option for this with
-MyAPNIC. Please open a ticket with the APNIC help desk to resolve this.
-
-Please note that APNIC offers RPKI publication as a service upon request. It is
-highly recommended to make use of this, as it relieves you of the need to run a
-highly available repository yourself.
