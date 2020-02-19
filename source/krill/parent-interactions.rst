@@ -30,9 +30,9 @@ Using an RPKI publication server relieves you of the responsibility to keep
 a public Rsync and web server running at all times to make your certificate and
 ROAs available to the world.
 
-At this time, none of the RIRs offer RPKI publication as a service for members,
-though some have it on their roadmap. Currently, only the Brazilian registry
-NIC.br provides an RPKI repository server for their members. As a result, in
+At this time, only APNIC offers RPKI publication as a service for members, upon
+request. Most other RIRs have it on their roadmap. NIC.br, the Brazilian NIR,
+provides an RPKI repository server for their members as well. As a result, in
 most cases you will have to publish your certificate and ROAs yourself, as
 described in the :ref:`doc_krill_publication_server` section.
 
@@ -43,11 +43,11 @@ If you hold resources in one or more RIR or NIR regions, you will need to have
 access to the respective member portals and the permission to configure
 Delegated RPKI.
 
-* AFRINIC: https://my.afrinic.net
-* APNIC: https://myapnic.net
-* ARIN: https://account.arin.net
-* LACNIC: http://milacnic.lacnic.net
-* RIPE NCC: https://my.ripe.net
+* AFRINIC: my.afrinic.net
+* APNIC: myapnic.net
+* ARIN: account.arin.net
+* LACNIC: milacnic.lacnic.net
+* RIPE NCC: my.ripe.net
 
 Some RIRs have a few considerations to keep in mind.
 
@@ -93,3 +93,14 @@ Make a note of the ROAs you created and then send an email to rpki@ripe.net
 requesting your Hosted CA to be deleted, making sure to mention your
 registration id. After deletion, you will land on the setup screen from where
 you can choose Non-Hosted RPKI.
+
+APNIC
+"""""
+
+If you are already using the Hosted RPKI service provided by APNIC and you would
+like to switch to Delegated RPKI, there is currently no option for this with
+MyAPNIC. Please open a ticket with the APNIC help desk to resolve this.
+
+Please note that APNIC offers RPKI publication as a service upon request. It is
+highly recommended to make use of this, as it relieves you of the need to run a
+highly available repository yourself.
