@@ -33,7 +33,7 @@ The first screen will ask you for the secret token you configured for Krill.
     Enter your secret token to access Krill
 
 Next, you will see the Welcome screen where you can create your Certificate
-Authority. It will be used to configure Delegated RPKI with one or multiple
+Authority. It will be used to configure delegated RPKI with one or multiple
 parent CAs, usually your Regional or National Internet Registry.
 
 The handle you select is not published in the RPKI but used as identification to
@@ -103,7 +103,7 @@ paste or upload.
 ROA Configuration
 -----------------
 
-After successfully setting up the parent exchange, you are now running Delegated
+After successfully setting up the parent exchange, you are now running delegated
 RPKI. You can start creating ROAs for the resources you see in the pane on the
 right.
 

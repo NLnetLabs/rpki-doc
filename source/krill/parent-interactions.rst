@@ -30,11 +30,11 @@ Using an RPKI publication server relieves you of the responsibility to keep
 a public Rsync and web server running at all times to make your certificate and
 ROAs available to the world.
 
-At this time, only APNIC offers RPKI publication as a service for members, upon
-request. Most other RIRs have it on their roadmap. NIC.br, the Brazilian NIR,
-provides an RPKI repository server for their members as well. As a result, in
-most cases you will have to publish your certificate and ROAs yourself, as
-described in the :ref:`doc_krill_publication_server` section.
+Of the five RIRs, only APNIC currently offers RPKI publication as a service for
+their members, upon request. Most other RIRs have it on their roadmap. NIC.br,
+the Brazilian NIR, provides an RPKI repository server for their members as well.
+This means that in most cases you will have to publish your certificate and ROAs
+yourself, as described in the :ref:`doc_krill_publication_server` section.
 
 Member Portals
 --------------
@@ -58,12 +58,18 @@ delegated RPKI.
   :RIPE NCC:
        https://my.ripe.net
 
-Some RIRs have a few considerations to keep in mind.
+Most RIRs have a few considerations to keep in mind.
+
+AFRINIC
+"""""""
+
+AFRINIC have delegated RPKI available in their test environment, but it’s not
+operational yet. Work to bring it to production is planned for later in 2020.
 
 APNIC
 """""
 
-If you are already using the Hosted RPKI service provided by APNIC and you would
+If you are already using the hosted RPKI service provided by APNIC and you would
 like to switch to delegated RPKI, there is currently no option for this with
 MyAPNIC. Please open a ticket with the APNIC help desk to resolve this.
 
@@ -95,15 +101,15 @@ is no need to transform the response file you get from ARIN.
 LACNIC
 """"""
 
-Although LACNIC offers delegated RPKI, this is not possible to configure this in
-their member portal. While the procedures are still being defined, please open a
-ticket via hostmaster@lacnic.net to get started.
+Although LACNIC offers delegated RPKI, it is not possible to configure this in
+their member portal yet. While the procedures are still being defined, please
+open a ticket via hostmaster@lacnic.net to get started.
 
 RIPE NCC
 """"""""
 
 When you are a RIPE NCC member who does not have RPKI configured, you will be
-presented with a choice if you would like to use Hosted or Non-Hosted RPKI.
+presented with a choice if you would like to use hosted or non-hosted RPKI.
 
 .. figure:: img/ripencc-hosted-non-hosted.png
     :align: center
@@ -113,10 +119,10 @@ presented with a choice if you would like to use Hosted or Non-Hosted RPKI.
     RIPE NCC RPKI setup screen
 
 If you want to set up delegated RPKI with Krill, you will have to choose
-"Non-Hosted". If you are already using the Hosted service and you would like to
+non-hosted. If you are already using the hosted service and you would like to
 switch, then there is currently no option for that in the RIPE NCC portal.
 
 Make a note of the ROAs you created and then send an email to rpki@ripe.net
-requesting your Hosted CA to be deleted, making sure to mention your
+requesting your hosted CA to be deleted, making sure to mention your
 registration id. After deletion, you will land on the setup screen from where
-you can choose Non-Hosted RPKI.
+you can choose non-hosted RPKI.
