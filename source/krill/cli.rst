@@ -28,7 +28,7 @@ subcommands, and some arguments. Help is built-in:
 
 .. code-block:: bash
 
-   krillc [subcommand..] help
+   krillc help [subcommand..]
 
 The following arguments are expected by most subcommands:
 
@@ -89,7 +89,7 @@ This involves the following steps:
   krillc add
 
   # retrieve your CA's 'child request'
-  krillc parents myid > child_request.xml
+  krillc parents request > child_request.xml
 
   # retrieve your CA's 'publisher request'
   krillc repo request > publisher_request.xml
@@ -100,10 +100,10 @@ and save the response XML file.
 .. code-block:: bash
 
   # update the repository for you CA using the 'repository response'
-  krillc repo update rfc8183 repository_response.xml
+  krillc repo update remote --rfc8183 repository_response.xml
 
   # add the parent using the 'parent response'
-  krillc parents add --parent myparent --rfc8183 ./parent-response.xml
+  krillc parents add remote --parent myparent --rfc8183 ./parent-response.xml
 
 Note that you can use any local name for ``--parent``. This is the name that
 Krill will show to you. Similarly, Krill will use your local CA name which you
