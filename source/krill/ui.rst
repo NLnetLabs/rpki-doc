@@ -12,6 +12,10 @@ You can access the user interface in a browser on the server running Krill at
 certificate, so you will have to accept the security warning that your browser
 will give you.
 
+.. note::
+  Google Chrome may not allow you to accept the certificate,
+  either use another browser or a real TLS certificate.
+
 If you want to access the UI from a different computer, you can either set up a
 reverse proxy on your server running Krill, or set up local port forwarding with
 SSH from your computer, for example:
