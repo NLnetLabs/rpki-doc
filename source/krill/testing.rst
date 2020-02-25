@@ -9,27 +9,51 @@ address space you want. You can generate your own Trust Anchor for it, which can
 be added to your Relying Party software in order to validate the objects you
 have published locally.
 
+
 Setting up the Configuration
 ----------------------------
+
+For testing we will assume that you will run your own Krill repository inside a
+single Krill instance, using 'localhost' in the repository URIs. You have to set
+the following environment variable to re-assure Krill that you are running a test
+environment, or it will refuse the use of 'localhost':
+
+.. code-block:: bash
+
+   $ KRILL_TEST="true"
+
+For convenience you may wish to set the following variables, so that you don't
+have to repeat command line arguments for these:
+
+.. code-block:: bash
+
+   $ KRILL_CLI_SERVER="https://localhost:3000/"
+   $ KRILL_CLI_TOKEN="correct-horse-battery-staple"
+   $ KRILL_CLI_MY_CA="Acme-Corp-Intl"
+
+NOTE: Replace "correct-horse-battery-staple" with a token of your own choosing!
+If you don't the UI will kindly remind you that "You should not get your
+passwords from https://xkcd.com/936/".
+
+You can now generate a krill configuration file using the following command:
+
+.. code-block:: bash
+
+   $ krillc config repo \
+      --token $KRILL_CLI_TOKEN \
+      --rrdp https://localhost:3000/rrdp/ \
+      --rsync rsync://localhost/repo/ > /path/to/krill.conf
+
+
+Use an embedded TA
+------------------
 
 To run Krill in test mode you can set "use_ta" to "true" in your
 ``krill.conf``, or use an environment variable:
 
 .. code-block:: bash
 
-   $ export KRILL_USE_TA="true"
-
-You may also wish to set the following variables, so that you don't have to
-repeat command line arguments for these:
-
-.. code-block:: bash
-
-   $ export KRILL_CLI_SERVER="https://localhost:3000/"
-   $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
-   $ export KRILL_CLI_MY_CA="Acme-Corp-Intl"
-
-In the examples below we assume that the ENV variables are set and we omit the
-equivalent arguments.
+   $ KRILL_USE_TA="true"
 
 Add a CA
 --------
@@ -69,6 +93,45 @@ following command:
   ca
 
 API Call: :krill_api_ca_get:`GET /v1/cas <cas>`
+
+
+Let CA publish in the embedded Repository
+-----------------------------------------
+
+Step 1: Generate RFC8183 Publisher Request
+""""""""""""""""""""""""""""""""""""""""""
+
+First you will need to get the RFC 8183 Publisher Request XML for your CA.
+
+.. code-block:: text
+
+  $ krillc repo request > publihsher_request.xml
+
+
+Step 2: Add your CA to the Repository
+""""""""""""""""""""""""""""""""""""""""""""
+
+You now need to authorise your CA in your repository and generate an RFC8183
+Repository Response XML file:
+
+.. code-block:: text
+
+  $ krillc publishers add remote \
+     --ca $KRILL_CLI_MY_CA \
+     --rfc8183 publihsher_request.xml > repository_response.xml
+
+
+Step 3: Configure your CA to use the Repository
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+Now configure your CA using the response:
+
+.. code-block:: text
+
+  $ krillc repo update remote --rfc8183 repository_response.xml
+
+
+
 
 Show CA Details
 ---------------
@@ -137,7 +200,7 @@ First you will need to get the RFC 8183 request XML from your child.
 
 .. code-block:: text
 
-  $ krillc parents myid > myid.xml
+  $ krillc parents request > myid.xml
 
 API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
 
@@ -155,7 +218,7 @@ and the RFC 8183 XML from the "ta":
 
 .. code-block:: text
 
-  $ krillc children add --ca ta \
+  $ krillc children add remote --ca ta \
                         --child ca \
                         --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
                         --rfc8183 myid.xml > parent-res.xml
@@ -190,7 +253,7 @@ name. Some parents do this to ensure unicity.
 
 .. code-block:: text
 
-  $ krillc parents add --parent ripencc --rfc8183 ./parent-res.xml
+  $ krillc parents add remote --parent ripencc --rfc8183 ./parent-res.xml
 
 API Call: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
 
