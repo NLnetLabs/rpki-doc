@@ -20,9 +20,10 @@ repository. This does not need to affect relying parties as long as the
 repository remains available, and Krill comes back before objects start to
 become stale. You have 16 hours with the current built-in defaults.
 
-That being said, only Brazilian NIC.br members can use a hosted publication
-server at this time. For now, everyone else will need to host their own
-repository.
+That being said, only Brazilian NIC.br members can configure a hosted
+publication server without manual intervention at this time. APNIC members can
+get access to their publication server upon request. Everyone else
+will need to host their own repository for now.
 
 When running your own repository, it is advisable to use multiple Rsync servers
 and multiple web servers. You can also use a Content Delivery Network (CDN) in
