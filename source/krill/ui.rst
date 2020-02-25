@@ -54,9 +54,7 @@ Before you can configure a parent CA, you first need to set up a repository so
 that your parent knows where your certificate will be published.
 
 In case you are using a third party repository copy the publisher request XML
-and supply it to your publication server provider. If you configured your own
-publication server using the CLI, this page will simply show your repository
-details.
+and supply it to your publication server provider.
 
 .. figure:: img/krill-ui-publisher-request.png
     :align: center
@@ -74,6 +72,17 @@ you need to paste or upload.
     :alt: Repository response
 
     Paste or upload the repository response XML
+
+Alternatively, if you configured the embedded
+:ref:`doc_krill_publication_server` using the CLI, this page will simply show
+your repository details.
+
+.. figure:: img/krill-ui-embedded-repository.png
+    :align: center
+    :width: 100%
+    :alt: Embedded repository details
+
+    Embedded repository details
 
 Parent Setup
 ------------
