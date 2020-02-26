@@ -12,8 +12,8 @@ defining a role to deploy Routinator on Ubuntu.
 Quick Start
 -----------
 
-Assuming you have a newly installed Debian or Ubuntu machine, you will 
-need to install rsync, the C toolchain and Rust. You can then install 
+Assuming you have a newly installed Debian or Ubuntu machine, you will
+need to install rsync, the C toolchain and Rust. You can then install
 Routinator and start it up as an RTR server listening on 127.0.0.1 port
 3323 and HTTP on port 9556:
 
@@ -131,7 +131,8 @@ To install ``rustup`` and Rust, simply do:
 
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-Alternatively, visit the `official Rust website <https://www.rust-lang.org/tools/install>`_ for other installation methods.
+Alternatively, visit the `official Rust website
+<https://www.rust-lang.org/tools/install>`_ for other installation methods.
 
 You can update your Rust installation later by running:
 
@@ -164,10 +165,11 @@ CentOS 6, where you will end up with a long list of error messages about
 missing assembler instructions. This is because the assembler shipped with
 CentOS 6 is too old.
 
-You can get the necessary version by installing the `Developer Toolset
-6 <https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_
-from the `Software Collections <https://wiki.centos.org/AdditionalResources/Repositories/SCL>`_
-repository. On a virgin system, you can install Rust using these steps:
+You can get the necessary version by installing the `Developer Toolset 6
+<https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_ from the
+`Software Collections
+<https://wiki.centos.org/AdditionalResources/Repositories/SCL>`_ repository. On
+a virgin system, you can install Rust using these steps:
 
 .. code-block:: bash
 

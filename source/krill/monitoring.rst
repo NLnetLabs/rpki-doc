@@ -42,15 +42,15 @@ This is an example of the output of the ``/metrics`` endpoint:
 
   # HELP krill_repo_objects number of objects in repository for publisher
   # TYPE krill_repo_objects gauge
-  krill_repo_objects{publisher="ca"} 6
+  krill_repo_objects{publisher="acme-corp-intl"} 6
 
   # HELP krill_repo_size size of objects in bytes in repository for publisher
   # TYPE krill_repo_size gauge
-  krill_repo_size{publisher="ca"} 16468
+  krill_repo_size{publisher="acme-corp-intl"} 16468
 
   # HELP krill_repo_last_update timestamp of last update for publisher
   # TYPE krill_repo_last_update gauge
-  krill_repo_last_update{publisher="ca"} 1582700400
+  krill_repo_last_update{publisher="acme-corp-intl"} 1582700400
 
   # HELP krill_cas number of cas in krill
   # TYPE krill_cas gauge
@@ -58,11 +58,11 @@ This is an example of the output of the ``/metrics`` endpoint:
 
   # HELP krill_cas_roas number of roas for CA
   # TYPE krill_cas_roas gauge
-  krill_cas_roas{ca="ca"} 4
+  krill_cas_roas{ca="acme-corp-intl"} 4
 
   # HELP krill_cas_children number of children for CA
   # TYPE krill_cas_children gauge
-  krill_cas_children{ca="ca"} 0
+  krill_cas_children{ca="acme-corp-intl"} 0
 
 The monitoring service has several additional endpoints on the following
 paths:

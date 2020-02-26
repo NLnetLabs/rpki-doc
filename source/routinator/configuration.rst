@@ -1,6 +1,6 @@
 .. _doc_routinator_configuration:
 
-Configuration 
+Configuration
 =============
 
 Routinator has a number of default settings, such as the location where files
@@ -9,9 +9,10 @@ settings by running:
 
 .. code-block:: text
 
-   routinator config 
-   
-It will return the list of defaults in the same notation that is used by the optional configuration file, which will be largely similar to this:
+   routinator config
+
+It will return the list of defaults in the same notation that is used by the
+optional configuration file, which will be largely similar to this:
 
 .. code-block:: text
 
@@ -35,12 +36,13 @@ It will return the list of defaults in the same notation that is used by the opt
    validation-threads = 4
 
 You can override these defaults, as well as configure a great number of
-additional options using either command line arguments or via the 
-configuration file. 
+additional options using either command line arguments or via the
+configuration file.
 
-To get an overview of all available options, please refer to the manual 
-page, which can be viewed by running ``routinator man``. Alternatively,
-the manual page is also available on the `NLnet Labs website <https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
+To get an overview of all available options, please refer to the manual  page,
+which can be viewed by running ``routinator man``. Alternatively, the manual
+page is also available on the `NLnet Labs website
+<https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
 
 Using a Configuration File
 --------------------------
@@ -52,13 +54,13 @@ doesn’t exist and there is no ``-c`` option, the default values are used.
 
 For specifying configuration options, Routinator uses a `TOML file
 <https://github.com/toml-lang/toml>`_. Its entries are named similarly to the
-command line options. A complete sample configuration file showing all the 
+command line options. A complete sample configuration file showing all the
 default values can be found in the repository at `etc/routinator.conf
 <https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf>`_.
 
 For example, if you want Routinator to refresh every 15 minutes and run as
 an RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
-providing an HTTP server on port 9556, simply take the output from 
+providing an HTTP server on port 9556, simply take the output from
 ``routinator config`` and change the ``refresh``, ``rtr-listen`` and
 ``http-listen`` values in your favourite text editor:
 
@@ -83,7 +85,7 @@ providing an HTTP server on port 9556, simply take the output from
    tal-dir = "/Users/me/.rpki-cache/tals"
    validation-threads = 4
 
-After saving this file as ``.routinator.conf`` in your home directory, you can 
+After saving this file as ``.routinator.conf`` in your home directory, you can
 start Routinator with:
 
 .. code-block:: bash
@@ -168,7 +170,7 @@ available in the repository at `/test/slurm
       ]
      }
    }
-   
-Use the ``-x`` option to refer to your file with local exceptions. Routinator 
-will re-read that file on every validation run, so you can simply update the 
+
+Use the ``-x`` option to refer to your file with local exceptions. Routinator
+will re-read that file on every validation run, so you can simply update the
 file whenever your exceptions change.

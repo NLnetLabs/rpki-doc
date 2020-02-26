@@ -3,10 +3,10 @@
 Running Interactively
 =====================
 
-Routinator can perform RPKI validation as a one-time operation and print a Validated ROA
-Payload (VRP) list in various formats, or it can return the validity of a specific
-announcement. These functions are accessible on the command line via the following
-sub-commands:
+Routinator can perform RPKI validation as a one-time operation and print a
+Validated ROA Payload (VRP) list in various formats, or it can return the
+validity of a specific announcement. These functions are accessible on the
+command line via the following sub-commands:
 
 :vrps:
      Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the
@@ -81,17 +81,18 @@ To generate a file with with the validated ROA payloads in JSON format, run:
 Filtering
 """""""""
 
-In case you are looking for specific information in the output, Routinator allows
-filtering to see if a prefix or ASN is covered or matched by a VRP. You can do this
-using the ``--filter-asn`` and ``--filter-prefix`` flags.
+In case you are looking for specific information in the output, Routinator
+allows filtering to see if a prefix or ASN is covered or matched by a VRP. You
+can do this using the ``--filter-asn`` and ``--filter-prefix`` flags.
 
-When using ``--filter-asn``, you can use both ``AS64511`` and ``64511`` as the notation.
-With ``--filter-prefix``, the result will include VRPs regardless of their
-ASN and MaxLength. Both filter flags can be combined and used multiple times in a
-single query and will be treated as a logical *"or"*.
+When using ``--filter-asn``, you can use both ``AS64511`` and ``64511`` as the
+notation. With ``--filter-prefix``, the result will include VRPs regardless of
+their ASN and MaxLength. Both filter flags can be combined and used multiple
+times in a single query and will be treated as a logical *"or"*.
 
-A validation run will be started before returning the result, making sure you get the
-latest information. If you would like a result from the current cache, you can use the ``--noupdate`` or ``-n`` flag.
+A validation run will be started before returning the result, making sure you
+get the latest information. If you would like a result from the current cache,
+you can use the ``--noupdate`` or ``-n`` flag.
 
 Here are some examples filtering for an ASN and prefix in CSV and JSON format:
 
@@ -114,21 +115,22 @@ Here are some examples filtering for an ASN and prefix in CSV and JSON format:
 Validity Checker
 ----------------
 
-You can check the RPKI origin validation status of a specific BGP announcement using the
-``validate`` subcommand and by supplying the ASN and prefix. A validation run will be
-started before returning the result, making sure you get the latest information. If you
-would like a result from the current cache, you can use the ``--noupdate`` or ``-n``
-flag.
+You can check the RPKI origin validation status of a specific BGP announcement
+using the ``validate`` subcommand and by supplying the ASN and prefix. A
+validation run will be started before returning the result, making sure you get
+the latest information. If you would like a result from the current cache, you
+can use the ``--noupdate`` or ``-n`` flag.
 
 .. code-block:: bash
 
    routinator validate --asn 12654 --prefix 93.175.147.0/24
    Invalid
 
-A detailed analysis of the reasoning behind the validation outcome is printed in JSON
-format. In case of an Invalid state, whether this because the announcement is originated
-by an unauthorised AS, or if the prefix is more specific than the maximum prefix
-length allows. Lastly, a complete list of VRPs that caused the result is included.
+A detailed analysis of the reasoning behind the validation outcome is printed in
+JSON format. In case of an Invalid state, whether this because the announcement
+is originated by an unauthorised AS, or if the prefix is more specific than the
+maximum prefix length allows. Lastly, a complete list of VRPs that caused the
+result is included.
 
 .. code-block:: text
 
@@ -160,5 +162,5 @@ length allows. Lastly, a complete list of VRPs that caused the result is include
      }
    }
 
-If you run the HTTP service in daemon mode, this information is also available at
-the ``/validity`` endpoint.
+If you run the HTTP service in daemon mode, this information is also available
+at the ``/validity`` endpoint.

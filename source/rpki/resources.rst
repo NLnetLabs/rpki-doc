@@ -3,7 +3,10 @@
 Resources
 =========
 
-This page provides an overview of projects that support RPKI. It includes, statistics, measurements projects and presentations about operational experiences. Finally, there is an overview of all work in the Internet Engineering Task Force relevant to RPKI.
+This page provides an overview of projects that support RPKI. It includes,
+statistics, measurements projects and presentations about operational
+experiences. Finally, there is an overview of all work in the Internet
+Engineering Task Force relevant to RPKI.
 
 The :ref:`doc_tools` page an overview of all available tools for using RPKI.
 
@@ -33,13 +36,13 @@ Operational Experiences
 
 `Dropping RPKI invalid routes in a service provider network <https://www.youtube.com/watch?v=DkUZvlj1wCk>`_
    Lightning talk by Nimrod Levy - AT&T, NANOG 75, February 2019
-   
+
 `RPKI and BGP: our path to securing Internet Routing <https://blog.cloudflare.com/rpki-details/>`_
    Blog post by Jérôme Fleury & Louis Poinsignon - Cloudflare, September 2018
-   
+
 `RPKI For Managers <https://www.youtube.com/watch?v=vrzl__yGqLE>`_
    Presentation by Niels Raijer - Fusix Networks, NLNOG Day 2018, September 2018
-   
+
 `RPKI at IXP Route Servers <https://ripe78.ripe.net/archives/video/53/>`_
    Presentation by Nick Hilliard - INEX, RIPE 78, May 2019
 
@@ -59,7 +62,7 @@ Examples of BGP Hijacks
    Ars Technica, 24 April 2018
 
 `Popular Destinations rerouted to Russia <https://bgpmon.net/popular-destinations-rerouted-to-russia/>`_
-   BGPmon, 12 December 2017 
+   BGPmon, 12 December 2017
 
 `Insecure routing redirects YouTube to Pakistan <https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/>`_
    Ars Technica, 25 February 2008
@@ -67,8 +70,17 @@ Examples of BGP Hijacks
 IETF Documents
 --------------
 
-Most of the original work on RPKI standardisation for both origin and path validation was done in the `Secure Inter-Domain Routing (sidr) <https://tools.ietf.org/wg/sidr/>`_ working group. After the work was completed, the working group was concluded.
+Most of the original work on RPKI standardisation for both origin and path
+validation was done in the `Secure Inter-Domain Routing (sidr)
+<https://tools.ietf.org/wg/sidr/>`_ working group. After the work was completed,
+the working group was concluded.
 
-Since then, the `SIDR Operations (sidrops) <https://tools.ietf.org/wg/sidrops/>`_ working group was formed. This working group develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.
+Since then, the `SIDR Operations (sidrops)
+<https://tools.ietf.org/wg/sidrops/>`_ working group was formed. This working
+group develops guidelines for the operation of SIDR-aware networks, and provides
+operational guidance on how to deploy and operate SIDR technologies in existing
+and new networks.
 
-All relevant drafts and standards can be found in the archives of these two working groups, with a few exceptions, such as `draft-ietf-grow-rpki-as-cones <https://tools.ietf.org/html/draft-ietf-grow-rpki-as-cones>`_.
+All relevant drafts and standards can be found in the archives of these two
+working groups, with a few exceptions, such as `draft-ietf-grow-rpki-as-cones
+<https://tools.ietf.org/html/draft-ietf-grow-rpki-as-cones>`_.
