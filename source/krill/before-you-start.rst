@@ -3,32 +3,35 @@
 Before You Start
 ================
 
-Before you begin with installing Krill, there are some basic concepts you should
-understand and some decisions you need to make.
-
 RPKI is a very modular system and so is Krill. Which parts you need and how you
-fit them together depends on your situation. The two fundamental pieces at play.
-First there is the Certificate Authority (CA), which takes care of all the
-cryptographic operations. Secondly, there is the publication server, which makes
-your certificate and ROAs available to the world.
+fit them together depends on your situation. Before you begin with installing
+Krill, there are some basic concepts you should understand and some decisions
+you need to make.
+
+There are two fundamental pieces at play. First there is the Certificate
+Authority (CA), which takes care of all the cryptographic operations involved in
+RPKI. Secondly, there is the publication server, which makes your certificate
+and ROAs available to the world.
 
 In almost all cases you will need to run the CA that Krill provides under a
-parent, usually your Regional Internet Registry (RIR) or National Internet
+parent CA, usually your Regional Internet Registry (RIR) or National Internet
 Registry (NIR). The communication between the parent and the child CA is
-initiated through the exchange of two XML files which you need to handle
+initiated through the exchange of two XML files, which you need to handle
 manually: a child request XML and a parent response XML. This involves
-generating a file, providing it to your parent in some way (usually through a
-web portal) and giving the response file back to your CA. After this initial
-exchange has been completed, all subsequent requests and responses are handled
-by the parent and child CA themselves. This includes the entitlement request and
-response, the certificate request and response, as well as the revoke request
-and response.
+generating the request file, providing it to your parent in some way and giving
+the response file back to your CA.
 
-Whether you also run the publication server depends if a if you can, or want to
-use one offered by a third party. For the general wellbeing of the RPKI system,
-we would always recommend to publish with your parent CA, if available. Setting
-this up is done in the same way as with the CA: exchanging a publisher request
-XML and a repository response XML.
+After this initial exchange has been completed, all subsequent requests and
+responses are handled by the parent and child CA themselves. This includes the
+entitlement request and response that determines which resources you receive on
+your certificate, the certificate request and response, as well as the revoke
+request and response.
+
+Whether you also run the Krill publication server depends on if you can, or want
+to use one offered by a third party. For the general wellbeing of the RPKI
+system, we would always recommend to publish with your parent CA, if available.
+Setting this up is done in the same way as with the CA: exchanging a publisher
+request XML and a repository response XML.
 
 Publishing With Your Parent
 ---------------------------
@@ -44,18 +47,20 @@ completed, you perform the XML exchange twice and you are done.
 
     A repository hosted by the parent CA, in this case the RIR or NIR.
 
-Krill is designed to run continuously, but there is no strict uptime
-requirement for the CA. You can bring Krill down to perform upgrades and
-backups, as long as you bring it back up within 16 hours to ensure your
-cryptographic objects are resigned.
+Krill is designed to run continuously, but there is no strict uptime requirement
+for the CA. If the CA is not available you just cannot create or update ROAs.
+This means you can bring Krill down to perform maintenance or migration, as long
+as you bring it back up within 16 hours to ensure your cryptographic objects are
+resigned.
 
-.. Note:: This scenario also applies if you use an RPKI publication server
-          offered by a third party, such as a cloud provider.
+.. Note:: This scenario illustrated here also applies if you use an RPKI
+          publication server offered by a third party, such as a cloud provider.
 
 At this time, only Asia Pacific RIR APNIC and Brazilian NIR NIC.br offer a
-publication server for their members. Other RIRs have this functionality on
-their roadmap. This means that in most cases, you will have to publish
-yourself.
+publication server for their members. Several other RIRs have this functionality
+on their roadmap.
+
+This means that in most cases, you will have to publish yourself.
 
 Publishing Yourself
 -------------------
@@ -85,3 +90,19 @@ your own.
 In this scenario you install Krill on a separate, highly available machine and
 simply don't set up any CA. In addition, you will need to run Rsyncd and a web
 server of your choice to publish your certificate and ROAs.
+
+System Requirements
+-------------------
+
+The system requirements for Krill are quite minimal. The cryptographic
+operations that need to be performed by the Certificate Authority have a
+negligible performance and memory impact on any modern day machine.
+
+When you publish ROAs yourself using the Krill publication server in combination
+with Rsyncd and a web server of your choice, you will see traffic from several
+hundred relying party software tools querying every few minutes. The total
+amount of traffic is also negligible for any modern day situation.
+
+.. Note:: For reference, NLnet Labs runs Krill in production and serves ROAs to
+          the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. We
+          successfully tested Krill on a Raspberry Pi 4 with 2GB RAM.
