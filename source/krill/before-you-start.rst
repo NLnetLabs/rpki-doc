@@ -54,7 +54,7 @@ Krill is designed to run continuously, but there is no strict uptime requirement
 for the CA. If the CA is not available you just cannot create or update ROAs.
 This means you can bring Krill down to perform maintenance or migration, as long
 as you bring it back up within 16 hours to ensure your cryptographic objects are
-resigned.
+resigned before they go stale.
 
 .. Note:: This scenario illustrated here also applies if you use an RPKI
           publication server offered by a third party, such as a cloud provider.
@@ -108,4 +108,4 @@ amount of traffic is also negligible for any modern day situation.
 .. Tip:: For reference, NLnet Labs runs Krill in production and serves ROAs to
          the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. Although
          we only serve four ROAs and our repository size is 16KB, the situation
-         would not be different if serving 100 ROAs. 
+         would not be different if serving 100 ROAs.
