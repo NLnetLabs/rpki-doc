@@ -32,9 +32,9 @@ request and response.
 
 Whether you also run the Krill publication server depends on if you can, or want
 to use one offered by a third party. For the general wellbeing of the RPKI
-system, we would always recommend to publish with your parent CA, if available.
-Setting this up is done in the same way as with the CA: exchanging a publisher
-request XML and a repository response XML.
+ecosystem, we would always recommend to publish with your parent CA, if
+available. Setting this up is done in the same way as with the CA: exchanging a
+publisher request XML and a repository response XML.
 
 Publishing With Your Parent
 ---------------------------
@@ -61,9 +61,8 @@ resigned.
 
 At this time, only Asia Pacific RIR APNIC and Brazilian NIR NIC.br offer a
 publication server for their members. Several other RIRs have this functionality
-on their roadmap.
-
-This means that in most cases, you will have to publish yourself.
+on their roadmap. This means that in most cases, you will have to publish
+yourself.
 
 Publishing Yourself
 -------------------
@@ -79,9 +78,9 @@ practically impossible to change its configuration after it has been
 initialised.
 
 For production environments where you may want change strategies over time we
-recommend running a separate Krill instance running as a repository only. This
+recommend running a separate Krill instance acting as a repository only. This
 also allows you to host a publication server for others, such as children of
-your own.
+your own. These can be business units, branches or customers.
 
 .. figure:: img/parent-child-repo.*
     :align: center
@@ -107,5 +106,6 @@ hundred relying party software tools querying every few minutes. The total
 amount of traffic is also negligible for any modern day situation.
 
 .. Tip:: For reference, NLnet Labs runs Krill in production and serves ROAs to
-         the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. We
-         successfully tested Krill on a Raspberry Pi 4 with 2GB RAM.
+         the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. Although
+         we only serve four ROAs and our repository size is 16KB, the situation
+         would not be different if serving 100 ROAs. 
