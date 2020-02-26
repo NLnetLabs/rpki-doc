@@ -50,6 +50,7 @@ under the Mozilla Public License 2.0.
    :maxdepth: 2
    :name: toc-krill
 
+   before-you-start
    installation
    getting-started
    parent-interactions
