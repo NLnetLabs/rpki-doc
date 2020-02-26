@@ -129,8 +129,7 @@ action.
 
 A final differentiator is the publication interval of each RIR repository.
 Please keep in mind that once a ROA is created by a user in one of the hosted
-systems, it can take between several minutes up to `multiple hours
-<https://www.arin.net/resources/manage/rpki/faq/#how-often-does-arin-update-the-repository>`_
+systems, it can take between several minutes up to multiple hours
 before the object is published and available for download, depending on the RIR
 system you use.
 
