@@ -8,18 +8,21 @@ fit them together depends on your situation. Before you begin with installing
 Krill, there are some basic concepts you should understand and some decisions
 you need to make.
 
-There are two fundamental pieces at play. First there is the Certificate
-Authority (CA), which takes care of all the cryptographic operations involved in
-RPKI. Secondly, there is the publication server, which makes your certificate
-and ROAs available to the world.
+The Moving Parts
+----------------
+
+With Krill there are two fundamental pieces at play. The first part is the
+Certificate Authority (CA), which takes care of all the cryptographic operations
+involved in RPKI. Secondly, there is the publication server which makes your
+certificate and ROAs available to the world.
 
 In almost all cases you will need to run the CA that Krill provides under a
 parent CA, usually your Regional Internet Registry (RIR) or National Internet
 Registry (NIR). The communication between the parent and the child CA is
 initiated through the exchange of two XML files, which you need to handle
 manually: a child request XML and a parent response XML. This involves
-generating the request file, providing it to your parent in some way and giving
-the response file back to your CA.
+generating the request file, providing it to your parent, and giving the
+response file back to your CA.
 
 After this initial exchange has been completed, all subsequent requests and
 responses are handled by the parent and child CA themselves. This includes the
@@ -103,6 +106,6 @@ with Rsyncd and a web server of your choice, you will see traffic from several
 hundred relying party software tools querying every few minutes. The total
 amount of traffic is also negligible for any modern day situation.
 
-.. Note:: For reference, NLnet Labs runs Krill in production and serves ROAs to
-          the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. We
-          successfully tested Krill on a Raspberry Pi 4 with 2GB RAM.
+.. Tip:: For reference, NLnet Labs runs Krill in production and serves ROAs to
+         the world using a 2 CPU / 2GB RAM / 60GB disk virtual machine. We
+         successfully tested Krill on a Raspberry Pi 4 with 2GB RAM.
