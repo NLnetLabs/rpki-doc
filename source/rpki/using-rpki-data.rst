@@ -44,12 +44,14 @@ their `Relying Party Agreement <https://www.arin.net/resources/rpki/tal.html>`_.
 
 When the validator runs, it will start retrieval at each of the RIR trust
 anchors and follows the chain of trust to fetch all published certificates and
-ROAs. Fetching data is currently done via rsync. RIRs and software developers
-are gradually migrating to the RPKI Repository Delta Protocol (RRDP) for
-retrieval, standardised in `RFC 8182 <https://tools.ietf.org/html/rfc8182>`_.
-This protocol uses HTTPS, which makes development and implementation easier, and
-opens up possibilities for Content Delivery Networks to participate in serving
-RPKI data.
+ROAs. Fetching data was originally done via rsync but RIRs and software
+developers are gradually migrating to the RPKI Repository Delta Protocol (RRDP)
+for retrieval, standardised in `RFC 8182
+<https://tools.ietf.org/html/rfc8182>`_. This protocol uses HTTPS, which makes
+development and implementation easier, and opens up possibilities for Content
+Delivery Networks to participate in serving RPKI data. Work to `deprecate rsync
+<https://datatracker.ietf.org/doc/draft-sidrops-bruijnzeels-deprecate-rsync/>`_`
+altogether is ongoing in the IETF.
 
 Once the data has been downloaded, the validator will verify the signatures on
 all objects and output the valid route origins as a list. Each object in this
@@ -58,13 +60,13 @@ object is referred to as validated ROA payload (VRP). The collection of VRPs is
 known as the validated cache.
 
 .. Note:: Objects that do not pass cryptographic verification are discarded.
-          Any statements made about route origins are not considered, as if a ROA
-          was never published. As a result, they will not affect any route
+          Any statements made about route origins are not considered, as if a
+          ROA was never published. As a result, they will not affect any route
           announcements.
 
-          Please note that objects that do not pass cryptographic verification are
-          sometimes referred to as 'invalid ROAs', but we like to avoid
-          this term because *validity* is used elsewhere in a different context.
+          Please note that objects that do not pass cryptographic verification
+          are sometimes referred to as 'invalid ROAs', but we like to avoid this
+          term because *validity* is used elsewhere in a different context.
 
 Fetching and verification of data should be performed periodically, in order to
 process updates. Though the standards recommend retrieval at least once every 24
@@ -79,9 +81,9 @@ announcements seen in BGP, it will have an effect on their RPKI validity state.
 They can be:
 
 Valid
-   The route announcement is covered by at least one VRP. The term *covered* means that
-   the prefix in the route announcement is equal, or more specific than the prefix in the
-   VRP.
+   The route announcement is covered by at least one VRP. The term *covered*
+   means that the prefix in the route announcement is equal, or more specific
+   than the prefix in the VRP.
 
 Invalid
    The prefix is announced from an unauthorised AS, or the announcement is more
@@ -114,12 +116,13 @@ As origin validation is deployed incrementally, the amount of IP address space
 that is covered by a ROA will gradually increase over time. Therefore, accepting
 the NotFound validity should be done for the foreseeable future.
 
-.. Important:: **For route origin validation to succeed in its objective, operators should
-               ultimately drop all BGP announcements that are marked as Invalid.**
-               Before taking this step, organisations should first analyse the
-               effects of doing this, to avoid unintended results. Initially accepting
-               Invalid announcements and giving them a lower preference, as well as
-               tagging them with a BGP community is a good first step to measure this.
+.. Important:: **For route origin validation to succeed in its objective,
+               operators should ultimately drop all BGP announcements that are
+               marked as Invalid.** Before taking this step, organisations
+               should first analyse the effects of doing this, to avoid
+               unintended results. Initially accepting Invalid announcements and
+               giving them a lower preference, as well as tagging them with a
+               BGP community is a good first step to measure this.
 
 Local Overrides
 ---------------
