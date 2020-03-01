@@ -66,11 +66,10 @@ This documentation is organised into three main sections:
 
 - The :ref:`sec-general` section contains this introduction as well as
   information about the licensing, authors, etc. It also contains the
-  :ref:`doc_faq`.
+  :ref:`doc_faq` and the :ref:`doc_quick_help`.
 - The :ref:`sec-rpki-tech` section explains the RPKI technology and standards in
   order for you to get a good sense of the requirements and moving parts. It
   will help you choose the right RPKI solution for your organisation, with
   regards to generating, publishing and using RPKI data.
 - The :ref:`sec-rpki-tools` section is about various open source projects that
-  are maintained to support RPKI. These include projects maintained by NLnet
-  Labs, as well as projects maintained by others in the community.
+  are maintained to support RPKI. 

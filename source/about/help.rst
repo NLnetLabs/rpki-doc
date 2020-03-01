@@ -1,3 +1,5 @@
+.. _doc_quick_help:
+
 Quick Help
 ==========
 
