@@ -11,8 +11,7 @@ Labs <https://nlnetlabs.nl>`_ in the `Rust programming language
     :width: 100%
     :alt: Welcome to Krill
 
-Quick Facts
------------
+------------
 
 Krill is intended for:
 
@@ -26,7 +25,6 @@ Krill is intended for:
   systems that the RIRs offer, but require RPKI management that is integrated
   with their own systems using a common UI or API.
 
-Introduction
 ------------
 
 Using Krill, you can run your own RPKI Certificate Authority as a child of one
