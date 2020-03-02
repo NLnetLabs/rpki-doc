@@ -32,7 +32,7 @@ request and response.
 
 Whether you also run the Krill publication server depends on if you can, or want
 to use one offered by a third party. For the general wellbeing of the RPKI
-ecosystem, we would always recommend to publish with your parent CA, if
+ecosystem, we would generally recommend to publish with your parent CA, if
 available. Setting this up is done in the same way as with the CA: exchanging a
 publisher request XML and a repository response XML.
 

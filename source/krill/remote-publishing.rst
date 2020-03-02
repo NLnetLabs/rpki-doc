@@ -9,9 +9,6 @@ or other business units) to publish at a repository server that you manage. In
 addition, running the repository separately from the CA offers flexibility in
 changing publication strategy and redundancy.
 
-Krill as Repository Server
---------------------------
-
 The repository functions for Krill can be accessed through the ``publishers``
 subcommand in the CLI:
 
@@ -38,7 +35,7 @@ subcommand in the CLI:
 
 
 List Publishers
-"""""""""""""""
+---------------
 
 You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
@@ -53,7 +50,7 @@ API Call: :krill_api_pub_get:`GET /v1/publishers <publishers>`
 
 
 Show Publisher Details
-""""""""""""""""""""""
+----------------------
 
 You can show the full details of a publisher, including the files that they
 published.
@@ -76,7 +73,7 @@ even embedded Krill CAs will have such a certificate, even if they access the
 repository server locally.
 
 Remove a Publisher
-""""""""""""""""""
+------------------
 
 You can remove publishers. If you do, then all of its content will be removed
 as well and the publisher will no longer be allowed to publish.
@@ -96,7 +93,7 @@ API Call: :krill_api_pub_delete:`DELETE /v1/publishers/ca <publishers~1{publishe
 
 
 Add a Publisher
-"""""""""""""""
+---------------
 
 In order to add a publisher you have to get its RFC 8183 Publisher Request XML,
 and hand it over to the server:
@@ -109,7 +106,7 @@ API Call: :krill_api_pub_post:`POST /v1/publishers <publishers>`
 
 
 Show Repository Response
-""""""""""""""""""""""""
+------------------------
 
 In order to show the RFC 8183 Repository Response XML for a specific publisher
 use the following:
@@ -124,7 +121,7 @@ use the following:
 API Call: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{publisher_handle}~1response.{format}>`
 
 Publish at a Remote Repository
-""""""""""""""""""""""""""""""
+------------------------------
 
 Controlling your CA's repository server is done through the ``repo`` subcommand
 of the CLI:
@@ -150,7 +147,7 @@ of the CLI:
     update     Change which repository this CA uses.
 
 Show repository for CA
-""""""""""""""""""""""
+----------------------
 
 You can use the following to show which repository server your CA is using,
 as well as what is has published at the location. Krill will issue an actual
@@ -175,7 +172,7 @@ API Call: :krill_api_ca_get:`GET /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 
 
 Show Publisher Request
-""""""""""""""""""""""
+----------------------
 
 You can use the following to show the RFC 8183 Publisher Request XML for a CA. You
 will need to hand this over to your remote repository so that they can add your
@@ -192,7 +189,7 @@ API Call: :krill_api_ca_get:`GET /v1/cas/ca/repo/request.json <cas~1{ca_handle}~
 
 
 Change Repository for a CA
-""""""""""""""""""""""""""
+--------------------------
 
 You can change which repository server is used by your CA. If you have multiple
 CAs you will have to repeat this for each of them. Also, note that by default
@@ -260,7 +257,7 @@ The solution is 're-syncing' as described in the following section.
 
 
 Re-syncing CAs with Repository
-""""""""""""""""""""""""""""""
+------------------------------
 
 If your CAs have somehow become out of sync with their repository, then they
 will automatically re-sync whenever there is an update like a renewal of
