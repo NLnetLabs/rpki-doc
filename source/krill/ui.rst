@@ -50,8 +50,10 @@ recognise your organisation. Once set, the handle cannot be changed.
 Repository Setup
 ----------------
 
-Before you can configure a parent CA, you first need to set up a repository so
-that your parent knows where your certificate will be published.
+Before Krill can request a certificate from a parent CA, it will need to know
+where it will publish. You can add a parent before configuring a repository for
+your CA, but in that case Krill will postpone requesting a certificate until
+you have done so.
 
 If you are using a third party repository, copy the publisher request XML
 and supply it to your publication server provider.

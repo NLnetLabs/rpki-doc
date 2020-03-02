@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'RPKI'
-copyright = u'2019, NLnet Labs'
+copyright = u'2018-2020, NLnet Labs'
 author = u'The RPKI Team'
 
 # The short X.Y version
@@ -140,7 +140,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'TheRPKIDocumentation.tex', u'The RPKI Documentation',
-     u'Alex Band, Tim Bruijnzeels, Martin Hoffmann and the RPKI Community', 'manual'),
+     u'Alex Band and the RPKI Community', 'manual'),
 ]
 
 

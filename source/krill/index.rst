@@ -13,17 +13,17 @@ Labs <https://nlnetlabs.nl>`_ in the `Rust programming language
 
 ------------
 
-Krill is intended for:
+**Krill is intended for:**
 
-- Organisations who hold address space from multiple Regional Internet
-  Registries (RIRs). Using Krill, you can manage ROAs for all resources
-  seamlessly within one system.
-- Organisations that need to be able to delegate RPKI to their customers or
+- **Organisations who hold address space from multiple Regional Internet
+  Registries (RIRs). Using Krill, ROAs can be managed seamlessly for all
+  resources within one system.**
+- **Organisations that need to be able to delegate RPKI to their customers or
   different business units, so that that they can run their own CA and manage
-  ROAs themselves.
-- Organisations who do not wish to rely on the web interface of the hosted
+  ROAs themselves.**
+- **Organisations who do not wish to rely on the web interface of the hosted
   systems that the RIRs offer, but require RPKI management that is integrated
-  with their own systems using a common UI or API.
+  with their own systems using a common UI or API.**
 
 ------------
 
