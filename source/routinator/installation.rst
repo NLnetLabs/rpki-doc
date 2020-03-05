@@ -22,7 +22,7 @@ Routinator and start it up as an RTR server listening on 127.0.0.1 port
    apt install rsync build-essential
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    source ~/.cargo/env
-   cargo install routinator
+   cargo install --locked routinator
    routinator init
    # Follow instructions provided
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
@@ -32,7 +32,7 @@ If you have an older version of Rust and Routinator, you can update via:
 .. code-block:: bash
 
    rustup update
-   cargo install -f routinator
+   cargo install --locked --force routinator
 
 If you want to try the master branch from the repository instead of a
 release version, you can run:
@@ -186,7 +186,7 @@ The easiest way to get Routinator is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install routinator
+   cargo install --locked routinator
 
 If you want to try the master branch from the repository instead of a
 release version, you can run:
