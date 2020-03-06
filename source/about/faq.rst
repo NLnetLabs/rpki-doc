@@ -36,7 +36,7 @@ I thought we were all using the IRR to check route origin, why do we need RPKI n
 
 If you've been involved in default-free zone Internet engineering for any length
 of time, you're probably familiar with RPSL, a routing policy specification
-language originally defined in :rfc-reference:`2280` back in 1998. While RPSL
+language originally defined in :RFC:`2280` back in 1998. While RPSL
 has created considerable early enthusiasm and has seen some traction, the
 Internet was rapidly growing at the time, and the primary focus was on data
 availability rather than data trustworthiness. Everyone was busy
@@ -124,7 +124,7 @@ Unknown).
 - NotFound: The prefix in this announcement is not covered (or only partially covered) by an existing ROA
 
 To understand how more specifics, less specifics and partial overlaps are
-treated, please refer to `section 2 of :rfc-reference:`6811`.
+treated, please refer to `section 2 of :RFC:`6811`.
 
 I’ve heard the term "route leak" and "route hijack". What’s the difference?
 ---------------------------------------------------------------------------
@@ -139,7 +139,7 @@ A route hijack is the unauthorised origination of a route.
 
 Note that in either case, the cause may be accidental or malicious and in either
 case, the result can be path detours, redirection, or denial of services. For
-more information, please refer to :rfc-reference:`7908`.
+more information, please refer to :RFC:`7908`.
 
 If a ROA is cryptographically invalid, will it make my route invalid?
 ---------------------------------------------------------------------
@@ -183,7 +183,7 @@ several downsides:
 - Scaling becomes more and more problematic as the global RPKI data set grows and more operators download and validate data, as with rsync the server in involved in processing the differences.
 
 To overcome these limitations the RRDP protocol was developed and standardised
-in :rfc-reference:`8182`, which relies on HTTPS.
+in :RFC:`8182`, which relies on HTTPS.
 RRDP was specifically designed for scaling and allows CDNs to participate in
 serving the RPKI data set globally, at scale. In addition, HTTPS is well
 supported in programming languages so development of relying party software
@@ -219,13 +219,13 @@ When you outsource the validation to a third party, you lose the certainty of
 data accuracy and authenticity. Conceptually, this is similar to DNSSEC
 validation, which is best done by a local trusted resolver.
 
-Section 3 of :rfc-reference:`7115` has an extensive section on this specific
+Section 3 of :RFC:`7115` has an extensive section on this specific
 topic.
 
 How often should I fetch new data from the RPKI repositories?
 -------------------------------------------------------------
 
-According to section 3 of :rfc-reference:`7115` you should fetch new data at
+According to section 3 of :RFC:`7115` you should fetch new data at
 least every 4 to 6 hours. At the moment, the publication of new ROAs in the
 largest repositories takes about 10-15 minutes. This means fetching every 15-30
 minutes is reasonable, without putting unnecessary load on the system.
@@ -237,7 +237,7 @@ RPKI provides a positive statement on routing intent. If all RPKI validator
 instances become unavailable and all certificates and ROAs expire, the validity
 state of all routes will fall back to NotFound, as if RPKI were never used.
 Routes with this state should be accepted according to section 5 of
-:rfc-reference:`7115`, as this state will unfortunately be true for the majority
+:RFC:`7115`, as this state will unfortunately be true for the majority
 of routes.
 
 What if the Validator I use crashes and my router stops getting a feed. What will happen to the prefixes I learn over BGP?
@@ -257,7 +257,7 @@ I don’t want to rely on the RPKI data set in all cases, but I want to have my 
 You can always apply your own, local overrides on specific
 prefixes/announcements and override the RPKI data you fetch from the
 repositories. Specifying overrides is in fact standardised in
-:rfc-reference:`8416`, “Simplified Local Internet Number Resource Management
+:RFC:`8416`, “Simplified Local Internet Number Resource Management
 with the RPKI (SLURM)”.
 
 Is there any point in signing my routes with ROAs if I don’t validate and filter myself?

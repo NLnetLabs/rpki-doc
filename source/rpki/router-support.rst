@@ -6,7 +6,7 @@ Router Support
 Several router vendors participated in the development of the RPKI standards in
 the IETF, ensuring the technology offered an end-to-end solution for route
 origin validation. The RPKI to Router protocol (RPKI-RTR) is standardised in
-:rfc-reference:`6810` (v0) and :rfc-reference:`8210` (v1). Is it specifically
+:RFC:`6810` (v0) and :RFC:`8210` (v1). Is it specifically
 designed to deliver validated prefix origin data to routers. This, as well as
 origin validation functionality, is currently available in on various hardware
 platforms and software solutions.

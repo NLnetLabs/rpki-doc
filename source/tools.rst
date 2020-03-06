@@ -59,9 +59,9 @@ Supporting Tools
    as RPKI Origin Validation and BGPSec Path Validation.
 
 `GoRTR <https://github.com/cloudflare/gortr>`_
-   An open-source implementation of RPKI to Router protocol (RFC 6810)
-   using the Go programming language. This project is maintained by Louis
-   Poinsignon at Cloudflare.
+   An open-source implementation of RPKI to Router protocol
+   (:RFC:`6810`) using the Go programming language. This project is
+   maintained by Louis Poinsignon at Cloudflare.
 
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
@@ -82,8 +82,8 @@ Supporting Tools
 
 :ref:`rtrlib`
    The RTRlib implements the client-side of the RPKI-RTR protocol
-   (:rfc-reference:`6810`, :rfc-reference:`8210`) and BGP Prefix Origin
-   Validation (:rfc-reference:`6811`). This also enables the maintenance of
+   (:RFC:`6810`, :RFC:`8210`) and BGP Prefix Origin
+   Validation (:RFC:`6811`). This also enables the maintenance of
    router keys, which are required to deploy BGPSec.
 
    RTRlib was originally founded by researchers from the Computer Systems &

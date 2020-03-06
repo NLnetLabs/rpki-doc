@@ -46,7 +46,7 @@ When the validator runs, it will start retrieval at each of the RIR trust
 anchors and follows the chain of trust to fetch all published certificates and
 ROAs. Fetching data was originally done via rsync but RIRs and software
 developers are gradually migrating to the RPKI Repository Delta Protocol (RRDP)
-for retrieval, standardised in :rfc-reference:`8182`. This protocol uses HTTPS,
+for retrieval, standardised in :RFC:`8182`. This protocol uses HTTPS,
 which makes development and implementation easier, and opens up possibilities
 for Content Delivery Networks to participate in serving RPKI data. Work to
 `deprecate rsync
@@ -133,7 +133,7 @@ validated cache. This ensures that you remain in full control of the VRPs used
 by your routers. For example, if an Invalid origin is the result of a
 misconfigured ROA, you may accept it until the operator in question has resolved
 the issue. A format named SLURM is available for this, which is standardised in
-:rfc-reference:`8416`.
+:RFC:`8416`.
 
 SLURM provides several ways to achieve exceptions. First, you can add a VRP
 specifically for the affected route by specifying the correct ASN, prefix and
@@ -147,7 +147,7 @@ Feeding Routers
 ---------------
 
 The validated cache can be fed directly into RPKI-capable routers via the RPKI
-to Router Protocol (RPKI-RTR), described in :rfc-reference:`8210`. Many routers,
+to Router Protocol (RPKI-RTR), described in :RFC:`8210`. Many routers,
 including Cisco, Juniper, Nokia, as well as BIRD and OpenBGPD support processing
 the validated cache. Alternatively, most validators can export the cache in
 various useful formats for processing outside of the router, in order to set up

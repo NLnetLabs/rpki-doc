@@ -79,7 +79,7 @@ are created. An application programming interface (API) may be provided to make
 batch processing easier.
 
 To improve retrieval of published RPKI data by relying party software, the RPKI
-Repository Delta Protocol (RRDP) protocol (:rfc-reference:`8182`) was developed.
+Repository Delta Protocol (RRDP) protocol (:RFC:`8182`) was developed.
 Support for this standard is listed as well.
 
 Lastly, `nonrepudiation

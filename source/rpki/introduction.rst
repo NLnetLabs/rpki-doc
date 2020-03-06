@@ -115,11 +115,11 @@ X.509 PKI Considerations
 ------------------------
 
 The digital certificates used in RPKI are based on X.509, standardised in
-:rfc-reference:`5280`, along with extensions for IP addresses and AS identifiers
-described in :rfc-reference:`3779`. Because RPKI is used in the routing security
+:RFC:`5280`, along with extensions for IP addresses and AS identifiers
+described in :RFC:`3779`. Because RPKI is used in the routing security
 context, a common misconception is that this is the *Routing* PKI. However,
 certificates in this PKI are called *resource* certificates and conform to the
-certificate profile described in :rfc-reference:`6487`.
+certificate profile described in :RFC:`6487`.
 
 .. note:: X.509 certificates are typically used for authenticating either an
           individual or, for example, a website. **In RPKI, certificates

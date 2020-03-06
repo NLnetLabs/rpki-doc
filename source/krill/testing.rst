@@ -59,7 +59,7 @@ Add a CA
 --------
 
 When adding a CA you need to choose a handle, essentially just a name. The term
-"handle" comes from :rfc-reference:`8183` and is used in the communication
+"handle" comes from :RFC:`8183` and is used in the communication
 protocol between parent and child CAs, as well as CAs and publication servers.
 For the handle you can use alphanumerical characters, dashes or underscores.
 

@@ -57,8 +57,8 @@ alongside the RTR server. For more information, please refer to the
 The RTR Service
 ---------------
 
-Routinator supports RPKI-RTR as specified in :rfc-reference:`8210` as well as
-the older version described in :rfc-reference:`6810`.
+Routinator supports RPKI-RTR as specified in :RFC:`8210` as well as
+the older version described in :RFC:`6810`.
 
 When launched as an RTR server, routers with support for route origin validation
 (ROV) can connect to Routinator to fetch the processed data. This includes

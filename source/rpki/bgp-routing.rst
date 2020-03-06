@@ -84,7 +84,7 @@ Routing Errors
 --------------
 
 Routing errors on the Internet can be classified as route leaks or route
-hijacks. :rfc-reference:`7908` provides a working definition of a BGP route
+hijacks. :RFC:`7908` provides a working definition of a BGP route
 leak:
 
    A route leak is the propagation of routing announcement(s) beyond
@@ -143,7 +143,7 @@ origination and is widely, though not universally, deployed to prevent
 accidental or intentional routing disturbances.
 
 The notation used in the IRR is the Routing Policy Specification Language
-(RPSL), which was originally defined in :rfc-reference:`2280` in 1998. RPSL is a
+(RPSL), which was originally defined in :RFC:`2280` in 1998. RPSL is a
 very expressive language, allowing for an extremely detailed description of
 routing policy. While IRR usage had created considerable early enthusiasm and
 has seen quite some traction, the Internet was rapidly growing at the time. This
