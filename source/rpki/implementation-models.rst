@@ -78,10 +78,9 @@ synchronise the management of *"route"* objects in the IRR with the ROAs that
 are created. An application programming interface (API) may be provided to make
 batch processing easier.
 
-To improve retrieval of published RPKI data by relying party software, the `RPKI
-Repository Delta Protocol (RRDP) protocol
-<https://tools.ietf.org/html/rfc8182>`_ was developed. Support for this standard
-is listed as well.
+To improve retrieval of published RPKI data by relying party software, the RPKI
+Repository Delta Protocol (RRDP) protocol (:rfc-reference:`8182`) was developed.
+Support for this standard is listed as well.
 
 Lastly, `nonrepudiation
 <https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_

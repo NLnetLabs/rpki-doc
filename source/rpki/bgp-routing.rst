@@ -83,7 +83,9 @@ With this in mind, there are several problems that can arise as a result of this
 Routing Errors
 --------------
 
-Routing errors on the Internet can be classified as route leaks or route hijacks. `RFC 7908 <https://tools.ietf.org/html/rfc7908>`_ provides a working definition of a BGP route leak:
+Routing errors on the Internet can be classified as route leaks or route
+hijacks. :rfc-reference:`7908` provides a working definition of a BGP route
+leak:
 
    A route leak is the propagation of routing announcement(s) beyond
    their intended scope.  That is, an announcement from an Autonomous
@@ -141,12 +143,12 @@ origination and is widely, though not universally, deployed to prevent
 accidental or intentional routing disturbances.
 
 The notation used in the IRR is the Routing Policy Specification Language
-(RPSL), which was originally defined in `RFC 2280
-<https://tools.ietf.org/html/rfc2280>`_ in 1998. RPSL is a very expressive
-language, allowing for an extremely detailed description of routing policy.
-While IRR usage had created considerable early enthusiasm and has seen quite
-some traction, the Internet was rapidly growing at the time. This meant that the
-primary focus was on data availability rather than data trustworthiness.
+(RPSL), which was originally defined in :rfc-reference:`2280` in 1998. RPSL is a
+very expressive language, allowing for an extremely detailed description of
+routing policy. While IRR usage had created considerable early enthusiasm and
+has seen quite some traction, the Internet was rapidly growing at the time. This
+meant that the primary focus was on data availability rather than data
+trustworthiness.
 
 In later years, it was considered a good practice to extensively document how
 incoming and outgoing traffic was treated by the network, but nowadays the most
@@ -181,7 +183,7 @@ In conclusion, the main weakness of the IRR is that it is not a globally
 deployed system and it lacks the authorisation model to make the system water
 tight. The result is that out of all the information on routing intent that is
 published, it is difficult to determine what is legitimate, authentic data and
-what isn’t. 
+what isn’t.
 
 RPKI solves these problems, as you can be absolutely sure that an authoritative,
 cryptographically verifiable statement can be made by any legitimate IP resource

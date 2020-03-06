@@ -57,9 +57,8 @@ alongside the RTR server. For more information, please refer to the
 The RTR Service
 ---------------
 
-Routinator supports RPKI-RTR as specified in `RFC 8210
-<https://tools.ietf.org/html/rfc8210>`_ as well as the older version described
-in `RFC 6810 <https://tools.ietf.org/html/rfc7730>`_.
+Routinator supports RPKI-RTR as specified in :rfc-reference:`8210` as well as
+the older version described in :rfc-reference:`6810`.
 
 When launched as an RTR server, routers with support for route origin validation
 (ROV) can connect to Routinator to fetch the processed data. This includes
@@ -109,11 +108,11 @@ Secure Transports
 
 These instructions were contributed by `wk on Github <https://github.com/NLnetLabs/routinator/blob/master/doc/transports.md>`_.
 
-`RFC6810 <https://tools.ietf.org/html/rfc6810#page-17>`_ defines a number of
+`RFC 6810 <https://tools.ietf.org/html/rfc6810#page-17>`_ defines a number of
 secure transports for RPKI-RTR that can be used to secure communication
 between a router and a RPKI relying party.
 
-However, the RPKI Router Implementation Report documented in `RFC7128
+However, the RPKI Router Implementation Report documented in `RFC 7128
 <https://tools.ietf.org/html/rfc7128#page-7>`_ suggests these secure transports
 have not been widely implemented. Implementations, however, do exist, and a
 secure transport could be valuable in situations where the RPKI relying party is

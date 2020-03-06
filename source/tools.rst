@@ -81,12 +81,13 @@ Supporting Tools
    and the potential impact of deploying "invalid is reject" routing policies.
 
 :ref:`rtrlib`
-   The RTRlib implements the client-side of the RPKI-RTR protocol (RFC
-   6810, RFC 8210) and BGP Prefix Origin Validation (RFC 6811). This also
-   enables the maintenance of router keys, which are required to
-   deploy BGPSec.
+   The RTRlib implements the client-side of the RPKI-RTR protocol
+   (:rfc-reference:`6810`, :rfc-reference:`8210`) and BGP Prefix Origin
+   Validation (:rfc-reference:`6811`). This also enables the maintenance of
+   router keys, which are required to deploy BGPSec.
 
-   RTRlib was originally founded by researchers from the Computer Systems & Telematics
-   group at Freie Universität Berlin and reseachers from the INET research group at
-   Hamburg University of Applied Sciences, under the supervision of Matthias Wählisch
-   and Thomas Schmidt. It is now a community project.
+   RTRlib was originally founded by researchers from the Computer Systems &
+   Telematics group at Freie Universität Berlin and reseachers from the INET
+   research group at Hamburg University of Applied Sciences, under the
+   supervision of Matthias Wählisch and Thomas Schmidt. It is now a community
+   project.

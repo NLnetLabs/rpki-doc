@@ -54,10 +54,10 @@ Maximum Prefix Length
 
 In addition to the origin AS and the prefix, the ROA contains a maximum length
 (maxLength) value. This is an attribute that a *route* object in RPSL doesn't
-have. Described in `RFC 6482 <https://tools.ietf.org/html/rfc6482>`_, the
-maxLength specifies the maximum length of the IP address prefix that the AS is
-authorised to advertise. This gives the holder of the prefix control over the
-level of deaggregation an AS is allowed to do.
+have. Described in :rfc-reference:`6482`, the maxLength specifies the maximum
+length of the IP address prefix that the AS is authorised to advertise. This
+gives the holder of the prefix control over the level of deaggregation an AS is
+allowed to do.
 
 For example, if a ROA authorises a certain AS to originate 192.0.1.0/24 and the
 maxLength is set to /25, the AS can originate a single /24 or two adjacent /25
@@ -65,11 +65,11 @@ blocks. Any more specific announcement is unauthorised by the ROA. Using this
 example, the shorthand notation for prefix and maxLength you will often
 encounter is ``192.0.1.0/24-25``.
 
-.. WARNING:: According to `RFC 7115 <https://tools.ietf.org/html/rfc7115>`_, operators
-             should be conservative in use of maxLength in ROAs. For
-             example, if a prefix will have only a few sub-prefixes announced,
-             multiple ROAs for the specific announcements should be used as
-             opposed to one ROA with a long maxLength.
+.. WARNING:: According to :rfc-reference:`7115`, operators should be
+             conservative in use of maxLength in ROAs. For example, if a prefix
+             will have only a few sub-prefixes announced, multiple ROAs for the
+             specific announcements should be used as opposed to one ROA with a
+             long maxLength.
 
              **Liberal usage of maxLength opens up the network to a forged origin
              attack. ROAs should be as precise as possible, meaning they should
@@ -91,9 +91,8 @@ announcements. Once a ROA is validated, the resulting object contains an IP
 prefix, a maximum length, and an origin AS number. This object is referred to as
 validated ROA payload (VRP).
 
-When comparing VRPs to route announcements seen in BGP, `RFC 6811
-<https://tools.ietf.org/html/rfc6811>`_ describes their possible statuses, which
-are:
+When comparing VRPs to route announcements seen in BGP, :rfc-reference:`6811`
+describes their possible statuses, which are:
 
 Valid
    The route announcement is covered by at least one VRP. The term *covered* means that
@@ -116,10 +115,9 @@ Path Validation
 ---------------
 
 Currently, RPKI only provides origin validation. While BGPsec path validation is
-a desirable characteristic and standardised in `RFC 8205
-<https://tools.ietf.org/html/rfc8205>`_, real-world deployment may prove limited
-for the foreseeable future. However, RPKI origin validation functionality
-addresses a large portion of the problem surface.
+a desirable characteristic and standardised in :rfc-reference:`8205`, real-world
+deployment may prove limited for the foreseeable future. However, RPKI origin
+validation functionality addresses a large portion of the problem surface.
 
 For many networks, the most important prefixes can be found one AS hop away
 (coming from a specific peer, for example), and this is the case for large
@@ -128,8 +126,8 @@ which are ideally situated to act on RPKI data and accept only valid routes for
 redistribution.
 
 Furthermore, the vast majority of route hijacks are unintentional, and are
-caused by ‘fat-fingering’, where an operator accidently originates a prefix they
-are not the holder of.
+caused by ‘fat-fingering’, where an operator accidentally originates a prefix
+they are not the holder of.
 
 Origin validation would mitigate most of these problems, offering immediate
 value of the system. While a malicious party could still take advantage of the

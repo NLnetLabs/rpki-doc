@@ -58,10 +58,10 @@ To run Krill in test mode you can set "use_ta" to "true" in your
 Add a CA
 --------
 
-When adding a CA you need to choose a handle, essentially just a name. The
-term "handle" comes from RFC 8183 and is used in the communication protocol
-between parent and child CAs, as well as CAs and publication servers. For the
-handle you can use alphanumerical characters, dashes or underscores.
+When adding a CA you need to choose a handle, essentially just a name. The term
+"handle" comes from :rfc-reference:`8183` and is used in the communication
+protocol between parent and child CAs, as well as CAs and publication servers.
+For the handle you can use alphanumerical characters, dashes or underscores.
 
 The handle you select is not published in the RPKI but used as identification to
 parent and child CAs you interact with. You should choose a handle that helps

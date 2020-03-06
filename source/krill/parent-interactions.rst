@@ -80,8 +80,8 @@ highly available repository yourself.
 ARIN
 """"
 
-ARIN does not support the RFC 8183 key exchange format yet, but they do have it
-`on their roadmap
+ARIN does not support the :rfc-reference:`8183` key exchange format yet, but
+they do have it `on their roadmap
 <https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_. You can
 still configure delegated RPKI by transforming your request XML into the format
 that ARIN accepts. You can do this with the toggle in the user interface or by
