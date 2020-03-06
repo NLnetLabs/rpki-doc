@@ -124,7 +124,7 @@ Unknown).
 - NotFound: The prefix in this announcement is not covered (or only partially covered) by an existing ROA
 
 To understand how more specifics, less specifics and partial overlaps are
-treated, please refer to `section 2 of :RFC:`6811`.
+treated, please refer to section 2 of :RFC:`6811`.
 
 I’ve heard the term "route leak" and "route hijack". What’s the difference?
 ---------------------------------------------------------------------------
