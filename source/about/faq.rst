@@ -1,4 +1,7 @@
 .. _doc_faq:
+.. index::
+  ! FAQ
+  see: Frequently Asked Questions; FAQ
 
 FAQ
 +++

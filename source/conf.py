@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'RPKI'
-copyright = u'2018-2020, NLnet Labs'
+copyright = u'2018-2020, NLnet Labs (CC-BY 3.0)'
 author = u'The RPKI Team'
 
 # The short X.Y version

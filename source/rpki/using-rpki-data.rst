@@ -1,3 +1,5 @@
+.. index:: ! Using RPKI data
+
 .. _doc_rpki_relying_party:
 
 Using RPKI Data
@@ -12,6 +14,8 @@ Operators who want to deploy route origin validation in their BGP decision
 making process have to fetch and validate all of the published RPKI data. As
 with any PKI, you have to start with one or more entities you are prepared to
 trust. In the case of RPKI, these are the five Regional Internet Registries.
+
+.. index:: Trust Anchor
 
 Connecting to the Trust Anchor
 ------------------------------
@@ -124,6 +128,8 @@ the NotFound validity should be done for the foreseeable future.
                giving them a lower preference, as well as tagging them with a
                BGP community is a good first step to measure this.
 
+.. index:: SLURM
+
 Local Overrides
 ---------------
 
@@ -142,6 +148,8 @@ route back to NotFound state. In general, the former is the safer way, as it
 deals better with changing ROAs. Lastly, it is possible to allow all routes from
 a certain ASN or prefix. It is advised to use overrides with care, as liberal
 usage may have unintended consequences.
+
+.. index:: RPKI-RTR
 
 Feeding Routers
 ---------------

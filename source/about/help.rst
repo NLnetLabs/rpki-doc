@@ -1,4 +1,5 @@
 .. _doc_quick_help:
+.. index:: ! Quick Help
 
 Quick Help
 ==========

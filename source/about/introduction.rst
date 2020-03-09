@@ -1,4 +1,5 @@
 .. _doc_about_intro:
+.. index:: ! Introduction
 
 Introduction
 ============
@@ -72,4 +73,4 @@ This documentation is organised into three main sections:
   will help you choose the right RPKI solution for your organisation, with
   regards to generating, publishing and using RPKI data.
 - The :ref:`sec-rpki-tools` section is about various open source projects that
-  are maintained to support RPKI. 
+  are maintained to support RPKI.

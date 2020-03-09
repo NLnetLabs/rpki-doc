@@ -1,5 +1,8 @@
 .. _doc_rpki_bgp_routing:
 
+.. index:: ! Internet Routing
+  see: BGP; Internet Routing
+
 Internet Routing
 ================
 
@@ -31,11 +34,15 @@ originate and announce to their peers. There is no authentication or
 authorisation embedded within BGP. In principle, an operator can define any ASN
 as the origin and announce any prefix, also one they are not the holder of.
 
+.. index:: BGP best path selection
+  see: Shortest path; BGP best path selection
+  see: More specific; BGP best path selection
+
 BGP Best Path Selection
 -----------------------
 
-BGP routing information includes the complete route to each destination. BGP uses
-the routing information to maintain a database of network reachability
+BGP routing information includes the complete route to each destination. BGP
+uses the routing information to maintain a database of network reachability
 information, which it exchanges with other networks. For each prefix in the
 routing table, BGP continuously and dynamically makes decisions about the best
 path to reach a particular destination. After the best path is selected, the
@@ -76,9 +83,14 @@ overlapping more specific.
     :width: 100%
     :alt: A more specific prefix always wins
 
-    Regardless of the path length, the announcement of a more specific prefix always wins
+    Regardless of the path length, the announcement of a more specific prefix
+    always wins
 
-With this in mind, there are several problems that can arise as a result of this behaviour.
+With this in mind, there are several problems that can arise as a result of this
+behaviour.
+
+.. index:: Routing errors
+  see: Fat finger; Routing errors
 
 Routing Errors
 --------------
@@ -132,6 +144,10 @@ allowing the announcement or re-announcement of IP address blocks. A more widely
 accepted method is the use of Internet Routing Registry (IRR) databases, where
 operators can publish their routing policy. Both methods allow other networks to
 set up filters accordingly.
+
+.. index:: Internet Routing Registry
+  see: IRR; Internet Routing Registry
+  see: RPSL; Internet Routing Registry
 
 The Internet Routing Registry
 -----------------------------

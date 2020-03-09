@@ -1,4 +1,5 @@
 .. _doc_implementation_models:
+.. index:: ! Implementation Models
 
 Implementation Models
 =====================
@@ -23,6 +24,8 @@ everyone who has deployed route origin validation.
                by other business units or customers. In addition, RPKI should
                become a standard part of operations, ensuring staff is trained
                and ROAs are continually monitored and maintained.
+
+.. index:: Hosted RPKI
 
 Hosted RPKI
 -----------
@@ -132,6 +135,8 @@ systems, it can take between several minutes up to multiple hours
 before the object is published and available for download, depending on the RIR
 system you use.
 
+.. index:: Delegated RPKI
+
 Delegated RPKI
 --------------
 
@@ -147,7 +152,7 @@ cloud provider.
 There may be various reasons for organisations to choose this model. For
 example, this may be useful for organisations that need to be able to delegate
 RPKI to their customers or different business units, so that that they can run
-their a CA on their systems and manage ROAs themselves.
+a CA on their systems and manage ROAs themselves.
 
 Alternatively, enterprises who manage large amounts of address space across
 various RIRs, may not want to manage ROAs in up to five different web

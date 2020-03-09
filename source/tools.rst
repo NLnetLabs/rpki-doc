@@ -1,4 +1,5 @@
 .. _doc_tools:
+.. index:: ! Software Projects
 
 Software Projects
 =================
@@ -7,6 +8,9 @@ This section provides an overview of all well known open source projects that
 support RPKI. It includes Relying Party software for validating RPKI data,
 Certificate  Authority software to run RPKI on your own infrastructure and
 supporting tools that help deployment and integration.
+
+.. index:: Relying Party software
+  see: RPKI Validator; Relying Party software
 
 Relying Party Software
 ----------------------
@@ -37,6 +41,8 @@ Relying Party Software
    Relying Party Security Technology for Internet Routing (RPSTIR) software,
    initially written by Raytheon BBN Technologies in the C programming language,
    now maintained by ZDNS.
+
+.. index:: Certificate Authority software
 
 Certificate Authority Software
 ------------------------------

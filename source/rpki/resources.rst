@@ -1,4 +1,6 @@
 .. _doc_rpki_resources:
+.. index:: ! Resources
+
 
 Resources
 =========
@@ -9,6 +11,8 @@ experiences. Finally, there is an overview of all work in the Internet
 Engineering Task Force relevant to RPKI.
 
 The :ref:`doc_tools` page an overview of all available tools for using RPKI.
+
+.. index:: Statistics
 
 RPKI Insights and Statistics
 ----------------------------
@@ -21,6 +25,8 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
+
+.. index:: Operational experiences
 
 Operational Experiences
 -----------------------
@@ -46,6 +52,8 @@ Operational Experiences
 `RPKI at IXP Route Servers <https://ripe78.ripe.net/archives/video/53/>`_
    Presentation by Nick Hilliard - INEX, RIPE 78, May 2019
 
+.. index:: Examples of BGP hijacks
+
 Examples of BGP Hijacks
 -----------------------
 
@@ -66,6 +74,9 @@ Examples of BGP Hijacks
 
 `Insecure routing redirects YouTube to Pakistan <https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/>`_
    Ars Technica, 25 February 2008
+
+.. index:: IETF Documents
+  see: RFCs about RPKI; IETF Documents
 
 IETF Documents
 --------------

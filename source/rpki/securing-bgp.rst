@@ -1,4 +1,5 @@
 .. _doc_rpki_securing_bgp:
+.. index:: Securing BGP
 
 Securing BGP
 ============
@@ -14,6 +15,8 @@ origin validation and path validation are documented IETF standards. In
 addition, there are drafts describing autonomous system provider authorisation,
 aimed at providing a more lightweight, incremental approach to path validation.
 
+.. index:: Route Origin Validation
+
 .. _rov:
 
 Route Origin Validation
@@ -28,6 +31,9 @@ used. The five RIRs provide functionality for it, there is open source software
 available for creation and publication of data, and all major router vendors
 have implemented ROV in their platforms. Various router software implementations
 offer support for it, as well.
+
+.. index:: Route Origin Authorisations
+  see: ROAs; Route Origin Authorisations
 
 Route Origin Authorisations
 """""""""""""""""""""""""""
@@ -48,6 +54,9 @@ The creation of a ROA is solely tied to the IP address space that is listed on
 the certificate and not to the AS numbers. This means the holder of the
 certificate can authorise any AS to originate their prefix, not just their own
 autonomous systems.
+
+.. index:: Maximum Prefix Length
+  see: MaxLength; Maximum Prefix Length
 
 Maximum Prefix Length
 ~~~~~~~~~~~~~~~~~~~~~
@@ -82,6 +91,11 @@ that are not covered by overly long maxLength. For example, if, instead of
 cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is
 more likely to be noticed because of its size.
 
+.. index:: RPKI validity
+  see: Valid status; RPKI validity
+  see: Invalid status; RPKI validity
+  see: NotFound status; RPKI validity
+
 Route Announcement Validity
 """""""""""""""""""""""""""
 
@@ -110,6 +124,10 @@ NotFound
 Anyone can download and validate the published certificates and ROAs and make
 routing decisions based on these three outcomes. In the
 :ref:`doc_rpki_relying_party` section, we'll cover how this works in practice.
+
+.. index:: Path validation
+  see: ASPA; Path validation
+  see: BGPSec; Path validation
 
 Path Validation
 ---------------

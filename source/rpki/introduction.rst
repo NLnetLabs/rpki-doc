@@ -1,4 +1,5 @@
 .. _doc_rpki_introduction:
+.. index:: ! Introduction
 
 Introduction
 ============
@@ -12,6 +13,8 @@ obtain a resource certificate. Using the certificate, they can make
 authoritative, signed statements about the resources listed on it. To understand
 the structure of RPKI and its usage, we must first look at how Internet number
 resources are allocated globally.
+
+.. index:: IP Allocation
 
 Internet Number Resource Allocation
 -----------------------------------
@@ -110,6 +113,8 @@ resource conflicts in the system, they `reconsidered
 after operational experience in deployment had caused the RIRs to conclude that
 the RPKI system would be less brittle using multiple `overlapping trust anchors
 <https://www.nro.net/regional-internet-registries-are-preparing-to-deploy-all-resources-rpki-service/>`_.
+
+.. index:: X.509 PKI
 
 X.509 PKI Considerations
 ------------------------
