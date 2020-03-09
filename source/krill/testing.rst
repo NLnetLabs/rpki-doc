@@ -105,7 +105,7 @@ First you will need to get the RFC 8183 Publisher Request XML for your CA.
 
 .. code-block:: text
 
-  $ krillc repo request > publihsher_request.xml
+  $ krillc repo request > publisher_request.xml
 
 
 Step 2: Add your CA to the Repository
@@ -116,9 +116,9 @@ Repository Response XML file:
 
 .. code-block:: text
 
-  $ krillc publishers add remote \
-     --ca $KRILL_CLI_MY_CA \
-     --rfc8183 publihsher_request.xml > repository_response.xml
+  $ krillc publishers add \
+     --publisher $KRILL_CLI_MY_CA \
+     --rfc8183 publisher_request.xml > repository_response.xml
 
 
 Step 3: Configure your CA to use the Repository
