@@ -3,9 +3,10 @@
 Publication Server
 ==================
 
-It is highly recommended to use an RPKI publication server provided by your
-parent CA, if available. This relieves you of the responsibility to keep a
-public Rsync and web server available at all times.
+.. Important:: It is highly recommended to use an RPKI publication server
+               provided by your parent CA, if available. This relieves you of
+               the responsibility to keep a public Rsync and web server
+               available at all times.
 
 It could also be considered good for the RPKI ecosystem as a whole to have at
 least some centralisation of publication. If Relying Party software around the

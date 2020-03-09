@@ -67,8 +67,7 @@ The main documentation is organised into the following sections:
    rtrlib/index
    rpkivalidator3/index
 
-Indices and tables
-==================
+Index
+=====
 
 * :ref:`genindex`
-* :ref:`search`
