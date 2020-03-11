@@ -140,45 +140,6 @@ You can update your Rust installation later by running:
 
    rustup update
 
-For some platforms, ``rustup`` cannot provide binary releases to install
-directly. The `Rust Platform Support
-<https://forge.rust-lang.org/platform-support.html>`_ page lists
-several platforms where official binary releases are not available,
-but Rust is still guaranteed to build. For these platforms, automated
-tests are not run so it’s not guaranteed to produce a working build, but
-they often work to quite a good degree.
-
-One such example that is especially relevant for the routing community
-is OpenBSD. On this platform, `patches
-<https://github.com/openbsd/ports/tree/master/lang/rust/patches>`_ are
-required to get Rust running correctly, but these are well maintained
-and offer the latest version of Rust quite quickly.
-
-Rust can be installed on OpenBSD by running:
-
-.. code-block:: bash
-
-   pkg_add rust
-
-Another example where the standard installation method does not work is
-CentOS 6, where you will end up with a long list of error messages about
-missing assembler instructions. This is because the assembler shipped with
-CentOS 6 is too old.
-
-You can get the necessary version by installing the `Developer Toolset 6
-<https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_ from the
-`Software Collections
-<https://wiki.centos.org/AdditionalResources/Repositories/SCL>`_ repository. On
-a virgin system, you can install Rust using these steps:
-
-.. code-block:: bash
-
-   sudo yum install centos-release-scl
-   sudo yum install devtoolset-6
-   scl enable devtoolset-6 bash
-   curl https://sh.rustup.rs -sSf | sh
-   source $HOME/.cargo/env
-
 Building
 --------
 
