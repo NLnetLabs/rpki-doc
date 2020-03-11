@@ -39,6 +39,7 @@ AXNn9GkpQ4a-q5skG1yiYQ>`_.
    :name: toc-routinator
 
    installation
+   installation-notes
    initialisation
    interactive
    daemon
