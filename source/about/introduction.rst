@@ -1,5 +1,6 @@
-.. _doc_about_intro:
 .. index:: ! Introduction
+
+.. _doc_about_intro:
 
 Introduction
 ============
