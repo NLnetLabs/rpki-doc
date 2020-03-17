@@ -47,6 +47,7 @@ AXNn9GkpQ4a-q5skG1yiYQ>`_.
    daemon
    configuration
    monitoring
+   man-page
 
 .. history
 .. authors
