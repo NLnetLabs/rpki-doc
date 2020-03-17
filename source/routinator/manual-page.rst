@@ -5,7 +5,7 @@ Manual Page
 
 NAME
 ----
-routinator - RPKI relying party software
+**routinator** - RPKI relying party software
 
 SYNOPSIS
 --------
@@ -67,9 +67,21 @@ OPTIONS
 -------
 The available options are:
 
- -c path, --config=path
+-c path, --config=path
     Provides  the  path to a file containing basic configuration. If
     this  option  is  not  given,  Routinator  will   try   to   use
     *$HOME/.routinator.conf*  if  that  exists. If that doesn't exist,
     either, default values for the options  as  described  here  are
     used.
+
+    See CONFIGURATION FILE below for more information on the format
+    and contents of the configuration file.
+
+
+-b dir, --base-dir=dir
+    Specifies the base directory  to  keep  status  information  in.
+    Unless overwritten by the -r or -t options, the local repository
+    will be kept in the sub-directory repository and the  TALs  will
+    be kept in the sub-directory tals.
+
+    If omitted, the base directory defaults to $HOME/.rpki-cache.
