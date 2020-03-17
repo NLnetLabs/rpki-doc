@@ -11,7 +11,8 @@ The application is designed to be lightweight and have great portability. This
 means it can run on any Unix-like operating system, but also works on Microsoft
 Windows. Due to its lean design, it can run effortlessly on minimalist hardware
 such as a Raspberry Pi. Monitoring is possible through the built-in Prometheus
-endpoint. It allows you to build beautiful dashboards for detailed insights.
+endpoint. It allows you to build `beautiful dashboards
+<https://grafana.com/grafana/dashboards/11922>`_ for detailed insights.
 
 Routinator connects to the Trust Anchors of the five Regional Internet
 Registries (RIRs) — APNIC, AFRINIC, ARIN, LACNIC and RIPE NCC — downloads all of
