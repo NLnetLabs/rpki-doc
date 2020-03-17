@@ -4,17 +4,33 @@ Monitoring
 ==========
 
 The HTTP server in Routinator provides endpoints for monitoring the application.
-A data format specifically for `Prometheus <https://prometheus.io/>`_ is
-available, as well as `dedicated port 9556
-<https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_.
-
 This means it may be a good idea to run the HTTP server alongside
-the RTR server. To launch Routinator in server mode on 192.0.2.13 with RTR
-running on port 3323 and HTTP on 9556, use the following command:
+the RTR server.
+
+To launch Routinator in server mode on 192.0.2.13 with RTR running on port 3323
+and HTTP on 9556, use the following command:
 
 .. code-block:: bash
 
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
+
+The HTTP service has three monitoring endpoints on the following paths:
+
+:/version:
+     Returns the version of the Routinator instance
+
+:/metrics:
+     Exposes a data format specifically for
+     `Prometheus <https://prometheus.io/>`_, for which `dedicated port 9556
+     <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
+     is reserved.
+
+:/status:
+     Returns the information from the ``/metrics`` endpoint in a more
+     concise format
+
+Prometheus
+----------
 
 On the ``/metrics`` path, Routinator will expose the number of valid ROAs seen
 for each trust anchor, as well as the total number of validated ROA payloads
@@ -108,6 +124,9 @@ This is an example of the output of the ``/metrics`` endpoint:
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/repository/"} 11.766
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/ta/"} 0.129
 
+Grafana
+-------
+
 Using this endpoint, it's possible to build a detailed dashboard using for
 example `Grafana <https://grafana.com>`_. We provide a `template
 <https://grafana.com/grafana/dashboards/11922>`_ to get started.
@@ -118,12 +137,3 @@ example `Grafana <https://grafana.com>`_. We provide a `template
     :alt: Grafana dashboard
 
     A sample Grafana dashboard
-
-The HTTP service has two additional endpoints on the following paths:
-
-:/status:
-     Returns the information from the ``/metrics`` endpoint in a more
-     concise format
-
-:/version:
-     Returns the version of the Routinator instance
