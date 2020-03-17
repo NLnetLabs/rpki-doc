@@ -108,6 +108,17 @@ This is an example of the output of the ``/metrics`` endpoint:
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/repository/"} 11.766
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/ta/"} 0.129
 
+Using this endpoint, it's possible to build a detailed dashboard using for
+example `Grafana <https://grafana.com>`_. We provide a `template
+<https://grafana.com/grafana/dashboards/11922>`_ to get started.
+
+.. figure:: img/routinator_grafana_dashboard.png
+    :align: center
+    :width: 100%
+    :alt: Grafana dashboard
+
+    A sample Grafana dashboard
+
 The HTTP service has two additional endpoints on the following paths:
 
 :/status:
