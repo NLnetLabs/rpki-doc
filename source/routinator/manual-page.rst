@@ -69,7 +69,10 @@ The available options are:
 
 .. option:: -c path, --config=path
 
-    Provides  the  path to a file containing basic configuration. If this option is not given, Routinator will try to use *$HOME/.routinator.conf*  if that exists. If that doesn't exist, either, default values for the options  as  described here are used.
+    Provides the path to a file containing basic configuration. If this option
+    is not given, Routinator will try to use ``$HOME/.routinator.conf`` if that
+    exists. If that doesn't exist, either, default values for the options as
+    described here are used.
 
     See CONFIGURATION FILE below for more information on the format and contents of the configuration file.
 
