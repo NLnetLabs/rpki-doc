@@ -3,54 +3,40 @@
 Manual Page
 ===========
 
-NAME
+Name
 ----
-**routinator** - RPKI relying party software
+:command:`routinator` - RPKI relying party software
 
-SYNOPSIS
+Synopsis
 --------
-**routinator**
-[**-b**  *base-dir*]
-[**-r** *repository-dir*]
-[**-t** *tal-dir*]
-[**-x** *exceptions-file* [**-x** *exceptions-file*  [...]]]
-[**-\-\-strict**]
-[**-\-\-disable-rsync**]
-[**-\-\-rsync-command=** *command*]
-[**-\-\-rsync-args=** *args*]
-[**-\-\-rsync-timeout=** *seconds*]
-[**-\-\-disable-rrdp**]
-[**-\-\-rrdp-timeout=** *seconds*]
-[**-\-\-rrdp-connect-timeout=** *seconds*]
-[**-\-\-rrdp-local-addr=** *addr*]
-[**-\-\-rrdp-root-cert=** *path* [...]]
-[**-\-\-rrdp-proxy=** *uri* [...]]
-[**-\-\-dirty**]
-[**-\-\-validation-threads=** *count*]
-[**-v** | **-vv** | **-q** | **-qq**]
-[**-h**]
-[**-V**]
-command
-[args]
+:command:`routinator` :option:`-b base-dir` :option:`-r repository-dir`
+:option:`-t tal-dir` :option:`-x exceptions-file [-x exceptions-file [...]]`
+:option:`--strict` :option:`--disable-rsync` :option:`--rsync-command=args`
+:option:`--rsync-timeout=seconds` :option:`--disable-rrdp`
+:option:`--rrdp-timeout=seconds` :option:`--rrdp-connect-timeout=seconds`
+:option:`--rrdp-local-addr=addr` :option:`--rrdp-root-cert=path`
+:option:`--rrdp-proxy=uri` :option:`--dirty`
+:option:`--validation-threads=count` :option:`-v | -vv | -q | -qq` :option:`-h`
+:option:`-V` :command:`command` :option:`args`
 
-**routinator** [options] **init** [**-f**]
+:command:`routinator` :option:`options` :command:`init` :option:`-f`
 
-**routinator**  [options] **vrps**  [**-o** *output-file*]
-[**-f** *format*] [**-n**] [**-a** *asn*] [**-p** *prefix*]
+:command:`routinator` :option:`options` :command:`vrps` :option:`-o output-file`
+:option:`-f format` :option:`-n` :option:`-a asn` :option:`-p prefix`
 
-**routinator** [options] **validate** [**-n**] [**-j**] [**-a** *asn*]
-[**-p** *prefix*]
+:command:`routinator` :option:`options` :command:`validate` :option:`-n`
+:option:`-j` :option:`-a asn` :option:`-p prefix`
 
-**routinator** [options] **server** [**-\-\-rtr** *addr*:*port* [...]]
-[**-\-\-http** *addr*:*port* [...]] [**-\-\-listen-systemd**]
-[**-\-\-refresh  seconds**] [**-\-\-retry seconds**]
-[**-\-\-expire seconds**] [**-\-\-history count**]
+:command:`routinator` :option:`options` :command:`server`
+:option:`--rtr addr:port [...]` :option:`--http addr:port [...]`
+:option:`--listen-systemd` :option:`--refresh seconds` :option:`--retry seconds`
+:option:`--expire seconds` :option:`--history count`
 
-**routinator** [options] **update**
+:command:`routinator` :option:`options` :command:`update`
 
-**routinator** **man** [**-o** file]
+:command:`routinator` :command:`man` :option:`-o file`
 
-DESCRIPTION
+Description
 -----------
 Routinator collects and processes Resource Public Key Infrastructure
 (RPKI) data. It validates the Route Origin Attestations contained in
@@ -63,7 +49,7 @@ protocol that routers often implement to access the data, or via HTTP.
 These modes and additional operations can be chosen via commands. For
 the available commands, see **COMMANDS** below.
 
-OPTIONS
+Options
 -------
 The available options are:
 
@@ -74,7 +60,8 @@ The available options are:
     exists. If that doesn't exist, either, default values for the options as
     described here are used.
 
-    See CONFIGURATION FILE below for more information on the format and contents of the configuration file.
+    See CONFIGURATION FILE below for more information on the format and contents
+    of the configuration file.
 
 
 .. option:: -b dir, --base-dir=dir
