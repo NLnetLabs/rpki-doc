@@ -410,7 +410,7 @@ These can be requested by providing different commands on the command line.
        still run and periodically update the repository. This might be useful
        for use with :command:`vrps` mode with the :option:`-n` option.
 
-       .. option:: --detach
+       .. option:: -d, --detach
 
               If present, Routinator will detach from the terminal after a
               successful start.
