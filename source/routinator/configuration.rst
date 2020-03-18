@@ -39,18 +39,18 @@ You can override these defaults, as well as configure a great number of
 additional options using either command line arguments or via the
 configuration file.
 
-To get an overview of all available options, please refer to the manual  page,
-which can be viewed by running ``routinator man``. Alternatively, the manual
-page is also available on the `NLnet Labs website
-<https://www.nlnetlabs.nl/documentation/rpki/routinator/>`_.
+To get an overview of all available options, please refer to the
+:ref:`configuration file <doc_routinator_manpage_configfile>` section of the
+:ref:`doc_routinator_manpage`, which can be also viewed by running
+:command:`routinator man`.
 
 Using a Configuration File
 --------------------------
 
 Routinator can take its configuration from a file. You can specify such a
-config file via the ``-c`` option. If you don’t, Routinator will check
-if there is a file ``$HOME/.routinator.conf`` and if it exists, use it. If it
-doesn’t exist and there is no ``-c`` option, the default values are used.
+config file via the :option:`-c` option. If you don’t, Routinator will check
+if there is a :file:`$HOME/.routinator.conf` and if it exists, use it. If it
+doesn’t exist and there is no :option:`-c` option, the default values are used.
 
 For specifying configuration options, Routinator uses a `TOML file
 <https://github.com/toml-lang/toml>`_. Its entries are named similarly to the
@@ -58,10 +58,10 @@ command line options. A complete sample configuration file showing all the
 default values can be found in the repository at `etc/routinator.conf
 <https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf>`_.
 
-For example, if you want Routinator to refresh every 15 minutes and run as
-an RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
+For example, if you want Routinator to refresh every 15 minutes and run as an
+RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
 providing an HTTP server on port 9556, simply take the output from
-``routinator config`` and change the ``refresh``, ``rtr-listen`` and
+:command:`routinator config` and change the ``refresh``, ``rtr-listen`` and
 ``http-listen`` values in your favourite text editor:
 
 .. code-block:: text
@@ -85,8 +85,8 @@ providing an HTTP server on port 9556, simply take the output from
    tal-dir = "/Users/me/.rpki-cache/tals"
    validation-threads = 4
 
-After saving this file as ``.routinator.conf`` in your home directory, you can
-start Routinator with:
+After saving this file as :file:`.routinator.conf` in your home directory, you
+can start Routinator with:
 
 .. code-block:: bash
 
@@ -170,6 +170,6 @@ available in the repository at `/test/slurm
      }
    }
 
-Use the ``-x`` option to refer to your file with local exceptions. Routinator
-will re-read that file on every validation run, so you can simply update the
-file whenever your exceptions change.
+Use the :option:`-x` option to refer to your file with local exceptions.
+Routinator will re-read that file on every validation run, so you can simply
+update the file whenever your exceptions change.

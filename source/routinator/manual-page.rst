@@ -1,4 +1,4 @@
- .. _doc_routinator_manpage:
+.. _doc_routinator_manpage:
 
 Manual Page
 ===========
@@ -560,6 +560,7 @@ Trust Anchor Locators
  sure they are in the format described by :rfc:`7730` or the upcoming
  :rfc:`8630`.
 
+.. _doc_routinator_manpage_configfile:
 
 Configuration File
 ------------------

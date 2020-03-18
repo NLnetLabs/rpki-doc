@@ -90,13 +90,13 @@ programming language that Routinator has been written in.
 rsync
 """""
 
-Currently, Routinator requires the ``rsync`` executable to be in your path.
+Currently, Routinator requires the :command:`rsync` executable to be in your path.
 Due to the nature of rsync, it is unclear which particular version you need at
 the very least, but whatever is being shipped with current Linux and \*BSD
 distributions and macOS should be fine. Alternatively, you can download rsync
 from `its website <https://rsync.samba.org/>`_.
 
-On Windows, Routinator requires the ``rsync`` version that comes with
+On Windows, Routinator requires the :command:`rsync` version that comes with
 `Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
 installation phase.
 
@@ -106,10 +106,10 @@ C Toolchain
 Some of the libraries Routinator depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
 set of packages to build from C sources. For example,
-``apt install build-essential`` will install everything you need on
+:command:`apt install build-essential` will install everything you need on
 Debian/Ubuntu.
 
-If you are unsure, try to run ``cc`` on a command line and if there’s a
+If you are unsure, try to run :command:`cc` on a command line and if there’s a
 complaint about missing input files, you are probably good to go.
 
 Rust
@@ -123,9 +123,9 @@ page provides an overview of the various support levels.
 While some system distributions include Rust as system packages,
 Routinator relies on a relatively new version of Rust, currently 1.34 or
 newer. We therefore suggest to use the canonical Rust installation via a
-tool called ``rustup``.
+tool called :command:`rustup`.
 
-To install ``rustup`` and Rust, simply do:
+To install :command:`rustup` and Rust, simply do:
 
 .. code-block:: bash
 

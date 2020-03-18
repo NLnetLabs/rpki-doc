@@ -8,11 +8,11 @@ Validated ROA Payload (VRP) list in various formats, or it can return the
 validity of a specific announcement. These functions are accessible on the
 command line via the following sub-commands:
 
-:vrps:
+:command:`vrps`
      Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the
      specified format.
 
-:validate:
+:command:`validate`
      Outputs the RPKI validity for a specific announcement by supplying Routinator
      with an ASN and a prefix.
 
@@ -22,19 +22,20 @@ Printing a List of VRPs
 Routinator can produce a Validated ROA Payload (VRP) list in five different formats,
 which are either printed to standard output or saved to a file:
 
-:csv:
+csv
       The list is formatted as lines of comma-separated values of the prefix in
       slash notation, the maximum prefix length, the autonomous system number,
       and an abbreviation for the trust anchor the entry is derived from. The
       latter is the name of the TAL file  without the extension *.tal*. This is
-      the default format used if the ``--format`` or ``-f`` option is missing.
-:csvext:
+      the default format used if the :option:`--format` or :option:`-f` option
+      is missing.
+csvext
       This is an extended version of the *csv* format, which was used by the RIPE
       NCC RPKI Validator 1.x. Each line contains these comma-separated values: the
       rsync URI of the ROA the line is taken from (or "N/A" if it isn't from a ROA),
       the autonomous system number, the prefix in slash notation, the maximum prefix
       length, and lastly the not-before and not-after date of the validity of the ROA.
-:json:
+json
       The list is placed into a JSON object with a single  element *roas* which
       contains an array of objects with four elements each: The autonomous system
       number of  the  network  authorised to originate a prefix in *asn*, the prefix
@@ -44,15 +45,15 @@ which are either printed to standard output or saved to a file:
       except for different naming of the trust anchor. Routinator uses the name
       of the TAL file without the extension *.tal* whereas the RIPE NCC Validator
       has a dedicated name for each.
-:openbgpd:
+openbgpd
       Choosing  this format causes Routinator to produce a *roa-set*
       configuration item for the OpenBGPD configuration.
-:rpsl:
+rpsl
       This format produces a list of RPSL objects with the authorisation in the
       fields *route*, *origin*, and *source*. In addition, the fields *descr*,
       *mnt-by*, *created*, and *last-modified*, are present with more or less
       meaningful values.
-:summary:
+summary
       This format produces a summary of the content of the RPKI repository. For
       each trust anchor, it will print the number of verified ROAs and VRPs. Note
       that this format does not take filters into account. It will always provide
@@ -83,16 +84,17 @@ Filtering
 
 In case you are looking for specific information in the output, Routinator
 allows filtering to see if a prefix or ASN is covered or matched by a VRP. You
-can do this using the ``--filter-asn`` and ``--filter-prefix`` flags.
+can do this using the :option:`--filter-asn` and :option:`--filter-prefix`
+options.
 
-When using ``--filter-asn``, you can use both ``AS64511`` and ``64511`` as the
-notation. With ``--filter-prefix``, the result will include VRPs regardless of
-their ASN and MaxLength. Both filter flags can be combined and used multiple
-times in a single query and will be treated as a logical *"or"*.
+When using :option:`--filter-asn`, you can use both ``AS64511`` and ``64511`` as
+the notation. With :option:`--filter-prefix`, the result will include VRPs
+regardless of their ASN and MaxLength. Both filter flags can be combined and
+used multiple times in a single query and will be treated as a logical *"or"*.
 
 A validation run will be started before returning the result, making sure you
 get the latest information. If you would like a result from the current cache,
-you can use the ``--noupdate`` or ``-n`` flag.
+you can use the :option:`--noupdate` or :option:`-n` option.
 
 Here are some examples filtering for an ASN and prefix in CSV and JSON format:
 
@@ -116,10 +118,10 @@ Validity Checker
 ----------------
 
 You can check the RPKI origin validation status of a specific BGP announcement
-using the ``validate`` subcommand and by supplying the ASN and prefix. A
+using the :command:`validate` subcommand and by supplying the ASN and prefix. A
 validation run will be started before returning the result, making sure you get
 the latest information. If you would like a result from the current cache, you
-can use the ``--noupdate`` or ``-n`` flag.
+can use the :option:`--noupdate` or :option:`-n` option.
 
 .. code-block:: bash
 
