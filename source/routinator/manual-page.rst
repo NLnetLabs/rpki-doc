@@ -67,14 +67,45 @@ OPTIONS
 -------
 The available options are:
 
--c path, --config=path
-    Provides  the  path to a file containing basic configuration. If this  option  is  not  given, Routinator will try to use *$HOME/.routinator.conf*  if that exists. If that doesn't exist, either, default values for the options  as  described here are used.
+.. option:: -c path, --config=path
+
+    Provides  the  path to a file containing basic configuration. If this option is not given, Routinator will try to use *$HOME/.routinator.conf*  if that exists. If that doesn't exist, either, default values for the options  as  described here are used.
 
     See CONFIGURATION FILE below for more information on the format and contents of the configuration file.
 
 
--b dir, --base-dir=dir
+.. option:: -b dir, --base-dir=dir
+
     Specifies the base directory  to  keep  status  information  in. Unless overwritten by the -r or -t options, the local repository will be kept in the sub-directory repository and the  TALs  will
     be kept in the sub-directory tals.
-    
+
     If omitted, the base directory defaults to $HOME/.rpki-cache.
+
+Testing
+-------
+
+.. option:: --paginate
+
+ Pipe all message output into :command:`less` (or if set, to the command
+ referred in :envvar:`MODULES_PAGER` variable) if error output stream is a
+ terminal. See also :envvar:`MODULES_PAGER` section.
+
+ .. only:: html
+
+    .. versionadded:: 4.1
+
+.. option:: --silent, -s
+
+ Turn off error, warning and informational messages. :command:`module` command
+ output result is not affected by silent mode.
+
+ .. only:: html
+
+    .. versionadded:: 4.3
+       :option:`--silent`/:option:`-s` support was dropped on version `4.0`
+       but reintroduced starting version `4.3`.
+
+.. option:: --starts-with, -S
+
+ On :subcmd:`avail` sub-command, return modules whose name starts with search
+ query string.
