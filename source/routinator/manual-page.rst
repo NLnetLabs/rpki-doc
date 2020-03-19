@@ -13,7 +13,7 @@ Manual Page
 Synopsis
 --------
 
-:command:`routinator` :option:`-b {base-dir}` :option:`-r repository-dir`
+:command:`routinator` :option:`-b base-dir` :option:`-r repository-dir`
 :option:`-t tal-dir` :option:`-x exceptions-file [-x exceptions-file [...]]`
 :option:`--strict` :option:`--disable-rsync` :option:`--rsync-command=args`
 :option:`--rsync-timeout=seconds` :option:`--disable-rrdp`
