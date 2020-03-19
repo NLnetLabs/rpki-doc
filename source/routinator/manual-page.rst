@@ -262,99 +262,99 @@ These can be requested by providing different commands on the command line.
               Specifies the output file to write the list to. If this option
               is missing or file is - the list is printed to standard output.
 
-       .. option:: -f format, --format=format
+    .. option:: -f format, --format=format
 
-              The output format to use. Routinator currently supports the
-              following formats:
+           The output format to use. Routinator currently supports the
+           following formats:
 
-              csv
-                     The list is formatted as lines of comma-separated values of
-                     the prefix in slash notation, the maximum prefix length,
-                     the autonomous system number, and an abbreviation for the
-                     trust anchor the entry is derived from. The latter is the
-                     name of the TAL file without the extension *.tal*.
+           csv
+                  The list is formatted as lines of comma-separated values of
+                  the prefix in slash notation, the maximum prefix length,
+                  the autonomous system number, and an abbreviation for the
+                  trust anchor the entry is derived from. The latter is the
+                  name of the TAL file without the extension *.tal*.
 
-                     This is the default format used if the :option:`-f` option
-                     is missing.
+                  This is the default format used if the :option:`-f` option
+                  is missing.
 
-              csvext
-                     An extended version of csv each line contains these
-                     comma-separated values: the rsync URI of the ROA the line
-                     is taken from (or "N/A" if it isn't from a ROA), the
-                     autonomous system number, the prefix in slash notation, the
-                     maximum prefix length, the not-before date and not-after
-                     date of the validity of the ROA.
+           csvext
+                  An extended version of csv each line contains these
+                  comma-separated values: the rsync URI of the ROA the line
+                  is taken from (or "N/A" if it isn't from a ROA), the
+                  autonomous system number, the prefix in slash notation, the
+                  maximum prefix length, the not-before date and not-after
+                  date of the validity of the ROA.
 
-                     This format was used in the RIPE NCC RPKI Validator version
-                     1. That version produces one file per trust anchor. This is
-                     not currently supported by Routinator -- all entries will
-                     be in one single output file.
+                  This format was used in the RIPE NCC RPKI Validator version
+                  1. That version produces one file per trust anchor. This is
+                  not currently supported by Routinator -- all entries will
+                  be in one single output file.
 
-              json
-                     The list is placed into a JSON object with a single
-                     element *roas* which contains an array of objects with
-                     four elements each:  The autonomous system number of the
-                     network authorized to originate a prefix in *asn*, the
-                     prefix in slash notation in *prefix*, the maximum prefix
-                     length of the announced route in *maxLength*, and the
-                     trust anchor from which the authorization was derived in
-                     *ta*. This format is identical to that produced by the RIPE
-                     NCC RPKI Validator except for different naming of the
-                     trust anchor. Routinator uses the name of the TAL file
-                     without the extension *.tal* whereas the RIPE NCC Validator
-                     has a dedicated name for each.
+           json
+                  The list is placed into a JSON object with a single
+                  element *roas* which contains an array of objects with
+                  four elements each:  The autonomous system number of the
+                  network authorized to originate a prefix in *asn*, the
+                  prefix in slash notation in *prefix*, the maximum prefix
+                  length of the announced route in *maxLength*, and the
+                  trust anchor from which the authorization was derived in
+                  *ta*. This format is identical to that produced by the RIPE
+                  NCC RPKI Validator except for different naming of the
+                  trust anchor. Routinator uses the name of the TAL file
+                  without the extension *.tal* whereas the RIPE NCC Validator
+                  has a dedicated name for each.
 
-              openbgpd
-                     Choosing this format causes Routinator to produce a roa-
-                     set configuration item for the OpenBGPD configuration.
+           openbgpd
+                  Choosing this format causes Routinator to produce a roa-
+                  set configuration item for the OpenBGPD configuration.
 
-              rpsl
-                     This format produces a list of RPSL objects with the
-                     authorization in the fields *route*, *origin*, and
-                     *source*. In addition, the fields *descr*, *mnt-by*,
-                     *created*, and *last-modified*, are present with more or
-                     less meaningful values.
+           rpsl
+                  This format produces a list of RPSL objects with the
+                  authorization in the fields *route*, *origin*, and
+                  *source*. In addition, the fields *descr*, *mnt-by*,
+                  *created*, and *last-modified*, are present with more or
+                  less meaningful values.
 
-              summary
-                     This format produces a summary of the content of the RPKI
-                     repository. For each trust anchor, it will print the number
-                     of verified ROAs and VRPs. Note that this format does not
-                     take filters into account. It will always provide numbers
-                     for the complete repository.
+           summary
+                  This format produces a summary of the content of the RPKI
+                  repository. For each trust anchor, it will print the number
+                  of verified ROAs and VRPs. Note that this format does not
+                  take filters into account. It will always provide numbers
+                  for the complete repository.
 
-              none
-                     This format produces no output whatsoever.
+           none
+                  This format produces no output whatsoever.
 
-       .. option:: --noupdate
+    .. option:: --noupdate
 
-              The repository will not be updated before producing the list.
+           The repository will not be updated before producing the list.
 
-       .. option:: --complete
+    .. option:: --complete
 
-              If any of the rsync commands needed to update the repository
-              failed, complete the operation but provide exit status 2. If
-              this option is not given, the operation will complete with exit
-              status 0 in this case.
+           If any of the rsync commands needed to update the repository
+           failed, complete the operation but provide exit status 2. If
+           this option is not given, the operation will complete with exit
+           status 0 in this case.
 
-       .. option:: -a asn, --filter-asn=asn
+    .. option:: -a asn, --filter-asn=asn
 
-              Only output VRPs for the given ASN. The option can be given mul-
-              tiple times,  in which case VRPs for all provided ASNs are pro-
-              vided. ASNs can be given with or without the prefix AS.
+           Only output VRPs for the given ASN. The option can be given mul-
+           tiple times,  in which case VRPs for all provided ASNs are pro-
+           vided. ASNs can be given with or without the prefix AS.
 
-       .. option:: -p prefix, --filter-prefix=prefix
+    .. option:: -p prefix, --filter-prefix=prefix
 
-              Only output VRPs with an address prefix that covers the given
-              prefix, i.e., whose prefix is equal to or less specific than the
-              given prefix. This will include VRPs regardless of their ASN and
-              max length.  In other words, the output will include all VRPs
-              that need to be considered when deciding whether an announcement
-              for the prefix is RPKI valid or invalid.
+           Only output VRPs with an address prefix that covers the given
+           prefix, i.e., whose prefix is equal to or less specific than the
+           given prefix. This will include VRPs regardless of their ASN and
+           max length.  In other words, the output will include all VRPs
+           that need to be considered when deciding whether an announcement
+           for the prefix is RPKI valid or invalid.
 
-              The option can be given multiple times, in which case VRPs for
-              all prefixes are provided. It can also be combined with one or
-              more ASN filters. Then all matching VRPs are included. That is,
-              filters combine as "or" not "and."
+           The option can be given multiple times, in which case VRPs for
+           all prefixes are provided. It can also be combined with one or
+           more ASN filters. Then all matching VRPs are included. That is,
+           filters combine as "or" not "and."
 
 
 :command:`validate`
