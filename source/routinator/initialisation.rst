@@ -14,14 +14,14 @@ you can change their locations via the command line options
 
 TALs provide hints for the trust anchor certificates to be used both to discover
 and validate all RPKI content. The five TALs — one for each Regional Internet
-Registry (RIR) — are bundled with Routinator and installed by the :command:`init`
+Registry (RIR) — are bundled with Routinator and installed by the :subcmd:`init`
 command.
 
 .. WARNING:: Using the TAL from ARIN, the RIR for the United States, Canada as
              well as many Caribbean and North Atlantic islands, requires you to
              read and accept their `Relying Party Agreement
              <https://www.arin.net/resources/manage/rpki/tal/>`_ before you can
-             use it. Running the :command:`init` command will provide you with
+             use it. Running the :subcmd:`init` command will provide you with
              instructions.
 
 .. code-block:: text
@@ -57,7 +57,7 @@ To see if Routinator has been initialised correctly and your firewall allows the
 required connections, it is recommended to perform an initial test run. You can
 do this by having Routinator print a validated ROA payload (VRP) list with the
 :subcmd:`vrps` sub-command, and using :option:`-v` to increase the log level to
-``INFO`` to see if Routinator establishes rsync connections as expected.
+``INFO`` to see if Routinator establishes rsync and RRDP connections as expected.
 
 .. code-block:: bash
 
