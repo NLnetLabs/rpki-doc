@@ -5,15 +5,15 @@ Manual Page
 
 :command:`routinator` - RPKI relying party software
 
-:Date:   2019-11-29
-:Author: NLnet Labs
-:Copyright: Public domain
-:Version: 0.6.4
+:Date:       2019-11-29
+:Author:     Martin Hoffmann
+:Copyright:  NLnet Labs
+:Version:    0.6.4
 
 Synopsis
 --------
 
-:command:`routinator` :option:`-b base-dir` :option:`-r repository-dir`
+:command:`routinator` :option:`-b {base-dir}` :option:`-r repository-dir`
 :option:`-t tal-dir` :option:`-x exceptions-file [-x exceptions-file [...]]`
 :option:`--strict` :option:`--disable-rsync` :option:`--rsync-command=args`
 :option:`--rsync-timeout=seconds` :option:`--disable-rrdp`
