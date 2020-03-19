@@ -9,15 +9,15 @@ order to get Routinator working as desired.
 Statically Linked Routinator
 ----------------------------
 
-While Rust binaries are mostly statically linked, they depend on ``libc``
-which, as least as ``glibc`` that is standard on Linux systems, is somewhat
+While Rust binaries are mostly statically linked, they depend on :command:`libc`
+which, as least as :command:`glibc` that is standard on Linux systems, is somewhat
 difficult to link statically. This is why Routinator binaries are actually
-dynamically linked on ``glibc`` systems and can only be transferred between
-systems with the same ``glibc`` versions.
+dynamically linked on :command:`glibc` systems and can only be transferred between
+systems with the same :command:`glibc` versions.
 
 However, Rust can build binaries based on the alternative implementation
 named musl that can easily be statically linked. Building such binaries is
-easy with ``rustup``. You need to install musl and the correct musl target
+easy with :command:`rustup`. You need to install musl and the correct musl target
 such as ``x86_64-unknown-linux-musl`` for x86\_64 Linux systems. Then you
 can just build Routinator for that target.
 
@@ -32,7 +32,7 @@ On a Debian (and presumably Ubuntu) system, enter the following:
 Platform Specific Instructions
 ------------------------------
 
-For some platforms, ``rustup`` cannot provide binary releases to install
+For some platforms, :command:`rustup` cannot provide binary releases to install
 directly. The `Rust Platform Support
 <https://forge.rust-lang.org/platform-support.html>`_ page lists
 several platforms where official binary releases are not available,
@@ -134,11 +134,11 @@ run Routinator on Security Enhanced Linux (SELinux) using CentOS 7.
   # Populate the relevant information to generate a self signed certificate
   sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
-7.	Add in the ``ssl.conf`` file to ``/etc/nginx/conf.d/ssl.conf`` and edit the ``ssl.conf`` file to provide the IP of the host in the "server_name" field.
+7.	Add in the :file:`ssl.conf` file to :file:`/etc/nginx/conf.d/ssl.conf` and edit the :file:`ssl.conf` file to provide the IP of the host in the ``server_name`` field.
 
-8.	Replace ``/etc/nginx/nginx.conf`` with the ``nginx.conf`` file.
+8.	Replace :file:`/etc/nginx/nginx.conf` with the :file:`nginx.conf` file.
 
-9.	Add the ``proxy.conf`` file to the ``/etc/nginx`` directory.
+9.	Add the :file:`proxy.conf` file to the ``/etc/nginx`` directory.
 
 10.	Set the username and password for the web interface authentication.
 

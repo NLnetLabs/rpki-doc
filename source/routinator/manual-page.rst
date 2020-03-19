@@ -62,7 +62,7 @@ The available options are:
 .. option:: -c path, --config=path
 
     Provides the path to a file containing basic configuration. If this option
-    is not given, Routinator will try to use :option:`$HOME/.routinator.conf` if
+    is not given, Routinator will try to use :file:`$HOME/.routinator.conf` if
     that exists. If that doesn't exist, either, default values for the options
     as described here are used.
 
@@ -74,9 +74,9 @@ The available options are:
     Specifies the base directory to keep status information in. Unless
     overwritten by the :option:`-r` or :option:`-t` options, the local
     repository will be kept in the sub-directory repository and the TALs will
-    be kept in the sub-directory :option:`tals`.
+    be kept in the sub-directory :file:`tals`.
 
-    If omitted, the base directory defaults to :option:`$HOME/.rpki-cache`.
+    If omitted, the base directory defaults to :file:`$HOME/.rpki-cache`.
 
 .. option:: -r dir, --repository-dir=dir
 
@@ -115,7 +115,7 @@ The available options are:
 .. option:: --rsync-command=command
 
       Provides the command to run for rsync. This is only the command itself. If
-      you need to provide options to rsync, use the :option:`rsync-args`
+      you need to provide options to rsync, use the ``rsync-args``
       configuration file setting instead.
 
       If this option is not given, Routinator will simply run rsync and hope
@@ -758,44 +758,43 @@ be used within the local network.
 The service only supports GET requests with the following paths:
 
 
-/csv
+:command:`/csv`
       Returns the current set of VRPs in **csv** output format.
 
-/json
+:command:`/json`
       Returns the current set of VRPs in **json** output format.
 
-/metrics
+:command:`/metrics`
       Returns a set of monitoring metrics in the format used by
       Prometheus.
 
-/openbgpd
+:command:`/openbgpd`
       Returns the current set of VRPs in **openbgpd** output format.
 
-/rpsl
+:command:`/rpsl`
       Returns the current set of VRPs in **rpsl** output format.
 
-/status
+:command:`/status`
       Returns the current status of the Routinator instance. This is similar to
       the output of the **/metrics** endpoint but in a more human friendly
       format.
 
-/version
+:command:`/version`
       Returns the version of the Routinator instance.
 
-/api/v1/validity/as-number/prefix
+:command:`/api/v1/validity/as-number/prefix`
       Returns a JSON object describing whether the route announcement given by
       its origin AS number and address prefix is RPKI valid, invalid, or not
       found.  The returned object is compatible with that provided by the RIPE
       NCC RPKI Validator. For more information, see
       https://www.ripe.net/support/documentation/developer-documentation/rpki-validator-api
 
-/validity?asn=as-number&prefix=prefix
+:command:`/validity?asn=as-number&prefix=prefix`
       Same as above but with a more form-friendly calling convention.
 
-
 The paths that output the current set of VRPs accept filter expressions to limit
-the VRPs returned in the form of a query string. The field :option:`filter-asn`
-can be used to filter for ASNs and the field :option:`filter-prefix` can be used
+the VRPs returned in the form of a query string. The field ``filter-asn``
+can be used to filter for ASNs and the field ``filter-prefix`` can be used
 to filter for prefixes. The fields can be repeated multiple times.
 
 This works in the same way as the options of the same name to the
@@ -866,6 +865,6 @@ SIGUSR1: Reload TALs and restart validation
 Exit Status
 -----------
 Upon success,  the exit status 0 is returned. If any fatal error happens, the
-exit status will be 1. Some commands provide a :option:`-complete` option which
+exit status will be 1. Some commands provide a :option:`--complete` option which
 will cause the exit status to be 2 if any of the rsync commands to update the
 repository fail.

@@ -16,16 +16,16 @@ and HTTP on 9556, use the following command:
 
 The HTTP service has three monitoring endpoints on the following paths:
 
-:/version:
+:command:`/version`
      Returns the version of the Routinator instance
 
-:/metrics:
+:command:`/metrics`
      Exposes a data format specifically for
      `Prometheus <https://prometheus.io/>`_, for which `dedicated port 9556
      <https://github.com/prometheus/prometheus/wiki/Default-port-allocations>`_
      is reserved.
 
-:/status:
+:command:`/status`
      Returns the information from the ``/metrics`` endpoint in a more
      concise format
 
