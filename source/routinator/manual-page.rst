@@ -605,11 +605,10 @@ rsync-args
       A list of strings containing the arguments to be passed to the rsync
       command.  Each string is an argument of its own.
 
-      If this option is not provided, Routinator will try to find out
-      if your rsync understands the :option:`--contimeout` option and, if so,
-      will set it to 10 thus letting connection attempts time out
-      after ten seconds. If your rsync is too old to support this
-      option, no arguments are used.
+      If this option is not provided, Routinator will try to find out if your
+      rsync understands the ``--contimeout`` option and, if so, will set it to
+      10 thus letting connection attempts time out after ten seconds. If your
+      rsync is too old to support this option, no arguments are used.
 
 rsync-timeout
       An integer value specifying the number seconds an rsync command is allowed
