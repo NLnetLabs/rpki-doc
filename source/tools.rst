@@ -1,5 +1,6 @@
-.. _doc_tools:
 .. index:: ! Software Projects
+
+.. _doc_tools:
 
 Software Projects
 =================
