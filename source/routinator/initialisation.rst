@@ -4,7 +4,7 @@ Initialisation
 ==============
 
 Before running Routinator for the first time, you must prepare its working
-environment. You do this using the :command:`init` command. This will prepare
+environment. You do this using the :subcmd:`init` command. This will prepare
 both the directory for the local RPKI cache, as well as the Trust Anchor Locator
 (TAL) directory.
 
@@ -36,7 +36,7 @@ command.
    If you agree to the RPA, please run the command
    again with the --accept-arin-rpa option.
 
-Running the :command:`init` command with the :option:`--accept-arin-rpa` option
+Running the :subcmd:`init` command with the :option:`--accept-arin-rpa` option
 will create the TAL directory and copy the five Trust Anchor Locator files into
 it.
 
@@ -56,7 +56,7 @@ Performing a Test Run
 To see if Routinator has been initialised correctly and your firewall allows the
 required connections, it is recommended to perform an initial test run. You can
 do this by having Routinator print a validated ROA payload (VRP) list with the
-:command:`vrps` sub-command, and using :option:`-v` to increase the log level to
+:subcmd:`vrps` sub-command, and using :option:`-v` to increase the log level to
 ``INFO`` to see if Routinator establishes rsync connections as expected.
 
 .. code-block:: bash

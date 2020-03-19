@@ -21,24 +21,24 @@ Synopsis
 :option:`--rrdp-local-addr=addr` :option:`--rrdp-root-cert=path`
 :option:`--rrdp-proxy=uri` :option:`--dirty`
 :option:`--validation-threads=count` :option:`-v | -vv | -q | -qq` :option:`-h`
-:option:`-V` :command:`command` :option:`args`
+:option:`-V` :subcmd:`command` :option:`args`
 
-:command:`routinator` :option:`options` :command:`init` :option:`-f`
+:command:`routinator` :option:`options` :subcmd:`init` :option:`-f`
 
-:command:`routinator` :option:`options` :command:`vrps` :option:`-o output-file`
+:command:`routinator` :option:`options` :subcmd:`vrps` :option:`-o output-file`
 :option:`-f format` :option:`-n` :option:`-a asn` :option:`-p prefix`
 
-:command:`routinator` :option:`options` :command:`validate` :option:`-n`
+:command:`routinator` :option:`options` :subcmd:`validate` :option:`-n`
 :option:`-j` :option:`-a asn` :option:`-p prefix`
 
-:command:`routinator` :option:`options` :command:`server`
+:command:`routinator` :option:`options` :subcmd:`server`
 :option:`--rtr addr:port [...]` :option:`--http addr:port [...]`
 :option:`--listen-systemd` :option:`--refresh seconds` :option:`--retry seconds`
 :option:`--expire seconds` :option:`--history count`
 
-:command:`routinator` :option:`options` :command:`update`
+:command:`routinator` :option:`options` :subcmd:`update`
 
-:command:`routinator` :command:`man` :option:`-o file`
+:command:`routinator` :subcmd:`man` :option:`-o file`
 
 Description
 -----------
@@ -221,7 +221,8 @@ Commands
 Routinator provides a number of operations around the local RPKI repository.
 These can be requested by providing different commands on the command line.
 
-:command:`init`
+.. subcmd:: init
+
     Prepares the local repository directories and the TAL directory for running
     Routinator.  Specifically,  makes sure the local repository directory
     exists, and creates the TAL directory and fills it with the TALs of the five
@@ -251,7 +252,8 @@ These can be requested by providing different commands on the command line.
            under ARIN.
 
 
-:command:`vrps`
+.. subcmd:: vrps
+
     This command requests that Routinator update the local repository and then
     validate the Route Origin Attestations in the repository and output the
     valid route origins, which are also known as Validated ROA Payload or VRPs,
@@ -357,7 +359,8 @@ These can be requested by providing different commands on the command line.
            filters combine as "or" not "and."
 
 
-:command:`validate`
+.. subcmd:: validate
+
        This command can be used to perform RPKI route origin validation for a
        route announcement.  Routinator will determine whether the provided
        announcement is RPKI valid, invalid, or not found.
@@ -390,7 +393,8 @@ These can be requested by providing different commands on the command line.
               0 in this case.
 
 
-:command:`server`
+.. subcmd:: server
+
        This command causes Routinator to act as a server for the RPKI-to-
        Router (RTR) and HTTP protocols. In this mode, Routinator will read all
        the TALs  (See `Trust Anchor Locators`_ below) and will stay attached to
@@ -408,7 +412,7 @@ These can be requested by providing different commands on the command line.
 
        It will not listen on any sockets unless explicitly specified. It will
        still run and periodically update the repository. This might be useful
-       for use with :command:`vrps` mode with the :option:`-n` option.
+       for use with :subcmd:`vrps` mode with the :option:`-n` option.
 
        .. option:: -d, --detach
 
@@ -516,14 +520,15 @@ These can be requested by providing different commands on the command line.
               option has no effect unless :option:`--detach` is also used.
 
 
-:command:`update`
+.. subcmd:: update
+
        Updates the local repository by resyncing all known publication points.
        The command will also validate the updated repository to discover any
        new publication points that appear in the repository and fetch their
        data.
 
        As such, the command really is a shortcut for running
-       :command:`routinator` :command:`vrps` :option:`-f none`.
+       :command:`routinator` :subcmd:`vrps` :option:`-f none`.
 
        .. option:: --complete
 
@@ -533,7 +538,8 @@ These can be requested by providing different commands on the command line.
               0 in this case.
 
 
-:command:`man`
+.. subcmd:: man
+
        Displays the manual page, i.e., this page.
 
        .. option:: -o file, --output=file
@@ -797,7 +803,7 @@ can be used to filter for ASNs and the field ``filter-prefix`` can be used
 to filter for prefixes. The fields can be repeated multiple times.
 
 This works in the same way as the options of the same name to the
-:command:`vrps` command.
+:subcmd:`vrps` command.
 
 
 Relaxed Validation

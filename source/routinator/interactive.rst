@@ -8,11 +8,11 @@ Validated ROA Payload (VRP) list in various formats, or it can return the
 validity of a specific announcement. These functions are accessible on the
 command line via the following sub-commands:
 
-:command:`vrps`
+:subcmd:`vrps`
      Fetches RPKI data and produces a Validated ROA Payload (VRP) list in the
      specified format.
 
-:command:`validate`
+:subcmd:`validate`
      Outputs the RPKI validity for a specific announcement by supplying Routinator
      with an ASN and a prefix.
 
@@ -118,7 +118,7 @@ Validity Checker
 ----------------
 
 You can check the RPKI origin validation status of a specific BGP announcement
-using the :command:`validate` subcommand and by supplying the ASN and prefix. A
+using the :subcmd:`validate` subcommand and by supplying the ASN and prefix. A
 validation run will be started before returning the result, making sure you get
 the latest information. If you would like a result from the current cache, you
 can use the :option:`--noupdate` or :option:`-n` option.
