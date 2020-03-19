@@ -544,21 +544,21 @@ These can be requested by providing different commands on the command line.
 
 Trust Anchor Locators
 ---------------------
- RPKI uses trust anchor locators, or TALs, to identify the location and public
- keys of the trusted root CA certificates. Routinator keeps these TALs in files
- in the TAL directory which can be set by the  :option:`-t` option. If the
- :option:`-b` option is used instead, the TAL directory will be in the
- subdirectory *tals* under the directory specified in this option.  The default
- location,  if no options are used at all is *$HOME/.rpki-cache/tals*.
+RPKI uses trust anchor locators, or TALs, to identify the location and public
+keys of the trusted root CA certificates. Routinator keeps these TALs in files
+in the TAL directory which can be set by the  :option:`-t` option. If the
+:option:`-b` option is used instead, the TAL directory will be in the
+subdirectory *tals* under the directory specified in this option.  The default
+location,  if no options are used at all is :file:`$HOME/.rpki-cache/tals`.
 
- This directory can be created and populated with the TALs of the five Regional
- Internet Registries (RIRs) via the :command:`init` command.
+This directory can be created and populated with the TALs of the five Regional
+Internet Registries (RIRs) via the :command:`init` command.
 
- If the directory does exist,  Routinator will use all files with an extension
- of *.tal* in this directory. This means that you can add and remove trust
- anchors by adding and removing files in this directory. If you add files, make
- sure they are in the format described by :rfc:`7730` or the upcoming
- :rfc:`8630`.
+If the directory does exist,  Routinator will use all files with an extension
+of *.tal* in this directory. This means that you can add and remove trust
+anchors by adding and removing files in this directory. If you add files, make
+sure they are in the format described by :rfc:`7730` or the upcoming
+:rfc:`8630`.
 
 .. _doc_routinator_manpage_configfile:
 
