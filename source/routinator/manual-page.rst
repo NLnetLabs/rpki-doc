@@ -7,7 +7,7 @@ Manual Page
 
 :Date:       2019-11-29
 :Author:     Martin Hoffmann
-:Copyright:  NLnet Labs
+:Copyright:  (c) 2019-2020, NLnet Labs
 :Version:    0.6.4
 
 Synopsis
@@ -152,7 +152,7 @@ The available options are:
 
       This option provides a path to a file that contains a certificate in PEM
       encoding that should be used as a trusted certificate for HTTPS server
-      authentication. The option can be given more then once.
+      authentication. The option can be given more than once.
 
       Providing this option does not disable the set of regular HTTPS
       authentication trust certificates.
@@ -701,22 +701,23 @@ syslog-facility
 rtr-listen
       An array of string values each providing the address and port which the
       RTR daemon should listen on in TCP mode. Address and port should be
-      separated by a colon. IPv6 address should be enclosed in square braces.
+      separated by a colon. IPv6 address should be enclosed in square brackets.
 
 http-listen
       An array of string values each providing the address and port which the
       HTTP service should listen on. Address and port should be separated by a
-      colon. IPv6 address should be enclosed in square braces.
+      colon. IPv6 address should be enclosed in square brackets.
 
 listen-systemd
       The RTR TCP listening socket will be acquired from systemd via socket
-      activation. Use this option together with systemds socket units to allow a
-      Routinator running as a regular user to bind to the default RTR port 323.
+      activation. Use this option together with systemd's socket units to allow
+      a Routinator running as a regular user to bind to the default RTR port
+      323.
 
 refresh
       An integer value specifying the number of seconds Routinator should wait
       between consecutive validation runs in server mode. The next validation
-      run will happen earlier, if objects expire ealier. The default is 600
+      run will happen earlier, if objects expire earlier. The default is 600
       seconds.
 
 retry
