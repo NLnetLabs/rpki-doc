@@ -86,7 +86,7 @@ Please note that port 3323 is not the IANA-assigned default port for the
 protocol,  which would be 323. But as this is a privileged port, you would need
 to be running Routinator as root when otherwise there is no reason to do that.
 The application will stay attached to your terminal unless you provide the
-:option:`-d` (for daemon) option.
+:option:`--detach` option.
 
 By default, the repository will be updated and re-validated every 10 minutes.
 You  can change this via the :option:`--refresh` option and specify the interval
