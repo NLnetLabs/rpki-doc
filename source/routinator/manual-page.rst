@@ -460,9 +460,9 @@ These can be requested by providing different commands on the command line.
 
     .. option:: -a asn, --filter-asn=asn
 
-           Only output VRPs for the given ASN. The option can be given mul-
-           tiple times,  in which case VRPs for all provided ASNs are pro-
-           vided. ASNs can be given with or without the prefix AS.
+           Only output VRPs for the given ASN. The option can be given multiple
+           times, in which case VRPs for all provided ASNs are provided. ASNs
+           can be given with or without the prefix AS.
 
     .. option:: -p prefix, --filter-prefix=prefix
 
