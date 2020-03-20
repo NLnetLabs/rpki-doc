@@ -230,7 +230,7 @@ These can be requested by providing different commands on the command line.
 
     For more information about TALs, see `Trust Anchor Locators`_ below.
 
-    .. option:: -f
+    .. option:: -f, --force
 
            Forces installation of the TALs even if the TAL directory already
            exists.
@@ -333,10 +333,9 @@ These can be requested by providing different commands on the command line.
 
     .. option:: --complete
 
-           If any of the rsync commands needed to update the repository
-           failed, complete the operation but provide exit status 2. If
-           this option is not given, the operation will complete with exit
-           status 0 in this case.
+           If any of the rsync commands needed to update the repository failed,
+           Routinator completes the operation and exits with status code 2.
+           Normally, it would exit with status code 0 indicating success.
 
     .. option:: -a asn, --filter-asn=asn
 
@@ -388,9 +387,9 @@ These can be requested by providing different commands on the command line.
        .. option:: --complete
 
               If any of the rsync commands needed to update the repository
-              failed, complete the operation but provide exit status 2. If this
-              option is not given, the operation will complete with exit status
-              0 in this case.
+              failed, Routinator completes the operation and exits with status
+              code 2. Normally, it would exit with status code 0 indicating
+              success.
 
 
 .. subcmd:: server
@@ -533,9 +532,9 @@ These can be requested by providing different commands on the command line.
        .. option:: --complete
 
               If any of the rsync commands needed to update the repository
-              failed, complete the operation but provide exit status 2.  If this
-              option is not given, the operation will complete with exit status
-              0 in this case.
+              failed, Routinator completes the operation and exits with status
+              code 2. Normally, it would exit with status code 0 indicating
+              success.
 
 
 .. subcmd:: man
