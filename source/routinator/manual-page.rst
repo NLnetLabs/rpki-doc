@@ -13,32 +13,153 @@ Manual Page
 Synopsis
 --------
 
-:command:`routinator` :option:`-b base-dir` :option:`-r repository-dir`
-:option:`-t tal-dir` :option:`-x exceptions-file [-x exceptions-file [...]]`
-:option:`--strict` :option:`--disable-rsync` :option:`--rsync-command=args`
-:option:`--rsync-timeout=seconds` :option:`--disable-rrdp`
-:option:`--rrdp-timeout=seconds` :option:`--rrdp-connect-timeout=seconds`
-:option:`--rrdp-local-addr=addr` :option:`--rrdp-root-cert=path`
-:option:`--rrdp-proxy=uri` :option:`--dirty`
-:option:`--validation-threads=count` :option:`-v | -vv | -q | -qq` :option:`-h`
-:option:`-V` :subcmd:`command` :option:`args`
+.. raw:: html
 
-:command:`routinator` :option:`options` :subcmd:`init` :option:`-f`
+  <p><strong class="command">routinator</strong> <a class="reference internal"
+  href="#cmdoption-b"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-b <var>base-dir</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-r"><code class="xref std
+  std-option docutils literal notranslate"> <span class="pre">-r
+  <var>repository-dir</var></span></code></a> <a class="reference internal"
+  href="#cmdoption-t"> <code class="xref std std-option docutils literal
+  notranslate"> <span class="pre">-t <var>tal-dir</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-x"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">-x
+  <var>exceptions-file </var></span><span class="pre">[-x
+  <var>exceptions-file</var> [...]]</span></code></a> <a class="reference
+  internal" href="#cmdoption-strict"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">--strict</span></code></a> <a
+  class="reference internal" href="#cmdoption-disable-rsync"><code class="xref
+  std std-option docutils literal notranslate"><span
+  class="pre">--disable-rsync</span></code></a> <a class="reference internal"
+  href="#cmdoption-rsync-command"><code class="xref std std-option docutils
+  literal notranslate"><span
+  class="pre">--rsync-command=<var>args</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-rsync-timeout"><code class="xref
+  std std-option docutils literal notranslate"><span
+  class="pre">--rsync-timeout=<var>seconds</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-disable-rrdp"><code class="xref
+  std std-option docutils literal notranslate"><span
+  class="pre">--disable-rrdp</span></code></a> <a class="reference internal"
+  href="#cmdoption-rrdp-timeout"><code class="xref std std-option docutils
+  literal notranslate"><span
+  class="pre">--rrdp-timeout=<var>seconds</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-rrdp-connect-timeout"><code
+  class="xref std std-option docutils literal notranslate"><span
+  class="pre">--rrdp-connect-timeout=<var>seconds</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-rrdp-local-addr"><code class="xref
+  std std-option docutils literal notranslate"><span
+  class="pre">--rrdp-local-addr=<var>addr</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-rrdp-root-cert"><code class="xref
+  std std-option docutils literal notranslate"><span
+  class="pre">--rrdp-root-cert=<var>path</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-rrdp-proxy"><code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">--rrdp-proxy=<var>uri</var></span></code></a> <a class="reference
+  internal" href="#cmdoption-dirty"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">--dirty</span></code></a> <a
+  class="reference internal" href="#cmdoption-validation-threads"><code
+  class="xref std std-option docutils literal notranslate"><span
+  class="pre">--validation-threads=<var>count</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-v"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">-v</span> <span
+  class="pre">|</span> <span class="pre">-vv</span> <span class="pre">|</span>
+  <span class="pre">-q</span> <span class="pre">|</span> <span
+  class="pre">-qq</span></code></a> <a class="reference internal"
+  href="#cmdoption-syslog"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">--syslog</span></code></a> <a class="reference
+  internal" href="#cmdoption-syslog-facility"><code class="xref std std-option
+  docutils literal notranslate"><span
+  class="pre">--syslog-facility=<var>facility</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-h"><code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">-h</span></code></a> <a class="reference internal"
+  href="#cmdoption-version"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-V</span></code></a> <code class="xref std
+  std-subcmd docutils literal notranslate"><span
+  class="pre">command</span></code> <code class="xref std std-option docutils
+  literal notranslate"><span class="pre">args</span></code></p>
 
-:command:`routinator` :option:`options` :subcmd:`vrps` :option:`-o output-file`
-:option:`-f format` :option:`-n` :option:`-a asn` :option:`-p prefix`
+  <p><strong class="command">routinator</strong> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">options</span></code> <a class="reference internal"
+  href="#subcmd-init"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">init</span></code></a> <a class="reference
+  internal" href="#cmdoption-f"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">-f</span></code></a></p>
 
-:command:`routinator` :option:`options` :subcmd:`validate` :option:`-n`
-:option:`-j` :option:`-a asn` :option:`-p prefix`
+  <p><strong class="command">routinator</strong> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">options</span></code> <a class="reference internal"
+  href="#subcmd-vrps"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">vrps</span></code></a> <a class="reference
+  internal" href="#cmdoption-o"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">-o
+  <var>output-file</var></span></code></a> <a class="reference internal"
+  href="#cmdoption-format"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-f <var>format</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-n"><code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">-n</span></code></a> <a class="reference internal"
+  href="#cmdoption-a"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-a <var>asn</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-p"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">-p
+  <var>prefix</var></span></code></a></p>
 
-:command:`routinator` :option:`options` :subcmd:`server`
-:option:`--rtr addr:port [...]` :option:`--http addr:port [...]`
-:option:`--listen-systemd` :option:`--refresh seconds` :option:`--retry seconds`
-:option:`--expire seconds` :option:`--history count`
+  <p><strong class="command">routinator</strong> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">options</span></code> <a class="reference internal"
+  href="#subcmd-validate"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">validate</span></code></a> <a class="reference
+  internal" href="#cmdoption-noupdate"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">-n</span></code></a> <a
+  class="reference internal" href="#cmdoption-j"><code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">-j</span></code></a> <a class="reference internal"
+  href="#cmdoption-asn"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-a <var>asn</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-prefix"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">-p
+  <var>prefix</var></span></code></a></p>
 
-:command:`routinator` :option:`options` :subcmd:`update`
+  <p><strong class="command">routinator</strong> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">options</span></code> <a class="reference internal"
+  href="#subcmd-server"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">server</span></code></a> <a class="reference
+  internal" href="#cmdoption-rtr"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">--rtr <var>addr:port</var>
+  [...]</span></code></a> <a class="reference internal"
+  href="#cmdoption-http"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">--http <var>addr:port</var>
+  [...]</span></code></a> <a class="reference internal"
+  href="#cmdoption-listen-systemd"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">--listen-systemd</span></code></a> <a
+  class="reference internal" href="#cmdoption-refresh"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">--refresh
+  <var>seconds</var></span></code></a> <a class="reference internal"
+  href="#cmdoption-retry"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">--retry <var>seconds</var></span></code></a> <a
+  class="reference internal" href="#cmdoption-expire"><code class="xref std
+  std-option docutils literal notranslate"><span class="pre">--expire
+  <var>seconds</var></span></code></a> <a class="reference internal"
+  href="#cmdoption-history"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">--history
+  <var>count</var></span></code></a></p>
 
-:command:`routinator` :subcmd:`man` :option:`-o file`
+  <p><strong class="command">routinator</strong> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">options</span></code> <a class="reference internal"
+  href="#subcmd-update"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">update</span></code></a></p>
+
+  <p><strong class="command">routinator</strong> <a class="reference internal"
+  href="#subcmd-man"><code class="xref std std-subcmd docutils literal
+  notranslate"><span class="pre">man</span></code></a> <a class="reference
+  internal" href="#cmdoption-output"><code class="xref std std-option docutils
+  literal notranslate"><span class="pre">-o
+  <var>file</var></span></code></a></p>
 
 Description
 -----------
@@ -327,7 +448,7 @@ These can be requested by providing different commands on the command line.
            none
                   This format produces no output whatsoever.
 
-    .. option:: --noupdate
+    .. option:: -n, --noupdate
 
            The repository will not be updated before producing the list.
 
