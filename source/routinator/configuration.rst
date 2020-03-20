@@ -55,8 +55,8 @@ doesn’t exist and there is no :option:`-c` option, the default values are used
 For specifying configuration options, Routinator uses a `TOML file
 <https://github.com/toml-lang/toml>`_. Its entries are named similarly to the
 command line options. A complete sample configuration file showing all the
-default values can be found in the repository at `etc/routinator.conf
-<https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf>`_.
+default values can be found in the repository at `etc/routinator.conf.example
+<https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf.example>`_.
 
 For example, if you want Routinator to refresh every 15 minutes and run as an
 RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
