@@ -124,7 +124,8 @@ SSH Transport
 SSH transport for RPKI-RTR can be configured with the help of `netcat
 <http://netcat.sourceforge.net/>`_ and `OpenSSH <https://www.openssh.com/>`_.
 
-Begin by installing the ``openssh-server`` and ``netcat`` packages.
+Begin by installing the :command:`openssh-server` and :command:`netcat`
+packages.
 
 Make sure Routinator is running as an RTR server on localhost:
 
@@ -135,8 +136,8 @@ Make sure Routinator is running as an RTR server on localhost:
 Create a username and a password for the router to log into the host with,
 such as ``rpki``.
 
-Configure OpenSSH to expose an ``rpki-rtr`` subsystem that acts as a proxy
-into Routinator by editing the :file:`/etc/ssh/sshd_config` file or equivalent to
+Configure OpenSSH to expose an ``rpki-rtr`` subsystem that acts as a proxy into
+Routinator by editing the :file:`/etc/ssh/sshd_config` file or equivalent to
 include the following line:
 
 .. code-block:: text
@@ -168,7 +169,7 @@ TLS Transport
 TLS transport for RPKI-RTR can be configured with the help of `stunnel
 <https://www.stunnel.org/>`_.
 
-Begin by installing the ``stunnel`` package.
+Begin by installing the :command:`stunnel` package.
 
 Make sure Routinator is running as an RTR server on localhost:
 
@@ -194,4 +195,4 @@ or equivalent:
    accept = 323
    connect = 127.0.0.1:3323
 
-Restart ``stunnel`` to complete the process.
+Restart :command:`stunnel` to complete the process.
