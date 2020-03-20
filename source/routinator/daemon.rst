@@ -25,8 +25,8 @@ a default host or port. In order to start the HTTP server at 192.0.2.13 and
    routinator server --http 192.0.2.13:8323 --http [2001:0DB8::13]:8323
 
 The application will stay attached to your terminal unless you provide the
-:option:`-d` (for daemon) option. After fetching and validating the data set,
-the following paths are available:
+:option:`--detach` option. After fetching and validating the data set, the
+following paths are available:
 
 :command:`/csv`
      Returns the current set of VRPs in **csv** output format
