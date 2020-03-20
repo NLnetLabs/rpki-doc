@@ -515,9 +515,9 @@ These can be requested by providing different commands on the command line.
 
 .. subcmd:: server
 
-       This command causes Routinator to act as a server for the RPKI-to-
-       Router (RTR) and HTTP protocols. In this mode, Routinator will read all
-       the TALs  (See `Trust Anchor Locators`_ below) and will stay attached to
+       This command causes Routinator to act as a server for the RPKI-to-Router
+       (RTR) and HTTP protocols. In this mode, Routinator will read all
+       the TALs (See `Trust Anchor Locators`_ below) and will stay attached to
        the terminal unless the :option:`-d` option is given.
 
        The server will periodically update the local repository, every ten
@@ -559,33 +559,33 @@ These can be requested by providing different commands on the command line.
        .. option:: --listen-systemd
 
               The RTR listening socket will be acquired from systemd via socket
-              activation. Use this option together with systemds socket units to
-              allow a Routinator running as a regular user to bind to the
+              activation. Use this option together with systemd's socket units
+              to allow a Routinator running as a regular user to bind to the
               default RTR port 323.
 
-              Currently,  all TCP listener sockets handed over by systemd will
+              Currently, all TCP listener sockets handed over by systemd will
               be used for the RTR protocol.
 
        .. option:: --refresh=seconds
 
               The amount of seconds the server should wait after having finished
               updating and validating the local repository before starting to
-              update again. The next update will earlier if objects in the
+              update again. The next update will be earlier if objects in the
               repository expire earlier. The default value is 600 seconds.
 
        .. option:: --retry=seconds
 
               The amount of seconds to suggest to an RTR client to wait before
               trying to request data again if that failed. The default value
-              is 600 seconds, the value recommended in :rfc:`8210`.
+              is 600 seconds, as recommended in :rfc:`8210`.
 
        .. option:: --expire=seconds
 
               The amount of seconds to an RTR client can keep using data if it
               cannot refresh it. After that time, the client should discard the
-              data.  Note that this value was introduced in version 1 of the RTR
+              data. Note that this value was introduced in version 1 of the RTR
               protocol and is thus not relevant for clients that only implement
-              version 0.  The default value, as recommended in :rfc:`8210`, is
+              version 0. The default value, as recommended in :rfc:`8210`, is
               7200 seconds.
 
        .. option:: --history=count
@@ -639,7 +639,6 @@ These can be requested by providing different commands on the command line.
               the listening sockets for HTTP and RTR have been created.  The
               option has no effect unless :option:`--detach` is also used.
 
-
 .. subcmd:: update
 
        Updates the local repository by resyncing all known publication points.
@@ -648,7 +647,7 @@ These can be requested by providing different commands on the command line.
        data.
 
        As such, the command really is a shortcut for running
-       :command:`routinator` :subcmd:`vrps` :option:`-f none`.
+       :command:`routinator` :subcmd:`vrps` :option:`-f` ``none``.
 
        .. option:: --complete
 
@@ -656,7 +655,6 @@ These can be requested by providing different commands on the command line.
               failed, Routinator completes the operation and exits with status
               code 2. Normally, it would exit with status code 0 indicating
               success.
-
 
 .. subcmd:: man
 
@@ -674,13 +672,13 @@ RPKI uses trust anchor locators, or TALs, to identify the location and public
 keys of the trusted root CA certificates. Routinator keeps these TALs in files
 in the TAL directory which can be set by the  :option:`-t` option. If the
 :option:`-b` option is used instead, the TAL directory will be in the
-subdirectory *tals* under the directory specified in this option.  The default
-location,  if no options are used at all is :file:`$HOME/.rpki-cache/tals`.
+subdirectory *tals* under the directory specified in this option. The default
+location, if no options are used at all is :file:`$HOME/.rpki-cache/tals`.
 
 This directory can be created and populated with the TALs of the five Regional
 Internet Registries (RIRs) via the :command:`init` command.
 
-If the directory does exist,  Routinator will use all files with an extension
+If the directory does exist, Routinator will use all files with an extension
 of *.tal* in this directory. This means that you can add and remove trust
 anchors by adding and removing files in this directory. If you add files, make
 sure they are in the format described by :rfc:`7730` or the upcoming
@@ -702,7 +700,7 @@ in square brackets.
 
 The configuration file can contain the following entries. All path values are
 interpreted relative to the directory the configuration file is located in. All
-values can be overwritten via the command line options.
+values can be overridden via the command line options.
 
 repository-dir
       A string containing the path to the directory to store the local
@@ -729,7 +727,7 @@ rsync-command
 
 rsync-args
       A list of strings containing the arguments to be passed to the rsync
-      command.  Each string is an argument of its own.
+      command. Each string is an argument of its own.
 
       If this option is not provided, Routinator will try to find out if your
       rsync understands the ``--contimeout`` option and, if so, will set it to
@@ -754,11 +752,9 @@ rrdp-connect-timeout
       An integer value that, if present, sets a separate timeout in seconds for
       RRDP connect requests only.
 
-
 rrdp-local-addr
       A string value that provides the local address to be used by RRDP
       connections.
-
 
 rrdp-root-certs
       A list of strings each providing a path to a file containing a trust
@@ -766,12 +762,10 @@ rrdp-root-certs
       addition to the certificates provided via this option, the system's own
       trust store is used.
 
-
 rrdp-proxies
       A list of string each providing the URI for a proxy for outgoing RRDP
       connections. The proxies are tried in order for each request. HTTP and
       SOCKS5 proxies are supported.
-
 
 dirty
       A boolean value which, if true, specifies that unused files and
@@ -811,7 +805,7 @@ log
 
 log-file
       A string value containing the path to a file to which log messages will be
-      appended if the log configuration value is set to file.  In this case, the
+      appended if the log configuration value is set to file. In this case, the
       value is mandatory.
 
 syslog-facility
@@ -831,7 +825,7 @@ http-listen
 listen-systemd
       The RTR TCP listening socket will be acquired from systemd via socket
       activation. Use this option together with systemd's socket units to allow
-      a Routinator running as a regular user to bind to the default RTR port
+      Routinator running as a regular user to bind to the default RTR port
       323.
 
 refresh
@@ -883,7 +877,6 @@ be used within the local network.
 
 The service only supports GET requests with the following paths:
 
-
 :command:`/csv`
       Returns the current set of VRPs in **csv** output format.
 
@@ -891,8 +884,7 @@ The service only supports GET requests with the following paths:
       Returns the current set of VRPs in **json** output format.
 
 :command:`/metrics`
-      Returns a set of monitoring metrics in the format used by
-      Prometheus.
+      Returns a set of monitoring metrics in the format used by Prometheus.
 
 :command:`/openbgpd`
       Returns the current set of VRPs in **openbgpd** output format.
@@ -913,7 +905,7 @@ The service only supports GET requests with the following paths:
       its origin AS number and address prefix is RPKI valid, invalid, or not
       found.  The returned object is compatible with that provided by the RIPE
       NCC RPKI Validator. For more information, see
-      https://www.ripe.net/support/documentation/developer-documentation/rpki-validator-api
+      https://ripe.net/support/documentation/developer-documentation/rpki-validator-api
 
 :command:`/validity?asn=as-number&prefix=prefix`
       Same as above but with a more form-friendly calling convention.
@@ -926,12 +918,10 @@ to filter for prefixes. The fields can be repeated multiple times.
 This works in the same way as the options of the same name to the
 :subcmd:`vrps` command.
 
-
 Relaxed Validation
 ------------------
-
 The documents defining RPKI include a number of very strict rules regarding the
-formatting of the objects published in the RPKI repository.  However, because
+formatting of the objects published in the RPKI repository. However, because
 PRKI reuses existing technology, real-world applications produce objects that
 do not follow these strict requirements.
 
@@ -953,14 +943,13 @@ relaxed validation mode.
        Subject and Issuer
               The RFC restricts the type used for CommonName attributes to
               PrintableString,  allowing only a subset of ASCII characters,
-              while :rfc:`5280` allows a number of additional string types.  At
+              while :rfc:`5280` allows a number of additional string types. At
               least one CA produces resource certificates with Utf8Strings.
 
               In relaxed mode, we will only check that the general structure of
               the issuer and subject fields are correct and allow any number and
               types of attributes. This seems justified since RPKI explicitly
               does not use these fields.
-
 
    Signed Objects (:rfc:`6488`)
        Signed objects are defined as a profile on CMS messages defined in
@@ -974,10 +963,10 @@ relaxed validation mode.
 
               In relaxed mode, we will allow BER encoding.
 
-              Note that this isn't just nit-picking. In BER encoding,  octet
+              Note that this isn't just nit-picking. In BER encoding, octet
               strings can be broken up into a sequence of sub-strings. Since
               those strings are in some places used to carry encoded content
-              themselves,  such an encoding does make parsing significantly more
+              themselves, such an encoding does make parsing significantly more
               difficult. At least one CA does produce such broken-up strings.
 
 Signals
@@ -987,10 +976,9 @@ SIGUSR1: Reload TALs and restart validation
    that succeeds, restart validation. If loading the TALs fails, Routinator will
    exit.
 
-
 Exit Status
 -----------
-Upon success,  the exit status 0 is returned. If any fatal error happens, the
+Upon success, the exit status 0 is returned. If any fatal error happens, the
 exit status will be 1. Some commands provide a :option:`--complete` option which
 will cause the exit status to be 2 if any of the rsync commands to update the
 repository fail.
