@@ -47,7 +47,7 @@ it.
 If you decide you cannot agree to the ARIN RPA terms, the
 :option:`--decline-arin-rpa` option will install all TALs except the one for
 ARIN. If, at a later point, you wish to use the ARIN TAL anyway, you can add it
-to your current installation using the ``-f`` flag, to force the
+to your current installation using the :option:`--force` option, to force the
 installation of all TALs.
 
 Performing a Test Run
