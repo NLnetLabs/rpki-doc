@@ -61,10 +61,9 @@ Rust can be installed on OpenBSD by running:
 CentOS 6
 """"""""
 
-Another example where the standard installation method does not work is
-CentOS 6, where you will end up with a long list of error messages about
-missing assembler instructions. This is because the assembler shipped with
-CentOS 6 is too old.
+The standard installation method does not work when using  CentOS 6. Here, you
+will end up with a long list of error messages about missing assembler
+instructions. This is because the assembler shipped with CentOS 6 is too old.
 
 You can get the necessary version by installing the `Developer Toolset 6
 <https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_ from the

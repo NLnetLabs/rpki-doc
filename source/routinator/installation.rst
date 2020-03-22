@@ -5,7 +5,7 @@ Installation
 
 Getting started with Routinator is really easy either building from `Cargo
 <https://crates.io/crates/routinator>`_ or running with `Docker
-<https://hub.docker.com/r/nlnetlabs/routinator/>`_. 
+<https://hub.docker.com/r/nlnetlabs/routinator/>`_.
 
 Quick Start
 -----------
@@ -88,13 +88,13 @@ programming language that Routinator has been written in.
 rsync
 """""
 
-Currently, Routinator requires the :command:`rsync` executable to be in your path.
-Due to the nature of rsync, it is unclear which particular version you need at
-the very least, but whatever is being shipped with current Linux and \*BSD
-distributions and macOS should be fine. Alternatively, you can download rsync
-from `its website <https://rsync.samba.org/>`_.
+Currently, Routinator requires the :command:`rsync` executable to be in your
+path. Due to the nature of rsync, it is unclear which particular version you
+need at the very least, but whatever is being shipped with current Linux and
+\*BSD distributions and macOS should be fine. Alternatively, you can download
+rsync from `its website <https://rsync.samba.org/>`_.
 
-On Windows, Routinator requires the :command:`rsync` version that comes with
+On Windows, Routinator requires the rsync version that comes with
 `Cygwin <https://www.cygwin.com/>`_ – make sure to select rsync during the
 installation phase.
 
