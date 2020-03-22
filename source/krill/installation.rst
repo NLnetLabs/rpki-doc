@@ -73,9 +73,9 @@ page provides an overview of the various support levels.
 While some system distributions include Rust as system packages,
 Krill relies on a relatively new version of Rust, currently 1.40 or
 newer. We therefore suggest to use the canonical Rust installation via a
-tool called ``rustup``.
+tool called :command:`rustup`.
 
-To install ``rustup`` and Rust, simply do:
+To install :command:`rustup` and Rust, simply do:
 
 .. code-block:: bash
 
@@ -90,7 +90,7 @@ You can update your Rust installation later by running:
 
    rustup update
 
-For some platforms, ``rustup`` cannot provide binary releases to install
+For some platforms, :command:`rustup` cannot provide binary releases to install
 directly. The `Rust Platform Support
 <https://forge.rust-lang.org/platform-support.html>`_ page lists
 several platforms where official binary releases are not available,
@@ -135,17 +135,17 @@ C Toolchain
 Some of the libraries Krill depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
 set of packages to build from C sources. For example,
-``apt install build-essential`` will install everything you need on
+:command:`apt install build-essential` will install everything you need on
 Debian/Ubuntu.
 
-If you are unsure, try to run ``cc`` on a command line and if there’s a
+If you are unsure, try to run :command:`cc` on a command line and if there’s a
 complaint about missing input files, you are probably good to go.
 
 OpenSSL
 """""""
-Your system will likely have a package manager that will allow you to
-install OpenSSL in a few easy steps. For Krill, you will need ``libssl-dev``,
-sometimes called ``openssl-dev``. On Debian-like Linux distributions,
+Your system will likely have a package manager that will allow you to install
+OpenSSL in a few easy steps. For Krill, you will need :command:`libssl-dev`,
+sometimes called :command:`openssl-dev`. On Debian-like Linux distributions,
 this should be as simple as running:
 
 .. code-block:: bash
@@ -173,5 +173,5 @@ add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
 version.
 
 The command will build Krill and install it in the same directory
-that cargo itself lives in, likely ``$HOME/.cargo/bin``. This means
+that cargo itself lives in, likely :file:`$HOME/.cargo/bin`. This means
 Krill will be in your path, too.

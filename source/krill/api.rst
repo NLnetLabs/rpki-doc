@@ -31,8 +31,8 @@ code for using the krill API with your favourite language. Below is an example
 of how to do this using Docker and Python 3.
 
 First create a simple test Krill client program. Save the following as
-`/tmp/krill_test.py`, replacing `<YOUR XXX>` values with the correct access
-token and domain name for your Krill server.
+:file:`/tmp/krill_test.py`, replacing `<YOUR XXX>` values with the correct
+access token and domain name for your Krill server.
 
 .. code-block:: python3
 
@@ -88,10 +88,10 @@ And then run the sample client program:
    python3 /tmp/krill_test.py
 
 To learn more about using your OpenAPI generated client library consult the
-`README.md` file that is created in the generated client library directory, e.g.
-`$GENDIR/out/README.md` in the example above.
+:file:`README.md` file that is created in the generated client library
+directory, e.g. :file:`$GENDIR/out/README.md` in the example above.
 
-.. warning::
+.. Warning::
 
    Future improvements to the Krill OpenAPI specification may necessitate that
    you re-generate your client library and possibly also alter your client

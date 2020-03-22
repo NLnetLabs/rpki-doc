@@ -5,7 +5,7 @@ Publication Server
 
 .. Important:: It is highly recommended to use an RPKI publication server
                provided by your parent CA, if available. This relieves you of
-               the responsibility to keep a public Rsync and web server
+               the responsibility to keep a public rsync and web server
                available at all times.
 
 It could also be considered good for the RPKI ecosystem as a whole to have at
@@ -26,7 +26,7 @@ publication server without manual intervention at this time. APNIC members can
 get access to their publication server upon request. Everyone else
 will need to host their own repository for now.
 
-When running your own repository, it is advisable to use multiple Rsync servers
+When running your own repository, it is advisable to use multiple rsync servers
 and multiple web servers. You can also use a Content Delivery Network (CDN) in
 front of your web servers. Please note that the official name for the HTTPS
 based transport is the RPKI Repository Delta Protocol (RRDP), so you will see
@@ -43,12 +43,12 @@ Using the Embedded Repository
              :ref:`doc_krill_remote_publishing`.
 
 Krill can use an embedded repository to publish RPKI objects. It can generate
-the required configuration for you using the ``krillc config`` subcommand. This
-ensures the syntax is correct, as for example trailing slashes are required.
-Use this command with your own values, using domain names pointing to servers
-that are publicly reachable.
+the required configuration for you using the :command:`krillc config`
+subcommand. This ensures the syntax is correct, as for example trailing slashes
+are required. Use this command with your own values, using domain names pointing
+to servers that are publicly reachable.
 
-.. code-block:: text
+.. code-block:: bash
 
   krillc config repo \
      --token correct-horse-battery-staple \
@@ -69,16 +69,16 @@ Krill CA can write, and your repository servers can read. Alternatively, you can
 synchronise the contents of these directories in another way, such as
 Rsyncing them over every couple of minutes.
 
-If you are using a shared file system, please note that the Rsync ``/current``
-directory cannot be the mount point. Krill tries to write the entire repository
-to a new folder under ``$DATA_DIR/repo/rsync`` and then renames it. This is done
-to minimise issues with files being updated while relying party software is
-fetching data.
+If you are using a shared file system, please note that the rsync
+:file:`/current` directory cannot be the mount point. Krill tries to write the
+entire repository to a new folder under :file:`$DATA_DIR/repo/rsync` and then
+renames it. This is done to minimise issues with files being updated while
+relying party software is fetching data.
 
-The next step is to configure your Rsync deamons to expose a 'module' for your
+The next step is to configure your rsync daemons to expose a 'module' for your
 files. Make sure that the Rsync URI including the 'module' matches the
-``rsync_base`` in your Krill configuration file. Basic configuration can then be
-as simple as:
+:file:`rsync_base` in your Krill configuration file. Basic configuration can
+then be as simple as:
 
 .. code-block:: bash
 
@@ -95,14 +95,14 @@ as simple as:
 
 For RRDP you will need to set up a web server of your choice and ensure that it
 has a valid TLS certificate. Next, you can make the files found under, or copied
-from ``$DATA_DIR/repo/rrdp`` available here. Make sure that the public URI to
-the RRDP base directory matches the value of ``rrdp_service_uri`` in your
-``krill.conf`` file.
+from :file:`$DATA_DIR/repo/rrdp` available here. Make sure that the public URI
+to the RRDP base directory matches the value of ``rrdp_service_uri`` in your
+:file:`krill.conf` file.
 
 If desired, you can also use a CDN in front of this server to further reduce
 your load and uptime requirements. If you do, make sure that the public URI
-matches the directive in ``krill.conf``, because this will be used in
-your RPKI certificate.
+matches the directive in :file:`krill.conf`, because this will be used in your
+RPKI certificate.
 
 If you find that there is an issue with your repository or, for example, you
 want to change its domain name, you can set up a new Krill instance with an

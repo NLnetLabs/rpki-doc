@@ -15,8 +15,8 @@ Setting up the Configuration
 
 For testing we will assume that you will run your own Krill repository inside a
 single Krill instance, using 'localhost' in the repository URIs. You have to set
-the following environment variable to re-assure Krill that you are running a test
-environment, or it will refuse the use of 'localhost':
+the following environment variable to re-assure Krill that you are running a
+test environment, or it will refuse the use of 'localhost':
 
 .. code-block:: bash
 
@@ -31,9 +31,9 @@ have to repeat command line arguments for these:
    $ KRILL_CLI_TOKEN="correct-horse-battery-staple"
    $ KRILL_CLI_MY_CA="Acme-Corp-Intl"
 
-NOTE: Replace "correct-horse-battery-staple" with a token of your own choosing!
-If you don't the UI will kindly remind you that "You should not get your
-passwords from https://xkcd.com/936/".
+.. Note:: Replace *"correct-horse-battery-staple"* with a token of your own
+          choosing! If you don't the UI will kindly remind you that
+          "You should not get your passwords from https://xkcd.com/936/".
 
 You can now generate a krill configuration file using the following command:
 
@@ -49,7 +49,7 @@ Use an embedded TA
 ------------------
 
 To run Krill in test mode you can set "use_ta" to "true" in your
-``krill.conf``, or use an environment variable:
+:file:`krill.conf`, or use an environment variable:
 
 .. code-block:: bash
 
@@ -83,7 +83,7 @@ parent to it, followed by some Route Origin Authorisations and/or child CAs.
 List CAs
 --------
 
-You can list all handles (names) for the existing CAs in krill using the
+You can list all handles (names) for the existing CAs in Krill using the
 following command:
 
 .. code-block:: text
@@ -101,7 +101,7 @@ Let CA publish in the embedded Repository
 Step 1: Generate RFC8183 Publisher Request
 """"""""""""""""""""""""""""""""""""""""""
 
-First you will need to get the RFC 8183 Publisher Request XML for your CA.
+First you will need to get the :rfc:`8183` Publisher Request XML for your CA.
 
 .. code-block:: text
 
@@ -111,7 +111,7 @@ First you will need to get the RFC 8183 Publisher Request XML for your CA.
 Step 2: Add your CA to the Repository
 """"""""""""""""""""""""""""""""""""""""""""
 
-You now need to authorise your CA in your repository and generate an RFC8183
+You now need to authorise your CA in your repository and generate an :rfc:`8183`
 Repository Response XML file:
 
 .. code-block:: text
@@ -129,9 +129,6 @@ Now configure your CA using the response:
 .. code-block:: text
 
   $ krillc repo update remote --rfc8183 repository_response.xml
-
-
-
 
 Show CA Details
 ---------------
@@ -196,7 +193,7 @@ the same as what you would need to delegate from your CA to remote CAs.
 Step 1: RFC 8183 request XML
 """"""""""""""""""""""""""""
 
-First you will need to get the RFC 8183 request XML from your child.
+First you will need to get the :rfc:`8183` request XML from your child.
 
 .. code-block:: text
 
@@ -210,11 +207,11 @@ Step 2: Add child "ca" to "ta"
 To add a child, you will need to:
   1. Choose a unique local name (handle) that the parent will use for the child
   2. Choose initial resources (asn, ipv4, ipv6)
-  3. Have an RFC 8183 request
+  3. Have an :rfc:`8183` request
 
 And in this case we also need to override the ENV variable and indicate that we
 want to add this child to the CA "ta". The following command will add the child,
-and the RFC 8183 XML from the "ta":
+and the :rfc:`8183` XML from the "ta":
 
 .. code-block:: text
 
@@ -225,8 +222,8 @@ and the RFC 8183 XML from the "ta":
 
 API Call: See: :krill_api_ca_post:`POST /v1/cas/ta/children <cas~1{ca_handle}~1children>`
 
-The default response is the RFC 8183 parent response XML file. Or, if you set
-`--format json` you will get the plain API reponse.
+The default response is the :rfc:`8183` parent response XML file. Or, if you set
+``--format json`` you will get the plain API response.
 
 If you need the response again, you can ask the "ta" again:
 
@@ -245,7 +242,7 @@ the handle "ta" again, but in case you have multiple parents you may want to
 refer to them by names that make sense in your context.
 
 Note that whichever handle you choose, your CA will use the handles that the
-parent response included for itself *and* for your CA in its comminication with
+parent response included for itself *and* for your CA in its communication with
 this parent. I.e. you may want to inspect the response and use the same handle
 for the parent (parent_handle attribute), and do not be surprised or alarmed if
 the parent refers to your ca (child_handle attribute) by some seemingly random
@@ -304,8 +301,8 @@ API Call: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
 ROAs
 ----
 
-Krill lets users create Route Origin Authorizations (ROAs), the signed objects
-that state which Autonomous System (AS) is authorized to originate one of your
+Krill lets users create Route Origin Authorisations (ROAs), the signed objects
+that state which Autonomous System (AS) is authorised to originate one of your
 prefixes, along with the maximum prefix length it may have.
 
 You can update ROAs through the command line by submitting a plain text file
@@ -329,7 +326,7 @@ You can then add this to your CA:
 API Call: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
 
 If you followed the steps above then you would get an error, because there is no
-authorization for 10.0.3.0/24 => 64496. If you remove the line and submit again,
+authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
 then you should see no response, and no error.
 
 You can list Route Origin Authorisations as well:

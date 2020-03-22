@@ -23,7 +23,7 @@ Note that you can use the CLI from another machine, but then you will need to
 set up a proxy server in front of Krill and make sure that it has a real TLS
 certificate.
 
-To use the CLI you need to invoke ``krillc`` followed by one or more
+To use the CLI you need to invoke :command:`krillc` followed by one or more
 subcommands, and some arguments. Help is built-in:
 
 .. code-block:: bash
@@ -138,8 +138,8 @@ You can then add this to your CA:
  $ krillc roas update --delta ./roas.txt
 
 If you followed the steps above then you would get an error, because there is no
-authorisation for 198.51.100.0/24 => 64496. If you remove the line and submit again,
-then you should see no response, and no error.
+authorisation for 198.51.100.0/24 => 64496. If you remove the line and submit
+again, then you should see no response, and no error.
 
 You can list ROAs in the following way:
 
@@ -153,7 +153,7 @@ Displaying History
 ------------------
 
 You can show the history of all the things that happened to your CA using the
-``history`` command.
+:command:`history` command.
 
 .. code-block:: text
 

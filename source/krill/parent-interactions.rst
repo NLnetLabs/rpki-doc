@@ -27,7 +27,7 @@ do an additional exchange. You need to generate and provide a publisher request
 file and in return you will receive a repository response.
 
 Using an RPKI publication server relieves you of the responsibility to keep
-a public Rsync and web server running at all times to make your certificate and
+a public rsync and web server running at all times to make your certificate and
 ROAs available to the world.
 
 Of the five RIRs, only APNIC currently offers RPKI publication as a service for

@@ -91,8 +91,8 @@ Parent Setup
 
 After successfully configuring the repository, the next step is to configure
 your parent CA. Copy the child request XML and provide it to your parent, i.e.
-your RIR or NIR. If you are an ARIN member, make sure to toggle the "ARIN
-Compatible" option.
+your RIR or NIR. If you are an ARIN member, make sure to toggle the
+:guilabel:`ARIN Compatible` option.
 
 .. figure:: img/krill-ui-child-request.png
     :align: center
@@ -125,9 +125,10 @@ right.
 
     The ROAs screen displaying all resources and configured ROAs
 
-To add a new ROA, simply fill in the authorised ASN and one of your prefixes.
-The maximum prefix length will automatically match the prefix you entered to
-follow best operational practices, but you can change it as desired.
+Click the :guilabel:`Add ROA` button, then fill in the authorised ASN and one of
+your prefixes in the form. The maximum prefix length will automatically match
+the prefix you entered to follow best operational practices, but you can change
+it as desired.
 
 .. figure:: img/krill-ui-roa-add.png
     :align: center

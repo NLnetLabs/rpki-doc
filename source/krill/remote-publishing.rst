@@ -9,8 +9,8 @@ or other business units) to publish at a repository server that you manage. In
 addition, running the repository separately from the CA offers flexibility in
 changing publication strategy and redundancy.
 
-The repository functions for Krill can be accessed through the ``publishers``
-subcommand in the CLI:
+The repository functions for Krill can be accessed through the
+:command:`publishers` subcommand in the CLI:
 
 .. code-block:: text
 
@@ -39,7 +39,7 @@ List Publishers
 
 You can list all publishers in Krill using the command below. Note that the
 list of publishers will include any embedded Krill CAs as well as any possible
-remote (RFC 8181 compliant) publishers.
+remote (:rfc:`8181` compliant) publishers.
 
 .. code-block:: text
 
@@ -47,7 +47,6 @@ remote (RFC 8181 compliant) publishers.
   Publishers: ta, ca
 
 API Call: :krill_api_pub_get:`GET /v1/publishers <publishers>`
-
 
 Show Publisher Details
 ----------------------
@@ -95,8 +94,8 @@ API Call: :krill_api_pub_delete:`DELETE /v1/publishers/ca <publishers~1{publishe
 Add a Publisher
 ---------------
 
-In order to add a publisher you have to get its RFC 8183 Publisher Request XML,
-and hand it over to the server:
+In order to add a publisher you have to get its :rfc:`8183` Publisher Request
+XML, and hand it over to the server:
 
 .. code-block:: text
 
@@ -108,7 +107,7 @@ API Call: :krill_api_pub_post:`POST /v1/publishers <publishers>`
 Show Repository Response
 ------------------------
 
-In order to show the RFC 8183 Repository Response XML for a specific publisher
+In order to show the :rfc:`8183` Repository Response XML for a specific publisher
 use the following:
 
 .. code-block:: text
@@ -123,8 +122,8 @@ API Call: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{
 Publish at a Remote Repository
 ------------------------------
 
-Controlling your CA's repository server is done through the ``repo`` subcommand
-of the CLI:
+Controlling your CA's repository server is done through the :command:`repo`
+subcommand of the CLI:
 
 .. code-block:: text
 
@@ -174,9 +173,9 @@ API Call: :krill_api_ca_get:`GET /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
 Show Publisher Request
 ----------------------
 
-You can use the following to show the RFC 8183 Publisher Request XML for a CA. You
-will need to hand this over to your remote repository so that they can add your
-CA.
+You can use the following to show the :rfc:`8183` Publisher Request XML for a
+CA. You will need to hand this over to your remote repository so that they can
+add your CA.
 
 .. code-block:: text
 
@@ -200,11 +199,11 @@ Changing repositories is actually more complicated than one might think, but
 fortunately it's all automated. When you ask Krill to change, the following
 steps will be executed:
 
-* check that the new repository can be reached, and this ca is authorised
-* regenerate all objects using the URI jail given by the new repository
-* publish all objects in the new repository
-* request new certificates from (all) parent CA(s) including the new URI
-* once received, do a best effort to clean up the old repository
+- check that the new repository can be reached, and this ca is authorised
+- regenerate all objects using the URI jail given by the new repository
+- publish all objects in the new repository
+- request new certificates from (all) parent CA(s) including the new URI
+- once received, do a best effort to clean up the old repository
 
 In short, Krill performs a sanity check that the new repository can be used,
 and then tries to migrate there in a way that will not lead to invalidating
@@ -224,7 +223,7 @@ Note that if you were using an embedded repository, and you instruct your CA
 to connect to the embedded repository, but set up as a *remote*, then you will
 find that you have no more published objects - because.. Krill tries to clean
 up the old repository, and we assume that you would not try to use an embedded
-server over the RFC 8181 protocol.
+server over the :rfc:`8181` protocol.
 
 But, suppose that you did, you would now see this:
 
@@ -243,7 +242,7 @@ But, suppose that you did, you would now see this:
 But no worries.. this can be fixed.
 
 First, you may want to migrate back to using the embedded repository without
-the RFC 8181 protocol overhead:
+the :rfc:`8181` protocol overhead:
 
 .. code-block:: text
 

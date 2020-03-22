@@ -35,9 +35,9 @@ Start and Stop the Daemon
 -------------------------
 
 There is currently no standard script to start and stop Krill. You could use the
-following example script to start Krill. Make sure to update the ``DATA_DIR``
-variable to your real data directory, and make sure you saved your
-``krill.conf`` file there.
+following example script to start Krill. Make sure to update the
+``DATA_DIR`` variable to your real data directory, and make sure you saved
+your :file:`krill.conf` file there.
 
 .. code-block:: bash
 
@@ -65,8 +65,8 @@ Proxy and HTTPS
 ---------------
 
 Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
-2048 bit RSA key and self-signed certificate in ``/ssl`` in the data directory
-when it is first started. Replacing the self-signed certificate with a
+2048 bit RSA key and self-signed certificate in :file:`/ssl` in the data
+directory when it is first started. Replacing the self-signed certificate with a
 TLS certificate issued by a CA works, but has not been tested extensively.
 
 For a robust solution, we recommend that you use a proxy server such as Nginx or
@@ -84,9 +84,9 @@ Backup and Restore
 
 To back-up Krill:
 
-* Stop Krill
-* Backup your data directory
-* Start Krill
+- Stop Krill
+- Backup your data directory
+- Start Krill
 
 We recommend that you stop Krill because there can be a race condition where
 Krill was just in the middle of saving its state after performing a background
@@ -134,9 +134,9 @@ read the changelog to be sure.
 
 The normal process would be to:
 
-  * Install the new version of Krill
-  * Stop the running Krill instance
-  * Start Krill again, using the new binary, and the same configuration
+- Install the new version of Krill
+- Stop the running Krill instance
+- Start Krill again, using the new binary, and the same configuration
 
 Note that after a restart you may see a message like this in your log file:
 
@@ -147,7 +147,7 @@ Note that after a restart you may see a message like this in your log file:
   'missing field `stats` at line 296 column 1'. Will fall back to events.
 
 You can safely ignore this message. Krill is telling you that the definition of
-a struct has changed and therefore it cannot use the snapshot.json file that it
-normally uses for efficiency. Instead it needs to build up the current state by
-explicitly re-applying all the events that happened to your CA and/or embedded
-publication server.
+a struct has changed and therefore it cannot use the :file:`snapshot.json` file
+that it normally uses for efficiency. Instead, it needs to build up the current
+state by explicitly re-applying all the events that happened to your CA and/or
+embedded publication server.

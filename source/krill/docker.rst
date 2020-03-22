@@ -17,9 +17,9 @@ platforms" documentation
 Fetching and Running Krill
 --------------------------
 
-The ``docker run`` command will automatically fetch the Krill image the first
-time you use it, and so there is no installation step in the traditional sense.
-The ``docker run`` command can take `many arguments
+The :command:`docker run` command will automatically fetch the Krill image the
+first time you use it, and so there is no installation step in the traditional
+sense. The :command:`docker run` command can take `many arguments
 <https://docs.docker.com/engine/reference/run/>`_ and can be a bit overwhelming
 at first.
 
@@ -37,7 +37,7 @@ extra things like log level and volume mounts (more on this below).
      -v /tmp/krill_rsync/:/var/krill/data/repo/rsync/ \
      nlnetlabs/krill:v0.5.0
 
-.. note::
+.. Note::
    The Docker container by default uses UTC time. If you need to use a
    different time zone you can set this using the TZ environment variable as
    shown in the example above.
@@ -47,7 +47,7 @@ Admin Token
 
 By default Docker Krill secures itself with an automatically generated admin
 token. You will need to obtain this token from the Docker logs in order to
-manage Krill via the API or the ``krillc`` CLI tool.
+manage Krill via the API or the :command:`krillc` CLI tool.
 
 .. code-block:: bash
 
@@ -82,8 +82,8 @@ locally running Krill daemon via its command-line interface (CLI):
 Remote
 """"""
 
-The Docker image can also be used to run ``krillc`` to manage remote Krill
-servers. Using a shell alias simplifies this considerably:
+The Docker image can also be used to run :command:`krillc` to manage remote
+Krill servers. Using a shell alias simplifies this considerably:
 
 .. code-block:: bash
 
@@ -98,7 +98,7 @@ servers. Using a shell alias simplifies this considerably:
    }
 
 Note: The ``-v`` volume mount is optional, but without it you will not be able
-to pass files to ``krillc`` which some subcommands require, e.g.
+to pass files to :command:`krillc` which some subcommands require, e.g.
 
 .. code-block:: bash
 
@@ -122,9 +122,10 @@ destroyed.
 Persistence
 """""""""""
 
-To protect the data you can write it to a persistent `Docker volume <https://docs.docker.com/storage/volumes/>`_
-which is preserved even if the Krill Docker container is destroyed. The
-following fragment from the example above shows how to configure this:
+To protect the data you can write it to a persistent `Docker volume
+<https://docs.docker.com/storage/volumes/>`_ which is preserved even if the
+Krill Docker container is destroyed. The following fragment from the example
+above shows how to configure this:
 
 .. code-block:: bash
 
@@ -137,8 +138,8 @@ Some of the data files written by Krill to its data directory are intended to
 be shared with external clients via the rsync protocol. To make this possible
 with Docker Krill you can either:
 
-* Mount the rsync data directory in the host and run rsyncd on the host, *OR*
-* Share the rsync data with another `Docker container which runs rsyncd <https://hub.docker.com/search?q=rsyncd&type=image>`_
+- Mount the rsync data directory in the host and run rsyncd on the host, *OR*
+- Share the rsync data with another `Docker container which runs rsyncd <https://hub.docker.com/search?q=rsyncd&type=image>`_
 
 Mounting the data in a host directory:
 
@@ -155,8 +156,8 @@ Sharing via a named volume:
 Logging
 -------
 
-Krill logs to a file by default. Docker Krill however logs by default
-to stderr so that you can see the output using the ``docker logs`` command.
+Krill logs to a file by default. Docker Krill however logs by default to stderr
+so that you can see the output using the :command:`docker logs` command.
 
 At the default ``warn`` log level Krill doesn't output anything unless there is
 something to warn about. Docker Krill however comes with some additional
@@ -175,7 +176,7 @@ Environment Variables
 ---------------------
 
 The Krill Docker image supports the following Docker environment variables
-which map to the following ``krill.conf`` settings:
+which map to the following :file:`krill.conf` settings:
 
 +----------------------+------------------------------------+
 | Environment variable | Equivalent Krill config setting    |
@@ -189,7 +190,8 @@ which map to the following ``krill.conf`` settings:
 | ``KRILL_USE_TA``     | ``use_ta``                         |
 +----------------------+------------------------------------+
 
-To set these environment variables use ``-e`` when invoking ``docker``, e.g.:
+To set these environment variables use ``-e`` when invoking :command:`docker`,
+e.g.:
 
 .. code-block:: bash
 
@@ -206,4 +208,4 @@ own and take complete control:
    docker run -v /tmp/krill.conf:/var/krill/data/krill.conf
 
 This will instruct Docker to replace the default config file used by Docker
-Krill with the file ``/tmp/krill.conf`` on your host computer.
+Krill with the file :file:`/tmp/krill.conf` on your host computer.
