@@ -124,6 +124,8 @@ This is an example of the output of the ``/metrics`` endpoint:
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/repository/"} 11.766
    routinator_rsync_duration{uri="rsync://rpki.ripe.net/ta/"} 0.129
 
+.. _doc_routinator_monitoring_grafana:
+
 Grafana
 -------
 
