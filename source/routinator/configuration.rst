@@ -4,7 +4,7 @@ Configuration
 =============
 
 Routinator has a number of default settings, such as the location where files
-are stored, the refresh interval, and the log level. You can view these
+are stored, the refresh interval and the log level. You can view these
 settings by running:
 
 .. code-block:: text
@@ -16,24 +16,28 @@ optional configuration file, which will be largely similar to this:
 
 .. code-block:: text
 
-   exceptions = []
-   expire = 7200
-   history-size = 10
-   http-listen = []
-   log = "default"
-   log-level = "WARN"
-   refresh = 3600
-   repository-dir = "/Users/me/.rpki-cache/repository"
-   retry = 600
-   rsync-command = "rsync"
-   rsync-count = 4
-   rsync-timeout = 600
-   rtr-listen = []
-   strict = false
-   syslog-facility = "daemon"
-   systemd-listen = false
-   tal-dir = "/Users/me/.rpki-cache/tals"
-   validation-threads = 4
+  dirty = false
+  disable-rrdp = false
+  disable-rsync = false
+  exceptions = []
+  expire = 7200
+  history-size = 10
+  http-listen = []
+  log = "default"
+  log-level = "WARN"
+  refresh = 600
+  repository-dir = "/Users/routinator/.rpki-cache/repository"
+  retry = 600
+  rrdp-proxies = []
+  rrdp-root-certs = []
+  rsync-command = "rsync"
+  rsync-timeout = 300
+  rtr-listen = []
+  strict = false
+  syslog-facility = "daemon"
+  systemd-listen = false
+  tal-dir = "/Users/routinator/.rpki-cache/tals"
+  validation-threads = 4
 
 You can override these defaults, as well as configure a great number of
 additional options using either command line arguments or via the
@@ -66,24 +70,28 @@ providing an HTTP server on port 9556, simply take the output from
 
 .. code-block:: text
 
-   exceptions = []
-   expire = 7200
-   history-size = 10
-   http-listen = ["192.0.2.13:9556", "[2001:0DB8::13]:9556"]
-   log = "default"
-   log-level = "WARN"
-   refresh = 900
-   repository-dir = "/Users/me/.rpki-cache/repository"
-   retry = 600
-   rsync-command = "rsync"
-   rsync-count = 4
-   rsync-timeout = 600
-   rtr-listen = ["192.0.2.13:3323", "[2001:0DB8::13]:3323"]
-   strict = false
-   syslog-facility = "daemon"
-   systemd-listen = false
-   tal-dir = "/Users/me/.rpki-cache/tals"
-   validation-threads = 4
+    dirty = false
+    disable-rrdp = false
+    disable-rsync = false
+    exceptions = []
+    expire = 7200
+    history-size = 10
+    http-listen = ["192.0.2.13:9556", "[2001:0DB8::13]:9556"]
+    log = "default"
+    log-level = "WARN"
+    refresh = 900
+    repository-dir = "/Users/routinator/.rpki-cache/repository"
+    retry = 600
+    rrdp-proxies = []
+    rrdp-root-certs = []
+    rsync-command = "rsync"
+    rsync-timeout = 300
+    rtr-listen = ["192.0.2.13:3323", "[2001:0DB8::13]:3323"]
+    strict = false
+    syslog-facility = "daemon"
+    systemd-listen = false
+    tal-dir = "/Users/routinator/.rpki-cache/tals"
+    validation-threads = 4
 
 After saving this file as :file:`.routinator.conf` in your home directory, you
 can start Routinator with:
