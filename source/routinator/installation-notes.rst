@@ -32,6 +32,10 @@ On a Debian (and presumably Ubuntu) system, enter the following:
 Platform Specific Instructions
 ------------------------------
 
+.. Tip:: GÉANT has created an
+         `Ansible playbook <https://github.com/GEANT/rpki-validation-tools>`_
+         defining a role to deploy Routinator on Ubuntu.
+
 For some platforms, :command:`rustup` cannot provide binary releases to install
 directly. The `Rust Platform Support
 <https://forge.rust-lang.org/platform-support.html>`_ page lists

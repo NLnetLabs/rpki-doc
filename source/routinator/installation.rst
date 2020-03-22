@@ -5,9 +5,7 @@ Installation
 
 Getting started with Routinator is really easy either building from `Cargo
 <https://crates.io/crates/routinator>`_ or running with `Docker
-<https://hub.docker.com/r/nlnetlabs/routinator/>`_. Alternatively, GÉANT has
-created an `Ansible playbook <https://github.com/GEANT/rpki-validation-tools>`_
-defining a role to deploy Routinator on Ubuntu.
+<https://hub.docker.com/r/nlnetlabs/routinator/>`_. 
 
 Quick Start
 -----------
