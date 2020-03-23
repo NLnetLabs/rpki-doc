@@ -102,17 +102,19 @@ Used Disk Space
 Krill stores all of its data under the ``DATA_DIR``. For users who will operate
 a CA under an RIR / NIR parent the following sub-directories are relevant:
 
-+---------+------------------------------------------------------+
-| Dir     | Purpose                                              |
-+=========+======================================================+
-| ssl     | Contains the HTTPS key and cert used by Krill        |
-+---------+------------------------------------------------------+
-| cas     | Contains the history of your CA in raw JSON format   |
-+---------+------------------------------------------------------+
-| rfc6492 | Contains all messages exchanged with your parent     |
-+---------+------------------------------------------------------+
-| rfc8181 | Contains all messages exchanged with your repository |
-+---------+------------------------------------------------------+
++--------------+------------------------------------------------------+
+| Dir          | Purpose                                              |
++==============+======================================================+
+| ssl          | Contains the HTTPS key and cert used by Krill        |
++--------------+------------------------------------------------------+
+| cas          | Contains the history of your CA in raw JSON format   |
++--------------+------------------------------------------------------+
+| rfc6492      | Contains all messages exchanged with your parent     |
++--------------+------------------------------------------------------+
+| rfc8181_repo | Contains all messages received from your repository  |
++--------------+------------------------------------------------------+
+| rfc8181_sent | Contains all messages sent to your repository        |
++--------------+------------------------------------------------------+
 
 The space used by the latter two directories can grow significantly over time.
 We think it may be a good idea to have an audit trail of all these exchanges.
