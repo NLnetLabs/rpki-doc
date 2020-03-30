@@ -114,7 +114,7 @@ action.
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  No      | No       | Yes [#]_ | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Publication via RRDP  |  Yes     | No [#]_  | Yes      | No       | Yes      |
+| Publication via RRDP  |  Yes     | Yes      | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
@@ -127,7 +127,6 @@ action.
 .. [#] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [#] Explicit opt-in feature.
 .. [#] Only possible to create ROAs; no list, update or delete.
-.. [#] Coming `Q1 2020 <https://afrinic.net/blog/495-rpki-delta-protocol-rrdp-as-a-future-replacement-of-rsync-in-rpki>`_
 
 A final differentiator is the publication interval of each RIR repository.
 Please keep in mind that once a ROA is created by a user in one of the hosted
