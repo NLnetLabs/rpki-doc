@@ -7,7 +7,7 @@ Introduction
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI).
 Here, we aim to offer an overview of the RPKI technology itself, as well as some
-of the tools are being developed for it. Any software implementer is welcome
+of the tools that are being developed for it. Any software implementer is welcome
 to add documentation for their tools to this project.
 
 This page gives a broad overview of the RPKI and how it can help make Internet
