@@ -72,7 +72,7 @@ locally running Krill daemon via its command-line interface (CLI):
     $ alias krillc='docker exec \
       -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
       -e KRILL_CLI_TOKEN=correct-horse-battery-staple \
-      krill krillc'
+      nlnetlabs/krill:v0.5.0 krillc'
 
     $ krillc list -f json
     {
