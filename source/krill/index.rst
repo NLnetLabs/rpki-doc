@@ -71,6 +71,7 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
    docker
    monitoring
    testing
+   krillmanager/index
 .. history
 .. authors
 .. license
