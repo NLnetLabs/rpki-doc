@@ -77,27 +77,6 @@ Please note that APNIC offers RPKI publication as a service upon request. It is
 highly recommended to make use of this, as it relieves you of the need to run a
 highly available repository yourself.
 
-ARIN
-""""
-
-ARIN does not support the :RFC:`8183` key exchange format yet, but
-they do have it `on their roadmap
-<https://www.arin.net/participate/community/acsp/suggestions/2020-3/>`_. You can
-still configure delegated RPKI by transforming your request XML into the format
-that ARIN accepts. You can do this with the toggle in the user interface or by
-using `this XSL file
-<https://raw.githubusercontent.com/dragonresearch/rpki.net/master/potpourri/oob-translate.xsl>`_.
-
-.. figure:: img/arin-child-request-toggle.png
-    :align: center
-    :width: 100%
-    :alt: ARIN Compatible toggle
-
-    The "ARIN Compatible" toggle for the child request
-
-Krill will accept both the old and standardised key exchange format, so there
-is no need to transform the response file you get from ARIN.
-
 LACNIC
 """"""
 
