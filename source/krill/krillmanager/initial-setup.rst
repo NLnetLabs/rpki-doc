@@ -66,6 +66,8 @@ pages to help you along the way:
    wizard/publication-mode
    wizard/ca-name
    wizard/domains
+   wizard/authentication
+   wizard/logging
 
 .. history
 .. authors
