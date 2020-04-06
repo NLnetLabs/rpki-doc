@@ -26,7 +26,7 @@ Self-Publishing Mode
 --------------------
 
 In self-publishing mode the ROA objects created by your Krill instance will be
-made available by Krill Manager to Internet clients via the RRDP and Rsyncd
+made available by Krill Manager to Internet clients via the RRDP and Rsync
 protocols.
 
 Answering ``NO`` will enable self-publishing mode.
