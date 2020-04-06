@@ -7,8 +7,8 @@ Krill can operate in one of two modes:
   - Publish with a 3rd party
   - Publish in its own repository
 
-The publication mode wizard page lets you choose which of these modes Krill be
-configured for:
+The publication mode wizard page lets you choose which of these modes Krill
+will be configured for:
 
 .. figure:: img/publication-mode.png
    :alt: Wizard publication mode page screenshot.
