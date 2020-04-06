@@ -64,6 +64,8 @@ pages to help you along the way:
    wizard/welcome
    wizard/restore-from-backup
    wizard/publication-mode
+   wizard/ca-name
+   wizard/domains
 
 .. history
 .. authors
