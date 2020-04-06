@@ -38,7 +38,7 @@ version if available:
 Manual upgrade
 --------------
 
-If you have previously completed the wizard and later run `krillmanager init`
+If you have previously completed the wizard and later run ``krillmanager init``
 again, if a new version is available you will be offered the choice to upgrade:
 
 .. code-block:: bash
