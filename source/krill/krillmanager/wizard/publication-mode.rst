@@ -32,4 +32,4 @@ protocols.
 Answering ``NO`` will enable self-publishing mode.
 
 .. Note:: The wizard may need to ask you for additional information in later
-          pages in order to complete the setup of the local repository.
+          pages in order to complete the setup for self-publishing mode.
