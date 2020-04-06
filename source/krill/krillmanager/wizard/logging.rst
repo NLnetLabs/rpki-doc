@@ -17,13 +17,13 @@ Answering ``NO`` will cause the wizard to skip to the next page.
              these logs unless you capture them as part of a periodic backup
              process.
 
-Upload frequency
+Upload Frequency
 ----------------
 
 RFC protocol exchange logs are uploaded hourly. All other logs are uploaded at
 least every few minutes, more frequently if there is a lot of logging activity.
 
-Log retention
+Log Retention
 -------------
 
 When log upload is enabled, local copies of Krill RFC audit logs are deleted
@@ -31,7 +31,7 @@ after two days as these logs can become quite large.
 
 All other logs are rotated according to the `systemd` journal default behaviour.
 
-Upload structure
+Upload Structure
 ----------------
 
 Logs are uploaded to a structure similar to the following:

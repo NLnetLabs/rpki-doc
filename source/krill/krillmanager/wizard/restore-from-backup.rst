@@ -3,7 +3,7 @@
 Restore from backup
 ===================
 
-Without prior backups
+Without Prior Backups
 ---------------------
 
 In most cases the restore from backup wizard page will look like this:
@@ -13,7 +13,7 @@ In most cases the restore from backup wizard page will look like this:
 
    A Krill Manager instance with no backup archives present.
 
-With prior backups
+With Prior Backups
 ------------------
 
 If however you have used the ``krillmanager backup`` command you will
@@ -24,7 +24,7 @@ see those backup archives listed on this page:
 
    A Krill Manager instance with backup archives present.
 
-Initialize or restore
+Initialize or Restore
 ---------------------
 
 Either:

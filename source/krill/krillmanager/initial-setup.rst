@@ -5,13 +5,13 @@ Initial Setup
 
 Run the ``krillmanager init`` command to launch the interactive setup wizard.
 
-Exiting the wizard
+Exiting the Wizard
 ------------------
 
 Press ``CTRL-C`` at any time to abort the wizard. You can use the
 ``krillmanager init`` command later to run the wizard again.
 
-Automatic upgrade
+Automatic Upgrade
 -----------------
 
 On first launch Krill Manager will automatically upgrade itself to a newer
@@ -35,7 +35,7 @@ version if available:
           The version number shown is the version number of Krill Manager, not
           of Krill.
 
-Manual upgrade
+Manual Upgrade
 --------------
 
 If you have previously completed the wizard and later run ``krillmanager init``
@@ -50,8 +50,8 @@ again, if a new version is available you will be offered the choice to upgrade:
 
 The default action is to upgrade, but you can continue without upgrading.
 
-Step by step help
------------------
+Step by Step
+------------
 
 Once any available upgrade is complete you will be presented with the welcome
 page of the wizard. Below you will find help for each of the possible wizard

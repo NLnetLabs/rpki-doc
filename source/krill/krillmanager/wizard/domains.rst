@@ -14,7 +14,7 @@ available to Internet clients at.
          certificates on your behalf for the Krill and RRDP domains that you
          supply on this page of the wizard.
 
-3rd party mode
+3rd Party Mode
 --------------
 
 When using a 3rd party repository to publish ROAs Krill Manager only needs to
@@ -25,7 +25,7 @@ know which domain the Krill UI and API will be available at:
 
    A Krill Manager instance in 3rd party mode.
 
-Self-publishing mode
+Self-Publishing Mode
 --------------------
 
 Alternatively, when hosting your own repository, Krill Manager will need to
@@ -37,7 +37,7 @@ know which domain name the RRDP and Rsync servers will be available at.
 
 **TO DO** *Include a screenshot in self-publishing mode.*
 
-Domain validity
+Domain Validity
 ---------------
 
 The domain names you enter should be valid. As properly validating domain names

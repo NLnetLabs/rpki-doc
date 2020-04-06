@@ -1,6 +1,6 @@
 .. _doc_krill_manager_wizard_publication_mode:
 
-Publication mode
+Publication Mode
 ================
 
 Krill can operate in one of two modes:
@@ -13,7 +13,7 @@ will be configured for:
 .. figure:: img/publication-mode.png
    :alt: Wizard publication mode page screenshot.
 
-3rd party mode
+3rd Party Mode
 --------------
 
 In 3rd party mode your Krill instance will **only** be a Certificate Authority
@@ -22,7 +22,7 @@ repository, e.g. that of a parent such as NIC.br.
 
 Answering ``YES`` will enable 3rd party mode.
 
-Self-publishing mode
+Self-Publishing Mode
 --------------------
 
 In self-publishing mode the ROA objects created by your Krill instance will be
