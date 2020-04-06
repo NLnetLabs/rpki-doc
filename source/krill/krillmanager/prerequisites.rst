@@ -23,11 +23,14 @@ Optional
   you will need to upload them to the Droplet *before* performing the 
   :ref:`initial setup <doc_krill_manager_initial_setup>`, e.g.:
 
-             .. code-block:: bash
+  .. code-block:: bash
 
-               scp /local/path/to/certificate.pem root@<droplet IP address>:/tmp/
+     scp /local/path/to/certificate.pem root@<droplet IP address>:/tmp/
 
-.. Tip:: It is not necessary to use your own TLS certificates as Krill Manager
-         can obtain for you a Let's Encrypt TLS certificate per configured
-         domain. Krill Manager will ensure that Let's Encrypt certificates are
-         renewed before they expire.
+  .. Tip:: It is not necessary to use your own TLS certificates as Krill Manager
+           can obtain for you a Let's Encrypt TLS certificate per configured
+           domain. Krill Manager will ensure that Let's Encrypt certificates are
+           renewed before they expire.
+
+- Connection details and credentials for an AWS S3 compatible service to which
+  host and application logs can be uploaded periodically.
