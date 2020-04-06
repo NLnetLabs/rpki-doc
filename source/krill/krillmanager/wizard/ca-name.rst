@@ -16,3 +16,12 @@ Manager will automatically create a CA in Krill by the name that you give here:
 You can name the CA anything you like. If you use characters that are not
 permitted the wizard will ask you to edit the name until it meets the naming
 requirements.
+
+The CA name:
+  - Can be used with the Krill API to manipulate the CA.
+  - Will be shown in the Krill web UI.
+  - Will appear as a component in URIs contained in RRDP snapshot XML and delta
+    XML content.
+  - Will be used as a component in the Rsync repository path for fetching content
+    with the Rsync protocol.
+  - Will appear inside ``.roa`` and ``.mft`` objects served via RRDP and Rsync.
