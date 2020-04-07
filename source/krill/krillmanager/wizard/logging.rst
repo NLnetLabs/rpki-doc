@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_logging:
 
-Logging
-=======
+Wizard: Logging
+====================
 
 In this page of the wizard you can optionally choose to upload host and Krill
 Manager deployed Docker container logs to an external `AWS S3 (Amazon Web Services Simple Storage Service) <https://aws.amazon.com/s3/>`_

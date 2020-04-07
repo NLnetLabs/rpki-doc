@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_publication_mode:
 
-Publication Mode
-================
+Wizard: Publication Mode
+=============================
 
 Krill can operate in one of two modes:
   - Publish with a 3rd party

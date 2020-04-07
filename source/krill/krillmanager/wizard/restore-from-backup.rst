@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_restore_from_backup:
 
-Restore from backup
-===================
+Wizard: Restore from backup
+================================
 
 A Krill Manager backup is a complete copy of all of the application settings
 and data files for applications managed by Krill Manager, e.g. including Krill

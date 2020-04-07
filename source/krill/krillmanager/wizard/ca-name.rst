@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_ca_name:
 
-CA Name
-=======
+Wizard: CA Name
+====================
 
 Normally with Krill when first visiting the web UI you will be prompted to enter
 the name of your Certificate Authority.

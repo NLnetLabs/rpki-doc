@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_domains:
 
-Domains
-=======
+Wizard: Domains
+====================
 
 Krill Manager needs to know which domain names Krill and, if hosting your
 own repository (see :ref:`doc_krill_manager_wizard_publication_mode`), NGINX and Rsync servers will be
