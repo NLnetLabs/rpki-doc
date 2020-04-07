@@ -13,7 +13,7 @@ Wizard: Logging
 If you have an account with a 3rd party S3-like service such as
 `DigitalOcean Spaces <https://www.digitalocean.com/products/spaces/>`_, Krill
 Manager can use it to store copies of the logs from your host operating
-systemd and the various Krill Manager operated services, including Krill RFC
+systemd journal and the various Krill Manager operated services, including Krill RFC
 exchange logs.
 
 .. figure:: img/logging.png
