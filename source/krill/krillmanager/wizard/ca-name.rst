@@ -3,10 +3,10 @@
 CA Name
 =======
 
-Normally with a new instance of Krill, on first visit to Krill's web user
-interface you will be prompted to enter the name of your Certificate Authority.
+Normally with Krill when first visiting the web UI you will be prompted to enter
+the name of your Certificate Authority.
 
-Krill Manager streamlines this process by asing you for the Certificate
+Krill Manager streamlines this process by asking you for the Certificate
 Authority name during the Krill Manager wizard. Once the wizard is complete Krill
 Manager will automatically create a CA in Krill by the name that you give here:
 

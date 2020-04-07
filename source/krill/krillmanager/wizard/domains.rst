@@ -3,12 +3,12 @@
 Domains
 =======
 
-Next Krill Manager needs to know which domain names Krill and, if hosting your
+Krill Manager needs to know which domain names Krill and, if hosting your
 own repository (see :ref:`doc_krill_manager_wizard_publication_mode`), NGINX and Rsync servers will be
 available to Internet clients at.
 
 .. Note:: The domain names that you enter in this page of the wizard should
-             already be configured to point at your Krill Manager IP address.
+          already be configured to point at your Krill Manager IP address.
 
 .. Tip:: Later in the process the wizard will offer to obtain Let's Encrypt
          certificates on your behalf for the Krill and RRDP domains that you
