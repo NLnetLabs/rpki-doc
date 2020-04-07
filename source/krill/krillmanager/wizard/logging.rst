@@ -1,4 +1,4 @@
-.. _doc_krill_manager_logging:
+.. _doc_krill_manager_wizard_logging:
 
 Logging
 =======
