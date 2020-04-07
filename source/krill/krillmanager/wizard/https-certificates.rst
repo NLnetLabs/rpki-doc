@@ -31,8 +31,9 @@ Enter one of:
   - ``GEN`` to generate a self-signed certificate.
   - ``USE`` to use the existing certificate that the wizard found, if any.
 
+------------------------
 Self-Signed Certificates
-========================
+------------------------
 
 .. Error:: Do NOT use a self-signed certificate. In most cases a self-signed
            certificate is the wrong choice. Relying Party software will warn
@@ -42,8 +43,9 @@ Self-Signed Certificates
            refuse it entirely, and the ``krillc`` command line client will
            refuse to connect to the Krill API server.
 
+--------------------------------
 Using Let's Encrypt Certificates
-================================
+--------------------------------
 
 Certificate Renewal
 -------------------
