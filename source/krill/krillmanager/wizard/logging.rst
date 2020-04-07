@@ -46,7 +46,17 @@ region.
 .. figure:: img/logging-conn-details.png
    :alt: Wizard logging page connection details screenshot.
 
-   Successful verificatoin of DigitalOcean Spaces connection details.
+   Successful verification of DigitalOcean Spaces connection details.
+
+
+
+Once the wizard has the connection and authentication details it will attempt
+to verify them by trying to list the contents of the destination S3 bucket.
+
+In the even that the connection and/or authentication details are incorrect the
+wizard will output error messages instead of ``Success!`` and you will be
+returned to the initial yes/no question where you can either choose to try
+again or continue without log uploading at this time.
 
 Upload Frequency
 ----------------
@@ -73,3 +83,10 @@ Logs are uploaded to a structure similar to the following:
    /<Bucket Directory>/YYYMMDDHH/<hostname>/<container>/<instance id>.<N>.gz
 
 Where ``<Bucket Directory>`` is the value you provided to the wizard.
+
+Advanced Client Configration
+----------------------------
+
+Some S3-like services, in particular the original AWS S3, support many options
+such as client-side encryption, batch upload, etc. Use of such advanced
+settings is possible but not yet via the wizard.
