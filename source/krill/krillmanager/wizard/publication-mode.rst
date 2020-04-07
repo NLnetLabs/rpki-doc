@@ -3,6 +3,12 @@
 Wizard: Publication Mode
 =============================
 
+.. Tip::
+   See also the following Krill documentation:
+     - :ref:`doc_krill_before_you_start`
+     - :ref:`doc_krill_parent_interactions`
+     - :ref:`doc_krill_publication_server`
+
 Krill can operate in one of two modes:
   - Publish with a 3rd party
   - Publish in its own repository
