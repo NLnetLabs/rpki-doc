@@ -4,7 +4,7 @@ Domains
 =======
 
 Next Krill Manager needs to know which domain names Krill and, if hosting your
-own repository (see :ref:`publication-mode`), NGINX and Rsync servers will be
+own repository (see :ref:`doc_krill_manager_wizard_publication_mode`), NGINX and Rsync servers will be
 available to Internet clients at.
 
 .. Note:: The domain names that you enter in this page of the wizard should
