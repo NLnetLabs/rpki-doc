@@ -61,6 +61,8 @@ You can use the following sample script to stop Krill:
 
   kill `cat $KRILL_PID`
 
+.. _proxy_and_https:
+
 Proxy and HTTPS
 ---------------
 

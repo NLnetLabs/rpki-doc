@@ -73,6 +73,7 @@ pages to help you along the way:
    wizard/domains
    wizard/authentication
    wizard/logging
+   wizard/https-certificates
 
 .. history
 .. authors
