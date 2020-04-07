@@ -38,7 +38,7 @@ copied to the filesystem from an external storage location or from another
 server and so also provides an option for you to specify the path to the
 backup archive manually.
 
-Initialize or Restore
+Initialise or Restore
 ---------------------
 
 Enter one of:

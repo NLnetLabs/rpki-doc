@@ -3,7 +3,7 @@
 Wizard: Welcome
 ====================
 
-The first page of the wizard welcomes you, summarizes the steps ahead, and
+The first page of the wizard welcomes you, summarises the steps ahead, and
 offers a few useful tips.
 
 .. figure:: img/wizard-welcome.png
