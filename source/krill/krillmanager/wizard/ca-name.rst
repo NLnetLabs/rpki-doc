@@ -24,6 +24,7 @@ From :ref:`doc_krill_using_ui`:
 The CA name:
   - Can be used with the Krill API to manipulate the CA.
   - Will be shown in the Krill web UI.
+  - Will be visible to child CAs.
   - Will appear as a component in URIs contained in RRDP snapshot XML and delta
     XML content.
   - Will be used as a component in the Rsync repository path for fetching content
