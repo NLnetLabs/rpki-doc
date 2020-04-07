@@ -84,9 +84,9 @@ Logs are uploaded to a structure similar to the following:
 
 Where ``<Bucket Directory>`` is the value you provided to the wizard.
 
-Advanced Client Configration
-----------------------------
+Advanced Client Configuration
+-----------------------------
 
 Some S3-like services, in particular the original AWS S3, support many options
-such as client-side encryption, batch upload, etc. Use of such advanced
+such as client-side encryption, batch upload, etc. Use of some advanced
 settings is possible but not yet via the wizard.
