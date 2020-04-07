@@ -4,9 +4,9 @@ Restore from backup
 ===================
 
 A Krill Manager backup is a complete copy of all of the application settings
-and data files stored in the Gluster replicated storage area, e.g. including
-Krill settings, NGINX certificate and key files, a record of your wizard
-choices, the RRDP and Rsync content files, application logs, etc.
+and data files for applications managed by Krill Manager, e.g. including Krill
+settings, NGINX certificate and key files, a record of your wizard choices,
+the RRDP and Rsync content files, application logs, etc.
 
 If you previously made such a backup using the ``krillmanager backup`` command
 on this or another Krill Manager instance (and in the latter case transported
