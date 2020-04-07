@@ -68,8 +68,8 @@ Logs are uploaded to a structure similar to the following:
 
 .. code-block:: bash
  
-   <base_dir>/rfc_trail
-   <base_dir>/YYYMMDDHH/<hostname>/<source>.gz
-   <base_dir>/YYYMMDDHH/<hostname>/<container>/<instance id>.<N>.gz
+   /<Bucket Directory>/rfc_trail
+   /<Bucket Directory>/YYYMMDDHH/<hostname>/<source>.gz
+   /<Bucket Directory>/YYYMMDDHH/<hostname>/<container>/<instance id>.<N>.gz
 
-Where ``<base_dir>`` is a directory of your choosing.
+Where ``<Bucket Directory>`` is the value you provided to the wizard.
