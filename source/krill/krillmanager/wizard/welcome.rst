@@ -9,4 +9,4 @@ offers a few useful tips.
 .. figure:: img/wizard-welcome.png
    :alt: Wizard welcome page screenshot.
 
-   A DigitalOcean deployment of Krill Manager.
+   A DigitalOcean instance of Krill Manager.

@@ -52,4 +52,4 @@ Enter one of:
 
 .. Note:: If you choose a backup to restore from the wizard will complete the 
           restore process and then exit with a status summary of the running
-          Krill deployment.
+          Krill Manager instance.
