@@ -23,7 +23,7 @@ specify in this step are influenced by the choice you made in the
 
      A Krill Manager instance in self-publish mode.
 
-.. Caution:: The domain names that you enter in this page of the wizard should
+.. Warning:: The domain names that you enter in this page of the wizard should
           already be configured to point at your Krill Manager IP address.
 
 .. Note:: Later in the process the wizard will offer to obtain Let's Encrypt
