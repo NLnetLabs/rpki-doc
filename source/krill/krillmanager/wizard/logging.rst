@@ -77,10 +77,42 @@ Logs are uploaded to a structure similar to the following:
 .. code-block:: bash
  
    /<Bucket Directory>/rfc_trail
-   /<Bucket Directory>/YYYMMDDHH/<hostname>/<source>.gz
-   /<Bucket Directory>/YYYMMDDHH/<hostname>/<container>/<instance id>.<N>.gz
+   /<Bucket Directory>/YYYY/MM/DD/HH/<hostname>/<service>.<N>.gz
+   /<Bucket Directory>/YYYY/MM/DD/HH/<hostname>/<container>/<instance id>.<N>.gz
 
 Where ``<Bucket Directory>`` is the value you provided to the wizard.
+
+The format of the files is dependent on the type of log file:
+
+- ``rfc_trail`` log files are in a Krill internal binary format.
+- ``<service>`` log files are in JSON format.
+- ``<container>`` log file are in JSON format with additional fields.
+
+This SSHD log message shows a ``<service>`` log line example:
+
+.. code-block:: json
+
+   {
+     "hostname": "demomaster",
+     "source": "syslog",
+     "syslog_id": "sshd",
+     "ts_epoch_ms": "1586277165425045",
+     "message": "Invalid user test from 104.236.250.88 port 49112"
+   }
+
+This NGINX access log message shows a ``<container>`` log line example:
+
+.. code-block:: json
+
+   {
+     "hostname": "demomaster",
+     "source": "journal",
+     "syslog_id": "6ef2bbf3eba9",
+     "ts_epoch_ms": "1586278786997270",
+     "container": "krill_nginx.w2ia8pd3b2kxqm77uwyepooqh.o3lv5trgdnykegaeo9ylhs9d5",
+     "message": "::ffff:104.206.128.2 - - [07/Apr/2020:16:59:46 +0000] \"GET / HTTP/1.1\" 404 153 \"-\" \"https://gdnplus.com:Gather Analyze Provide.\" \"-\"",
+     "image": "krillmanager/http-server:v0.1.0@sha256:f88c52b73abf86c3223dcf4c0cc3ff8351f61e74ee307aa8c420c9e0856678f7"
+   }
 
 Advanced Client Configuration
 -----------------------------
@@ -88,3 +120,10 @@ Advanced Client Configuration
 Some S3-like services, in particular the original AWS S3, support many options
 such as client-side encryption, batch upload, etc. Use of some advanced
 settings is possible but not yet via the wizard.
+
+Advanced Log Streaming Configuration
+------------------------------------
+
+The ``<service>`` and ``<container>`` logs can be formatted and sent to many
+different 3rd party log processing services via FluentD configuration, but not
+yet via the wizard.
