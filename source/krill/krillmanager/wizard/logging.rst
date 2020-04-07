@@ -48,8 +48,6 @@ region.
 
    Successful verification of DigitalOcean Spaces connection details.
 
-
-
 Once the wizard has the connection and authentication details it will attempt
 to verify them by trying to list the contents of the destination S3 bucket.
 
