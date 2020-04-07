@@ -93,5 +93,8 @@ In this example the request succeeded. If any problems occured the log would
 instead indicate the reason for the failure.
 
 Once you press a key to continue you will be returned to the start of the HTTPS
-Certificatessthe wizard page. The wizard will verify if it now has a
-certificate for the domain and if so will give you the option to ``USE`` it.
+Certificatess wizard page. The wizard will verify if it now has a certificate
+for the domain and if so will give you the option to ``USE`` it:
+
+.. figure:: img/https-certificates-found.png
+   :alt: Wizard HTTPS certificates page screenshot of a found certificate.
