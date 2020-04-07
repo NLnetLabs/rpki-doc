@@ -5,6 +5,11 @@ Initial Setup
 
 Run the ``krillmanager init`` command to launch the interactive setup wizard.
 
+.. Important:: The wizard covers the most common cases. It does **NOT** yet
+               support clustered or advanced log streaming setups or overriding
+               the Krill or NGINX or RsyncD configuration. Such setups are
+               possible but not yet via the wizard.
+
 Exiting the Wizard
 ------------------
 
