@@ -47,7 +47,7 @@ following paths are available:
 
 Please note that this server is intended to run on your internal network and
 doesn't offer HTTPS natively. If this is a requirement, you can for example run
-Routinator  behind an `Nginx <https://www.nginx.com>`_ reverse proxy.
+Routinator  behind an `NGINX <https://www.nginx.com>`_ reverse proxy.
 
 Lastly, the HTTP server provides paths that allow you to monitor Routinator
 itself and the data it processes, so it may be desirable to have HTTP running

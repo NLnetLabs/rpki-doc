@@ -125,7 +125,7 @@ run Routinator on Security Enhanced Linux (SELinux) using CentOS 7.
   sudo systemctl stop postfix
   sudo systemctl disable postfix
 
-6.	Create a self-signed certificate for Nginx.
+6.	Create a self-signed certificate for NGINX.
 
 .. code-block:: bash
 
