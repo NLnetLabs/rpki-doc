@@ -72,4 +72,3 @@ pages to help you along the way:
 .. history
 .. authors
 .. license
-
