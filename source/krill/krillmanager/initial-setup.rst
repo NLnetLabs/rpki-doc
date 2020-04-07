@@ -74,6 +74,9 @@ pages to help you along the way:
    wizard/authentication
    wizard/logging
    wizard/https-certificates
+   wizard/verifying-domains
+   wizard/applying-settings
+   wizard/setup-complete
 
 .. history
 .. authors

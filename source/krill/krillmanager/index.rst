@@ -1,3 +1,5 @@
+.. _doc_krill_manager:
+
 .. Warning:: These pages are still being written. To stay informed please
              subscribe to the `NLnet Labs RPKI mailing list <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.
 
