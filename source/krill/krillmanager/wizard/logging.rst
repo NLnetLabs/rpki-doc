@@ -51,7 +51,7 @@ region.
 Once the wizard has the connection and authentication details it will attempt
 to verify them by trying to list the contents of the destination S3 bucket.
 
-In the even that the connection and/or authentication details are incorrect the
+In the event that the connection and/or authentication details are incorrect the
 wizard will output error messages instead of ``Success!`` and you will be
 returned to the initial yes/no question where you can either choose to try
 again or continue without log uploading at this time.
