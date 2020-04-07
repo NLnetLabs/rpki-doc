@@ -13,9 +13,13 @@ Manager will automatically create a CA in Krill by the name that you give here:
 .. figure:: img/ca-name.png
    :alt: Wizard CA name page screenshot.
 
-You can name the CA anything you like. If you use characters that are not
-permitted the wizard will ask you to edit the name until it meets the naming
-requirements.
+From :ref:`doc_krill_using_ui`:
+
+.. epigraph::
+
+   The handle you select is not published in the RPKI but used as identification to
+   parent and child CAs you interact with. Please choose a handle that helps others
+   recognise your organisation. Once set, the handle cannot be changed.
 
 The CA name:
   - Can be used with the Krill API to manipulate the CA.
