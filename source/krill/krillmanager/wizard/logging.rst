@@ -90,5 +90,5 @@ Advanced Configuration
 ----------------------
 
 For more information about what is logged, how, to where and how to configure
-the logging setup beyond what is possible with the wizard, consult the krill
+the logging setup beyond what is possible with the wizard, consult the Krill
 Manager :ref:`doc_krill_manager_logging` documentation.
