@@ -22,7 +22,7 @@ Automatic Upgrade
 On first launch Krill Manager will automatically upgrade itself to a newer
 version if available:
 
-.. code-block:: bash
+.. code-block:: text
 
   # krillmanager init
   A new version is available (v0.1.0 => v0.1.3).
@@ -46,7 +46,7 @@ Manual Upgrade
 If you have previously completed the wizard and later run ``krillmanager init``
 again, if a new version is available you will be offered the choice to upgrade:
 
-.. code-block:: bash
+.. code-block:: text
 
   # krillmanager init
   A new version is available (v0.1.0 => v0.1.3).
