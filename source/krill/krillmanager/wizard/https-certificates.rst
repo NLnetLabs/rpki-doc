@@ -39,32 +39,16 @@ to proceed:
   How would you like to proceed? Enter one of:
     - NEW: to request (or renew) a Lets Encrypt certificate, OR
     - OWN: to supply your own certificate files from /tmp, OR
-    - GEN: to generate a self-signed certificate.
 
-  > NEW, OWN, or GEN: NEW
+  > NEW or OWN:
 
 Enter one of:
   - ``NEW`` to request a new `Let's Encrypt <https://letsencrypt.org/>`_ certificate.
   - ``OWN`` to supply your own certificate files.
-  - ``GEN`` to generate a self-signed certificate.
   - ``USE`` to use the existing certificate that the wizard found, if any.
-
-Self-Signed Certificates
-------------------------
-
-.. Error:: Do NOT use a self-signed certificate. In most cases a self-signed
-           certificate is the wrong choice. Relying Party software will warn
-           about or refuse to use an RRDP service using a self-signed
-           certificate, users of the Krill UI will be required to accept the
-           risks of using a self-signed certificate or their browser will
-           refuse it entirely, and the ``krillc`` command line client will
-           refuse to connect to the Krill API server.
 
 Using Let's Encrypt Certificates
 --------------------------------
-
-Certificate Renewal
--------------------
 
 When using Let's Encrypt issued certificates Krill Manager will ensure that
 they are renewed before they expire.
@@ -74,7 +58,7 @@ they are renewed before they expire.
              replacing the certificate files before the certificates expire.
 
 DNS and Firewall Requirements
------------------------------
+"""""""""""""""""""""""""""""
 
 For Let's Encrypt to issue a TLS certificate the following requirements must be
 met:
@@ -89,7 +73,7 @@ met:
   the Krill Manager instance.
 
 IP Address Verification
------------------------
+"""""""""""""""""""""""
 
 Prior to requesting a Let's Encrypt certificate the wizard will ask you to
 confirm that DNS lookup results for the domain look correct.
@@ -114,10 +98,10 @@ confirm that DNS lookup results for the domain look correct.
     ca.demo.krill.cloud.	59	IN	A	198.51.100.2
 
 
-  > Are you sure you want to continue? [YES/NO]: YES
+  > Are you sure you want to continue? [YES/NO]:
 
 Let's Encrypt Request Log
--------------------------
+"""""""""""""""""""""""""
 
 If you approve the wizard will then contact Let's Encrypt:
 
@@ -156,7 +140,7 @@ If you approve the wizard will then contact Let's Encrypt:
 
   Press any key to continue:
 
-In this example the request succeeded. If any problems occured the log would
+In this example the request succeeded. If any problems occurred the log would
 instead indicate the reason for the failure.
 
 Once you press a key to continue you will be returned to the start of the HTTPS
@@ -181,6 +165,5 @@ for the domain and if so will give you the option to ``USE`` it:
       - USE: Use this certificate, OR
       - NEW: to request (or renew) a Lets Encrypt certificate, OR
       - OWN: to supply your own certificate files from /tmp, OR
-      - GEN: to generate a self-signed certificate.
 
-    > NEW, OWN, GEN, or USE: USE
+    > NEW, OWN, or USE:

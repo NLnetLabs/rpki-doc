@@ -73,4 +73,4 @@ allows you to ignore the lookup failure:
   > Krill domain: foo.bar
   DNS lookup for this domain did not return any results
 
-  > Are you sure you wish to use this domain? [YES/NO]: NO
+  > Are you sure you wish to use this domain? [YES/NO]:

@@ -37,7 +37,7 @@ will be configured for:
   thus you should ensure that your repository server remains available and
   reachable at all times.
 
-  > Would you like to publish with a 3rd party? [YES/NO]: YES
+  > Would you like to publish with a 3rd party? [YES/NO]:
 
 3rd Party Mode
 --------------
