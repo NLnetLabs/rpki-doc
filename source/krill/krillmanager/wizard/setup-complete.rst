@@ -6,8 +6,39 @@ Wizard: Setup Complete
 Once everything is setup the wizard will report the status of the running
 services and the locations at which the services can be found:
 
-.. figure:: img/setup-complete.png
-   :alt: Wizard setup complete page screenshot.
+.. code-block:: text
+
+  KRILL SETUP WIZARD: Setup complete                                [next: END]
+  -----------------------------------------------------------------------------
+
+  Service status summary:
+  cert_renewer   1/1
+  host_metrics   1/1
+  krill          1/1
+  nginx          1/1
+  nginx_metrics  1/1
+  rsyncd         1/1
+  All services appear to be running.
+
+  Krill and related services should now be available as follows:
+    - Krill Web Portal: https://ca.demo.krill.cloud/ (token: 4741d1f8-e317-488e-8c8a-a36e0cb16bf1)
+    - RRDP URI        : https://rrdp.demo.krill.cloud/rrdp/
+    - Rsync URI       : rsync://rsync.demo.krill.cloud/repo/
+    - Prometheus monitoring endponts:
+      - Krill         : http://:9657/metrics
+      - NGINX         : http://ca.demo.krill.cloud:9113/metrics
+      - Docker        : http://ca.demo.krill.cloud:9323/metrics
+      - O/S           : http://ca.demo.krill.cloud:9100/metrics
+      - Gluster       : http://ca.demo.krill.cloud:8080/metrics
+
+  Please consult the documentation for guidance on administering and
+  monitoring these services.
+
+  Thanks,
+
+  The NLnet Labs RPKI team.
+
+  Press any key to continue:
 
 Verify that Krill is Running
 ----------------------------

@@ -10,14 +10,26 @@ Wizard: Logging
      - `Wikipedia: S3 API and competing services <https://en.wikipedia.org/w/index.php?title=Amazon_S3&section=7#S3_API_and_competing_services>`_
      - :ref:`doc_krill_manager_logging` in Krill Manager
 
-If you have an account with a 3rd party S3-like service such as
-`DigitalOcean Spaces <https://www.digitalocean.com/products/spaces/>`_, Krill
-Manager can use it to store copies of the logs from your host operating
-systemd journal and the various Krill Manager operated services, including Krill RFC
-exchange logs.
+If you have an account with a 3rd party S3-like service such as `DigitalOcean
+Spaces <https://www.digitalocean.com/products/spaces/>`_, Krill Manager can use
+it to store copies of the logs from your host operating systemd journal and the
+various Krill Manager operated services, including Krill RFC exchange logs.
 
-.. figure:: img/logging.png
-   :alt: Wizard logging page screenshot.
+.. code-block:: text
+
+  KRILL SETUP WIZARD: Logging             [next: Determining public IP address]
+  -----------------------------------------------------------------------------
+
+  Would you like logs (e.g. Krill logs and RFC protocol messages, NGINX and
+  RsyncD access and error logs, and operating system logs) to be uploaded
+  automatically to an AWS S3 compatible provider (e.g. DigitalOcean Spaces)?
+
+  For information about these services and to sign up and create a
+  storage "bucket" please visit the service provider web pages, e.g.:
+    - https://aws.amazon.com/s3/
+    - https://www.digitalocean.com/products/spaces/
+
+  > Would you like to upload logs to an AWS S3 compatible service? [YES/NO]:
 
 Enter:
   - ``NO`` to skip this page and continue with the wizard.
@@ -44,10 +56,27 @@ sensible default values where possible, e.g. in the example below the
 on which Krill Manager was running was located in the DigitalOcean ``ams3``
 region.
 
-.. figure:: img/logging-conn-details.png
-   :alt: Wizard logging page connection details screenshot.
+.. code-block:: text
 
-   Successful verification of DigitalOcean Spaces connection details.
+  > Would you like to upload logs to an AWS S3 compatible service? [YES/NO]: YES
+
+  Please provide the connection details for your bucket.
+
+  You may find the official documentation for your AWS S3 provider helpful, e.g.:
+    - https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html
+    - https://developers.digitalocean.com/documentation/spaces/#aws-s3-compatibility
+
+  > Bucket Name: krillmanagerdemo
+  > Bucket Directory: logs
+  > S3 Endpoint: ams3.digitaloceanspaces.com
+  > Access Key: ********************
+  > Secret Key: *******************************************
+
+  Attempting to list contents of bucket krillmanagerdemo to verify credentials..
+  Invoking S3 client..
+  Success!
+
+  Press any key to continue:
 
 Once the wizard has the connection and authentication details it will attempt
 to verify them by trying to list the contents of the destination S3 bucket.

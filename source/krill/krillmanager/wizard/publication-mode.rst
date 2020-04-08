@@ -1,7 +1,7 @@
 .. _doc_krill_manager_wizard_publication_mode:
 
 Wizard: Publication Mode
-=============================
+========================
 
 .. Tip::
    See also the following Krill documentation:
@@ -16,8 +16,28 @@ Krill can operate in one of two modes:
 The publication mode wizard page lets you choose which of these modes Krill
 will be configured for:
 
-.. figure:: img/publication-mode.png
-   :alt: Wizard publication mode page screenshot.
+.. code-block:: text
+
+  KRILL SETUP WIZARD: Publication mode                          [next: CA name]
+  -----------------------------------------------------------------------------
+
+  Would you like to publish with a 3rd party (e.g. NIC.br), or run your own
+  publication server?
+
+  Info:
+  - If you answer YES you will need to use your repository provider's portal
+    to obtain details needed to permit Krill to publish to the repository.
+
+  - If instead you answer NO, Krill's embedded repository functionality will
+    be enabled and the repository data will be served for you from HTTP/RRDP
+    and Rsync servers that will run on this Droplet.
+
+  Warning: We advise against running your own repository as each additional
+  repository server is one more server that Relying Parties must contact, and
+  thus you should ensure that your repository server remains available and
+  reachable at all times.
+
+  > Would you like to publish with a 3rd party? [YES/NO]: YES
 
 3rd Party Mode
 --------------

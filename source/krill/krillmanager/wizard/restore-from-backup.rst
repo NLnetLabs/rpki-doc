@@ -19,19 +19,35 @@ With or Without Existing Backups
 
 In most cases the restore from backup wizard page will look like this:
 
-.. figure:: img/restore-from-backup-1.png
-   :alt: Wizard restore from backup page screenshot.
+.. code-block:: text
 
-   A Krill Manager instance with no backup archives present.
+  KRILL SETUP WIZARD: Restore from backup (Optional)   [next: Publication mode]
+  -----------------------------------------------------------------------------
+
+  Would you like to:
+  - Setup Krill by answering questions, OR
+  - Restore from a previously made 'krillmanager backup' archive?
+
+  > Type: INITIALIZE, or FILE to supply an archive file path?: INITIALIZE
 
 If however you have previously used the ``krillmanager backup`` command
 on this Krill Manager instance, you will see the backup archives the command
 created listed on this page:
 
-.. figure:: img/restore-from-backup-2.png
-   :alt: Wizard welcome page screenshot.
+.. code-block:: text
 
-   A Krill Manager instance with backup archives present.
+  KRILL SETUP WIZARD: Restore from backup (Optional)   [next: Publication mode]
+  -----------------------------------------------------------------------------
+
+  Detected backup archives:
+       1  backup-20200406-125743.tgz
+       2  backup-20200406-125759.tgz
+
+  Would you like to:
+  - Setup Krill by answering questions, OR
+  - Restore from a previously made 'krillmanager backup' archive?
+
+  > Type: INITIALIZE, or FILE to supply an archive file path?:
 
 Krill Manager has no way of knowing about backup archives that you might have
 copied to the filesystem from an external storage location or from another
@@ -50,6 +66,6 @@ Enter one of:
 - ``FILE`` to specify the path to a backup archive to restore, e.g. that you
   have previously copied to the system with the ``scp`` command.
 
-.. Note:: If you choose a backup to restore from the wizard will complete the 
+.. Note:: If you choose a backup to restore from the wizard will complete the
           restore process and then exit with a status summary of the running
           Krill Manager instance.
