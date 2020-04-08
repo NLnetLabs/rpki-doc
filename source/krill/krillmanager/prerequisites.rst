@@ -13,14 +13,14 @@ To use Krill Manager you will need the following:
 - The ability to create DNS subdomain A records *(to point one or more domains
   at the new Droplet)*.
 
-.. _DigitalOcean: https://www.digitalocean.com/
+.. _DigitalOcean: https://m.do.co/c/cab39584666c
 
 Optional
 --------
 
 - Your own TLS certificate and key file(s) (in PEM format) for the domain(s)
   that you wish to use with Krill. When using your own TLS certificate files
-  you will need to upload them to the Droplet *before* performing the 
+  you will need to upload them to the Droplet *before* performing the
   :ref:`initial setup <doc_krill_manager_initial_setup>`, e.g.:
 
   .. code-block:: bash
