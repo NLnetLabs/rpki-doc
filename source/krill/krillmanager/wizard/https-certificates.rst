@@ -3,8 +3,7 @@
 Wizard: HTTPS Certificates
 ==========================
 
-.. Tip::
-   See also:
+.. seealso::
      - :ref:`proxy_and_https`
      - `Let's Encrypt HTTP-01 challenge <https://letsencrypt.org/docs/challenge-types/#http-01-challenge>`_
 

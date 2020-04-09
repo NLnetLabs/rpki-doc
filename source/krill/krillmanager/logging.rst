@@ -148,8 +148,7 @@ To force fluentd to flush its buffers you can use the
 ``docker kill -s SIGUSR1 <container name/id>`` command on the node where the
 ``krill_log_uploader`` container is running.
 
-.. Tip::
-   See also:
+.. seealso::
      - `fluentd: List of Data Outputs <fluentd.org/dataoutputs>`_
      - `fluentd: Input / Output Plugins <https://www.fluentd.org/plugins/all#input-output>`_
 
@@ -159,6 +158,5 @@ Customising Audit Log Upload
 The ``/s3cmd-conf/s3cmd.conf`` file can be edited to take advantage of any additional
 features of your S3-like service provider that s3cmd supports.
 
-.. Tip::
-   See also:
+.. seealso::
      - `About the s3cmd configuration file <https://s3tools.org/kb/item14.htm>`_

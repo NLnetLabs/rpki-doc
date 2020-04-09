@@ -3,8 +3,7 @@
 Wizard: Logging
 ===============
 
-.. Tip::
-   See also:
+.. seealso::
      - `Amazon S3 product details <https://aws.amazon.com/s3/>`_ & `Getting your security credentials <https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html>`_
      - `DigitalOcean Spaces product details <https://www.digitalocean.com/products/spaces/>`_ & `AWS S3 Compatibility <https://developers.digitalocean.com/documentation/spaces/#aws-s3-compatibility>`_
      - `Wikipedia: S3 API and competing services <https://en.wikipedia.org/w/index.php?title=Amazon_S3&section=7#S3_API_and_competing_services>`_
