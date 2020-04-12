@@ -8,6 +8,11 @@ with Docker. In case you intend to serve your RPKI certificate and ROAs to the
 world yourself or you want to offer this as a service to others, you will also
 need to have a public Rsyncd and HTTPS web server available.
 
+Krill can also be se up as a highly available, scalable service using
+:ref:`doc_krill_manager`.  A 1-Click App on the DigitalOcean Marketplace can set
+up Krill with all required components, along with integration points for
+monitoring and log analysis.
+
 Quick Start
 -----------
 
