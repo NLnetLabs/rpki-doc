@@ -155,7 +155,7 @@ To force fluentd to flush its buffers you can use the
 Customising Audit Log Upload
 ----------------------------
 
-The ``/s3cmd-conf/s3cmd.conf`` file can be edited to take advantage of any additional
+The ``/s3cmd-conf/s3cmd.conf`` file can be edited with ``krillmanager edit`` to take advantage of any additional
 features of your S3-like service provider that s3cmd supports.
 
 .. seealso::
