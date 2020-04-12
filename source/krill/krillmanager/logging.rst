@@ -39,7 +39,7 @@ Krill on one Krill Manager node:
 
    Krill --> Docker Volume --> Gluster Replicated Store
 
-Docker Log Uploader service on the same or other KrillManager node:
+Docker Log Uploader service on the same or other Krill Manager node:
 
 ::
 
