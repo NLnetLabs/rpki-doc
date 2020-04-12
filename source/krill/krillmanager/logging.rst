@@ -136,7 +136,7 @@ Custom Behaviour
 Customising Log Streaming
 -------------------------
 
-Files in ``/fluentd-conf/*.conf`` can be used to configure fluentd according to
+Files in ``/fluentd-conf/*.conf`` can be edited with ``krillmanager edit`` to configure fluentd according to
 your own design, streaming logs to any of the many 3rd party services that
 fluentd supports.
 
