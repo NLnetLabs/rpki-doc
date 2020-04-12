@@ -3,7 +3,7 @@
 Krill Manager
 =============
 
-.. Note:: The basic usage of Krill manager has been documented but more advanced
+.. Note:: The basic usage of Krill Manager has been documented but more advanced
           topics are still being written. To stay informed please subscribe to
           the `NLnet Labs RPKI mailing list <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.
 
@@ -19,12 +19,16 @@ and create ROAs, all in just 6 minutes real-time.
 
 .. raw:: html
 
-    <div style="position: relative; padding-bottom: 4%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="697" height="392" src="https://www.youtube.com/embed/qunvH2t6rqU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div style="position: relative; padding-bottom: 4%; height: 0; overflow:
+    hidden; max-width: 100%; height: auto;">
+        <iframe width="697" height="392"
+        src="https://www.youtube.com/embed/qunvH2t6rqU" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope;
+        picture-in-picture" allowfullscreen></iframe>
     </div>
 
-In future we hope to also publish instructions for using Krill Manager in other
-hosting environments. For the adventurous you should be able to run Krill
+In future we intend to also publish instructions for using Krill Manager in
+other hosting environments. For the adventurous you should be able to run Krill
 Manager on any Linux host that has Bash, Docker and Gluster installed.
 
 .. toctree::
