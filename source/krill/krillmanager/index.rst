@@ -19,10 +19,10 @@ and create ROAs, all in just 6 minutes real-time.
 
 .. raw:: html
 
-    <div style="position: relative; padding-bottom: 4%; height: 0; overflow:
-    hidden; max-width: 100%; height: auto;">
-        <iframe width="697" height="392"
-        src="https://www.youtube.com/embed/qunvH2t6rqU" frameborder="0"
+    <div style="position: relative; width: 100%; height: 0;
+    padding-bottom: 56.25%; margin-bottom: 20px;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height:
+        100%;" src="https://www.youtube.com/embed/qunvH2t6rqU" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope;
         picture-in-picture" allowfullscreen></iframe>
     </div>
