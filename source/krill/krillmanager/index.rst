@@ -11,11 +11,11 @@ Krill Manager is a tool for running Krill as a highly available scalable service
 with integration points for monitoring and log analysis.
 
 Krill Manager is available as a `DigitalOcean Marketplace 1-Click App
-<https://marketplace.digitalocean.com/apps/krill>`_. You can watch an
-introduction to its capabilities in the video below. It walks through setting up
-Krill and all additional components using the 1-Click App, configure the
-Certificate Authority to run Delegated RPKI under a Regional Internet Registry
-and create ROAs, all in just 6 minutes real-time.
+<https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_. You
+can watch an introduction to its capabilities in the video below. It walks
+through setting up Krill and all additional components using the 1-Click App,
+configure the Certificate Authority to run Delegated RPKI under a Regional
+Internet Registry and create ROAs, all in just 6 minutes real-time.
 
 .. raw:: html
 
