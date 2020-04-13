@@ -160,7 +160,9 @@ Command: renew
 --------------
 
 This command forces the Lets Encrypt certbot agent to attempt to renew any
-Let's Encrypt certificates that it is managing.
+Let's Encrypt certificates that it is managing. If the certificates are
+renewed the NGINX instances will be signalled to reload the certificate files
+without causing any downtime.
 
 .. note:: It shouldn't be necessary to use this command as it is triggered
           automatically once a day.
