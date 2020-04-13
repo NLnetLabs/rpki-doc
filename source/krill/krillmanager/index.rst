@@ -18,6 +18,7 @@ Krill Manager is a tool for running Krill as a highly available scalable service
    :maxdepth: 1
    :name: toc-krill-manager
 
+   updates
    prerequisites
    initial-setup
    using-the-cli
