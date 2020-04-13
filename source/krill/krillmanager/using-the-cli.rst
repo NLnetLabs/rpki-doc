@@ -3,33 +3,29 @@
 Using the CLI
 =============
 
-Krill Manager is controlled via a command line interface aka the CLI. The CLI
-can be invoked using the ``krillmanager`` command.
+Krill Manager is controlled via a command line interface (CLI) tool called
+``krillmanager``, separate to the ``krillc`` tool that can be used to manage a
+a Krill server. This page documents how to use both in the context of a Krill
+Manager instance.
 
 .. _krillc:
 
-Krillc
+------
+krillc
 ------
 
-Krill has its own CLI known as :ref:`krillc <doc_krill_using_cli>`, but because
-Krill is deployed as a Docker container when using Krill Manager, the ``krillc``
-program is not available on the host without invoking a complicated Docker
-command or making a shell alias to invoke it. Even then you must set environment
-variables or command line arguments to tell ``krillc`` where to find the Krill
-server and which authentication token to use.
+On a Krill Manager machine you can invoke the ``krillc`` command just as if you
+had installed Krill yourself. However, what you are actually invoking is a
+special wrapper provided by Krill Manager which simplifies and tailors the use
+of the ``krillc`` command to the Krill Manager context. You can read more about
+this in the :ref:`krillmanager krillc <cmd_krillc>` documentation below.
 
-To simplify this, Krill Manager makes available a ``krillc`` command which
-invokes the actual :ref:`krillc <doc_krill_using_cli>` program and already
-configures it with the correct server URI and authentication token so that you
-don't have to. To use this ``krillc`` wrapper just run the ``krillc`` command
-on the host. Alternatively you can use the ``krillmanager krillc`` command
-(see below).
+------------
+krillmanager
+------------
 
-Usage Summary
--------------
-
-The following summary can be obtained at any time with the ``krillmanager --help`` or ``krillmanager help``
-commands:
+Krill Manager has The following summary can be obtained at any time with the
+``krillmanager --help`` or ``krillmanager help`` commands:
 
 .. parsed-literal::
 
@@ -83,12 +79,17 @@ of the backup. The backup archive can be restored later using the
              all applications are running. There is a very small chance that a
              Krill data file will be inconsistently captured in the backup.
 
+----
+
 .. _cmd_certs:
 
 Command: certs
 --------------
 
-TO DO
+This command outputs information both about the certificates in use by NGINX,
+and the certificates being managed by the Lets Encrypt certbot tool.
+
+----
 
 .. _cmd_help:
 
@@ -97,6 +98,8 @@ Command: help
 
 Displays the usage summary.
 
+----
+
 .. _cmd_init:
 
 Command: init
@@ -104,41 +107,84 @@ Command: init
 
 Runs the (re)configuration wizard. See :ref:`doc_initial_setup`.
 
+----
+
 .. _cmd_krillc:
 
 Command: krillc
 ---------------
 
-See :ref:`krillc` above.
+This command invokes the Krill CLI tool :ref:`krillc <doc_krill_using_cli>`.
+
+.. tip:: You can also invoke this command as just ``krillc`` without the
+         ``krillmanager`` prefix, just like in the :ref:`krillc documentation <doc_krill_using_cli>`.
+
+In a Krill Manager instance there is no ``krillc`` binary installed on the
+host. Instead this command runs a throw away Krill Docker container and invokes
+the ``krillc`` binary contained within.
+
+Normally invoking ``krillc`` requires also defining environment variables or
+passing command line arguments to tell ``krillc`` where Krill is and how to
+authenticate with it. With Krill Manager this is taken care of for you
+automatically. If needed you can override the defaults using command line
+arguments in order to interact with a separate external instance of Krill.
+
+Krill Manager also simplifies the interaction with the host filesystem by
+automatically remapping any paths to input files supplied on the command line
+so that they work when ``krillc`` accesses them from within the Docker
+container.
+
+----
 
 .. _cmd_logs:
 
 Command: logs
 -------------
 
-TO DO
+This command outputs the Docker service logs for key Krill Manager
+components. If invoked without any arguments it displays a usage tip:
+
+.. code-block:: bash
+
+  # krillmanager logs
+  Usage: krillmanager logs <krill|nginx|rsyncd> [-f] [--tail=n]
+
+The ``-f`` argument tells the command to keep following the log output.
+
+The ``--tail`` argument tells the command to show only ``n`` lines of prior log output.
+
+----
 
 .. _cmd_renew:
 
 Command: renew
 --------------
 
-TO DO
+This command forces the Lets Encrypt certbot agent to attempt to renew any
+Let's Encrypt certificates that it is managing.
+
+.. note:: It shouldn't be necessary to use this command as it is triggered
+          automatically once a day.
+
+----
 
 .. _cmd_restart:
 
 Command: restart
 ----------------
 
-TO DO
+This command is an alias for :ref:`stop<cmd_stop>` followed by
+:ref:`start<cmd_start>`.
+
+----
 
 .. _cmd_restore:
 
 Command: restore
 ----------------
 
-This command restores a backup made previously by the
-:ref:`krillmanager backup<cmd_backup>` command.
+This command restores a backup made previously by the :ref:`backup<cmd_backup>`
+command.
 
 The restored data will be processed by the current Krill Manager version which
 may be newer than the version that created the backup. Any incompatibilities
@@ -149,30 +195,47 @@ should be handled by the restore process.
           be warned because the certificates will not match the domain being
           served from.
 
+----
+
 .. _cmd_start:
 
 Command: start
 --------------
 
-TO DO
+Deploy all Krill Manager managed components according to the configuration
+settings chosen when the :ref:`init<cmd_init>` command was last run.
+
+----
 
 .. _cmd_status:
 
 Command: status
 ---------------
 
-TO DO
+Display a status report indicating which of the Krill Manager components are
+running. It also shows a recap of key URIs that can be used to work with the
+Krill Manager instance.
+
+----
 
 .. _cmd_stop:
 
 Command: stop
 -------------
 
-TO DO
+Terminate all Krill Manager components.
+
+.. warning:: This will cause clients to receive connection refused errors.
+
+----
 
 .. _cmd_upgrade:
 
 Command: upgrade
 ----------------
 
-TO DO
+Check to see if a newer version of Krill Manager is available and if so offer
+to upgrade to it.
+
+.. note:: A newer version of Krill Manager doesn't necessarily contain a newer
+          version of Krill.
