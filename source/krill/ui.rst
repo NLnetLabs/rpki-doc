@@ -91,8 +91,7 @@ Parent Setup
 
 After successfully configuring the repository, the next step is to configure
 your parent CA. Copy the child request XML and provide it to your parent, i.e.
-your RIR or NIR. If you are an ARIN member, make sure to toggle the
-:guilabel:`ARIN Compatible` option.
+your RIR or NIR. 
 
 .. figure:: img/krill-ui-child-request.png
     :align: center
