@@ -24,8 +24,7 @@ this in the :ref:`krillmanager krillc <cmd_krillc>` documentation below.
 krillmanager
 ------------
 
-Krill Manager has The following summary can be obtained at any time with the
-``krillmanager --help`` or ``krillmanager help`` commands:
+Krill Manager supports the following commands:
 
 .. parsed-literal::
 
