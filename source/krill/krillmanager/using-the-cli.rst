@@ -5,7 +5,7 @@ Using the CLI
 
 Krill Manager is controlled via a command line interface (CLI) tool called
 ``krillmanager``, separate to the ``krillc`` tool that can be used to manage a
-a Krill server. This page documents how to use both in the context of a Krill
+Krill server. This page documents how to use both in the context of a Krill
 Manager instance.
 
 .. _krillc:
