@@ -25,10 +25,10 @@ version if available:
 .. code-block:: text
 
   # krillmanager init
-  A new version is available (v0.1.0 => v0.1.3).
-  Automatically upgrading to newer version v0.1.3..
+  A new version is available (v0.1.0 => v0.1.4).
+  Automatically upgrading to newer version v0.1.4..
   Checking for newer version
-  Fetching newer version (v0.1.3)
+  Fetching newer version (v0.1.4)
   Running post-upgrade actions
   Upgrading host files
   Upgrading dependencies
@@ -49,7 +49,7 @@ again, if a new version is available you will be offered the choice to upgrade:
 .. code-block:: text
 
   # krillmanager init
-  A new version is available (v0.1.0 => v0.1.3).
+  A new version is available (v0.1.0 => v0.1.4).
 
   > Would you like to upgrade? [YES/NO]: YES
 
