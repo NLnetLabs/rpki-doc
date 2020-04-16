@@ -85,6 +85,19 @@ wizard will output error messages instead of ``Success!`` and you will be
 returned to the initial yes/no question where you can either choose to try
 again or continue without log uploading at this time.
 
+Video Guide
+-----------
+
+.. raw:: html
+
+    <div style="position: relative; width: 100%; height: 0;
+    padding-bottom: 56.25%; margin-bottom: 20px;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height:
+        100%;" src="https://www.youtube.com/watch?v=-Y0jhdcdNQQ" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope;
+        picture-in-picture" allowfullscreen></iframe>
+    </div>
+
 Advanced Configuration
 ----------------------
 
