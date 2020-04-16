@@ -31,7 +31,7 @@ Log Aggregation, Upload & Analysis
 ----------------------------------
 
 Using `FluentD <https://www.fluentd.org/>`_ Krill Manager can:
-  - aggregate journal logs all cluster nodes together.
+  - aggregate journal logs across all cluster nodes together.
   - stream journal logs to an AWS S3 compatible storage service.
   - stream journal logs to one of `many 3rd party services <https://www.fluentd.org/dataoutputs>`_
     for external processing and analysis.
