@@ -3,63 +3,45 @@
 Logging
 =======
 
-------------
-Architecture
-------------
+In Krill Manager when we refer to logs we primarily refer to a series of
+(mainly) unstructured messages, not to metrics such as counters and guages
+exposed by Prometheus endpoints.
 
-**Note:** When the cluster only consists of a single node all of the flows
-defined below run on the same node.
+On a Krill Manager host `journald <https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html>`_
+is the primary log subystem and Docker container logs are routed to the journal
+via the `Docker journald logging driver <https://docs.docker.com/config/containers/logging/journald/>`_.
 
-Standard Out/Error Streaming
-----------------------------
+-----------
+Log Viewing
+-----------
 
-Docker Forwarder service on each Krill Manager node receives log events:
+- Host logs can be viewed in the usual way with ``journalctl`` and via files
+  stored in ``/var/log/``.
+- Primary Krill Manager logs can be viewed with the ``krillmanager logs``
+  command.
+- Other Krill Manager logs can be viewed with the ``docker service logs``
+  command.
 
-::
+.. tip:: In cluster mode ``krillmanager logs`` and ``docker service logs`` can
+         be used to view logs even if the source container is on a slave
+         cluster node.
 
-                Kernel -->|
-    Krill                 |
-   Manager --> DockerD -->|--> SystemD Journal --> /var/log/journal <-- fluentd --> Forwarder
-  Containers              |       |
-              Programs -->|       |--> rsyslog --> /var/log/xxx
+----------------------------------
+Log Aggregation, Upload & Analysis
+----------------------------------
 
-Docker Processor service on the master Krill Manager node aggregates and
-outputs the events received from the forwarders:
+Using `FluentD <https://www.fluentd.org/>`_ Krill Manager can:
+  - aggregate journal logs all cluster nodes together.
+  - stream journal logs to an AWS S3 compatible storage service.
+  - stream journal logs to one of `many 3rd party services <https://www.fluentd.org/dataoutputs>`_
+    for external processing and analysis.
 
-::
 
-   Receiver --> fluentd --> Output (none, s3, or your custom configuration)
+Using `s3cmd <https://s3tools.org/s3cmd>`_ Krill Manager can:
+  - upload Krill RFC audit log files to an AWS S3 compatible storage service.
 
-Krill RFC Audit File upload
----------------------------
-
-Krill on one Krill Manager node:
-
-::
-
-   Krill --> Docker Volume --> Gluster Replicated Store
-
-Docker Log Uploader service on the same or other Krill Manager node:
-
-::
-
-   Gluster Replicated Store <-- Docker Volume <-- S3cmd --> S3-like storage service
-
----------------------
-With Logging Disabled
----------------------
-
-When log uploading is disabled the fluentd Forwarder, fluentd Processor and
-the Log Uploader services are not created. Logs are handled by DockerD,
-JournalD and rsyslog as usual.
-
---------------------
-With Logging Enabled
---------------------
-
-The fluentd Forwarder, fluentd Processor and Log Uploader services are active
-and process the logs collected from the journal on each Krill Manager node and
-any RFC audit files created by Krill.
+.. note:: FluentD and s3cmd related Krill Manager Docker services are only
+          created if log uploading was enabled during :ref:`doc_krill_manager_initial_setup`.
 
 Upload Frequency
 ----------------
@@ -72,7 +54,7 @@ Log Retention
 
 When log upload is enabled, local copies of Krill RFC audit logs are deleted
 after two days as these logs can become quite large. All other logs are
-rotated according to the O/S systemd journal behaviour and logrotate
+rotated according to the default journald behaviour and logrotate
 configuration.
 
 Log Bucket Structure
