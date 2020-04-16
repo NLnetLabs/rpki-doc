@@ -60,3 +60,9 @@ Then import `Grafana Dashboards <https://grafana.com/grafana/dashboards>`_ by ID
   - https://grafana.com/grafana/dashboards/1860 (Node Exporter Full)
   - https://grafana.com/grafana/dashboards/8951 (Docker Monitoring)
   - https://grafana.com/grafana/dashboards/11199 (NGINX by nginxinc)
+
+Alerting
+--------
+
+Grafana can be configured to send `notifications <https://grafana.com/docs/grafana/latest/alerting/notifications/>`_
+to a variety of destination types when alert conditions are met.
