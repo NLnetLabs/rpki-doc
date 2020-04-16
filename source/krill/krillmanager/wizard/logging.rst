@@ -93,7 +93,7 @@ Video Guide
     <div style="position: relative; width: 100%; height: 0;
     padding-bottom: 56.25%; margin-bottom: 20px;">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height:
-        100%;" src="https://www.youtube.com/watch?v=-Y0jhdcdNQQ" frameborder="0"
+        100%;" src="https://www.youtube.com/embed/-Y0jhdcdNQQ" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope;
         picture-in-picture" allowfullscreen></iframe>
     </div>
