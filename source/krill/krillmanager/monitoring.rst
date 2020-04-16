@@ -3,6 +3,12 @@
 Monitoring
 ==========
 
+.. seealso::
+     Known issues:
+       - `Host metrics are incorrect <https://github.com/NLnetLabs/krillmanager/issues/28>`_
+       - `Missing rsync metrics <https://github.com/NLnetLabs/krillmanager/issues/13>`_
+       - `Limited Docker metrics - use cAdvisor <https://github.com/NLnetLabs/krillmanager/issues/27>`_
+
 The available `Prometheus <https://prometheus.io/docs/concepts/data_model/>`_
 endpoints for monitoring Krill Manager components can be determined using the
 ``krillmanager status`` command:
