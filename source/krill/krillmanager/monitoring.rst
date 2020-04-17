@@ -43,6 +43,10 @@ Grafana servers, e.g. using these DigitalOcean Marketplace Apps:
 - https://marketplace.digitalocean.com/apps/prometheus
 - https://marketplace.digitalocean.com/apps/grafana
 
+Alternatively, if you don't mind losing your monitoring and alerting if your
+server has problems, you could deploy Prometheus and Grafana on your Krill
+server `like this <https://github.com/vegasbrianc/prometheus>`_.
+
 Add stanzas like the following to the ``scrape_configs`` section of the
 ``prometheus.yml`` file on the Prometheus server and restart Prometheus:
 
