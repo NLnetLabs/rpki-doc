@@ -42,7 +42,7 @@ Manager on any Linux host that has Bash, Docker and Gluster installed.
    monitoring
    logging
    security
-   scaling-out
+   cluster-mode
 .. history
 .. authors
 .. license
