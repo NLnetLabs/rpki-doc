@@ -27,12 +27,15 @@ A cluster also comes with some costs, e.g.:
 2. The complexity cost of operating and maintaining a cluster, though Krill
    Manager greatly reduces this.
 
+Why not just use a CDN?
+-----------------------
+
 Whether cluster mode is needed or is the right way to achieve your objectives
 depends on your particular use case. For example, higher availability, increased
 scale AND lower latency can be achieved by using a Content Delivery Network such
-as Fastly, but only for RRDP, not for Rsync. One could argue that Rsync is being
-rapidly obsoleted by RRDP and it is only a matter of time before Rsync is not
-used by Relying Parties at all.
+as `Fastly <https://www.fastly.com/>`_, but only for RRDP, not for Rsync. One
+could argue that Rsync is being rapidly obsoleted by RRDP and it is only a
+matter of time before Rsync is not used by Relying Parties at all.
 
 Depending on how many `9's of uptime/availability <https://uptime.is/>`_ you are
 aiming for, you should also consider whether your cluster servers are separate
@@ -50,7 +53,7 @@ activating cluster mode, instead it must be done via command line arguments to
 the wizard.
 
 After deploying N servers running Krill Manager, e.g. N instances of the
-DigitalOcean 1-Click Krill Droplet:.:
+`DigitalOcean Marketplace 1-Click App <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_:
 
 On one server (aka the master):
 
@@ -103,7 +106,7 @@ The commands used to manage Krill Manager are unchanged. They should be issued
 from the master server. Krill Manager will handle upgrading all cluster servers
 when an upgrade is requested.
 
---------
+========
 Advanced
 ========
 
