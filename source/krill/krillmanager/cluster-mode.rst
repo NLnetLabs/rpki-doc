@@ -80,6 +80,15 @@ On the other N-1 servers in the cluster (aka the slaves):
    between cluster servers and not to the wider Internet, either via ``ufw`` or
    via a cloud firewall.
 
+What else do I need to do?
+--------------------------
+
+Krill Manager cannot ensure that your DNS records and load balancer are setup,
+you must take care of that yourself. In order to request a Let's Encrypt TLS
+certificate via Krill Manage in cluster mode you will either need to use the
+same A record name for each cluster server, or set the external A or CNAME
+record to point at your load balancer.
+
 What changes in cluster mode?
 -----------------------------
 
