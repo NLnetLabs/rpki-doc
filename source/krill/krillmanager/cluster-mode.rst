@@ -120,6 +120,11 @@ The commands used to manage Krill Manager are unchanged. They should be issued
 from the master server. Krill Manager will handle upgrading all cluster servers
 when an upgrade is requested.
 
+Clients can still access the Krill UI and API, RRDP and Rsync endpoints at the
+same URLs as in non-cluster mode. Requests for Krill that arrive at a different
+server than the one running Krill will be proxied by the local NGINX to
+whichever server is running Krill.
+
 ========
 Advanced
 ========
@@ -167,3 +172,11 @@ part of the cluster, as long as the load balancer uses a health check to avoid
 sending requests to a dead server the cluster will continue to work as expected.
 You would need to issue the appropriate Gluster and Docker Swarm commands to
 expand or contract the size of the cluster.
+
+Is the Swarm Manager highly available?
+--------------------------------------
+
+No. This could be done but adds complexity while adding little value. If the
+manager server is lost the worst case is that the Krill UI and API become
+unavailable if Krill was running on the Swarm Manager server, RRDP and Rsync
+endpoints will continue to be available.
