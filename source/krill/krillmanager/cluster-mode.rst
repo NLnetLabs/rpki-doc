@@ -55,7 +55,7 @@ the wizard.
 After deploying N servers running Krill Manager, e.g. N instances of the
 `DigitalOcean Marketplace 1-Click App <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_:
 
-On one server (aka the master):
+On one server (aka the master) run these commands:
 
 .. code-block:: bash
 
@@ -65,7 +65,7 @@ On one server (aka the master):
 Where each ``<ipv4>`` value is the IPv4 address of one of the N-1 slave servers
 in the cluster.
 
-On the other N-1 servers in the cluster (aka the slaves):
+On the other N-1 servers in the cluster (aka the slaves) run these commands:
 
 .. code-block:: bash
 
