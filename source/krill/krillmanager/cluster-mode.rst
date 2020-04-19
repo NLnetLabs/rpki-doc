@@ -3,7 +3,7 @@
 Cluster Mode
 ============
 
-Krill Manager supports operating on a cluster of servers but by default assumes
+Krill Manager supports running on a cluster of servers but by default assumes
 that it is not part of a cluster.
 
 Should I use a cluster?
