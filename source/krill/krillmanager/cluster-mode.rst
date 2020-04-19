@@ -84,10 +84,15 @@ What else do I need to do?
 --------------------------
 
 Krill Manager cannot ensure that your DNS records and load balancer are setup,
-you must take care of that yourself. In order to request a Let's Encrypt TLS
+you must take care of that yourself.
+
+In order to request a Let's Encrypt TLS
 certificate via Krill Manage in cluster mode you will either need to use the
 same A record name for each cluster server, or set the external A or CNAME
 record to point at your load balancer.
+
+For requests to reach the Krill Manager servers, configure the load balancer
+to proxy ports 80, 443 (RRDP) and 873 (Rsync).
 
 What changes in cluster mode?
 -----------------------------
