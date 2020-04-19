@@ -60,7 +60,7 @@ On one server (aka the master):
 .. code-block:: bash
 
    # open-cluster-ports
-   # krillmanager --slave-ips=<ipv4,ipv4> init
+   # krillmanager --slave-ips=<ipv4,ipv4,...> init
 
 Where each ``<ipv4>`` value is the IPv4 address of one of the N-1 slave servers
 in the cluster.
