@@ -180,3 +180,10 @@ No. This could be done but adds complexity while adding little value. If the
 manager server is lost the worst case is that the Krill UI and API become
 unavailable if Krill was running on the Swarm Manager server, RRDP and Rsync
 endpoints will continue to be available.
+
+Is the Docker Swarm Routing Mesh Used?
+--------------------------------------
+
+No, the NGINX (HTTP(S)/RRDP) and Rsync containers bind directly to the host
+interface ensuring that IPv6 is supported and eliminating an unnecessary
+extra proxy hop.
