@@ -16,6 +16,11 @@ platforms and software solutions.
 Hardware Solutions
 ------------------
 
+.. Warning:: The versions listed here are the earliest ones where RPKI support
+             became available. However, a newer version may be required to get
+             recommended improvements and bug fixes. Please check your vendor
+             documentation and knowledge base.
+
 Juniper — `Documentation <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`__ — `Day One Book <https://www.juniper.net/uk/en/training/jnbooks/day-one/deploying-bgp-routing-security/>`_
    Junos version 12.2 and newer
 
