@@ -17,14 +17,14 @@ Log Viewing
 
 - Host logs can be viewed in the usual way with ``journalctl`` and via files
   stored in ``/var/log/``.
-- Primary Krill Manager logs can be viewed with the ``krillmanager logs``
-  command.
+- Primary Krill Manager logs can be viewed with the
+  :ref:`krillmanager logs <cmd_logs>` command.
 - Other Krill Manager logs can be viewed with the ``docker service logs``
   command.
 
-.. tip:: In cluster mode ``krillmanager logs`` and ``docker service logs`` can
-         be used to view logs even if the source container is on a slave
-         cluster node.
+.. tip:: In cluster mode :ref:`krillmanager logs <cmd_logs>` and
+         ``docker service logs`` can be used to view logs even if the source
+         container is on a slave cluster node.
 
 ----------------------------------
 Log Aggregation, Upload & Analysis
