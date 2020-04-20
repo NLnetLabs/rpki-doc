@@ -3,16 +3,120 @@
 Cluster Mode
 ============
 
-Krill Manager supports operating on a cluster of servers but by default assumes
+Krill Manager supports running on a cluster of servers but by default assumes
 that it is not part of a cluster.
 
-Should I use a cluster?
+Setting up a Cluster
+--------------------
+
+---------------------
+Activate Cluster Mode
+---------------------
+
+There is no support in the :ref:`doc_krill_manager_initial_setup` wizard for
+activating cluster mode, instead it must be done via command line arguments to
+the wizard.
+
+After deploying N servers running Krill Manager, e.g. N instances of the
+`DigitalOcean Marketplace 1-Click App <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_,
+execute the following commands via SSH:
+
+.. code-block:: bash
+
+   # open-cluster-ports                               # on both master and slave
+   # krillmanager --slave-ips=<ipv4,ipv4,...> init    # on the master only
+   # krillmanager --slave=1 init                      # on the slaves only
+
+*Example:*
+
+.. code-block:: bash
+
+   In a shell:
+   $ ssh root@slave1.rpki.example.com
+   # open-cluster-ports
+   # krillmanager --slave=1 init
+   ...
+   Slave initialized
+
+   In another shell:
+   $ ssh root@slave2.rpki.example.com
+   # open-cluster-ports
+   # krillmanager --slave=1 init
+   ...
+   Slave initialized
+
+   In another shell:
+   $ ssh root@master.rpki.example.com
+   # open-cluster-ports
+   # krillmanager --slave-ips=10.0.0.2,10.0.0.3
+   Joining slave at 10.0.0.2 to our GlusterFS cluster
+   Joining slave at 10.0.0.3 to our GlusterFS cluster
+   ...
+   Waiting for all GlusterFS peers to become 'Connected'.
+   ...
+   Initializing Swarm manager at <some.pubic.ip.address>
+   Sharing Swarm join token via GlusterFS
+   Waiting for 2 swarm workers to be in status 'Ready'
+   Waiting for 1 swarm workers to be in status 'Ready'
+   ...
+
+.. warning::
+
+   ``open-cluster-ports`` is a simple helper script that opens **to the world**
+   the ports required for cluster servers to communicate with each other. In a
+   production setup you should restrict access so that these ports are only open
+   between cluster servers and not to the wider Internet, either via ``ufw`` or
+   via a cloud firewall.
+
+----------------------------------
+Deploy & Configure a Load Balancer
+----------------------------------
+
+For requests to be able to reach the Krill Manager servers, the load balancer
+must be configured to forward ports:
+
+**Port Forwarding Rules:**
+
++------+----------+----------------------------------------------+
+| Port | Protocol | Required For                                 |
++======+==========+==============================================+
+| 80   | HTTP     | - HTTP -> HTTPS redirect.                    |
+|      |          | - Let's Encrypt HTTP-01 challenge responses. |
++------+----------+----------------------------------------------+
+| 443  | HTTPS    | - Krill UI                                   |
+|      |          | - Krill API                                  |
+|      |          | - RRDP                                       |
++------+----------+----------------------------------------------+
+| 873  | TCP      | - Rsync                                      |
++------+----------+----------------------------------------------+
+
+**TLS Termination:** Either configure your load balancer with a TLS certificate
+or set it to pass through TLS traffic still encrypted to the cluster servers.
+
+**Health Check:** In order for the load balancer to route traffic only to healthy cluster servers
+you should configure a :ref:`health check <faq_health_check>`.
+
+**Proxy Protocol:** Do **NOT** enable Proxy Mode on your load balancer. See the :ref:`F.A.Q. item below <faq_proxy_protocol>`
+for more information.
+
+-------------
+Configure DNS
+-------------
+
+In order to request a Let's Encrypt TLS certificate via Krill Manage the cluster
+servers need to be reachable via the desired DNS name, e.g. via a DNS A or CNAME
+record.
+
+F.A.Q.
+------
+
+-----------------------
+Should I Use a Cluster?
 -----------------------
 
-If using a 3rd party repository and only a few ROAs, then probably not. The only
-service that you operate in this case is Krill itself and you may be okay with
-Krill being unavailable for short periods and likely do not expect to place much
-load on Krill or serve many requests.
+Whether cluster mode is needed or is the right way to achieve your objectives
+depends on your particular use case. If using a 3rd party repository and only a
+few ROAs, then you probably don't need a cluster.
 
 A cluster provides various benefits including:
 
@@ -27,113 +131,125 @@ A cluster also comes with some costs, e.g.:
 2. The complexity cost of operating and maintaining a cluster, though Krill
    Manager greatly reduces this.
 
-Why not just use a CDN?
+---------------------------------------------
+How Is Cluster Mode Different To Normal Mode?
+---------------------------------------------
+
+The main difference is that instead of having one server running NGINX and
+RsyncD, in cluster mode every cluster server will run NGINX and RsyncD.
+
+In clustered mode the Gluster volume enables Krill Manager to replicate
+configuration, TLS certificates, RRDP and Rsync repo contents, etc. to every
+cluster server.
+
+-----------------------
+Why Not Just Use a CDN?
 -----------------------
 
-Whether cluster mode is needed or is the right way to achieve your objectives
-depends on your particular use case. For example, higher availability, increased
-scale AND lower latency can be achieved by using a Content Delivery Network such
-as `Fastly <https://www.fastly.com/>`_, but only for RRDP, not for Rsync. One
-could argue that Rsync is being rapidly obsoleted by RRDP and it is only a
-matter of time before Rsync is not used by Relying Parties at all.
+Currently :ref:`Relying Party software <doc_tools>` communicate with RPKI
+repository servers using the Rsync protocol and most also support the RRDP
+protocol.
+
+Using a CDN (e.g. `Fastly <https://www.fastly.com/>`_ as used by the NLnet Labs
+production Krill deployment) should increase availability, increase capacity and
+decrease latency, but only for RRDP, not for Rsync. One could argue that Rsync
+is being rapidly obsoleted by RRDP and it is only a matter of time before Rsync
+is not used by Relying Parties at all.
+
+-------------------------------------------
+Where Should My Cluster Servers Be Located?
+-------------------------------------------
 
 Depending on how many `9's of uptime/availability <https://uptime.is/>`_ you are
-aiming for, you should also consider whether your cluster servers are separate
-enough from each other, e.g. several VMs running on the same server or in the
-same rack is less robust than spreading the VMs across cloud availability zones
-or regions.
+aiming for, you should consider whether your cluster servers are separate enough
+from each other, e.g. several VMs running on the same server or in the same rack
+is less robust than spreading the VMs across cloud availability zones or across
+regions.
 
-If a cluster is what you need, Krill Manager supports it.
+Note however that the further apart your cluster servers are from each other the
+longer it may take Gluster to keep the replicated volume contents consistent.
 
-Activating cluster mode
------------------------
+Also, not all load balancing technologies support wider separation, e.g. a cloud
+load balancer may be able to balance across VMs in one region but not across
+regions.
 
-There is no support in the :ref:`doc_krill_manager_initial_setup` wizard for
-activating cluster mode, instead it must be done via command line arguments to
-the wizard.
+--------------------------------------------
+How Can I Balance Traffic Across My Cluster?
+--------------------------------------------
 
-After deploying N servers running Krill Manager, e.g. N instances of the
-`DigitalOcean Marketplace 1-Click App <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_:
+You can use a load balancer (e.g. the `DigitalOcean Load Balancer <https://www.digitalocean.com/products/load-balancer/>`_),
+anycast IP, a CDN provider, geographic/latency based DNS, etc.
 
-On one server (aka the master):
+.. _faq_proxy_protocol:
+
+----------------------------
+Is `Proxy Protocol <https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt>`_ supported?
+----------------------------
+
+`Not yet <https://github.com/NLnetLabs/krillmanager/issues/2>`_. Without Proxy
+Protocol you will likely see the IP addresses of the proxy in your NGINX and
+RsyncD logs but rather than that of the real client.
+
+.. _faq_health_check:
+
+-----------------------------------------
+How Can a Proxy Check the Backend Health?
+-----------------------------------------
+
+Krill Manager does not yet offer a dedicated health check endpoint. When using a
+load balancer or other proxy that supports health checks you are currently
+limited to testing TCP or HTTP(S) connectivity. For example if using a single
+DigitalOcean Load Balancer you can check either connectivity to NGINX or to
+RsyncD but not both. A dedicated Krill Manager health check endpoint would allow
+you to direct traffic to the cluster server only if all services were green.
+
+-----------------------------------------------------
+What Happens If a Cluster Server Becomes Unreachable?
+-----------------------------------------------------
+
+If your proxy detects that the backend is unreachable then clients (possibly
+after some delay) will no longer be routed to the "dead" server but will
+continue to be able to access RRDP and Rsync endpoints on the remaining servers.
+
+If your proxy monitors the health of the backend services and the health check
+fails then connections to that service will be routed to other "healthy"
+servers. Howvever, as :ref:`noted above <faq_health_check>`, the current health
+check options are not perfect.
+
+If the "unhealthy" cluster server is a slave and the "master" loses its
+connection to the slave then any Krill Manager components that were running only
+on that cluster server will be re-launched on a remaining "healthy" cluster
+server.
+
+If the "unhealthy" cluster server is the "master" then any Krill Manager
+components that were running only on that cluster server will be lost and you
+will need to manually fix the Docker Swarm and Gluster clusters. However,
+note that NGINX and RsyncD run on every cluster server and so clients will still
+be able to get the *last synced* RRDP and Rsync data from the remaining "healthy"
+cluster servers. You may however lose Krill and/or log streaming/uploading
+services.
+
+--------------------------------------------
+Can I Use Plain HTTP Behind a Load Balancer?
+--------------------------------------------
+
+No, Krill Manager does not support this.
+
+--------------------------------------------------------------
+Can I Use Self-Signed TLS Certificates Behind a Load Balancer?
+--------------------------------------------------------------
+
+In the case where the load balancer handles TLS termination, to avoid
+having to install and renew real certificates on both the load balancer and the
+cluster servers the ``--private`` argument can be used on the master. This will
+cause Krill Manager to generate self-signed certificates for the cluster NGINX
+instances. E.g.
 
 .. code-block:: bash
 
-   # open-cluster-ports
-   # krillmanager --slave-ips=<ipv4,ipv4> init
+   # krillmanager --slave-ips=<ipv4>,<ipv4>,... --private init
 
-Where each ``<ipv4>`` value is the IPv4 address of one of the N-1 slave servers
-in the cluster.
-
-On the other N-1 servers in the cluster (aka the slaves):
-
-.. code-block:: bash
-
-   # open-cluster-ports
-   # krillmanager --slave=1 init
-
-.. warning::
-
-   ``open-cluster-ports`` is a simple helper script that opens **to the world**
-   the ports required for cluster servers to communicate with each other. In a
-   production setup you should restrict access so that these ports are only open
-   between cluster servers and not to the wider Internet, either via ``ufw`` or
-   via a cloud firewall.
-
-What changes in cluster mode?
------------------------------
-
-Under the hood Krill Manager will use Docker Swarm to place Docker containers on
-available cluster servers, with some services such as NGINX and RsyncD getting a
-container on *every* server.
-
-Krill Manager will replicate configuration and state across the cluster using a
-Gluster replicated volume. Loss of a cluster server has no impact on the
-configuration and data available to the other servers.
-
-If the master server is lost the cluster continues to operate, you just can't
-replace lost containers while the master is down.
-
-Krill Manager forwards log streams to the master for uploading/processing to/by
-an external entity. Krill Manager does **NOT** aggregate Prometheus metric
-endpoints for you, the expectation is that the customers own Prometheus and
-Grafana services will be used to do metric aggegration.
-
-What stays the same in cluster mode?
-------------------------------------
-
-The commands used to manage Krill Manager are unchanged. They should be issued
-from the master server. Krill Manager will handle upgrading all cluster servers
-when an upgrade is requested.
-
-========
-Advanced
-========
-
-Load balancers, TLS termination and real client IPs
----------------------------------------------------
-
-A load balancer in front of Krill Manager servers can be used to terminate TLS. If
-it then speaks only to private IP addresses on each Krill Manager cluster server
-you may decide there is no need for real TLS certificates on the Krill Manager
-NGINX RRDP servers. Passing ``--private`` to ``krillmanager init`` will cause it
-to generate and use self-signed certificates for NGINX RRDP to support this use
-case.
-
-Instead, if you still wish Krill Manager servers to have real TLS certificates,
-Krill Manager will take care of ensuring that the Let's Encrypt HTTP-01 challenge
-is properly answered during ``krillmanager init`` even with multiple servers in
-the cluster, of distributing the TLS certificates across all NGINX servers, and
-will handle certificate renewal on one server and if renewed will distribute the
-new certificate across all servers and signal NGINX to reload without down time.
-
-.. note::
-   By using a load balancer you will lose the real client IP addresses and so
-   will not see them in your logs. One solution to this problem is to enable
-   `Proxy Protocol <https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt>`_
-   on your load balancer but Krill Manager does not yet support this. See: 
-   `issue #2 <https://github.com/NLnetLabs/krillmanager/issues/2>`_.
-
+-------------------------------
 How is the cluster established?
 -------------------------------
 
@@ -144,12 +260,34 @@ How is the cluster established?
 4. The master server writes the Docker Swarm join token to the Gluster volume.
 5. The slave servers detect the join token and use it to join the Docker Swarm.
 
+------------------------------------------
 Can I add or remove cluster servers later?
 ------------------------------------------
 
-In theory yes, but there is no support for doing so in Krill Manager. Krill
-Manager will handle the loss of a cluster server but that server will still be
-part of the cluster, as long as the load balancer uses a health check to avoid
-sending requests to a dead server the cluster will continue to work as expected.
-You would need to issue the appropriate Gluster and Docker Swarm commands to
-expand or contract the size of the cluster.
+1. Run ``open-cluster-ports`` and ``krillmanager --slave=1 init`` as usual on
+   any new slave servers.
+2. Run ``krillmanager --slave-ips=<ipv4>,<ipv4>,... init`` on the master
+   cluster server with the new set of IPv4 cluster slave addresses:
+
+   - Any missing slave IP addresses will cause Krill Manager to forcibly
+     disconnect those slaves from the Gluster cluster.
+   - Any new slave IP addresses will be added to the Gluster cluster.
+   - The new slaves will then add themselves to the Swarm cluster.
+3. Terminate the removed slave servers.
+
+--------------------------------------
+Is the Swarm Manager highly available?
+--------------------------------------
+
+No. This could be done but adds complexity while adding little value. If the
+manager server is lost the worst case is that the Krill UI and API become
+unavailable if Krill was running on the Swarm Manager server, RRDP and Rsync
+endpoints will continue to be available.
+
+--------------------------------------
+Is the Docker Swarm Routing Mesh Used?
+--------------------------------------
+
+No, the NGINX (HTTP(S)/RRDP) and Rsync containers bind directly to the host
+interface ensuring that IPv6 is supported and eliminating an unnecessary
+extra proxy hop.
