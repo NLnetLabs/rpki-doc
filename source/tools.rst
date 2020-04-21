@@ -34,10 +34,10 @@ Relying Party Software
    RPKI relying party software written by NLnet Labs in the Rust programming language,
    designed to have a small footprint and great portability.
 
-`rpki-client(8) <https://github.com/kristapsdz/rpki-client>`_
-   rpki-client is written in C as part of the rpki-client(1) project, an RPKI validator
-   for OpenBSD.
-
+`rpki-client(8) <https://rpki-client.org/>`_
+   rpki-client is written in C as part of the OpenBSD project, and has been ported to
+   various Linux distributions. Designed to be secure and simple to use.
+   
 `RPSTIR <https://github.com/bgpsecurity/rpstir/>`_
    Relying Party Security Technology for Internet Routing (RPSTIR) software,
    initially written by Raytheon BBN Technologies in the C programming language,
