@@ -31,11 +31,20 @@ following paths are available:
 :command:`/csv`
      Returns the current set of VRPs in **csv** output format
 
+:command:`/csvext`
+     Returns the current set of VRPs in **csvext** output format.
+
 :command:`/json`
      Returns the current set of VRPs in **json** output format
 
 :command:`/openbgpd`
      Returns the current set of VRPs in **OpenBGPD** output format
+
+:command:`/bird`
+     Returns the current set of VRPs in **bird** output format
+
+:command:`/bird2`
+     Returns the current set of VRPs in **bird2** output format
 
 :command:`/rpsl`
      Returns the current set of VRPs in **RPSL** output format
