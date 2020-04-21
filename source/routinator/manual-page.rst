@@ -179,7 +179,7 @@ The available options are:
       *localhost*, host names that consist of IP addresses, and a host name that
       contains an explicit port.
 
-     This option allows to disable this filtering.
+      This option allows to disable this filtering.
 
 .. option:: --disable-rsync
 
@@ -872,6 +872,9 @@ The service only supports GET requests with the following paths:
 
 :command:`/csv`
       Returns the current set of VRPs in **csv** output format.
+
+:command:`/csvext`
+      Returns the current set of VRPs in **csvext** output format.
 
 :command:`/json`
       Returns the current set of VRPs in **json** output format.
