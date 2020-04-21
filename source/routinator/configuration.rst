@@ -16,28 +16,30 @@ optional configuration file, which will be largely similar to this:
 
 .. code-block:: text
 
-  dirty = false
-  disable-rrdp = false
-  disable-rsync = false
-  exceptions = []
-  expire = 7200
-  history-size = 10
-  http-listen = []
-  log = "default"
-  log-level = "WARN"
-  refresh = 600
-  repository-dir = "/Users/routinator/.rpki-cache/repository"
-  retry = 600
-  rrdp-proxies = []
-  rrdp-root-certs = []
-  rsync-command = "rsync"
-  rsync-timeout = 300
-  rtr-listen = []
-  strict = false
-  syslog-facility = "daemon"
-  systemd-listen = false
-  tal-dir = "/Users/routinator/.rpki-cache/tals"
-  validation-threads = 4
+    allow-dubious-hosts = false
+    dirty = false
+    disable-rrdp = false
+    disable-rsync = false
+    exceptions = []
+    expire = 7200
+    history-size = 10
+    http-listen = []
+    log = "default"
+    log-level = "WARN"
+    refresh = 600
+    repository-dir = "/Users/routinator/.rpki-cache/repository"
+    retry = 600
+    rrdp-proxies = []
+    rrdp-root-certs = []
+    rsync-command = "rsync"
+    rsync-timeout = 300
+    rtr-listen = []
+    stale = "warn"
+    strict = false
+    syslog-facility = "daemon"
+    systemd-listen = false
+    tal-dir = "/Users/routinator/.rpki-cache/tals"
+    validation-threads = 4
 
 You can override these defaults, as well as configure a great number of
 additional options using either command line arguments or via the
@@ -70,6 +72,7 @@ providing an HTTP server on port 9556, simply take the output from
 
 .. code-block:: text
 
+    allow-dubious-hosts = false
     dirty = false
     disable-rrdp = false
     disable-rsync = false
@@ -87,6 +90,7 @@ providing an HTTP server on port 9556, simply take the output from
     rsync-command = "rsync"
     rsync-timeout = 300
     rtr-listen = ["192.0.2.13:3323", "[2001:0DB8::13]:3323"]
+    stale = "warn"
     strict = false
     syslog-facility = "daemon"
     systemd-listen = false
