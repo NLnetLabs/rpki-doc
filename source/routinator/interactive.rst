@@ -29,6 +29,11 @@ csv
       latter is the name of the TAL file  without the extension *.tal*. This is
       the default format used if the :option:`--format` or :option:`-f` option
       is missing.
+csvcompat
+       The same as csv except that all fields are embedded in double
+       quotes and the autonomous system number is given without the
+       prefix AS. This format is pretty much identical to the CSV
+       produced by the RIPE NCC Validator.
 csvext
       This is an extended version of the *csv* format, which was used by the RIPE
       NCC RPKI Validator 1.x. Each line contains these comma-separated values: the
@@ -48,6 +53,13 @@ json
 openbgpd
       Choosing  this format causes Routinator to produce a *roa-set*
       configuration item for the OpenBGPD configuration.
+bird
+      Choosing this format causes Routinator to produce a roa table
+      configuration item for the BIRD configuration.
+
+bird2
+      Choosing this format causes Routinator to produce a route table
+      configuration item for the BIRD2 configuration.
 rpsl
       This format produces a list of RPSL objects with the authorisation in the
       fields *route*, *origin*, and *source*. In addition, the fields *descr*,
