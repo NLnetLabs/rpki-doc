@@ -49,6 +49,28 @@ Upload Frequency
 RFC protocol exchange logs are uploaded hourly. All other logs are uploaded at
 least every 10 minutes, more frequently if there is a lot of logging activity.
 
+Force Flush
+-----------
+
+If needed you can force FluentD to flush its buffers which should cause it to
+stream any data it has pending to the destination, e.g. S3 compatible storage or
+a custom destination that you have configured:
+
+1. Use ``docker service ps krill_log_uploader`` to find the server running the
+   log upload container.
+2. SSH to the server running the log upload container.
+3. Use ``docker ps`` to find the the container ID or name of the
+   ``krill_log_uploader`` container.
+4. Use ``docker kill -s USR1 <container PID/name>`` to send the flush signal to
+   FluentD.
+5. Use ``docker logs <container PID/name>`` to see that the flush was received and
+   if it caused any upload activity, e.g.:
+.. code-block:: bash
+
+   # docker service logs --raw z1c6ksk6zvdx | fgrep flush
+   2020-04-21 08:44:25 +0000 [info]: #0 force flushing buffered events
+   2020-04-21 08:44:25 +0000 [info]: #0 flushing all buffer forcedly
+
 Log Retention
 -------------
 
