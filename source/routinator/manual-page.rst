@@ -5,118 +5,44 @@ Manual Page
 
 :command:`routinator` - RPKI relying party software
 
-:Date:       2019-11-29
+:Date:       2020-04-21
 :Author:     Martin Hoffmann
 :Copyright:  2019-2020 - NLnet Labs
-:Version:    0.6.4
+:Version:    0.7
 
 Synopsis
 --------
 
 .. raw:: html
 
-  <p><strong class="command">routinator</strong> <a class="reference internal"
-  href="#cmdoption-b"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">-b <var>base-dir</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-r"><code class="xref std
-  std-option docutils literal notranslate"> <span class="pre">-r
-  <var>repository-dir</var></span></code></a> <a class="reference internal"
-  href="#cmdoption-t"> <code class="xref std std-option docutils literal
-  notranslate"> <span class="pre">-t <var>tal-dir</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-x"><code class="xref std
-  std-option docutils literal notranslate"><span class="pre">-x
-  <var>exceptions-file </var></span><span class="pre">[-x
-  <var>exceptions-file</var> [...]]</span></code></a> <a class="reference
-  internal" href="#cmdoption-strict"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">--strict</span></code></a> <a
-  class="reference internal" href="#cmdoption-disable-rsync"><code class="xref
-  std std-option docutils literal notranslate"><span
-  class="pre">--disable-rsync</span></code></a> <a class="reference internal"
-  href="#cmdoption-rsync-command"><code class="xref std std-option docutils
-  literal notranslate"><span
-  class="pre">--rsync-command=<var>args</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-rsync-timeout"><code class="xref
-  std std-option docutils literal notranslate"><span
-  class="pre">--rsync-timeout=<var>seconds</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-disable-rrdp"><code class="xref
-  std std-option docutils literal notranslate"><span
-  class="pre">--disable-rrdp</span></code></a> <a class="reference internal"
-  href="#cmdoption-rrdp-timeout"><code class="xref std std-option docutils
-  literal notranslate"><span
-  class="pre">--rrdp-timeout=<var>seconds</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-rrdp-connect-timeout"><code
-  class="xref std std-option docutils literal notranslate"><span
-  class="pre">--rrdp-connect-timeout=<var>seconds</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-rrdp-local-addr"><code class="xref
-  std std-option docutils literal notranslate"><span
-  class="pre">--rrdp-local-addr=<var>addr</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-rrdp-root-cert"><code class="xref
-  std std-option docutils literal notranslate"><span
-  class="pre">--rrdp-root-cert=<var>path</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-rrdp-proxy"><code class="xref std
-  std-option docutils literal notranslate"><span
-  class="pre">--rrdp-proxy=<var>uri</var></span></code></a> <a class="reference
-  internal" href="#cmdoption-dirty"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">--dirty</span></code></a> <a
-  class="reference internal" href="#cmdoption-validation-threads"><code
-  class="xref std std-option docutils literal notranslate"><span
-  class="pre">--validation-threads=<var>count</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-v"><code class="xref std
-  std-option docutils literal notranslate"><span class="pre">-v</span> <span
-  class="pre">|</span> <span class="pre">-vv</span> <span class="pre">|</span>
-  <span class="pre">-q</span> <span class="pre">|</span> <span
-  class="pre">-qq</span></code></a> <a class="reference internal"
-  href="#cmdoption-syslog"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">--syslog</span></code></a> <a class="reference
-  internal" href="#cmdoption-syslog-facility"><code class="xref std std-option
-  docutils literal notranslate"><span
-  class="pre">--syslog-facility=<var>facility</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-h"><code class="xref std
-  std-option docutils literal notranslate"><span
-  class="pre">-h</span></code></a> <a class="reference internal"
-  href="#cmdoption-version"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">-V</span></code></a> <code class="xref std
-  std-subcmd docutils literal notranslate"><span
-  class="pre">command</span></code> <code class="xref std std-option docutils
-  literal notranslate"><span class="pre">args</span></code></p>
-
   <p><strong class="command">routinator</strong> <code class="xref std
   std-option docutils literal notranslate"><span
   class="pre">options</span></code> <a class="reference internal"
   href="#subcmd-init"><code class="xref std std-subcmd docutils literal
-  notranslate"><span class="pre">init</span></code></a> <a class="reference
-  internal" href="#cmdoption-f"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">-f</span></code></a></p>
+  notranslate"><span class="pre">init</span></code></a> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">init-options</span></code></p>
 
   <p><strong class="command">routinator</strong> <code class="xref std
   std-option docutils literal notranslate"><span
   class="pre">options</span></code> <a class="reference internal"
   href="#subcmd-vrps"><code class="xref std std-subcmd docutils literal
-  notranslate"><span class="pre">vrps</span></code></a> <a class="reference
+  notranslate"><span class="pre">vrps</span></code></a> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">vrps-options</span></code> <a class="reference
   internal" href="#cmdoption-o"><code class="xref std std-option docutils
   literal notranslate"><span class="pre">-o
   <var>output-file</var></span></code></a> <a class="reference internal"
   href="#cmdoption-format"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">-f <var>format</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-n"><code class="xref std
-  std-option docutils literal notranslate"><span
-  class="pre">-n</span></code></a> <a class="reference internal"
-  href="#cmdoption-a"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">-a <var>asn</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-p"><code class="xref std
-  std-option docutils literal notranslate"><span class="pre">-p
-  <var>prefix</var></span></code></a></p>
+  notranslate"><span class="pre">-f <var>format</var></span></code></a></p>
 
   <p><strong class="command">routinator</strong> <code class="xref std
   std-option docutils literal notranslate"><span
   class="pre">options</span></code> <a class="reference internal"
   href="#subcmd-validate"><code class="xref std std-subcmd docutils literal
-  notranslate"><span class="pre">validate</span></code></a> <a class="reference
-  internal" href="#cmdoption-noupdate"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">-n</span></code></a> <a
-  class="reference internal" href="#cmdoption-j"><code class="xref std
+  notranslate"><span class="pre">validate</span></code></a> <code class="xref std
   std-option docutils literal notranslate"><span
-  class="pre">-j</span></code></a> <a class="reference internal"
+  class="pre">validate-options</span></code> <a class="reference internal"
   href="#cmdoption-asn"><code class="xref std std-option docutils literal
   notranslate"><span class="pre">-a <var>asn</var></span></code></a> <a
   class="reference internal" href="#cmdoption-prefix"><code class="xref std
@@ -127,32 +53,17 @@ Synopsis
   std-option docutils literal notranslate"><span
   class="pre">options</span></code> <a class="reference internal"
   href="#subcmd-server"><code class="xref std std-subcmd docutils literal
-  notranslate"><span class="pre">server</span></code></a> <a class="reference
-  internal" href="#cmdoption-rtr"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">--rtr <var>addr:port</var>
-  [...]</span></code></a> <a class="reference internal"
-  href="#cmdoption-http"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">--http <var>addr:port</var>
-  [...]</span></code></a> <a class="reference internal"
-  href="#cmdoption-listen-systemd"><code class="xref std std-option docutils
-  literal notranslate"><span class="pre">--listen-systemd</span></code></a> <a
-  class="reference internal" href="#cmdoption-refresh"><code class="xref std
-  std-option docutils literal notranslate"><span class="pre">--refresh
-  <var>seconds</var></span></code></a> <a class="reference internal"
-  href="#cmdoption-retry"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">--retry <var>seconds</var></span></code></a> <a
-  class="reference internal" href="#cmdoption-expire"><code class="xref std
-  std-option docutils literal notranslate"><span class="pre">--expire
-  <var>seconds</var></span></code></a> <a class="reference internal"
-  href="#cmdoption-history"><code class="xref std std-option docutils literal
-  notranslate"><span class="pre">--history
-  <var>count</var></span></code></a></p>
+  notranslate"><span class="pre">server</span></code></a> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">server-options</span></code></p>
 
   <p><strong class="command">routinator</strong> <code class="xref std
   std-option docutils literal notranslate"><span
   class="pre">options</span></code> <a class="reference internal"
   href="#subcmd-update"><code class="xref std std-subcmd docutils literal
-  notranslate"><span class="pre">update</span></code></a></p>
+  notranslate"><span class="pre">update</span></code></a> <code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">update-options</span></code></p>
 
   <p><strong class="command">routinator</strong> <a class="reference internal"
   href="#subcmd-man"><code class="xref std std-subcmd docutils literal
@@ -160,6 +71,15 @@ Synopsis
   internal" href="#cmdoption-output"><code class="xref std std-option docutils
   literal notranslate"><span class="pre">-o
   <var>file</var></span></code></a></p>
+
+  <p><strong class="command">routinator</strong> <a
+  class="reference internal" href="#cmdoption-h"><code class="xref std
+  std-option docutils literal notranslate"><span
+  class="pre">-h</span></code></a></p>
+
+  <p><strong class="command">routinator</strong> <a class="reference internal"
+  href="#cmdoption-version"><code class="xref std std-option docutils literal
+  notranslate"><span class="pre">-V</span></code></a></p>
 
 Description
 -----------
@@ -228,6 +148,38 @@ The available options are:
       used in practice.
 
       See `Relaxed Validation`_ below for more information.
+
+.. option:: --stale=policy
+
+      This option defines how deal with stale objects. In RPKI, manifests and
+      CRLs can be stale if the time given in their *next-update* field is in the
+      past, indicating that an update to the object was scheduled but didn't
+      happen. This can be because of an operational issue at the issuer or an
+      attacker trying to replay old objects.
+
+      There are three possible policies that define how Routinator should treat
+      stale objects.
+
+      A policy of *reject* instructs Routinator to consider all stale objects
+      invalid. This will result in all material published by the CA issuing this
+      manifest and CRL to be invalid including all material of any child CA.
+
+      The *warn* policy will allow Routinator to consider any stale object to be
+      valid. It will, however, print a warning in the log allowing an operator
+      to follow up on the issue. This is the default policy if the option is not
+      provided.
+
+      Finally, the *accept* policy will cause Routinator to quietly accept any
+      stale object as valid.
+
+.. option:: --allow-dubious-hosts
+
+      As a precaution, Routinator will reject rsync and HTTPS URIs from RPKI
+      data with dubious host names. In particular, it will reject the name
+      *localhost*, host names that consist of IP addresses, and a host name that
+      contains an explicit port.
+
+     This option allows to disable this filtering.
 
 .. option:: --disable-rsync
 
@@ -400,6 +352,12 @@ These can be requested by providing different commands on the command line.
                   This is the default format used if the :option:`-f` option
                   is missing.
 
+           csvcompat
+                  The same as csv except that all fields are embedded in double
+                  quotes and the autonomous system number is given without the
+                  prefix AS. This format is pretty much identical to the CSV
+                  produced by the RIPE NCC Validator.
+
            csvext
                   An extended version of csv each line contains these
                   comma-separated values: the rsync URI of the ROA the line
@@ -430,6 +388,14 @@ These can be requested by providing different commands on the command line.
            openbgpd
                   Choosing this format causes Routinator to produce a roa-
                   set configuration item for the OpenBGPD configuration.
+
+           bird
+                  Choosing this format causes Routinator to produce a roa table
+                  configuration item for the BIRD configuration.
+
+           bird2
+                  Choosing this format causes Routinator to produce a roa table
+                  configuration item for the BIRD2 configuration.
 
            rpsl
                   This format produces a list of RPSL objects with the
@@ -718,6 +684,24 @@ strict
       A boolean specifying whether strict validation should be employed. If
       missing, strict validation will not be used.
 
+stale
+      A string specifying the policy for dealing with stale objects.
+
+      reject
+             Consider all stale objects invalid rendering all material published
+             by the CA issuing the stale object to be invalid including all
+             material of any child CA.
+
+      warn
+             Consider stale objects to be valid but print a warning to the log.
+
+      accept
+             Quietly consider stale objects valid.
+
+allow-dubious-hosts
+      A boolean value that, if present and true, disables Routinator's filtering
+      of dubious host names in rsync and HTTPS URIs from RPKI data.
+
 disable-rsync
       A boolean value that, if present and true, turns off the use of rsync.
 
@@ -868,6 +852,15 @@ user
 group
       A string value containing the group name a daemon process should run as.
 
+tal-label
+      An array containing arrays of two string values mapping the name of a TAL
+      file (without the path but including the extension) as given by the first
+      string to the name of the TAL to be included where the TAL is referenced
+      in output as given by the second string.
+
+      If the options missing or if a TAL isn't mentioned in the option,
+      Routinator will construct a name for the TAL by using its file name
+      (without the path) and dropping the extension.
 
 HTTP Service
 ------------
@@ -888,6 +881,12 @@ The service only supports GET requests with the following paths:
 
 :command:`/openbgpd`
       Returns the current set of VRPs in **openbgpd** output format.
+
+:command:`/bird`
+      Returns the current set of VRPs in **bird** output format.
+
+:command:`/bird2`
+      Returns the current set of VRPs in **bird2** output format.
 
 :command:`/rpsl`
       Returns the current set of VRPs in **rpsl** output format.
