@@ -5,10 +5,10 @@ Manual Page
 
 :command:`routinator` - RPKI relying party software
 
-:Date:       2020-04-21
+:Date:       2020-04-23
 :Author:     Martin Hoffmann
 :Copyright:  2019-2020 - NLnet Labs
-:Version:    0.7
+:Version:    0.7rc1
 
 Synopsis
 --------
@@ -912,10 +912,14 @@ The service only supports GET requests with the following paths:
 :command:`/validity?asn=as-number&prefix=prefix`
       Same as above but with a more form-friendly calling convention.
 
-The paths that output the current set of VRPs accept filter expressions to limit
-the VRPs returned in the form of a query string. The field ``filter-asn``
-can be used to filter for ASNs and the field ``filter-prefix`` can be used
-to filter for prefixes. The fields can be repeated multiple times.
+In addition, the current set of VRPs is available for each output format
+at a path with the same name as the output format. E.g., the CSV output is
+available at `/csv`.
+
+These paths accept filter expressions to limit the VRPs returned in the form of
+a query string. The field ``filter-asn`` can be used to filter for ASNs and the
+field ``filter-prefix`` can be used to filter for prefixes. The fields can be
+repeated multiple times.
 
 This works in the same way as the options of the same name to the
 :subcmd:`vrps` command.
