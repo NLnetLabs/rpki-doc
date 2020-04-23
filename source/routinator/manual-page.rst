@@ -870,29 +870,8 @@ be used within the local network.
 
 The service only supports GET requests with the following paths:
 
-:command:`/csv`
-      Returns the current set of VRPs in **csv** output format.
-
-:command:`/csvext`
-      Returns the current set of VRPs in **csvext** output format.
-
-:command:`/json`
-      Returns the current set of VRPs in **json** output format.
-
 :command:`/metrics`
       Returns a set of monitoring metrics in the format used by Prometheus.
-
-:command:`/openbgpd`
-      Returns the current set of VRPs in **openbgpd** output format.
-
-:command:`/bird`
-      Returns the current set of VRPs in **bird** output format.
-
-:command:`/bird2`
-      Returns the current set of VRPs in **bird2** output format.
-
-:command:`/rpsl`
-      Returns the current set of VRPs in **rpsl** output format.
 
 :command:`/status`
       Returns the current status of the Routinator instance. This is similar to
@@ -914,7 +893,7 @@ The service only supports GET requests with the following paths:
 
 In addition, the current set of VRPs is available for each output format
 at a path with the same name as the output format. E.g., the CSV output is
-available at `/csv`.
+available at ``/csv``.
 
 These paths accept filter expressions to limit the VRPs returned in the form of
 a query string. The field ``filter-asn`` can be used to filter for ASNs and the
