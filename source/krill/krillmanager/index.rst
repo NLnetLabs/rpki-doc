@@ -12,7 +12,9 @@ with integration points for monitoring and log analysis.
 
 Krill Manager is currently available as a `DigitalOcean Marketplace 1-Click App
 <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_ with
-more cloud platforms coming soon.
+more cloud platforms coming soon. Hosting Krill Manger yourself is possible too,
+you should be able to run it on any Linux host that has Bash, Docker and Gluster
+installed.
 
 You can watch an introduction to the capabilities of Krill Manager in the video
 below. It walks through setting up Krill and all additional components using the
@@ -28,10 +30,6 @@ Regional Internet Registry and create ROAs, all in just 6 minutes real-time.
         allow="accelerometer; autoplay; encrypted-media; gyroscope;
         picture-in-picture" allowfullscreen></iframe>
     </div>
-
-In future we intend to also publish instructions for using Krill Manager in
-other hosting environments. For the adventurous you should be able to run Krill
-Manager on any Linux host that has Bash, Docker and Gluster installed.
 
 .. toctree::
    :maxdepth: 1
