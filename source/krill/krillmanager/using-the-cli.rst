@@ -104,7 +104,7 @@ Displays the usage summary.
 Command: init
 -------------
 
-Runs the (re)configuration wizard. See :ref:`doc_initial_setup`.
+Runs the (re)configuration wizard. See :ref:`doc_krill_manager_initial_setup`.
 
 ----
 
