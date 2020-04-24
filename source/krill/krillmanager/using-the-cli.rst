@@ -106,6 +106,22 @@ Command: init
 
 Runs the (re)configuration wizard. See :ref:`doc_krill_manager_initial_setup`.
 
+The ``init`` command supports some useful options for test and clustered
+scenarios that are not available via the interactive wizard:
+
+.. code-block:: bash
+
+   # krillmanager [--use-lets-encrypt-staging] [--private] init
+
+The ``--use-lets-encrypt-staging`` option causes any Let's Encrypt certificate
+requests to be made to the Let's Encrypt staging environment rather than the 
+production environment. This can be useful to avoid hitting Let's Encrypt rate
+limits in the production environment through repeated testing.
+
+The ``--private`` option causes a self-signed certificate to be issued to NGINX
+for serving the RRDP FQDN. This might be of interest if running Krill Manager
+behind a proxy which itself has the real RRDP certificate.
+
 ----
 
 .. _cmd_krillc:
