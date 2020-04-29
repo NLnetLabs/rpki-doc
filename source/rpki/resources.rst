@@ -12,6 +12,15 @@ Engineering Task Force relevant to RPKI.
 
 The :ref:`doc_tools` page an overview of all available tools for using RPKI.
 
+.. index:: Books
+
+Books
+-----
+
+:download:`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`, by Flavio Luciani & Tiziano Tofoni (PDF)
+
+:download:`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`, by Melchior Aelmans & Niels Raijer (PDF)
+
 .. index:: Statistics
 
 RPKI Insights and Statistics
@@ -25,15 +34,6 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
-
-.. index:: Books
-
-Books
------
-
-:download:`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`, by Flavio Luciani & Tiziano Tofoni (PDF)
-
-:download:`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`, by Melchior Aelmans & Niels Raijer (PDF)
 
 .. index:: Operational experiences
 
