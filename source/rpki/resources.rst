@@ -31,11 +31,9 @@ There are several initiatives that measure the adoption and data quality of RPKI
 Books
 -----
 
-`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`_
-   Flavio Luciani, Tiziano Tofoni
+:download:`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`, by Flavio Luciani & Tiziano Tofoni (PDF)
 
-`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`_
-   Melchior Aelmans, Niels Raijer
+:download:`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`, by Melchior Aelmans & Niels Raijer (PDF)
 
 .. index:: Operational experiences
 
