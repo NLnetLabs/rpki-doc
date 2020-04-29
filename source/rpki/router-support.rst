@@ -21,7 +21,7 @@ Hardware Solutions
                recommended improvements and bug fixes. Please check your vendor
                documentation and knowledge base.
 
-Juniper — `Documentation <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`__ — `Day One Book <https://www.juniper.net/uk/en/training/jnbooks/day-one/deploying-bgp-routing-security/>`_
+Juniper — `Documentation <https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html>`__
    Junos version 12.2 and newer. Please read PR1461602 and PR1309944 before deploying.
 
 Cisco — `Documentation <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/irg-origin-as.html>`__
