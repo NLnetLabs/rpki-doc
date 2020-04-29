@@ -23,8 +23,8 @@ Books
 
 .. index:: Statistics
 
-RPKI Insights and Statistics
-----------------------------
+Insights and Statistics
+-----------------------
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
