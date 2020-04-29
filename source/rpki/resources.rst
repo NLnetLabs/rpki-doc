@@ -26,6 +26,17 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
 
+.. index:: Books
+
+Books
+-----
+
+`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`_
+   Flavio Luciani, Tiziano Tofoni
+
+`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`_
+   Melchior Aelmans, Niels Raijer
+
 .. index:: Operational experiences
 
 Operational Experiences
