@@ -205,12 +205,20 @@ command.
 
 The restored data will be processed by the current Krill Manager version which
 may be newer than the version that created the backup. Any incompatibilities
-should be handled by the restore process.
+should be handled automatically by the restore process.
 
-.. note:: If the domain name of the system being restored to is not the same
-          as the domain of the system on which the backup was made, you will
-          be warned because the certificates will not match the domain being
-          served from.
+If Krill and related services were running when the restore process started
+Krill Manager will stop them prior to restore and start them again afterwards.
+Otherwise you will need to use the :ref:`start<cmd_start>` command to start
+the services after restore.
+
+.. note:: If the domain names referred to in the backup archive do not resolve
+          to the external public IP address of the machine being restored to,
+          the DNS setup or configuration in the archive may be incorrect. Krill
+          Manager will advise against proceeding with the restore in this case.
+          A valid scenario in which this can occur is when using a CDN for RRDP
+          in which case the FQDN resolves to the CDN endpoint and not to the
+          instance directly.
 
 ----
 
