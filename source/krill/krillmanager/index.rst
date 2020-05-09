@@ -16,8 +16,6 @@ Krill with Krill Manager is available for free as a 1-Click App on the `AWS
 Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
 `DigitalOcean Marketplace
 <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_.
-Hosting Krill Manger yourself is possible too, you should be able to run it on
-any Linux host that has Bash, Docker and Gluster installed.
 
 You can watch an introduction to the capabilities of Krill Manager in the video
 below. It walks through setting up Krill and all additional components using the
