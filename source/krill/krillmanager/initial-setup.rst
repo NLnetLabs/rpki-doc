@@ -3,7 +3,12 @@
 Initial Setup
 =============
 
-Run the ``krillmanager init`` command to launch the interactive setup wizard.
+First, log into the virtual machine you created using SSH. Note that for AWS
+Marketplace EC2 instances you have use the username ``ubuntu`` and for
+DigitalOcean Marketplace droplets the username ``root``.
+
+Next, run the ``krillmanager init`` command to launch the interactive setup
+wizard.
 
 .. Important:: The wizard covers the most common cases. It does **NOT** yet
                support clustered or advanced log streaming setups or overriding
