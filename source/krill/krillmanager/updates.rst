@@ -9,6 +9,7 @@ News
 To stay informed about new releases of Krill and Krill Manager and to learn
 about documentation updates and other announcements, subscribe to the 
 `NLnet Labs RPKI mailing list <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.
+Detailed release notes are `available on GitHub <https://github.com/NLnetLabs/krillmanager/releases>`_.
 
 Feedback
 --------
