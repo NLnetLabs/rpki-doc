@@ -165,9 +165,9 @@ features of your S3-like service provider that s3cmd supports.
 .. seealso::
      - `About the s3cmd configuration file <https://s3tools.org/kb/item14.htm>`_
 
-------------
-Log Analysis
-------------
+--------------------
+Log Analysis Example
+--------------------
 
 .. Tip:: Upload to an AWS S3 compatible service is primarily intended for
          archival and root cause analysis after an incident. If your intention
