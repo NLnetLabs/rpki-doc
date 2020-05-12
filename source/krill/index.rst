@@ -5,8 +5,7 @@ Krill
 
 Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
 featuring a Certificate Authority (CA) and publication server, written by `NLnet
-Labs <https://nlnetlabs.nl>`_ in the `Rust programming language
-<https://www.rust-lang.org>`_.
+Labs <https://nlnetlabs.nl>`_.
 
 .. figure:: img/krill-ui-welome.png
     :align: center
@@ -52,8 +51,7 @@ of Krill, please have a look at the `project plan
 <https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
 on GitHub.
 
-Krill Manager
--------------
+------------
 
 You can choose to run Krill as a standalone application or run it in conjunction
 with Krill Manager. :ref:`doc_krill_manager` is a tool for running Krill as a
@@ -70,8 +68,7 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
 `DigitalOcean Marketplace
 <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_.
 
-Feedback
---------
+------------
 
 You are welcome ask questions or post comments and ideas on our `RPKI mailing
 list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you find a bug in Krill,
