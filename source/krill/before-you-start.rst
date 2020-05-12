@@ -30,6 +30,16 @@ entitlement request and response that determines which resources you receive on
 your certificate, the certificate request and response, as well as the revoke
 request and response.
 
+.. Important:: The initial XML file exchange is the only manual step required
+               to get started with Delegated RPKI. All other requests and
+               responses, as well as resigning and renewing certificates and
+               ROAs are automated. **As long as Krill is running, it will
+               automatically update the entitled resources on your certificate,
+               as well as reissue certificates, ROAs and all other objects
+               before they expire or become stale.** Note that even if Krill
+               does go down, you have 16 hours to bring it back up before data
+               starts going stale.
+
 Whether you also run the Krill publication server depends on if you can, or want
 to use one offered by a third party. For the general wellbeing of the RPKI
 ecosystem, we would generally recommend to publish with your parent CA, if
