@@ -25,7 +25,7 @@ services and the locations at which the services can be found:
     - RRDP URI        : https://rrdp.demo.krill.cloud/rrdp/
     - Rsync URI       : rsync://rsync.demo.krill.cloud/repo/
     - Prometheus monitoring endponts:
-      - Krill         : http://:9657/metrics
+      - Krill         : http://ca.demo.krill.cloud:9657/metrics
       - NGINX         : http://ca.demo.krill.cloud:9113/metrics
       - Docker        : http://ca.demo.krill.cloud:9323/metrics
       - O/S           : http://ca.demo.krill.cloud:9100/metrics

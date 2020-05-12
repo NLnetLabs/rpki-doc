@@ -3,7 +3,12 @@
 Initial Setup
 =============
 
-Run the ``krillmanager init`` command to launch the interactive setup wizard.
+First, log into the virtual machine you created using SSH. Note that for AWS
+Marketplace EC2 instances you have use the username ``ubuntu`` and for
+DigitalOcean Marketplace droplets the username ``root``.
+
+Next, run the ``krillmanager init`` command to launch the interactive setup
+wizard.
 
 .. Important:: The wizard covers the most common cases. It does **NOT** yet
                support clustered or advanced log streaming setups or overriding
@@ -25,10 +30,10 @@ version if available:
 .. code-block:: text
 
   # krillmanager init
-  A new version is available (v0.1.0 => v0.1.5).
-  Automatically upgrading to newer version v0.1.5..
+  A new version is available (v0.2.0 => v0.2.1).
+  Automatically upgrading to newer version v0.2.1..
   Checking for newer version
-  Fetching newer version (v0.1.5)
+  Fetching newer version (v0.2.1)
   Running post-upgrade actions
   Upgrading host files
   Upgrading dependencies
@@ -49,7 +54,7 @@ again, if a new version is available you will be offered the choice to upgrade:
 .. code-block:: text
 
   # krillmanager init
-  A new version is available (v0.1.0 => v0.1.5).
+  A new version is available (v0.2.0 => v0.2.1).
 
   > Would you like to upgrade? [YES/NO]: YES
 

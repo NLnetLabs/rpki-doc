@@ -3,18 +3,19 @@
 Krill Manager
 =============
 
-.. Note:: The basic usage of Krill Manager has been documented but more advanced
-          topics are still being written. To stay informed please subscribe to
-          the `NLnet Labs RPKI mailing list <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.
+Krill Manager is a tool for running Krill as a highly available scalable
+service. It brings together all of the puzzle pieces needed to administer and
+run Delegated RPKI with Krill.
 
-Krill Manager is a tool for running Krill as a highly available scalable service
-with integration points for monitoring and log analysis.
+Krill Manager includes Docker, Gluster, NGINX, Rsyncd, as well as Prometheus and
+Fluentd outputs for monitoring and log analysis. The integrated setup wizard
+allows for seamless TLS configuration, optionally using Let's Encrypt, as well
+as automated updating of the application itself and all included components.
 
-Krill Manager is currently available as a `DigitalOcean Marketplace 1-Click App
-<https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_ with
-more cloud platforms coming soon. Hosting Krill Manger yourself is possible too,
-you should be able to run it on any Linux host that has Bash, Docker and Gluster
-installed.
+Krill with Krill Manager is available for free as a 1-Click App on the `AWS
+Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
+`DigitalOcean Marketplace
+<https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_.
 
 You can watch an introduction to the capabilities of Krill Manager in the video
 below. It walks through setting up Krill and all additional components using the
