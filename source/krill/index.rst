@@ -7,6 +7,11 @@ Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
 featuring a Certificate Authority (CA) and publication server, written by `NLnet
 Labs <https://nlnetlabs.nl>`_.
 
+You are welcome ask questions or post comments and ideas on our `RPKI mailing
+list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you find a bug in Krill,
+feel free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on
+GitHub. Krill is distributed under the Mozilla Public License 2.0.
+
 .. figure:: img/krill-ui-welome.png
     :align: center
     :width: 100%
@@ -44,19 +49,12 @@ certificate and ROAs with a third party, such as your NIR or RIR, or you publish
 them yourself. Krill can be managed with a web user interface, from the command
 line and through an API.
 
-Krill has minimal system requirements and offers all features that are needed
-for production environments. The toolset is actively being developed with a
-frequent new releases. If you want to know more about the upcoming functionality
-of Krill, please have a look at the `project plan
-<https://github.com/NLnetLabs/krill/projects?query=is%3Aopen+sort%3Aname-asc/>`_
-on GitHub.
-
 ------------
 
-You can choose to run Krill as a standalone application or run it in conjunction
-with Krill Manager. :ref:`doc_krill_manager` is a tool for running Krill as a
-highly available scalable service. It brings together all of the puzzle pieces
-needed to administer and run Delegated RPKI with Krill.
+You can choose to run Krill as a standalone application or run it together with
+with :ref:`doc_krill_manager`, a tool that brings together all of the puzzle
+pieces needed to administer and run Delegated RPKI with Krill as a highly
+available scalable service.
 
 Krill Manager includes Docker, Gluster, NGINX, Rsyncd, as well as Prometheus and
 Fluentd outputs for monitoring and log analysis. The integrated setup wizard
@@ -67,13 +65,6 @@ Krill with Krill Manager is available for free as a 1-Click App on the `AWS
 Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
 `DigitalOcean Marketplace
 <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_.
-
-------------
-
-You are welcome ask questions or post comments and ideas on our `RPKI mailing
-list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you find a bug in Krill,
-feel free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on
-GitHub. Krill is distributed under the Mozilla Public License 2.0.
 
 .. toctree::
    :maxdepth: 2
