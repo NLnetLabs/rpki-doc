@@ -164,3 +164,53 @@ features of your S3-like service provider that s3cmd supports.
 
 .. seealso::
      - `About the s3cmd configuration file <https://s3tools.org/kb/item14.htm>`_
+
+--------------------
+Log Analysis Example
+--------------------
+
+.. Tip:: Upload to an AWS S3 compatible service is primarily intended for
+         archival and root cause analysis after an incident. If your intention
+         is to extract interesting metrics or you would like a more visual way
+         to interact with your logs we suggest feeding tools like Grafana Loki
+         or Elastic Search from FluentD.
+
+Some basic analysis can be done on the uploaded logs by using ``s3cmd`` to fetch
+logs of interest, ``jq`` to parse and extract data from the JSON log structure,
+and standard Linux command line tools to further extract and report on the data.
+
+For example, assuming that you have configured Krill Manager to store logs in a
+DigitalOcean Space, you can generate a report of RRDP clients visiting your
+Krill Manager instance on a particular date like so:
+
+.. code-block:: bash
+
+   $ DATE_OF_INTEREST="2020/05/11"
+   $ S3_BUCKET_NAME="my-bucket-name"
+   $ export AWS_ACCESS_KEY_ID="your-access-key"
+   $ export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
+   $ docker run -it --rm \
+      -v /tmp/logs:/mnt/logs \
+      -e AWS_ACCESS_KEY_ID \
+      -e AWS_SECRET_ACCESS_KEY \
+      --entrypoint=s3cmd \
+      krillmanager/log-uploader:v0.1.1 \
+        get \
+          -r \
+          --host-bucket="%(bucket)s.ams3.digitaloceanspaces.com" \
+          --rexclude=".*" \
+          --rinclude=".*${DATE_OF_INTEREST}.*/krill_nginx/.*" \
+          s3://${S3_BUCKET_NAME}/logs/ /mnt/logs/
+   $ find /tmp/logs/ \
+       -name '*.gz' \
+       -exec zcat {} \; | \
+         jq -r '.message | select(contains("/rrdp/"))' | \
+           grep -oP '[0-9]+ [0-9]+ "-" \K"[^"]+"' | \
+             cut -d '"' -f 2 | \
+               sort | \
+                 uniq -c | \
+                   sort -rn
+
+This will produce a breakdown of RRDP clients by their HTTP User Agent and the
+number of times that agent was seen requesting a URL containing ``/rrdp/``,
+highest count first.
