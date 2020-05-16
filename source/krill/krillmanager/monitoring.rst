@@ -21,10 +21,13 @@ endpoints for monitoring Krill Manager components can be determined using the
    ...
      - Prometheus monitoring endponts:
        - Krill         : http://<YOUR DOMAIN>:9657/metrics
-       - NGINX         : http://<YOUR DOMAIN>:9113/metrics 
-       - Docker        : http://<YOUR DOMAIN>:9323/metrics 
-       - O/S           : http://<YOUR DOMAIN>:9100/metrics 
-       - Gluster       : http://<YOUR DOMAIN>:8080/metrics 
+       - NGINX         : http://<YOUR DOMAIN>:9113/metrics
+       - Docker        : http://<YOUR DOMAIN>:9323/metrics
+       - O/S           : http://<YOUR DOMAIN>:9100/metrics
+       - Gluster       : http://<YOUR DOMAIN>:8080/metrics
+       - Fluentd       : http://<YOUR DOMAIN>:24231/metrics
+
+.. note:: Fluentd metrics are available from Krill Manager v0.2.2.
 
 .. note:: In cluster mode the per-node metrics (NGINX, Docker, O/S and Gluster)
           should be queried on the node you are interested in, Krill Manager

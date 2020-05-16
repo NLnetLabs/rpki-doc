@@ -55,10 +55,10 @@ Querying the Version
 .. code-block:: text
 
    # krillmanager --version
-   v0.2.1 [Krill: v0.6.0]
+   v0.2.2 [Krill: v0.6.2]
 
-This tells you that Krill Manager is version 0.2.1, and that it deploys version
-0.6.0 of Krill.
+This tells you that Krill Manager is version 0.2.2, and that it deploys version
+0.6.2 of Krill.
 
 .. _cmd_backup:
 

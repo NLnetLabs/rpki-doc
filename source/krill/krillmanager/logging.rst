@@ -140,21 +140,43 @@ Custom Behaviour
 Customising Log Streaming
 -------------------------
 
-Files in ``/fluentd-conf/*.conf`` can be edited with ``krillmanager edit`` to configure fluentd according to
-your own design, streaming logs to any of the many 3rd party services that
-fluentd supports.
+Files in ``/fluentd-conf/*.conf`` can be edited with ``krillmanager edit`` to
+configure fluentd according to your own design, streaming logs to any of the
+many 3rd party services that fluentd supports. Configuration elemnents should be
+placed inside a label stanza like so:
 
-To force fluentd to reload the configuration either restart all services with
-``krillmanager restart`` or only the fluentd processor service with
-``docker service restart krill_log_uploader --force``.
+.. code-block:: xml
 
-To force fluentd to flush its buffers you can use the
-``docker kill -s SIGUSR1 <container name/id>`` command on the node where the
-``krill_log_uploader`` container is running.
+   <label @ready>
+     <match **>
+       @type s3
+       ..
+     </match>
+   </label>
+
+When working with Fluentd configuration files note the following useful
+commands:
+
+
+.. code-block:: bash
+
+    # Reload the Fluentd configuration:
+    docker service restart krill_log_uploader --force
+
+    # Flush Fluentd output buffers:
+    docker kill -s SIGUSR1 <krill_log_uploader container name/id>
 
 .. seealso::
      - `fluentd: List of Data Outputs <fluentd.org/dataoutputs>`_
      - `fluentd: Input / Output Plugins <https://www.fluentd.org/plugins/all#input-output>`_
+
+Diagnosing Streaming Problems
+-----------------------------
+
+Krill Manager v0.2.2 added a Fluentd Prometheus metrics endpoint on port 24231
+at ``/metrics``. The statistics published at this endpoint can help identify
+whether events are being received and handled by the expected Fluentd output
+plugins.
 
 Customising Audit Log Upload
 ----------------------------
@@ -165,9 +187,12 @@ features of your S3-like service provider that s3cmd supports.
 .. seealso::
      - `About the s3cmd configuration file <https://s3tools.org/kb/item14.htm>`_
 
---------------------
-Log Analysis Example
---------------------
+-----------------
+Analysis Examples
+-----------------
+
+Manual Log Analysis
+-------------------
 
 .. Tip:: Upload to an AWS S3 compatible service is primarily intended for
          archival and root cause analysis after an incident. If your intention
@@ -175,13 +200,20 @@ Log Analysis Example
          to interact with your logs we suggest feeding tools like Grafana Loki
          or Elastic Search from FluentD.
 
-Some basic analysis can be done on the uploaded logs by using ``s3cmd`` to fetch
-logs of interest, ``jq`` to parse and extract data from the JSON log structure,
-and standard Linux command line tools to further extract and report on the data.
+Assuming that you have configured Krill Manager to store logs in a DigitalOcean
+Space, you can generate a report of RRDP clients visiting your Krill Manager
+instance on a particular date like so:
 
-For example, assuming that you have configured Krill Manager to store logs in a
-DigitalOcean Space, you can generate a report of RRDP clients visiting your
-Krill Manager instance on a particular date like so:
+.. code-block:: bash
+
+    532 RIPE NCC RPKI Validator/3.1-2020.01.13.09.31.26
+    515 reqwest/0.9.19
+    190 Jetty/9.4.15.v20190215
+    101 RIPE NCC RPKI Validator/3.1-2019.12.16.15.18.18
+     81 Routinator/0.7.0
+    ...
+
+Such a report can be produced using comands like those below:
 
 .. code-block:: bash
 
@@ -211,6 +243,116 @@ Krill Manager instance on a particular date like so:
                  uniq -c | \
                    sort -rn
 
-This will produce a breakdown of RRDP clients by their HTTP User Agent and the
-number of times that agent was seen requesting a URL containing ``/rrdp/``,
-highest count first.
+Streaming to Elasticsearch
+--------------------------
+
+.. note:: The examples below require Krill Manager v0.2.2 or higher.
+
+Using the Fluentd support integrated into Krill Manager you can stream logs to
+3rd party log analysis tools such as `EFK <https://www.digitalocean.com/community/tutorials/how-to-set-up-an-elasticsearch-fluentd-and-kibana-efk-logging-stack-on-kubernetes>`_
+(Elasticsearch, Fluentd and Kibana).
+
+When streaming to an external service you can either do that:
+
+  - Instead of streaming to an S3 storage backend: replace ``s3.conf``.
+  - In addition to streaming to an S3 storage backend: modify ``s3.conf`` and add
+    additional Fluentd config files.
+
+Below is an example configuration for sending rsync access logs to
+Elasticsearch:
+
+.. code-block:: xml
+
+   # elastic-search.conf
+   <label @ready>
+     <filter **>
+       @type grep
+       <regexp>
+         key container
+         pattern /krill_rsyncd\..+/
+       </regexp>
+     </filter>
+
+     <filter **>
+       # Given a log record with a message field whose value is like:
+       #   2020/05/11 23:59:59 [31881] connect from UNDETERMINED (105.16.160.2)
+       @type parser
+       key_name message
+       reserve_data true
+       <parse>
+         @type regexp
+         expression /^(?<datetime>\d+\/\d+\/\d+ \d+:\d+:\d+) \[(?<unknown>[^]]*)\] connect from (?<client_host>[^ ]+) \((?<client_ip>[^)]*)\)$/
+       </parse>
+     </filter>
+
+     <match **>
+       @type elasticsearch
+       host elasticsearch.mydomain.com
+       port 9200
+       logstash_format true
+     </match>
+   </label>
+
+A similar technique can be used to stream NGINX access logs, using the built-in
+``nginx`` parser in Fluentd. However, if you use a CDN (content delivery
+network) in front of your Krill Manager instance(s) you'll want to analzye the
+CDN provider logs, not the NGINX logs.
+
+To stream rsync access logs to Elasticsearch but also still upload all logs to
+an S3 compatible storage target, use a copy configuration like so:
+
+.. code-block:: xml
+
+   # copy.conf
+   <label @ready>
+     <match **>
+       @type copy
+       <store>
+         @type relabel
+         @label @s3
+       </store>
+       <store>
+         @type relabel
+         @label @elastic-search
+       </store>
+     </match>
+   </label>
+
+   # elasticsearch.conf
+   <label @elastic-search>
+     # the remainder of this file is the same as above
+   </label>
+
+   # s3.conf
+   <label @s3>
+     # the remainder of this file is the same as the stock s3.conf file
+     # that comes with Krill Manager.
+   </label>
+
+Installing Additional Fluentd Plugins
+-------------------------------------
+
+Krill Manager comes with the following Fluentd plugins pre-installed:
+
+- fluent-plugin-elasticsearch
+- fluent-plugin-prometheus
+- fluent-plugin-rewrite-tag-filter
+- fluent-plugin-s3
+- fluent-plugin-systemd
+
+.. note:: The Elasticsearch plugin is included with Krill Manager from v0.2.2.
+
+.. code-block:: bash
+
+   $ CONTAINER_ID=$(sudo docker ps -q --filter "name=krill_log_uploader")
+   $ sudo docker exec -it ${CONTAINER_ID} /bin/bash
+   # gem install fluent-plugin-XXX
+   # exit
+   $ sudo docker commit ${CONTAINER_ID} krillmanager/log-streamer:custom
+   $ sudo docker service update krill_log_uploader --image krillmanager/log-streamer:custom
+
+.. warning:: An upgrade of Krill Manager may cause the service to revert to
+             a stock Krill Manager image. Repeat the steps above to re-install
+             the missing plugin. You can also request inclusion of the plugin
+             in the next Krill Manager release by submitting an issue to the
+             `Krill Manager GitHub issue tracker <https://github.com/NLnetLabs/krillmanager/issues/new/choose>`_.

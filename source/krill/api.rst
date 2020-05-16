@@ -10,9 +10,9 @@ based authentication.
 Documentation
 -------------
 
-View the `human readable interactive version of the Krill v0.6.0 API
+View the `human readable interactive version of the Krill v0.6.2 API
 specification
-<http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.0/doc/openapi.yaml>`_,
+<http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.2/doc/openapi.yaml>`_,
 made possible by the wonderful `ReDoc <https://github.com/Redocly/redoc>`_ tool.
 
 Specification
@@ -20,8 +20,8 @@ Specification
 
 The raw `OpenAPI 3.0.2 specification
 <https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md>`_
-description of the API is available in the Krill source repository (`v0.6.0 link
-<https://github.com/NLnetLabs/krill/blob/v0.6.0/doc/openapi.yaml>`_).
+description of the API is available in the Krill source repository (`v0.6.2 link
+<https://github.com/NLnetLabs/krill/blob/v0.6.2/doc/openapi.yaml>`_).
 
 Generating Client Code
 ----------------------
@@ -67,7 +67,7 @@ Now generate the Krill client library:
 
    mkdir -p $GENDIR
 
-   wget -O $GENDIR/openapi.yaml https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.0/doc/openapi.yaml
+   wget -O $GENDIR/openapi.yaml https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.2/doc/openapi.yaml
 
    docker run --rm -v $GENDIR:/local \
        openapitools/openapi-generator-cli generate \
