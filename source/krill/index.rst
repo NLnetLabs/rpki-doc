@@ -52,9 +52,9 @@ line and through an API.
 ------------
 
 You can choose to run Krill as a standalone application or run it together with
-with :ref:`doc_krill_manager`, a tool that brings together all of the puzzle
-pieces needed to administer and run Delegated RPKI with Krill as a highly
-available scalable service.
+:ref:`doc_krill_manager`, a tool that brings together all of the puzzle pieces
+needed to administer and run Delegated RPKI with Krill as a highly available
+scalable service.
 
 Krill Manager includes Docker, Gluster, NGINX, Rsyncd, as well as Prometheus and
 Fluentd outputs for monitoring and log analysis. The integrated setup wizard
