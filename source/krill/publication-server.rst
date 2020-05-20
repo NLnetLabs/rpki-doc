@@ -19,7 +19,7 @@ remain available at all times. When the Krill CA is unavailable you will not be
 able to make updates to your ROAs, and Krill will not (re-)publish objects at a
 repository. This does not need to affect relying parties as long as the
 repository remains available, and Krill comes back before objects start to
-become stale. You have 16 hours with the current built-in defaults.
+become stale. You have 8 hours with the current built-in defaults.
 
 That being said, only Brazilian NIC.br members can configure a hosted
 publication server without manual intervention at this time. APNIC members can

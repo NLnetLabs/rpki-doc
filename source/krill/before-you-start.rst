@@ -37,7 +37,7 @@ request and response.
                automatically update the entitled resources on your certificate,
                as well as reissue certificates, ROAs and all other objects
                before they expire or become stale.** Note that even if Krill
-               does go down, you have 16 hours to bring it back up before data
+               does go down, you have 8 hours to bring it back up before data
                starts going stale.
 
 Whether you also run the Krill publication server depends on if you can, or want
@@ -63,7 +63,7 @@ completed, you perform the XML exchange twice and you are done.
 Krill is designed to run continuously, but there is no strict uptime requirement
 for the CA. If the CA is not available you just cannot create or update ROAs.
 This means you can bring Krill down to perform maintenance or migration, as long
-as you bring it back up within 16 hours to ensure your cryptographic objects are
+as you bring it back up within 8 hours to ensure your cryptographic objects are
 resigned before they go stale.
 
 .. Note:: This scenario illustrated here also applies if you use an RPKI
