@@ -37,7 +37,7 @@ Using the Embedded Repository
 
 .. Warning:: Please note it is practically impossible to change the
              configuration of Krill's embedded repository after it has been
-             initialised. For production environments where you may want
+             initialised. For production environments where you may want to
              change strategies over time we recommend running a separate Krill
              instance running as a repository only, as described in
              :ref:`doc_krill_remote_publishing`.
