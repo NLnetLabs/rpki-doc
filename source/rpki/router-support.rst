@@ -28,7 +28,7 @@ Cisco — `Documentation <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipro
    IOS release 15.2 and newer, as well as Cisco IOS/XR since release 4.3.2.
 
 Nokia — `Documentation <https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`__
-   Release R12.0R4 and newer, running on the 7210 SAS, 7750 SR, 7950 XRS and the VSR.
+   SR OS 12.0.R4 and newer, running on the 7210 SAS, 7250 IXR, 7750 SR, 7950 XRS and the VSR.
 
 Arista - `Blog post <https://twitter.com/kwf/status/1250598771399901187>`_
    EOS 4.24.0F and newer
