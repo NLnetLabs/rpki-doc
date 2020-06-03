@@ -95,12 +95,17 @@ This involves the following steps:
   krillc repo request > publisher_request.xml
 
 Next, upload the publisher request XML file to your publication server provider
-and save the response XML file.
+and save the repository response XML file.
 
 .. code-block:: bash
 
   # update the repository for you CA using the 'repository response'
   krillc repo update remote --rfc8183 repository_response.xml
+
+Next, upload the child request XML file to your parent CA (e.g. via their
+portal) and save the parent response XML file.
+
+.. code-block:: bash
 
   # add the parent using the 'parent response'
   krillc parents add remote --parent myparent --rfc8183 ./parent-response.xml
