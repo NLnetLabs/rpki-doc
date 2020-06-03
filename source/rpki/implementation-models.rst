@@ -112,7 +112,7 @@ action.
 | Match "route" objects |  Yes     | No       | No       | No       | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| API                   |  No      | No       | Yes [#]_ | No       | Yes      |
+| API                   |  No      | No       | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Publication via RRDP  |  Yes     | Yes      | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
@@ -126,7 +126,6 @@ action.
 .. [#] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
 .. [#] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [#] Explicit opt-in feature.
-.. [#] Only possible to create ROAs; no list, update or delete.
 
 A final differentiator is the publication interval of each RIR repository.
 Please keep in mind that once a ROA is created by a user in one of the hosted
