@@ -7,7 +7,7 @@ In almost all cases, you will interact with one or more Regional Internet
 Registries (RIRs) or National Internet Registries (NIRs) when setting up
 delegated RPKI.
 
-The fundamental principe is the same with each of them: the RIR or NIR needs to
+The fundamental principle is the same with each of them: the RIR or NIR needs to
 establish who you are, which resources you are entitled to and where your
 RPKI certificate and ROAs will be published.
 
