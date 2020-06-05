@@ -30,10 +30,10 @@ Cisco — `Documentation <https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipro
 Nokia — `Documentation <https://infocenter.alcatel-lucent.com/public/7750SR160R4A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`_
    SR OS 12.0.R4 and newer, running on the 7210 SAS, 7250 IXR, 7750 SR, 7950 XRS and the VSR.
 
-Arista - `Blog post <https://twitter.com/kwf/status/1250598771399901187>`_
+Arista — `Blog post <https://twitter.com/kwf/status/1250598771399901187>`_
    EOS 4.24.0F and newer
    
-MikroTik - `RouterOS v7 BETA Forum thread <https://forum.mikrotik.com/viewtopic.php?f=1&t=161980>`_ - `RPKI Forum thread <https://forum.mikrotik.com/viewtopic.php?t=81340>`_
+MikroTik — `RouterOS v7 BETA forum thread <https://forum.mikrotik.com/viewtopic.php?f=1&t=161980>`_ - `RPKI forum thread <https://forum.mikrotik.com/viewtopic.php?t=81340>`_
    7.0beta7 and newer
    
 Software Solutions
