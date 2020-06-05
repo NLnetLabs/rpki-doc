@@ -32,7 +32,7 @@ request and response.
 
 .. Important:: The initial XML file exchange is the only manual step required
                to get started with Delegated RPKI. All other requests and
-               responses, as well as resigning and renewing certificates and
+               responses, as well as re-signing and renewing certificates and
                ROAs are automated. **As long as Krill is running, it will
                automatically update the entitled resources on your certificate,
                as well as reissue certificates, ROAs and all other objects
@@ -64,7 +64,7 @@ Krill is designed to run continuously, but there is no strict uptime requirement
 for the CA. If the CA is not available you just cannot create or update ROAs.
 This means you can bring Krill down to perform maintenance or migration, as long
 as you bring it back up within 8 hours to ensure your cryptographic objects are
-resigned before they go stale.
+re-signed before they go stale.
 
 .. Note:: This scenario illustrated here also applies if you use an RPKI
           publication server offered by a third party, such as a cloud provider.
