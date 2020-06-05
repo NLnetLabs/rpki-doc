@@ -215,19 +215,5 @@ def setup(app):
 
 krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.2/doc/openapi.yaml'
 extlinks = {
-    'krill_api_ca_get':         (krill_api_docs_base + '#tag/Certificate-Authorities/paths/~1%s/get', None),
-    'krill_api_ca_post':        (krill_api_docs_base + '#tag/Certificate-Authorities/paths/~1%s/post', None),
-    'krill_api_ca_delete':      (krill_api_docs_base + '#tag/Certificate-Authorities/paths/~1%s/delete', None),
-    'krill_api_keyroll_get':    (krill_api_docs_base + '#tag/Key-Rolls/paths/~1%s/get', None),
-    'krill_api_keyroll_post':   (krill_api_docs_base + '#tag/Key-Rolls/paths/~1%s/post', None),
-    'krill_api_keyroll_delete': (krill_api_docs_base + '#tag/Key-Rolls/paths/~1%s/delete', None),
-    'krill_api_pub_get':        (krill_api_docs_base + '#tag/Publishers/paths/~1%s/get', None),
-    'krill_api_pub_post':       (krill_api_docs_base + '#tag/Publishers/paths/~1%s/post', None),
-    'krill_api_pub_delete':     (krill_api_docs_base + '#tag/Publishers/paths/~1%s/delete', None),
-    'krill_api_route_get':      (krill_api_docs_base + '#tag/Route-Authorizations/paths/~1%s/get', None),
-    'krill_api_route_post':     (krill_api_docs_base + '#tag/Route-Authorizations/paths/~1%s/post', None),
-    'krill_api_route_delete':   (krill_api_docs_base + '#tag/Route-Authorizations/paths/~1%s/delete', None),
-    'krill_api_other_get':      (krill_api_docs_base + '#tag/Other/paths/~1%s/get', None),
-    'krill_api_other_post':     (krill_api_docs_base + '#tag/Other/paths/~1%s/post', None),
-    'krill_api_other_delete':   (krill_api_docs_base + '#tag/Other/paths/~1%s/delete', None),
+    'krill_api': (krill_api_docs_base + '#operation/%s', None),
 }

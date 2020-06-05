@@ -73,7 +73,7 @@ well as the publication repository.
 
   $ krillc add
 
-API Call: :krill_api_ca_post:`POST /v1/cas <cas>`
+API Call: :krill_api:`POST /v1/cas <add_ca>`
 
 When a CA has been added, it is registered to publish locally in the Krill
 instance where it exists, but other than that it has no configuration yet. In
@@ -92,7 +92,7 @@ following command:
   ta
   ca
 
-API Call: :krill_api_ca_get:`GET /v1/cas <cas>`
+API Call: :krill_api:`GET /v1/cas <list_cas>`
 
 
 Let CA publish in the embedded Repository
@@ -176,7 +176,7 @@ it:
   Children:
   <none>
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ta <cas~1{ca_handle}>`
+API Call: :krill_api:`GET /v1/cas/ta <get_ca>`
 
 Add a Child to the Embedded TA
 ------------------------------
@@ -199,7 +199,7 @@ First you will need to get the :rfc:`8183` request XML from your child.
 
   $ krillc parents request > myid.xml
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ca/child_request.json <cas~1{ca_handle}~1child_request.{format}>`
+API Call: :krill_api:`GET /v1/cas/ca/child_request.json <get_ca_child_request>`
 
 Step 2: Add child "ca" to "ta"
 """"""""""""""""""""""""""""""
@@ -220,7 +220,7 @@ and the :rfc:`8183` XML from the "ta":
                         --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
                         --rfc8183 myid.xml > parent-res.xml
 
-API Call: See: :krill_api_ca_post:`POST /v1/cas/ta/children <cas~1{ca_handle}~1children>`
+API Call: See: :krill_api:`POST /v1/cas/ta/children <add_child_ca>`
 
 The default response is the :rfc:`8183` parent response XML file. Or, if you set
 ``--format json`` you will get the plain API response.
@@ -231,7 +231,7 @@ If you need the response again, you can ask the "ta" again:
 
   $ krillc children response --ca "ta" --child "ca"
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ta/children/ca/contact <cas~1{ca_handle}~1children~1{child_handle}~1contact>`
+API Call: :krill_api:`GET /v1/cas/ta/children/ca/contact <get_child_ca_parent_contact>`
 
 Step 3: Add parent "ta" to "ca"
 """""""""""""""""""""""""""""""
@@ -252,7 +252,7 @@ name. Some parents do this to ensure unicity.
 
   $ krillc parents add remote --parent ripencc --rfc8183 ./parent-res.xml
 
-API Call: :krill_api_ca_post:`POST /v1/cas/ca/parents <cas~1{ca_handle}~1parents>`
+API Call: :krill_api:`POST /v1/cas/ca/parents <add_ca_parent>`
 
 Now you should see that your "child" is certified:
 
@@ -296,7 +296,7 @@ Now you should see that your "child" is certified:
   Children:
   <none>
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ca <cas~1{ca_handle}>`
+API Call: :krill_api:`GET /v1/cas/ca <get_ca>`
 
 ROAs
 ----
@@ -323,7 +323,7 @@ You can then add this to your CA:
 
  $ krillc roas update --delta ./roas.txt
 
-API Call: :krill_api_route_post:`POST /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
+API Call: :krill_api:`POST /v1/cas/ca/routes <update_route_authorizations>`
 
 If you followed the steps above then you would get an error, because there is no
 authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
@@ -337,7 +337,7 @@ You can list Route Origin Authorisations as well:
   10.0.0.0/24 => 64496
   10.1.0.0/16-20 => 64496
 
-API Call: :krill_api_route_get:`GET /v1/cas/ca/routes <cas~1{ca_handle}~1routes>`
+API Call: :krill_api:`GET /v1/cas/ca/routes <list_route_authorizations>`
 
 
 History
@@ -357,5 +357,3 @@ You can show the history of all the things that happened to your CA:
   id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
   id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
   id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
-
-AAPI Call: :krill_api_ca_get:`GET /v1/cas/ca/history <cas~1{ca_handle}~1history>`

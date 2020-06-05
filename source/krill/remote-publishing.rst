@@ -46,7 +46,7 @@ remote (:rfc:`8181` compliant) publishers.
   $ krillc publishers list
   Publishers: ta, ca
 
-API Call: :krill_api_pub_get:`GET /v1/publishers <publishers>`
+API Call: :krill_api:`GET /v1/publishers <list_publishers>`
 
 Show Publisher Details
 ----------------------
@@ -60,7 +60,7 @@ published.
   handle: ta
   id: 5ce21ed116540a22c562f45dae8f2eb5a3c13ceebase uri: rsync://localhost/repo/ta/
 
-API Call: :krill_api_pub_get:`GET /v1/publishers/ca <publishers~1{publisher_handle}>`
+API Call: :krill_api:`GET /v1/publishers/ta <get_publisher>`
 
 The default text output just shows the handle of the publisher, the hash of its
 identity certificate key, and the rsync URI jail under which the publisher is
@@ -88,7 +88,7 @@ this).
 
   $ krillc publishers remove --publisher ca
 
-API Call: :krill_api_pub_delete:`DELETE /v1/publishers/ca <publishers~1{publisher_handle}>`
+API Call: :krill_api:`DELETE /v1/publishers/ca <delete_publisher>`
 
 
 Add a Publisher
@@ -101,7 +101,7 @@ XML, and hand it over to the server:
 
   $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
 
-API Call: :krill_api_pub_post:`POST /v1/publishers <publishers>`
+API Call: :krill_api:`POST /v1/publishers <add_publisher>`
 
 
 Show Repository Response
@@ -117,7 +117,7 @@ use the following:
     <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
   </repository_response>
 
-API Call: :krill_api_pub_get:`GET /v1/publishers/ca/response.json <publishers~1{publisher_handle}~1response.{format}>`
+API Call: :krill_api:`GET /v1/publishers/ca/response.json <get_publisher_repository_response>`
 
 Publish at a Remote Repository
 ------------------------------
@@ -167,7 +167,7 @@ of issues.
      444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
      874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
+API Call: :krill_api:`GET /v1/cas/ca/repo <get_ca_repository>`
 
 
 Show Publisher Request
@@ -184,7 +184,7 @@ add your CA.
     <publisher_bpki_ta>your CA ID cert DER in base64</publisher_bpki_ta>
   </publisher_request>
 
-API Call: :krill_api_ca_get:`GET /v1/cas/ca/repo/request.json <cas~1{ca_handle}~1repo~1request.{format}>`
+API Call: :krill_api:`GET /v1/cas/ca/repo/request.json <get_ca_publisher_request>`
 
 
 Change Repository for a CA
@@ -215,7 +215,7 @@ To start a migration you can use the following.
 
   $ krillc repo update rfc8183 [file]
 
-API Call: :krill_api_ca_post:`POST /v1/cas/ca/repo <cas~1{ca_handle}~1repo>`
+API Call: :krill_api:`POST /v1/cas/ca/repo <update_ca_repository>`
 
 If no file is specified the CLI will try to read the XML from STDIN.
 
@@ -267,4 +267,4 @@ can force that *all* Krill CAs re-sync using the following.
 
   $ krillc bulk sync
 
-API Call: :krill_api_ca_post:`POST /v1/cas/resync_all <cas~1resync_all>`
+API Call: :krill_api:`POST /v1/bulk/cas/sync/repo <resync_all_cas>`
