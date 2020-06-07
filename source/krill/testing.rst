@@ -29,7 +29,7 @@ have to repeat command line arguments for these:
 
    $ export KRILL_CLI_SERVER="https://localhost:3000/"
    $ export KRILL_CLI_TOKEN="correct-horse-battery-staple"
-   $ export KRILL_CLI_MY_CA="Acme-Corp-Intl"
+   $ export KRILL_CLI_MY_CA="ca"
 
 .. Note:: Replace *"correct-horse-battery-staple"* with a token of your own
           choosing! If you don't the UI will kindly remind you that
