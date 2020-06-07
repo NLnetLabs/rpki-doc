@@ -44,7 +44,6 @@ You can now generate a krill configuration file using the following command:
       --rrdp https://localhost:3000/rrdp/ \
       --rsync rsync://localhost/repo/ > /path/to/krill.conf
 
-
 Use an embedded TA
 ------------------
 
@@ -53,7 +52,8 @@ To run Krill in test mode you can set "use_ta" to "true" in your
 
 .. code-block:: bash
 
-   $ KRILL_USE_TA="true"
+   $ export KRILL_USE_TA="true"
+   $ krill -c /path/to/krill.conf
 
 Add a CA
 --------
