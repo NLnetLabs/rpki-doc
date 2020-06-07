@@ -20,7 +20,7 @@ test environment, or it will refuse the use of 'localhost':
 
 .. code-block:: bash
 
-   $ KRILL_TEST="true"
+   $ export KRILL_TEST="true"
 
 For convenience you may wish to set the following variables, so that you don't
 have to repeat command line arguments for these:
