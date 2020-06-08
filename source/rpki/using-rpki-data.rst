@@ -182,7 +182,7 @@ least ports 873 and 443 open for rsync and HTTPS, respectively. In most cases,
 the processed data is fed to a router via RPKI-RTR over a clear channel, as it's
 running in your local network. Currently, only Cisco IOS-XR provides a practical
 means to :ref:`secure transports for RPKI-RTR
-<doc_routinator_rtr_secure_transport>`, using either SSH or TLS.
+<doc_routinator_rtr_secure_transport>`, using SSH.
 
 It is recommended to run multiple validator instances as a failover measure. The
 router will use the union of RPKI data from all validators to which they are
