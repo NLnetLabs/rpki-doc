@@ -15,7 +15,7 @@ Your identity, permissions and entitlements are all managed by the registry and
 exposed via their respective member portals. The rest of the information is
 exchanged in two XML files. You  will need to provide a child request generated
 by Krill, and in return you will receive a parent response that you need to give
-back to Krill.
+back to Krill. See :ref:`doc_krill_remote_publishing` for more details.
 
 Hosted Publication Server
 -------------------------
@@ -35,6 +35,8 @@ their members, upon request. Most other RIRs have it on their roadmap. NIC.br,
 the Brazilian NIR, provides an RPKI repository server for their members as well.
 This means that in most cases you will have to publish your certificate and ROAs
 yourself, as described in the :ref:`doc_krill_publication_server` section.
+
+.. _member_portals:
 
 Member Portals
 --------------

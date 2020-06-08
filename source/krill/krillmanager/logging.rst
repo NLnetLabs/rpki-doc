@@ -145,7 +145,7 @@ configure fluentd according to your own design, streaming logs to any of the
 many 3rd party services that fluentd supports. Configuration elemnents should be
 placed inside a label stanza like so:
 
-.. code-block:: xml
+.. parsed-literal::
 
    <label @ready>
      <match **>
@@ -261,7 +261,7 @@ When streaming to an external service you can either do that:
 Below is an example configuration for sending rsync access logs to
 Elasticsearch:
 
-.. code-block:: xml
+.. parsed-literal::
 
    # elastic-search.conf
    <label @ready>
@@ -301,7 +301,7 @@ CDN provider logs, not the NGINX logs.
 To stream rsync access logs to Elasticsearch but also still upload all logs to
 an S3 compatible storage target, use a copy configuration like so:
 
-.. code-block:: xml
+.. parsed-literal::
 
    # copy.conf
    <label @ready>

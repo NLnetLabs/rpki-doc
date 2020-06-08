@@ -4,11 +4,25 @@ Running a Test Environment
 ==========================
 
 If you want to get operational experience with Krill before before configuring a
-production parent, you can run with an embedded TA which you can give any
-address space you want. You can generate your own Trust Anchor for it, which can
-be added to your Relying Party software in order to validate the objects you
-have published locally.
+production parent, you can run with an embedded Trust Anchor (TA) which you can
+give any address space you want. You can generate your own Trust Anchor for it,
+which can be added to your Relying Party software in order to validate the
+objects you have published locally.
 
+.. Note:: The Krill TA is intended for test purposes only and as such there
+          are some limitations when using it:
+
+          - The Krill Trust Anchor Locator (TAL) points to the TA certificate
+            using an ``https://`` URI. It does not include an ``rsync://`` URI.
+          - Only Relying Party software which supports such an HTTPS TAL can be
+            used with the Krill TA.
+          - When enabling the embedded TA ``use_ta = true`` the Krill daemon
+            assumes that you also set ``repo_enabled = true`` to enable the
+            embedded repository. **Tip:** The ``krillc config repo`` command
+            does this for you.
+          - The TA claims ownership of all possible ASNs, IPv4 addresses and
+            IPv6 addresses. It is not currently possible to restrict this to a
+            subset of these resources.
 
 Setting up the Configuration
 ----------------------------
@@ -37,15 +51,16 @@ have to repeat command line arguments for these:
 
 You can now generate a krill configuration file using the following command:
 
-.. code-block:: bash
+.. parsed-literal::
 
-   $ krillc config repo \
-      --token $KRILL_CLI_TOKEN \
-      --rrdp https://localhost:3000/rrdp/ \
-      --rsync rsync://localhost/repo/ > /path/to/krill.conf
+   $ :ref:`krillc config repo<cmd_krillc_config_repo>` \\
+      --token $KRILL_CLI_TOKEN \\
+      --rrdp https://localhost:3000/rrdp/ \\
+      --rsync rsync://localhost/repo/ > /tmp/krill.conf \\
+      --data /tmp/krill_data
 
-Use an embedded TA
-------------------
+Enable the Embedded Trust Anchor (TA)
+-------------------------------------
 
 To run Krill in test mode you can set "use_ta" to "true" in your
 :file:`krill.conf`, or use an environment variable:
@@ -53,212 +68,145 @@ To run Krill in test mode you can set "use_ta" to "true" in your
 .. code-block:: bash
 
    $ export KRILL_USE_TA="true"
-   $ krill -c /path/to/krill.conf
+   $ krill -c /tmp/krill.conf &
 
-Add a CA
---------
+Verify that the TA now exists:
 
-When adding a CA you need to choose a handle, essentially just a name. The term
-"handle" comes from :RFC:`8183` and is used in the communication
-protocol between parent and child CAs, as well as CAs and publication servers.
-For the handle you can use alphanumerical characters, dashes or underscores.
+.. parsed-literal::
 
-The handle you select is not published in the RPKI but used as identification to
-parent and child CAs you interact with. You should choose a handle that helps
-others recognise your organisation. Once set, the handle cannot be be changed
-as it would interfere with the communication between parent and child CAs, as
-well as the publication repository.
+  $ :ref:`krillc list<cmd_krillc_list>`
+  ta
 
-.. code-block:: text
+Use the following to show more details of the embedded TA:
 
-  $ krillc add
+.. parsed-literal::
 
-API Call: :krill_api:`POST /v1/cas <add_ca>`
+   $ :ref:`krillc show<cmd_krillc_show>` --ca ta
+   Name:     ta
+   
+   Base uri: rsync://localhost/repo/ta/
+   RRDP uri: https://localhost:3000/rrdp/notification.xml
+   
+   ID cert PEM:
+   -----BEGIN CERTIFICATE-----
+   MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2MUE1
+   QkIzNDBBMDM4M0U4NDdENjI0MThDQUMwOTIxQUJCN0M4NTU1MCAXDTE5MTIwMzEx
+   ..
+   Yge7BolTITNX8XBzDdTr91TgUKEtDEGlNh6sYOONJW9rQxZIsDIdTeBoPSQKCdXk
+   D13RgMxQSjycIfAeIBo9yg==
+   -----END CERTIFICATE-----
+   
+   Hash: 85041ff6bf2d8edf4e02c716e8be9f4dd49e2cc8aa578213556072bab75575ee
+   
+   Total resources:
+       ASNs: AS0-AS4294967295
+       IPv4: 0.0.0.0/0
+       IPv6: ::/0
+   
+   Parents:
+   Handle: ta Kind: This CA is a TA
+   
+   Resource Class: 0
+   Parent: ta
+   State: active    Resources:
+       ASNs: AS0-AS4294967295
+       IPv4: 0.0.0.0/0
+       IPv6: ::/0
+   Current objects:
+     1529A3C0E47EA38C1101DECDD6330E932E3AB98F.crl
+     1529A3C0E47EA38C1101DECDD6330E932E3AB98F.mft
+   
+   Children:
+   <none>
 
-When a CA has been added, it is registered to publish locally in the Krill
-instance where it exists, but other than that it has no configuration yet. In
-order to do anything useful with a CA you will first have to add at least one
-parent to it, followed by some Route Origin Authorisations and/or child CAs.
+Example Usage with a TA
+-----------------------
 
-List CAs
---------
+In this example we show you how to create a CA, register it with the embedded
+repository and as a child of the TA, and how to publish ROAs.
 
-You can list all handles (names) for the existing CAs in Krill using the
-following command:
+Create a CA
+"""""""""""
 
-.. code-block:: text
+.. parsed-literal::
 
-  $ krillc list
+  $ :ref:`krillc add<cmd_krillc_add>`
+
+Verify that now both TA and CA exist:
+
+.. parsed-literal::
+
+  $ :ref:`krillc list<cmd_krillc_list>`
   ta
   ca
 
-API Call: :krill_api:`GET /v1/cas <list_cas>`
+Register the CA with a repository
+"""""""""""""""""""""""""""""""""
 
+For more information see :ref:`doc_krill_remote_publishing`.
 
-Let CA publish in the embedded Repository
------------------------------------------
+.. parsed-literal::
 
-Step 1: Generate RFC8183 Publisher Request
-""""""""""""""""""""""""""""""""""""""""""
+  $ :ref:`krillc repo request<cmd_krillc_repo_request>` > publisher_request.xml
 
-First you will need to get the :rfc:`8183` Publisher Request XML for your CA.
-
-.. code-block:: text
-
-  $ krillc repo request > publisher_request.xml
-
-
-Step 2: Add your CA to the Repository
-""""""""""""""""""""""""""""""""""""""""""""
-
-You now need to authorise your CA in your repository and generate an :rfc:`8183`
-Repository Response XML file:
-
-.. code-block:: text
-
-  $ krillc publishers add \
-     --publisher $KRILL_CLI_MY_CA \
+  $ :ref:`krillc publishers add<cmd_krillc_publishers_add>` \\
+     --publisher $KRILL_CLI_MY_CA \\
      --rfc8183 publisher_request.xml > repository_response.xml
 
+  $ :ref:`krillc repo update remote<cmd_krillc_repo_update_remote>` --rfc8183 repository_response.xml
 
-Step 3: Configure your CA to use the Repository
-"""""""""""""""""""""""""""""""""""""""""""""""
+Use the TA as the Parent of the CA
+""""""""""""""""""""""""""""""""""
 
-Now configure your CA using the response:
+When using an embedded TA for testing then you will first need to add your
+new CA "ca" to it. The steps below are not specific to the TA, the same steps
+must be taken when registering any child CA with a parent CA. For more
+information see :ref:`doc_krill_registering_with_a_parent`.
 
-.. code-block:: text
+Note: In this example we register with the TA as if it were remote rather than
+embedded. This is slightly less efficient, but it's the same as what you would
+need to delegate from your CA to remote CAs.
 
-  $ krillc repo update remote --rfc8183 repository_response.xml
+Step 1: Obtain the RFC 8183 request XML
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Show CA Details
----------------
+.. parsed-literal::
 
-You can use the following to show the details of the embedded TA, if you enabled
-it:
+  $ :ref:`krillc parents request<cmd_krillc_parents_request>` > myid.xml
 
-.. code-block:: text
+Step 2: Add the CA as a Child of the TA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  $ krillc show --ca ta
-  Name:     ta
+In this example we need to override the ENV variable in order to refer to the TA
+and not the CA, and we need to indicate that we want to add this child to the CA
+"ta". The following command will add the child, and the :rfc:`8183` XML from the
+"ta":
 
-  Base uri: rsync://localhost/repo/ta/
-  RRDP uri: https://localhost:3000/rrdp/notification.xml
+.. parsed-literal::
 
-  ID cert PEM:
-  -----BEGIN CERTIFICATE-----
-  MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2MUE1
-  QkIzNDBBMDM4M0U4NDdENjI0MThDQUMwOTIxQUJCN0M4NTU1MCAXDTE5MTIwMzEx
-  ..
-  Yge7BolTITNX8XBzDdTr91TgUKEtDEGlNh6sYOONJW9rQxZIsDIdTeBoPSQKCdXk
-  D13RgMxQSjycIfAeIBo9yg==
-  -----END CERTIFICATE-----
-
-  Hash: 85041ff6bf2d8edf4e02c716e8be9f4dd49e2cc8aa578213556072bab75575ee
-
-  Total resources:
-      ASNs: AS0-AS4294967295
-      IPv4: 0.0.0.0/0
-      IPv6: ::/0
-
-  Parents:
-  Handle: ta Kind: This CA is a TA
-
-  Resource Class: 0
-  Parent: ta
-  State: active    Resources:
-      ASNs: AS0-AS4294967295
-      IPv4: 0.0.0.0/0
-      IPv6: ::/0
-  Current objects:
-    1529A3C0E47EA38C1101DECDD6330E932E3AB98F.crl
-    1529A3C0E47EA38C1101DECDD6330E932E3AB98F.mft
-
-  Children:
-  <none>
-
-API Call: :krill_api:`GET /v1/cas/ta <get_ca>`
-
-Add a Child to the Embedded TA
-------------------------------
-
-If you are using an embedded TA for testing then you will first need to add your
-new CA "ca" to it. Krill supports two communication modes:
-
-1. embedded, meaning the both the parent and child CA live in the same Krill
-2. rfc6492, meaning that the official RFC protocol is used
-
-Here we will document the second option. It's slightly less efficient, but it's
-the same as what you would need to delegate from your CA to remote CAs.
-
-Step 1: RFC 8183 request XML
-""""""""""""""""""""""""""""
-
-First you will need to get the :rfc:`8183` request XML from your child.
-
-.. code-block:: text
-
-  $ krillc parents request > myid.xml
-
-API Call: :krill_api:`GET /v1/cas/ca/child_request.json <get_ca_child_request>`
-
-Step 2: Add child "ca" to "ta"
-""""""""""""""""""""""""""""""
-
-To add a child, you will need to:
-  1. Choose a unique local name (handle) that the parent will use for the child
-  2. Choose initial resources (asn, ipv4, ipv6)
-  3. Have an :rfc:`8183` request
-
-And in this case we also need to override the ENV variable and indicate that we
-want to add this child to the CA "ta". The following command will add the child,
-and the :rfc:`8183` XML from the "ta":
-
-.. code-block:: text
-
-  $ krillc children add remote --ca ta \
-                        --child ca \
-                        --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \
-                        --rfc8183 myid.xml > parent-res.xml
-
-API Call: See: :krill_api:`POST /v1/cas/ta/children <add_child_ca>`
-
-The default response is the :rfc:`8183` parent response XML file. Or, if you set
-``--format json`` you will get the plain API response.
+  $ :ref:`krillc children add remote<cmd_krillc_children_add_remote>` --ca ta \\
+      --child ca \\
+      --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \\
+      --rfc8183 myid.xml > parent-res.xml
 
 If you need the response again, you can ask the "ta" again:
 
-.. code-block:: text
+.. parsed-literal::
 
-  $ krillc children response --ca "ta" --child "ca"
+  $ :ref:`krillc children response<cmd_krillc_children_response>` --ca "ta" --child "ca"
 
-API Call: :krill_api:`GET /v1/cas/ta/children/ca/contact <get_child_ca_parent_contact>`
+Step 3: Add the TA as the Parent of the CA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Step 3: Add parent "ta" to "ca"
-"""""""""""""""""""""""""""""""
+.. parsed-literal::
 
-You can now add "ta" as a parent to your CA "ca". You need to choose a locally
-unique handle that your CA will use to refer to this parent. Here we simply use
-the handle "ta" again, but in case you have multiple parents you may want to
-refer to them by names that make sense in your context.
-
-Note that whichever handle you choose, your CA will use the handles that the
-parent response included for itself *and* for your CA in its communication with
-this parent. I.e. you may want to inspect the response and use the same handle
-for the parent (parent_handle attribute), and do not be surprised or alarmed if
-the parent refers to your ca (child_handle attribute) by some seemingly random
-name. Some parents do this to ensure unicity.
-
-.. code-block:: text
-
-  $ krillc parents add remote --parent ripencc --rfc8183 ./parent-res.xml
-
-API Call: :krill_api:`POST /v1/cas/ca/parents <add_ca_parent>`
+  $ :ref:`krillc parents add remote<cmd_krillc_parents_add_remote>` --parent myta --rfc8183 ./parent-res.xml
 
 Now you should see that your "child" is certified:
 
-.. code-block:: text
+.. parsed-literal::
 
-  $ krillc show
+  $ :ref:`krillc show<cmd_krillc_show>`
   Name:     ca
 
   Base uri: rsync://localhostrepo/ca/
@@ -281,10 +229,10 @@ Now you should see that your "child" is certified:
       IPv6: 2001:db8::/32
 
   Parents:
-  Handle: ripencc Kind: RFC 6492 Parent
+  Handle: myta Kind: RFC 6492 Parent
 
   Resource Class: 0
-  Parent: ripencc
+  Parent: myta
   State: active    Resources:
       ASNs:
       IPv4: 10.0.0.0/8
@@ -296,64 +244,126 @@ Now you should see that your "child" is certified:
   Children:
   <none>
 
-API Call: :krill_api:`GET /v1/cas/ca <get_ca>`
+Add and List ROAs
+"""""""""""""""""
 
-ROAs
-----
+.. parsed-literal::
 
-Krill lets users create Route Origin Authorisations (ROAs), the signed objects
-that state which Autonomous System (AS) is authorised to originate one of your
-prefixes, along with the maximum prefix length it may have.
-
-You can update ROAs through the command line by submitting a plain text file
-with the following format:
-
-.. code-block:: text
-
-   # Some comment
-     # Indented comment
-
+   $ cat >./roas.txt <<EOF
    A: 10.0.0.0/24 => 64496
-   A: 10.1.0.0/16-20 => 64496   # Add prefix with max length
-   R: 10.0.3.0/24 => 64496      # Remove existing authorization
+   A: 10.1.0.0/16-20 => 64496
+   EOF
 
-You can then add this to your CA:
+   $ :ref:`krillc roas update<cmd_krillc_roas_update>` --delta ./roas.txt
 
-.. code-block:: text
+   $ :ref:`krillc roas list<cmd_krillc_roas_list>`
+   10.1.0.0/16-20 => 64496
+   10.0.0.0/24 => 64496
 
- $ krillc roas update --delta ./roas.txt
+Review your CA History
+""""""""""""""""""""""
 
-API Call: :krill_api:`POST /v1/cas/ca/routes <update_route_authorizations>`
+.. parsed-literal::
 
-If you followed the steps above then you would get an error, because there is no
-authorisation for 10.0.3.0/24 => 64496. If you remove the line and submit again,
-then you should see no response, and no error.
+   $ :ref:`krillc history<cmd_krillc_history>`
+   time::command::key::success
+   2020-06-07T20:33:21Z::Update repo to server at: https://localhost:3000/rfc8181/ca ::command--1591562001--1--cmd-ca-repo-update::OK
+   2020-06-07T20:34:18Z::Add parent 'myta' as 'RFC 6492 Parent' ::command--1591562058--2--cmd-ca-parent-add::OK
+   2020-06-07T20:34:19Z::Update entitlements under parent 'myta': 0 => asn: 0 blocks, v4: 1 blocks, v6: 1 blocks  ::command--1591562059--3--cmd-ca-parent-entitlements::OK
+   2020-06-07T20:34:20Z::Update received cert in RC '0', with resources 'asn: 0 blocks, v4: 1 blocks, v6: 1 blocks' ::command--1591562060--4--cmd-ca-rcn-receive::OK
+   2020-06-07T20:36:28Z::Update ROAs add: 2 remove: '0' ::command--1591562188--5--cmd-ca-roas-updated::OK
 
-You can list Route Origin Authorisations as well:
+Using Routinator with the Test TA
+"""""""""""""""""""""""""""""""""
 
-.. code-block:: text
+While there are many :ref:`Relying Party tools<relying_party_software>`, when
+testing with the Krill TA as noted above you will need an RP that supports a TAL
+file that contains an HTTPS URI.
 
-  $ krillc roas list
-  10.0.0.0/24 => 64496
-  10.1.0.0/16-20 => 64496
+One such RP is :ref:`NLnet Labs Routinator<doc_routinator>`. However, before you
+can use Routinator with Krill you will need to either setup Krill on a proper
+domain name with a matching TLS certificate issued by a trusted authority, or
+issue your own certificate and force Routinator to trust it.
 
-API Call: :krill_api:`GET /v1/cas/ca/routes <list_route_authorizations>`
+Issue Own TLS Certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
 
-History
--------
+   $ mkdir /tmp/own_cert
+   $ cd /tmp/own_cert
+   $ ISSUER="/C=NL/L=Amsterdam/O=Your Organisation Name"
+   $ SUBJECT="/C=NL/L=Amsterdam/O=Your Organisation Name/CN=localhost"
+   $ SAN="DNS:localhost"
+   $ openssl req -new \
+   $         -newkey rsa:4096 -keyout issuer.key \
+   $         -x509 -out issuer.crt \
+   $         -days 365 -nodes -subj "$ISSUER"
+   $ openssl req -new -out subject.csr \
+   $         -newkey rsa:4096 -keyout subject.key \
+   $         -days 365 -nodes -subj "$SUBJECT"
+   $ echo "subjectAltName=$SAN" > subject.ext
+   $ openssl x509 \
+   $         -in subject.csr -req -out subject.crt -extfile subject.ext \
+   $         -CA issuer.crt -CAkey issuer.key -CAcreateserial \
+   $         -days 365
 
-You can show the history of all the things that happened to your CA:
+Reconfigure Krill
+^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+.. code-block:: bash
 
-  $ krillc history
-  id: ca version: 0 details: Initialised with cert (hash): 973e3e967ecb2a2a409a785d1faf61cf73a66044, base_uri: rsync://localhost:3000/repo/ca/, rpki notify: https://localhost:3000/rrdp/notification.xml
-  id: ca version: 1 details: added RFC6492 parent 'ripencc'
-  id: ca version: 2 details: added resource class with name '0'
-  id: ca version: 3 details: requested certificate for key (hash) '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-  id: ca version: 4 details: activating pending key '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' under resource class '0'
-  id: ca version: 5 details: added route authorization: '10.1.0.0/16-20 => 64496'
-  id: ca version: 6 details: added route authorization: '10.0.0.0/24 => 64496'
-  id: ca version: 7 details: updated ROAs under resource class '0' added: 10.1.0.0/16-20 => 64496 10.0.0.0/24 => 64496
-  id: ca version: 8 details: updated objects under resource class '0' key: '48C9F037625B3F5A6B6B9D4137DB438F8C1B1783' added: 31302e312e302e302f31362d3230203d3e203634343936.roa 31302e302e302e302f3234203d3e203634343936.roa  updated: 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.crl 48C9F037625B3F5A6B6B9D4137DB438F8C1B1783.mft  withdrawn:
+   $ kill $(cat /tmp/krill_data/krill.pid)
+   $ cp /tmp/own_cert/subject.crt /tmp/krill_data/ssl/cert.pem
+   $ cp /tmp/own_cert/subject.key /tmp/krill_data/ssl/key.pem
+   $ export KRILL_TEST="true"
+   $ export KRILL_USE_TA="true"
+   $ krill -c /tmp/krill.conf &
+
+Initialize Routinator
+^^^^^^^^^^^^^^^^^^^^^
+
+To point Routinator at our test Krill TA we must download the TAL and store it
+where Routinator can find it. Also, to ensure that we don't interfere with any
+existing Routinator cache on your computer let's create a temporary cache
+directory for Routinator to use.
+
+.. code-block:: bash
+
+   $ mkdir -p /tmp/routinator/{tals,rpki-cache}
+   $ wget -q --no-check-certificate -O /tmp/routinator/tals/ta.tal \
+         https://localhost:3000/ta/ta.tal
+
+Run Routinator
+^^^^^^^^^^^^^^
+
+To successfully use Routinator with the Krill TA we must specify the following
+command line options:
+
++-------------------------+---------------------------------------------------+
+| Option                  | Explanation                                       |
++=========================+===================================================+
+| ``repository-dir``      | Location of the Routinator cache directory.       | 
++-------------------------+---------------------------------------------------+
+| ``tal-dir``             | Location of the Krill TA file                     |
++-------------------------+---------------------------------------------------+
+| ``rrdp-root-cert``      | Location of the certificate of the authority that |
+|                         | issued the Krill TLS certificate                  |
++-------------------------+---------------------------------------------------+
+| ``allow-dubious-hosts`` | Do **NOT** skip the Krill localhost repository    |
++-------------------------+---------------------------------------------------+
+
+The full command to invoke Routinator and the output showing our test ROAs is
+then:
+
+.. code-block:: bash
+
+   $ routinator \
+        --repository-dir=/tmp/routinator/rpki-cache \
+        --tal-dir=/tmp/routinator/tals \
+        --rrdp-root-cert=/tmp/own_cert/issuer.crt \
+        --allow-dubios-hosts \
+        vrps
+   ASN,IP Prefix,Max Length,Trust Anchor
+   AS64496,10.0.0.0/24,24,ta
+   AS64496,10.1.0.0/16,20,ta

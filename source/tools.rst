@@ -13,6 +13,8 @@ supporting tools that help deployment and integration.
 .. index:: Relying Party software
   see: RPKI Validator; Relying Party software
 
+.. _relying_party_software:
+
 Relying Party Software
 ----------------------
 

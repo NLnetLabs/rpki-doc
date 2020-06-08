@@ -1,270 +1,125 @@
 .. _doc_krill_remote_publishing:
 
-Remote Publishing
-=================
+Registering with a Repository
+=============================
 
-By default Krill CAs use an embedded repository server for the publication of
-RPKI objects. However, you may want to allow delegated CAs (e.g. your customers,
-or other business units) to publish at a repository server that you manage. In
-addition, running the repository separately from the CA offers flexibility in
-changing publication strategy and redundancy.
+The steps for registering a Krill CA as a publisher with a repository are very
+similar to the steps to :ref:`register a Krill CA as a child of a parent CA<doc_krill_registering_with_a_parent>`.
 
-The repository functions for Krill can be accessed through the
-:command:`publishers` subcommand in the CLI:
+Hosted vs 3rd Party
+-------------------
 
-.. code-block:: text
+Normally we advise that Krill CAs publish RPKI objects to a remote 3rd party
+repository. However, you may want to allow delegated CAs (e.g. your customers,
+or other business units) to publish at a repository server that you host and
+manage. In addition, running the repository separately from the CA offers
+flexibility in changing publication strategy and redundancy.
 
-  $ krillc publishers --help
-  krillc-publishers
-  Manage publishers in Krill.
+See :ref:`doc_krill_publication_server` for details on hosting your own RPKI 
+repository.
 
-  USAGE:
-      krillc publishers [SUBCOMMAND]
+Scenarios
+---------
 
-  FLAGS:
-      -h, --help       Prints help information
-      -V, --version    Prints version information
+To register with an RPKI repository you must exchange :rfc:`8183` XML files
+between the Krill CA and the repository service (which could also be a Krill
+instance):
 
-  SUBCOMMANDS:
-    add         Add a publisher.
-    help        Prints this message or the help of the given subcommand(s)
-    list        List all publishers.
-    remove      Remove a publisher.
-    response    Show RFC8183 Repository Response for a publisher.
-    show        Show details for a publisher.
+.. uml::
 
+   @startuml
+   skinparam sequenceMessageAlign center
+   skinparam monochrome true
+   skinparam ParticipantPadding 50
 
-List Publishers
----------------
+   participant "Admin" as admin
+   participant "Krill CA" as ca
+   participant "Repository" as repo
+   
+   admin <-[#black]- ca: Fetch **""<publisher_request/>"" XML**
+   |||
+   admin -[#black]> repo: Submit **""<publisher_request/> XML""**
+   repo -> repo: Register publisher
+   admin <[#black]- repo: Fetch **""<repository_response/>"" XML**
+   |||
+   admin -[#black]> ca: Submit **""<repository_response/>"" XML**
+   
+   @enduml
 
-You can list all publishers in Krill using the command below. Note that the
-list of publishers will include any embedded Krill CAs as well as any possible
-remote (:rfc:`8181` compliant) publishers.
+Depending on the service provider these actions may be possible via a browser
+portal (e.g. :ref:`the Krill UI<doc_krill_using_ui_repository_setup>` or an
+:ref:`NIR/RIR portal<member_portals>`) or may require that you execute commands (e.g. between a Krill
+CA and a Krill repository).
 
-.. code-block:: text
 
-  $ krillc publishers list
-  Publishers: ta, ca
+Krill CA -> NIR/RIR Remote Repository
+"""""""""""""""""""""""""""""""""""""
 
-API Call: :krill_api:`GET /v1/publishers <list_publishers>`
+.. Note:: Registering a Krill CA as a publisher with a remote Krill repository
+          may require that you log in to and interact with the NIR/RIR RPKI web
+          portal.
 
-Show Publisher Details
-----------------------
+#. In the Krill UI copy/download the :rfc:`8183` Publisher Request.
 
-You can show the full details of a publisher, including the files that they
-published.
+#. In the NIR/RIR portal:
 
-.. code-block:: text
+   * Paste/upload the :rfc:`8183` Publisher Request.
 
-  $ krillc publishers show --publisher ta
-  handle: ta
-  id: 5ce21ed116540a22c562f45dae8f2eb5a3c13ceebase uri: rsync://localhost/repo/ta/
+   * Copy/download the :rfc:`8183` Repository Response.
 
-API Call: :krill_api:`GET /v1/publishers/ta <get_publisher>`
+#. In the Krill UI paste/upload the :rfc:`8183` Repository Response.
 
-The default text output just shows the handle of the publisher, the hash of its
-identity certificate key, and the rsync URI jail under which the publisher is
-allowed to publish objects.
 
-The JSON response includes a lot more information, including the files which
-were published and the full ID certificate used by the publisher. Note that
-even embedded Krill CAs will have such a certificate, even if they access the
-repository server locally.
+.. _remote_publishing_to_krill_repo:
 
-Remove a Publisher
-------------------
+Krill CA -> Krill Remote Repository
+"""""""""""""""""""""""""""""""""""
 
-You can remove publishers. If you do, then all of its content will be removed
-as well and the publisher will no longer be allowed to publish.
+Registering a Krill CA with a remote Krill repository can be done with the
+following commands:
 
-Note that you can do this without the publisher's knowledge, nor consent, even
-for embedded Krill CAs. With great power comes great responsibility. That said,
-you can always add a publisher again (also embedded publishers), and once a
-publisher can connect to your repository again, it should be able to figure out
-that it needs to re-publish all its content (Krill CAs will always check for
-this).
+.. Note:: To complete the registration you will need the API token for the
+          remote Krill repository, or the support of an admin willing to
+          run commands against the remote Krill repository for you.
 
-.. code-block:: text
+.. parsed-literal::
 
-  $ krillc publishers remove --publisher ca
+   Communicating with the CA server Krill instance:
+   1. :ref:`krillc repo request<cmd_krillc_repo_request>`           Show RFC8183 Publisher Request XML.
 
-API Call: :krill_api:`DELETE /v1/publishers/ca <delete_publisher>`
+   Communicating with the repository server Krill instance:
+   2. :ref:`krillc publishers add<cmd_krillc_publishers_add>`         Add a publisher.
+   3. :ref:`krillc publishers response<cmd_krillc_publishers_response>`    Show RFC8183 Repository Response XML.
 
+   Communicating with the CA server Krill instance:
+   4. :ref:`krillc repo update remote<cmd_krillc_repo_update>`     Change which repository this CA uses.
 
-Add a Publisher
----------------
 
-In order to add a publisher you have to get its :rfc:`8183` Publisher Request
-XML, and hand it over to the server:
+.. _register_with_embedded_repo:
 
-.. code-block:: text
+Krill CA -> Krill Embedded Repository
+"""""""""""""""""""""""""""""""""""""
 
-  $ krillc publishers add --publisher ca --rfc8183 ./data/ca-pub-req.xml
-
-API Call: :krill_api:`POST /v1/publishers <add_publisher>`
-
-
-Show Repository Response
-------------------------
-
-In order to show the :rfc:`8183` Repository Response XML for a specific publisher
-use the following:
-
-.. code-block:: text
-
-  $ krillc publishers response --publisher ca
-  <repository_response xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca" service_uri="https://localhost:3000/rfc8181/ca" sia_base="rsync://localhost/repo/ca/" rrdp_notification_uri="https://localhost:3000/rrdp/notification.xml">
-    <repository_bpki_ta> repository server id certificate base64 </repository_bpki_ta>
-  </repository_response>
-
-API Call: :krill_api:`GET /v1/publishers/ca/response.json <get_publisher_repository_response>`
-
-Publish at a Remote Repository
-------------------------------
-
-Controlling your CA's repository server is done through the :command:`repo`
-subcommand of the CLI:
-
-.. code-block:: text
-
-  $ krillc repo --help
-  krillc-repo
-  Manage the repository for your CA.
-
-  USAGE:
-      krillc repo [SUBCOMMAND]
-
-  FLAGS:
-      -h, --help       Prints help information
-      -V, --version    Prints version information
-
-  SUBCOMMANDS:
-    help       Prints this message or the help of the given subcommand(s)
-    request    Show RFC8183 Publisher Request.
-    show       Show current repo config.
-    state      Show current repo state.
-    update     Change which repository this CA uses.
-
-Show repository for CA
-----------------------
-
-You can use the following to show which repository server your CA is using,
-as well as what is has published at the location. Krill will issue an actual
-``list`` query to the repository and give back the response, or an error in case
-of issues.
-
-.. code-block:: text
-
-   $ krillc repo show
-   Repository Details:
-     type:        embedded
-     base_uri:    rsync://localhost/repo/ca/
-     rpki_notify: https://localhost:3000/rrdp/notification.xml
-
-   Currently published:
-     c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
-     557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
-     444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
-     874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
-
-API Call: :krill_api:`GET /v1/cas/ca/repo <get_ca_repository>`
-
-
-Show Publisher Request
-----------------------
-
-You can use the following to show the :rfc:`8183` Publisher Request XML for a
-CA. You will need to hand this over to your remote repository so that they can
-add your CA.
-
-.. code-block:: text
-
-  $ krillc repo request
-  <publisher_request xmlns="http://www.hactrn.net/uris/rpki/rpki-setup/" version="1" publisher_handle="ca">
-    <publisher_bpki_ta>your CA ID cert DER in base64</publisher_bpki_ta>
-  </publisher_request>
-
-API Call: :krill_api:`GET /v1/cas/ca/repo/request.json <get_ca_publisher_request>`
-
-
-Change Repository for a CA
---------------------------
-
-You can change which repository server is used by your CA. If you have multiple
-CAs you will have to repeat this for each of them. Also, note that by default
-your CAs will assume that they use the embedded publication server. So, in order
-to use a remote server you will have to use this process to change over.
-
-Changing repositories is actually more complicated than one might think, but
-fortunately it's all automated. When you ask Krill to change, the following
-steps will be executed:
-
-- check that the new repository can be reached, and this ca is authorised
-- regenerate all objects using the URI jail given by the new repository
-- publish all objects in the new repository
-- request new certificates from (all) parent CA(s) including the new URI
-- once received, do a best effort to clean up the old repository
-
-In short, Krill performs a sanity check that the new repository can be used,
-and then tries to migrate there in a way that will not lead to invalidating
-any currently signed objects.
-
-To start a migration you can use the following.
-
-.. code-block:: text
-
-  $ krillc repo update rfc8183 [file]
-
-API Call: :krill_api:`POST /v1/cas/ca/repo <update_ca_repository>`
-
-If no file is specified the CLI will try to read the XML from STDIN.
-
-Note that if you were using an embedded repository, and you instruct your CA
-to connect to the embedded repository, but set up as a *remote*, then you will
-find that you have no more published objects - because.. Krill tries to clean
-up the old repository, and we assume that you would not try to use an embedded
-server over the :rfc:`8181` protocol.
-
-But, suppose that you did, you would now see this:
-
-.. code-block:: text
-
-  $ krillc repo show
-  Repository Details:
-    type:        remote
-    service uri: https://localhost:3000/rfc8181/ca
-    base_uri:    rsync://localhost/repo/ca/
-    rpki_notify: https://localhost:3000/rrdp/notification.xml
-
-  Currently published:
-    <nothing>
-
-But no worries.. this can be fixed.
-
-First, you may want to migrate back to using the embedded repository without
-the :rfc:`8181` protocol overhead:
-
-.. code-block:: text
-
-  $ krillc repo update embedded
-
-But this does not solve your problem just yet. Or well, it will re-publish
-everything under the new embedded repository, but then it will clean up the
-'old' repository which happens to be the same one in this corner case.
-
-The solution is 're-syncing' as described in the following section.
-
-
-Re-syncing CAs with Repository
-------------------------------
-
-If your CAs have somehow become out of sync with their repository, then they
-will automatically re-sync whenever there is an update like a renewal of
-manifest and crl (every 8 hours), or whenever ROAs are changed. However, you
-can force that *all* Krill CAs re-sync using the following.
-
-.. code-block:: text
-
-  $ krillc bulk sync
-
-API Call: :krill_api:`POST /v1/bulk/cas/sync/repo <resync_all_cas>`
+Registering a Krill CA with a repository embedded in the same Krill instance as
+the CA can be done with the following commands:
+
+.. parsed-literal::
+
+   On the CA/repository server:
+   1. :ref:`krillc repo request<cmd_krillc_repo_request>`           Show RFC8183 Publisher Request.
+   2. :ref:`krillc repo update embedded<cmd_krillc_repo_update>`   Change which repository this CA uses.
+
+Working with Publishers and Repositories
+----------------------------------------
+
+See:
+  - :ref:`krillc publishers list<cmd_krillc_publishers_list>`
+  - :ref:`krillc publishers show<cmd_krillc_publishers_show>`
+  - :ref:`krillc repo show<cmd_krillc_repo_show>`
+  - :ref:`krillc bulk sync<cmd_krillc_bulk_sync>`
+
+.. Warning:: The following commands require special care when using them on a
+             previously established setup. Please consult the documentation for
+             these commands before using them:
+               - :ref:`krillc publishers remove<cmd_krillc_publishers_remove>`
+               - :ref:`krillc repo update<cmd_krillc_repo_update>`

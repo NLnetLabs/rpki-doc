@@ -23,9 +23,13 @@ Krill can generate a basic configuration file for you. We are going to specify
 the two required directives, a secret token and the path to the data directory,
 and then store it in this directory.
 
-.. code-block:: bash
+.. parsed-literal::
 
-  krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
+  :ref:`krillc config simple<cmd_krillc_config_simple>` --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
+
+.. Note:: If you wish to run a self-hosted RPKI repository with Krill you will
+          need to use a different ``krillc config`` command. See :ref:`doc_krill_publication_server`
+          for more details.
 
 You can find a full example configuration file with defaults in `the
 GitHub repository

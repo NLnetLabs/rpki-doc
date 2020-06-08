@@ -41,6 +41,7 @@ release = u''
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
+    'sphinxcontrib.plantuml'
 ]
 
 # If true, figures, tables and code-blocks are automatically numbered if they have a caption.

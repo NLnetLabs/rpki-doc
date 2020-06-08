@@ -1,7 +1,7 @@
 .. _doc_krill_publication_server:
 
-Publication Server
-==================
+Running a Publication Server
+============================
 
 .. Important:: It is highly recommended to use an RPKI publication server
                provided by your parent CA, if available. This relieves you of
@@ -32,8 +32,8 @@ front of your web servers. Please note that the official name for the HTTPS
 based transport is the RPKI Repository Delta Protocol (RRDP), so you will see
 this abbreviation used throughout the documentation.
 
-Using the Embedded Repository
------------------------------
+Creating the Embedded Repository
+--------------------------------
 
 .. Warning:: Please note it is practically impossible to change the
              configuration of Krill's embedded repository after it has been
@@ -42,19 +42,33 @@ Using the Embedded Repository
              instance running as a repository only, as described in
              :ref:`doc_krill_remote_publishing`.
 
+.. Note:: The Krill UI is not currently aimed at using Krill as a repository
+          server. For example when visiting the UI of a Krill instance intended
+          for use only as a repository and not as a CA, it will still prompt you
+          on first use to create a CA. There is also no support via the UI for
+          managing the repository, for example it is not possible via the UI to
+          complete and child request to register with the repository.
+
 Krill can use an embedded repository to publish RPKI objects. It can generate
-the required configuration for you using the :command:`krillc config`
+the required configuration for you using the :ref:`krillc config<cmd_krillc_config>`
 subcommand. This ensures the syntax is correct, as for example trailing slashes
 are required. Use this command with your own values, using domain names pointing
 to servers that are publicly reachable.
 
-.. code-block:: bash
+.. parsed-literal::
 
-  krillc config repo \
-     --token correct-horse-battery-staple \
-     --data ~/data/ \
-     --rrdp "https://rpki.example.net/rrdp/" \
+  :ref:`krillc config repo<cmd_krillc_config_repo>` \\
+     --token correct-horse-battery-staple \\
+     --data ~/data/ \\
+     --rrdp "https://rpki.example.net/rrdp/" \\
      --rsync "rsync://rpki.example.net/repo/" > krill.conf
+
+Configuring Repository Servers
+------------------------------
+
+Krill runs the publication server. To actually serve the published content to
+Rsync and RRDP clients you will need to run your own *repository* servers using
+tools such as Rsyncd and NGINX.
 
 Krill will write the repository files under its data directory:
 
@@ -75,6 +89,9 @@ entire repository to a new folder under :file:`$DATA_DIR/repo/rsync` and then
 renames it. This is done to minimise issues with files being updated while
 relying party software is fetching data.
 
+Rsync
+"""""
+
 The next step is to configure your rsync daemons to expose a 'module' for your
 files. Make sure that the Rsync URI including the 'module' matches the
 :file:`rsync_base` in your Krill configuration file. Basic configuration can
@@ -93,6 +110,9 @@ then be as simple as:
   comment = RPKI repository
   read only = yes
 
+RRDP
+""""
+
 For RRDP you will need to set up a web server of your choice and ensure that it
 has a valid TLS certificate. Next, you can make the files found under, or copied
 from :file:`$DATA_DIR/repo/rrdp` available here. Make sure that the public URI
@@ -104,6 +124,14 @@ your load and uptime requirements. If you do, make sure that the public URI
 matches the directive in :file:`krill.conf`, because this will be used in your
 RPKI certificate.
 
+Publishing in the Repository
+----------------------------
+
+See :ref:`remote_publishing_to_krill_repo` in :ref:`doc_krill_remote_publishing`.
+
+Migrating the Repository
+------------------------
+
 If you find that there is an issue with your repository or, for example, you
 want to change its domain name, you can set up a new Krill instance with an
 embedded repository. When you are satisfied that the new one is correct, you
@@ -114,3 +142,4 @@ Krill will then make sure that objects are moved properly, and that a new
 certificate is requested from your parent(s) to match the new location. This
 scenario would also apply when your RIR starts providing a repository service.
 You can update your CA to start publishing there instead.
+
