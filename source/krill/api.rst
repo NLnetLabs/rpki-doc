@@ -56,7 +56,7 @@ access token and domain name for your Krill server.
    krill_ca_api = CertificateAuthoritiesApi(krill_api_client)
 
    # Query Krill for the list of configured CAs
-   print(krill_ca_api.cas_get())
+   print(krill_ca_api.list_cas())
 
 Now generate the Krill client library:
 
