@@ -67,14 +67,14 @@ Local
 Using a Bash alias with ``<SOME_TOKEN>`` you can easily interact with the
 locally running Krill daemon via its command-line interface (CLI):
 
-.. code-block:: bash
+.. parsed-literal::
 
-    $ alias krillc='docker exec \
-      -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \
-      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \
+    $ alias krillc='docker exec \\
+      -e KRILL_CLI_SERVER=https://127.0.0.1:3000/ \\
+      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \\
       nlnetlabs/krill:v0.6.2 krillc'
 
-    $ krillc list -f json
+    $ :ref:`krillc list<cmd_krillc_list>` -f json
     {
       "cas": []
     }
@@ -85,14 +85,14 @@ Remote
 The Docker image can also be used to run :command:`krillc` to manage remote
 Krill servers. Using a shell alias simplifies this considerably:
 
-.. code-block:: bash
+.. parsed-literal::
 
-    $ alias krillc='docker run --rm \
-      -e KRILL_CLI_SERVER=https://rpki.example.net/ \
-      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \
+    $ alias krillc='docker run --rm \\
+      -e KRILL_CLI_SERVER=https://rpki.example.net/ \\
+      -e KRILL_CLI_TOKEN=correct-horse-battery-staple \\
       -v /tmp/ka:/tmp/ka nlnetlabs/krill:v0.6.2 krillc'
 
-   $ krillc list -f json
+   $ :ref:`krillc list<cmd_krillc_list>` -f json
    {
       "cas": []
    }
@@ -100,9 +100,9 @@ Krill servers. Using a shell alias simplifies this considerably:
 Note: The ``-v`` volume mount is optional, but without it you will not be able
 to pass files to :command:`krillc` which some subcommands require, e.g.
 
-.. code-block:: bash
+.. parsed-literal::
 
-   $ krillc roas update --ca my_ca --delta /tmp/delta.in
+   $ :ref:`krillc roas update<cmd_krillc_roas_update>` --ca my_ca --delta /tmp/delta.in
 
 Service and Certificate URIs
 ----------------------------

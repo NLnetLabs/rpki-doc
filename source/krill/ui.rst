@@ -47,6 +47,8 @@ recognise your organisation. Once set, the handle cannot be changed.
 
     Enter a handle for your Certificate Authority
 
+.. _doc_krill_using_ui_repository_setup:
+
 Repository Setup
 ----------------
 

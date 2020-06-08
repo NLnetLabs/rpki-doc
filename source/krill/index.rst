@@ -74,12 +74,14 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
    installation
    getting-started
    parent-interactions
-   publication-server
+   creating-a-certificate-authority
+   registering-with-a-parent
    remote-publishing
    ui
    cli
    api
    monitoring
+   publication-server
    testing
    docker
    Running with Krill Manager <krillmanager/index>

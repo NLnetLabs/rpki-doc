@@ -8,7 +8,12 @@ you will need to register your CA with a parent in the hierarchy. Typically that
 will be an RIR or NIR, but as mentioned in the :ref:`introduction<doc_krill>` it
 could also be a parent within your business.
 
-To register with an RPKI parent you need to exchange :rfc:`8183` XML files
+Krill supports two communication modes:
+
+1. embedded, meaning the both the parent and child CA live in the same Krill
+2. remote, meaning that the official RFC protocol is used
+
+To register with an RPKI remote parent you need to exchange :rfc:`8183` XML files
 with the parent via their :ref:`web portal<member_portals>` or API.
 
 .. uml::
@@ -39,8 +44,8 @@ Scenarios
 Krill CA -> NIR/RIR Remote CA
 """""""""""""""""""""""""""""
 
-Registering a Krill CA as a child with a remote Krill CA may require that you
-log in to and interact with the a parent web portal, e.g.:
+.. Note:: Registering a Krill CA as a child with a remote Krill CA may require
+          that you log in to and interact with the a parent web portal.
 
 #. In the Krill UI copy/download the :rfc:`8183` Child Request.
 
@@ -66,14 +71,14 @@ following commands:
 .. parsed-literal::
 
    Communicating with the CA server Krill instance:
-   1. :ref:`krillc parents request<cmd_parents_request>`        Show RFC8183 Child Request XML.
+   1. :ref:`krillc parents request<cmd_krillc_parents_request>`        Show RFC8183 Child Request XML.
 
    Communicating with the remote Krill CA instance:
-   2. :ref:`krillc children add remote<cmd_children_add_remote>`    Add a child to a CA..
-   3. :ref:`krillc children response<cmd_children_response>`      Show RFC8183 Parent Response XML.
+   2. :ref:`krillc children add remote<cmd_krillc_children_add_remote>`    Add a child to a CA..
+   3. :ref:`krillc children response<cmd_krillc_children_response>`      Show RFC8183 Parent Response XML.
 
    Communicating with the CA server Krill instance:
-   4. :ref:`krillc parents add remote<cmd_parents_add_remote>`     Add a parent to this CA.
+   4. :ref:`krillc parents add remote<cmd_krillc_parents_add_remote>`     Add a parent to this CA.
 
 
 Krill CA -> Krill Local CA
@@ -85,4 +90,4 @@ with the following commands:
 .. parsed-literal::
 
    Communicating with the CA server Krill instance:
-   1. :ref:`krillc parents add embedded<cmd_parents_add_embedded>`
+   1. :ref:`krillc parents add embedded<cmd_krillc_parents_add_embedded>`
