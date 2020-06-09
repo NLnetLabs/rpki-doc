@@ -20,7 +20,7 @@ Getting Help
    GET:
      https://<your.domain>/api/v1/cas
    Headers:
-     Authorization: Bearer *****
+     Authorization: Bearer \*\*\*\*\*
 
 
 Generating Client Code
