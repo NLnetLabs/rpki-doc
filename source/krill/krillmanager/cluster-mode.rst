@@ -189,7 +189,7 @@ Is Proxy Protocol supported?
 `Not yet <https://github.com/NLnetLabs/krillmanager/issues/2>`_. Without
 `Proxy Protocol <https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt>`_
 you will likely see the IP addresses of the proxy in your NGINX and
-RsyncD logs but rather than that of the real client.
+RsyncD logs rather than that of the real client.
 
 .. _faq_health_check:
 
