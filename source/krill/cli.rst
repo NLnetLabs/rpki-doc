@@ -149,8 +149,8 @@ parent to it, followed by some Route Origin Authorisations and/or child CAs.
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
-.. Information:: The CA name may consist of alphanumeric characters, dashes and
-                 underscores, i.e. ``a-zA-Z0-9_``.
+.. note:: The CA name may consist of alphanumeric characters, dashes and
+          underscores, i.e. ``a-zA-Z0-9_``.
 
 ....
 

@@ -31,10 +31,10 @@ Scenarios
   :ref:`initial setup<doc_krill_manager_initial_setup>` to enter a handle which
   will Krill Manager will use to create a CA for you.
 
-.. Information:: If you intend to run the Krill instance as a dedicated
-                 :ref:`self-hosted repository<doc_krill_publication_server>`
-                 you do not need to add a CA if using the CLI, but when using
-                 the UI or Krill Manager you will be forced to do so anyway.
+.. note:: If you intend to run the Krill instance as a dedicated
+          :ref:`self-hosted repository<doc_krill_publication_server>`
+          you do not need to add a CA if using the CLI, but when using
+          the UI or Krill Manager you will be prompted to do so.
 
 Next Steps
 ----------
