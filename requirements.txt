@@ -1,1 +1,2 @@
 sphinxcontrib-contentui==0.2.2
+sphinxcontrib-plantuml==0.18
