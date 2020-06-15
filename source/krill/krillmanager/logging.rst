@@ -65,6 +65,7 @@ a custom destination that you have configured:
    FluentD.
 5. Use ``docker logs <container PID/name>`` to see that the flush was received and
    if it caused any upload activity, e.g.:
+
 .. code-block:: bash
 
    # docker service logs --raw z1c6ksk6zvdx | fgrep flush
