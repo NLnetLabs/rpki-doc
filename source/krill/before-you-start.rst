@@ -77,31 +77,17 @@ yourself.
 Publishing Yourself
 -------------------
 
-When you publish your certificate and ROAs yourself, you are faced with
-running a public service with all related responsibilities, such as uptime and
-DDoS protection.
+Krill features a publication server, disabled by default, but which can be used
+to host a server for yourself, and others, such as customers or business units
+who run their own Krill CAs as children under your CA, and to whom you have
+delegated resource certificates.
 
-Krill can be configured with two types of publication server: embedded and
-stand-alone. Using the embedded publication server is simple, and doesn't
-require a publisher request and repository response exchange. However, it is
-practically impossible to change its configuration after it has been
-initialised.
+If you run Krill as a publication server, you will be faced with running a
+public service with all related responsibilities, such as uptime and DDoS
+protection. So, this option is not recommended if you don't have a clear need
+to run your own server.
 
-For production environments where you may want change strategies over time we
-recommend running a separate Krill instance acting as a repository only. This
-also allows you to host a publication server for others, such as children of
-your own. These can be business units, branches or customers.
-
-.. figure:: img/parent-child-repo.*
-    :align: center
-    :width: 100%
-    :alt: Running your own publication server
-
-    Running a publication server for yourself and your children
-
-In this scenario you install Krill on a separate, highly available machine and
-simply don't set up any CA. In addition, you will need to run Rsyncd and a web
-server of your choice to publish your certificate and ROAs.
+Read more about this option in ref: `doc_krill_publication_server`
 
 System Requirements
 -------------------
