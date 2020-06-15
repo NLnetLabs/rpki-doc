@@ -121,5 +121,6 @@ See:
 .. Warning:: The following commands require special care when using them on a
              previously established setup. Please consult the documentation for
              these commands before using them:
+
                - :ref:`krillc publishers remove<cmd_krillc_publishers_remove>`
                - :ref:`krillc repo update<cmd_krillc_repo_update>`
