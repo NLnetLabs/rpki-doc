@@ -132,9 +132,12 @@ C Toolchain
 
 Some of the libraries Krill depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
-set of packages to build from C sources. For example,
-:command:`apt install build-essential` will install everything you need on
-Debian/Ubuntu.
+set of packages to build from C sources. For example, this will install
+everything you need on Debian/Ubuntu:
+
+.. code-block:: bash
+
+    apt install build-essential
 
 If you are unsure, try to run :command:`cc` on a command line and if there’s a
 complaint about missing input files, you are probably good to go.
