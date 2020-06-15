@@ -159,7 +159,7 @@ As there is no UI support for this, you will need to use the command line
 interface using the :ref:`krillc publisher<cmd_krillc_publishers>` subcommand
 to manage publishers.
 
-This sub-command will allow you to add your Krill CA client's RFC8181 Publisher
+This subcommand will allow you to add your Krill CA client's RFC8181 Publisher
 Request XML, and obtain a Repository Response XML for it. From the client CA's
 perspective this part of the process is exactly as described here:
 :ref:`remote_publishing_to_krill_repo` in :ref:`doc_krill_remote_publishing`.
