@@ -31,7 +31,7 @@ Configuring a Krill Repository
           for use only as a repository and not as a CA, it will still prompt you
           on first use to create a CA. There is also no support via the UI for
           managing the repository, for example it is not possible via the UI to
-          complete and child request to register with the repository.
+          complete a child request to register with the repository.
 
 
 Krill can be set up to run as a Publication Server through its configuration
