@@ -89,6 +89,7 @@ Make sure you don't miss them, especially if they open behind other windows, els
 
 You could also install a normal `make` toolchain (for example via MinGW) and build the docs using the normal `make html`.
 
+
 ### Building with Sphinx and virtualenv
 
 If you want your Sphinx installation scoped to the project, you can install it using virtualenv.
@@ -96,9 +97,10 @@ Execute this from the root folder of this repository:
 
 ```sh
 pip install virtualenv
-virtualenv env
+python -m virtualenv env
 source env/bin/activate
 pip install sphinx sphinx_rtd_theme -r requirements.txt
+pip install sphinxcontrib.plantuml
 ```
 
 Then do `make html` like above.
