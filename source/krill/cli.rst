@@ -32,7 +32,7 @@ subcommands, and some arguments. Help is built-in:
 
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
-       -f, --format <type>     Report format: none|json|text (default) |xml. Or set env: KRILL_CLI_FORMAT
+       -f, --format <type>     Report format: none\|json\|text (default) \|xml. Or set env: KRILL_CLI_FORMAT
        -s, --server <URI>      The full URI to the krill server. Or set env: KRILL_CLI_SERVER
        -t, --token <string>    The secret token for the krill server. Or set env: KRILL_CLI_TOKEN
 

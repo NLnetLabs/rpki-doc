@@ -65,6 +65,7 @@ a custom destination that you have configured:
    FluentD.
 5. Use ``docker logs <container PID/name>`` to see that the flush was received and
    if it caused any upload activity, e.g.:
+
 .. code-block:: bash
 
    # docker service logs --raw z1c6ksk6zvdx | fgrep flush
@@ -148,7 +149,7 @@ placed inside a label stanza like so:
 .. parsed-literal::
 
    <label @ready>
-     <match **>
+     <match \*\*>
        @type s3
        ..
      </match>
@@ -265,7 +266,7 @@ Elasticsearch:
 
    # elastic-search.conf
    <label @ready>
-     <filter **>
+     <filter \*\*>
        @type grep
        <regexp>
          key container
@@ -273,7 +274,7 @@ Elasticsearch:
        </regexp>
      </filter>
 
-     <filter **>
+     <filter \*\*>
        # Given a log record with a message field whose value is like:
        #   2020/05/11 23:59:59 [31881] connect from UNDETERMINED (105.16.160.2)
        @type parser
@@ -285,7 +286,7 @@ Elasticsearch:
        </parse>
      </filter>
 
-     <match **>
+     <match \*\*>
        @type elasticsearch
        host elasticsearch.mydomain.com
        port 9200
@@ -305,7 +306,7 @@ an S3 compatible storage target, use a copy configuration like so:
 
    # copy.conf
    <label @ready>
-     <match **>
+     <match \*\*>
        @type copy
        <store>
          @type relabel

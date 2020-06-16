@@ -31,7 +31,7 @@ Configuring a Krill Repository
           for use only as a repository and not as a CA, it will still prompt you
           on first use to create a CA. There is also no support via the UI for
           managing the repository, for example it is not possible via the UI to
-          complete and child request to register with the repository.
+          complete a child request to register with the repository.
 
 
 Krill can be set up to run as a Publication Server through its configuration
@@ -57,11 +57,11 @@ for you. For example:
      --rrdp "https://rpki.example.net/rrdp/" \\
      --rsync "rsync://rpki.example.net/repo/" > krill.conf
 
-Make sure that the `--server` option reflects a base URI that your Krill CA
+Make sure that the ``--server`` option reflects a base URI that your Krill CA
 publication clients can reach, and make sure that this URI is exposed using
 a proxy server that has a proper HTTPS certificate configured.
 
-Make sure that the `--rrdp` and `--rsync` options match the configuration of your
+Make sure that the ``--rrdp`` and ``--rsync`` options match the configuration of your
 "Repository Servers" which make your repository available over HTTPS and rsync
 to Relying Parties.
 
@@ -134,7 +134,7 @@ For RRDP you will need to set up a web server of your choice and ensure that it
 has a valid TLS certificate. Next, you can make the files found under, or copied
 from :file:`$DATA_DIR/repo/rrdp` available here. Make sure that the public URI
 to the RRDP base directory matches the value of ``rrdp_service_uri`` in your
-:file:`krill.conf` file, or the `--rrdp` option if you generated the
+:file:`krill.conf` file, or the ``--rrdp`` option if you generated the
 configuration.
 
 If desired, you can also use a CDN in front of this server to further reduce
@@ -147,8 +147,8 @@ RFC 8181 (publication protocol)
 
 Make sure that your Krill Publication Server can be reached by your Krill CA
 clients. The best way to do this, is by setting up a web server, similar to the
-RRDP set up above, which proxies access to URIs starting with `/rfc8181` under
-the hostname you specified with the `--server` option through to your Krill
+RRDP set up above, which proxies access to URIs starting with ``/rfc8181`` under
+the hostname you specified with the ``--server`` option through to your Krill
 Publication Server.
 
 
@@ -159,7 +159,7 @@ As there is no UI support for this, you will need to use the command line
 interface using the :ref:`krillc publisher<cmd_krillc_publishers>` subcommand
 to manage publishers.
 
-This sub-command will allow you to add your Krill CA client's RFC8181 Publisher
+This subcommand will allow you to add your Krill CA client's RFC8181 Publisher
 Request XML, and obtain a Repository Response XML for it. From the client CA's
 perspective this part of the process is exactly as described :ref:`here<doc_krill_using_ui_repository_setup>`.
 
@@ -169,7 +169,7 @@ To add the Krill CA client XML to your server use the following:
 
   $ krillc publishers add --request <path-to-xml> [--publisher publisher]
 
-If `--publisher` is not specified then the publisher identifier handle will be
+If ``--publisher`` is not specified then the publisher identifier handle will be
 taken from the XML. Handles need to be unique. So, you may want or need to
 override this - especially if you provide your Publication Server as a service
 to others.
