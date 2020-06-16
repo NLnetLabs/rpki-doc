@@ -83,10 +83,10 @@ Use the following to show more details of the embedded TA:
 
    $ :ref:`krillc show<cmd_krillc_show>` --ca ta
    Name:     ta
-   
+
    Base uri: rsync://localhost/repo/ta/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
-   
+
    ID cert PEM:
    -----BEGIN CERTIFICATE-----
    MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2MUE1
@@ -95,17 +95,17 @@ Use the following to show more details of the embedded TA:
    Yge7BolTITNX8XBzDdTr91TgUKEtDEGlNh6sYOONJW9rQxZIsDIdTeBoPSQKCdXk
    D13RgMxQSjycIfAeIBo9yg==
    -----END CERTIFICATE-----
-   
+
    Hash: 85041ff6bf2d8edf4e02c716e8be9f4dd49e2cc8aa578213556072bab75575ee
-   
+
    Total resources:
        ASNs: AS0-AS4294967295
        IPv4: 0.0.0.0/0
        IPv6: ::/0
-   
+
    Parents:
    Handle: ta Kind: This CA is a TA
-   
+
    Resource Class: 0
    Parent: ta
    State: active    Resources:
@@ -115,7 +115,7 @@ Use the following to show more details of the embedded TA:
    Current objects:
      1529A3C0E47EA38C1101DECDD6330E932E3AB98F.crl
      1529A3C0E47EA38C1101DECDD6330E932E3AB98F.mft
-   
+
    Children:
    <none>
 
@@ -143,7 +143,10 @@ Verify that now both TA and CA exist:
 Register the CA with a repository
 """""""""""""""""""""""""""""""""
 
-For more information see :ref:`doc_krill_remote_publishing`.
+You can do the CA part of this :ref:`using the UI<doc_krill_using_ui_repository_setup>`.
+
+But, if your CAs and your test publication server are all running in the same
+Krill instance you can quickly do the full set up using the CLI.
 
 .. parsed-literal::
 
@@ -160,8 +163,7 @@ Use the TA as the Parent of the CA
 
 When using an embedded TA for testing then you will first need to add your
 new CA "ca" to it. The steps below are not specific to the TA, the same steps
-must be taken when registering any child CA with a parent CA. For more
-information see :ref:`doc_krill_registering_with_a_parent`.
+must be taken when :ref:`registering any CA with a parent CA <doc_krill_using_ui_parent_setup>`.
 
 Note: In this example we register with the TA as if it were remote rather than
 embedded. This is slightly less efficient, but it's the same as what you would
@@ -343,7 +345,7 @@ command line options:
 +-------------------------+---------------------------------------------------+
 | Option                  | Explanation                                       |
 +=========================+===================================================+
-| ``repository-dir``      | Location of the Routinator cache directory.       | 
+| ``repository-dir``      | Location of the Routinator cache directory.       |
 +-------------------------+---------------------------------------------------+
 | ``tal-dir``             | Location of the Krill TA file                     |
 +-------------------------+---------------------------------------------------+

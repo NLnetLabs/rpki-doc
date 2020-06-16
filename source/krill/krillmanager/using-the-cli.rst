@@ -29,11 +29,11 @@ Krill Manager supports the following commands:
 .. parsed-literal::
 
    # krillmanager --help
-   
+
    Usage: COMMAND [ARGUMENTS]
-   
+
    A tool for managing NLnet Labs Krill and related services.
-   
+
    Commands:
      :ref:`backup<cmd_backup>`   Backup Krill and supporting services state
      :ref:`certs<cmd_certs>`    List the TLS certificates in use by NGINX
@@ -114,7 +114,7 @@ scenarios that are not available via the interactive wizard:
    # krillmanager [--use-lets-encrypt-staging] [--private] init
 
 The ``--use-lets-encrypt-staging`` option causes any Let's Encrypt certificate
-requests to be made to the Let's Encrypt staging environment rather than the 
+requests to be made to the Let's Encrypt staging environment rather than the
 production environment. This can be useful to avoid hitting Let's Encrypt rate
 limits in the production environment through repeated testing.
 
@@ -129,10 +129,10 @@ behind a proxy which itself has the real RRDP certificate.
 Command: krillc
 ---------------
 
-This command invokes the Krill CLI tool :ref:`krillc <doc_krill_using_cli>`.
+This command invokes the Krill CLI tool :ref:`krillc <doc_krill_cli>`.
 
 .. tip:: You can also invoke this command as just ``krillc`` without the
-         ``krillmanager`` prefix, just like in the :ref:`krillc documentation <doc_krill_using_cli>`.
+         ``krillmanager`` prefix, just like in the :ref:`krillc documentation <doc_krill_cli>`.
 
 In a Krill Manager instance there is no ``krillc`` binary installed on the
 host. Instead this command runs a throw away Krill Docker container and invokes

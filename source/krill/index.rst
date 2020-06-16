@@ -74,9 +74,6 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
    install-and-run
    get-started
    parent-interactions
-   creating-a-certificate-authority
-   registering-with-a-parent
-   remote-publishing
    cli
    api
    monitoring

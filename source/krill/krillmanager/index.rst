@@ -42,7 +42,6 @@ Regional Internet Registry and create ROAs, all in just 6 minutes real-time.
    using-the-cli
    monitoring
    logging
-   security
    cluster-mode
 .. history
 .. authors

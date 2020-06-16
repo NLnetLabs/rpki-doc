@@ -23,7 +23,7 @@ here:
 
   > Certificate Authority name:
 
-From :ref:`doc_krill_using_ui`:
+From :ref:`doc_krill_get_started`:
 
 .. epigraph::
 

@@ -248,17 +248,30 @@ Proxy and HTTPS
 Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
 2048 bit RSA key and self-signed certificate in :file:`/ssl` in the data
 directory when it is first started. Replacing the self-signed certificate with a
-TLS certificate issued by a CA works, but has not been tested extensively.
+TLS certificate issued by a CA works, but has not been tested extensively. By
+default Krill will only be available under ``https://localhost:3000``.
 
-For a robust solution, we recommend that you use a proxy server such as NGINX or
-Apache if you intend to make Krill available to the Internet. Also, setting up a
-widely accepted TLS certificate is well documented for these servers.
+If you need to access the Krill UI or API (also used by the CLI) from another
+machine you can use use a proxy server such as NGINX or Apache to proxy all
+requests to Krill. This proxy can then also use a proper HTTPS certificate and
+production grade TLS support.
 
-.. Warning:: We recommend that you do **not** make Krill available publicly.
-             You can use the default where Krill will expose its CLI, API and
-             UI on ``https://localhost:3000/`` only. You do not need to have
-             Krill available externally, unless you intend to provide
-             certificates or a publication server to third parties.
+Although the UI and API are protected by a token, you should consider further
+restrictions in your proxy setup.
+
+If your Krill needs to be accessible as a parent to other delegated Krill child
+CAs, e.g. for your business units, then those children will need access to the
+path `/rfc6492` under the public hostname used in your proxy.
+
+Note that if :ref:`you are running Krill as a Publication Server<doc_krill_publication_server>`,
+you should expose the files that the Krill writes to disk directly rather then
+proxying to Krill for these files, but you will need to ensure that the path
+`/rfc8181` is proxied for remote publishers.
+
+.. Warning:: We recommend that you do **not** make Krill available to the public
+             internet unless you really need remote access to the UI or API, or
+             you are serving as parent CA or Publication Server for other CAs.
+
 
 Backup and Restore
 ------------------

@@ -15,7 +15,7 @@ Your identity, permissions and entitlements are all managed by the registry and
 exposed via their respective member portals. The rest of the information is
 exchanged in two XML files. You  will need to provide a child request generated
 by Krill, and in return you will receive a parent response that you need to give
-back to Krill. See :ref:`doc_krill_remote_publishing` for more details.
+back to Krill. See :ref:`doc_krill_using_ui_parent_setup` for more details.
 
 Hosted Publication Server
 -------------------------

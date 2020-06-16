@@ -1,4 +1,4 @@
-.. _doc_krill_using_cli:
+.. _doc_krill_cli:
 .. highlight:: none
 
 Using the CLI
@@ -18,7 +18,7 @@ certificate.
 To use the CLI you need to invoke :command:`krillc` followed by one or more
 subcommands, and some arguments. Help is built-in:
 
-.. parsed-literal::
+.. code-block:: bash
 
    $ :ref:`krillc help<cmd_krillc_help>` [subcommand..]
 
@@ -29,7 +29,7 @@ subcommands, and some arguments. Help is built-in:
            --api        Only show the API call and exit. Or set env: KRILL_CLI_API=1
        -h, --help       Prints help information
        -V, --version    Prints version information
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -f, --format <type>     Report format: none|json|text (default) |xml. Or set env: KRILL_CLI_FORMAT
@@ -79,7 +79,7 @@ order to focus on the most important aspects of each subcommand.
 
    USAGE:
        krillc [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`action<cmd_krillc_action>`        Show details for a specific CA action.
        :ref:`add<cmd_krillc_add>`           Add a new CA.
@@ -98,7 +98,7 @@ order to focus on the most important aspects of each subcommand.
        :ref:`repo<cmd_krillc_repo>`          Manage the repository for your CA.
        :ref:`roas<cmd_krillc_roas>`          Manage ROAs for your CA.
        :ref:`show<cmd_krillc_show>`          Show details of a CA.
-   
+
 .. _cmd_krillc_action:
 
 krillc action
@@ -165,7 +165,7 @@ Manually trigger refresh/republish/resync for all CAs.
 
    USAGE:
        krillc bulk [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        help       Prints this message or the help of the given subcommand(s)
        :ref:`publish<cmd_krillc_bulk_publish>`    Force that all CAs create new objects if needed (in which case they will also sync)
@@ -228,7 +228,7 @@ Manage children for a CA in Krill.
 
    USAGE:
        krillc children [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`add<cmd_krillc_children_add>`         Add a child to a CA.
        help        Prints this message or the help of the given subcommand(s)
@@ -253,7 +253,7 @@ To add a child, you will need to:
 
    USAGE:
        krillc children add [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`embedded<cmd_krillc_children_add_embedded>`    Add a child in *this* Krill server
        help        Prints this message or the help of the given subcommand(s)
@@ -268,7 +268,7 @@ krillc children add embedded
 
    USAGE:
        krillc children add embedded [FLAGS] [OPTIONS] --child <name>
-   
+
    OPTIONS:
        -a, --asn <AS resources>       The delegated AS resources: e.g. AS1, AS3-4
        -c, --ca <name>                The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
@@ -295,7 +295,7 @@ If you need the response again, you can use the
 
    USAGE:
        krillc children add remote [FLAGS] [OPTIONS] --child <name> --rfc8183 <<XML file>>
-   
+
    OPTIONS:
        -a, --asn <AS resources>       The delegated AS resources: e.g. AS1, AS3-4
        -c, --ca <name>                The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
@@ -315,7 +315,7 @@ Show info for a child (id and resources).
 
    USAGE:
        krillc children info [FLAGS] [OPTIONS] --child <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
            --child <name>      The name of the child CA you wish to control.
@@ -331,7 +331,7 @@ Remove an existing child from a CA.
 
    USAGE:
        krillc children remove [FLAGS] [OPTIONS] --child <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
            --child <name>      The name of the child CA you wish to control.
@@ -349,7 +349,7 @@ Get the RFC8183 response for a child.
 
    USAGE:
        krillc children response [FLAGS] [OPTIONS] --child <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
            --child <name>      The name of the child CA you wish to control.
@@ -365,7 +365,7 @@ Update an existing child of a CA.
 
    USAGE:
        krillc children update [FLAGS] [OPTIONS] --child <name>
-   
+
    OPTIONS:
        -a, --asn <AS resources>                  The delegated AS resources: e.g. AS1, AS3-4
        -c, --ca <name>                           The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
@@ -387,7 +387,7 @@ Creates a configuration file for krill and prints it to STDOUT.
 
    USAGE:
        krillc config [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        help      Prints this message or the help of the given subcommand(s)
        :ref:`repo<cmd_krillc_config_repo>`      Use a self-hosted repository (not recommended)
@@ -405,7 +405,7 @@ repositories.
 
     USAGE:
         krillc config simple [FLAGS] [OPTIONS]
-    
+
     OPTIONS:
         -d, --data <path>       Override the default path (./data/) for the data directory (must end with slash).
         -l, --logfile <path>    Override the default path (./krill.log) for the log file.
@@ -427,7 +427,7 @@ repository.
 
     USAGE:
         krillc config repo [FLAGS] [OPTIONS] --rrdp <uri> --rsync <uri>
-    
+
     OPTIONS:
         -d, --data <path>       Override the default path (./data/) for the data directory (must end with s
         lash).
@@ -480,10 +480,10 @@ the things that happened to your CA.
 
    USAGE:
        krillc history [FLAGS] [OPTIONS]
-   
+
    FLAGS:
            --full       Show history including publication.
-   
+
    OPTIONS:
            --after <<RFC 3339 DateTime>>     Show commands issued after date/time in RFC 3339 format, e.g. 2020-04-
                                              09T19:37:02Z
@@ -541,7 +541,7 @@ Show issues for CAs.
 
    USAGE:
        krillc issues [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -558,7 +558,7 @@ Perform a manual key-roll in Krill.
 
    USAGE:
        krillc keyroll [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`activate<cmd_krillc_keyroll_activate>`    Finish roll for all keys held by this CA.
        help        Prints this message or the help of the given subcommand(s)
@@ -575,7 +575,7 @@ Finish roll for all keys held by this CA.
 
    USAGE:
        krillc keyroll activate [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -590,7 +590,7 @@ Initialise roll for all keys held by this CA.
 
    USAGE:
        krillc keyroll init [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -623,7 +623,7 @@ Manage parents for this CA.
 
    USAGE:
        krillc parents [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`add<cmd_krillc_parents_add>`        Add a parent to this CA.
        :ref:`contact<cmd_krillc_parents_contact>`    Show contact information for a parent of this CA.
@@ -643,7 +643,7 @@ Add a parent to this CA.
 
    USAGE:
        krillc parents add [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`embedded<cmd_krillc_parents_add_embedded>`    Add a parent that you manage in *this* Krill server
        help        Prints this message or the help of the given subcommand(s)
@@ -660,7 +660,7 @@ Add a parent that you manage in *this* Krill server.
 
    USAGE:
        krillc parents add embedded [FLAGS] [OPTIONS] --parent <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>     The local name by which your ca refers to this parent.
@@ -678,7 +678,7 @@ Add a remote parent.
 
    USAGE:
        krillc parents add remote [FLAGS] [OPTIONS] --parent <name> --rfc8183 <<XML file>>
-   
+
    OPTIONS:
        -c, --ca <name>               The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>           The local name by which your ca refers to this parent.
@@ -712,7 +712,7 @@ Show contact information for a parent of this CA.
 
    USAGE:
        krillc parents contact [FLAGS] [OPTIONS] --parent <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>     The local name by which your ca refers to this parent.
@@ -728,7 +728,7 @@ Remove an existing parent from this CA.
 
    USAGE:
        krillc parents remove [FLAGS] [OPTIONS] --parent <name>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>     The local name by which your ca refers to this parent.
@@ -742,13 +742,13 @@ API Call: :krill_api:`GET /v1/cas/{ca_handle}/child_request.json <get_ca_child_r
 
 Show :rfc:`8183` Publisher Request XML for the named CA. This XML is needed when
 registering the CA as a child of another CA, local or remote. For more
-information see :ref:`doc_krill_registering_with_a_parent`.
+information see :ref:`doc_krill_using_ui_parent_setup`.
 
 .. parsed-literal::
 
    USAGE:
        krillc parents request [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -763,7 +763,7 @@ Update an existing remote parent of this CA.
 
    USAGE:
        krillc parents update [FLAGS] [OPTIONS] --parent <name> --rfc8183 <<XML file>>
-   
+
    OPTIONS:
        -c, --ca <name>               The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>           The local name by which your ca refers to this parent.
@@ -782,7 +782,7 @@ Manage publishers in Krill.
 
    USAGE:
        krillc publishers [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`add<cmd_krillc_publishers_add>`         Add a publisher.
        help        Prints this message or the help of the given subcommand(s)
@@ -805,7 +805,7 @@ Publisher Request XML, and hand it over to the server.
 
    USAGE:
        krillc publishers add [FLAGS] [OPTIONS] --rfc8183 <file>
-   
+
    OPTIONS:
        -p, --publisher <handle>    Override the publisher handle in the XML.
            --rfc8183 <file>        RFC8183 Publisher Request XML file containing a certificate (tag is ignored)
@@ -843,7 +843,7 @@ and the publisher will no longer be allowed to publish.
 
    USAGE:
        krillc publishers remove [FLAGS] [OPTIONS] --publisher <handle>
-   
+
    OPTIONS:
        -p, --publisher <handle>    The handle (name) of the publisher.
 
@@ -858,7 +858,7 @@ Show RFC8183 Repository Response for a publisher.
 
    USAGE:
        krillc publishers response [FLAGS] [OPTIONS] --publisher <handle>
-   
+
    OPTIONS:
        -p, --publisher <handle>    The handle (name) of the publisher.
 
@@ -891,7 +891,7 @@ repository server locally.
 
    USAGE:
        krillc publishers show [FLAGS] [OPTIONS] --publisher <handle>
-   
+
    OPTIONS:
        -p, --publisher <handle>    The handle (name) of the publisher.
 
@@ -906,7 +906,7 @@ List all publishers which have not published in a while.
 
    USAGE:
        krillc publishers stale [FLAGS] [OPTIONS] --seconds <seconds>
-   
+
    OPTIONS:
            --seconds <seconds>    The number of seconds since last publication.
 
@@ -935,7 +935,7 @@ Manage the repository for your CA.
 
    USAGE:
        krillc repo [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        help       Prints this message or the help of the given subcommand(s)
        :ref:`request<cmd_krillc_repo_request>`    Show RFC8183 Publisher Request.
@@ -955,7 +955,7 @@ over to your remote repository so that they can add your CA.
 
    USAGE:
        krillc repo request [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -981,7 +981,7 @@ give back the response, or an error in case of issues.
 
    USAGE:
        krillc repo show [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -994,7 +994,7 @@ Example:
      type:        embedded
      base_uri:    rsync://localhost/repo/ca/
      rpki_notify: https://localhost:3000/rrdp/notification.xml
-   
+
    Currently published:
      c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
      557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
@@ -1012,7 +1012,7 @@ Show current repo state.
 
    USAGE:
        krillc repo state [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -1032,7 +1032,7 @@ to use a remote server you will have to use this process to change over.
 
    USAGE:
        krillc repo update [SUBCOMMAND]
-   
+
    SUBCOMMANDS:
        :ref:`embedded<cmd_krillc_repo_update_embedded>`    Use the embedded server in krill
        help        Prints this message or the help of the given subcommand(s)
@@ -1106,7 +1106,7 @@ Use the embedded server in krill.
 
    USAGE:
        krillc repo update embedded [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -1121,7 +1121,7 @@ Use a remote server (RECOMMENDED).
 
    USAGE:
        krillc repo update remote [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
            --rfc8183 <file>    File containing the RFC8183 XML. Defaults to reading from STDIN
@@ -1160,7 +1160,7 @@ Show current authorizations.
 
    USAGE:
        krillc roas list [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -1199,13 +1199,13 @@ with the following format:
 
    USAGE:
        krillc roas update [FLAGS] [OPTIONS] --delta <<file>>
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
            --delta <<file>>    Provide a delta file using the following format:
                                # Some comment
                                  # Indented comment
-                               
+
                                A: 192.168.0.0/16 => 64496 # inline comment
                                A: 192.168.1.0/24 => 64496
                                R: 192.168.3.0/24 => 64496
@@ -1231,7 +1231,7 @@ Show details of a CA.
 
    USAGE:
        krillc show [FLAGS] [OPTIONS]
-   
+
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
@@ -1241,10 +1241,10 @@ Example:
 
    $ krillc show --ca ca
    Name:     ca
- 
+
    Base uri: rsync://localhostrepo/ca/
    RRDP uri: https://localhost:3000/rrdp/notification.xml
- 
+
    ID cert PEM:
    -----BEGIN CERTIFICATE-----
    MIIDPDCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyg2NTA1
@@ -1253,17 +1253,17 @@ Example:
    zKtG5esZ+g48ihf6jBgDyyONXEICowcjrxlY5fnjHhL0jsTmLuITgYuRoGIK2KzQ
    +qLiXg2G+8s8u/1PW7PVYg==
    -----END CERTIFICATE-----
- 
+
    Hash: 9f1376b2e1c8052c1b5d94467f8708935224c518effbe7a1c0e967578fb2215e
- 
+
    Total resources:
        ASNs:
        IPv4: 10.0.0.0/8
        IPv6: 2001:db8::/32
- 
+
    Parents:
    Handle: ripencc Kind: RFC 6492 Parent
- 
+
    Resource Class: 0
    Parent: ripencc
    State: active    Resources:
@@ -1273,6 +1273,6 @@ Example:
    Current objects:
      553A7C2E751CA0B04B49CB72E30EB5684F861987.crl
      553A7C2E751CA0B04B49CB72E30EB5684F861987.mft
- 
+
    Children:
    <none>
