@@ -64,6 +64,12 @@ command line options. A complete sample configuration file showing all the
 default values can be found in the repository at `etc/routinator.conf.example
 <https://github.com/NLnetLabs/routinator/blob/master/etc/routinator.conf.example>`_.
 
+.. Note:: One scenario where a configuration file is required is when you would 
+          like to pass certain rsync arguments using the ``rsync-args`` 
+          setting, which is not available as a command line option. This is 
+          because Routinator will try to find out if your rsync understands the 
+          ``--contimeout`` option and set it if possible.
+
 For example, if you want Routinator to refresh every 15 minutes and run as an
 RTR server on 192.0.2.13 and 2001:0DB8::13 on port 3323, in addition to
 providing an HTTP server on port 9556, simply take the output from
