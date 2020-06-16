@@ -71,13 +71,12 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
    :name: toc-krill
 
    before-you-start
-   installation
-   getting-started
+   install-and-run
+   get-started
    parent-interactions
    creating-a-certificate-authority
    registering-with-a-parent
    remote-publishing
-   ui
    cli
    api
    monitoring

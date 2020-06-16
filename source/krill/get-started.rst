@@ -1,4 +1,4 @@
-.. _doc_krill_using_ui:
+.. _doc_krill_get_started:
 
 Using the UI
 ============
@@ -93,7 +93,7 @@ Parent Setup
 
 After successfully configuring the repository, the next step is to configure
 your parent CA. Copy the child request XML and provide it to your parent, i.e.
-your RIR or NIR. 
+your RIR or NIR.
 
 .. figure:: img/krill-ui-child-request.png
     :align: center
