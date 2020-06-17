@@ -252,21 +252,43 @@ TLS certificate issued by a CA works, but has not been tested extensively. By
 default Krill will only be available under ``https://localhost:3000``.
 
 If you need to access the Krill UI or API (also used by the CLI) from another
-machine you can use use a proxy server such as NGINX or Apache to proxy all
-requests to Krill. This proxy can then also use a proper HTTPS certificate and
-production grade TLS support.
+machine you can use use a proxy server such as NGINX or Apache to proxy requests
+to Krill. This proxy can then also use a proper HTTPS certificate and production
+grade TLS support.
 
-Although the UI and API are protected by a token, you should consider further
-restrictions in your proxy setup.
 
-If your Krill needs to be accessible as a parent to other delegated Krill child
-CAs, e.g. for your business units, then those children will need access to the
-path `/rfc6492` under the public hostname used in your proxy.
+Proxy Krill UI
+""""""""""""""
 
-Note that if :ref:`you are running Krill as a Publication Server<doc_krill_publication_server>`,
-you should expose the files that the Krill writes to disk directly rather then
-proxying to Krill for these files, but you will need to ensure that the path
-`/rfc8181` is proxied for remote publishers.
+The Krill UI and assets are hosted directly under the base path `/`. So, in
+order to proxy to the Krill UI you should proxy ALL requests under `/` to the
+Krill back-end.
+
+Note that although the UI and API are protected by a token, you should consider
+further restrictions in your proxy setup - like restrictions on source IP, or
+you may want to have your own authentication added.
+
+
+Proxy Krill as Parent
+"""""""""""""""""""""
+
+If you delegated resources to child CAs then you will need to ensure that these
+children can reach your Krill. Child requests for resource certificates are
+directed to the `/rfc6492` under the `service_uri` that you defined in your
+configuration file.
+
+Note that contrary to the UI you should not add any additional authentication
+mechanisms to this location. RFC 6492 uses cryptographically signed messages
+sent over HTTP and is secure. However, verifying messages and signing responses
+can be computationally heavy, so if you know the source IP addresses of your
+child CAs, you may wish to restrict access based on this.
+
+Proxy Krill as Publication Server
+"""""""""""""""""""""""""""""""""
+
+If you are running Krill as a Publication Server, then you should read
+:ref:`here<doc_krill_publication_server>` how to do the Publication Server
+specific set up.
 
 .. Warning:: We recommend that you do **not** make Krill available to the public
              internet unless you really need remote access to the UI or API, or

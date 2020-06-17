@@ -79,12 +79,28 @@ to Relying Parties.
           to be wrong, then a new Publication Server should be set up and any
           existing publishers should be migrated as described below.
 
+Proxy for Remote Publishers
+---------------------------
+
+Krill runs the RFC8181 Publication Server. Remote publishers, CAs which use your
+Publication Server, will need to connect to this under the `/rfc8181` path under
+the `service_uri` that you specified in your server.
+
+Make sure that you set up a proxy server such as NGINX, Apache, etc. which uses
+a valid HTTPS certificate, and which proxies `/rfc8181` to Krill.
+
+Note that you should not add any additional authentication mechanisms to this
+location. RFC 8181 uses cryptographically signed messages sent over HTTP and is
+secure. However, verifying messages and signing responses can be computationally
+heavy, so if you know the source IP addresses of your publisher CAs, you may
+wish to restrict access based on this.
+
+
 Configuring Repository Servers
 ------------------------------
 
-Krill runs the RFC8181 Publication Server. To actually serve the published
-content to Rsync and RRDP clients you will need to run your own *repository*
-servers using tools such as Rsyncd and NGINX.
+To actually serve the published content to Rsync and RRDP clients you will need
+to run your own *repository* servers using tools such as Rsyncd and NGINX.
 
 Krill will write the repository files under the data directory specified in its
 configuration file:
