@@ -366,4 +366,4 @@ You can safely ignore this message. Krill is telling you that the definition of
 a struct has changed and therefore it cannot use the :file:`snapshot.json` file
 that it normally uses for efficiency. Instead, it needs to build up the current
 state by explicitly re-applying all the events that happened to your CA and/or
-embedded publication server.
+publication server.
