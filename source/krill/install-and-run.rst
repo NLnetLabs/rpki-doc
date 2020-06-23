@@ -23,9 +23,20 @@ monitoring and log analysis.
 Quick Start
 """""""""""
 
-Assuming you have a newly installed Debian or Ubuntu machine, you will need to
-install the C toolchain, OpenSSL, curl and Rust. You can then install Krill
-using Cargo.
+For recent Debian and Ubuntu releases you can download, install and run a ``.deb``
+package from the `Krill GitHub Releases page <https://github.com/NLnetLabs/krill/releases>`_
+like so:
+
+.. code-block:: bash
+
+  curl -o krill.deb https://github.com/NLnetLabs/krill/archive/krill_0.7.0_amd64_ubuntu1804.deb
+  sudo apt-get install -y ./krill.deb
+  # review / edit /etc/krill.conf
+  sudo systemctl enable --now krill
+
+Alternatively, you can build from sources. Assuming you have a newly installed Debian or
+Ubuntu machine, you will need to install the C toolchain, OpenSSL, curl and
+Rust. You can then install Krill using Cargo.
 
 After the installation has completed, first create a data directory in a
 location of your choice. Next, generate a basic configuration file specifying a
@@ -59,6 +70,49 @@ If you have an older version of Rust and Krill, you can update via:
           certificate such as Let's Encrypt, running on a different port and
           exposing Krill securely to other machines is all possible, but goes
           beyond the scope of this Quick Start.
+
+Installing with APT/dpkg
+""""""""""""""""""""""""
+
+Pre-built Debian/Ubuntu packages are available for recent operating system
+versions on x86_64 platforms. These can be installed using the standard ``apt``,
+``apt-get`` and ``dpkg`` commands as usual.
+
+Unlike with installing with Cargo there is no need to have Rust or a C toolchain
+installed. Additionally the packages come with systemd service files for easy
+start/stop of the Krill daemon and with short Linux man pages.
+
+.. Note:: For the oldest platforms, Ubuntu 16.04 LTS and Debian 9, the packaged
+          krill binary is statically linked with OpenSSL 1.1.0 as this is the
+          minimum version required by Krill and is higher than available in the
+          official package repositories for those platforms.
+
+.. Note:: At the current time the packages are not available via an APT
+          compatible repository server. To install Krill from a ``.deb`` package
+          you must first manually download the appropriate package file.
+
+To use one of the available ``.deb`` packages:
+
+1. Download the appropriate ``.deb`` package for your operating system from the
+   release artifacts linked to the `Krill release announcement on GitHub. <https://github.com/NLnetLabs/krill/>`_.
+2. Install the package using ``sudo apt-get install ./<filename>.deb`` or equivalent.
+3. Review the generated configuration file at ``/etc/krill.conf``.
+   **Pay particular attention** to the ``service_uri` and ``auth_token``
+   settings. Tip: The configuration file was generated for you using the
+   ``krillc config simple`` command.
+4. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
+   systemd to enable the Krill service at boot and to start it immediately.
+
+The krill daemon runs as user ``krill`` and stores its data in ``/var/lib/krill``.
+You can manage the Krill daemon using the following commands:
+
+- Review the Krill logs with ``journalctl -u krill``, or view just the most recent entries with ``sytemctl status krill``.
+
+- Stop Krill with ``sudo systemctl stop krill``.
+
+- Learn more about Krill using ``man krill`` and ``man krillc``.
+
+- Upgrade Krill by downloading a new ``.deb`` file and running ``apt-get install ./<deb file>``.
 
 Installing with Cargo
 """""""""""""""""""""
@@ -160,7 +214,7 @@ this should be as simple as running:
 
 
 Building
-""""""""
+~~~~~~~~
 
 The easiest way to get Krill is to leave it to cargo by saying:
 
