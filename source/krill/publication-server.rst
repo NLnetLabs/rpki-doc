@@ -203,8 +203,8 @@ Migrating the Repository
 ------------------------
 
 If you find that there is an issue with your repository or, for example, you
-want to change its domain name, you can set up a new Krill instance with an
-embedded repository. When you are satisfied that the new one is correct, you
+want to change its domain name, you can set up a new Krill instance for the
+new repository. When you are satisfied that the new one is correct, you
 can migrate your CA to it by adding them as a publisher under the new
 repository server, and then updating your CA to use the new repository.
 

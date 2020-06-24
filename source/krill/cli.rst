@@ -242,48 +242,14 @@ Manage children for a CA in Krill.
 krillc children add
 ^^^^^^^^^^^^^^^^^^^
 
+API Call: See: :krill_api:`POST /v1/cas/{parent_ca_handle}/children <add_child_ca>`
+
 Add a child to a CA.
 
 To add a child, you will need to:
   1. Choose a unique local name (handle) that the parent will use for the child
   2. Choose initial resources (asn, ipv4, ipv6)
-  3. (for a remote child) Have an :rfc:`8183` request
-
-.. parsed-literal::
-
-   USAGE:
-       krillc children add [SUBCOMMAND]
-
-   SUBCOMMANDS:
-       :ref:`embedded<cmd_krillc_children_add_embedded>`    Add a child in *this* Krill server
-       help        Prints this message or the help of the given subcommand(s)
-       :ref:`remote<cmd_krillc_children_add_remote>`      Add a remote child, and return the parent response
-
-.. _cmd_krillc_children_add_embedded:
-
-krillc children add embedded
-............................
-
-.. parsed-literal::
-
-   USAGE:
-       krillc children add embedded [FLAGS] [OPTIONS] --child <name>
-
-   OPTIONS:
-       -a, --asn <AS resources>       The delegated AS resources: e.g. AS1, AS3-4
-       -c, --ca <name>                The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
-           --child <name>             The name of the child CA you wish to control.
-       -4, --ipv4 <IPv4 resources>    The delegated IPv4 resources: e.g. 192.168.0.0/16
-       -6, --ipv6 <IPv6 resources>    The delegated IPv6 resources: e.g. 2001:db8::/32
-
-.. _cmd_krillc_children_add_remote:
-
-krillc children add remote
-..........................
-
-API Call: See: :krill_api:`POST /v1/cas/{parent_ca_handle}/children <add_child_ca>`
-
-Add a remote child.
+  3. Present the child's :rfc:`8183` request
 
 The default response is the :rfc:`8183` parent response XML file. Or, if you set
 ``--format json`` you will get the plain API response.
@@ -293,16 +259,22 @@ If you need the response again, you can use the
 
 .. parsed-literal::
 
-   USAGE:
-       krillc children add remote [FLAGS] [OPTIONS] --child <name> --rfc8183 <<XML file>>
+  USAGE:
+      krillc children add [FLAGS] [OPTIONS] --child <name> --request <<XML file>>
 
-   OPTIONS:
-       -a, --asn <AS resources>       The delegated AS resources: e.g. AS1, AS3-4
-       -c, --ca <name>                The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
-           --child <name>             The name of the child CA you wish to control.
-       -4, --ipv4 <IPv4 resources>    The delegated IPv4 resources: e.g. 192.168.0.0/16
-       -6, --ipv6 <IPv6 resources>    The delegated IPv6 resources: e.g. 2001:db8::/32
-           --rfc8183 <<XML file>>     The RFC8183 Child Request XML file.
+  FLAGS:
+          --api        Only show the API call and exit. Or set env: KRILL_CLI_API=1
+      -h, --help       Prints help information
+      -V, --version    Prints version information
+
+  OPTIONS:
+      -a, --asn <AS resources>       The delegated AS resources: e.g. AS1, AS3-4
+      -c, --ca <name>                The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
+          --child <name>             The name of the child CA you wish to control.
+      -f, --format <type>            Report format: none|json|text (default). Or set env: KRILL_CLI_FORMAT
+      -4, --ipv4 <IPv4 resources>    The delegated IPv4 resources: e.g. 192.168.0.0/16
+      -6, --ipv6 <IPv6 resources>    The delegated IPv6 resources: e.g. 2001:db8::/32
+      -r, --request <<XML file>>     The location of the RFC8183 Child Request XML file.
 
 .. _cmd_krillc_children_info:
 
@@ -630,59 +602,26 @@ Manage parents for this CA.
        help       Prints this message or the help of the given subcommand(s)
        :ref:`remove<cmd_krillc_parents_remove>`     Remove an existing parent from this CA.
        :ref:`request<cmd_krillc_parents_request>`    Show RFC8183 Publisher Request XML
-       :ref:`update<cmd_krillc_parents_update>`     Update an existing remote parent of this CA.
+       :ref:`update<cmd_krillc_parents_update>`     Update an existing parent of this CA.
 
 .. _cmd_krillc_parents_add:
 
 krillc parents add
 ^^^^^^^^^^^^^^^^^^
 
+API Call: :krill_api:`POST /v1/cas/ca/parents <add_ca_parent>`
+
 Add a parent to this CA.
 
 .. parsed-literal::
 
    USAGE:
-       krillc parents add [SUBCOMMAND]
-
-   SUBCOMMANDS:
-       :ref:`embedded<cmd_krillc_parents_add_embedded>`    Add a parent that you manage in *this* Krill server
-       help        Prints this message or the help of the given subcommand(s)
-       :ref:`remote<cmd_krillc_parents_add_remote>`      Add a remote parent
-
-.. _cmd_krillc_parents_add_embedded:
-
-krillc parents add embedded
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Add a parent that you manage in *this* Krill server.
-
-.. parsed-literal::
-
-   USAGE:
-       krillc parents add embedded [FLAGS] [OPTIONS] --parent <name>
-
-   OPTIONS:
-       -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
-       -p, --parent <name>     The local name by which your ca refers to this parent.
-
-.. _cmd_krillc_parents_add_remote:
-
-krillc parents add remote
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-API Call: :krill_api:`POST /v1/cas/ca/parents <add_ca_parent>`
-
-Add a remote parent.
-
-.. parsed-literal::
-
-   USAGE:
-       krillc parents add remote [FLAGS] [OPTIONS] --parent <name> --rfc8183 <<XML file>>
+       krillc parents add [FLAGS] [OPTIONS] --parent <name> --response <<XML file>>
 
    OPTIONS:
        -c, --ca <name>               The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>           The local name by which your ca refers to this parent.
-           --rfc8183 <<XML file>>    The RFC8183 Parent Response XML
+       -r, --response <<XML file>>   The RFC8183 Parent Response XML
 
 Note that you can use any local name for ``--parent``. This is the name that
 Krill will show to you. Similarly, Krill will use your local CA name which you
@@ -741,8 +680,8 @@ krillc parents request
 API Call: :krill_api:`GET /v1/cas/{ca_handle}/child_request.json <get_ca_child_request>`
 
 Show :rfc:`8183` Publisher Request XML for the named CA. This XML is needed when
-registering the CA as a child of another CA, local or remote. For more
-information see :ref:`doc_krill_using_ui_parent_setup`.
+registering the CA as a child of another CA. For more information see
+:ref:`doc_krill_using_ui_parent_setup`.
 
 .. parsed-literal::
 
@@ -757,17 +696,20 @@ information see :ref:`doc_krill_using_ui_parent_setup`.
 krillc parents update
 ^^^^^^^^^^^^^^^^^^^^^
 
-Update an existing remote parent of this CA.
+Update the known information about existing parent of this CA. Note there is no
+good description of this in the RFCs for the moment. You should not need this
+option in practice. However, this will allow to replace the parent response for
+one of your parents.
 
 .. parsed-literal::
 
    USAGE:
-       krillc parents update [FLAGS] [OPTIONS] --parent <name> --rfc8183 <<XML file>>
+       krillc parents update [FLAGS] [OPTIONS] --parent <name> --response <<XML file>>
 
    OPTIONS:
        -c, --ca <name>               The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
        -p, --parent <name>           The local name by which your ca refers to this parent.
-           --rfc8183 <<XML file>>    The RFC8183 Parent Response XML
+           --response <<XML file>>   The RFC8183 Parent Response XML
 
 ....
 
@@ -804,19 +746,18 @@ Publisher Request XML, and hand it over to the server.
 .. parsed-literal::
 
    USAGE:
-       krillc publishers add [FLAGS] [OPTIONS] --rfc8183 <file>
+       krillc publishers add [FLAGS] [OPTIONS] --request <file>
 
    OPTIONS:
        -p, --publisher <handle>    Override the publisher handle in the XML.
-           --rfc8183 <file>        RFC8183 Publisher Request XML file containing a certificate (tag is ignored)
+       -r, --request <file>        RFC8183 Publisher Request XML file containing a certificate (tag is ignored)
 
 .. _cmd_krillc_publishers_list:
 
 krillc publishers list
 ^^^^^^^^^^^^^^^^^^^^^^
 
-List all publishers. Note that the list of publishers will include any embedded
-Krill CAs as well as any possible remote (RFC 8181 compliant) publishers.
+List all publishers under the Publication Server.
 
 .. parsed-literal::
 
@@ -831,13 +772,10 @@ krillc publishers remove
 Remove a publisher. If you do, then all of its content will be removed as well
 and the publisher will no longer be allowed to publish.
 
-.. Warning:: You can do this without the publisher’s knowledge, nor consent,
-             even for embedded Krill CAs. With great power comes great
-             responsibility. That said, you can always add a publisher again
-             (also embedded publishers), and once a publisher can connect to
-             your repository again, it should be able to figure out that it
-             needs to re-publish all its content (Krill CAs will always check
-             for this).
+.. Warning:: You can do this without the publisher’s knowledge, nor consent.
+             You should check with the publisher whether they no longer need
+             your Publication Server (perhaps they migrated to another, or
+             disabled their CA).
 
 .. parsed-literal::
 
@@ -883,9 +821,7 @@ identity certificate key, and the rsync URI jail under which the publisher is
 allowed to publish objects.
 
 The JSON response includes a lot more information, including the files which
-were published and the full ID certificate used by the publisher. Note that even
-embedded Krill CAs will have such a certificate, even if they access the
-repository server locally.
+were published and the full ID certificate used by the publisher.
 
 .. parsed-literal::
 
@@ -949,7 +885,7 @@ krillc repo request
 ^^^^^^^^^^^^^^^^^^^
 
 Show the :rfc:`8183` Publisher Request XML for a CA. You will need to hand this
-over to your remote repository so that they can add your CA.
+over to your repository so that they can add your CA.
 
 .. parsed-literal::
 
@@ -973,9 +909,7 @@ Example:
 krillc repo show
 ^^^^^^^^^^^^^^^^
 
-Show which repository server your CA is using, as well as what is has published
-at the location. Krill will issue an actual list query to the repository and
-give back the response, or an error in case of issues.
+Show the repository configuration for your CA.
 
 .. parsed-literal::
 
@@ -989,24 +923,21 @@ Example:
 
 .. code-block:: bash
 
-   $ krillc repo show
-   Repository Details:
-     type:        embedded
-     base_uri:    rsync://localhost/repo/ca/
-     rpki_notify: https://localhost:3000/rrdp/notification.xml
-
-   Currently published:
-     c6e130761ccf212aea4038e95f6ffb3029afac3494ffe5fde6eb5062c2fa37bd rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.mft
-     557c1a3b7a324a03444c33fd010c1a17540ed482faccab3ffe5d0ec4b7963fc8 rsync://localhost/repo/ca/0/31302e302e3132382e302f32302d3234203d3e20313233.roa
-     444a962cb193b30dd1919b283ec934a50ec9ed562aa280a2bd3d7a174b6e1336 rsync://localhost/repo/ca/0/281E18225EE6DCEB8E98C0A7FB596242BFE64B13.crl
-     874048a2df6ff1e63a14e69de489e8a78880a341db1072bab7a54a3a5174057d rsync://localhost/repo/ca/0/31302e302e302e302f32302d3234203d3e20313233.roa
+  $ krillc repo show
+  Repository Details:
+    type:        remote
+    service uri: https://krill-ui-dev.do.nlnetlabs.nl/rfc8181/Acme-Corp-Intl
+    base_uri:    rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/
+    rpki_notify: https://krill-ui-dev.do.nlnetlabs.nl/rrdp/notification.xml
 
 .. _cmd_krillc_repo_state:
 
 krillc repo state
 ^^^^^^^^^^^^^^^^^
 
-Show current repo state.
+Show which repository server your CA is using, as well as what is has published
+at the location. Krill will issue an actual list query to the repository and
+give back the response, or an error in case of issues.
 
 .. parsed-literal::
 
@@ -1016,6 +947,20 @@ Show current repo state.
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
 
+
+Example:
+
+.. code-block:: bash
+
+  $ krillc repo state
+  Available and publishing objects:
+    407cb2f9c72ae0a65badb49c073fc9df79c170336b3c14734e8e2ec9e1c106ca rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/0/5796A18D9A941AB72D78C820C5F0837B1CB30694.mft
+    ad2afbf2fddfc0212df4c9b4bc1834b1d9c1a2ec1e982ec08e9cef92aa8ca912 rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/0/31302e302e302e302f32322d3232203d3e203634343936.roa
+    79f8fdc1e1c42ee1e029a65011e28415515602b12f6e850799adeb1fc515339b rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/0/5796A18D9A941AB72D78C820C5F0837B1CB30694.crl
+    6f7029b9e9a8c96eb1c5c388bd6f1cbcaac6cd24885e666f4cb5a218647beff2 rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/0/31302e302e302e302f32322d3232203d3e203634343937.roa
+    f02dbc841c4c321529f8c5b32a2cbe30bfcc08641b044511c5ba0d81ee8fd6ba rsync://krill-ui-dev.do.nlnetlabs.nl/repo/Acme-Corp-Intl/0/31302e302e302e302f32342d3234203d3e203634343936.roa
+
+
 .. _cmd_krillc_repo_update:
 
 krillc repo update
@@ -1024,19 +969,7 @@ krillc repo update
 Change which repository this CA uses.
 
 You can change which repository server is used by your CA. If you have multiple
-CAs you will have to repeat this for each of them. Also, note that by default
-your CAs will assume that they use the embedded publication server. So, in order
-to use a remote server you will have to use this process to change over.
-
-.. parsed-literal::
-
-   USAGE:
-       krillc repo update [SUBCOMMAND]
-
-   SUBCOMMANDS:
-       :ref:`embedded<cmd_krillc_repo_update_embedded>`    Use the embedded server in krill
-       help        Prints this message or the help of the given subcommand(s)
-       :ref:`remote<cmd_krillc_repo_update_remote>`      Use a remote server (RECOMMENDED)
+CAs you will have to repeat this for each of them.
 
 Changing repositories is actually more complicated than one might think, but
 fortunately it's all automated. When you ask Krill to change, the following
@@ -1056,77 +989,13 @@ To start a migration you can use the following.
 
 .. parsed-literal::
 
-  $ :ref:`krillc repo update remote<cmd_krillc_repo_update_remote>` --rfc8183 [file]
-
-If no file is specified the CLI will try to read the XML from STDIN.
-
-Note that if you were using an embedded repository, and you instruct your CA
-to connect to the embedded repository, but set up as a *remote*, then you will
-find that you have no more published objects - because.. Krill tries to clean
-up the old repository, and we assume that you would not try to use an embedded
-server over the :rfc:`8181` protocol.
-
-But, suppose that you did, you would now see this:
-
-.. parsed-literal::
-
-  $ :ref:`krillc repo show<cmd_krillc_repo_show>`
-  Repository Details:
-    type:        remote
-    service uri: https://localhost:3000/rfc8181/ca
-    base_uri:    rsync://localhost/repo/ca/
-    rpki_notify: https://localhost:3000/rrdp/notification.xml
-
-  Currently published:
-    <nothing>
-
-But no worries.. this can be fixed.
-
-First, you may want to migrate back to using the embedded repository without
-the :rfc:`8181` protocol overhead:
-
-.. parsed-literal::
-
-  $ :ref:`krillc repo update embedded<cmd_krillc_repo_update_embedded>`
-
-But this does not solve your problem just yet. Or well, it will re-publish
-everything under the new embedded repository, but then it will clean up the
-'old' repository which happens to be the same one in this corner case.
-
-The solution is 're-syncing' as described in :ref:`krillc bulk sync<cmd_krillc_bulk_sync>`.
-
-.. _cmd_krillc_repo_update_embedded:
-
-krillc repo update embedded
-...........................
-
-Use the embedded server in krill.
-
-.. parsed-literal::
-
    USAGE:
-       krillc repo update embedded [FLAGS] [OPTIONS]
+       krillc repo update [FLAGS] [OPTIONS]
 
    OPTIONS:
        -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
+       -r, --response <file>   The location of the RFC8183 Publisher Response XML file. Defaults to reading from STDIN
 
-.. _cmd_krillc_repo_update_remote:
-
-krillc repo update remote
-.........................
-
-Use a remote server (RECOMMENDED).
-
-.. parsed-literal::
-
-   USAGE:
-       krillc repo update remote [FLAGS] [OPTIONS]
-
-   OPTIONS:
-       -c, --ca <name>         The name of the CA you wish to control. Or set env: KRILL_CLI_MY_CA
-           --rfc8183 <file>    File containing the RFC8183 XML. Defaults to reading from STDIN
-
-....
 
 .. _cmd_krillc_roas:
 

@@ -17,9 +17,9 @@ objects you have published locally.
           - Only Relying Party software which supports such an HTTPS TAL can be
             used with the Krill TA.
           - When enabling the embedded TA ``use_ta = true`` the Krill daemon
-            assumes that you also set ``repo_enabled = true`` to enable the
-            embedded repository. **Tip:** The ``krillc config repo`` command
-            does this for you.
+            assumes that you also set ``repo_enabled = true`` to enable an
+            embedded repository in *this* Krill instance.
+            **Tip:** The ``krillc config repo`` command does this for you.
           - The TA claims ownership of all possible ASNs, IPv4 addresses and
             IPv6 addresses. It is not currently possible to restrict this to a
             subset of these resources.
@@ -154,9 +154,9 @@ Krill instance you can quickly do the full set up using the CLI.
 
   $ :ref:`krillc publishers add<cmd_krillc_publishers_add>` \\
      --publisher $KRILL_CLI_MY_CA \\
-     --rfc8183 publisher_request.xml > repository_response.xml
+     --request publisher_request.xml > repository_response.xml
 
-  $ :ref:`krillc repo update remote<cmd_krillc_repo_update_remote>` --rfc8183 repository_response.xml
+  $ :ref:`krillc repo update<cmd_krillc_repo_update>` --response repository_response.xml
 
 Use the TA as the Parent of the CA
 """"""""""""""""""""""""""""""""""
@@ -164,10 +164,6 @@ Use the TA as the Parent of the CA
 When using an embedded TA for testing then you will first need to add your
 new CA "ca" to it. The steps below are not specific to the TA, the same steps
 must be taken when :ref:`registering any CA with a parent CA <doc_krill_using_ui_parent_setup>`.
-
-Note: In this example we register with the TA as if it were remote rather than
-embedded. This is slightly less efficient, but it's the same as what you would
-need to delegate from your CA to remote CAs.
 
 Step 1: Obtain the RFC 8183 request XML
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,10 +182,10 @@ and not the CA, and we need to indicate that we want to add this child to the CA
 
 .. parsed-literal::
 
-  $ :ref:`krillc children add remote<cmd_krillc_children_add_remote>` --ca ta \\
+  $ :ref:`krillc children add <cmd_krillc_children_add>` --ca ta \\
       --child ca \\
       --ipv4 "10.0.0.0/8" --ipv6 "2001:DB8::/32" \\
-      --rfc8183 myid.xml > parent-res.xml
+      --request myid.xml > parent-res.xml
 
 If you need the response again, you can ask the "ta" again:
 
@@ -202,7 +198,7 @@ Step 3: Add the TA as the Parent of the CA
 
 .. parsed-literal::
 
-  $ :ref:`krillc parents add remote<cmd_krillc_parents_add_remote>` --parent myta --rfc8183 ./parent-res.xml
+  $ :ref:`krillc parents add <cmd_krillc_parents_add>` --parent myta --response ./parent-res.xml
 
 Now you should see that your "child" is certified:
 
