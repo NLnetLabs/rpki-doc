@@ -49,7 +49,7 @@ file.
   apt install build-essential libssl-dev openssl pkg-config curl
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source ~/.cargo/env
-  cargo install krill
+  cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.1
   mkdir ~/data
   krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
   krill --config ~/data/krill.conf
