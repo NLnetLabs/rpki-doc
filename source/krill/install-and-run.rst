@@ -29,7 +29,7 @@ like so:
 
 .. code-block:: bash
 
-  curl -o krill.deb https://github.com/NLnetLabs/krill/archive/krill_0.7.0_amd64_ubuntu1804.deb
+  curl -o krill.deb https://github.com/NLnetLabs/krill/releases/download/v0.7.0/krill_0.7.0_amd64_ubuntu1804.deb
   sudo apt-get install -y ./krill.deb
   # review / edit /etc/krill.conf
   sudo systemctl enable --now krill
