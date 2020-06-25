@@ -34,6 +34,11 @@ like so:
   # review / edit /etc/krill.conf
   sudo systemctl enable --now krill
 
+.. Note:: If you had previously installed Krill using ``cargo install krill`` you should
+          first use ``cargo uninstall krill`` before installing a ``.deb`` package Otherwise
+          the cargo installed binaries for ``krill`` and ``krillc`` may take precednce in
+          your shell ``$PATH`` which could be confusing.
+
 Alternatively, you can build from sources. Assuming you have a newly installed Debian or
 Ubuntu machine, you will need to install the C toolchain, OpenSSL, curl and
 Rust. You can then install Krill using Cargo.
@@ -93,14 +98,15 @@ start/stop of the Krill daemon and with short Linux man pages.
 
 To use one of the available ``.deb`` packages:
 
-1. Download the appropriate ``.deb`` package for your operating system from the
+1. Run ``cargo uninstall krill`` if you previously installed Krill with Cargo.
+2. Download the appropriate ``.deb`` package for your operating system from the
    release artifacts linked to the `Krill release announcement on GitHub. <https://github.com/NLnetLabs/krill/>`_.
-2. Install the package using ``sudo apt-get install ./<filename>.deb`` or equivalent.
-3. Review the generated configuration file at ``/etc/krill.conf``.
+3. Install the package using ``sudo apt-get install ./<filename>.deb`` or equivalent.
+4. Review the generated configuration file at ``/etc/krill.conf``.
    **Pay particular attention** to the ``service_uri`` and ``auth_token``
    settings. Tip: The configuration file was generated for you using the
    ``krillc config simple`` command.
-4. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
+5. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
    systemd to enable the Krill service at boot and to start it immediately.
 
 The krill daemon runs as user ``krill`` and stores its data in ``/var/lib/krill``.
