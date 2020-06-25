@@ -64,7 +64,7 @@ If you have an older version of Rust and Krill, you can update via:
 .. code-block:: bash
 
    rustup update
-   cargo install -f krill
+   cargo install --force krill --git https://github.com/NLnetLabs/krill.git --version <version-number>
 
 .. Note:: Using a fully qualified domain name, configuring a real TLS
           certificate such as Let's Encrypt, running on a different port and
@@ -220,7 +220,7 @@ The easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install krill
+   cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.1
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
