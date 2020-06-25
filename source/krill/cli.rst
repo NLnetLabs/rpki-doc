@@ -497,7 +497,7 @@ Example:
 .. code-block:: bash
 
    $ krillc info
-   Version: 0.6.2
+   Version: 0.7.1
    Started: 2020-05-16T10:21:36+00:00
 
 ....

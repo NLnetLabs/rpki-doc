@@ -214,7 +214,7 @@ def setup(app):
 
 # -- Options for extlinks extension
 
-krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.6.2/doc/openapi.yaml'
+krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.1/doc/openapi.yaml'
 extlinks = {
     'krill_api': (krill_api_docs_base + '#operation/%s', None),
 }
