@@ -97,7 +97,7 @@ To use one of the available ``.deb`` packages:
    release artifacts linked to the `Krill release announcement on GitHub. <https://github.com/NLnetLabs/krill/>`_.
 2. Install the package using ``sudo apt-get install ./<filename>.deb`` or equivalent.
 3. Review the generated configuration file at ``/etc/krill.conf``.
-   **Pay particular attention** to the ``service_uri` and ``auth_token``
+   **Pay particular attention** to the ``service_uri`` and ``auth_token``
    settings. Tip: The configuration file was generated for you using the
    ``krillc config simple`` command.
 4. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
