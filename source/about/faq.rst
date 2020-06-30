@@ -274,6 +274,25 @@ your prefix. Imagine what could happen if you haven’t signed your prefixes...
 Miscellaneous
 =============
 
+Why isn't the ARIN RPKI TAL like other public key files?
+--------------------------------------------------------
+
+Unlike the other RIRs, which distribute their TAL publicly, ARIN has a policy requiring users 
+to explicitly agree to terms and conditions concerning its TAL. Note that this policy is not 
+without controversy as discussed on various mailing lists, such as 
+`here <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`_ and 
+`here <https://seclists.org/nanog/2019/Jan/118>`_. 
+
+Job Snijders made a 
+`video <https://www.youtube.com/watch?v=oBwAQep7Q7o>`_ explaining his perspective on the ARIN TAL. 
+Christopher Yoo and David Wishnick authored a paper titled 
+`Lowering Legal Barriers to RPKI Adoption <https://scholarship.law.upenn.edu/faculty_scholarship/2035/>`_.
+
+Ben Cox performed various RPKI measurements and concluded that the ARIN TAL is used far
+less than TALs from their RIR counter parts. This has lead to a situation where ROAs
+created under the ARIN TAL offer less protection against BGP incidents than other RIRs.
+`State of RPKI: Q4 2018 <https://blog.benjojo.co.uk/post/state-of-rpki-in-2018>`_.
+
 What is the global adoption and data quality of RPKI like?
 ----------------------------------------------------------
 
