@@ -277,13 +277,23 @@ Miscellaneous
 Why isn't the ARIN RPKI TAL like other public key files?
 --------------------------------------------------------
 
-Video by Job Snijders about the ARIN RPKI TAL compared to Signify, DNSSEC, and TLS.
+At present it appears the ARIN organisation is not able to distribute the ARIN RPKI TAL
+in a similar way to how other RIRs distribute their TAL. Even though DNSSEC, Web TLS,
+and RPKI for 4 out of 5 RIRs can be made to work without agreeing to lengthy legal
+text.
 
-.. raw:: html
+The ARIN TAL distribution model and the very existence of the ARIN RPA are considered
+problematic by `some operators <https://seclists.org/nanog/2019/Jan/118>`.
 
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/oBwAQep7Q7o" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
+Job Snijders made a video explaining his perspective on the ARIN TAL: `youtube <https://www.youtube.com/watch?v=oBwAQep7Q7o>`.
+
+Christopher Yoo and David Wishnick authored a paper:
+`Lowering Legal Barriers to RPKI Adoption <https://scholarship.law.upenn.edu/faculty_scholarship/2035/>`.
+
+Ben Cox performed various RPKI measurements and concluded that the ARIN TAL is used far
+less than TALs from their RIR counter parts. This has lead to a situation where ROAs
+created under the ARIN TAL offer less protection against BGP incidents than other RIRs.
+`State of RPKI: Q4 2018 <https://blog.benjojo.co.uk/post/state-of-rpki-in-2018>`.
 
 What is the global adoption and data quality of RPKI like?
 ----------------------------------------------------------
