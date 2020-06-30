@@ -283,7 +283,8 @@ and RPKI for 4 out of 5 RIRs can be made to work without agreeing to lengthy leg
 text.
 
 The ARIN TAL distribution model and the very existence of the ARIN RPA are considered
-problematic by `some operators <https://seclists.org/nanog/2019/Jan/118>`.
+problematic by `some <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`,
+`operators <https://seclists.org/nanog/2019/Jan/118>`.
 
 Job Snijders made a video explaining his perspective on the ARIN TAL: `youtube <https://www.youtube.com/watch?v=oBwAQep7Q7o>`.
 
