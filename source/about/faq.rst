@@ -289,7 +289,7 @@ Christopher Yoo and David Wishnick authored a paper titled
 `Lowering Legal Barriers to RPKI Adoption <https://scholarship.law.upenn.edu/faculty_scholarship/2035/>`_.
 
 Ben Cox performed various RPKI measurements and concluded that the ARIN TAL is used far
-less than TALs from their RIR counter parts. This has lead to a situation where ROAs
+less than TALs from their RIR counter parts. This has led to a situation where ROAs
 created under the ARIN TAL offer less protection against BGP incidents than other RIRs.
 `State of RPKI: Q4 2018 <https://blog.benjojo.co.uk/post/state-of-rpki-in-2018>`_.
 
