@@ -279,9 +279,9 @@ Why isn't the ARIN RPKI TAL like other public key files?
 
 Unlike the other RIRs, which distribute their TAL publicly, ARIN has a policy requiring users 
 to explicitly agree to terms and conditions concerning its TAL. Note that this policy is not 
-without controversy as discussed on various mailing lists, such as 
-`here <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`_ and 
-`here <https://seclists.org/nanog/2019/Jan/118>`_. 
+without controversy as 
+`discussed here <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`__ and 
+`here <https://seclists.org/nanog/2019/Jan/118>`__ on the NANOG list. 
 
 Job Snijders made a 
 `video <https://www.youtube.com/watch?v=oBwAQep7Q7o>`_ explaining his perspective on the ARIN TAL. 
