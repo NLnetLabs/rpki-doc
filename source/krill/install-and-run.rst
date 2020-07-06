@@ -24,20 +24,37 @@ Quick Start
 """""""""""
 
 For recent Debian and Ubuntu releases you can download, install and run a ``.deb``
-package from the `Krill GitHub Releases page <https://github.com/NLnetLabs/krill/releases>`_
-like so:
-
-.. code-block:: bash
-
-  curl -Lo krill.deb https://github.com/NLnetLabs/krill/releases/download/v0.7.1/krill_0.7.1_amd64_ubuntu1804.deb
-  sudo apt-get install -y ./krill.deb
-  # review / edit /etc/krill.conf
-  sudo systemctl enable --now krill
+package from the NLnet Labs package repository.
 
 .. Note:: If you had previously installed Krill using ``cargo install krill`` you should
           first use ``cargo uninstall krill`` before installing a ``.deb`` package Otherwise
           the cargo installed binaries for ``krill`` and ``krillc`` may take precednce in
           your shell ``$PATH`` which could be confusing.
+
+1. Add the line below that corresponds to your operating system to ``/etc/apt/sources.list`` or ``/etc/apt/sources.list.d/``:
+
+.. code-block:: bash
+
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ stretch main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ buster main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ xenial main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ bionic main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ focal main
+
+2. Add the repository signing key to the listed of trusted keys:
+
+.. code-block:: bash
+
+  wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | sudo apt-key add -
+
+3. Install and start Krill:
+
+.. code-block:: bash
+
+  sudo apt update
+  sudo apt-get install krill
+  # review / edit /etc/krill.conf
+  sudo systemctl enable --now krill
 
 Alternatively, you can build from sources. Assuming you have a newly installed Debian or
 Ubuntu machine, you will need to install the C toolchain, OpenSSL, curl and
@@ -54,7 +71,7 @@ file.
   apt install build-essential libssl-dev openssl pkg-config curl
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source ~/.cargo/env
-  cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.1
+  cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.3
   mkdir ~/data
   krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
   krill --config ~/data/krill.conf
@@ -92,16 +109,26 @@ start/stop of the Krill daemon and with short Linux man pages.
           minimum version required by Krill and is higher than available in the
           official package repositories for those platforms.
 
-.. Note:: At the current time the packages are not available via an APT
-          compatible repository server. To install Krill from a ``.deb`` package
-          you must first manually download the appropriate package file.
-
-To use one of the available ``.deb`` packages:
+To install Krill from the NLnet Labs package repository:
 
 1. Run ``cargo uninstall krill`` if you previously installed Krill with Cargo.
-2. Download the appropriate ``.deb`` package for your operating system from the
-   release artifacts linked to the `Krill release announcement on GitHub. <https://github.com/NLnetLabs/krill/>`_.
-3. Install the package using ``sudo apt-get install ./<filename>.deb`` or equivalent.
+2. Add the line below that corresponds to your operating system to ``/etc/apt/sources.list`` or ``/etc/apt/sources.list.d/``:
+
+.. code-block:: bash
+
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ stretch main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ buster main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ xenial main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ bionic main
+  deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ focal main
+
+2. Add the repository signing key to the listed of trusted keys:
+
+.. code-block:: bash
+
+  wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | sudo apt-key add -
+
+3. Install Krill using ``sudo apt-get update`` and ``sudo apt-get install krill``.
 4. Review the generated configuration file at ``/etc/krill.conf``.
    **Pay particular attention** to the ``service_uri`` and ``auth_token``
    settings. Tip: The configuration file was generated for you using the
@@ -118,7 +145,12 @@ You can manage the Krill daemon using the following commands:
 
 - Learn more about Krill using ``man krill`` and ``man krillc``.
 
-- Upgrade Krill by downloading a new ``.deb`` file and running ``apt-get install ./<deb file>``.
+- Upgrade Krill by running ``apt-get update`` and ``apt-get install krill``.
+
+.. Note:: Due to `issue #280 <https://github.com/NLnetLabs/krill/issues/280>`_,
+          when upgrading with ``apt-get`` it is currently necessary to restart
+          Krill manually after upgrade with ``sudo systemctl restart krill``.
+          This issue will be resolved in the next major release.
 
 Installing with Cargo
 """""""""""""""""""""
@@ -226,7 +258,7 @@ The easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.1
+   cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.3
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed

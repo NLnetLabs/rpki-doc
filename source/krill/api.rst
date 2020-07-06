@@ -10,7 +10,7 @@ based authentication.
 Getting Help
 ------------
 
-- Consult the `Interactive API documentation <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.1/doc/openapi.yaml>`_ (courtesy of `ReDoc <https://github.com/Redocly/redoc>`_)
+- Consult the `Interactive API documentation <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.3/doc/openapi.yaml>`_ (courtesy of `ReDoc <https://github.com/Redocly/redoc>`_)
 - Follow the API links in the :ref:`Krill CLI documentation<doc_krill_cli>`, e.g. API Call: :krill_api:`GET /v1/cas <list_cas>`
 - Check out the API hints built-in to the :ref:`Krill CLI<doc_krill_cli>`, e.g.
 
@@ -27,7 +27,7 @@ Generating Client Code
 ----------------------
 
 The `OpenAPI Generator <https://openapi-generator.tech/>`_ can generate Krill
-API client code in many languages from the `Krill v0.7.1 OpenAPI specification <https://github.com/NLnetLabs/krill/blob/v0.7.1/doc/openapi.yaml>`_.
+API client code in many languages from the `Krill v0.7.3 OpenAPI specification <https://github.com/NLnetLabs/krill/blob/v0.7.3/doc/openapi.yaml>`_.3
 
 Sample Application
 ------------------
@@ -75,7 +75,7 @@ using a valid TLS certificate.
    mkdir -p $GENDIR
 
    # fetch the Krill OpenAPI specification document
-   wget -O $GENDIR/openapi.yaml https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.1/doc/openapi.yaml
+   wget -O $GENDIR/openapi.yaml https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.3/doc/openapi.yaml
 
    # use the OpenAPI Generator to generate a Krill client library from the krill
    # OpenAPI specification
