@@ -71,7 +71,6 @@ Add ``http://<PROMETHEUS DOMAIN OR IP>:9090`` as a datasource to Grafana.
 
 Then import `Grafana Dashboards <https://grafana.com/grafana/dashboards>`_ by ID, e.g.:
   - https://grafana.com/grafana/dashboards/1860 (Node Exporter Full)
-  - https://grafana.com/grafana/dashboards/8951 (Docker Monitoring)
   - https://grafana.com/grafana/dashboards/11199 (NGINX by nginxinc)
 
 Alerting
