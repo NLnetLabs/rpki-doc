@@ -9,6 +9,14 @@ Monitoring
        - `Missing rsync metrics <https://github.com/NLnetLabs/krillmanager/issues/13>`_
        - `Limited Docker metrics - use cAdvisor <https://github.com/NLnetLabs/krillmanager/issues/27>`_
 
+.. figure:: https://prometheus.io/assets/architecture.png
+    :align: center
+    :width: 100%
+    :alt: The architecture of Prometheus and some of its ecosystem components
+    :target: https://prometheus.io/docs/introduction/overview/#architecture
+
+    The architecture of Prometheus and some of its ecosystem components.
+
 The available `Prometheus <https://prometheus.io/docs/concepts/data_model/>`_
 endpoints for monitoring Krill Manager components can be determined using the
 ``krillmanager status`` command:
