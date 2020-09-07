@@ -69,10 +69,9 @@ re-signed before they go stale.
 .. Note:: This scenario illustrated here also applies if you use an RPKI
           publication server offered by a third party, such as a cloud provider.
 
-At this time, only Asia Pacific RIR APNIC and Brazilian NIR NIC.br offer a
-publication server for their members. Several other RIRs have this functionality
-on their roadmap. This means that in most cases, you will have to publish
-yourself.
+At this time, only Brazilian NIR NIC.br offer a publication server for their 
+members. Several RIRs have this functionality on their roadmap. This means 
+that in most cases, you will have to publish yourself.
 
 Publishing Yourself
 -------------------
