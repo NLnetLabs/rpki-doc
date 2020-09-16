@@ -179,6 +179,40 @@ at ``/metrics``. The statistics published at this endpoint can help identify
 whether events are being received and handled by the expected Fluentd output
 plugins.
 
+Logs from the log streaming and audit trail upload processes can be checked with the following commands:
+
+.. code-block:: bash
+
+   docker service logs --since=2h krill_log_forwarder
+   docker service logs --since=2h krill_log_uploader
+   docker service logs --since=2h krill_rfc_trail_uploader
+
+If you have configured log uploading to an S3 bucket look for permission errors in these logs. For AWS S3 a sample IAM policy that grants sufficient access for Krill Manager is:
+
+.. code-block:: json
+
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Sid": "KrillManagerLogUpload",
+               "Effect": "Allow",
+               "Action": [
+                   "s3:GetObject",
+                   "s3:ListBucket",
+                   "s3:PutObject",
+                   "s3:PutObjectAcl"
+               ],
+               "Resource": [
+                   "arn:aws:s3:::<bucket_name>",
+                   "arn:aws:s3:::<bucket_name>/*"
+               ]
+           }
+       ]
+   }
+
+Remember to replace ``<bucket_name>`` with the name of the actual S3 bucket.
+
 Customising Audit Log Upload
 ----------------------------
 
