@@ -71,7 +71,7 @@ file.
   apt install build-essential libssl-dev openssl pkg-config curl
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source ~/.cargo/env
-  cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.3
+  cargo install krill
   mkdir ~/data
   krillc config simple --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
   krill --config ~/data/krill.conf
@@ -86,7 +86,7 @@ If you have an older version of Rust and Krill, you can update via:
 .. code-block:: bash
 
    rustup update
-   cargo install --force krill --git https://github.com/NLnetLabs/krill.git --version <version-number>
+   cargo install --force krill
 
 .. Note:: Using a fully qualified domain name, configuring a real TLS
           certificate such as Let's Encrypt, running on a different port and
@@ -258,7 +258,7 @@ The easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install krill --git https://github.com/NLnetLabs/krill.git --version 0.7.3
+   cargo install krill
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
