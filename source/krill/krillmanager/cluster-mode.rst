@@ -6,6 +6,13 @@ Cluster Mode
 Krill Manager supports running on a cluster of servers but by default assumes
 that it is not part of a cluster.
 
+.. warning::
+
+   Only the RRDP and Rsync servers will be deployed more than once in the
+   cluster. Krill does not yet support more than one active instance of the
+   Krill CA sharing the same data directory. Running more than one instance
+   of the Krill CA using the same data directory will NOT work.
+
 Setting up a Cluster
 --------------------
 
