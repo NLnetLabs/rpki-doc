@@ -367,7 +367,6 @@ Note that although the UI and API are protected by a token, you should consider
 further restrictions in your proxy setup - like restrictions on source IP, or
 you may want to have your own authentication added.
 
-
 Proxy Krill as Parent
 """""""""""""""""""""
 
@@ -394,6 +393,51 @@ specific set up.
              you are serving as parent CA or Publication Server for other CAs.
 
 
+
+Used Disk Space
+---------------
+
+Krill stores all of its data under the ``DATA_DIR``. For users who will operate
+a CA under an RIR / NIR parent the following sub-directories are relevant:
+
++-----------------+------------------------------------------------------------+
+| Dir             | Purpose                                                    |
++=================+============================================================+
+| data_dir/ssl    | Contains the HTTPS key and cert used by Krill              |
++-----------------+------------------------------------------------------------+
+| data_dir/cas    | Contains the history of your CA(s) in raw JSON format      |
++-----------------+------------------------------------------------------------+
+| data_dir/pubd   | Contains the history of your Publication Server if enabled |
++-----------------+------------------------------------------------------------+
+
+.. Warning::  Note that old versions of Krill also used the directories
+              `data_dir/rfc8181` and `data_dir/rfc6492` for storing all
+              protocol messages exchanged between your CAs and their parent
+              and repository. If they are still present on your system, you
+              can safely remove them and save space - potentially quite a bit
+              of space.
+
+Archiving
+"""""""""
+
+Krill offers the option to archive old, less relevant, historical information
+related to publication. You can enable this by setting the option ``archive_threshold_days``
+in your configuration file. If set Krill will move all publication events older
+than the specified number of days to an subdirectory called `archived` under the
+relevant data directory: `data_dir/pubd/0/archived` if you are using Krill as a
+Publication Server and `data_dir/cas/<your-ca-name>/archived` for each of your
+CAs.
+
+You can set up a cronjob to delete these events once and for all, but we
+recommend that you save them in long term storage if you can. The reason is that
+if (and only if) you have this data, you will be able to rebuild the complete
+Krill state based on its *audit* log of events, and irrevocably prove that no
+changes were made to Krill other than the changes recorded in the audit trail.
+We have no tooling for this yet, but we have an `issue <https://github.com/NLnetLabs/krill/issues/331>`_
+on our backlog.
+
+
+
 Backup and Restore
 ------------------
 
@@ -410,28 +454,6 @@ back up Krill in a consistent state while it is running.
 
 To restore Krill just put back your data directory and make sure that you refer
 to it in the configuration file that you use for your Krill instance.
-
-Used Disk Space
----------------
-
-Krill stores all of its data under the ``DATA_DIR``. For users who will operate
-a CA under an RIR / NIR parent the following sub-directories are relevant:
-
-+-----------------+------------------------------------------------------+
-| Dir             | Purpose                                              |
-+=================+======================================================+
-| data_dir/ssl    | Contains the HTTPS key and cert used by Krill        |
-+-----------------+------------------------------------------------------+
-| data_dir/cas    | Contains the history of your CA in raw JSON format   |
-+-----------------+------------------------------------------------------+
-
-.. Warning::  Note that old versions of Krill also used the directories
-              `data_dir/rfc8181` and `data_dir/rfc6492` for storing all
-              protocol messages exchanged between your CAs and their parent
-              and repository. If they are still present on your system, you
-              can safely remove them and save space - potentially quite a bit
-              of space.
-
 
 Krill Upgrades
 --------------
