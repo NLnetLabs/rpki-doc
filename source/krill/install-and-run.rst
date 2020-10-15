@@ -20,6 +20,13 @@ Krill can also be se up as a highly available, scalable service using
 up Krill with all required components, along with integration points for
 monitoring and log analysis.
 
+.. Warning:: Krill does NOT support clustering at this time. You can achieve
+             high availability by doing a fail-over to a standby *inactive*
+             installation using the same data and configuration. However, you
+             cannot have multiple active instances. This
+             `feature <https://github.com/NLnetLabs/krill/issues/20>`_ is on our
+             long term roadmap.
+
 Quick Start
 """""""""""
 
