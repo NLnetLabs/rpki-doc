@@ -168,7 +168,7 @@ Platform Support <https://forge.rust-lang.org/platform-support.html>`_
 page provides an overview of the various support levels.
 
 While some system distributions include Rust as system packages,
-Krill relies on a relatively new version of Rust, currently 1.40 or
+Krill relies on a relatively new version of Rust, currently 1.42 or
 newer. We therefore suggest to use the canonical Rust installation via a
 tool called :command:`rustup`.
 
