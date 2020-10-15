@@ -410,28 +410,21 @@ Used Disk Space
 Krill stores all of its data under the ``DATA_DIR``. For users who will operate
 a CA under an RIR / NIR parent the following sub-directories are relevant:
 
-+---------+------------------------------------------------------+
-| Dir     | Purpose                                              |
-+=========+======================================================+
-| ssl     | Contains the HTTPS key and cert used by Krill        |
-+---------+------------------------------------------------------+
-| cas     | Contains the history of your CA in raw JSON format   |
-+---------+------------------------------------------------------+
-| rfc6492 | Contains all messages exchanged with your parent     |
-+---------+------------------------------------------------------+
-| rfc8181 | Contains all messages exchanged with your repository |
-+---------+------------------------------------------------------+
++-----------------+------------------------------------------------------+
+| Dir             | Purpose                                              |
++=================+======================================================+
+| data_dir/ssl    | Contains the HTTPS key and cert used by Krill        |
++-----------------+------------------------------------------------------+
+| data_dir/cas    | Contains the history of your CA in raw JSON format   |
++-----------------+------------------------------------------------------+
 
-The space used by the latter two directories can grow significantly over time.
-We think it may be a good idea to have an audit trail of all these exchanges.
-However, if space is a concern you can safely archive or delete the contents of
-these two directories.
+.. Warning::  Note that old versions of Krill also used the directories
+              `data_dir/rfc8181` and `data_dir/rfc6492` for storing all
+              protocol messages exchanged between your CAs and their parent
+              and repository. If they are still present on your system, you
+              can safely remove them and save space - potentially quite a bit
+              of space.
 
-In a future version of Krill we will most likely only store the exchanges where
-either an error was returned, or your Krill instance asked for a change to be
-made at the parent side: like requesting a new certificate, or publishing an
-object. The periodic exchanges where your CA asks the parent for its
-entitlements will then no longer be logged.
 
 Krill Upgrades
 --------------
