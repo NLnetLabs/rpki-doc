@@ -309,6 +309,194 @@ GitHub repository
 <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
 
+
+
+
+Used Disk Space
+---------------
+
+Krill stores all of its data under the ``DATA_DIR``. For users who will operate
+a CA under an RIR / NIR parent the following sub-directories are relevant:
+
++-----------------+------------------------------------------------------------+
+| Dir             | Purpose                                                    |
++=================+============================================================+
+| data_dir/ssl    | Contains the HTTPS key and cert used by Krill              |
++-----------------+------------------------------------------------------------+
+| data_dir/cas    | Contains the history of your CA(s) in raw JSON format      |
++-----------------+------------------------------------------------------------+
+| data_dir/pubd   | Contains the history of your Publication Server if enabled |
++-----------------+------------------------------------------------------------+
+
+.. Warning::  Note that old versions of Krill also used the directories
+              `data_dir/rfc8181` and `data_dir/rfc6492` for storing all
+              protocol messages exchanged between your CAs and their parent
+              and repository. If they are still present on your system, you
+              can safely remove them and save space - potentially quite a bit
+              of space.
+
+Archiving
+"""""""""
+
+Krill offers the option to archive old, less relevant, historical information
+related to publication. You can enable this by setting the option ``archive_threshold_days``
+in your configuration file. If set Krill will move all publication events older
+than the specified number of days to an subdirectory called `archived` under the
+relevant data directory: `data_dir/pubd/0/archived` if you are using Krill as a
+Publication Server and `data_dir/cas/<your-ca-name>/archived` for each of your
+CAs.
+
+You can set up a cronjob to delete these events once and for all, but we
+recommend that you save them in long term storage if you can. The reason is that
+if (and only if) you have this data, you will be able to rebuild the complete
+Krill state based on its *audit* log of events, and irrevocably prove that no
+changes were made to Krill other than the changes recorded in the audit trail.
+We have no tooling for this yet, but we have an `issue <https://github.com/NLnetLabs/krill/issues/331>`_
+on our backlog.
+
+State Changes in Krill
+----------------------
+
+You can skip this section if you're not interested in the gory details. However,
+understanding this section will help to explain how backup and restore works in
+Krill, and why a standby fail-over node can be used, but Krill's locking and
+storage mechanism needs to be changed in order to make
+`multiple active nodes <https://github.com/NLnetLabs/krill/issues/20>`_
+work.
+
+State changes in Krill are tracked using "events". Krill CA(s) and Publication
+Servers are versioned. They can only be changed by applying an 'event' for a
+specific version. An event just contains the data that needs to be changed.
+Crucially, they cannot cause any side effects. As such the overall state can
+always be reconstituted by applying all past events. This concept is called
+'event-sourcing', and in this context the CAs and Publication Servers are
+so-called "Aggregates".
+
+Events are not applied directly. Rather, users of Krill and background jobs will
+send their intention to make a change through the API, which then translates
+this into a so-called "command". Krill will then *lock* the target aggregate
+and send the command to it. This locking mechanism is not aware of any
+clustering, and it's a primary reason why Krill cannot run as an active-active
+cluster just yet.
+
+Upon receiving a command the aggregate (your CA etc) will do some work. In some
+cases a command *can* have a side-effect. For example it may instruct your CA to
+create a new key pair, after receiving entitlements from its parent. The key pair
+is random - applying a command again would result in a new random key pair.
+Remember that commands are not re-applied to aggregates, only their resulting
+events are. Thus in this example there would be an event caused that contains
+the resulting key pair.
+
+After receiving the command, the aggregate will return one of the following:
+
+1. An error
+
+Usually this means that the command is not applicable to the aggregate state.
+For example, you may have tried to remove a ROA which does not exist.
+
+When Krill encounters such an error, it will store the command with some
+meta-information like the time the command was issued, and a summary of the
+error, so that it can be seen in the history. It will then unlock the aggregate,
+so that the next command can be send to it.
+
+2. No error, 0 events
+
+In this case the command turned out to be a no-op, and Krill just unlocks the
+aggregate. The command sequence counter is not updated, and the command is not
+saved. This is used as a feature whenever the 'republish' background job kicks
+in. A 'republish' command is sent, but it will only have an actual effect if
+there was a need to republish - e.g. a manifest would need to be re-issued
+before it would expire.
+
+3. 1 or more events
+
+In this case there *is* a desired state change in a Krill aggregate.
+
+Krill will now apply and persist the changes in the following order:
+
+* Each event is stored. If an event already exists for a version, then then the
+  update is aborted. Because Krill cannot run as a cluster, and it uses locking
+  to ensure that updates are done in sequence, this will only fail on the first
+  event if a user tried to issue concurrent updates to the same CA
+* On every 5th event a snapshot of the state is saved to a new file. If this is
+  successful then the old snapshot (if there is one) is renamed and kept as a
+  backup snapshot. The new snapshot is then renamed to the 'current' snapshot.
+* When all events are saved, the command is saved enumerating all resulting
+  events, and including meta-information such as the time that the time that the
+  command was executed. And when `multiple users <https://github.com/NLnetLabs/krill/issues/294>`_
+  will be supported, this will also include *who* made a change.
+* Finally the version information file for the aggregate is updated to indicate
+  its current version, and command sequence counter.
+
+**IMPORTANT**: Krill will crash, **by design**, if there is any failure in saving any
+of the above files to disk. If Krill cannot persist its state it should not try
+to carry on. It could lead to disjoints between in-memory and on-disk state that
+are impossible to fix. Therefore, crashing and forcing an operator to look at
+the system is the only sensible thing Krill can now do. Fortunately, this should
+not happen unless there is a serious system failure.
+
+Backup
+------
+
+Backing up Krill is as simple as backing up its data directory. There is no need
+to stop Krill during the backup.
+
+.. Warning:: You may want to **encrypt** your backup, because the ``data_dir/ssl``
+             directory contains your private keys in clear text. Encrypting
+             your backup will help protect these, but of course also implies
+             that you can only restore if you have the ability to decrypt.
+
+
+Restore
+-------
+
+To restore put back your data directory and make sure that you refer to it in
+the configuration file that you use for your Krill instance.
+
+Krill will rebuild its internal state whenever it starts. If it finds that there
+are surplus events or commands compared to the latest information state for any
+of the aggregates, it will trigger that Krill attempts to recover. See below.
+
+Recover
+-------
+
+Krill will try to 'recover' its state on startup if it finds that it could not
+rebuild the state for one of its aggregates, excess commands or events were
+found, it was started with the ``--recover`` argument, or the environment
+variable: ``KRILL_FORCE_RECOVER`` was set.
+
+
+
+
+
+Krill Upgrades
+--------------
+
+It is our goal that future versions of Krill will continue to work with the
+configuration files and saved data from version 0.4.1 and above. However, please
+read the changelog to be sure.
+
+The normal process would be to:
+
+- Install the new version of Krill
+- Stop the running Krill instance
+- Start Krill again, using the new binary, and the same configuration
+
+Note that after a restart you may see a message like this in your log file:
+
+.. code-block:: text
+
+  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not
+  deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error:
+  'missing field `stats` at line 296 column 1'. Will fall back to events.
+
+You can safely ignore this message. Krill is telling you that the definition of
+a struct has changed and therefore it cannot use the :file:`snapshot.json` file
+that it normally uses for efficiency. Instead, it needs to build up the current
+state by explicitly re-applying all the events that happened to your CA and/or
+publication server.
+
+
 Start and Stop the Daemon
 -------------------------
 
@@ -391,93 +579,3 @@ specific set up.
 .. Warning:: We recommend that you do **not** make Krill available to the public
              internet unless you really need remote access to the UI or API, or
              you are serving as parent CA or Publication Server for other CAs.
-
-
-
-Used Disk Space
----------------
-
-Krill stores all of its data under the ``DATA_DIR``. For users who will operate
-a CA under an RIR / NIR parent the following sub-directories are relevant:
-
-+-----------------+------------------------------------------------------------+
-| Dir             | Purpose                                                    |
-+=================+============================================================+
-| data_dir/ssl    | Contains the HTTPS key and cert used by Krill              |
-+-----------------+------------------------------------------------------------+
-| data_dir/cas    | Contains the history of your CA(s) in raw JSON format      |
-+-----------------+------------------------------------------------------------+
-| data_dir/pubd   | Contains the history of your Publication Server if enabled |
-+-----------------+------------------------------------------------------------+
-
-.. Warning::  Note that old versions of Krill also used the directories
-              `data_dir/rfc8181` and `data_dir/rfc6492` for storing all
-              protocol messages exchanged between your CAs and their parent
-              and repository. If they are still present on your system, you
-              can safely remove them and save space - potentially quite a bit
-              of space.
-
-Archiving
-"""""""""
-
-Krill offers the option to archive old, less relevant, historical information
-related to publication. You can enable this by setting the option ``archive_threshold_days``
-in your configuration file. If set Krill will move all publication events older
-than the specified number of days to an subdirectory called `archived` under the
-relevant data directory: `data_dir/pubd/0/archived` if you are using Krill as a
-Publication Server and `data_dir/cas/<your-ca-name>/archived` for each of your
-CAs.
-
-You can set up a cronjob to delete these events once and for all, but we
-recommend that you save them in long term storage if you can. The reason is that
-if (and only if) you have this data, you will be able to rebuild the complete
-Krill state based on its *audit* log of events, and irrevocably prove that no
-changes were made to Krill other than the changes recorded in the audit trail.
-We have no tooling for this yet, but we have an `issue <https://github.com/NLnetLabs/krill/issues/331>`_
-on our backlog.
-
-
-
-Backup and Restore
-------------------
-
-To back-up Krill:
-
-- Stop Krill
-- Backup your data directory
-- Start Krill
-
-We recommend that you stop Krill because there can be a race condition where
-Krill was just in the middle of saving its state after performing a background
-operation. We will most likely add a process in future that will allow you to
-back up Krill in a consistent state while it is running.
-
-To restore Krill just put back your data directory and make sure that you refer
-to it in the configuration file that you use for your Krill instance.
-
-Krill Upgrades
---------------
-
-It is our goal that future versions of Krill will continue to work with the
-configuration files and saved data from version 0.4.1 and above. However, please
-read the changelog to be sure.
-
-The normal process would be to:
-
-- Install the new version of Krill
-- Stop the running Krill instance
-- Start Krill again, using the new binary, and the same configuration
-
-Note that after a restart you may see a message like this in your log file:
-
-.. code-block:: text
-
-  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not
-  deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error:
-  'missing field `stats` at line 296 column 1'. Will fall back to events.
-
-You can safely ignore this message. Krill is telling you that the definition of
-a struct has changed and therefore it cannot use the :file:`snapshot.json` file
-that it normally uses for efficiency. Instead, it needs to build up the current
-state by explicitly re-applying all the events that happened to your CA and/or
-publication server.
