@@ -907,7 +907,7 @@ Relaxed Validation
 ------------------
 The documents defining RPKI include a number of very strict rules regarding the
 formatting of the objects published in the RPKI repository. However, because
-PRKI reuses existing technology, real-world applications produce objects that
+RPKI reuses existing technology, real-world applications produce objects that
 do not follow these strict requirements.
 
 As a consequence, a significant portion of the RPKI repository is actually
