@@ -5,10 +5,10 @@ Manual Page
 
 :command:`routinator` - RPKI relying party software
 
-:Date:       2020-06-15
+:Date:       2020-10-19
 :Author:     Martin Hoffmann
 :Copyright:  2019-2020 - NLnet Labs
-:Version:    0.7.1
+:Version:    0.8.0
 
 Synopsis
 --------
@@ -147,7 +147,7 @@ The available options are:
       a rather large amount of invalid route origins and should therefore not be
       used in practice.
 
-      See `Relaxed Validation`_ below for more information.
+      See `Relaxed Decoding`_ below for more information.
 
 .. option:: --stale=policy
 
@@ -171,6 +171,58 @@ The available options are:
 
       Finally, the *accept* policy will cause Routinator to quietly accept any
       stale object as valid.
+
+.. option:: --unsafe-vrps=policy
+
+      This option defines how to deal with "unsafe VRPs." If the address  prefix
+      of a VRP overlaps with any resources assigned to a CA that has been
+      rejected because if failed to  validate  completely, the VRP is said to be
+      unsafe since using it may lead to legitimate routes being flagged as RPKI
+      invalid.
+
+      There are three options how to deal with unsafe VRPS:
+
+      A policy of *reject* will filter out these VPRs. Warnings will be logged
+      to indicate which VRPs have been filtered
+
+      The *warn* policy will log warnings for unsafe VRPs but will add them to
+      the valid VRPs.
+
+      Finally, the *accept* policy will quietly add unsafe VRPs to the valid
+      VRPs.
+
+      Currently, the default policy is *warn* in order to gain operational
+      experience with the frequency and impact of unsafe VRPs. This default may
+      change in future version.
+
+      For more information on the process of validation implemented in
+      Routinator, see the section VALIDATION below.
+
+.. option:: --unknown-objects=policy
+
+      Defines how to deal with unknown types  of  RPKI  objects.  Currently,
+      only certificates (.cer), CRLs (.crl), manifests (.mft), ROAs (.roa), and
+      Ghostbuster  Records  (.gbr) are allowed to appear in the RPKI repository.
+
+      There are, once more, three policies for dealing with an object of any
+      other type:
+
+      The *reject* policy will reject the object as well as the entire CA.
+      Consequently, an unknown object appearing in a CA will mark all other
+      objects issued by the CA as invalid as well.
+
+      The policy of *warn* will log a warning, ignore the object, and accept all
+      known objects issued by the CA.
+
+      The  similar policy of *accept* will quietly ignore the object and accept
+      all known objects issued by the CA.
+
+      The default policy if the option is missing is *warn*.
+
+      Note that even if unknown objects are accepted, they must appear in  the
+      manifest and the hash over their content must match the one given in the
+      manifest. If the hash does not  match, the CA and all its objects are
+      still rejected.
 
 .. option:: --allow-dubious-hosts
 
@@ -698,6 +750,32 @@ stale
       accept
              Quietly consider stale objects valid.
 
+unsafe-vrps
+      A string specifying the policy for dealing with unsafe VRPs.
+
+      reject
+             Filter unsafe VPRs and add warning messages to the log.
+
+      warn
+             Warn about unsafe VRPs in the log but add them to the final set of
+             VRPs. This is the  default policy if the value is missing.
+
+      accept
+             Quietly add unsafe VRPs to the final set of VRPs.
+
+unknown-objects
+      A string specifying the policy for dealing with unknown RPKI object types.
+
+       reject
+             Reject the object and its issuing CA.
+
+       warn
+             Warn about the object but ignore it and accept the issuing CA.
+             This is the default policy if the value is missing.
+
+       accept
+             Quietly ignore the object and accept the issuing CA.
+
 allow-dubious-hosts
       A boolean value that, if present and true, disables Routinator's filtering
       of dubious host names in rsync and HTTPS URIs from RPKI data.
@@ -878,6 +956,13 @@ The service only supports GET requests with the following paths:
       the output of the **/metrics** endpoint but in a more human friendly
       format.
 
+:command:`/log`
+      Returns the logging output of the last validation run. The log level
+      matches that set upon start.
+      
+      Note that the output is collected after each validation run and is
+      therefore only available after the initial run has concluded.
+
 :command:`/version`
       Returns the version of the Routinator instance.
 
@@ -903,8 +988,88 @@ repeated multiple times.
 This works in the same way as the options of the same name to the
 :subcmd:`vrps` command.
 
-Relaxed Validation
-------------------
+Logging
+-------
+In order to allow diagnosis of the VRP data set as well as its overall health,
+Routinator logs an extensive amount of information. The log levels used by
+syslog are utilized to allow filtering this information for particular use
+cases.
+
+The log levels represent the following information:
+
+error
+      Information  related to events that prevent Routinator from continuing to
+      operate at all as well as all issues related to local configuration even
+      if Routinator will continue to run.
+
+warn
+      Information  about  events  and  data that influences the set of VRPs
+      produced by Routinator. This includes failures to communicate with
+      repository servers, or encountering invalid objects.
+
+info
+      Information about events and data that could be considered abnormal but do
+      not influence the  set  of  VRPs  produced.  For example, when filtering
+      of unsafe VRPs is disabled, the unsafe VRPs are logged with this level.
+
+debug
+      Information about the internal state of Routinator that may be useful for,
+      well, debugging.
+
+Validation
+----------
+      In :subcmd:`vrps` and :subcmd:`server` mode, Routinator will produce a set
+      of VRPs from the data published in the RPKI repository. It will walk over
+      all certfication authorities (CAs) starting with those referred to in the
+      configured TALs.
+
+      Each CA is checked whether all its published objects are present,
+      correctly  encoded, and have been signed by the CA. If any of the objects
+      fail this check, the entire CA will be rejected. If an object of an
+      unknown  type  is encountered, the  behaviour depends on the
+      ``unknown-objects`` policy. If this policy has a value of *reject* the
+      entire CA will be rejected. In this case, only certificates (.cer), CRLs
+      (.crl), manifestes (.mft), ROAs (.roa), and Ghostbuster records (.gbr)
+      will be accepted.
+
+      If  a CA is rejected, none of its ROAs will be added to the VRP set but
+      also none of its child CAs will be considered at all; their published data
+      will not be fetched or validated.
+
+      If  a prefix has its ROAs published by different CAs, this will lead to
+      some of its VRPs being dropped while others are still added. If the VRP
+      for the  legitimately announced route is among those having been dropped,
+      the route becomes RPKI invalid. This can happen both by operator error or
+      through an active attack.
+
+      In addition, if a VRP for a less specific prefix exists that covers the
+      prefix of the dropped VRP, the route will be invalidated by the less
+      specific VRP.
+
+      Because  of  this  risk  of  accidentally  or  maliciously invalidating
+      routes, VRPs that have address prefixes overlapping with resources of
+      rejected CAs are called *unsafe VRPs*.
+
+      In  order  to  avoid  these situations and instead fall back to an RPKI
+      unknown state for such routes, Routinator allows to filter out these
+      unsafe  VRPs. This can be enabled via the :option:`--unsafe-vrps=reject`
+      command line option or setting :option:`unsafe-vrps=reject` in the config
+      file.
+
+      By default, this filter is currently disabled but warnings  are  logged
+      about unsafe VPRs. This allows to assess the operation impact of such a
+      filter. Depending on this assessment, the default may change in future
+      version.
+
+      One exception from this rule are CAs that have the full address space
+      assigned, i.e., 0.0.0.0/0 and ::/0. Adding these to the filter would wipe
+      out all VRPs. These prefixes are used by the RIR trust anchors to avoid
+      having to update these often. However, each RIR has its own address space
+      so losing all VRPs should something happen to a trust anchor is
+      unnecessary.
+
+Relaxed Decoding
+----------------
 The documents defining RPKI include a number of very strict rules regarding the
 formatting of the objects published in the RPKI repository. However, because
 RPKI reuses existing technology, real-world applications produce objects that
