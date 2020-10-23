@@ -1076,13 +1076,13 @@ RPKI reuses existing technology, real-world applications produce objects that
 do not follow these strict requirements.
 
 As a consequence, a significant portion of the RPKI repository is actually
-invalid if the rules are followed. We therefore introduce two validation
+invalid if the rules are followed. We therefore introduce two decoding
 modes: strict and relaxed. Strict mode rejects any object that does not pass all
 checks laid out by the relevant RFCs. Relaxed mode ignores a number of these
 checks.
 
 This memo documents the violations we encountered and are dealing with in
-relaxed validation mode.
+relaxed decoding mode.
 
 
    Resource Certificates (:rfc:`6487`)
