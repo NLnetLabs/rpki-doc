@@ -78,7 +78,6 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
    api
    monitoring
    publication-server
-   testing
    docker
    Running with Krill Manager <krillmanager/index>
 .. history
