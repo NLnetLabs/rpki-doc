@@ -341,9 +341,9 @@ Archiving
 Krill offers the option to archive old, less relevant, historical information
 related to publication. You can enable this by setting the option ``archive_threshold_days``
 in your configuration file. If set Krill will move all publication events older
-than the specified number of days to an subdirectory called `archived` under the
-relevant data directory: `data_dir/pubd/0/archived` if you are using Krill as a
-Publication Server and `data_dir/cas/<your-ca-name>/archived` for each of your
+than the specified number of days to a subdirectory called `archived` under the
+relevant data directory: ``data_dir/pubd/0/archived`` if you are using Krill as a
+Publication Server and ``data_dir/cas/<your-ca-name>/archived`` for each of your
 CAs.
 
 You can set up a cronjob to delete these events once and for all, but we
@@ -354,8 +354,8 @@ changes were made to Krill other than the changes recorded in the audit trail.
 We have no tooling for this yet, but we have an `issue <https://github.com/NLnetLabs/krill/issues/331>`_
 on our backlog.
 
-State Changes in Krill
-----------------------
+Saving State Changes
+--------------------
 
 You can skip this section if you're not interested in the gory details. However,
 understanding this section will help to explain how backup and restore works in
@@ -428,18 +428,75 @@ Krill will now apply and persist the changes in the following order:
 * Finally the version information file for the aggregate is updated to indicate
   its current version, and command sequence counter.
 
-**IMPORTANT**: Krill will crash, **by design**, if there is any failure in saving any
-of the above files to disk. If Krill cannot persist its state it should not try
-to carry on. It could lead to disjoints between in-memory and on-disk state that
-are impossible to fix. Therefore, crashing and forcing an operator to look at
-the system is the only sensible thing Krill can now do. Fortunately, this should
-not happen unless there is a serious system failure.
+.. Warning:: Krill will crash, **by design**, if there is any failure in saving
+             any of the above files to disk. If Krill cannot persist its state
+             it should not try to carry on. It could lead to disjoints between
+             in-memory and on-disk state that are impossible to fix. Therefore,
+             crashing and forcing an operator to look at the system is the only
+             sensible thing Krill can now do. Fortunately, this should not
+             happen unless there is a serious system failure.
 
-Backup
-------
+
+Loading State at Startup
+------------------------
+
+Krill will rebuild its internal state whenever it starts. If it finds that there
+are surplus events or commands compared to the latest information state for any
+of the aggregates, then it will assume that they are present because, either
+Krill stopped in the middle of writing a transaction of changes to disk, or your
+backup was taken in the middle of a transaction. Such surplus files are backed up
+to a subdirectory called `surplus` under the relevant data directory: ``data_dir/pubd/0/surplus``
+if you are using Krill as a Publication Server and ``data_dir/cas/<your-ca-name>/surplus`` for each of your CAs.
+
+
+Recover State at Startup
+------------------------
+
+When Krill starts, it will try to go back to the last possible **recoverable**
+state if:
+
+* it cannot rebuild its state at startup due to data corruption
+* the environment variable: ``KRILL_FORCE_RECOVER`` is set
+* the configuration file contains ``always_recover_data = true``
+
+Under normal circumstances, i.e. where there is no data corruption, performing
+this recovery will not be necessary. It can also take significant time due to
+all the checks performed. So, we do **not recommend** forcing this.
+
+Krill will try the following checks and recovery attempts:
+
+* Verify each recorded command and its effects (events) in their historical order.
+* If any command or event file is corrupt it will be moved to a subdirectory
+  called `corrupt` under the relevant data directory, and all subsequent commands
+  and events will be moved to a subdirectory called `surplus` under the relevant
+  data directory.
+* Verify that each snapshot file can be parsed, if it can't then this file is
+  moved to relevant the `corrupt` sub-directory.
+* If a snapshot file could not be parsed, try to parse the backup snapshot. If
+  this file can't be parsed, move it to the relevant `corrupt` sub-directory.
+* Try to rebuild the state to the last recoverable state, i.e. the last known
+  good event. Note that if this pre-dates the available snapshots, or, if no
+  snapshots are available this means that Krill will try to rebuild state by
+  replaying all events. If you had enabled archiving of events, it will not be
+  able rebuild state.
+* If rebuilding state failed, Krill will now exit with an error.
+
+Note that in case of data corruption Krill `may` be able to fall back to an
+earlier recoverable state, but this state may be far in the past. You should
+always verify your ROAs and/or delegations to child CAs in such cases.
+
+Of course, it's best to avoid data corruption in the first place. Please monitor
+available disk space, and make regular backups.
+
+
+Backup / Restore
+----------------
 
 Backing up Krill is as simple as backing up its data directory. There is no need
-to stop Krill during the backup.
+to stop Krill during the backup. To restore put back your data directory and
+make sure that you refer to it in the configuration file that you use for your
+Krill instance. As described above, if Krill finds that the backup contain an
+incomplete transaction, it will just fall back to the state prior to it.
 
 .. Warning:: You may want to **encrypt** your backup, because the ``data_dir/ssl``
              directory contains your private keys in clear text. Encrypting
@@ -447,54 +504,37 @@ to stop Krill during the backup.
              that you can only restore if you have the ability to decrypt.
 
 
-Restore
--------
-
-To restore put back your data directory and make sure that you refer to it in
-the configuration file that you use for your Krill instance.
-
-Krill will rebuild its internal state whenever it starts. If it finds that there
-are surplus events or commands compared to the latest information state for any
-of the aggregates, it will trigger that Krill attempts to recover. See below.
-
-Recover
--------
-
-Krill will try to 'recover' its state on startup if it finds that it could not
-rebuild the state for one of its aggregates, excess commands or events were
-found, it was started with the ``--recover`` argument, or the environment
-variable: ``KRILL_FORCE_RECOVER`` was set.
-
-
-
-
-
 Krill Upgrades
 --------------
 
-It is our goal that future versions of Krill will continue to work with the
-configuration files and saved data from version 0.4.1 and above. However, please
-read the changelog to be sure.
+All Krill versions 0.4.1 and upwards can be automatically upgraded to the
+current version. To do so we recommend that you:
 
-The normal process would be to:
+* backup your krill data directories
+* install the new version of Krill
+* stop the running Krill instance
+* start Krill again, using the new binary, and the same configuration
 
-- Install the new version of Krill
-- Stop the running Krill instance
-- Start Krill again, using the new binary, and the same configuration
+If Krill needs to do any data migrations it will do so automatically.
 
-Note that after a restart you may see a message like this in your log file:
+If you just want to test that these data migrations will work for your data,
+you can do the following:
 
-.. code-block:: text
+* copy your data directory to another system
+* set the env variable ``KRILL_UPGRADE_ONLY=1``
+* create a configuration file, and set ``data_dir=/path/to/your/copy``
+* start up krill
 
-  2020-01-28 13:41:03 [WARN] [krill::commons::eventsourcing::store] Could not
-  deserialize snapshot json '/root/krill/data/pubd/0/snapshot.json', got error:
-  'missing field `stats` at line 296 column 1'. Will fall back to events.
+Krill will then perform the data migrations, rebuild its state, and then exit
+before doing anything else.
 
-You can safely ignore this message. Krill is telling you that the definition of
-a struct has changed and therefore it cannot use the :file:`snapshot.json` file
-that it normally uses for efficiency. Instead, it needs to build up the current
-state by explicitly re-applying all the events that happened to your CA and/or
-publication server.
+
+Krill Downgrades
+----------------
+
+Downgrading Krill data is not supported. So, downgrading can only be achieved
+by installing a previous version of Krill and restoring a backup from before
+your upgrade.
 
 
 Start and Stop the Daemon
