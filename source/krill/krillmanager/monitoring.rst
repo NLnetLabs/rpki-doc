@@ -32,14 +32,13 @@ endpoints for monitoring Krill Manager components can be determined using the
        - NGINX         : http://<YOUR DOMAIN>:9113/metrics
        - Docker        : http://<YOUR DOMAIN>:9323/metrics
        - O/S           : http://<YOUR DOMAIN>:9100/metrics
-       - Gluster       : http://<YOUR DOMAIN>:8080/metrics
-       - Fluentd       : http://<YOUR DOMAIN>:24231/metrics
+       ...
 
 .. note:: Fluentd metrics are available from Krill Manager v0.2.2.
 
-.. note:: In cluster mode the per-node metrics (NGINX, Docker, O/S and Gluster)
-          should be queried on the node you are interested in, Krill Manager
-          does NOT aggregate cluster metrics for you.
+.. note:: In cluster mode the per-node metrics should be queried on the node you
+          are interested in, Krill Manager does NOT aggregate cluster metrics
+          for you.
 
 .. tip:: Krill metrics can be queried on any cluster node, NGINX will fetch
          them from Krill on whichever cluster node the single Krill instance

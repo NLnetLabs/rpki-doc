@@ -56,16 +56,7 @@ execute the following commands via SSH:
    $ ssh root@master.rpki.example.com
    # open-cluster-ports
    # krillmanager --slave-ips=10.0.0.2,10.0.0.3
-   Joining slave at 10.0.0.2 to our GlusterFS cluster
-   Joining slave at 10.0.0.3 to our GlusterFS cluster
-   ...
-   Waiting for all GlusterFS peers to become 'Connected'.
-   ...
-   Initializing Swarm manager at <some.pubic.ip.address>
-   Sharing Swarm join token via GlusterFS
-   Waiting for 2 swarm workers to be in status 'Ready'
-   Waiting for 1 swarm workers to be in status 'Ready'
-   ...
+      ...
 
 .. warning::
 
@@ -145,7 +136,7 @@ How Is Cluster Mode Different To Normal Mode?
 The main difference is that instead of having one server running NGINX and
 RsyncD, in cluster mode every cluster server will run NGINX and RsyncD.
 
-In clustered mode the Gluster volume enables Krill Manager to replicate
+In clustered mode the cluster volume enables Krill Manager to replicate
 configuration, TLS certificates, RRDP and Rsync repo contents, etc. to every
 cluster server.
 
@@ -174,7 +165,7 @@ is less robust than spreading the VMs across cloud availability zones or across
 regions.
 
 Note however that the further apart your cluster servers are from each other the
-longer it may take Gluster to keep the replicated volume contents consistent.
+longer it may take to keep the replicated volume contents consistent.
 
 Also, not all load balancing technologies support wider separation, e.g. a cloud
 load balancer may be able to balance across VMs in one region but not across
@@ -231,7 +222,7 @@ server.
 
 If the "unhealthy" cluster server is the "master" then any Krill Manager
 components that were running only on that cluster server will be lost and you
-will need to manually fix the Docker Swarm and Gluster clusters. However,
+will need to manually fix the Docker Swarm and clustered storage state. However,
 note that NGINX and RsyncD run on every cluster server and so clients will still
 be able to get the *last synced* RRDP and Rsync data from the remaining "healthy"
 cluster servers. You may however lose Krill and/or log streaming/uploading
@@ -262,10 +253,10 @@ How is the cluster established?
 -------------------------------
 
 1. The master server activates Docker Swarm mode becoming a Swarm Manager.
-2. The master server adds the other servers as Gluster peers.
-3. The master server creates a Gluster replication volume across the peers. Each
+2. The master server adds the other servers as storage peers.
+3. The master server creates a storage replication volume across the peers. Each
    peer will have a complete copy of the data written to the volume.
-4. The master server writes the Docker Swarm join token to the Gluster volume.
+4. The master server writes the Docker Swarm join token to the storage volume.
 5. The slave servers detect the join token and use it to join the Docker Swarm.
 
 ------------------------------------------
@@ -278,8 +269,8 @@ Can I add or remove cluster servers later?
    cluster server with the new set of IPv4 cluster slave addresses:
 
    - Any missing slave IP addresses will cause Krill Manager to forcibly
-     disconnect those slaves from the Gluster cluster.
-   - Any new slave IP addresses will be added to the Gluster cluster.
+     disconnect those slaves from the storage cluster.
+   - Any new slave IP addresses will be added to the storage cluster.
    - The new slaves will then add themselves to the Swarm cluster.
 3. Terminate the removed slave servers.
 

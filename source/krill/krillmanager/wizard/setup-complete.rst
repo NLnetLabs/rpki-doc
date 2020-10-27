@@ -21,7 +21,7 @@ services and the locations at which the services can be found:
   All services appear to be running.
 
   Krill and related services should now be available as follows:
-    - Krill Web Portal: https://ca.demo.krill.cloud/ (token: 4741d1f8-e317-488e-8c8a-a36e0cb16bf1)
+    - Krill Web Portal: https://ca.demo.krill.cloud/ (token: xxxxxxxxxxxx)
     - RRDP URI        : https://rrdp.demo.krill.cloud/rrdp/
     - Rsync URI       : rsync://rsync.demo.krill.cloud/repo/
     - Prometheus monitoring endponts:
@@ -29,7 +29,7 @@ services and the locations at which the services can be found:
       - NGINX         : http://ca.demo.krill.cloud:9113/metrics
       - Docker        : http://ca.demo.krill.cloud:9323/metrics
       - O/S           : http://ca.demo.krill.cloud:9100/metrics
-      - Gluster       : http://ca.demo.krill.cloud:8080/metrics
+      ...
 
   Please consult the documentation for guidance on administering and
   monitoring these services.
