@@ -205,7 +205,7 @@ def parse_cmd_args_node(env, sig, signode):
         args = ' ' + args
         signode += addnodes.desc_addname(args, args)
     return cmd
-# define new directive/role that can be used as .. subcmd::/:subcmd: 
+# define new directive/role that can be used as .. subcmd::/:subcmd:
 def setup(app):
     app.add_object_type('subcmd', 'subcmd',
                         objname='module sub-command',
@@ -214,7 +214,7 @@ def setup(app):
 
 # -- Options for extlinks extension
 
-krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.7.3/doc/openapi.yaml'
+krill_api_docs_base = 'http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.8.0/doc/openapi.yaml'
 extlinks = {
     'krill_api': (krill_api_docs_base + '#operation/%s', None),
 }
