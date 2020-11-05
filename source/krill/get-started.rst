@@ -14,6 +14,10 @@ This can be easily achieved using the user interface. Connecting to the
 Publication Server and Parent CA is done by exchanging a couple of XML files. After
 this initial setup, and you can simply :ref:`manage your ROAs<krill_roa_configuration>`.
 
+If you just want to try out Krill (or a new version) you can use the
+`testbed environment <https://blog.nlnetlabs.nl/testing----123-delegated-rpki/>`_
+provided by NLnet Labs for this.
+
 If you are using the defaults you can access the user interface in a browser on
 the server running Krill at ``https://localhost:3000``. By default, Krill generates
 a self-signed TLS certificate, so you will have to accept the security warning
