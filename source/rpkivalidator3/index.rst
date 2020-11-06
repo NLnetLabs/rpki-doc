@@ -1,7 +1,7 @@
 .. _doc_rpkivalidator3:
 
 
-RIPE NCC RPKI Validator 3.1
+RIPE NCC RPKI Validator 3.2
 ===========================
 
 A fully-featured RPKI relying party software, written by the `RIPE NCC <http://ripe.net/>`_ in Java.
