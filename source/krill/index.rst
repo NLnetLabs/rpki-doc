@@ -73,6 +73,7 @@ Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
    before-you-start
    install-and-run
    get-started
+   manage-roas
    parent-interactions
    cli
    api

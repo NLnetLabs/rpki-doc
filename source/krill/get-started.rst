@@ -12,7 +12,7 @@ where you:
 
 This can be easily achieved using the user interface. Connecting to the
 Publication Server and Parent CA is done by exchanging a couple of XML files. After
-this initial setup, and you can simply :ref:`manage your ROAs<krill_roa_configuration>`.
+this initial setup, and you can simply :ref:`manage your ROAs<doc_krill_manage_roas>`.
 
 If you just want to try out Krill (or a new version) you can use the
 `testbed environment <https://blog.nlnetlabs.nl/testing----123-delegated-rpki/>`_
@@ -125,7 +125,7 @@ use the UI:
     Copy the child request XML or download the file
 
 Your RIR or NIR will provide you with a parent response XML. You can use the
-CLI subcommand :ref:`krillc parents add<cmd_krillc_parents_add_remote>` for this, or
+CLI subcommand :ref:`krillc parents add<cmd_krillc_parents_add>` for this, or
 you can simply paste or upload it using the UI:
 
 .. figure:: img/krill-ui-parent-response.png
@@ -134,34 +134,3 @@ you can simply paste or upload it using the UI:
     :alt: Parent response
 
     Paste or upload the parent response XML
-
-.. _krill_roa_configuration:
-
-ROA Configuration
------------------
-
-After successfully setting up the parent exchange, you are now running delegated
-RPKI. You can start creating ROAs for the resources you see in the pane on the
-right.
-
-.. figure:: img/krill-ui-roa-resources.png
-    :align: center
-    :width: 100%
-    :alt: Resource overview
-
-    The ROAs screen displaying all resources and configured ROAs
-
-Click the :guilabel:`Add ROA` button, then fill in the authorised ASN and one of
-your prefixes in the form. The maximum prefix length will automatically match
-the prefix you entered to follow best operational practices, but you can change
-it as desired.
-
-.. figure:: img/krill-ui-roa-add.png
-    :align: center
-    :width: 100%
-    :alt: ROA creation
-
-    Adding a new ROA
-
-If you prefer to use the CLI then you can manage ROAs using the subcommand
-:ref:`krillc roas <cmd_krillc_roas>`.
