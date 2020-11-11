@@ -24,7 +24,7 @@ State           Explanation
 =============== =========================================================================================
 NOT FOUND       This announcement is not covered by any of your ROAs
 
-INVALID ASN     | The prefix for this announcement is covered by one or more of your your ROAs.
+INVALID ASN     | The prefix for this announcement is covered by one or more of your ROAs.
                 | However, none of those ROAs allow announcements of this prefix by this ASN.
 
 INVALID LENGTH  | The ASN for this announcement is covered by one or more of your your ROAs.
