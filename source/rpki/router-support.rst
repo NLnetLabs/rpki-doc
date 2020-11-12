@@ -35,7 +35,10 @@ Arista — `Blog post <https://twitter.com/kwf/status/1250598771399901187>`_
    
 MikroTik — `RouterOS v7 BETA forum thread <https://forum.mikrotik.com/viewtopic.php?f=1&t=161980>`_ - `RPKI forum thread <https://forum.mikrotik.com/viewtopic.php?t=81340>`_
    7.0beta7 and newer
-   
+
+Huawei - `Documentation <https://support.huawei.com/hedex/hdx.do?lib=EDOC1000142112AEI0520D&docid=EDOC1000142112&lang=en&v=05&tocLib=EDOC1000142112AEI0520D&tocV=05&id=dc_vrp_bgp_cfg_3099&tocURL=resources%2525252Fvrp%2525252Fdc_vrp_bgp_cfg_3099.html&p=t&fe=1&ui=3&keyword=configuring%25252Brpki>`_
+   VRP 8.150 and newer. 
+
 Software Solutions
 ------------------
 
