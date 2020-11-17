@@ -24,7 +24,7 @@ in the top left corner.
           improvements.
 
           You can submit an issue or pull request on the `GitHub repository
-          <https://github.com/NLnetLabs/rpkidoc/issues>`_, or post a message on
+          <https://github.com/NLnetLabs/rpki-doc/issues>`_, or post a message on
           the `RPKI mailing list
           <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.  If you are
           interested in providing a translation for this project,  please read
