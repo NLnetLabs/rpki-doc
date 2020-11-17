@@ -10,7 +10,7 @@ based authentication.
 Getting Help
 ------------
 
-- Consult the `Interactive API documentation <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.8.0/doc/openapi.yaml>`_ (courtesy of `ReDoc <https://github.com/Redocly/redoc>`_)
+- Consult the `Interactive API documentation <http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/NLnetLabs/krill/v0.8.1/doc/openapi.yaml>`_ (courtesy of `ReDoc <https://github.com/Redocly/redoc>`_)
 - Follow the API links in the :ref:`Krill CLI documentation<doc_krill_cli>`, e.g. API Call: :krill_api:`GET /v1/cas <list_cas>`
 - Check out the API hints built-in to the :ref:`Krill CLI<doc_krill_cli>`, e.g.
 
