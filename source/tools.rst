@@ -95,8 +95,7 @@ Supporting Tools
    Validation (:RFC:`6811`). This also enables the maintenance of
    router keys, which are required to deploy BGPSec.
 
-   RTRlib was originally founded by researchers from the Computer Systems &
-   Telematics group at Freie Universität Berlin and reseachers from the INET
-   research group at Hamburg University of Applied Sciences, under the
-   supervision of Matthias Wählisch and Thomas Schmidt. It is now a community
-   project.
+`RTRTR <https://www.nlnetlabs.nl/projects/rpki/rtrtr/>`__
+   An RPKI data proxy, allowing operators to centralise validation and 
+   distribute the validated data to various points of presence via the RTR
+   protocol or JSON over HTTPS.
