@@ -19,7 +19,7 @@ command line via the following sub-commands:
 Printing a List of VRPs
 -----------------------
 
-Routinator can produce a Validated ROA Payload (VRP) list in five different formats,
+Routinator can produce a Validated ROA Payload (VRP) list in many different formats,
 which are either printed to standard output or saved to a file:
 
 csv
