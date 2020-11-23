@@ -70,7 +70,7 @@ Then run the following commands.
 
 You can then install, initialise, enable and start Routinator by running these
 commands. Note that ``routinator-init`` is slightly different than the command
-used in Cargo.
+used with Cargo.
 
 .. code-block:: bash
 
