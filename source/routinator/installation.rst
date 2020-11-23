@@ -7,8 +7,8 @@ Getting started with Routinator is really easy either building from `Cargo
 <https://crates.io/crates/routinator>`_ or running with `Docker
 <https://hub.docker.com/r/nlnetlabs/routinator/>`_.
 
-Quick Start
------------
+Quick Start with Cargo
+----------------------
 
 Assuming you have a newly installed Debian or Ubuntu machine, you will
 need to install rsync, the C toolchain and Rust. You can then install
@@ -38,6 +38,49 @@ release version, you can run:
 .. code-block:: bash
 
    cargo install --git https://github.com/NLnetLabs/routinator.git
+
+Quick Start with Debian and Ubuntu Packages
+-------------------------------------------
+
+.. note:: These packages are provided on a best effort basis as a convenience 
+          for our community until such time as equivalent official operating 
+          system repository provided packages become available.
+
+Assuming you have a machine running a recent Debian or Ubuntu distribution, you
+can install Routinator from our `software package repository
+<https://packages.nlnetlabs.nl>`_. To use this repository, add the line below
+that corresponds to your operating system to your ``/etc/apt/sources.list`` or
+``/etc/apt/sources.list.d/``.
+
+.. code-block:: bash
+
+   deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ stretch main
+   deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ buster main
+   deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ xenial main
+   deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ bionic main
+   deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ focal main
+
+Then run the following commands.
+
+.. code-block:: bash
+
+   sudo apt update && apt-get install -y gnupg2
+   wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | sudo apt-key add -
+   sudo apt update
+
+You can then install, initialise, enable and start Routinator by running these
+commands. Note that ``routinator-init`` is slightly different than the command
+used in Cargo.
+
+.. code-block:: bash
+
+   sudo apt install routinator
+   sudo routinator-init
+   # Follow instructions provided
+   systemctl enable --now routinator
+
+You can check the status of Routinator with ``sudo systemctl status 
+routinator`` and view the logs with ``sudo journalctl --unit=routinator``.
 
 Quick Start with Docker
 -----------------------
