@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/krillmanager/monitoring.rst:4
+msgid "Monitoring"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:9
+msgid "Known issues:"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:8
+msgid "`Wrong version of node_exporter <https://github.com/NLnetLabs/krillmanager/issues/55>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:9
+msgid "`Missing rsync metrics <https://github.com/NLnetLabs/krillmanager/issues/13>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:10
+msgid "`Limited Docker metrics - use cAdvisor <https://github.com/NLnetLabs/krillmanager/issues/27>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:18
+msgid "The architecture of Prometheus and some of its ecosystem components."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:20
+msgid "The available `Prometheus <https://prometheus.io/docs/concepts/data_model/>`_ endpoints for monitoring Krill Manager components can be determined using the ``krillmanager status`` command:"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:37
+msgid "Fluentd metrics are available from Krill Manager v0.2.2."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:39
+msgid "In cluster mode the per-node metrics should be queried on the node you are interested in, Krill Manager does NOT aggregate cluster metrics for you."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:43
+msgid "Krill metrics can be queried on any cluster node, NGINX will fetch them from Krill on whichever cluster node the single Krill instance is running."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:48
+msgid "Visualisation"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:50
+msgid "To visualise the monitoring endpoint metrics deploy your own Prometheus and Grafana servers, e.g. using these DigitalOcean Marketplace Apps:"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:53
+msgid "https://marketplace.digitalocean.com/apps/prometheus"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:54
+msgid "https://marketplace.digitalocean.com/apps/grafana"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:56
+msgid "Alternatively, if you don't mind losing your monitoring and alerting if your server has problems, you could deploy Prometheus and Grafana on your Krill server `like this <https://github.com/vegasbrianc/prometheus>`_."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:60
+msgid "Add stanzas like the following to the ``scrape_configs`` section of the ``prometheus.yml`` file on the Prometheus server and restart Prometheus:"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:77
+msgid "Add ``http://<PROMETHEUS DOMAIN OR IP>:9090`` as a datasource to Grafana."
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:81
+msgid "Then import `Grafana Dashboards <https://grafana.com/grafana/dashboards>`_ by ID, e.g.:"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:80
+msgid "https://grafana.com/grafana/dashboards/1860 (Node Exporter Full)"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:81
+msgid "https://grafana.com/grafana/dashboards/11199 (NGINX by nginxinc)"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:84
+msgid "Alerting"
+msgstr ""
+
+#: ../../krill/krillmanager/monitoring.rst:86
+msgid "Grafana can be configured to send `notifications <https://grafana.com/docs/grafana/latest/alerting/notifications/>`_ to a variety of destination types when alert conditions are met."
+msgstr ""

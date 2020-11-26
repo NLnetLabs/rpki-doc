@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../routinator/daemon.rst:4
+msgid "Running as a Daemon"
+msgstr ""
+
+#: ../../routinator/daemon.rst:6
+msgid ""
+"Routinator can run as a service that periodically fetches RPKI data, "
+"verifies it and makes the resulting data set available via the RPKI-RTR "
+"protocol and through the built-in HTTP server. You can start the "
+"Routinator service using the :subcmd:`server` subcommand."
+msgstr ""
+
+#: ../../routinator/daemon.rst:12
+msgid "The HTTP Service"
+msgstr ""
+
+#: ../../routinator/daemon.rst:14
+msgid ""
+"The CSV, JSON, OpenBGPD and RPSL formats that Routinator can produce in "
+"interactive mode are available via HTTP if the application is running as "
+"a service. You can also check the RPKI origin validation status of a "
+"specific BGP announcement at the ``/validity`` endpoint by supplying the "
+"ASN and prefix."
+msgstr ""
+
+#: ../../routinator/daemon.rst:19
+msgid ""
+"The HTTP server is not enabled by default for security reasons, nor does "
+"it have a default host or port. In order to start the HTTP server at "
+"192.0.2.13 and 2001:0DB8::13 on port 8323, run this command:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:27
+msgid ""
+"The application will stay attached to your terminal unless you provide "
+"the :option:`--detach` option. After fetching and validating the data "
+"set, the following paths are available:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:32
+msgid ":command:`/csv`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:32
+msgid "Returns the current set of VRPs in **csv** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:35
+msgid ":command:`/csvext`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:35
+msgid "Returns the current set of VRPs in **csvext** output format."
+msgstr ""
+
+#: ../../routinator/daemon.rst:38
+msgid ":command:`/json`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:38
+msgid "Returns the current set of VRPs in **json** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:41
+msgid ":command:`/openbgpd`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:41
+msgid "Returns the current set of VRPs in **OpenBGPD** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:44
+msgid ":command:`/bird`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:44
+msgid "Returns the current set of VRPs in **bird** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:47
+msgid ":command:`/bird2`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:47
+msgid "Returns the current set of VRPs in **bird2** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:50
+msgid ":command:`/rpsl`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:50
+msgid "Returns the current set of VRPs in **RPSL** output format"
+msgstr ""
+
+#: ../../routinator/daemon.rst:55
+msgid ":command:`/validity`"
+msgstr ""
+
+#: ../../routinator/daemon.rst:53
+msgid ""
+"Returns the RPKI origin validation status of a specific BGP announcement "
+"by supplying the ASN and prefix in the path, e.g. "
+"``/validity?asn=12654&prefix=93.175.147.0/24``"
+msgstr ""
+
+#: ../../routinator/daemon.rst:57
+msgid ""
+"Please note that this server is intended to run on your internal network "
+"and doesn't offer HTTPS natively. If this is a requirement, you can for "
+"example run Routinator  behind an `NGINX <https://www.nginx.com>`_ "
+"reverse proxy."
+msgstr ""
+
+#: ../../routinator/daemon.rst:61
+msgid ""
+"Lastly, the HTTP server provides paths that allow you to monitor "
+"Routinator itself and the data it processes, so it may be desirable to "
+"have HTTP running alongside the RTR server. For more information, please "
+"refer to the :ref:`doc_routinator_monitoring` section."
+msgstr ""
+
+#: ../../routinator/daemon.rst:67
+msgid "The RTR Service"
+msgstr ""
+
+#: ../../routinator/daemon.rst:69
+msgid ""
+"Routinator supports RPKI-RTR as specified in :RFC:`8210` as well as the "
+"older version described in :RFC:`6810`."
+msgstr ""
+
+#: ../../routinator/daemon.rst:72
+#, python-format
+msgid ""
+"When launched as an RTR server, routers with support for route origin "
+"validation (ROV) can connect to Routinator to fetch the processed data. "
+"This includes hardware  routers such as `Juniper "
+"<https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-"
+"origin -as-validation.html>`_, `Cisco "
+"<https://www.cisco.com/c/en/us/td/docs/ios-"
+"xml/ios/iproute_bgp/configuration/ 15-s/irg-15-s-book/irg-origin-"
+"as.html>`_ and `Nokia <https://infocenter.alcatel-"
+"lucent.com/public/7750SR160R4A/index.jsp?topic=% "
+"2Fcom.sr.unicast%2Fhtml%2Fbgp.html&cp=22_4_7_2&anchor=d2e5366>`_, as well"
+" as software solutions like `BIRD <https://bird.network.cz/>`_, `GoBGP "
+"<https://osrg.github.io/gobgp/>`_ and :ref:`others <doc_rpki_rtr>`. The "
+"processed  data is also available in a number of useful output formats, "
+"such as CSV, JSON, RPSL and a format specifically for `OpenBGPD "
+"<http://openbgpd.org>`_."
+msgstr ""
+
+#: ../../routinator/daemon.rst:86
+msgid ""
+"Like the HTTP server, the RTR server is not started by default, nor does "
+"it have a default host or port. Thus, in order to start the RTR server at"
+" 192.0.2.13 and 2001:0DB8::13 on port 3323, run Routinator using the "
+":subcmd:`server` command:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:94
+msgid ""
+"Please note that port 3323 is not the IANA-assigned default port for the "
+"protocol,  which would be 323. But as this is a privileged port, you "
+"would need to be running Routinator as root when otherwise there is no "
+"reason to do that. The application will stay attached to your terminal "
+"unless you provide the :option:`--detach` option."
+msgstr ""
+
+#: ../../routinator/daemon.rst:100
+msgid ""
+"By default, the repository will be updated and re-validated every 10 "
+"minutes. You  can change this via the :option:`--refresh` option and "
+"specify the interval between re-validations in seconds. That is, if you "
+"rather have Routinator validate every 15 minutes, the above command "
+"becomes:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:109
+msgid ""
+"Communication between Routinator and the router using the RPKI-RTR "
+"protocol is done via plain TCP. Below, there is an explanation how to "
+"secure the transport using either SSH or TLS."
+msgstr ""
+
+#: ../../routinator/daemon.rst:116
+msgid "Secure Transports"
+msgstr ""
+
+#: ../../routinator/daemon.rst:118
+msgid ""
+"These instructions were contributed by `wk on Github "
+"<https://github.com/NLnetLabs/routinator/blob/master/doc/transports.md>`_."
+msgstr ""
+
+#: ../../routinator/daemon.rst:120
+msgid ""
+":rfc:`6810#section-7` defines a number of secure transports for RPKI-RTR "
+"that can be used to secure communication between a router and a RPKI "
+"relying party."
+msgstr ""
+
+#: ../../routinator/daemon.rst:124
+msgid ""
+"However, the RPKI Router Implementation Report documented in "
+":rfc:`7128#section-5` suggests these secure transports have not been "
+"widely implemented. Implementations, however, do exist, and a secure "
+"transport could be valuable in situations where the RPKI relying party is"
+" provided as a public service, or across a non-trusted network."
+msgstr ""
+
+#: ../../routinator/daemon.rst:131
+msgid "SSH Transport"
+msgstr ""
+
+#: ../../routinator/daemon.rst:133
+msgid ""
+"SSH transport for RPKI-RTR can be configured with the help of `netcat "
+"<http://netcat.sourceforge.net/>`_ and `OpenSSH "
+"<https://www.openssh.com/>`_."
+msgstr ""
+
+#: ../../routinator/daemon.rst:136
+msgid ""
+"Begin by installing the :command:`openssh-server` and :command:`netcat` "
+"packages."
+msgstr ""
+
+#: ../../routinator/daemon.rst:138 ../../routinator/daemon.rst:180
+msgid "Make sure Routinator is running as an RTR server on localhost:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:144
+msgid ""
+"Create a username and a password for the router to log into the host "
+"with, such as ``rpki``."
+msgstr ""
+
+#: ../../routinator/daemon.rst:146
+msgid ""
+"Configure OpenSSH to expose an ``rpki-rtr`` subsystem that acts as a "
+"proxy into Routinator by editing the :file:`/etc/ssh/sshd_config` file or"
+" equivalent to include the following line:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:159
+msgid "Restart the OpenSSH server daemon."
+msgstr ""
+
+#: ../../routinator/daemon.rst:161
+msgid "Set up the router running IOS-XR using this example configuration:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:173
+msgid "TLS Transport"
+msgstr ""
+
+#: ../../routinator/daemon.rst:175
+msgid ""
+"TLS transport for RPKI-RTR can be configured with the help of `stunnel "
+"<https://www.stunnel.org/>`_."
+msgstr ""
+
+#: ../../routinator/daemon.rst:178
+msgid "Begin by installing the :command:`stunnel` package."
+msgstr ""
+
+#: ../../routinator/daemon.rst:186
+msgid ""
+"Acquire (via for example `Let's Encrypt <https://letsencrypt.org/>`_) or "
+"generate an SSL certificate. In the example below, an SSL certificate for"
+" the domain example.com generated by Let's Encrypt is used."
+msgstr ""
+
+#: ../../routinator/daemon.rst:188
+msgid ""
+"Create an stunnel configuration file by editing "
+":file:`/etc/stunnel/rpki.conf` or equivalent:"
+msgstr ""
+
+#: ../../routinator/daemon.rst:201
+msgid "Restart :command:`stunnel` to complete the process."
+msgstr ""
+

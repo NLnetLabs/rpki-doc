@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:4
+msgid "Wizard: CA Name"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:6
+msgid "Normally with Krill when first visiting the web UI you will be prompted to enter the name of your Certificate Authority."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:9
+msgid "Krill Manager streamlines this process by asking you for the Certificate Authority name during the Krill Manager wizard. Once the wizard is complete Krill Manager will automatically create a CA in Krill by the name that you give here:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:26
+msgid "From :ref:`doc_krill_get_started`:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:30
+msgid "The handle you select is not published in the RPKI but used as identification to parent and child CAs you interact with. Please choose a handle that helps others recognise your organisation. Once set, the handle cannot be changed."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:41
+msgid "The CA name:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:35
+msgid "Can be used with the Krill API to manipulate the CA."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:36
+msgid "Will be shown in the Krill web UI."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:37
+msgid "Will be visible to child CAs."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:38
+msgid "Will appear as a component in URIs contained in RRDP snapshot XML and delta XML content."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:40
+msgid "Will be used as a component in the Rsync repository path for fetching content with the Rsync protocol."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/ca-name.rst:42
+msgid "Will appear inside ``.roa`` and ``.mft`` objects served via RRDP and Rsync."
+msgstr ""

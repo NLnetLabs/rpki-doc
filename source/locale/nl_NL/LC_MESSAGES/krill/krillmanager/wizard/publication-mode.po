@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:4
+msgid "Wizard: Publication Mode"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:9
+msgid "See also the following Krill documentation:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:8
+msgid ":ref:`doc_krill_before_you_start`"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:9
+msgid ":ref:`doc_krill_parent_interactions`"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:10
+msgid ":ref:`doc_krill_publication_server`"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:14
+msgid "Krill can operate in one of two modes:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:13
+msgid "Publish with a 3rd party"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:14
+msgid "Publish in its own repository"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:16
+msgid ""
+"The publication mode wizard page lets you choose which of these modes "
+"Krill will be configured for:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:43
+msgid "3rd Party Mode"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:45
+msgid ""
+"In 3rd party mode your Krill instance will **only** be a Certificate "
+"Authority and you will need to configure it to publish any ROAs with an "
+"external repository, e.g. that of a parent such as NIC.br."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:49
+msgid "Answering ``YES`` will enable 3rd party mode."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:52
+msgid "Self-Publishing Mode"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:54
+msgid ""
+"In self-publishing mode the ROA objects created by your Krill instance "
+"will be made available by Krill Manager to Internet clients via the RRDP "
+"and Rsync protocols."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:58
+msgid "Answering ``NO`` will enable self-publishing mode."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/publication-mode.rst:60
+msgid ""
+"The wizard may need to ask you for additional information in later pages "
+"in order to complete the setup for self-publishing mode."
+msgstr ""
+

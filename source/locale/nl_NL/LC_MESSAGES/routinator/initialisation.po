@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../routinator/initialisation.rst:4
+msgid "Initialisation"
+msgstr ""
+
+#: ../../routinator/initialisation.rst:6
+msgid ""
+"Before running Routinator for the first time, you must prepare its "
+"working environment. You do this using the :subcmd:`init` command. This "
+"will prepare both the directory for the local RPKI cache, as well as the "
+"Trust Anchor Locator (TAL) directory."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:11
+msgid ""
+"By default, both directories will be located under ``$HOME/.rpki-cache``,"
+" but you can change their locations via the command line options :option"
+":`--repository-dir` and :option:`--tal-dir`."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:15
+msgid ""
+"TALs provide hints for the trust anchor certificates to be used both to "
+"discover and validate all RPKI content. The five TALs — one for each "
+"Regional Internet Registry (RIR) — are bundled with Routinator and "
+"installed by the :subcmd:`init` command."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:20
+msgid ""
+"Using the TAL from ARIN, the RIR for the United States, Canada as well as"
+" many Caribbean and North Atlantic islands, requires you to read and "
+"accept their `Relying Party Agreement "
+"<https://www.arin.net/resources/manage/rpki/tal/>`_ before you can use "
+"it. Running the :subcmd:`init` command will provide you with "
+"instructions."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:39
+msgid ""
+"Running the :subcmd:`init` command with the :option:`--accept-arin-rpa` "
+"option will create the TAL directory and copy the five Trust Anchor "
+"Locator files into it."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:47
+msgid ""
+"If you decide you cannot agree to the ARIN RPA terms, the :option"
+":`--decline-arin-rpa` option will install all TALs except the one for "
+"ARIN. If, at a later point, you wish to use the ARIN TAL anyway, you can "
+"add it to your current installation using the :option:`--force` option, "
+"to force the installation of all TALs."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:54
+msgid "Performing a Test Run"
+msgstr ""
+
+#: ../../routinator/initialisation.rst:56
+msgid ""
+"To see if Routinator has been initialised correctly and your firewall "
+"allows the required connections, it is recommended to perform an initial "
+"test run. You can do this by having Routinator print a validated ROA "
+"payload (VRP) list with the :subcmd:`vrps` subcommand, and using "
+":option:`-v` to increase the log level to ``INFO`` to see if Routinator "
+"establishes rsync and RRDP connections as expected."
+msgstr ""
+
+#: ../../routinator/initialisation.rst:66
+msgid ""
+"Now, you can see how Routinator connects to the RPKI trust anchors, "
+"downloads the the contents of the repositories to your machine, validates"
+" it and produces a  list of validated ROA payloads in the default CSV "
+"format to standard output. From a cold start, this process will take a "
+"couple of minutes."
+msgstr ""
+

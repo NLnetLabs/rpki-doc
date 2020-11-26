@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/index.rst:69
+msgid "Running with Krill Manager"
+msgstr ""
+
+#: ../../krill/index.rst:4
+msgid "Krill"
+msgstr ""
+
+#: ../../krill/index.rst:6
+msgid "Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon, featuring a Certificate Authority (CA) and publication server, written by `NLnet Labs <https://nlnetlabs.nl>`_."
+msgstr ""
+
+#: ../../krill/index.rst:10
+msgid "You are welcome to ask questions or post comments and ideas on our `RPKI mailing list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you find a bug in Krill, feel free to `create an issue <https://github.com/NLnetLabs/krill/issues>`_ on GitHub. Krill is distributed under the Mozilla Public License 2.0."
+msgstr ""
+
+#: ../../krill/index.rst:22
+msgid "**Krill is intended for:**"
+msgstr ""
+
+#: ../../krill/index.rst:24
+msgid "**Organisations who hold address space from multiple Regional Internet Registries (RIRs). Using Krill, ROAs can be managed seamlessly for all resources within one system.**"
+msgstr ""
+
+#: ../../krill/index.rst:27
+msgid "**Organisations that need to be able to delegate RPKI to their customers or different business units, so that that they can run their own CA and manage ROAs themselves.**"
+msgstr ""
+
+#: ../../krill/index.rst:30
+msgid "**Organisations who do not wish to rely on the web interface of the hosted systems that the RIRs offer, but require RPKI management that is integrated with their own systems using a common UI or API.**"
+msgstr ""
+
+#: ../../krill/index.rst:36
+msgid "Using Krill, you can run your own RPKI Certificate Authority as a child of one or more parent CAs, usually a Regional Internet Registry (RIR) or National Internet Registry (NIR). With Krill you can run under multiple parent CAs seamlessly and transparently. This is especially convenient if your organisation holds address space in several RIR regions, as it can all be managed as a single pool."
+msgstr ""
+
+#: ../../krill/index.rst:43
+msgid "Krill can also act as a parent for child CAs. This means you can delegate resources down to children of your own, such as business units, departments, members or customers, who, in turn, manage ROAs themselves."
+msgstr ""
+
+#: ../../krill/index.rst:47
+msgid "Lastly, Krill features a publication server so you can either publish your certificate and ROAs with a third party, such as your NIR or RIR, or you publish them yourself. Krill can be managed with a web user interface, from the command line and through an API."
+msgstr ""
+
+#: ../../krill/index.rst:54
+msgid "You can choose to run Krill as a standalone application or run it together with :ref:`doc_krill_manager`, a tool that brings together all of the puzzle pieces needed to administer and run Delegated RPKI with Krill as a highly available scalable service."
+msgstr ""
+
+#: ../../krill/index.rst:59
+msgid "Krill Manager includes Krill, RRDP and Rsync servers and exposes information for monitoring and log analysis. The integrated setup wizard allows for seamless TLS configuration, optionally using Let's Encrypt, as well as automated updating of the application itself and all included components."
+msgstr ""
+
+#: ../../krill/index.rst:64
+msgid "Krill with Krill Manager is available for free as a 1-Click App on the `AWS Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the `DigitalOcean Marketplace <https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_."
+msgstr ""

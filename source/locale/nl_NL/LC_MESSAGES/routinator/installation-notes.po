@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../routinator/installation-notes.rst:4
+msgid "Installation Notes"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:6
+msgid ""
+"In certain scenarios and on some platforms specific steps are needed in "
+"order to get Routinator working as desired."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:10
+msgid "Statically Linked Routinator"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:12
+msgid ""
+"While Rust binaries are mostly statically linked, they depend on "
+":command:`libc` which, as least as :command:`glibc` that is standard on "
+"Linux systems, is somewhat difficult to link statically. This is why "
+"Routinator binaries are actually dynamically linked on :command:`glibc` "
+"systems and can only be transferred between systems with the same "
+":command:`glibc` versions."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:18
+msgid ""
+"However, Rust can build binaries based on the alternative implementation "
+"named musl that can easily be statically linked. Building such binaries "
+"is easy with :command:`rustup`. You need to install musl and the correct "
+"musl target such as ``x86_64-unknown-linux-musl`` for x86\\_64 Linux "
+"systems. Then you can just build Routinator for that target."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:24
+msgid "On a Debian (and presumably Ubuntu) system, enter the following:"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:33
+msgid "Platform Specific Instructions"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:35
+msgid ""
+"GÉANT has created an `Ansible playbook <https://github.com/GEANT/rpki-"
+"validation-tools>`_ defining a role to deploy Routinator on Ubuntu."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:39
+msgid ""
+"For some platforms, :command:`rustup` cannot provide binary releases to "
+"install directly. The `Rust Platform Support <https://forge.rust-lang.org"
+"/platform-support.html>`_ page lists several platforms where official "
+"binary releases are not available, but Rust is still guaranteed to build."
+" For these platforms, automated tests are not run so it’s not guaranteed "
+"to produce a working build, but they often work to quite a good degree."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:48
+msgid "OpenBSD"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:50
+msgid ""
+"On OpenBSD, `patches "
+"<https://github.com/openbsd/ports/tree/master/lang/rust/patches>`_ are "
+"required to get Rust running correctly, but these are well maintained and"
+" offer the latest version of Rust quite quickly."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:55
+msgid "Rust can be installed on OpenBSD by running:"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:62
+msgid "CentOS 6"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:64
+msgid ""
+"The standard installation method does not work when using  CentOS 6. "
+"Here, you will end up with a long list of error messages about missing "
+"assembler instructions. This is because the assembler shipped with CentOS"
+" 6 is too old."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:68
+msgid ""
+"You can get the necessary version by installing the `Developer Toolset 6 "
+"<https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/>`_ from "
+"the `Software Collections "
+"<https://wiki.centos.org/AdditionalResources/Repositories/SCL>`_ "
+"repository. On a virgin system, you can install Rust using these steps:"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:83
+msgid "SELinux using CentOS 7"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:85
+msgid ""
+"This guide, contributed by `Rich Compton "
+"<https://github.com/racompton/routinator_centos7_install>`_, describes "
+"how to run Routinator on Security Enhanced Linux (SELinux) using CentOS "
+"7."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:89
+msgid "Start by setting the hostname."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:96
+msgid "Set the interface and connect it."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:98
+msgid ""
+"Ensure that \"Automatically connect\" and \"Available to all users\" are "
+"checked."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:105
+msgid "Install the required packages."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:115
+msgid "Set the timezone to UTC."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:121
+msgid "Remove postfix as it is unneeded."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:128
+msgid "Create a self-signed certificate for NGINX."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:140
+msgid ""
+"Add in the :file:`ssl.conf` file to :file:`/etc/nginx/conf.d/ssl.conf` "
+"and edit the :file:`ssl.conf` file to provide the IP of the host in the "
+"``server_name`` field."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:142
+msgid "Replace :file:`/etc/nginx/nginx.conf` with the :file:`nginx.conf` file."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:144
+msgid "Set the username and password for the web interface authentication."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:150
+msgid "Start Nginx and set it up so it starts at boot."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:158
+msgid ""
+"Add the user \"routinator\", create the ``/opt/routinator`` directory and"
+" assign it to the \"routinator\" user and group"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:166
+msgid "Sudo into the routinator user."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:172
+msgid "Install Routinator and add it to the ``$PATH`` for user \"routinator\""
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:181
+msgid ""
+"Initialise Routinator, accept the ARIN TAL and exit back to the user with"
+" ``sudo``."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:188
+msgid "Create a routinator systemd script using the template below."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:208
+msgid ""
+"You must populate the IPv4 and IPv6 addresses. In addition, the IPv6 "
+"address needs to have brackets '[ ]' around it. For example:"
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:216
+msgid ""
+"Configure SELinux to allow connections to localhost and to allow rsync to"
+" write to the ``/opt/routinator`` directory."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:223
+msgid "Reload the systemd daemon and set the routinator service to start at boot."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:231
+msgid ""
+"Set up the firewall to permit ssh, HTTPS and port 8323 for the RTR "
+"protocol."
+msgstr ""
+
+#: ../../routinator/installation-notes.rst:250
+msgid ""
+"Navigate to ``https://<IP address of rpki-validator>/metrics`` to see if "
+"it's working. You should authenticate with the username and password that"
+" you provided in step 10 of setting up the RPKI Validation Server."
+msgstr ""
+

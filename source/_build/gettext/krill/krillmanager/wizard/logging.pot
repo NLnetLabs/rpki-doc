@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/krillmanager/wizard/logging.rst:4
+msgid "Wizard: Logging"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:7
+msgid "`Amazon S3 product details <https://aws.amazon.com/s3/>`_ & `Getting your security credentials <https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:8
+msgid "`DigitalOcean Spaces product details <https://www.digitalocean.com/products/spaces/>`_ & `AWS S3 Compatibility <https://developers.digitalocean.com/documentation/spaces/#aws-s3-compatibility>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:9
+msgid "`Wikipedia: S3 API and competing services <https://en.wikipedia.org/w/index.php?title=Amazon_S3&section=7#S3_API_and_competing_services>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:10
+msgid ":ref:`doc_krill_manager_logging` in Krill Manager"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:12
+msgid "If you have an account with a 3rd party S3-like service such as `DigitalOcean Spaces <https://www.digitalocean.com/products/spaces/>`_, Krill Manager can use it to store copies of the logs from your host operating systemd journal and the various Krill Manager operated services, including Krill RFC exchange logs."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:35
+msgid "Enter:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:34
+msgid "``NO`` to skip this page and continue with the wizard."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:35
+msgid "``YES`` to provide your S3-like service connection details."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:37
+msgid "If you do not choose to upload logs they are still available to you but in the event that the host suffers a failure you will lose these logs unless you capture them as part of a periodic backup process."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:42
+msgid "You can re-run ``krillmanager init`` later to enable log upload. However, note that only new logs from that moment on will be uploaded."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:46
+msgid "Providing Connection Details"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:48
+msgid "After answering ``YES`` you will be prompted to enter the S3-like service connection and authentication details. You will need to obtain these from your S3-like service service provider."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:52
+msgid "The wizard will try to detect the environment that it is running in and provide sensible default values where possible, e.g. in the example below the ``S3 Endpoint`` value was set by the wizard based on the fact that the Droplet on which Krill Manager was running was located in the DigitalOcean ``ams3`` region."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:80
+msgid "Once the wizard has the connection and authentication details it will attempt to verify them by trying to list the contents of the destination S3 bucket."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:83
+msgid "In the event that the connection and/or authentication details are incorrect the wizard will output error messages instead of ``Success!`` and you will be returned to the initial yes/no question where you can either choose to try again or continue without log uploading at this time."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:89
+msgid "Video Guide"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:102
+msgid "Advanced Configuration"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/logging.rst:104
+msgid "For more information about what is logged, how, to where and how to configure the logging setup beyond what is possible with the wizard, consult the Krill Manager :ref:`doc_krill_manager_logging` documentation."
+msgstr ""

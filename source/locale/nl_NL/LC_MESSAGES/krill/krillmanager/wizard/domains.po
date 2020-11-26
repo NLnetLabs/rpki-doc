@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../krill/krillmanager/wizard/domains.rst:4
+msgid "Wizard: Domains"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:6
+msgid ""
+"Krill Manager needs to know which domain names your clients will be "
+"expected to use in order to contact your Krill services. The domains that"
+" you need to specify in this step are influenced by the choice you made "
+"in the :ref:`doc_krill_manager_wizard_publication_mode` step:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:11
+msgid ""
+"**3rd Party Mode**: only a single domain name for the Krill UI and API is"
+" required."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:27
+msgid ""
+"**Self-Publishing Mode**: additional domains for RRDP and Rsync will be "
+"requested."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:44
+msgid ""
+"The domain names that you enter in this page of the wizard should already"
+" be configured to point at your Krill Manager IP address."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:47
+msgid ""
+"Later in the process the wizard will offer to obtain Let's Encrypt "
+"certificates on your behalf for the Krill and RRDP domains that you "
+"supply on this page of the wizard."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:52
+msgid "Domain Validity"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:54
+msgid ""
+"Krill Manager will attempt to lookup the DNS records for the given domain"
+" names in order to verify that they are valid. If not found, Krill "
+"Manager will warn you."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/domains.rst:58
+msgid ""
+"If you are **sure** that the domain name is correct but DNS propagation "
+"has not completed yet, or for some other reason you would like to "
+"proceed, Krill Manager allows you to ignore the lookup failure:"
+msgstr ""
+

@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:4
+msgid "Wizard: HTTPS Certificates"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:7
+msgid ":ref:`proxy_and_https`"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:8
+msgid "`Let's Encrypt HTTP-01 challenge <https://letsencrypt.org/docs/challenge-types/#http-01-challenge>`_"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:10
+msgid "As advised in :ref:`proxy_and_https`, Krill Manager makes Krill available to the Internet via the NGINX proxy server. When running in self-publishing mode (see :ref:`doc_krill_manager_wizard_publication_mode`) NGINX is also used to offer the RRDP protocol to Relying Party clients."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:15
+msgid "To secure the connection NGINX requires a TLS certificate, either provided by you or requested on your behalf from `Let's Encrypt <https://letsencrypt.org/>`_ by the Krill Manager wizard."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:19
+msgid "For each domain that requires a TLS certificate (either just one domain for Krill, or if using a separate domain for RRDP then that domain too) the wizard checks whether or not it already has a certificate and asks how you would like to proceed:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:47
+msgid "Enter one of:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:45
+msgid "``NEW`` to request a new `Let's Encrypt <https://letsencrypt.org/>`_ certificate."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:46
+msgid "``OWN`` to supply your own certificate files."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:47
+msgid "``USE`` to use the existing certificate that the wizard found, if any."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:50
+msgid "Using Let's Encrypt Certificates"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:52
+msgid "When using Let's Encrypt issued certificates Krill Manager will ensure that they are renewed before they expire."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:55
+msgid "When using your own certificates, instead of Krill Manager obtained Let's Encrypt certificates, you are responsible for replacing the certificate files before the certificates expire."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:60
+msgid "DNS and Firewall Requirements"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:62
+msgid "For Let's Encrypt to issue a TLS certificate the following requirements must be met:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:65
+msgid "A DNS A record for the domain name must point to the Krill Manager IP address."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:67
+msgid "The DNS A record must have sufficiently propagated around the global DNS network such that multiple Let's Encrypt probe locations around the world can all resolve the name correctly."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:70
+msgid "Port 80 on the Krill Manager instance must be open, both on the host and on any cloud firewall or proxy layer (e.g. load balancer) in front of the Krill Manager instance."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:75
+msgid "IP Address Verification"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:77
+msgid "Prior to requesting a Let's Encrypt certificate the wizard will ask you to confirm that DNS lookup results for the domain look correct."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:103
+msgid "Let's Encrypt Request Log"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:105
+msgid "If you approve the wizard will then contact Let's Encrypt:"
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:142
+msgid "In this example the request succeeded. If any problems occurred the log would instead indicate the reason for the failure."
+msgstr ""
+
+#: ../../krill/krillmanager/wizard/https-certificates.rst:145
+msgid "Once you press a key to continue you will be returned to the start of the HTTPS Certificates wizard page. The wizard will verify if it now has a certificate for the domain and if so will give you the option to ``USE`` it:"
+msgstr ""

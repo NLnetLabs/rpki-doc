@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../tools.rst:6
+msgid "Software Projects"
+msgstr ""
+
+#: ../../tools.rst:8
+msgid "This section provides an overview of all well known open source projects that support RPKI. It includes Relying Party software for validating RPKI data, Certificate  Authority software to run RPKI on your own infrastructure and supporting tools that help deployment and integration."
+msgstr ""
+
+#: ../../tools.rst:19
+msgid "Relying Party Software"
+msgstr ""
+
+#: ../../tools.rst:23
+msgid "`Dragon Research Labs Validating Cache <https://github.com/dragonresearch/rpki.net>`_"
+msgstr ""
+
+#: ../../tools.rst:22
+msgid "Software to fetch and validate RPKI certificates and serve them to routers by Dragon Research Labs, written in the Python programming language."
+msgstr ""
+
+#: ../../tools.rst:26
+msgid "`Fort Validator <https://github.com/NICMx/FORT-validator>`_"
+msgstr ""
+
+#: ../../tools.rst:26
+msgid "MIT-licensed Relying Party software by NIC.mx, written in C."
+msgstr ""
+
+#: ../../tools.rst:29
+msgid "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_"
+msgstr ""
+
+#: ../../tools.rst:29
+msgid "Cloudflare's Relying Party software, written in the Go programming language."
+msgstr ""
+
+#: ../../tools.rst:33
+msgid "`RIPE NCC RPKI Validator <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources>`_"
+msgstr ""
+
+#: ../../tools.rst:32
+msgid "Full-featured RPKI relying party software, written by the RIPE NCC in the Java programming language."
+msgstr ""
+
+#: ../../tools.rst:37
+msgid "`Routinator <https://nlnetlabs.nl/projects/rpki/routinator/>`_"
+msgstr ""
+
+#: ../../tools.rst:36
+msgid "RPKI relying party software written by NLnet Labs in the Rust programming language, designed to have a small footprint and great portability."
+msgstr ""
+
+#: ../../tools.rst:41
+msgid "`rpki-client(8) <https://rpki-client.org/>`_"
+msgstr ""
+
+#: ../../tools.rst:40
+msgid "rpki-client is written in C as part of the OpenBSD project, and has been ported to various Linux distributions. Designed to be secure and simple to use."
+msgstr ""
+
+#: ../../tools.rst:46
+msgid "`RPSTIR <https://github.com/bgpsecurity/rpstir/>`_"
+msgstr ""
+
+#: ../../tools.rst:44
+msgid "Relying Party Security Technology for Internet Routing (RPSTIR) software, initially written by Raytheon BBN Technologies in the C programming language, now maintained by ZDNS."
+msgstr ""
+
+#: ../../tools.rst:51
+msgid "Certificate Authority Software"
+msgstr ""
+
+#: ../../tools.rst:55
+msgid "`Dragon Research Labs Certificate Authority <https://github.com/dragonresearch/rpki.net>`_"
+msgstr ""
+
+#: ../../tools.rst:54
+msgid "RPKI Certificate Authority software by Dragon Research Labs, written in the Python programming language."
+msgstr ""
+
+#: ../../tools.rst:59
+msgid "`Krill <https://nlnetlabs.nl/projects/rpki/krill/>`_"
+msgstr ""
+
+#: ../../tools.rst:58
+msgid "RPKI Certificate Authority software by NLnet Labs, written in the Rust programming language."
+msgstr ""
+
+#: ../../tools.rst:62
+msgid "Supporting Tools"
+msgstr ""
+
+#: ../../tools.rst:68
+msgid "`BGP-SRx <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_"
+msgstr ""
+
+#: ../../tools.rst:65
+msgid "SRx is an open source reference implementation and research platform by the National Institute for Standards and Technology (NIST). It is intended for investigating emerging BGP security extensions and supporting protocols such as RPKI Origin Validation and BGPSec Path Validation."
+msgstr ""
+
+#: ../../tools.rst:73
+msgid "`GoRTR <https://github.com/cloudflare/gortr>`_"
+msgstr ""
+
+#: ../../tools.rst:71
+msgid "An open-source implementation of RPKI to Router protocol (:RFC:`6810`) using the Go programming language. This project is maintained by Louis Poinsignon at Cloudflare."
+msgstr ""
+
+#: ../../tools.rst:86
+msgid "`pmacct <http://pmacct.net>`_"
+msgstr ""
+
+#: ../../tools.rst:76
+msgid "pmacct is a small set of multi-purpose passive network monitoring tools. It can account, classify, aggregate, replicate and export forwarding-plane data, i.e. IPv4 and IPv6 traffic; collect and correlate control-plane data via BGP and BMP; collect and correlate RPKI data; collect infrastructure data via Streaming Telemetry."
+msgstr ""
+
+#: ../../tools.rst:82
+msgid "The pmacct toolset can perform RPKI Origin Validation and present the outcome as a property in the flow aggregation process. Because it separates out the various types kinds of (invalid) BGP announcements, operators can a good grasp on how their connectivity to the rest of the Internet would look like after deploying a *\"invalid == reject\"* policy."
+msgstr ""
+
+#: ../../tools.rst:90
+msgid "`rpki-ov-checker <https://github.com/job/rpki-ov-checker>`_"
+msgstr ""
+
+#: ../../tools.rst:89
+msgid "rpki-ov-checker is an open source utility to quickly analyse BGP RIB dumps and the potential impact of deploying \"invalid is reject\" routing policies."
+msgstr ""
+
+#: ../../tools.rst:96
+msgid ":ref:`rtrlib`"
+msgstr ""
+
+#: ../../tools.rst:93
+msgid "The RTRlib implements the client-side of the RPKI-RTR protocol (:RFC:`6810`, :RFC:`8210`) and BGP Prefix Origin Validation (:RFC:`6811`). This also enables the maintenance of router keys, which are required to deploy BGPSec."
+msgstr ""
+
+#: ../../tools.rst:100
+msgid "`RTRTR <https://www.nlnetlabs.nl/projects/rpki/rtrtr/>`__"
+msgstr ""
+
+#: ../../tools.rst:99
+msgid "An RPKI data proxy, allowing operators to centralise validation and distribute the validated data to various points of presence via the RTR protocol or JSON over HTTPS."
+msgstr ""

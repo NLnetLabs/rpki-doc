@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../krill/krillmanager/prerequisites.rst:4
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:7
+msgid "Required"
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:9
+msgid "To use Krill Manager you will need the following:"
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:11
+msgid ""
+"A DigitalOcean_ or AWS_ account *(to create the virtual machine that will"
+" run Krill Manager, Krill, et al)*."
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:13
+msgid ""
+"The ability to create DNS subdomain A records *(to point one or more "
+"domains at the new VM)*."
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:20
+msgid "Optional"
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:22
+msgid ""
+"Your own TLS certificate and key file(s) (in PEM format) for the "
+"domain(s) that you wish to use with Krill. When using your own TLS "
+"certificate files you will need to upload them to the VM *before* "
+"performing the :ref:`initial setup <doc_krill_manager_initial_setup>`, "
+"e.g.:"
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:31
+msgid ""
+"It is not necessary to use your own TLS certificates as Krill Manager can"
+" obtain for you a Let's Encrypt TLS certificate per configured domain. "
+"Krill Manager will ensure that Let's Encrypt certificates are renewed "
+"before they expire."
+msgstr ""
+
+#: ../../krill/krillmanager/prerequisites.rst:36
+msgid ""
+"Connection details and credentials for an AWS S3 compatible service to "
+"which host and application logs can be uploaded periodically."
+msgstr ""
+

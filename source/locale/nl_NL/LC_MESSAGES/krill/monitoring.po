@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../krill/monitoring.rst:4
+msgid "Monitoring"
+msgstr ""
+
+#: ../../krill/monitoring.rst:6
+msgid ""
+"The HTTPS server in Krill provides endpoints for monitoring the "
+"application. A data format specifically for `Prometheus "
+"<https://prometheus.io/>`_ is available and `dedicated port 9657 "
+"<https://github.com/prometheus/prometheus/wiki/Default-port-"
+"allocations>`_ has been reserved."
+msgstr ""
+
+#: ../../krill/monitoring.rst:12
+msgid "On the ``/metrics`` path, Krill will expose several data points:"
+msgstr ""
+
+#: ../../krill/monitoring.rst:14
+msgid "A timestamp when the daemon was started"
+msgstr ""
+
+#: ../../krill/monitoring.rst:15
+msgid "The number of CAs Krill has configured"
+msgstr ""
+
+#: ../../krill/monitoring.rst:16
+msgid "The number of children for each CA"
+msgstr ""
+
+#: ../../krill/monitoring.rst:17
+msgid "The number of ROAs for each CA"
+msgstr ""
+
+#: ../../krill/monitoring.rst:18
+msgid "Timestamps when publishers were last updated"
+msgstr ""
+
+#: ../../krill/monitoring.rst:19
+msgid "The number of objects in the repository for each publisher"
+msgstr ""
+
+#: ../../krill/monitoring.rst:20
+msgid "The size of the repository, in bytes"
+msgstr ""
+
+#: ../../krill/monitoring.rst:21
+msgid "The RRDP serial number"
+msgstr ""
+
+#: ../../krill/monitoring.rst:23
+msgid "This is an example of the output of the ``/metrics`` endpoint:"
+msgstr ""
+
+#: ../../krill/monitoring.rst:67
+msgid ""
+"The monitoring service has several additional endpoints on the following "
+"paths:"
+msgstr ""
+
+#: ../../krill/monitoring.rst
+msgid "/stats/info"
+msgstr ""
+
+#: ../../krill/monitoring.rst:71
+msgid ""
+"Returns the Krill version and timestamp when the daemon was started in a "
+"concise format"
+msgstr ""
+
+#: ../../krill/monitoring.rst
+msgid "/stats/cas"
+msgstr ""
+
+#: ../../krill/monitoring.rst:75
+msgid "Returns the number of ROAs and children each CA has"
+msgstr ""
+
+#: ../../krill/monitoring.rst
+msgid "/stats/repo"
+msgstr ""
+
+#: ../../krill/monitoring.rst:78
+msgid "Returns details on the internal repository, if configured"
+msgstr ""
+

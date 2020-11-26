@@ -1,0 +1,653 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../krill/cli.rst:5
+msgid "Using the CLI"
+msgstr ""
+
+#: ../../krill/cli.rst:8
+msgid "Introduction"
+msgstr ""
+
+#: ../../krill/cli.rst:10
+msgid "Every function of Krill can be controlled from the command line interface (CLI). The Krill CLI is a wrapper around the :ref:`Krill API<doc_krill_using_api>` which is based on JSON over HTTPS."
+msgstr ""
+
+#: ../../krill/cli.rst:14
+msgid "Note that you can use the CLI from another machine, but then you will need to set up a proxy server in front of Krill and make sure that it has a real TLS certificate."
+msgstr ""
+
+#: ../../krill/cli.rst:18
+msgid "To use the CLI you need to invoke :command:`krillc` followed by one or more subcommands, and some arguments. Help is built-in:"
+msgstr ""
+
+#: ../../krill/cli.rst:40
+msgid "Setting Defaults"
+msgstr ""
+
+#: ../../krill/cli.rst:42
+msgid "As noted in the OPTIONS help text above you can set default values via environment variables for the most common arguments that need to be supplied to ``krillc`` subcommands. When setting environment variables note the following requirements:"
+msgstr ""
+
+#: ../../krill/cli.rst:47
+msgid "``KRILL_CLI_SERVER`` must be in the form ``https://<host:port>/``."
+msgstr ""
+
+#: ../../krill/cli.rst:48
+msgid "``KRILL_CLI_MY_CA`` must consist only of alphanumeric characters, dashes and underscores, i.e. ``a-zA-Z0-9_``."
+msgstr ""
+
+#: ../../krill/cli.rst:51
+msgid "For example:"
+msgstr ""
+
+#: ../../krill/cli.rst:58
+msgid "If you do use the command line argument equivalents, you will override whatever value you set in the ENV. Krill will give you a friendly error message if you did not set the applicable ENV variable, and don't include the command line argument equivalent."
+msgstr ""
+
+#: ../../krill/cli.rst:64
+msgid "Diagnosing Problems"
+msgstr ""
+
+#: ../../krill/cli.rst:66
+msgid "You can show the history of all the things that happened to your CA using the :ref:`krillc history<cmd_krillc_history>` command."
+msgstr ""
+
+#: ../../krill/cli.rst:70
+msgid "Reference"
+msgstr ""
+
+#: ../../krill/cli.rst:72
+msgid "The reference below documents the available ``krillc`` subcommands. Flags and options that are the same for most subcommands are omitted in this section in order to focus on the most important aspects of each subcommand."
+msgstr ""
+
+#: ../../krill/cli.rst:76
+msgid "*Tip*: Click on a subcommand name to jump to the help for that subcommand."
+msgstr ""
+
+#: ../../krill/cli.rst:105
+msgid "krillc action"
+msgstr ""
+
+#: ../../krill/cli.rst:107
+msgid "Show details for a specific historic CA action."
+msgstr ""
+
+#: ../../krill/cli.rst:123
+msgid "krillc add"
+msgstr ""
+
+#: ../../krill/cli.rst:125
+msgid "API Call: :krill_api:`POST /v1/cas <add_ca>`"
+msgstr ""
+
+#: ../../krill/cli.rst:127
+msgid "Adds a new CA."
+msgstr ""
+
+#: ../../krill/cli.rst:129
+msgid "When adding a CA you need to choose a handle, essentially just a name. The term \"handle\" comes from :RFC:`8183` and is used in the communication protocol between parent and child CAs, as well as CAs and publication servers."
+msgstr ""
+
+#: ../../krill/cli.rst:133
+msgid "The handle you select is not published in the RPKI but used as identification to parent and child CAs you interact with. You should choose a handle that helps others recognise your organisation. Once set, the handle cannot be be changed as it would interfere with the communication between parent and child CAs, as well as the publication repository."
+msgstr ""
+
+#: ../../krill/cli.rst:139
+msgid "When a CA has been added, it is registered to publish locally in the Krill instance where it exists, but other than that it has no configuration yet. In order to do anything useful with a CA you will first have to add at least one parent to it, followed by some Route Origin Authorisations and/or child CAs."
+msgstr ""
+
+#: ../../krill/cli.rst:152
+msgid "The CA name may consist of alphanumeric characters, dashes and underscores, i.e. ``a-zA-Z0-9_``."
+msgstr ""
+
+#: ../../krill/cli.rst:160
+msgid "krillc bulk"
+msgstr ""
+
+#: ../../krill/cli.rst:162
+msgid "Manually trigger refresh/republish/resync for all CAs."
+msgstr ""
+
+#: ../../krill/cli.rst:178
+msgid "krillc bulk publish"
+msgstr ""
+
+#: ../../krill/cli.rst:180
+msgid "Force that all CAs create new objects if needed (in which case they will also sync)."
+msgstr ""
+
+#: ../../krill/cli.rst:190
+msgid "krillc bulk refresh"
+msgstr ""
+
+#: ../../krill/cli.rst:192
+msgid "Force that all CAs ask their parents for updated certificates."
+msgstr ""
+
+#: ../../krill/cli.rst:202
+msgid "krillc bulk sync"
+msgstr ""
+
+#: ../../krill/cli.rst:204
+msgid "API Call: :krill_api:`POST /v1/bulk/cas/sync/repo <resync_all_cas>`"
+msgstr ""
+
+#: ../../krill/cli.rst:206
+msgid "Force that all CAs sync with their repo server."
+msgstr ""
+
+#: ../../krill/cli.rst:208
+msgid "If your CAs have somehow become out of sync with their repository, then they will automatically re-sync whenever there is an update like a renewal of manifest and crl (every 8 hours), or whenever ROAs are changed. However, you can force that *all* Krill CAs re-sync with this command."
+msgstr ""
+
+#: ../../krill/cli.rst:223
+msgid "krillc children"
+msgstr ""
+
+#: ../../krill/cli.rst:225
+msgid "Manage children for a CA in Krill."
+msgstr ""
+
+#: ../../krill/cli.rst:243
+msgid "krillc children add"
+msgstr ""
+
+#: ../../krill/cli.rst:245
+msgid "API Call: See: :krill_api:`POST /v1/cas/{parent_ca_handle}/children <add_child_ca>`"
+msgstr ""
+
+#: ../../krill/cli.rst:247
+msgid "Add a child to a CA."
+msgstr ""
+
+#: ../../krill/cli.rst:252
+msgid "To add a child, you will need to:"
+msgstr ""
+
+#: ../../krill/cli.rst:250
+msgid "Choose a unique local name (handle) that the parent will use for the child"
+msgstr ""
+
+#: ../../krill/cli.rst:251
+msgid "Choose initial resources (asn, ipv4, ipv6)"
+msgstr ""
+
+#: ../../krill/cli.rst:252
+msgid "Present the child's :rfc:`8183` request"
+msgstr ""
+
+#: ../../krill/cli.rst:254
+msgid "The default response is the :rfc:`8183` parent response XML file. Or, if you set ``--format json`` you will get the plain API response."
+msgstr ""
+
+#: ../../krill/cli.rst:257
+msgid "If you need the response again, you can use the :ref:`krillc children response<cmd_krillc_children_response>` command."
+msgstr ""
+
+#: ../../krill/cli.rst:282
+msgid "krillc children info"
+msgstr ""
+
+#: ../../krill/cli.rst:284
+msgid "Show info for a child (id and resources)."
+msgstr ""
+
+#: ../../krill/cli.rst:298
+msgid "krillc children remove"
+msgstr ""
+
+#: ../../krill/cli.rst:300
+msgid "Remove an existing child from a CA."
+msgstr ""
+
+#: ../../krill/cli.rst:314
+msgid "krillc children response"
+msgstr ""
+
+#: ../../krill/cli.rst:316
+msgid "API Call: :krill_api:`GET /v1/cas/{parent_ca_handle}/children/{child_ca_handle}/contact <get_child_ca_parent_contact>`"
+msgstr ""
+
+#: ../../krill/cli.rst:318
+msgid "Get the RFC8183 response for a child."
+msgstr ""
+
+#: ../../krill/cli.rst:332
+msgid "krillc children update"
+msgstr ""
+
+#: ../../krill/cli.rst:334
+msgid "Update an existing child of a CA."
+msgstr ""
+
+#: ../../krill/cli.rst:354
+msgid "krillc config"
+msgstr ""
+
+#: ../../krill/cli.rst:356
+msgid "Creates a configuration file for krill and prints it to STDOUT."
+msgstr ""
+
+#: ../../krill/cli.rst:371
+msgid "krillc config simple"
+msgstr ""
+
+#: ../../krill/cli.rst:373
+msgid "Creates a configuration file that configures Krill to be used with external repositories."
+msgstr ""
+
+#: ../../krill/cli.rst:388
+msgid "krillc config repo"
+msgstr ""
+
+#: ../../krill/cli.rst:390
+msgid "Creates a configuration file that enables a self-hosted repository within Krill that CAs can be configured to publish to instead of publishing to an external repository."
+msgstr ""
+
+#: ../../krill/cli.rst:394
+msgid "Running your own repository service is not recommended. For more information about using the self-hosted repository see :ref:`doc_krill_publication_server`."
+msgstr ""
+
+#: ../../krill/cli.rst:415
+msgid "krillc health"
+msgstr ""
+
+#: ../../krill/cli.rst:417
+msgid "Perform an authenticated health check. Verifies that the specified Krill server can be connected to, is able to verify the specified token and is, at least thus far, healthy."
+msgstr ""
+
+#: ../../krill/cli.rst:421
+msgid "Can be used in automation scripts by checking the exit code:"
+msgstr ""
+
+#: ../../krill/cli.rst:424
+msgid "Exit Code"
+msgstr ""
+
+#: ../../krill/cli.rst:424
+msgid "Meaning"
+msgstr ""
+
+#: ../../krill/cli.rst:426
+msgid "0"
+msgstr ""
+
+#: ../../krill/cli.rst:426
+msgid "the Krill server appears to be healthy."
+msgstr ""
+
+#: ../../krill/cli.rst:428
+msgid "non-zero"
+msgstr ""
+
+#: ../../krill/cli.rst:428
+msgid "incorrect server URI, token, connection failure or server error."
+msgstr ""
+
+#: ../../krill/cli.rst:436
+msgid "krillc help"
+msgstr ""
+
+#: ../../krill/cli.rst:438
+msgid "Prints the version of ``krillc`` and the complete list of possible subcommands with a short explanatory text for each one."
+msgstr ""
+
+#: ../../krill/cli.rst:446
+msgid "krillc history"
+msgstr ""
+
+#: ../../krill/cli.rst:448
+msgid "Show full history of a CA. Using this command you can show the history of all the things that happened to your CA."
+msgstr ""
+
+#: ../../krill/cli.rst:468
+#: ../../krill/cli.rst:495
+#: ../../krill/cli.rst:803
+#: ../../krill/cli.rst:898
+#: ../../krill/cli.rst:922
+#: ../../krill/cli.rst:951
+#: ../../krill/cli.rst:1036
+#: ../../krill/cli.rst:1082
+#: ../../krill/cli.rst:1107
+msgid "Example:"
+msgstr ""
+
+#: ../../krill/cli.rst:485
+msgid "krillc info"
+msgstr ""
+
+#: ../../krill/cli.rst:487
+msgid "Show server info. Prints the version of the Krill *server* and the date and time that it was last started, e.g.:"
+msgstr ""
+
+#: ../../krill/cli.rst:508
+msgid "krillc issues"
+msgstr ""
+
+#: ../../krill/cli.rst:510
+msgid "Show issues for CAs."
+msgstr ""
+
+#: ../../krill/cli.rst:525
+msgid "krillc keyroll"
+msgstr ""
+
+#: ../../krill/cli.rst:527
+msgid "Perform a manual key-roll in Krill."
+msgstr ""
+
+#: ../../krill/cli.rst:542
+msgid "krillc keyroll activate"
+msgstr ""
+
+#: ../../krill/cli.rst:544
+msgid "Finish roll for all keys held by this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:557
+msgid "krillc keyroll init"
+msgstr ""
+
+#: ../../krill/cli.rst:559
+msgid "Initialise roll for all keys held by this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:574
+msgid "krillc list"
+msgstr ""
+
+#: ../../krill/cli.rst:576
+msgid "API Call: :krill_api:`GET /v1/cas <list_cas>`"
+msgstr ""
+
+#: ../../krill/cli.rst:578
+msgid "List the current CAs."
+msgstr ""
+
+#: ../../krill/cli.rst:590
+msgid "krillc parents"
+msgstr ""
+
+#: ../../krill/cli.rst:592
+msgid "Manage parents for this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:610
+msgid "krillc parents add"
+msgstr ""
+
+#: ../../krill/cli.rst:612
+msgid "API Call: :krill_api:`POST /v1/cas/ca/parents <add_ca_parent>`"
+msgstr ""
+
+#: ../../krill/cli.rst:614
+msgid "Add a parent to this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:626
+msgid "Note that you can use any local name for ``--parent``. This is the name that Krill will show to you. Similarly, Krill will use your local CA name which you set in the ```KRILL_CLI_MY_CA`` ENV variable. However, the parent response includes the names (or handles as they are called in the RFC) by which it refers to itself, and your CA. Krill will make sure that it uses these names in the communication with the parent. There is no need for these names to be the same."
+msgstr ""
+
+#: ../../krill/cli.rst:633
+msgid "Note that whichever handle you choose, your CA will use the handles that the parent response included for itself *and* for your CA in its communication with this parent. I.e. you may want to inspect the response and use the same handle for the parent (parent_handle attribute), and do not be surprised or alarmed if the parent refers to your ca (child_handle attribute) by some seemingly random name. Some parents do this to ensure unicity."
+msgstr ""
+
+#: ../../krill/cli.rst:640
+msgid "In case you have multiple parents you may want to refer to them by names that make sense in your context."
+msgstr ""
+
+#: ../../krill/cli.rst:646
+msgid "krillc parents contact"
+msgstr ""
+
+#: ../../krill/cli.rst:648
+msgid "Show contact information for a parent of this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:662
+msgid "krillc parents remove"
+msgstr ""
+
+#: ../../krill/cli.rst:664
+msgid "Remove an existing parent from this CA."
+msgstr ""
+
+#: ../../krill/cli.rst:678
+msgid "krillc parents request"
+msgstr ""
+
+#: ../../krill/cli.rst:680
+msgid "API Call: :krill_api:`GET /v1/cas/{ca_handle}/child_request.json <get_ca_child_request>`"
+msgstr ""
+
+#: ../../krill/cli.rst:682
+msgid "Show :rfc:`8183` Publisher Request XML for the named CA. This XML is needed when registering the CA as a child of another CA. For more information see :ref:`doc_krill_using_ui_parent_setup`."
+msgstr ""
+
+#: ../../krill/cli.rst:697
+msgid "krillc parents update"
+msgstr ""
+
+#: ../../krill/cli.rst:699
+msgid "Update the known information about existing parent of this CA. Note there is no good description of this in the RFCs for the moment. You should not need this option in practice. However, this will allow to replace the parent response for one of your parents."
+msgstr ""
+
+#: ../../krill/cli.rst:719
+msgid "krillc publishers"
+msgstr ""
+
+#: ../../krill/cli.rst:721
+msgid "Manage publishers in Krill."
+msgstr ""
+
+#: ../../krill/cli.rst:741
+msgid "krillc publishers add"
+msgstr ""
+
+#: ../../krill/cli.rst:743
+msgid "Add a publisher. In order to add a publisher you have to get its :rfc:`8183` Publisher Request XML, and hand it over to the server."
+msgstr ""
+
+#: ../../krill/cli.rst:758
+msgid "krillc publishers list"
+msgstr ""
+
+#: ../../krill/cli.rst:760
+msgid "List all publishers under the Publication Server."
+msgstr ""
+
+#: ../../krill/cli.rst:770
+msgid "krillc publishers remove"
+msgstr ""
+
+#: ../../krill/cli.rst:772
+msgid "Remove a publisher. If you do, then all of its content will be removed as well and the publisher will no longer be allowed to publish."
+msgstr ""
+
+#: ../../krill/cli.rst:775
+msgid "You can do this without the publisher’s knowledge, nor consent. You should check with the publisher whether they no longer need your Publication Server (perhaps they migrated to another, or disabled their CA)."
+msgstr ""
+
+#: ../../krill/cli.rst:791
+msgid "krillc publishers response"
+msgstr ""
+
+#: ../../krill/cli.rst:793
+msgid "Show RFC8183 Repository Response for a publisher."
+msgstr ""
+
+#: ../../krill/cli.rst:815
+msgid "krillc publishers show"
+msgstr ""
+
+#: ../../krill/cli.rst:817
+msgid "Show details for a publisher, including the files that they published."
+msgstr ""
+
+#: ../../krill/cli.rst:819
+msgid "The default text output just shows the handle of the publisher, the hash of its identity certificate key, and the rsync URI jail under which the publisher is allowed to publish objects."
+msgstr ""
+
+#: ../../krill/cli.rst:823
+msgid "The JSON response includes a lot more information, including the files which were published and the full ID certificate used by the publisher."
+msgstr ""
+
+#: ../../krill/cli.rst:837
+msgid "krillc publishers stale"
+msgstr ""
+
+#: ../../krill/cli.rst:839
+msgid "List all publishers which have not published in a while."
+msgstr ""
+
+#: ../../krill/cli.rst:852
+msgid "krillc publishers stats"
+msgstr ""
+
+#: ../../krill/cli.rst:854
+msgid "Show publication server stats."
+msgstr ""
+
+#: ../../krill/cli.rst:866
+msgid "krillc repo"
+msgstr ""
+
+#: ../../krill/cli.rst:868
+msgid "Manage the repository for your CA."
+msgstr ""
+
+#: ../../krill/cli.rst:885
+msgid "krillc repo request"
+msgstr ""
+
+#: ../../krill/cli.rst:887
+msgid "Show the :rfc:`8183` Publisher Request XML for a CA. You will need to hand this over to your repository so that they can add your CA."
+msgstr ""
+
+#: ../../krill/cli.rst:910
+msgid "krillc repo show"
+msgstr ""
+
+#: ../../krill/cli.rst:912
+msgid "Show the repository configuration for your CA."
+msgstr ""
+
+#: ../../krill/cli.rst:936
+msgid "krillc repo state"
+msgstr ""
+
+#: ../../krill/cli.rst:938
+msgid "Show which repository server your CA is using, as well as what is has published at the location. Krill will issue an actual list query to the repository and give back the response, or an error in case of issues."
+msgstr ""
+
+#: ../../krill/cli.rst:967
+msgid "krillc repo update"
+msgstr ""
+
+#: ../../krill/cli.rst:969
+msgid "Change which repository this CA uses."
+msgstr ""
+
+#: ../../krill/cli.rst:971
+msgid "You can change which repository server is used by your CA. If you have multiple CAs you will have to repeat this for each of them."
+msgstr ""
+
+#: ../../krill/cli.rst:974
+msgid "Changing repositories is actually more complicated than one might think, but fortunately it's all automated. When you ask Krill to change, the following steps will be executed:"
+msgstr ""
+
+#: ../../krill/cli.rst:978
+msgid "check that the new repository can be reached, and this ca is authorised"
+msgstr ""
+
+#: ../../krill/cli.rst:979
+msgid "regenerate all objects using the URI jail given by the new repository"
+msgstr ""
+
+#: ../../krill/cli.rst:980
+msgid "publish all objects in the new repository"
+msgstr ""
+
+#: ../../krill/cli.rst:981
+msgid "request new certificates from (all) parent CA(s) including the new URI"
+msgstr ""
+
+#: ../../krill/cli.rst:982
+msgid "once received, do a best effort to clean up the old repository"
+msgstr ""
+
+#: ../../krill/cli.rst:984
+msgid "In short, Krill performs a sanity check that the new repository can be used, and then tries to migrate there in a way that will not lead to invalidating any currently signed objects."
+msgstr ""
+
+#: ../../krill/cli.rst:988
+msgid "To start a migration you can use the following."
+msgstr ""
+
+#: ../../krill/cli.rst:1003
+msgid "krillc roas"
+msgstr ""
+
+#: ../../krill/cli.rst:1005
+msgid "Manage ROAs for your CA."
+msgstr ""
+
+#: ../../krill/cli.rst:1007
+msgid "Krill lets users create Route Origin Authorisations (ROAs), the signed objects that state which Autonomous System (AS) is authorised to originate one of your prefixes, along with the maximum prefix length it may have."
+msgstr ""
+
+#: ../../krill/cli.rst:1024
+msgid "krillc roas list"
+msgstr ""
+
+#: ../../krill/cli.rst:1026
+msgid "Show current authorizations."
+msgstr ""
+
+#: ../../krill/cli.rst:1038
+msgid "You can list ROAs in the following way:"
+msgstr ""
+
+#: ../../krill/cli.rst:1049
+msgid "krillc roas update"
+msgstr ""
+
+#: ../../krill/cli.rst:1051
+msgid "API Call: :krill_api:`POST /v1/cas/ca/routes <update_route_authorizations>`"
+msgstr ""
+
+#: ../../krill/cli.rst:1053
+msgid "Update authorizations."
+msgstr ""
+
+#: ../../krill/cli.rst:1055
+msgid "You can update ROAs through the command line by submitting a plain text file with the following format:"
+msgstr ""
+
+#: ../../krill/cli.rst:1093
+msgid "krillc show"
+msgstr ""
+
+#: ../../krill/cli.rst:1095
+msgid "API Call: :krill_api:`GET /v1/cas/{ca_handle} <get_ca>`"
+msgstr ""
+
+#: ../../krill/cli.rst:1097
+msgid "Show details of a CA."
+msgstr ""

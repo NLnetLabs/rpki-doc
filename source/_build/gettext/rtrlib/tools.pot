@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018-2020, NLnet Labs (CC-BY 3.0)
+# This file is distributed under the same license as the RPKI package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RPKI \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 19:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../rtrlib/tools.rst:4
+msgid "RTRlib Command Line Tools"
+msgstr ""
+
+#: ../../rtrlib/tools.rst:6
+msgid "The RTRlib software package includes two lightweight command line tools to showcase some of the RTRlib features.  ``rtr-client`` connects to an RPKI cache server, fetches and maintains the valid ROA payloads, and prints the received data. ``rpki-rov`` allows to verify whether an autonomous system is the legitimate origin AS of an IP prefix, based on RPKI data."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:12
+msgid "If you want to use these command line tools, you need an RPKI-RTR connection to an RPKI cache server (e.g., Routinator). For those who do not have access to a cache server, we provide a public cache with *hostname* ``rpki-validator.realmv6.org`` and *port* ``8282``."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:19
+msgid "RTRlib RTR Client"
+msgstr ""
+
+#: ../../rtrlib/tools.rst:21
+msgid "``rtrclient`` is part of the default RTRlib software package. This command line tool connects to an RPKI cache server and prints the received valid ROA payloads to standard out."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:25
+msgid "To establish a connection to RPKI cache servers, the client can use *TCP* or *SSH* transport sockets.  To run the program you have to specify the transport protocol as well as the hostname and port of the RPKI cache server; additionally you can set several options.  To get a complete reference over all options for the command simply run ``rtrclient`` in a shell."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:32
+msgid ":numref:`lst_rtrlib_rtrclient` shows how to connect the ``rtrclient`` to a cache server as well as 10 lines of the resulting output. It shows IPv4 and IPv6 prefixes secured by ROAs, the allowed prefix lengths, and the legitimate origin AS numbers.  Each line represents either a ROA that was added (``+``) or removed (``-``) from the selected RPKI cache server.  The RTRlib client will receive and print such updates until the program is terminated, i.e., by ``ctrl + c``."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:40
+msgid "Output of the rtrclient tool."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:60
+msgid "RTRlib ROV Validator"
+msgstr ""
+
+#: ../../rtrlib/tools.rst:62
+msgid "``rpki-rov`` is also part of the RTRlib software package. This simple command line interface allows to verify whether an autonomous system is allowed to announce a specific IP prefix, based on data received from an RPKI cache server."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:67
+msgid "To run the program, you must provide two parameters, ``hostname`` and ``port`` of a known RPKI cache server. Then, you can interactively validate IP prefixes by typing ``prefix``, ``prefix length``, and ``origin ASN`` separated by spaces. Press ``ENTER`` to run the validation.  The result will be shown instantly below the input."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:73
+msgid "``rpki-rov`` can validate IPv4 and IPv6 prefixes by default."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:75
+msgid ":numref:`lst_rtrlib_rpki-rov` shows the validation results of all `RPKI-enabled RIPE RIS beacons <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/current-ris-routing-beacons>`_. The output consists of three columns, which are separated by pipes (``|``):"
+msgstr ""
+
+#: ../../rtrlib/tools.rst:80
+msgid "``<input query> | <ROAs> | <validation result>``."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:82
+msgid "The validation results are ``0`` for *valid*, ``1`` for *not found*, and ``2`` for *invalid*."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:85
+msgid "In case of a *valid* and *invalid* prefix-AS pair, the output shows the matching ROAs for the given prefix and AS number.  If multiple ROAs for a prefix exist, they are listed in a row separated by commas (``,``)."
+msgstr ""
+
+#: ../../rtrlib/tools.rst:89
+msgid "Output of rpki-rov showing validation results of multiple prefixes."
+msgstr ""
