@@ -8,29 +8,38 @@ msgstr ""
 "Project-Id-Version: RPKI\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-26 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-11-26 21:04+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"rpki-doc/faq/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
 
 #: ../../about/faq.rst:8
 msgid "FAQ"
-msgstr ""
+msgstr "O-S-S"
 
 #: ../../about/faq.rst:10
 msgid "This is a community-driven FAQ for RPKI, originally written by Alex Band, Job Snijders, David Monosov and Melchior Aelmans. Network operators around the world have contributed to these questions and answers. The contents are available on `Github <https://github.com/NLnetLabs/rpki-doc/blob/master/source/about/faq.rst>`_, allowing you to send a pull request with edits or additions, or fork the contents for usage elsewhere."
 msgstr ""
+"Dette er en gemenskapsdrevet O-S-S for RPKI, opprinnelig skrevet av Alex "
+"Band, Job Snijders, David Monosov og Melchior Aelmans. Nettverksoperatører "
+"verden om har bidratt til både spørsmål og svar. Innholdet er tilgjengelig "
+"på `GitHub <https://github.com/NLnetLabs/rpki-doc/blob/master/source/about/"
+"faq.rst>`_, noe som lar deg sende endringsforespørsler med redigeringer og "
+"siteringer, eller forgreine innholdet for bruk annensteds hen."
 
 #: ../../about/faq.rst:18
 msgid "RPKI Mechanism"
-msgstr ""
+msgstr "RPKI-mekanismen"
 
 #: ../../about/faq.rst:21
 msgid "What is RPKI and why was it developed?"
-msgstr ""
+msgstr "Hva er RPKI, og hvorfor ble den utviklet?"
 
 #: ../../about/faq.rst:23
 msgid "The global routing system of the Internet consists of a number of functionally independent actors (Autonomous Systems) which use BGP (Border Gateway Protocol) to exchange routing information. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change. Changes easily propagate globally within a few minutes. One weakness of this system is that these changes cannot be validated against information existing outside of the BGP protocol itself."
@@ -342,7 +351,7 @@ msgstr ""
 
 #: ../../about/faq.rst:333
 msgid "What are the long-term plans for RPKI?"
-msgstr ""
+msgstr "Hva er de langsiktige planene for RPKI?"
 
 #: ../../about/faq.rst:335
 msgid "With RPKI Route Origin Validation being deployed in more and more places, there are several efforts to build upon this to offer out-of-band Path Validation. Autonomous System Provider Authorisation (ASPA) currently has the most traction in the IETF, defined in these drafts: `draft-azimov-sidrops-aspa-profile <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and `draft-azimov-sidrops-aspa-verification <https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_."
