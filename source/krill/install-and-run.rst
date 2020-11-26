@@ -154,11 +154,6 @@ You can manage the Krill daemon using the following commands:
 
 - Upgrade Krill by running ``apt-get update`` and ``apt-get install krill``.
 
-.. Note:: Due to `issue #280 <https://github.com/NLnetLabs/krill/issues/280>`_,
-          when upgrading with ``apt-get`` it is currently necessary to restart
-          Krill manually after upgrade with ``sudo systemctl restart krill``.
-          This issue will be resolved in the next major release.
-
 Installing with Cargo
 """""""""""""""""""""
 
