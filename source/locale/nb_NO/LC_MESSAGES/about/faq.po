@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RPKI\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-26 19:43+0100\n"
-"PO-Revision-Date: 2020-11-26 21:04+0000\n"
+"PO-Revision-Date: 2020-11-27 11:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "rpki-doc/faq/nb_NO/>\n"
@@ -44,14 +44,31 @@ msgstr "Hva er RPKI, og hvorfor ble den utviklet?"
 #: ../../about/faq.rst:23
 msgid "The global routing system of the Internet consists of a number of functionally independent actors (Autonomous Systems) which use BGP (Border Gateway Protocol) to exchange routing information. The system is very dynamic and flexible by design. Connectivity and routing topologies are subject to change. Changes easily propagate globally within a few minutes. One weakness of this system is that these changes cannot be validated against information existing outside of the BGP protocol itself."
 msgstr ""
+"Det verdensomspennende rutingssystemet som utgjør Internett består av et "
+"antall funksjonelt uavhengige aktører (atonome systemer) som bruker BGP "
+"(grenseportnerprotokoll) for utveksling av rutingsinfo. Systemet er veldig "
+"dynamisk og designet for å være fleksibelt. Tilknytninger og topologier kan "
+"endre seg. Endringer har gjort seg gjeldende globalt innen et par minutter. "
+"Én svakhet med dette systemet er at disse endringene ikke kan bekreftes mot "
+"informasjon som finnes utenfor selve BGP-protokollen."
 
 #: ../../about/faq.rst:31
+#, fuzzy
 msgid "RPKI is a way to define data in an out-of-band system such that the information that are exchanged by BGP can be validated to be correct. The RPKI standards were developed by the IETF (Internet Engineering Task Force) to describe some of the resources of the Internet’s routing and addressing scheme in a cryptographic system. These information are public, and anyone can get access to validate their integrity using cryptographic methods."
 msgstr ""
+"RPKI er en måte å definere data utenfor dataflyten, slik at informasjonen "
+"utvekslet av BGP kan bekreftes å stemme. RPKI-standardene ble utviklet av "
+"IETF (Internet Engineering Task Force) for å beskrive noen av ressursene "
+"tilhørende ruting og addressering på Internett, i et kryptografisk system. "
+"Denne informasjonen er offentlig, og hvem som helst kan få tilgang til "
+"bekreftelse av integriteten ved bruk av kryptografiske metoder."
 
 #: ../../about/faq.rst:39
+#, fuzzy
 msgid "I thought we were all using the IRR to check route origin, why do we need RPKI now?"
 msgstr ""
+"Jeg trodde vi alle brukte IRR for å sjekke rutens opphav. Hvorfor trenger vi "
+"RPKI nå?"
 
 #: ../../about/faq.rst:41
 msgid "If you've been involved in default-free zone Internet engineering for any length of time, you're probably familiar with RPSL, a routing policy specification language originally defined in :RFC:`2280` back in 1998. While RPSL has created considerable early enthusiasm and has seen some traction, the Internet was rapidly growing at the time, and the primary focus was on data availability rather than data trustworthiness. Everyone was busy opportunistically documenting the minimal policy that was necessary to \"make things work\" with the policy specification language parsing scripts of everyone else so that something would finally ping!"
@@ -68,42 +85,78 @@ msgstr ""
 #: ../../about/faq.rst:66
 msgid "Why are we investing in RPKI, isn’t it easier to just fix the Internet Routing Registry (IRR) system?"
 msgstr ""
+"Hvorfor investerer vi energi i RPKI, er det ikke enklere å fikse systemet "
+"for internettrutingsregisteret (IRR)?"
 
 #: ../../about/faq.rst:68
+#, fuzzy
 msgid "The main weakness of the IRR is that it is not a globally deployed system and it lacks the authorisation model to make the system water tight. The result is that out of all the information on routing intent that is published, it is difficult to determine what is legitimate, authentic data and what isn’t. RPKI solves these two problems, as you can be absolutely sure that an authoritative, cryptographically verifiable statement can be made by any legitimate IP resource holder in the world."
 msgstr ""
+"Hovedsvakheten til IRR er at det ikke er et system som finnes verden over, "
+"og at det mangler en bekreftelsesmetode som gjør systemet vanntett. "
+"Resultatet er at av all informasjonen om rutingsintensjon som publiseres, er "
+"det vanskelig å fastsette hva som er legitim, autentisk data, og hva som "
+"ikke er det. RPKI løser begge disse problemene, i den grad du kan være "
+"absolutt sikker på at et autorativt, kryptografisk verifiserbart utsagn kan "
+"være det på vegne av enhver legitim IP-ressursholder i verden."
 
 #: ../../about/faq.rst:77
 msgid "Is it true that BGP4 is just not up to the task any longer?"
-msgstr ""
+msgstr "Er det sant at GBP4 ikke lenger klarer oppgaven?"
 
 #: ../../about/faq.rst:79
 msgid "Unfortunately it’s practically impossible to replace BGP right now. We should, however, work on fixing the broken parts and improving the situation."
 msgstr ""
+"Dessverre er det praktisk talt umulig å erstatte BGP akkurat nå. Vi bør dog "
+"jobbe med å fikse de ødelagte delene, og forbedre situasjonen."
 
 #: ../../about/faq.rst:83
 msgid "As RPKI relies on X.509 PKI, isn’t this the same problem with untrustworthy SSL/TLS Certificate Authorities all over again?"
 msgstr ""
+"Siden RPKI avhenger av X.509 PKI, er det ikke samme problem som med SSL/TLS-"
+"sertifikatsmyndigheter som ikke er tillitsverdige, enda en gang?"
 
 #: ../../about/faq.rst:85
+#, fuzzy
 msgid "Instead of relying on a large number of CAs subject to variable auditing standards which come pre-installed in a browser or an operating system, RPKI relies on just five Trust Anchors, run by the Regional Internet Registries."
 msgstr ""
+"Istedenfor å avhenge av at et stort antall sertifikatsmyndigheter som er "
+"underlagt variable ettergåelsesstandarder, som kommer forhåndsinstallert i "
+"en nettleser på et operativsystem, avhenger RPKI kun av fem tillitsankre, "
+"drevet av de regionale internettregistrene."
 
 #: ../../about/faq.rst:89
+#, fuzzy
 msgid "These are well established and openly governed organisations. Each operator that wishes to get an RPKI resource certificate already has a contractual relationship with one or more of the RIRs."
 msgstr ""
+"Disse er veletablerte organisasjoner underderlagt åpen myndighet. Hver "
+"operatør som økser å få et RPKI-ressurssertifikat har allerede et "
+"kontraktsmessig forhold til én eller flere av RIR-ene."
 
 #: ../../about/faq.rst:94
 msgid "What is the value of RPKI based BGP Origin Validation without Path Validation?"
 msgstr ""
+"Hva er verdien av RPKI-basert BGP-opprinnelsesbekreftelse uten "
+"stibekreftelse?"
 
 #: ../../about/faq.rst:96
+#, fuzzy
 msgid "While Path Validation is a desirable characteristic, the existing RPKI origin validation functionality addresses a large portion of the problem surface."
 msgstr ""
+"Mens stibekreftelse er en ønsket egenskap, henvender eksisterende funksjon "
+"for RPKI-opprinnelsesbekreftelse seg til en stor del av problemet."
 
 #: ../../about/faq.rst:99
+#, fuzzy
 msgid "Existing operational and economic incentives ensure that the most important prefixes for each network are seen via the shortest AS path possible. One such example are network operators setting a higher local preference for prefixes learned via an Internet exchange or private peers (\"peerlock\"). This reduces the risk that an invalid route could win the BGP route selection process even if it originates from an impersonated but correct origin AS."
 msgstr ""
+"Eksisterende driftsmessige og økonomiske insentiver forsikrer at de "
+"viktigste prefiksene for hvert nettverk ses via den korteste AS-stien som er "
+"mulig. Ett slik eksempel er at nettverksoperatørene setter høyere lokal "
+"preferanse for prefiks de har lært via en internettutveksling, eller private "
+"likemenn (\"likemannslås\"). Dette reduserer risikoen for at en ugyldig rute "
+"kan vinne BGP-ruteutvelgelsesprosessen, selv om den har sitt opphav i en "
+"etterlignet, men korrekt opprinnelses-AS."
 
 #: ../../about/faq.rst:106
 msgid "For transit providers, direct interconnections and short AS paths are a defining characteristic, positioning them ideally to act on RPKI data and accept only valid routes for redistribution."
@@ -142,36 +195,56 @@ msgid "To understand how more specifics, less specifics and partial overlaps are
 msgstr ""
 
 #: ../../about/faq.rst:134
+#, fuzzy
 msgid "I’ve heard the term \"route leak\" and \"route hijack\". What’s the difference?"
 msgstr ""
+"Jeg har hørt begrepet \"rutelekkasje\" og \"ruteovertagelse\". Hva er "
+"forskjellen?"
 
 #: ../../about/faq.rst:136
+#, fuzzy
 msgid "A route leak is a propagation of one or more routing announcements that are beyond their intended scope. That is an announcement from an Autonomous System (AS) of a learned BGP route to another AS is in violation of the intended policies of the receiver, the sender, and/or one of the ASes along the preceding AS path."
 msgstr ""
+"En rutelekkasje er tilkjennegivelse av én eller flere rutingsannonseringer "
+"som går utover tiltenkt perspektiv. At en kunngjøring fra et autonymt system "
+"(AS) av én lært BGP-rute til en annen AS er et brudd på de tiltenkte "
+"praksisene for mottageren, senderen, og/eller én av AS-ene som er å finne i "
+"den foregående AS-stien."
 
 #: ../../about/faq.rst:142
 msgid "A route hijack is the unauthorised origination of a route."
-msgstr ""
+msgstr "En ruteovertagelse er et uautorisert opprinnelse av en rute."
 
 #: ../../about/faq.rst:144
+#, fuzzy
 msgid "Note that in either case, the cause may be accidental or malicious and in either case, the result can be path detours, redirection, or denial of services. For more information, please refer to :RFC:`7908`."
 msgstr ""
+"Merk at for hver av dem, kan årsaken være utilsiktet eller ondsinnet, og at "
+"i hvert fall, kan resultatet være stiomveier, videresendelse, eller "
+"tjenestefornektelsesangrep. For mer info, henvend dem til :RFC:`7908`."
 
 #: ../../about/faq.rst:149
 msgid "If a ROA is cryptographically invalid, will it make my route invalid?"
-msgstr ""
+msgstr "Hvis ROA er kryptografisk ugyldig, vil det gjøre ruten min ugyldig?"
 
 #: ../../about/faq.rst:151
+#, fuzzy
 msgid "An invalid ROA means that the object did not pass cryptographic validation and is therefore discarded. The statement about routing that was made within the ROA is simply not taken into consideration. An invalid route on the other hand, is the result of a valid ROA, specifically one that had the outcome that a prefix is announced from an unauthorised AS or the announcement is more specific than is allowed by the maximum length set in a ROA that matches the prefix and AS."
 msgstr ""
+"En ugyldig ROA betyr at objekter ikke passerer kryptografisk bekreftelse, og "
+"dermed forkastes. Utsagnet om ruting som ble gjort innen ROA-en tas "
+"simpelthen ikke til vudering. En ugyldig rute er derimot, resultatet av en "
+"gyldig ROA, spesifikt en som resulterte i at et prefiks kunngjøres fra en "
+"uautorisert AS, eller at kunngjøringen er mer spesifikk enn tillatt av "
+"maksimumslengden satt i en ROA, som samsvarer med prefikset og AS."
 
 #: ../../about/faq.rst:159
 msgid "Operations and Impact"
-msgstr ""
+msgstr "Operasjoner og innvirken"
 
 #: ../../about/faq.rst:162
 msgid "Will my router have a problem with all of this cryptographic validation?"
-msgstr ""
+msgstr "Vil min ruter få problem med alle denne kryptografiske bekreftelsen?"
 
 #: ../../about/faq.rst:164
 msgid "No, routers do not do any cryptographic operations to perform Route Origin Validation. The signatures are checked by external software, called Relying Party software or RPKI Validator, which feeds the processed data to the router over a light-weight protocol. This architecture causes minimal overhead for routers."
@@ -182,16 +255,26 @@ msgid "Does RPKI reduce the BGP convergence speed of my routers?"
 msgstr ""
 
 #: ../../about/faq.rst:173
+#, fuzzy
 msgid "No, filtering based on an RPKI validated cache has a negligible influence on convergence speed. RPKI validation happens in parallel with route learning (for new prefixes which aren’t yet in cache), and those prefixes will be marked as valid, invalid, or notfound (and the correct policy applied) as the information becomes available."
 msgstr ""
+"Nei, filtrering basert på et RPKI-bekreftet hurtiglager har neglisjerbar "
+"innflytelse på konvergenshastighet. RPKI-bekreftelse skjer i parallell med "
+"rutelæring (for nye prefikser som ikke er i hurtiglageret enda), og disse "
+"prefiksene vil bli markert som gyldige, uglidige, eller ikkefunnet (og "
+"korrekt praksis vil bli utført) så snart informasjonen blir tilgjengelig."
 
 #: ../../about/faq.rst:180
+#, fuzzy
 msgid "Why do I need rsync on my system to use a validator?"
-msgstr ""
+msgstr "Hvorfor trenger jeg rsync på systemet mitt for å bruke en bekrefter?"
 
 #: ../../about/faq.rst:182
 msgid "In the original standards, rsync was defined as the main means of distribution of RPKI data. While it has served the system well in the early years, rsync has several downsides:"
 msgstr ""
+"I de opprinnelige standardene, ble rsync definert som hovedmetoden for "
+"distribusjon av RPKI-data. Selv om det har tjent systemet godt i tidligere "
+"år, har det flere ankepunkter:"
 
 #: ../../about/faq.rst:186
 msgid "When RPKI relying party software is used on a client system, it has a dependency on rsync. Different versions and different supported options, such as ``--contimeout``, cause unpredictable results. Furthermore, calling rsync is inefficient. It's an additional process and the output can only be verified by scanning the disk."
@@ -236,10 +319,11 @@ msgstr ""
 #: ../../about/faq.rst:226
 msgid "Section 3 of :RFC:`7115` has an extensive section on this specific topic."
 msgstr ""
+"Seksjon 3 of :RFC:`7115` har et inngående avsnitt spesifikt om dette emnet."
 
 #: ../../about/faq.rst:230
 msgid "How often should I fetch new data from the RPKI repositories?"
-msgstr ""
+msgstr "Hvor ofte bør jeg hente ny data fra RPKI-brønnene?"
 
 #: ../../about/faq.rst:232
 msgid "According to section 3 of :RFC:`7115` you should fetch new data at least every 4 to 6 hours. At the moment, the publication of new ROAs in the largest repositories takes about 10-15 minutes. This means fetching every 15-30 minutes is reasonable, without putting unnecessary load on the system."
@@ -283,11 +367,11 @@ msgstr ""
 
 #: ../../about/faq.rst:275
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Ymse"
 
 #: ../../about/faq.rst:278
 msgid "Why isn't the ARIN RPKI TAL like other public key files?"
-msgstr ""
+msgstr "Hvorfor er ikke ARIN RPKI TAL som andre offentlig nøkkelfiler?"
 
 #: ../../about/faq.rst:280
 msgid "Unlike the other RIRs, which distribute their TAL publicly, ARIN has a policy requiring users to explicitly agree to terms and conditions concerning its TAL. Note that this policy is not without controversy as `discussed here <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`__ and `here <https://seclists.org/nanog/2019/Jan/118>`__ on the NANOG list."
