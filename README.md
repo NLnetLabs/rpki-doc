@@ -2,7 +2,7 @@
 
 This readme was largely copied from the excellent [Godot](https://github.com/godotengine/godot-docs) documentation, with thanks to Juan Linietsky, Ariel Manzur and the Godot community. 
 
-This documentation is published at [rpki.readthedocs.io](https://rpki.readthedocs.io/en/latest/).
+This documentation is published at [rpki.readthedocs.io](https://rpki.readthedocs.io/).
 
 # RPKI documentation
 
