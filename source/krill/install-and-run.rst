@@ -584,8 +584,8 @@ Proxy Krill as Parent
 
 If you delegated resources to child CAs then you will need to ensure that these
 children can reach your Krill. Child requests for resource certificates are
-directed to the ```/rfc6492`` under the ``service_uri`` that you defined in your
-configuration file.
+directed to the ``/rfc6492`` directory under the ``service_uri`` that you
+defined in your configuration file.
 
 Note that contrary to the UI you should not add any additional authentication
 mechanisms to this location. :RFC:`6492` uses cryptographically signed messages
