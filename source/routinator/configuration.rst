@@ -34,11 +34,14 @@ optional configuration file, which will be largely similar to this:
     rsync-command = "rsync"
     rsync-timeout = 300
     rtr-listen = []
-    stale = "warn"
+    rtr-tcp-keepalive = 60
+    stale = "reject"
     strict = false
     syslog-facility = "daemon"
     systemd-listen = false
     tal-dir = "/Users/routinator/.rpki-cache/tals"
+    unknown-objects = "warn"
+    unsafe-vrps = "warn"
     validation-threads = 4
 
 You can override these defaults, as well as configure a great number of
@@ -96,11 +99,14 @@ providing an HTTP server on port 9556, simply take the output from
     rsync-command = "rsync"
     rsync-timeout = 300
     rtr-listen = ["192.0.2.13:3323", "[2001:0DB8::13]:3323"]
-    stale = "warn"
+    rtr-tcp-keepalive = 60
+    stale = "reject"
     strict = false
     syslog-facility = "daemon"
     systemd-listen = false
     tal-dir = "/Users/routinator/.rpki-cache/tals"
+    unknown-objects = "warn"
+    unsafe-vrps = "warn"
     validation-threads = 4
 
 After saving this file as :file:`.routinator.conf` in your home directory, you
