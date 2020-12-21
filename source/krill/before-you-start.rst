@@ -67,11 +67,11 @@ as you bring it back up within 8 hours to ensure your cryptographic objects are
 re-signed before they go stale.
 
 .. Note:: This scenario illustrated here also applies if you use an RPKI
-          publication server offered by a third party, such as a cloud provider.
+          publication server offered by a third party.
 
-At this time, only Brazilian NIR NIC.br offer a publication server for their 
-members. Several RIRs have this functionality on their roadmap. This means 
-that in most cases, you will have to publish yourself.
+At this time, only APNIC and Brazilian NIR NIC.br offer a publication server for
+their members. Several RIRs have this functionality on their roadmap. This
+means that in most cases, you will have to publish yourself.
 
 Publishing Yourself
 -------------------
