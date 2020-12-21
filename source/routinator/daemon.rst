@@ -49,10 +49,13 @@ following paths are available:
 :command:`/rpsl`
      Returns the current set of VRPs in **RPSL** output format
 
-:command:`/validity`
-     Returns the RPKI origin validation status of a specific BGP announcement by
-     supplying the ASN and prefix in the path, e.g.
-     ``/validity?asn=12654&prefix=93.175.147.0/24``
+:command:`/api/v1/validity/as-number/prefix`
+     Returns a JSON object describing whether the route announcement given by 
+     its origin AS number and address prefix is RPKI valid, invalid, or not 
+     found. A complete list of VRPs that caused the result is included.
+     
+:command:`/validity?asn=as-number&prefix=prefix`
+     Same as above but with a more form-friendly calling convention.
 
 Please note that this server is intended to run on your internal network and
 doesn't offer HTTPS natively. If this is a requirement, you can for example run
