@@ -5,7 +5,7 @@ Install and Run
 
 Before you can start to use Krill you will need to install, configure and run
 the Krill application somewhere. Please follow the steps below and you will be
-ready to :ref:`doc_krill_get_started` or start :ref:`doc_krill_testing`.
+ready to :ref:`doc_krill_get_started`.
 
 Installation
 ------------
