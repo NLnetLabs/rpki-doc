@@ -49,23 +49,6 @@ certificate and ROAs with a third party, such as your NIR or RIR, or you publish
 them yourself. Krill can be managed with a web user interface, from the command
 line and through an API.
 
-------------
-
-You can choose to run Krill as a standalone application or run it together with
-:ref:`doc_krill_manager`, a tool that brings together all of the puzzle pieces
-needed to administer and run Delegated RPKI with Krill as a highly available
-scalable service.
-
-Krill Manager includes Krill, RRDP and Rsync servers and exposes information for
-monitoring and log analysis. The integrated setup wizard allows for seamless TLS
-configuration, optionally using Let's Encrypt, as well as automated updating of
-the application itself and all included components.
-
-Krill with Krill Manager is available for free as a 1-Click App on the `AWS
-Marketplace <https://aws.amazon.com/marketplace/pp/B0886F8GNJ>`_ and the
-`DigitalOcean Marketplace
-<https://marketplace.digitalocean.com/apps/krill?refcode=cab39584666c>`_.
-
 .. toctree::
    :maxdepth: 2
    :name: toc-krill
