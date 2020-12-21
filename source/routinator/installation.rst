@@ -3,9 +3,8 @@
 Installation
 ============
 
-Getting started with Routinator is really easy either building from `Cargo
-<https://crates.io/crates/routinator>`_ or running with `Docker
-<https://hub.docker.com/r/nlnetlabs/routinator/>`_.
+Getting started with Routinator is really easy either building from Cargo,
+installing a Debian and Ubuntu package or using Docker.
 
 Quick Start with Cargo
 ----------------------
@@ -32,12 +31,12 @@ If you have an older version of Rust and Routinator, you can update via:
    rustup update
    cargo install --locked --force routinator
 
-If you want to try the master branch from the repository instead of a
+If you want to try the main branch from the repository instead of a
 release version, you can run:
 
 .. code-block:: bash
 
-   cargo install --git https://github.com/NLnetLabs/routinator.git
+   cargo install --git https://github.com/NLnetLabs/routinator.git  --branch main
 
 Quick Start with Debian and Ubuntu Packages
 -------------------------------------------
@@ -82,7 +81,7 @@ used with Cargo.
 By default, Routinator will start the RTR server on port 3323 and the HTTP
 server on port 8323. These, and other values can be changed in the
 configuration file located in ``/etc/routinator/routinator.conf``. You can check
-the status of Routinator with ``sudo systemctl status  routinator`` and view the
+the status of Routinator with ``sudo systemctl status routinator`` and view the
 logs with ``sudo journalctl --unit=routinator``.
 
 Quick Start with Docker
@@ -111,9 +110,6 @@ into a mounted volume that is later reused for the server:
 
 System Requirements
 -------------------
-
-At this time, the size of the global RPKI data set is about 500MB. Cryptographic
-validation of it takes Routinator about 2 seconds on a quad-core i7.
 
 When choosing a system to run Routinator on, make sure you have 1GB of
 available memory and 1GB of disk space. This will give you ample margin for
@@ -165,7 +161,7 @@ Platform Support <https://forge.rust-lang.org/platform-support.html>`_
 page provides an overview of the various support levels.
 
 While some system distributions include Rust as system packages,
-Routinator relies on a relatively new version of Rust, currently 1.40 or
+Routinator relies on a relatively new version of Rust, currently 1.42 or
 newer. We therefore suggest to use the canonical Rust installation via a
 tool called :command:`rustup`.
 
@@ -193,12 +189,12 @@ The easiest way to get Routinator is to leave it to cargo by saying:
 
    cargo install --locked routinator
 
-If you want to try the master branch from the repository instead of a
+If you want to try the main branch from the repository instead of a
 release version, you can run:
 
 .. code-block:: bash
 
-   cargo install --git https://github.com/NLnetLabs/routinator.git
+   cargo install --git https://github.com/NLnetLabs/routinator.git --branch main
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
