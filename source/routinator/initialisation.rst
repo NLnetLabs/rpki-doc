@@ -56,53 +56,56 @@ Performing a Test Run
 To see if Routinator has been initialised correctly and your firewall allows the
 required connections, it is recommended to perform an initial test run. You can
 do this by having Routinator print a validated ROA payload (VRP) list with the
-:subcmd:`vrps` subcommand, and using :option:`-v` to increase the log level to
-``INFO`` to see if Routinator establishes rsync and RRDP connections as expected.
+:subcmd:`vrps` subcommand, and using :option:`-v` to increase the log level so
+you can verify if Routinator establishes rsync and RRDP connections as expected.
 
 .. code-block:: bash
 
-   routinator -v vrps
+   routinator -vv vrps
 
 Now, you can see how Routinator connects to the RPKI trust anchors, downloads
-the the contents of the repositories to your machine, validates it and produces
-a  list of validated ROA payloads in the default CSV format to standard output.
-From a cold start, this process will take a couple of minutes.
+the the contents of the repositories to your machine, verifies it and produces a
+list of validated ROA payloads in the default CSV format to standard output.
+Because it is expected that the state of the entire RPKI is not perfect as all
+times, you may see several warnings during the process about objects that are
+either stale or failed cryptographic verification. From a cold start, this
+process will take a couple of minutes.
 
 .. code-block:: text
 
-   routinator -v vrps
-   rsyncing from rsync://repository.lacnic.net/rpki/.
-   rsyncing from rsync://rpki.afrinic.net/repository/.
-   rsyncing from rsync://rpki.apnic.net/repository/.
-   rsyncing from rsync://rpki.ripe.net/ta/.
-   rsync://rpki.ripe.net/ta: The RIPE NCC Certification Repository is subject to Terms and Conditions
-   rsync://rpki.ripe.net/ta: See http://www.ripe.net/lir-services/ncc/legal/certification/repository-tc
-   rsync://rpki.ripe.net/ta:
-   Found valid trust anchor rsync://rpki.ripe.net/ta/ripe-ncc-ta.cer. Processing.
-   rsyncing from rsync://rpki.ripe.net/repository/.
-   Found valid trust anchor rsync://rpki.afrinic.net/repository/AfriNIC.cer. Processing.
-   rsyncing from rsync://rpki.arin.net/repository/.
-   Found valid trust anchor rsync://rpki.arin.net/repository/arin-rpki-ta.cer. Processing.
-   Found valid trust anchor rsync://rpki.apnic.net/repository/apnic-rpki-root-iana-origin.cer. Processing.
-   rsyncing from rsync://rpki.apnic.net/member_repository/.
-   Found valid trust anchor rsync://repository.lacnic.net/rpki/lacnic/rta-lacnic-rpki.cer. Processing.
-   rsync://rpki.ripe.net/repository: The RIPE NCC Certification Repository is subject to Terms and Conditions
-   rsync://rpki.ripe.net/repository: See http://www.ripe.net/lir-services/ncc/legal/certification/repository-tc
-   rsync://rpki.ripe.net/repository:
-   rsyncing from rsync://rpkica.twnic.tw/rpki/.
-   rsyncing from rsync://rpki-repository.nic.ad.jp/ap/.
-   rsyncing from rsync://rpki.cnnic.cn/rpki/.
-   Summary:
-   afrinic: 338 valid ROAs, 459 VRPs.
-   lacnic: 2435 valid ROAs, 7042 VRPs.
-   apnic: 3186 valid ROAs, 21934 VRPs.
-   ripe: 10780 valid ROAs, 56907 VRPs.
-   arin: 4964 valid ROAs, 6621 VRPs.
-   ASN,IP Prefix,Max Length,Trust Anchor
-   AS43289,2a03:f80:373::/48,48,ripe
-   AS14464,131.109.128.0/17,17,arin
-   AS17806,114.130.5.0/24,24,apnic
-   AS59587,151.232.192.0/21,21,ripe
-   AS13335,172.68.30.0/24,24,arin
-   AS6147,190.40.0.0/14,24,lacnic
-   ...
+    routinator -vv vrps
+    rsyncing from rsync://repository.lacnic.net/rpki/.
+    rsync://repository.lacnic.net/rpki: Running command "rsync" "--timeout=300" "-rltz" "--delete" "rsync://repository.lacnic.net/rpki/" "/Users/alex/.rpki-cache/repository/rsync/repository.lacnic.net/rpki/"
+    Found valid trust anchor https://rpki.ripe.net/ta/ripe-ncc-ta.cer. Processing.
+    RRDP https://rrdp.ripe.net/notification.xml: Updating server
+    RRDP https://rrdp.ripe.net/notification.xml: updating from snapshot.
+    Found valid trust anchor https://rpki.afrinic.net/repository/AfriNIC.cer. Processing.
+    RRDP https://rrdp.afrinic.net/notification.xml: Updating server
+    RRDP https://rrdp.afrinic.net/notification.xml: updating from snapshot.
+    Found valid trust anchor https://tal.apnic.net/apnic.cer. Processing.
+    RRDP https://rrdp.apnic.net/notification.xml: Updating server
+    RRDP https://rrdp.apnic.net/notification.xml: updating from snapshot.
+    Found valid trust anchor https://rrdp.arin.net/arin-rpki-ta.cer. Processing.
+    RRDP https://rrdp.arin.net/notification.xml: Updating server
+    RRDP https://rrdp.arin.net/notification.xml: updating from snapshot.
+    rsync://repository.lacnic.net/rpki: successfully completed.
+    Found valid trust anchor rsync://repository.lacnic.net/rpki/lacnic/rta-lacnic-rpki.cer. Processing.
+    rsyncing from rsync://rpki-repo.registro.br/repo/.
+    rsync://rpki-repo.registro.br/repo: Running command "rsync" "--timeout=300" "-rltz" "--delete" "rsync://rpki-repo.registro.br/repo/" "/Users/alex/.rpki-cache/repository/rsync/rpki-repo.registro.br/repo/"
+    rsync://rpki-repo.registro.br/repo: successfully completed.
+    RRDP https://rrdp.rpki.nlnetlabs.nl/rrdp/notification.xml: Updating server
+    RRDP https://rrdp.rpki.nlnetlabs.nl/rrdp/notification.xml: updating from snapshot.
+    ...
+    ASN,IP Prefix,Max Length,Trust Anchor
+    AS137884,103.116.116.0/23,23,apnic
+    AS9003,91.151.112.0/20,20,ripe
+    AS38553,120.72.19.0/24,24,apnic
+    AS58045,37.209.242.0/24,24,ripe
+    AS9583,202.177.175.0/24,24,apnic
+    AS50629,2a0f:ba80::/29,29,ripe
+    AS398085,2602:801:a008::/48,48,arin
+    AS21050,83.96.22.0/24,24,ripe
+    AS55577,183.82.223.0/24,24,apnic
+    AS44444,157.167.73.0/24,24,ripe
+    AS197695,194.67.97.0/24,24,ripe
+    ...
