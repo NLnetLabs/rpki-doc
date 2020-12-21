@@ -14,7 +14,7 @@ and HTTP on 9556, use the following command:
 
    routinator server --rtr 192.0.2.13:3323 --http 192.0.2.13:9556
 
-The HTTP service has three monitoring endpoints on the following paths:
+The HTTP service has these monitoring endpoints on the following paths:
 
 :command:`/version`
      Returns the version of the Routinator instance
@@ -28,6 +28,13 @@ The HTTP service has three monitoring endpoints on the following paths:
 :command:`/status`
      Returns the information from the ``/metrics`` endpoint in a more
      concise format
+     
+:command:`/log`
+     Returns the logging output of the last validation run. The log level 
+     matches that set upon start.
+
+     Note that the output is collected after each validation run and is 
+     therefore only available after the initial run has concluded.
 
 Metrics
 -------
