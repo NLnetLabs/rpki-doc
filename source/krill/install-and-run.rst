@@ -15,11 +15,6 @@ with Docker. In case you intend to serve your RPKI certificate and ROAs to the
 world yourself or you want to offer this as a service to others, you will also
 need to have a public Rsyncd and HTTPS web server available.
 
-Krill can also be se up as a highly available, scalable service using
-:ref:`doc_krill_manager`.  A 1-Click App on the DigitalOcean Marketplace can set
-up Krill with all required components, along with integration points for
-monitoring and log analysis.
-
 .. Warning:: Krill does NOT support clustering at this time. You can achieve
              high availability by doing a fail-over to a standby *inactive*
              installation using the same data and configuration. However, you
@@ -30,13 +25,14 @@ monitoring and log analysis.
 Quick Start
 """""""""""
 
-For recent Debian and Ubuntu releases you can download, install and run a ``.deb``
-package from the NLnet Labs package repository.
+For recent Debian and Ubuntu releases you can download, install and run a
+``.deb`` package from the NLnet Labs package repository.
 
-.. Note:: If you had previously installed Krill using ``cargo install krill`` you should
-          first use ``cargo uninstall krill`` before installing a ``.deb`` package Otherwise
-          the cargo installed binaries for ``krill`` and ``krillc`` may take precednce in
-          your shell ``$PATH`` which could be confusing.
+.. Note:: If you had previously installed Krill using ``cargo install krill`` 
+          you should first use ``cargo uninstall krill`` before installing a
+          ``.deb`` package Otherwise the cargo installed binaries for ``krill``
+          and ``krillc`` may take precedence in your shell ``$PATH`` which could
+          be confusing.
 
 1. Add the line below that corresponds to your operating system to ``/etc/apt/sources.list`` or ``/etc/apt/sources.list.d/``:
 
@@ -60,12 +56,12 @@ package from the NLnet Labs package repository.
 
   sudo apt update
   sudo apt-get install krill
-  # review / edit /etc/krill.conf
+  # review and edit /etc/krill.conf
   sudo systemctl enable --now krill
 
-Alternatively, you can build from sources. Assuming you have a newly installed Debian or
-Ubuntu machine, you will need to install the C toolchain, OpenSSL, curl and
-Rust. You can then install Krill using Cargo.
+Alternatively, you can build from sources. Assuming you have a newly installed
+Debian or Ubuntu machine, you will need to install the C toolchain, OpenSSL,
+curl and Rust. You can then install Krill using Cargo.
 
 After the installation has completed, first create a data directory in a
 location of your choice. Next, generate a basic configuration file specifying a
@@ -143,8 +139,9 @@ To install Krill from the NLnet Labs package repository:
 5. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
    systemd to enable the Krill service at boot and to start it immediately.
 
-The krill daemon runs as user ``krill`` and stores its data in ``/var/lib/krill``.
-You can manage the Krill daemon using the following commands:
+The krill daemon runs as user ``krill`` and stores its data in
+``/var/lib/krill``. You can manage the Krill daemon using the following
+commands:
 
 - Review the Krill logs with ``journalctl -u krill``, or view just the most recent entries with ``sytemctl status krill``.
 
@@ -303,10 +300,6 @@ You can find a full example configuration file with defaults in `the
 GitHub repository
 <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
-
-
-
-
 Used Disk Space
 ---------------
 
@@ -359,25 +352,25 @@ storage mechanism needs to be changed in order to make
 `multiple active nodes <https://github.com/NLnetLabs/krill/issues/20>`_
 work.
 
-State changes in Krill are tracked using "events". Krill CA(s) and Publication
-Servers are versioned. They can only be changed by applying an 'event' for a
-specific version. An event just contains the data that needs to be changed.
+State changes in Krill are tracked using *events*. Krill CA(s) and Publication
+Servers are versioned. They can only be changed by applying an *event* for a
+specific version. An *event* just contains the data that needs to be changed.
 Crucially, they cannot cause any side effects. As such the overall state can
 always be reconstituted by applying all past events. This concept is called
-'event-sourcing', and in this context the CAs and Publication Servers are
+*event-sourcing*, and in this context the CAs and Publication Servers are
 so-called "Aggregates".
 
 Events are not applied directly. Rather, users of Krill and background jobs will
 send their intention to make a change through the API, which then translates
-this into a so-called "command". Krill will then *lock* the target aggregate
+this into a so-called *command*. Krill will then *lock* the target aggregate
 and send the command to it. This locking mechanism is not aware of any
 clustering, and it's a primary reason why Krill cannot run as an active-active
 cluster just yet.
 
-Upon receiving a command the aggregate (your CA etc) will do some work. In some
-cases a command *can* have a side-effect. For example it may instruct your CA to
+Upon receiving a command the aggregate (your CA etc.) will do some work. In some
+cases a command can have a side-effect. For example it may instruct your CA to
 create a new key pair, after receiving entitlements from its parent. The key pair
-is random - applying a command again would result in a new random key pair.
+is random — applying a command again would result in a new random key pair.
 Remember that commands are not re-applied to aggregates, only their resulting
 events are. Thus in this example there would be an event caused that contains
 the resulting key pair.
@@ -392,18 +385,18 @@ For example, you may have tried to remove a ROA which does not exist.
 When Krill encounters such an error, it will store the command with some
 meta-information like the time the command was issued, and a summary of the
 error, so that it can be seen in the history. It will then unlock the aggregate,
-so that the next command can be send to it.
+so that the next command can be sent to it.
 
-2. No error, 0 events
+2. No error, zero events
 
-In this case the command turned out to be a no-op, and Krill just unlocks the
+In this case the command turned out to be a *no-op*, and Krill just unlocks the
 aggregate. The command sequence counter is not updated, and the command is not
 saved. This is used as a feature whenever the 'republish' background job kicks
 in. A 'republish' command is sent, but it will only have an actual effect if
-there was a need to republish - e.g. a manifest would need to be re-issued
+there was a need to republish — e.g. a manifest would need to be re-issued
 before it would expire.
 
-3. 1 or more events
+3. One or more events
 
 In this case there *is* a desired state change in a Krill aggregate.
 
@@ -413,7 +406,7 @@ Krill will now apply and persist the changes in the following order:
   update is aborted. Because Krill cannot run as a cluster, and it uses locking
   to ensure that updates are done in sequence, this will only fail on the first
   event if a user tried to issue concurrent updates to the same CA
-* On every 5th event a snapshot of the state is saved to a new file. If this is
+* On every fifth event a snapshot of the state is saved to a new file. If this is
   successful then the old snapshot (if there is one) is renamed and kept as a
   backup snapshot. The new snapshot is then renamed to the 'current' snapshot.
 * When all events are saved, the command is saved enumerating all resulting
@@ -431,7 +424,6 @@ Krill will now apply and persist the changes in the following order:
              sensible thing Krill can now do. Fortunately, this should not
              happen unless there is a serious system failure.
 
-
 Loading State at Startup
 ------------------------
 
@@ -439,9 +431,10 @@ Krill will rebuild its internal state whenever it starts. If it finds that there
 are surplus events or commands compared to the latest information state for any
 of the aggregates, then it will assume that they are present because, either
 Krill stopped in the middle of writing a transaction of changes to disk, or your
-backup was taken in the middle of a transaction. Such surplus files are backed up
-to a subdirectory called `surplus` under the relevant data directory: ``data_dir/pubd/0/surplus``
-if you are using Krill as a Publication Server and ``data_dir/cas/<your-ca-name>/surplus`` for each of your CAs.
+backup was taken in the middle of a transaction. Such surplus files are backed
+up to a subdirectory called ``surplus`` under the relevant data directory:
+``data_dir/pubd/0/surplus`` if you are using Krill as a Publication Server and
+``data_dir/cas/<your-ca-name>/surplus`` for each of your CAs.
 
 
 Recover State at Startup
@@ -462,13 +455,13 @@ Krill will try the following checks and recovery attempts:
 
 * Verify each recorded command and its effects (events) in their historical order.
 * If any command or event file is corrupt it will be moved to a subdirectory
-  called `corrupt` under the relevant data directory, and all subsequent commands
-  and events will be moved to a subdirectory called `surplus` under the relevant
-  data directory.
+  called ``corrupt`` under the relevant data directory, and all subsequent
+  commands and events will be moved to a subdirectory called ``surplus`` under
+  the relevant data directory.
 * Verify that each snapshot file can be parsed, if it can't then this file is
-  moved to relevant the `corrupt` sub-directory.
+  moved to relevant the ``corrupt`` sub-directory.
 * If a snapshot file could not be parsed, try to parse the backup snapshot. If
-  this file can't be parsed, move it to the relevant `corrupt` sub-directory.
+  this file can't be parsed, move it to the relevant ``corrupt`` sub-directory.
 * Try to rebuild the state to the last recoverable state, i.e. the last known
   good event. Note that if this pre-dates the available snapshots, or, if no
   snapshots are available this means that Krill will try to rebuild state by
@@ -476,13 +469,12 @@ Krill will try the following checks and recovery attempts:
   able rebuild state.
 * If rebuilding state failed, Krill will now exit with an error.
 
-Note that in case of data corruption Krill `may` be able to fall back to an
+Note that in case of data corruption Krill may be able to fall back to an
 earlier recoverable state, but this state may be far in the past. You should
 always verify your ROAs and/or delegations to child CAs in such cases.
 
 Of course, it's best to avoid data corruption in the first place. Please monitor
 available disk space, and make regular backups.
-
 
 Backup / Restore
 ----------------
@@ -497,7 +489,6 @@ incomplete transaction, it will just fall back to the state prior to it.
              directory contains your private keys in clear text. Encrypting
              your backup will help protect these, but of course also implies
              that you can only restore if you have the ability to decrypt.
-
 
 Krill Upgrades
 --------------
@@ -523,14 +514,12 @@ you can do the following:
 Krill will then perform the data migrations, rebuild its state, and then exit
 before doing anything else.
 
-
 Krill Downgrades
 ----------------
 
 Downgrading Krill data is not supported. So, downgrading can only be achieved
 by installing a previous version of Krill and restoring a backup from before
 your upgrade.
-
 
 Start and Stop the Daemon
 -------------------------
@@ -582,24 +571,24 @@ grade TLS support.
 Proxy Krill UI
 """"""""""""""
 
-The Krill UI and assets are hosted directly under the base path `/`. So, in
-order to proxy to the Krill UI you should proxy ALL requests under `/` to the
+The Krill UI and assets are hosted directly under the base path ``/``. So, in
+order to proxy to the Krill UI you should proxy ALL requests under ``/`` to the
 Krill back-end.
 
 Note that although the UI and API are protected by a token, you should consider
-further restrictions in your proxy setup - like restrictions on source IP, or
-you may want to have your own authentication added.
+further restrictions in your proxy setup, such as restrictions on source IP or 
+adding your own authentication.
 
 Proxy Krill as Parent
 """""""""""""""""""""
 
 If you delegated resources to child CAs then you will need to ensure that these
 children can reach your Krill. Child requests for resource certificates are
-directed to the `/rfc6492` under the `service_uri` that you defined in your
+directed to the ```/rfc6492`` under the ``service_uri`` that you defined in your
 configuration file.
 
 Note that contrary to the UI you should not add any additional authentication
-mechanisms to this location. RFC 6492 uses cryptographically signed messages
+mechanisms to this location. :RFC:`6492` uses cryptographically signed messages
 sent over HTTP and is secure. However, verifying messages and signing responses
 can be computationally heavy, so if you know the source IP addresses of your
 child CAs, you may wish to restrict access based on this.
