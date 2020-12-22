@@ -19,22 +19,8 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
 
 ------------
 
-**Krill is intended for:**
-
-- **Organisations who represent multiple entities under one or more Regional
-  Internet Registries (RIRs). Using Krill, resources for all entities are
-  presented as a single pool so ROAs can be managed seamlessly.**
-- **Organisations that need to be able to delegate RPKI to their customers or
-  different business units, so that that they can run their own CA and manage
-  ROAs themselves for a subset of the resources.**
-- **Organisations who do not wish to rely on the web interface of the hosted
-  systems that the RIRs offer, but require RPKI management that is integrated
-  with their own systems using a common UI or API.**
-
-------------
-
 Using Krill, you can run your own RPKI Certificate Authority as a child of one
-or more parent CAs, usually a Regional Internet Registry (RIR) or National
+or more parent CAs, usually your Regional Internet Registry (RIR) or National
 Internet Registry (NIR). 
 
 Krill is especially convenient if your organisation holds address space in
@@ -50,7 +36,8 @@ departments, members or customers, who, in turn, manage ROAs themselves.
 Krill can be managed with a web user interface, from the command line and
 through an API. The powerful user interface shows the RPKI validation status of
 your BGP announcements, warns about possible issues, and offers suggestions on
-ROAs you may want to create or remove.
+ROAs you may want to create or remove. Prometheus endpoints offer monitoring
+of system status, ROA misconfigurations and possible BGP hijacks.
 
 Lastly, Krill features a publication server so you can either publish your
 certificate and ROAs with a third party, such as your NIR or RIR, or you publish
