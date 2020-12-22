@@ -54,6 +54,7 @@ line and through an API.
    :name: toc-krill
 
    before-you-start
+   architecture
    install-and-run
    get-started
    manage-roas

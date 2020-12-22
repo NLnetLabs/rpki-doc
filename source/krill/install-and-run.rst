@@ -7,16 +7,13 @@ Before you can start to use Krill you will need to install, configure and run
 the Krill application somewhere. Please follow the steps below and you will be
 ready to :ref:`doc_krill_get_started`.
 
-Installation
-------------
-
 Getting started with Krill is quite easy either building from Cargo or running
 with Docker. In case you intend to serve your RPKI certificate and ROAs to the
 world yourself or you want to offer this as a service to others, you will also
 need to have a public Rsyncd and HTTPS web server available.
 
 Installing with APT/dpkg
-""""""""""""""""""""""""
+------------------------
 
 Pre-built Debian/Ubuntu packages are available for recent operating system
 versions on x86_64 platforms. These can be installed using the standard ``apt``,
@@ -71,14 +68,14 @@ commands:
 - Upgrade Krill by running ``apt-get update`` and ``apt-get install krill``.
 
 Installing with Cargo
-"""""""""""""""""""""
+---------------------
 
 There are three things you need for Krill: Rust, a C toolchain and OpenSSL.
 You can install Krill on any Operating System where you can fulfil these
 requirements, but we will assume that you will run this on a UNIX-like OS.
 
 Rust
-~~~~
+""""
 
 The Rust compiler runs on, and compiles to, a great number of platforms,
 though not all of them are equally supported. The official `Rust
@@ -145,7 +142,7 @@ a virgin system, you can install Rust using these steps:
    source $HOME/.cargo/env
 
 C Toolchain
-~~~~~~~~~~~
+"""""""""""
 
 Some of the libraries Krill depends on require a C toolchain to be
 present. Your system probably has some easy way to install the minimum
@@ -157,7 +154,7 @@ If you are unsure, try to run :command:`cc` on a command line and if there’s a
 complaint about missing input files, you are probably good to go.
 
 OpenSSL
-~~~~~~~
+"""""""
 
 Your system will likely have a package manager that will allow you to install
 OpenSSL in a few easy steps. For Krill, you will need :command:`libssl-dev`,
@@ -170,7 +167,7 @@ this should be as simple as running:
 
 
 Building
-~~~~~~~~
+""""""""
 
 The easiest way to get Krill is to leave it to cargo by saying:
 
