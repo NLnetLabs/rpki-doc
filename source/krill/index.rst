@@ -21,12 +21,12 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
 
 **Krill is intended for:**
 
-- **Organisations who hold address space from multiple Regional Internet
-  Registries (RIRs). Using Krill, ROAs can be managed seamlessly for all
-  resources within one system.**
+- **Organisations who represent multiple entities under one or more Regional
+  Internet Registries (RIRs). Using Krill, resources for all entities are
+  presented as a single pool so ROAs can be managed seamlessly.**
 - **Organisations that need to be able to delegate RPKI to their customers or
   different business units, so that that they can run their own CA and manage
-  ROAs themselves.**
+  ROAs themselves for a subset of the resources.**
 - **Organisations who do not wish to rely on the web interface of the hosted
   systems that the RIRs offer, but require RPKI management that is integrated
   with their own systems using a common UI or API.**
@@ -35,19 +35,26 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
 
 Using Krill, you can run your own RPKI Certificate Authority as a child of one
 or more parent CAs, usually a Regional Internet Registry (RIR) or National
-Internet Registry (NIR). With Krill you can run under multiple parent CAs
-seamlessly and transparently. This is especially convenient if your organisation
-holds address space in several RIR regions, as it can all be managed as a
-single pool.
+Internet Registry (NIR). 
 
-Krill can also act as a parent for child CAs. This means you can delegate
-resources down to children of your own, such as business units, departments,
-members or customers, who, in turn, manage ROAs themselves.
+Krill is especially convenient if your organisation holds address space in
+several RIR regions, or if your organisation represents multiple entities. All
+ASNs and IP resources you have across the various entities and RIR regions are
+presented as a single pool, allowing you to manage ROAs seamlessly and
+transparently.
+
+Krill can also act as a parent for child CAs. This means you can delegate some
+of your resources down to children of your own, such as business units,
+departments, members or customers, who, in turn, manage ROAs themselves.
+
+Krill can be managed with a web user interface, from the command line and
+through an API. The powerful user interface shows the RPKI validation status of
+your BGP announcements, warns about possible issues, and offers suggestions on
+ROAs you may want to create or remove.
 
 Lastly, Krill features a publication server so you can either publish your
 certificate and ROAs with a third party, such as your NIR or RIR, or you publish
-them yourself. Krill can be managed with a web user interface, from the command
-line and through an API.
+them yourself. 
 
 .. toctree::
    :maxdepth: 2
