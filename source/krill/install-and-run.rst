@@ -8,13 +8,14 @@ the Krill application somewhere. Please follow the steps below and you will be
 ready to :ref:`doc_krill_get_started`.
 
 Getting started with Krill is quite easy by either installing a Debian and
-Ubuntu package, building from Cargo or using Docker. In case you intend to serve
-your RPKI certificate and ROAs to the world yourself or you want to offer this
-as a service to others, you will also need to have a public Rsyncd and HTTPS web
+Ubuntu package, building from Cargo or using
+:ref:`Docker<doc_krill_running_docker>`. In case you intend to serve your RPKI
+certificate and ROAs to the world yourself or you want to offer this as a
+service to others, you will also need to have a public Rsyncd and HTTPS web
 server available.
 
-Installing with APT/dpkg
-------------------------
+Installing with Debian and Ubuntu Packages
+------------------------------------------
 
 Pre-built Debian/Ubuntu packages are available for recent operating system
 versions on x86_64 platforms. These can be installed using the standard ``apt``,
@@ -51,10 +52,14 @@ To install Krill from the NLnet Labs package repository:
 3. Install Krill using ``sudo apt-get update`` and ``sudo apt-get install krill``.
 4. Review the generated configuration file at ``/etc/krill.conf``.
    **Pay particular attention** to the ``service_uri`` and ``auth_token``
-   settings. Tip: The configuration file was generated for you using the
-   ``krillc config simple`` command.
+   settings. 
 5. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
    systemd to enable the Krill service at boot and to start it immediately.
+
+.. Tip:: The configuration file was generated for you using the 
+         ``krillc config simple`` command. You can find a full example
+         configuration file with defaults in `the GitHub repository
+         <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
 The krill daemon runs as user ``krill`` and stores its data in
 ``/var/lib/krill``. You can manage the Krill daemon using the following
