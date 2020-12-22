@@ -107,7 +107,7 @@ After receiving the command, the aggregate will return one of the following:
      is not saved. This is used as a feature whenever the 'republish' background
      job kicks in. A 'republish' command is sent, but it will only have an 
      actual effect if there was a need to republish — e.g. a manifest would need
-    to be re-issued before it would expire.
+     to be re-issued before it would expire.
 3. One or more events
      In this case there *is* a desired state change in a Krill aggregate. Krill 
      will now apply and persist the changes in the following order:
