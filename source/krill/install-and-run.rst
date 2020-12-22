@@ -7,10 +7,11 @@ Before you can start to use Krill you will need to install, configure and run
 the Krill application somewhere. Please follow the steps below and you will be
 ready to :ref:`doc_krill_get_started`.
 
-Getting started with Krill is quite easy either building from Cargo or running
-with Docker. In case you intend to serve your RPKI certificate and ROAs to the
-world yourself or you want to offer this as a service to others, you will also
-need to have a public Rsyncd and HTTPS web server available.
+Getting started with Krill is quite easy by either installing a Debian and
+Ubuntu package, building from Cargo or using Docker. In case you intend to serve
+your RPKI certificate and ROAs to the world yourself or you want to offer this
+as a service to others, you will also need to have a public Rsyncd and HTTPS web
+server available.
 
 Installing with APT/dpkg
 ------------------------
@@ -185,7 +186,7 @@ Krill will be in your path, too.
 
 
 Generate Configuration File
----------------------------
+"""""""""""""""""""""""""""
 
 After the installation has completed, there are just two things you need to
 configure before you can start using Krill. First, you will need a data
@@ -217,7 +218,7 @@ GitHub repository
 <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
 
 Start and Stop the Daemon
--------------------------
+"""""""""""""""""""""""""
 
 There is currently no standard script to start and stop Krill. You could use the
 following example script to start Krill. Make sure to update the
