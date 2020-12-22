@@ -215,3 +215,33 @@ and then store it in this directory.
 You can find a full example configuration file with defaults in `the
 GitHub repository
 <https://github.com/NLnetLabs/krill/blob/master/defaults/krill.conf>`_.
+
+Start and Stop the Daemon
+-------------------------
+
+There is currently no standard script to start and stop Krill. You could use the
+following example script to start Krill. Make sure to update the
+``DATA_DIR`` variable to your real data directory, and make sure you saved
+your :file:`krill.conf` file there.
+
+.. code-block:: bash
+
+  #!/bin/bash
+  KRILL="krill"
+  DATA_DIR="/path/to/data"
+  KRILL_PID="$DATA_DIR/krill.pid"
+  CONF="$DATA_DIR/krill.conf"
+  SCRIPT_OUT="$DATA_DIR/krill.log"
+
+  nohup $KRILL -c $CONF >$SCRIPT_OUT 2>&1 &
+  echo $! > $KRILL_PID
+
+You can use the following sample script to stop Krill:
+
+.. code-block:: bash
+
+  #!/bin/bash
+  DATA_DIR="/path/to/data"
+  KRILL_PID="$DATA_DIR/krill.pid"
+
+  kill `cat $KRILL_PID`
