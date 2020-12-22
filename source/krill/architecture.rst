@@ -18,8 +18,9 @@ how to make your setup redundant and how to save and restore backups.
 Used Disk Space
 ---------------
 
-Krill stores all of its data under the ``DATA_DIR``. For users who will operate
-a CA under an RIR / NIR parent the following sub-directories are relevant:
+Krill stores all of its data under the ``DATA_DIR`` specified in the
+configuration file. For users who will operate a CA under an RIR / NIR parent
+the following sub-directories are relevant:
 
 +-----------------+------------------------------------------------------------+
 | Directory       | Contents                                                   |
@@ -35,8 +36,7 @@ a CA under an RIR / NIR parent the following sub-directories are relevant:
            ``data_dir/rfc8181`` and ``data_dir/rfc6492`` for storing all
            protocol messages exchanged between your CAs and their parent
            and repository. If they are still present on your system, you
-           can safely remove them and save space - potentially quite a bit
-           of space.
+           can safely remove them and potentially save quite some space.
 
 Archiving
 """""""""
@@ -76,18 +76,17 @@ always be reconstituted by applying all past events. This concept is called
 so-called *aggregates*.
 
 Events are not applied directly. Rather, users of Krill and background jobs will
-send their intent to make a change through the API, which then translates
-this into a so-called *command*. Krill will then *lock* the target aggregate
-and send the command to it. This locking mechanism is not aware of any
-clustering, and it's a primary reason why Krill cannot run as an active-active
-cluster yet.
+send their intent to make a change through the API, which then translates this
+into a so-called *command*. Krill will then lock the target aggregate and send
+the command to it. This locking mechanism is not aware of any clustering, and
+it's a primary reason why Krill cannot run as an active-active cluster yet.
 
-Upon receiving a command the aggregate (your CA etc.) will do some work. In some
-cases a command can have a side-effect. For example it may instruct your CA to
-create a new key pair, after receiving entitlements from its parent. The key pair
-is random — applying a command again would result in a new random key pair.
+Upon receiving a command the aggregate will do some work. In some cases a
+command can have a side-effect. For example it may instruct your CA to create a
+new key pair, after receiving entitlements from its parent. The key pair is
+random — applying a command again would result in a new random key pair.
 Remember that commands are not re-applied to aggregates, only their resulting
-events are. Thus in this example there would be an event caused that contains
+events are. Thus, in this example there would be an event caused that contains
 the resulting key pair.
 
 After receiving the command, the aggregate will return one of the following:
@@ -98,7 +97,7 @@ After receiving the command, the aggregate will return one of the following:
      exist.
 
      When Krill encounters such an error, it will store the command with some
-     meta-information like the time the command was issued, and a summary of the
+     meta-information like the time the command was issued and a summary of the
      error, so that it can be seen in the history. It will then unlock the 
      aggregate, so that the next command can be sent to it.
 2. No error, zero events
@@ -126,24 +125,24 @@ After receiving the command, the aggregate will return one of the following:
         the time that the command was executed. And when `multiple users
         <https://github.com/NLnetLabs/krill/issues/294>`_ will be supported,
         this will also include *who* made a change.
-      * Finally the version information file for the aggregate is updated to 
+      * Finally, the version information file for the aggregate is updated to 
         indicate its current version, and command sequence counter.
 
-.. Warning:: Krill will crash, **by design**, if there is any failure in saving
-             any of the above files to disk. If Krill cannot persist its state
-             it should not try to carry on. It could lead to disjoints between
-             in-memory and on-disk state that are impossible to fix. Therefore,
-             crashing and forcing an operator to look at the system is the only
-             sensible thing Krill can now do. Fortunately, this should not
-             happen unless there is a serious system failure.
+.. Note:: Krill will crash, **by design**, if there is any failure in saving
+          any of the above files to disk. If Krill cannot persist its state
+          it should not try to carry on. It could lead to disjoints between
+          in-memory and on-disk state that are impossible to fix. Therefore,
+          crashing and forcing an operator to look at the system is the only
+          sensible thing Krill can now do. Fortunately, this should not
+          happen unless there is a serious system failure.
 
 Loading State at Startup
 ------------------------
 
 Krill will rebuild its internal state whenever it starts. If it finds that there
 are surplus events or commands compared to the latest information state for any
-of the aggregates, then it will assume that they are present because, either
-Krill stopped in the middle of writing a transaction of changes to disk, or your
+of the aggregates it will assume that they are present because, either Krill
+stopped in the middle of writing a transaction of changes to disk, or your
 backup was taken in the middle of a transaction. Such surplus files are backed
 up to a subdirectory called ``surplus`` under the relevant data directory, i.e.
 ``data_dir/pubd/0/surplus`` if you are using the Krill Publication Server and
@@ -160,9 +159,9 @@ state if:
 * the environment variable: ``KRILL_FORCE_RECOVER`` is set
 * the configuration file contains ``always_recover_data = true``
 
-Under normal circumstances, i.e. when there is no data corruption, performing
-this recovery will not be necessary. It can also take significant time due to
-all the checks performed. So, we do **not recommend** forcing this.
+Under normal circumstances performing this recovery will not be necessary. It
+can also take significant time due to all the checks performed. So, we do **not
+recommend** forcing recovery when there is no data corruption.
 
 Krill will try the following checks and recovery attempts:
 
@@ -196,8 +195,8 @@ Backup / Restore
 Backing up Krill is as simple as backing up its data directory. There is no need
 to stop Krill during the backup. To restore put back your data directory and
 make sure that you refer to it in the configuration file that you use for your
-Krill instance. As described above, if Krill finds that the backup contain an
-incomplete transaction, it will just fall back to the state prior to it.
+Krill instance. As described above, if Krill finds that the backup contains an
+incomplete transaction, it will fall back to the state prior to it.
 
 .. Warning:: You may want to **encrypt** your backup, because the 
              ``data_dir/ssl`` directory contains your private keys in clear 
@@ -231,9 +230,9 @@ before doing anything else.
 Krill Downgrades
 ----------------
 
-Downgrading Krill data is not supported. So, downgrading can only be achieved
-by installing a previous version of Krill and restoring a backup from before
-your upgrade.
+Downgrading Krill data is not supported. Downgrading can only be achieved
+by installing a previous version of Krill and restoring a backup that matches
+this version.
 
 .. _proxy_and_https:
 
@@ -241,7 +240,7 @@ Proxy and HTTPS
 ---------------
 
 Krill uses HTTPS and refuses to do plain HTTP. By default Krill will generate a
-2048 bit RSA key and self-signed certificate in :file:`/ssl` in the data
+2048 bit RSA key and self-signed certificate in ``/ssl`` in the data
 directory when it is first started. Replacing the self-signed certificate with a
 TLS certificate issued by a CA works, but has not been tested extensively. By
 default Krill will only be available under ``https://localhost:3000``.
