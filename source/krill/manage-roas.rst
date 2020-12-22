@@ -18,9 +18,9 @@ Krill to show the RPKI validation status of your announcements, warn about
 possible issues, and offer suggestions on ROAs you may want to create or
 remove.
 
-If you just set up your Krill instance you will see that your announcements all
-have the status :guilabel:`NOT FOUND`, meaning that you have not created any
-ROAs covering them yet.
+If you just set up your Krill instance all your announcements will have the
+status :guilabel:`NOT FOUND`, as you have not created any ROAs covering them
+yet.
 
 .. figure:: img/krill-ui-roas-bgp-start.png
     :align: center
@@ -72,21 +72,31 @@ REDUNDANT (AS0) | An AS0 ROA is considered redundant in case you have at least o
 
 =============== =========================================================================================
 
-    .. _krill_roa_suggestions:
+.. _krill_roas_no_bgp:
+
+If you disable the :guilabel:`Show BGP Info` toggle, Krill will just show you
+your plain ROAs. You can also disable downloading the RIS dump files altogether
+if you set the following directive in your krill.conf file:
+
+.. code-block:: bash
+
+  bgp_risdumps_enabled = false
+
+.. _krill_roa_suggestions:
 
 ROA Suggestions
 ---------------
 
-.. warning:: You should **always** verify the suggestions done by Krill. Krill 
+.. warning:: You should always verify the suggestions done by Krill. Krill 
              bases its analysis on information collected by the `RIPE NCC 
              Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_
              and saved in aggregated `dumps <http://www.ris.ripe.net/dumps/>`_ 
-             every 8 hours. So, the announcements that Krill sees may be 
+             every 8 hours. This means the announcements that Krill sees may be 
              outdated. More importantly they may include announcements by others
-             that you do **NOT** wish to allow. And you may not see your own
-             announcements if you inadvertently invalidated them, because such
-             announcements are often rejected and therefore may not reach the 
-             RIS Route Collectors.
+             that you do **NOT** wish to allow. In addition, you may not see 
+             your own announcements if you inadvertently invalidated them,
+             because such announcements are often rejected and therefore may not
+             reach the RIS Route Collectors.
 
              We plan to add support to use other data sources in future, which
              will allow you to inform Krill about the announcements that you do
@@ -146,17 +156,3 @@ practices, but you can change it as desired.
 
 If you prefer to use the CLI then you can manage ROAs using the subcommand
 :ref:`krillc roas <cmd_krillc_roas>`.
-
-
-.. _krill_roas_no_bgp:
-
-Disable BGP Info
-----------------
-
-If you disable the :guilabel:`Show BGP Info` toggle, Krill will just show you your plain ROAs. You
-can also disable downloading the RIS dump files altogether if you set the following directive
-in your krill.conf file:
-
-.. code-block:: bash
-
-  bgp_risdumps_enabled = false
