@@ -60,12 +60,11 @@ We have no tooling for this yet, but we have an `issue
 Saving State Changes
 --------------------
 
-You can skip this section if you're not interested in the gory details. However,
-understanding this section will help to explain how backup and restore works in
-Krill, and why a standby fail-over node can be used, but Krill's locking and
-storage mechanism needs to be changed in order to make
-`multiple active nodes <https://github.com/NLnetLabs/krill/issues/20>`_
-work.
+You can skip this section if you're not interested in all the minute details. It
+is intended to explain how backup and restore works in Krill, and why a standby
+fail-over node can be used, but Krill's locking and storage mechanism needs to
+be changed in order to make `multiple active nodes
+<https://github.com/NLnetLabs/krill/issues/20>`_ work.
 
 State changes in Krill are tracked using *events*. Krill CA(s) and Publication
 Servers are versioned. They can only be changed by applying an *event* for a
@@ -189,8 +188,8 @@ always verify your ROAs and/or delegations to child CAs in such cases.
 Of course, it's best to avoid data corruption in the first place. Please monitor
 available disk space, and make regular backups.
 
-Backup / Restore
-----------------
+Backup and Restore
+------------------
 
 Backing up Krill is as simple as backing up its data directory. There is no need
 to stop Krill during the backup. To restore put back your data directory and

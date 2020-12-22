@@ -81,9 +81,8 @@ delegated resource certificates.
 If you run Krill as a publication server, you will be faced with running a
 public service with all related responsibilities, such as uptime and DDoS
 protection. This option is not recommended if you don't have a clear need
-to run your own server.
-
-Read more about this option in :ref:`doc_krill_publication_server`
+to run your own server. Read more about this option in 
+:ref:`doc_krill_publication_server`.
 
 System Requirements
 -------------------

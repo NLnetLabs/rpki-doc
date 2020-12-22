@@ -3,10 +3,6 @@
 Install and Run
 ===============
 
-Before you can start to use Krill you will need to install, configure and run
-the Krill application somewhere. Please follow the steps below and you will be
-ready to :ref:`doc_krill_get_started`.
-
 Getting started with Krill is quite easy by either installing a Debian and
 Ubuntu package, building from Cargo or using
 :ref:`Docker<doc_krill_running_docker>`. In case you intend to serve your RPKI
@@ -64,7 +60,8 @@ The krill daemon runs as user ``krill`` and stores its data in
 ``/var/lib/krill``. You can manage the Krill daemon using the following
 commands:
 
-- Review the Krill logs with ``journalctl -u krill``, or view just the most recent entries with ``sytemctl status krill``.
+- Review the Krill logs with ``journalctl -u krill``, or view just the most 
+  recent entries with ``systemctl status krill``.
 
 - Stop Krill with ``sudo systemctl stop krill``.
 
@@ -75,8 +72,8 @@ commands:
 Installing with Cargo
 ---------------------
 
-There are three things you need for Krill: Rust, a C toolchain and OpenSSL.
-You can install Krill on any Operating System where you can fulfil these
+There are three things you need for Krill: Rust, the C toolchain and OpenSSL.
+You can install Krill on any operating system where you can fulfil these
 requirements, but we will assume that you will run this on a UNIX-like OS.
 
 Rust
@@ -188,7 +185,6 @@ The command will build Krill and install it in the same directory
 that cargo itself lives in, likely :file:`$HOME/.cargo/bin`. This means
 Krill will be in your path, too.
 
-
 Generate Configuration File
 """""""""""""""""""""""""""
 
@@ -214,8 +210,8 @@ and then store it in this directory.
   :ref:`krillc config simple<cmd_krillc_config_simple>` --token correct-horse-battery-staple --data ~/data/ > ~/data/krill.conf
 
 .. Note:: If you wish to run a self-hosted RPKI repository with Krill you will
-          need to use a different ``krillc config`` command. See :ref:`doc_krill_publication_server`
-          for more details.
+          need to use a different ``krillc config`` command. 
+          See :ref:`doc_krill_publication_server` for more details.
 
 You can find a full example configuration file with defaults in `the
 GitHub repository
