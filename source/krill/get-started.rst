@@ -33,8 +33,8 @@ running Krill, or set up local port forwarding with SSH, for example:
   ssh -L 3000:localhost:3000 user@krillserver.example.net
 
 Here we will guide you through the set up process using the UI, but we will also
-link to the relevant subcommands of the :ref:`command line interface (CLI)<doc_krill_cli>`
-
+link to the relevant subcommands of the :ref:`command line interface
+(CLI)<doc_krill_cli>`
 
 Login
 -----
@@ -71,9 +71,97 @@ recognise your organisation. Once set, the handle cannot be changed.
 
     Enter a handle for your Certification Authority
 
-If you are using the CLI you can create your CA using the subcommand :ref:`krillc add<cmd_krillc_add>`.
+If you are using the CLI you can create your CA using the subcommand
+:ref:`krillc add<cmd_krillc_add>`.
+
+.. _member_portals:
+
+RIR and NIR Interactions
+------------------------
+
+If you hold resources in one or more RIR or NIR regions, you will need to have
+access to the respective member portals and the permission to configure
+delegated RPKI.
+
+  :AFRINIC:
+       https://my.afrinic.net
+
+  :APNIC:
+       https://myapnic.net
+
+  :ARIN:
+       https://account.arin.net
+
+  :LACNIC:
+       https://milacnic.lacnic.net
+
+  :RIPE NCC:
+       https://my.ripe.net
+
+Most RIRs have a few considerations to keep in mind.
+
+AFRINIC
+"""""""
+
+AFRINIC have delegated RPKI available in their test environment, but it’s not
+operational yet. Work to bring it to production is planned for 2021.
+
+APNIC
+"""""
+
+If you are already using the hosted RPKI service provided by APNIC and you would
+like to switch to delegated RPKI, there is currently no option for this with
+MyAPNIC. Please open a ticket with the APNIC help desk to resolve this.
+
+Please note that APNIC offers RPKI publication as a service upon request. It is
+highly recommended to make use of this, as it relieves you of the need to run a
+highly available repository yourself.
+
+LACNIC
+""""""
+
+Although LACNIC offers delegated RPKI, it is not possible to configure this in
+their member portal yet. While the procedures are still being defined, please
+open a ticket via hostmaster@lacnic.net to get started.
+
+RIPE NCC
+""""""""
+
+When you are a RIPE NCC member who does not have RPKI configured, you will be
+presented with a choice if you would like to use hosted or non-hosted RPKI.
+
+.. figure:: img/ripencc-hosted-non-hosted.png
+    :align: center
+    :width: 100%
+    :alt: RIPE NCC RPKI setup screen
+
+    RIPE NCC RPKI setup screen
+
+If you want to set up delegated RPKI with Krill, you will have to choose
+non-hosted. If you are already using the hosted service and you would like to
+switch, then there is currently no option for that in the RIPE NCC portal.
+
+Make a note of the ROAs you created and then send an email to rpki@ripe.net
+requesting your hosted CA to be deleted, making sure to mention your
+registration id. After deletion, you will land on the setup screen from where
+you can choose non-hosted RPKI.
 
 .. _doc_krill_using_ui_repository_setup:
+
+Hosted Publication Server
+-------------------------
+
+Your RIR or NIR may also provide an RPKI publication server. You are free to
+publish your certificate and ROAs anywhere you like, so a third party may
+provide an RPKI publication server as well. Using an RPKI publication server
+relieves you of the responsibility to keep a public rsync and web server running
+at all times to make your certificate and ROAs available to the world.
+
+Of the five RIRs, only APNIC currently offers RPKI publication as a service for
+their members, upon request. Most other RIRs have it on their roadmap. NIC.br,
+the Brazilian NIR, provides an RPKI repository server for their members as well.
+This means that in most cases you will have to publish your certificate and ROAs
+yourself, as described in the :ref:`doc_krill_publication_server` section.
 
 Repository Setup
 ----------------
@@ -112,7 +200,7 @@ Parent Setup
 ------------
 
 After successfully configuring the repository, the next step is to configure
-your parent CA. You will need to present your CA's :RFC:`8183` Child Request XML
+your parent CA. You will need to present your CA's :RFC:`8183` child request XML
 file to your parent. You can get this file using the CLI subcommand
 :ref:`krillc parents request<cmd_krillc_parents_request>`, or you can simply
 use the UI:
@@ -134,3 +222,7 @@ you can simply paste or upload it using the UI:
     :alt: Parent response
 
     Paste or upload the parent response XML
+    
+After a few moments your parent will process your entitled resources and you
+will see them appearing on your certificate which is visible in the ROAs tab. 
+Now you can start creating ROAs.

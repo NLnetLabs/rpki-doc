@@ -58,7 +58,6 @@ line and through an API.
    install-and-run
    get-started
    manage-roas
-   parent-interactions
    cli
    api
    monitoring
