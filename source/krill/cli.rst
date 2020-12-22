@@ -20,7 +20,7 @@ subcommands, and some arguments. Help is built-in:
 
 .. code-block:: bash
 
-   $ :ref:`krillc help<cmd_krillc_help>` [subcommand..]
+   $ krillc help [subcommand..]
 
    USAGE:
        krillc <subcommand..> [FLAGS] [OPTIONS]
