@@ -11,13 +11,26 @@ you are now running delegated RPKI. You can now start creating ROAs.
 Show BGP Info
 -------------
 
-Krill automatically downloads BGP announcement information from RIPE RIS and
-uses this to analyse the known BGP announcements for the address space on your
-resource certificate(s). This allows Krill to show the RPKI validation status
-of your announcements, warn about possible issues, and do some suggestions on
-ROAs you may want to create or remove.
+Krill automatically downloads BGP announcement information from the RIPE NCC
+Routing Information Service (RIS) and uses this to analyse the known BGP
+announcements for the address space on your resource certificate(s). This allows
+Krill to show the RPKI validation status of your announcements, warn about
+possible issues, and offer suggestions on ROAs you may want to create or
+remove.
 
-Krill recognises the following 'States' in its analysis:
+If you just set up your Krill instance you will see that your announcements all
+have the status :guilabel:`NOT FOUND`, meaning that you have not created any
+ROAs covering them yet.
+
+.. figure:: img/krill-ui-roas-bgp-start.png
+    :align: center
+    :width: 100%
+    :alt: ROA overview in relation to BGP info
+
+    When you first start, all your announcements are 'NOT FOUND'
+
+Once you start authorising BGP announcements made with your IP prefixes, Krill
+recognises the following 'States' in its analysis:
 
 =============== =========================================================================================
 State           Explanation
@@ -59,34 +72,25 @@ REDUNDANT (AS0) | An AS0 ROA is considered redundant in case you have at least o
 
 =============== =========================================================================================
 
-If you just set up your Krill instance you will see that your announcements all
-have the status ``NOT FOUND``, meaning that you have not created any ROAs covering
-them yet.
-
-.. figure:: img/krill-ui-roas-bgp-start.png
-    :align: center
-    :width: 100%
-    :alt: ROA overview in relation to BGP info
-
-    When you first start, all your announcements are 'NOT FOUND'
-
-
     .. _krill_roa_suggestions:
 
 ROA Suggestions
 ---------------
 
-    .. warning:: You should **always** verify the suggestions done by Krill. Krill bases its analysis
-                 on information collected by the `RIPE NCC Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_
-                 and saved in aggregated `dumps <http://www.ris.ripe.net/dumps/>`_ every 8 hours. So,
-                 the announcements that Krill sees may be outdated. More importantly they may include
-                 announcements by others that you do **NOT** wish to allow. And you may not see your
-                 own announcements if you inadvertently invalidated them, because such announcements
-                 are often rejected and therefore may not reach the RIS Route Collectors.
+.. warning:: You should **always** verify the suggestions done by Krill. Krill 
+             bases its analysis on information collected by the `RIPE NCC 
+             Routing Information Service (RIS) <https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris>`_
+             and saved in aggregated `dumps <http://www.ris.ripe.net/dumps/>`_ 
+             every 8 hours. So, the announcements that Krill sees may be 
+             outdated. More importantly they may include announcements by others
+             that you do **NOT** wish to allow. And you may not see your own
+             announcements if you inadvertently invalidated them, because such
+             announcements are often rejected and therefore may not reach the 
+             RIS Route Collectors.
 
-                 We plan to add support to use other data sources in future, which will allow you to
-                 inform Krill about the announcements that you do on your own eBGP sessions.
-
+             We plan to add support to use other data sources in future, which
+             will allow you to inform Krill about the announcements that you do
+             on your own eBGP sessions.
 
 If you click :guilabel:`Analyse my ROAs` under the table in the ROAs tab, Krill will suggest the
 following changes for the following 'State' values:
