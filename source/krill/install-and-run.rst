@@ -51,8 +51,7 @@ To install Krill from the NLnet Labs package repository:
 
 3. Install Krill using ``sudo apt-get update`` and ``sudo apt-get install krill``.
 4. Review the generated configuration file at ``/etc/krill.conf``.
-   **Pay particular attention** to the ``service_uri`` and ``auth_token``
-   settings. 
+   Pay particular attention to the ``service_uri`` and ``auth_token`` settings. 
 5. Once happy with the settings use ``sudo systemctl enable --now krill`` to instruct
    systemd to enable the Krill service at boot and to start it immediately.
 

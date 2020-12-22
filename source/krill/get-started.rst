@@ -3,25 +3,26 @@
 Get Started with Krill
 ======================
 
-Before you can start managing your own ROAs you need to do a one time setup
-where you:
+Before you can start managing your own Route Origin Authorisations (ROAs) you
+need to do a one time setup where you:
 
-- create your CA
-- connect to Publication Server
-- connect to Parent CA (typically a Regional or National Internet Registry)
+- create your Certificate Authority (CA)
+- connect to a Publication Server
+- connect to a Parent CA (typically a Regional or National Internet Registry)
 
 This can be easily achieved using the user interface. Connecting to the
-Publication Server and Parent CA is done by exchanging a couple of XML files. After
-this initial setup, and you can simply :ref:`manage your ROAs<doc_krill_manage_roas>`.
+Publication Server and Parent CA is done by exchanging a couple of XML files.
+After this initial setup, and you can simply :ref:`manage your
+ROAs<doc_krill_manage_roas>`.
 
 If you just want to try out Krill (or a new version) you can use the
 `testbed environment <https://blog.nlnetlabs.nl/testing----123-delegated-rpki/>`_
 provided by NLnet Labs for this.
 
 If you are using the defaults you can access the user interface in a browser on
-the server running Krill at ``https://localhost:3000``. By default, Krill generates
-a self-signed TLS certificate, so you will have to accept the security warning
-that your browser will give you.
+the server running Krill at ``https://localhost:3000``. By default, Krill
+generates a self-signed TLS certificate, so you will have to accept the security
+warning that your browser will give you.
 
 If you want to access the UI, or use the CLI, from another computer, you can
 either :ref:`set up a reverse proxy<proxy_and_https>` on your server
@@ -47,16 +48,15 @@ The login will ask you to enter the secret token you configured for Krill.
 
     Enter your secret token to access Krill
 
-If you are using the CLI you will need to specify the token using the `--token`
-option. Because the CLI does not have a session, you will need to specify this
-for each command, or you set the the `KRILL_CLI_TOKEN` environment variable and
-save yourself the trouble of repeating it.
+If you are using the CLI you will need to specify the token using the
+``--token`` option. Because the CLI does not have a session, you will need to
+specify this for each command. Alternatively, you can set the the
+``KRILL_CLI_TOKEN`` environment variable.
 
+Create your Certificate Authority
+---------------------------------
 
-Create your Certification Authority
------------------------------------
-
-Next, you will see the Welcome screen where you can create your Certification
+Next, you will see the Welcome screen where you can create your Certificate
 Authority (CA). It will be used to configure delegated RPKI with one or multiple
 parent CAs, usually your Regional or National Internet Registry.
 
@@ -83,10 +83,10 @@ where it will publish. You can add a parent before configuring a repository for
 your CA, but in that case Krill will postpone requesting a certificate until
 you have done so.
 
-In order to register your CA as a publisher, you will need to copy the RFC 8183
-Publisher Request XML and supply it to your Publication Server. You can retrieve
-this file with the CLI subcommand :ref:`krillc repo request<cmd_krillc_repo_request>`,
-or you can simply use the UI:
+In order to register your CA as a publisher, you will need to copy the
+:RFC:`8183` Publisher Request XML and supply it to your Publication Server. You
+can retrieve this file with the CLI subcommand :ref:`krillc repo
+request<cmd_krillc_repo_request>`, or you can simply use the UI:
 
 .. figure:: img/krill-ui-publisher-request.png
     :align: center
@@ -112,7 +112,7 @@ Parent Setup
 ------------
 
 After successfully configuring the repository, the next step is to configure
-your parent CA. You will need to present your CA's RFC 8183 Child Request XML
+your parent CA. You will need to present your CA's :RFC:`8183` Child Request XML
 file to your parent. You can get this file using the CLI subcommand
 :ref:`krillc parents request<cmd_krillc_parents_request>`, or you can simply
 use the UI:
