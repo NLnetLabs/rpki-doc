@@ -26,9 +26,10 @@ your BGP announcements, warns about possible issues, and offers suggestions on
 ROAs you may want to create or remove. Prometheus endpoints offer monitoring
 of system status, ROA misconfigurations and possible BGP hijacks.
 
-Lastly, Krill features a publication server so you can either publish your
-certificate and ROAs with a third party, such as your NIR or RIR, or you publish
-them yourself. 
+.. figure:: img/krill-ui-roa-demo.png
+    :align: center
+    :width: 100%
+    :alt: Managing ROAs with Krill
 
 You are welcome to ask questions or post comments and ideas on our `RPKI mailing
 list <https://nlnetlabs.nl/mailman/listinfo/rpki>`_. If you find a bug in Krill,
