@@ -126,10 +126,15 @@ A Misconfigured ROA Causes a Legitimate Route to be Considered RPKI Invalid
 
 When an operator or a script generates a ROA that causes a legitimate route to
 be considered RPKI Invalid, it may (severely) affect reachability of the
-network, as other networks will start dropping the BGP announcement. 
+network, as it is increasingly likely that other networks will start dropping
+the BGP announcement. 
 
 Monitoring should be in place to detect misconfigured ROAs. If any legitimate
-BGP announcement has the state *RPKI Invalid*.
+BGP announcement has the state *RPKI Invalid* the operator should remove the ROA
+and replace it with a correct one. Note that verifying RPKI validity state does
+not have to be performed on actual BGP announcements seen in the DFZ. An ASN and
+prefix combo can be fed to several Relying Party software packages, which will
+return the RPKI validity state based on its current cache.
 
 An Incorrect ROA is Published for the Repository Servers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
