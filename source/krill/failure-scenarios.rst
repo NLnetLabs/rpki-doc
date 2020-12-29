@@ -16,8 +16,8 @@ on your certificate, as well as reissue certificates, ROAs and all other objects
 before they expire or become stale. If Krill does go down, you have 8 hours to
 bring it back up before data starts going stale.
 
-Krill Certificate Authority
----------------------------
+Hardware and Software Failures
+------------------------------
 
 Failure of the Primary Krill CA Server
 """"""""""""""""""""""""""""""""""""""
@@ -53,10 +53,9 @@ properly. It will try to go back to the last possible recoverable state if:
 * the configuration file contains ``always_recover_data = true``
 
 Under normal circumstances performing this recovery will not be necessary. It
-can also take significant time due to all the checks performed. So, we do **not
-recommend** forcing recovery when there is no data corruption.
-
-See :ref:`Recover State at Startup<recover_state_startup>` for more details.
+can also take significant time due to all the checks performed. So, we do not
+recommend forcing recovery when there is no data corruption. See :ref:`Recover
+State at Startup<recover_state_startup>` for more details.
 
 During this failure, Relying party software will continue to be able to download
 and verify existing ROAs. 
@@ -72,13 +71,8 @@ read the latest snapshots of its state components and modifications since then.
 Krill will start if those files are unaffected.
 
 Similar to the situation with a full disk, Krill will try to go back to the last
-possible recoverable state if:
-
-* it cannot rebuild its state at startup due to data corruption
-* the environment variable: ``KRILL_FORCE_RECOVER`` is set
-* the configuration file contains ``always_recover_data = true``
-
-See :ref:`Recover State at Startup<recover_state_startup>` for more details.
+possible recoverable state. See :ref:`Recover State at
+Startup<recover_state_startup>` for more details.
 
 Krill can also be restored from a backup, but it would result in losing all
 changes from after the backup. As described above, if Krill finds that the
@@ -87,19 +81,6 @@ to it.
 
 During this failure, Relying party software will continue to be able to download
 and verify existing ROAs. 
-
-An Incorrect ROA is Published for the Repository Servers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-When one or more ROAs are generated that cause the RPKI repository prefix to be
-considered *RPKI INVALID*, Relying Party software will retrieve these ROAs and
-promptly those networks will drop the repository prefix. This means that even
-if/when operators fix the ROAs, the validators will not be able to retrieve the
-updated information until their cached manifest and CRLs go stale. This issue
-can persist for a minimum of 8 hours and a maximum of 24 hours.
-
-Krill Publication Server
-------------------------
 
 The Disk on the Krill Publication Server is Full
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -123,11 +104,11 @@ and verify existing ROAs.
 Failure of one of the Repository Servers
 """"""""""""""""""""""""""""""""""""""""
 
-When a repository server running the web server and/or rsyncd goes down or the
-service dies, the load balancer should mitigate the issue. An error should be
-generated and the failed instance should be taken out of the pool. During this
-failure, Relying party software will continue to be able to download and verify
-ROAs from the other repository servers that are configured. 
+When a repository server running the web server and/or rsyncd server goes down
+or the service dies, the load balancer should mitigate the issue. An error
+should be generated and the failed instance should be taken out of the pool.
+During this failure, Relying party software will continue to be able to download
+and verify ROAs from the other repository servers that are configured. 
 
 In the extreme case when all repository servers become unavailable, Relying
 Party software that has already downloaded the repository content will use
@@ -136,4 +117,29 @@ of BGP announcements will be unaffected between 8 and 24 hours, after which ROAs
 and all other objects expire or become stale. Relying Party software that has
 never downloaded the repository contents will not affect the RPKI validity of
 any BGP announcements; they will have the RPKI state *Not Found*.
+
+Usage Failures
+--------------
+
+A Misconfigured ROA Causes a Legitimate Route to be Considered RPKI Invalid
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When an operator or a script generates a ROA that causes a legitimate route to
+be considered RPKI Invalid, it may (severely) affect reachability of the
+network, as other networks will start dropping the BGP announcement. 
+
+Monitoring should be in place to detect misconfigured ROAs. If any legitimate
+BGP announcement has the state *RPKI Invalid*.
+
+An Incorrect ROA is Published for the Repository Servers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When one or more ROAs are generated that cause the prefix that contains the RPKI
+repository server IP to be considered *RPKI Invalid*, Relying Party software
+will retrieve these ROAs and promptly those networks will drop the repository
+prefix. This means that even if/when operators fix the ROAs, the validators will
+not be able to retrieve the updated information until their cached manifest and
+CRLs go stale. This issue can persist for a minimum of 8 hours and a maximum of
+24 hours.
+
 
