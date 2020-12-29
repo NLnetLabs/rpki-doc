@@ -226,12 +226,9 @@ you can do the following:
 Krill will then perform the data migrations, rebuild its state, and then exit
 before doing anything else.
 
-Krill Downgrades
-----------------
-
-Downgrading Krill data is not supported. Downgrading can only be achieved
-by installing a previous version of Krill and restoring a backup that matches
-this version.
+.. Note::  Downgrading Krill data is not supported. Downgrading can only be 
+           achieved by installing a previous version of Krill and restoring a 
+           backup that matches this version.
 
 .. _proxy_and_https:
 
