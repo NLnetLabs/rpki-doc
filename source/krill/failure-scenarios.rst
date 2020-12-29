@@ -117,7 +117,7 @@ content within 5 minutes if it had pending unpublished changes. If not, then a
 manual re-sync can be triggered through the user interface, the command line or
 the API.
 
-During this failure, Relying party software will continue to be able to download
+During this failure, Relying Party software will continue to be able to download
 and verify existing ROAs. 
 
 Failure of one of the Repository Servers
@@ -128,4 +128,12 @@ service dies, the load balancer should mitigate the issue. An error should be
 generated and the failed instance should be taken out of the pool. During this
 failure, Relying party software will continue to be able to download and verify
 ROAs from the other repository servers that are configured. 
+
+In the extreme case when all repository servers become unavailable, Relying
+Party software that has already downloaded the repository content will use
+cached data on disk. Depending on when data was last fetched, the RPKI validity
+of BGP announcements will be unaffected between 8 and 24 hours, after which ROAs
+and all other objects expire or become stale. Relying Party software that has
+never downloaded the repository contents will not affect the RPKI validity of
+any BGP announcements; they will have the RPKI state *Not Found*.
 
