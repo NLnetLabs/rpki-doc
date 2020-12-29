@@ -147,6 +147,7 @@ up to a subdirectory called ``surplus`` under the relevant data directory, i.e.
 ``data_dir/pubd/0/surplus`` if you are using the Krill Publication Server and
 ``data_dir/cas/<your-ca-name>/surplus`` for each of your CAs.
 
+.. _recover_state_startup:
 
 Recover State at Startup
 ------------------------

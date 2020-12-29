@@ -50,6 +50,7 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
    cli
    api
    monitoring
+   failure-scenarios
    publication-server
    docker
    Running with Krill Manager <krillmanager/index>
