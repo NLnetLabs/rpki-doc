@@ -70,7 +70,12 @@ following settings:
   # your server to publish. You should provide the 'base' hostname
   # and optional port only. The actual URI that your CAs will connect
   # to is: $service_uri/rfc8181
-  service_uri = "https://your.host/"
+  #
+  # NOTE: This can be a different base URI from the one used to
+  #       to serve the content of your repository - that URI is
+  #       is configured when you initialise your Publication Server
+  #       through the CLI.
+  service_uri = "https://krill-repo-server.example.com/"
 
   # We also recommend that you archive old publication events and
   # use a process to either delete the archived data, or move it
@@ -216,16 +221,16 @@ URIs reflect **your** setup of course:
 
 .. code-block:: bash
 
-  $ krillpubc server init --rrdp https://example.com/rrdp/ --rsync rsync://example.com/repo/
+  $ krillpubc server init --rrdp https://krillrepo.example.com/rrdp/ --rsync rsync://krillrepo.example.com/repo/
 
 Provided that you also set up your Repository Servers, and that they are in sync,
 you can now verify that the set up works. Try to get the 'notification.xml' file
-under your base uri, e.g. https://example.com/rrdp/notification.xml. Verify that
+under your base uri, e.g. https://krillrepo.example.com/rrdp/notification.xml. Verify that
 access to your rsync server works by doing:
 
 .. code-block:: bash
 
-  $ rsync --list-only rsync://example.com/repo/
+  $ rsync --list-only rsync://krillrepo.example.com/repo/
 
 If you are satisfied that things work, you can proceed to add publishers for your
 CAs. If not, then this is the moment to clear your Publication Server instance so
@@ -265,7 +270,7 @@ You can list all current publishers using the following command:
 .. code-block:: bash
 
   $ krillpubc list
-  Publishers: ca
+  Publishers: acme-corp-intl
 
 
 Add a Publisher
