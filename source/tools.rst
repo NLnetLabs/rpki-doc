@@ -7,7 +7,7 @@ Software Projects
 
 This section provides an overview of all well known open source projects that
 support RPKI. It includes Relying Party software for validating RPKI data,
-Certificate  Authority software to run RPKI on your own infrastructure and
+Certificate Authority software to run RPKI on your own infrastructure and
 supporting tools that help deployment and integration.
 
 .. index:: Relying Party software
@@ -18,48 +18,28 @@ supporting tools that help deployment and integration.
 Relying Party Software
 ----------------------
 
-`Dragon Research Labs Validating Cache <https://github.com/dragonresearch/rpki.net>`_
-   Software to fetch and validate RPKI certificates and serve them to routers by Dragon
-   Research Labs, written in the Python programming language.
+.. csv-table:: 
+   :header: "Name", "Maintainer", "Language", "Last Commit" 
 
-`Fort Validator <https://github.com/NICMx/FORT-validator>`_
-   MIT-licensed Relying Party software by NIC.mx, written in C.
-
-`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_
-   Cloudflare's Relying Party software, written in the Go programming language.
-
-`RIPE NCC RPKI Validator <https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources>`_
-   Full-featured RPKI relying party software, written by the RIPE NCC
-   in the Java programming language.
-
-`Routinator <https://nlnetlabs.nl/projects/rpki/routinator/>`_
-   RPKI relying party software written by NLnet Labs in the Rust programming language,
-   designed to have a small footprint and great portability.
-
-`rpki-client(8) <https://rpki-client.org/>`_
-   rpki-client is written in C as part of the OpenBSD project, and has been ported to
-   various Linux distributions. Designed to be secure and simple to use.
-
-`rpki-prover <https://github.com/lolepezy/rpki-prover>`_
-   Relying party software written by Misha Puzanov, in Haskell.
-
-`RPSTIR <https://github.com/bgpsecurity/rpstir/>`_
-   Relying Party Security Technology for Internet Routing (RPSTIR) software,
-   initially written by Raytheon BBN Technologies in the C programming language,
-   now maintained by ZDNS.
+   "`FORT Validator <https://github.com/NICMx/FORT-validator>`_", "NIC.mx", "C", ".. image:: https://img.shields.io/github/last-commit/NICMx/FORT-validator?label=%20&style=flat-square"
+   "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/cfrpki?label=%20&style=flat-square"
+   "`rcynic <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"   
+   "`Routinator <https://github.com/NLnetLabs/routinator>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/routinator?label=%20&style=flat-square"
+   "`rpki-client <https://github.com/rpki-client/rpki-client-portable>`_", "OpenBSD", "C", ".. image:: https://img.shields.io/github/last-commit/rpki-client/rpki-client-portable?label=%20&style=flat-square"
+   "`rpki-prover <https://github.com/lolepezy/rpki-prover>`_", "Misha Puzanov", "Haskell", ".. image:: https://img.shields.io/github/last-commit/lolepezy/rpki-prover?label=%20&style=flat-square"
+   "`RPKI Validator <https://github.com/RIPE-NCC/rpki-validator-3>`_", "RIPE NCC", "Java", ".. image:: https://img.shields.io/github/last-commit/RIPE-NCC/rpki-validator-3?label=%20&style=flat-square"
+   "`RPSTIR2 <https://github.com/bgpsecurity/rpstir2>`_", "ZDNS", "Go", ".. image:: https://img.shields.io/github/last-commit/bgpsecurity/rpstir2?label=%20&style=flat-square"
 
 .. index:: Certificate Authority software
 
 Certificate Authority Software
 ------------------------------
 
-`Dragon Research Labs Certificate Authority <https://github.com/dragonresearch/rpki.net>`_
-   RPKI Certificate Authority software by Dragon Research Labs, written in
-   the Python programming language.
+.. csv-table:: 
+   :header: "Name", "Maintainer", "Language", Last Commit 
 
-`Krill <https://nlnetlabs.nl/projects/rpki/krill/>`_
-   RPKI Certificate Authority software by NLnet Labs, written in the Rust
-   programming language.
+   "`Krill <https://github.com/NLnetLabs/krill>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/NLnetLabs/krill?label=%20&style=flat-square"
+   "`rpkid <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"
 
 Supporting Tools
 ----------------
@@ -98,7 +78,7 @@ Supporting Tools
    Validation (:RFC:`6811`). This also enables the maintenance of
    router keys, which are required to deploy BGPSec.
 
-`RTRTR <https://www.nlnetlabs.nl/projects/rpki/rtrtr/>`__
+`RTRTR <https://github.com/NLnetLabs/rtrtr>`__
    An RPKI data proxy, allowing operators to centralise validation and 
    distribute the validated data to various points of presence via the RTR
    protocol or JSON over HTTPS.
