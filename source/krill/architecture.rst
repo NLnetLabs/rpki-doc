@@ -111,7 +111,7 @@ After receiving the command, the aggregate will return one of the following:
      will now apply and persist the changes in the following order:
 
       * Each event is stored. If an event already exists for a version, then
-        then the update is aborted. Because Krill cannot run as a cluster, and
+        the update is aborted. Because Krill cannot run as a cluster, and
         it uses locking to ensure that updates are done in sequence, this will
         only fail on the first event if a user tried to issue concurrent updates
         to the same CA.
