@@ -39,7 +39,10 @@ Relying Party Software
 `rpki-client(8) <https://rpki-client.org/>`_
    rpki-client is written in C as part of the OpenBSD project, and has been ported to
    various Linux distributions. Designed to be secure and simple to use.
-   
+
+`rpki-prover <https://github.com/lolepezy/rpki-prover>`_
+   Relying party software written by Misha Puzanov, in Haskell.
+
 `RPSTIR <https://github.com/bgpsecurity/rpstir/>`_
    Relying Party Security Technology for Internet Routing (RPSTIR) software,
    initially written by Raytheon BBN Technologies in the C programming language,
