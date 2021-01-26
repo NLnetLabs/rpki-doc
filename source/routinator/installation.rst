@@ -41,10 +41,6 @@ release version, you can run:
 Quick Start with Debian and Ubuntu Packages
 -------------------------------------------
 
-.. note:: These packages are provided on a best effort basis as a convenience 
-          for our community until such time as equivalent official operating 
-          system repository provided packages become available.
-
 Assuming you have a machine running a recent Debian or Ubuntu distribution, you
 can install Routinator from our `software package repository
 <https://packages.nlnetlabs.nl>`_. To use this repository, add the line below
