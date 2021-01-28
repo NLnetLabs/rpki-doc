@@ -47,8 +47,8 @@ not any of the other paths, such as those serving the various VRP output
 formats.
 
 To only make the user interface available through a reverse proxy, this is what
-your NGIX configuration needs at a minimum when running it on the same server as
-Routinator runs on, using port 8323:
+your NGINX configuration needs at a minimum when running it on the same server
+as Routinator runs on, using port 8323:
 
 .. code-block:: text
 
