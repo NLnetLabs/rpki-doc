@@ -126,6 +126,8 @@ Here are some examples filtering for an ASN and prefix in CSV and JSON format:
      ]
    }
 
+.. _doc_routinator_validity_checker:
+
 Validity Checker
 ----------------
 
@@ -177,4 +179,5 @@ result is included.
    }
 
 If you run the HTTP service in daemon mode, this information is also available
-at the ``/validity`` endpoint.
+via the :ref:`user interface <doc_routinator_ui>` and at the ``/validity`` API
+endpoint.
