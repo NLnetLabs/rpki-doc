@@ -175,7 +175,7 @@ The easiest way to get Krill is to leave it to cargo by saying:
 
 .. code-block:: bash
 
-   cargo install krill
+   cargo install --locked krill
 
 If you want to update an installed version, you run the same command but
 add the ``-f`` flag, a.k.a. force, to approve overwriting the installed
