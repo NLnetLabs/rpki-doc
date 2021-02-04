@@ -36,6 +36,7 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
 - `The rpki-client console <http://console.rpki-client.org>`_, by the OpenBSD project
 - `JDR: explore, inspect and troubleshoot anything RPKI <https://jdr.nlnetlabs.nl/>`_, by NLnet Labs
+- `RPKIviews: download historic raw RPKI data <http://www.rpkiviews.org/>`_, by Job Snijders
 
 .. index:: Operational experiences
 
