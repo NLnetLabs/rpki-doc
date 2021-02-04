@@ -63,6 +63,9 @@ Operational Experiences
 `RPKI at IXP Route Servers <https://ripe78.ripe.net/archives/video/53/>`_
    Presentation by Nick Hilliard - INEX, RIPE 78, May 2019
 
+`Lessons learned: NTT's RPKI deployment <https://www.youtube.com/watch?v=1ak4hF2j84o>`_
+   Presentation by Job Snijders - NANOG 79, June 2020
+
 .. index:: Examples of BGP hijacks
 
 Examples of BGP Hijacks
