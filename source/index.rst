@@ -66,6 +66,7 @@ The main documentation is organised into the following sections:
    routinator/index
    rtrlib/index
    rpkivalidator3/index
+   rpkiclient/index
 
 Index
 =====
