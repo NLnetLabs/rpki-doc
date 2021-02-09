@@ -3,6 +3,11 @@
 
 RIPE NCC RPKI Validator 3.2
 ===========================
+.. warning::
+    RIPE NCC RPKI Validator 3.x will be discontinued and archived on 1 July 2021. 
+    Please migrate to alternative :ref:`RPKI Relying Party Software<doc_tools>`.
+    
+
 
 A fully-featured RPKI relying party software, written by the `RIPE NCC <http://ripe.net/>`_ in Java.
 This application allows operators to download and validate the global RPKI data set for use in their BGP decision making
