@@ -4,7 +4,7 @@
 RIPE NCC RPKI Validator 3.2
 ===========================
 .. warning::
-    RIPE NCC RPKI Validator 2.x and 3.x will be discontinued and archived on 1 July 2021. 
+    RIPE NCC RPKI Validator 3.x will be discontinued and archived on 1 July 2021. 
     Please migrate to alternative :ref:`RPKI Relying Party Software<doc_tools>`.
     
 
