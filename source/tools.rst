@@ -79,6 +79,6 @@ Supporting Tools
    router keys, which are required to deploy BGPSec.
 
 `RTRTR <https://github.com/NLnetLabs/rtrtr>`__
-   An RPKI data proxy maintained by NLnet Lab, allowing operators to centralise
+   An RPKI data proxy maintained by NLnet Labs, allowing operators to centralise
    validation and distribute the validated data to various points of presence
    via the RTR protocol, or JSON over HTTPS.
