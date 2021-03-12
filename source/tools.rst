@@ -27,8 +27,10 @@ Relying Party Software
    "`Routinator <https://github.com/NLnetLabs/routinator>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/routinator?label=%20&style=flat-square"
    "`rpki-client <https://github.com/rpki-client/rpki-client-portable>`_", "OpenBSD", "C", ".. image:: https://img.shields.io/github/last-commit/rpki-client/rpki-client-portable?label=%20&style=flat-square"
    "`rpki-prover <https://github.com/lolepezy/rpki-prover>`_", "Misha Puzanov", "Haskell", ".. image:: https://img.shields.io/github/last-commit/lolepezy/rpki-prover?label=%20&style=flat-square"
-   "`RPKI Validator <https://github.com/RIPE-NCC/rpki-validator-3>`_", "RIPE NCC", "Java", ".. image:: https://img.shields.io/github/last-commit/RIPE-NCC/rpki-validator-3?label=%20&style=flat-square"
+   "`RPKI Validator <https://github.com/RIPE-NCC/rpki-validator-3>`_ [#]_", "RIPE NCC", "Java", ".. image:: https://img.shields.io/github/last-commit/RIPE-NCC/rpki-validator-3?label=%20&style=flat-square"
    "`RPSTIR2 <https://github.com/bgpsecurity/rpstir2>`_", "ZDNS", "Go", ".. image:: https://img.shields.io/github/last-commit/bgpsecurity/rpstir2?label=%20&style=flat-square"
+
+.. [#] Scheduled to be `discontinued on 1 July 2021 <https://labs.ripe.net/Members/nathalie_nathalie/life-cycle-of-the-ripe-ncc-rpki-validator-1>`_
 
 .. index:: Certificate Authority software
 
