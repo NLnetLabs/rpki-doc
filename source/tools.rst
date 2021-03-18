@@ -23,7 +23,7 @@ Relying Party Software
 
    "`FORT Validator <https://github.com/NICMx/FORT-validator>`_", "NIC.mx", "C", ".. image:: https://img.shields.io/github/last-commit/NICMx/FORT-validator?label=%20&style=flat-square"
    "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/cfrpki?label=%20&style=flat-square"
-   "`rcynic <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"   
+   "`rcynic <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python 2", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"   
    "`Routinator <https://github.com/NLnetLabs/routinator>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/routinator?label=%20&style=flat-square"
    "`rpki-client <https://github.com/rpki-client/rpki-client-portable>`_", "OpenBSD", "C", ".. image:: https://img.shields.io/github/last-commit/rpki-client/rpki-client-portable?label=%20&style=flat-square"
    "`rpki-prover <https://github.com/lolepezy/rpki-prover>`_", "Misha Puzanov", "Haskell", ".. image:: https://img.shields.io/github/last-commit/lolepezy/rpki-prover?label=%20&style=flat-square"
@@ -41,11 +41,17 @@ Certificate Authority Software
    :header: "Name", "Maintainer", "Language", Last Commit 
 
    "`Krill <https://github.com/NLnetLabs/krill>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/NLnetLabs/krill?label=%20&style=flat-square"
-   "`rpkid <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"
+   "`rpkid <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python 2", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"
 
 Supporting Tools
 ----------------
 
+`BGPalerter <https://github.com/nttgin/BGPalerter>`_
+   A self-configuring BGP monitoring tool, which allows you to monitor in 
+   real-time if any of your prefixes loses visibility or is hijacked, your AS is
+   announcing RPKI invalid prefixes or is announcing prefixes not covered by 
+   ROAs, ROAs covering your prefixes are no longer reachable, and much more. 
+   
 `BGP-SRx <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_
    SRx is an open source reference implementation and research platform by the
    National Institute for Standards and Technology (NIST). It is intended for
@@ -54,8 +60,7 @@ Supporting Tools
 
 `GoRTR <https://github.com/cloudflare/gortr>`_
    An open-source implementation of RPKI to Router protocol
-   (:RFC:`6810`) using the Go programming language. This project is
-   maintained by Cloudflare.
+   (:RFC:`6810`) using the Go programming language. 
 
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
@@ -81,6 +86,5 @@ Supporting Tools
    router keys, which are required to deploy BGPSec.
 
 `RTRTR <https://github.com/NLnetLabs/rtrtr>`__
-   An RPKI data proxy maintained by NLnet Labs, allowing operators to centralise
-   validation and distribute the validated data to various points of presence
-   via the RTR protocol, or JSON over HTTPS.
+   An RPKI data proxy allowing operators to centralise validation and distribute
+   the validated data to various locations via the RTR protocol or HTTPS.
