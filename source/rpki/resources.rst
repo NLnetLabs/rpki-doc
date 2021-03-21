@@ -37,6 +37,7 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `The rpki-client console <http://console.rpki-client.org>`_, by the OpenBSD project
 - `JDR: explore, inspect and troubleshoot anything RPKI <https://jdr.nlnetlabs.nl/>`_, by NLnet Labs
 - `RPKIviews: download historic raw RPKI data <http://www.rpkiviews.org/>`_, by Job Snijders
+- `ROA Use World Map and Country Data <https://stats.labs.apnic.net/roas>`_, by APNIC Labs
 
 .. index:: Operational experiences
 
