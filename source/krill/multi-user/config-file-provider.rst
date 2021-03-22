@@ -27,6 +27,13 @@ that are relevant for that user.
 When a user enters their username and password into the web user interface a 
 hash of the password is computed and sent with the username to the Krill server.
 
+The Krill server will verify that the user logging in provided a correct
+password and has the ``LOGIN`` permission. On success Krill will respond with a
+token which the web user interface should send on subsequent requests to
+authenticate itself with Krill. The web user interface will keep a copy of this
+token in browser local storage until the user logs out or is timed out due to
+inactivity.
+
 .. tip:: The actual user password is **NEVER** stored on either the Krill server
          nor the client browser and is **NEVER** sent by the client browser to
          the Krill server. Only password *hashes* are stored and transmitted.
