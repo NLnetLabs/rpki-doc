@@ -16,12 +16,13 @@ logging in, rather than the secret token that is usually required:
 
     Enter config file user credentials to access Krill
 
-.. NOte:: It is important to realize that Krill is not a complete user management
+.. Note:: It is important to realize that Krill is not a complete user management
           system and that config file users therefore have some :ref:`limitations <limitations>`.
 
-          While this provider is useful as a quick way to test named user support
-          in Krill and may suffice for simple situations, in larger more critical
-          settings you are strongly advised to consider using :ref:`doc_krill_multi_user_openid_connect_provider` instead.
+          While Config File Users are useful as a quick way to test named user
+          support in Krill and may suffice for simple situations, in larger more
+          critical settings you are strongly advised to consider using
+          :ref:`doc_krill_multi_user_openid_connect_provider` instead.
 
 How does it work?
 -----------------
