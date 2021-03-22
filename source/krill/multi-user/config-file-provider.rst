@@ -139,12 +139,12 @@ Advanced configuration
 The information above gives you the basic structure for the configuration
 file syntax needed to configure local users in Krill.
 
-See :ref:`role <doc_krill_multi_user_access_control>` for information about
+See :ref:`doc_krill_multi_user_access_control` for information about
 other user attributes and configuration settings that you might want to
 use.
 
-See :ref:`custom authorization policy <doc_krill_multi_user_custom_policies>`
-for information about customizing the configuration even further.
+See :ref:`doc_krill_multi_user_custom_policies` for information about
+customizing the configuration even further.
 
 Below is a slightly modified version of the example above that also
 uses the ``inc_cas``, ``exc_cas`` and ``auth_private_attributes`` features
