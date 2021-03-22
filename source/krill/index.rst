@@ -49,11 +49,11 @@ GitHub. Krill is distributed under the Mozilla Public License 2.0.
    manage-roas
    cli
    api
+   multi-user
    monitoring
    failure-scenarios
    publication-server
    docker
-
 .. history
 .. authors
 .. license
