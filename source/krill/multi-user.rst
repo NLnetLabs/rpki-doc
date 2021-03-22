@@ -13,7 +13,7 @@ Login with Named Users
     Checking the currently logged in user and user attributes
 
 By default Krill requires users to authenticate using the configured secret token,
-and attributes actions in the event history to a client using the secret token or
+and actions in the event history are attributed to a client using the secret token or
 to Krill itself.
 
 Krill also supports authenticating users **of the web user interface** with their
