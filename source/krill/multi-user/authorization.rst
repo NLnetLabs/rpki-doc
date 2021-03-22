@@ -54,7 +54,5 @@ the OpenID Connect provider that manages your users.
              being revealed in the browser you can mark them as private. One
              possible use for this is to restrict access using the ``exc_cas``
              attribute but not reveal the name of the restricted CA by doing
-             so.
-             
-             See ``auth_private_attributes`` in ``krill.conf`` file for more
+             so. See ``auth_private_attributes`` in ``krill.conf`` file for more
              information.
