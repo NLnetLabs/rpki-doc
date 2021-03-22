@@ -17,7 +17,7 @@ logging in, rather than the secret token that is usually required:
     Enter config file user credentials to access Krill
 
 .. Note:: It is important to realize that Krill is not a complete user management
-          system and that config file users therefore have some :ref:`limitations <limitations>`.
+          system and that Config File Users therefore have some :ref:`limitations <limitations>`.
 
           While Config File Users are useful as a quick way to test named user
           support in Krill and may suffice for simple situations, in larger more
