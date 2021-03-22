@@ -86,57 +86,43 @@ The following steps are required to use local users in your Krill setup:
 1. Decide on the settings to be configured.
 """""""""""""""""""""""""""""""""""""""""""
 
-Decide which usernames, passwords and user attributes you are going to
-configure.
+Decide which usernames you are going to configure, and what :ref:`role <doc_krill_multi_user_access_control>`
+and password they should have. For this example let's assume we want to
+configure the following users:
 
-Unless you are using a :ref:`custom authorization policy <doc_krill_multi_user_custom_policies>`
-you should choose a :ref:`role <doc_krill_multi_user_access_control>`
-for each user, and optionally zero or more certificate authority handles
-to which the user should be granted or denied access.
+================= ======== =========
+Username          Password Role
+================= ======== =========
+joe@example.com   dFdsapE5 admin
+sally             wdGypnx5 readonly
+dave_the_octopus  qnky8Zuj readwrite
+================= ======== =========
 
-You should also decide if any of the user attributes are sensitive and
-should therefore not be shown in the Krill web user interface.
 
 2. Configure Krill
 """"""""""""""""""
 
-Add an ``auth_type = "config-file"`` line to your ``krill.conf`` file.
-Remove or comment out any existing ``auth_type = ...`` line if present.
-
-For each user, use ``krillc config user --id <user id>`` to generate a
-password hash. **Note:** You may need to use quotes around the user id
-if it contains characters which your shell treats specially.
-
-``krillc`` will prompt you to enter a password for the user and will
-respond with a sample ``[auth_users]`` configuration block (including the
-generated password hash) for you to add to the ``krill.conf`` file.
-
-For example:
+For each user generate a password hash using the following command:
 
 .. code-block:: bash
 
-   $ krillc config user --id joe@example.com
-   Enter the password to hash: some password
+  $ krillc config user --id joe@example.com
+  Enter the password to hash: dFdsapE5
    
-   [auth_users]
-   "joe@example.com" = { password_hash="..." }
+  [auth_users]
+  "joe@example.com" = { password_hash="f45d...b25f" }
 
-Repeat this step for each of the users that you need to configure.
-
-**Note:** at the end there should only be one ``[auth_users]`` section in
-your ``krill.conf`` file, for example:
+Then add the ``auth_type``, ``[auth_users]`` and individual user lines
+to ``krill.conf``. The end result should look something like this:
 
 .. code-block:: bash
-   
-   [auth_users]
-   "joe@example.com"  = { attributes={ role="admin", password_hash="..." } }
-   "sally"            = { attributes={ role="readonly", inc_cas="ca1, ca3", password_hash="..." } }
-   "dave_the_octopus" = { attributes={ role="readwrite", exc_cas="some_private_ca", password_hash="..." } }
 
-**(Optional)** Mark any sensitive attributes as private by adding a
-``auth_private_attributes = [ "attr name", ... ]`` line in your
-``krill.conf`` file (replacing the value "attr name" with the correct
-attribute name!).
+   auth_type = "config-file"
+
+   [auth_users]
+   "joe@example.com"  = { attributes={ role="admin" },     password_hash="f45d...b25f" }
+   "sally"            = { attributes={ role="readonly" },  password_hash="..." }
+   "dave_the_octopus" = { attributes={ role="readwrite" }, password_hash="..." }
 
 3. Go!
 """"""
@@ -146,6 +132,35 @@ whom they belong.
 
 .. Warning:: Take whatever steps you think are necessary to ensure that the
              passwords are delivered **securely** to your users.
+
+Advanced configuration
+----------------------
+
+The information above gives you the basic structure for the configuration
+file syntax needed to configure local users in Krill.
+
+See :ref:`role <doc_krill_multi_user_access_control>` for information about
+other user attributes and configuration settings that you might want to
+use.
+
+See :ref:`custom authorization policy <doc_krill_multi_user_custom_policies>`
+for information about customizing the configuration even further.
+
+Below is a slightly modified version of the example above that also
+uses the ``inc_cas``, ``exc_cas`` and ``auth_private_attributes`` features
+and adds a user that has custom team attributes as well. Notice how the 
+team user does **NOT** have a ``role`` attribute!
+
+.. code-block:: bash
+
+   auth_type = "config-file"
+   auth_private_attributes = [ "exc_cas" ]
+
+   [auth_users]
+   "joe@example.com"   = { attributes={ role="admin" }, password_hash="f45d...b25f" }
+   "sally"             = { attributes={ role="readonly", inc_cas="ca1,ca3" },  password_hash="..." }
+   "dave_the_octopus"  = { attributes={ role="readwrite" }, exc_cas="some_private_ca" }, password_hash="..." }
+   "rob_from_team_one" = { attributes={ team="t1", teamrole="readwrite" }, password_hash="..." }
 
 Additional sources of information
 ---------------------------------
