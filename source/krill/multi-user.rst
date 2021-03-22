@@ -20,7 +20,7 @@ Krill also supports authenticating users **of the web user interface** with thei
 own username and credentials. Actions taken by such logged in users are attributed
 in the event history to their username.
 
-To login users by username Krill must first be configured either with locallly
+To login users by username Krill must first be configured either with locally
 defined user details and credentials, or with the details necessary to interact with
 a separate `OpenID Connect <https://openid.net/connect/>`_ compliant identity provider system.
 
