@@ -39,7 +39,7 @@ Attribute Based Access Control
 
 Krill supports ``inc_cas`` and ``exc_cas`` user attributes which can be used
 to permit or deny access to one or more Certificate Authorities in Krill. User
-attributes can also be used to make decisions in :ref:`custom authorization policies <doc_krill_multi_user_custom_policies>`).
+attributes can also be used to make decisions in :ref:`custom authorization policies <doc_krill_multi_user_custom_policies>`.
 
 User Attributes
 ---------------
