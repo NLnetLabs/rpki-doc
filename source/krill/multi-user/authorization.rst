@@ -51,13 +51,10 @@ the OpenID Connect provider that manages your users.
 .. Warning:: By default, user attributes and their values are shown in the Krill
              web user interface and the web user interface stores these 
              attributes in browser local storage. To prevent sensitive attributes
-             being revealed by the browser you can mark them as private.
-
-             Private attributes are still sent to the browser but are not
-             accessible by the Krill web user interface application because
-             they are encrypted using a key only known to the server. The
-             encryption key is generated on Krill startup (if not already
-             existing) and so is unique to the Krill server instance.
+             being revealed in the browser you can mark them as private. One
+             possible use for this is to restrict access using the ``exc_cas``
+             attribute but not reveal the name of the restricted CA by doing
+             so.
              
              See ``auth_private_attributes`` in ``krill.conf`` file for more
              information.
