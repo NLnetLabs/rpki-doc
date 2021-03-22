@@ -60,7 +60,7 @@ inactivity.
 Known limitations
 -----------------
 
-Locally defined users are easy to define and give you complete control over who
+Config File Users are easy to define and give you complete control over who
 has access to your Krill instance and what level of access is granted. However,
 Krill is not a complete user management system and so there are some things to
 remember when using locally defined users:
