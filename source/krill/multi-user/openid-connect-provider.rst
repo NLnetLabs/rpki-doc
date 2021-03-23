@@ -131,19 +131,6 @@ user logging in. These claims are the key to whether or not Krill is able
 to determine which rights, if any, to grant to the user that is attempting
 to login.
 
-If the OpenID Connect provider exchange response included an expiration
-time, Krill will prompt the user to login again if requests are made to
-Krill by the web user interface after that time.
-
-If the OpenID Connect provider exchange response included an OAuth 2.0
-Refresh Token, Krill will use it prior to expiration to attempt to extend
-the login session rather than terminate the users session.
-
-If the user clicks the logout button in the Krill web user interface and
-the provider supports one of the OAuth 2.0 or OpenID Connect logout
-mechanisms that Krill supports, Krill will terminate the login session at
-the OpenID Connect provider as well.
-
 Known limitations
 -----------------
 
