@@ -25,7 +25,7 @@ Krill web user interface:
     :width: 100%
     :alt: Azure ActiveDirectory login screen
 
-    Using Azure Active Directory credentials to access Krill
+    Using Azure Active Directory as an OpenID Connect provider with Krill
 
 To use OpenID Connect Users in Krill you will either need to run your own
 OpenID Connect provider or use one provided by a 3rd party service
@@ -139,7 +139,7 @@ but require more effort to setup and maintain:
 
 - Requires operating another service or using a 3rd party service.
 - Confguring Krill and the OpenID Connect provider is more involved than
-  setting up :ref:`Config File Users`.
+  setting up :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`.
 - If Krill cannot contact the OpenID Connect provider, users will be
   unable to login to Krill with their OpenID Connect credentials. It will
   however still be possible to authenticate with Krill using its secret
@@ -176,33 +176,122 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              users to indicate which role they should receive, e.g. by
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
+Setting it up
+-------------
+
+The process for setting up Krill to support login by users of an OpenID
+Connect provider follows the same basic pattern for all providers but
+differs greatly in the details from one provider to the next.
+
+In short, to setup any OpenID Connect provider with Krill the following
+steps must be taken:
+
+1. **Decide on the settings to be configured**
+   
+   Ensure you have the basic pieces of information that you need. For
+   example:
+
+     - Which URL will Krill be available at?
+     - Which user(s) will have admin rights in Krill?
+     - Is there some property of these users that distinguishes them
+       from other users (for example they may already be members of some
+       interal Active Directory group) or will you need to mark them out
+       in some way so that Krill can spot that they should be admins?
+
+2. **Gain access to the provider**
+
+   This could be installing and operating provider software yourself, or
+   signing up to a cloud service, or arranging for support from your
+   internal IT department to have changes made to your in-house provider
+   on your behalf.
+
+   \
+
+3. **Register Krill with the provider**
+   
+   You will need to supply the Krill redirect URLs: [1]_
+
+     - https://yourdomain/auth/callback
+     - https://yourdomain/ *(if the provider supports Connect RP-Initiated
+       Logout 1.0)*
+
+   You should receive back from the registration process three pieces of
+   information that will be needed to configure Krill:
+
+   - The provider OpenID Connect Discovery 1.0 issuer URL [2]_
+   - A client ID
+   - A client secret
+
+   \
+
+   .. [1] Alternatively your provider may support wildcard redirect URLs in
+      which case you can supply https://yourdomain/\*. However wildcard URLs
+      are not advised as they could potentially be abused to redirect
+      requests to other locations.
+   
+   .. [2] A correct URL will either end in /.well-known/openid-configuration
+      or should that appended to it, e.g. the Google issuer URL is: https://accounts.google.com/.well-known/openid-configuration
+
+4. **Create users, groups and/or claims in the provider**
+   
+   If all of your users will have admin rights in Krill you can ignore
+   groups and claims and just create users.
+
+   If however you want some users to have different rights than other users
+   you will need to configure your provider to include some hint about the
+   role that a user should have in the claims data that it sends to Krill.
+
+   The manner in which this is setup varies greatly by provider. With
+   Keycloak for example you have direct control over the claim data that is
+   exposed to the OpenID Connect client and have multiple different ways to
+   tell Krill via the claims data which role each user should have in Krill.
+
+   With Azure Active Directory however you are by default limited to only
+   being able to expose claims that it defines or to add users to groups.
+   The group memberships can be exposed as claim data and Krill can parse
+   the group data and match against it.
+
+   \
+
+5. **Configure additional provider features**
+
+   How long are the tokens issued by the provider valid for? Can the
+   provider issue refresh tokens? These properties affect how long a user
+   can remain logged in to Krill.
+   
+   You should also ensure that the provider has a real TLS certificate, or
+   for in-house certificates you will need a copy of the Certificate
+   Authority root certificate so that you can configure Krill to trust it.
+   If neither are possible you can configure Krill to trust the insecure
+   certificate anyway, but this is not advised.
+
+   \
+
+6. **Configure Krill**
+
+   Lastly, add the issuer URL, client ID and client secret to ``krill.conf``
+   and if necessary configure any claim mapping rules to instruct Krill how
+   to obtain role information from the claims data that it will be sent.
+
+   You may also need to use some of the other OpenID Connect specific
+   configuration settings that Krill offers. For example to use the Amazon
+   Cognito logout endpoint you have to configure that manually.
+
+   .. tip:: The ``krill.conf`` file contains example configurations for
+            providers that Krill has been tested with.
+
 Setting it up (using Keycloak)
 ------------------------------
 
+In this section you will see how to setup `Keycloak <https://www.keycloak.org/>`__
+as an OpenID Connect provider for Krill.
+
 The following steps are required to use OpenID Connect Users in your Krill setup.
-
-.. note:: The manner of configuring the provider varies greatly between
-          providers. We will use `Keycloak <https://www.keycloak.org/>`_
-          for the example below. Some basic tips for known providers are
-          given in ``krill.conf`` along with complete documentation for
-          all of the possible configuration options. You will need to
-          consult the documentation for your provider to see how to
-          carry out steps similar to those given below and to decide
-          which ``krill.conf`` configuration settings and values are
-          correct for your situation.
-
-.. tip:: You will see some footnote references (in the form `\[n\]`) in
-         the instructions below. We'll come back to these after we have
-         everything working. When a footnote is on a provider or Krill
-         setting value do **NOT** include the `\[n\]` part in the value
-         that you use!
 
 1. Decide on the settings to be configured.
 """""""""""""""""""""""""""""""""""""""""""
 
-Decide which usernames you are going to configure, and what :ref:`role <doc_krill_multi_user_access_control>`
-and password they should have. For this example let's assume we want to
-configure the following users:
+For this example let's assume we want to configure the following users:
 
 ================= ================= ========= =========
 Username          Email             Password  Role
@@ -212,8 +301,9 @@ sally             sally@example.com wdGypnx5  readonly
 dave_the_octopus  dave@example.com  qnky8Zuj  readwrite
 ================= ================= ========= =========
 
-And let's assume that we are going to use a local Docker `Keycloak <https://www.keycloak.org/>`_
-container as our OpenID Connect provider.
+And let's assume that we are going to use a local Docker `Keycloak <https://www.keycloak.org/>`__
+container as our OpenID Connect provider which will be running at
+https://localhost:8443/.
 
 ----
 
@@ -239,6 +329,12 @@ Download and run Keycloak
        --env KEYCLOAK_PASSWORD=password \
        --env DB_VENDOR=h2 quay.io/keycloak/keycloak:12.0.4
 
+.. warning:: Do **NOT** run Keycloak like this in production. This
+             command instructs Keycloak to use an in-memory H2
+             database which is convenient for demonstration and
+             testing purposes but should not be used in a production
+             setting.
+
 Follow the logs until Keycloak is ready:
 
 .. code-block:: bash
@@ -259,6 +355,9 @@ Login to the Keycloak admin UI
 
 Create a realm
 ~~~~~~~~~~~~~~
+
+.. note:: A realm is a Keycloak concept and is a good example of how
+          providers differ in what needs to be done to set them up.
 
 - Hover over `Master` in the top left and click on the `Add Realm`
   button that appears.
@@ -292,14 +391,22 @@ Continuing in the KeyCloak web UI with realm set to `krill`:
   ===================  ======================================
   Field                Value
   ===================  ======================================
-  Access Type          `confidential` [1]
-  Valid Redirect URIs  `https://localhost:3000/*` [2]
+  Access Type          `confidential` [3]_
+  Valid Redirect URIs  `https://localhost:3000/*` [4]_
   ===================  ======================================
 
 - Generate credentials for Krill to use:
 
   - Open the `Credentials` tab (at the top).
   - Copy the `Secret` value somewhere safe, we'll need it later.
+
+.. [3] Krill is an OAuth 2.0 "Confidential Client" as defined
+       in `RFC 6749 Section 2.1 <https://tools.ietf.org/html/rfc6749#section-2.1>`_.
+.. [4] We could configure this explicitly as two separate
+       redirect URLs: https://localhost:3000/auth/callback (for
+       post-login) and https://localhost:3000/ (for post-logout).
+       However, as this is a localhost demo and Keycloak supports
+       wildcard redirect URLs we can keep it simple in this case.
 
 Configure a role mapper
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -330,7 +437,7 @@ Create the users
   Field                  Value
   =====================  ======================================
   Username               `<THE USERS NAME>`
-  Email [3]              `<THE USERS EMAIL ADDRESS>`
+  Email [5]_             `<THE USERS EMAIL ADDRESS>`
   =====================  ======================================
 
 - Open the `Credentials` tab and set the field values as follows:
@@ -342,7 +449,7 @@ Create the users
   Password Confirmation  `<THE USERS PASSWORD>`
   =====================  ======================================
 
-- Set `Temporary` to `OFF`.
+- Leave `Temporary` set to `ON`. [6]_
 - Click `Set Password`.
 - When asked `"Are you sure you want to set a password for this user?"` click `Set password`.
 
@@ -353,6 +460,22 @@ Create the users
 
 Repeat the above adding the other users.
 
+.. [5] By default Krill expects there to be an "email" claim in the ID
+       Token response from the provider. If we didn't setup an email
+       here we would need to define a claim mapping so that Krill could
+       extract the `Username` value that we provide from some other
+       claim field. In the case of Keycloak that would be the 
+       `preferred_username` field. We'll revisit this topic later.
+
+.. [6] This is a good example of where using an OpenID Connect provider
+       has benefits over using :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`.
+       By leaving `Temporary` set to `ON`, Keycloak will require the
+       user to change their password on first login. Krill doesn't have
+       this functionality itself. We should still attempt to communicate
+       an initial unique password securely to the user, but the
+       opportunity for abuse is limited and we as admins won't know the
+       actual password the user sets for themselves. 
+
 ----
 
 3. Configure Krill
@@ -361,7 +484,7 @@ Repeat the above adding the other users.
 Add the following to your ``krill.conf`` file: *(remove or comment out
 any existing ``auth_type`` line)*
 
-.. code-block:: none
+.. parsed-literal::
 
    auth_type = "openid-connect"
    
@@ -369,7 +492,12 @@ any existing ``auth_type`` line)*
    issuer_url = "https://localhost:8443/auth/realms/krill"
    client_id = "krill"
    client_secret = "<SECRET VALUE SAVED EARLIER>"
-   insecure = true [4]
+   insecure = true [7]_
+
+.. [7] Do **NOT** use this in a production setting. We have to set insecure
+       to `true` in this demonstration because our Keycloak instance does
+       not have a real TLS certificate. Without `insecure` set to `true`
+       Krill would reject the insecure self-signed TLS certificate.
 
 ----
 
@@ -386,6 +514,7 @@ to them:
 
 .. image:: img/keycloak-user-properties-in-krill.png
 
+Setting it up (with other providers)
+------------------------------------
 
-TODO: Come back to the footnotes
-TODO: Advanced use cases
+TO DO
