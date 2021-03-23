@@ -11,6 +11,7 @@ RPKI Documentation
 .. |lastupdated| image:: https://img.shields.io/github/last-commit/NLnetLabs/rpki-doc.svg?label=last%20updated&style=flat-square
 
 .. |discord| image:: https://img.shields.io/discord/818584154278199396?label=rpki%20on%20discord&logo=discord&style=flat-square
+            :target: https://discord.gg/8dvKB5Ykhy
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI),
 the community-driven technology based on open standards that is aimed at making
