@@ -596,9 +596,9 @@ Let's break the `ro_role` claim mapping rule down:
     first match `| [0]` found.
   - Then we instruct Krill to take the entire value with `^.+$`.
   - And to replace it with the value `readonly`.
-  - Finally, although instead of assigning the value `readonly` to the user 
-    attribute `ro_role`, `dest` is used to instead store `readonly` in a user
-    attribute called `role`.
+  - Finally, instead of assigning the value `readonly` to the user attribute
+    `ro_role`, `dest` is used to instead store `readonly` in a user attribute
+    called `role`.
 
 As `role` is the user attribute that the Krill authorization policy engine looks
 at by default this will cause the user to be assigned the readonly role if their
