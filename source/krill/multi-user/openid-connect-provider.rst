@@ -5,135 +5,155 @@ OpenID Connect Users
 
 .. versionadded:: v0.9.0
 
+.. contents::
+  :local:
+  :depth: 1
+
+Introduction
+------------
+
 `OpenID Connect <https://openid.net/connect/>`_ is a widely supported
 standard that builds on the OAuth 2.0 standard to authenticate users
 and provide basic profile information about those users.
 
 The user visible part of the login experience when using OpenID Connect is
 handled by the OpenID Connect provider and may look quite different to the
-Krill web ser interface:
+Krill web user interface:
 
 .. figure:: img/openid-connect-login.png
     :align: center
     :width: 100%
     :alt: Azure ActiveDirectory login screen
 
-    Enter Azure ActiveDirectory credentials to access Krill
+    Enter Azure Active Directory credentials to access Krill
 
-To use OpenID Connect you will either need to run your own OpenID Connect
-provider or an existing OpenID Connect provider in your organization or
-offered by a 3rd party.
+To use OpenID Connect Users in Krill you will either need to run your own
+OpenID Connect provider or use one provided by a 3rd party service
+provider.
+
+Why OpenID Connect?
+"""""""""""""""""""
+
+From the `OpenID Connect FAQ <https://openid.net/connect/faq/>`_:
+
+  **What problem does OpenID Connect solve?**
+
+  *It lets app and site developers authenticate users without taking on the
+  responsibility of storing and managing passwords in the face of an
+  Internet that is well-populated with people trying to compromise your
+  users’ accounts for their own gain.*
+
+OpenID Connect takes the lessons learned from earlier identity protocols
+and improves on them. It is `widely implemented <https://openid.net/developers/certified/>`_
+and deployed, and for situations where the primary identity provider does
+not implement OpenID Connect there are OpenID Connect providers that can
+act as a bridge to systems that implement other identity protocols.
+
+As a modern, tried & tested and widely implemented protocol it is therefore
+quite likely that it is either already in use by (potential) Krill
+operators or viable for them to adopt.
+
+Why not OAuth 2.0?
+"""""""""""""""""""
+
+From https://oauth.net/articles/authentication/:
+
+  **OAuth 2.0 is not an authentication protocol.**
+
+  *Much of the confusion comes from the fact that OAuth is used inside of
+  authentication protocols, and developers will see the OAuth components
+  and interact with the OAuth flow and assume that by simply using OAuth,
+  they can accomplish user authentication. This turns out to be not only
+  untrue, but also dangerous for service providers, developers, and end
+  users.*
 
 How does it work?
 -----------------
 
-1. Registration
-"""""""""""""""
+Let's assume that the OpenID Connect provider is compatible with Krill and
+that Krill has been registered with the provider (see below for more on
+these topics).
 
-To setup the connection with the OpenID Connect provider Krill requires
-three things:
+The user experience
+"""""""""""""""""""
 
-- The domain name at which your Krill instance is available to your users
-  via their browser.
-- The OpenID Connect provider `issuer discovery URL <https://openid.net/specs/openid-connect-discovery-1_0.html#IssuerDiscovery>`_.
-- Client credentials issued to you (in the form of a client ID and client
-  secret) by the OpenID Connect provider for use by your Krill instance.
+When an end user visits the Krill website in their browser they will be
+redirected to the login page of the OpenID Connect provider. This is
+**NOT** part of Krill.
 
-To obtain the client credentials you will first need to register Krill with
-the provider and configure it with the callback URL of your Krill instance, 
-which must be reachable by your users in their browser.
+For example, when logging in to a Krill instance connected to the OpenID
+Connect provider in a large company, the end user might see a very familiar
+login page. That's becausae it is probably a page they have to login to in
+order to use many other services in their company. Often this login page
+will even be themed to match the corporate branding.
 
-2. User configuration
-"""""""""""""""""""""
+The user enters **their** credentials into the OpenID Connect provider
+login page. At this point Krill knows nothing about who is logging in at
+the provider login form.
 
-Using the management interface of your OpenID Connect provider you will
-need to ensure that it is configured to provide Krill with the required
-user details, known in OpenID Connect/OAuth 2.0 as "claims".
+.. tip:: Krill **NEVER** receives the username or password that the user
+         enters in to the OpenID Connect provider login page and Krill has
+         no control over the appearance and/or behaviour of the OpenID
+         Connect provider login page.
 
-If for example your provider contains thousands of users for your company
-and you do not wish them all to be able to login to your Krill instance
-you will need some way to decide which Krill rights to grant to which 
-users when they attempt to login. This could be some existing property
-of the users (they might all be members of a group called "Krill Users"
-or "RPKI Operators" for example). Alternatively you might need to tag
-them in some way in the provider such that they can be recognized by Krill
-(e.g. by adding a "krill_role" property to them).
+If the login is successful, from the users perspective their browser is
+then directed back to Krill where they see the Krill web user interface as
+if they are logged in. Krill will provide the web user interface with a
+token which the web user interface should send on subsequent requests to
+authenticate itself with Krill. The web user interface will keep a copy of
+this token in browser local storage until the user logs out or is timed
+out due to inactivity.
 
-You will then need to configure Krill to be able to detect this
-recognizable property of the users that you have decided to filter on.
+Krill will honour any session expiration time communicated to it by the
+OpenID Connect provider. When using OpenID Connect Users it is therefore
+possible that the user will be informed that they cannot perform the
+requested action because their login session has timed out and they need
+to login again. Where possible Krill will automatically extend the login
+session to avoid this happening.
 
-3. Provider login
+In the background
 """""""""""""""""
 
-When a user browses to the Krill web user interface URL they will be
-immediately redirected to the login page of the OpenID Connect provider.
+What the user doesn't see, except perhaps if their network connection is
+very slow, is that there are "hidden" intermediate steps occuring in the
+login flow, between the browser and Krill and between Krill and the OpenID
+Connect provider. These steps implement the OpenID Connect `"Authorizaton
+Code Flow" <https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth>`_.
 
-Once the provider has verified their login credentials it will redirect
-the users browser to a Krill "callback" URL with a temporary code.
+If the user logged in correctly at the OpenID Connect provider login page
+and Krill was correctly registered with the provider and the provider was
+correctly setup for Krill, then Krill will receive a temporary Authorization
+Code which it exchanges for an OAuth 2.0 `Access Token <https://www.oauth.com/oauth2-servers/access-tokens/>`_
+(and maybe also an OAuth 2.0 Refresh Token) and an OpenID Connect ID Token.
 
-4. Krill login
-""""""""""""""
+The ID Token includes so-called OAuth 2.0 **claims**, metadata about the
+user logging in. These claims are the key to whether or not Krill is able
+to determine which rights, if any, to grant to the user that is attempting
+to login.
 
-At this point the user is in the middle of being logged in to the OpenID
-Connect property and is NOT yet logged in to Krill at all.
+If the OpenID Connect provider exchange response included an expiration
+time, Krill will prompt the user to login again if requests are made to
+Krill by the web user interface after that time.
 
-First Krill must contact the provider directly to exchange the temporary
-code for so-called Access Token and ID Tokens. The "claims" that we
-referred to above will be made available to Krill as part of the ID
-Token. Krill will then use its configuration to inspect the claims in
-order to find the information it needs to assign a Krill role to the
-user.
+If the OpenID Connect provider exchange response included an OAuth 2.0
+Refresh Token, Krill will use it prior to expiration to attempt to extend
+the login session rather than terminate the users session.
 
-If no role can be determined then Krill will respond to the redirect
-with an error and the user will be shown an error. Otherwise Krill will
-redirect the user to the Krill login success page complete with a Krill
-specific login token. At this point the user is logged in to Krill AND
-to the OpenID Connect provider.
+If the user clicks the logout button in the Krill web user interface and
+the provider supports one of the OAuth 2.0 or OpenID Connect logout
+mechanisms that Krill supports, Krill will terminate the login session at
+the OpenID Connect provider as well.
 
-The web user interface will keep a copy of the Krill token in browser
-local storage and will send it on subsequent requests to authenticate
-itself with Krill. The browser will delete the stored token either until
-the user logs out or is timed out due to inactivity by the web user
-interface.
+Known limitations
+-----------------
 
-5. OpenID Connect token expiration and refresh
-""""""""""""""""""""""""""""""""""""""""""""""
+OpenID Connect Users avoid the problems with :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`
+but requires more effort to setup and maintain:
 
-If the OpenID Connect provider indicated that the token it issued will
-expire at a particular time, Krill will respect that and will deny any
-request from the web user interface after that time. If the OpenID
-Connect provider also issued a Refresh Token, when Krill is contacted
-by the Krill web user interface it will attempt to refresh the session
-it has with the OpenID Connect provider which if successful will cause
-Krill to wait until the new expiration moment before responding to a
-Krill web user interface request with an access denied error.
-
-Supported providers
--------------------
-
-Krill has been tested with (in alphabetical order):
-
-- `Amazon Cognito <https://docs.aws.amazon.com/cognito/index.html>`_
-- `Google Cloud <https://cloud.google.com/anthos/clusters/docs/on-prem/1.6/how-to/oidc>`_
-- `RedHat Keycloak <https://www.keycloak.org/>`_
-- `MicroFocus NetIQ Access Manager 4.5 <https://www.netiq.com/documentation/access-manager-45-developer-documentation/administration-rest-api-guide/data/oauth-openid-connect-api.html>`_
-- `Microsoft Azure Active Directory <https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/auth-oidc>`_
-
-.. tip:: Some providers are also able to act as an intermediary between
-         different identity provider systems and may be able to offer the
-         OpenID Connect interface needed by Krill while the users actually
-         exist in a completely different provider.
-
-This provider supports multiple users each with their own properties.
-
-- Authentication is handled by the `OpenID Connect 1.0 Core <https://openid.net/specs/openid-connect-core-1_0.html>`_
-  (OIDC) compliant identity provider service. Krill has neither knowledge of nor
-  access to user credentials.
-- Authorization is handled by Krill based on Role and Resource
-  Restrictions information, either extracted from OIDC service responses, or
-  defined locally in the Krill configuration file.
-- The ID of the logged in user shown in the web user interface and recorded in the Krill
-  event history need not be the username or other ID used to login to the OIDC
-  provider, it can be set to any value reported by the OIDC provider.
-
-**THIS DOCUMENT IS A WORK IN PROGRESS. CHECK BACK HERE LATER FOR MORE CONTENT.**
+- Requires operating another service or using a 3rd party service.
+- Confguring Krill and the OpenID Connect provider is more involved than
+  setting up :ref:`Config File Users`.
+- If Krill cannot contact the OpenID Connect provider, users will be
+  unable to login to Krill with their OpenID Connect credentials. It will
+  however still be possible to authenticate with Krill using its secret
+  token.
