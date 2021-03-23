@@ -144,3 +144,240 @@ but requires more effort to setup and maintain:
   unable to login to Krill with their OpenID Connect credentials. It will
   however still be possible to authenticate with Krill using its secret
   token.
+
+Choosing a provider
+-------------------
+
+There are many identity providers that support OpenID Connect to choose
+from. Some are software products that you can host yourself, others are
+online services that you can create an account with.
+
+Any OpenID Connect provider that you choose must implement the following standards:
+
+- `OpenID Connect Core 1.0 <https://openid.net/specs/openid-connect-core-1_0.html>`_
+- `OpenID Connect Discovery 1.0 <https://openid.net/specs/openid-connect-discovery-1_0.html>`_
+- `OpenID Connect RP-Initiated Logout 1.0 <https://openid.net/specs/openid-connect-rpinitiated-1_0.html>`_ *(optional)*
+- `RFC 7009 OAuth 2.0 Token Revocation <https://tools.ietf.org/html/rfc7009>`_ *(optional)*
+
+Krill has been tested with the following OpenID Connect providers (in alphabetical order):
+
+- `Amazon Cognito <https://aws.amazon.com/cognito/>`_
+- `Keycloak <https://www.keycloak.org/>`_
+- `Microsoft Azure Active Directory <https://azure.microsoft.com/en-us/services/active-directory/>`_
+- `Micro Focus NetIQ Access Manager 4.5 <https://www.netiq.com/documentation/access-manager-45-developer-documentation/administration-rest-api-guide/data/oauth-openid-connect-api.html>`_
+
+.. warning:: Krill has been verified to be able to login and logout with `Google Cloud <https://developers.google.com/identity/protocols/oauth2/openid-connect>`_
+             accounts. However, it is not advisable to grant access to
+             Google accounts in general. Instead you should use a
+             Google product that permits you to manage your own pool of
+             users so that you can restrict access to just these users.
+             Additionally, if you wish to assign different Krill rights
+             to different users you will need some way to mark the
+             users to indicate which role they should receive, e.g. by
+             grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
+
+Setting it up
+-------------
+
+The following steps are required to use local users in your Krill setup.
+
+.. note:: The manner of configuring the provider varies greatly between
+          providers. We will use `Keycloak <https://www.keycloak.org/>`_
+          for the example below. Some basic tips for known providers are
+          given in ``krill.conf`` along with complete documentation for
+          all of the possible configuration options. You will need to
+          consult the documentation for your provider to see how to
+          carry out steps similar to those given below and to decide
+          which ``krill.conf`` configuration settings and values are
+          correct for your situation.
+
+1. Decide on the settings to be configured.
+"""""""""""""""""""""""""""""""""""""""""""
+
+Decide which usernames you are going to configure, and what :ref:`role <doc_krill_multi_user_access_control>`
+and password they should have. For this example let's assume we want to
+configure the following users:
+
+================= ======== =========
+Username          Password Role
+================= ======== =========
+joe@example.com   dFdsapE5 admin
+sally             wdGypnx5 readonly
+dave_the_octopus  qnky8Zuj readwrite
+================= ======== =========
+
+And let's assume that we are going to use a local Docker `Keycloak <https://www.keycloak.org/>`_
+container as our OpenID Connect provider.
+
+----
+
+2. Configure the provider
+"""""""""""""""""""""""""
+
+Let's walk through configuring the provider step by step:
+
+.. contents::
+  :local:
+  :depth: 1
+
+
+Download and run Keycloak
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   $ sudo docker run \
+       --detach \
+       --name keycloak \
+       --publish 8443:8443 \
+       --env KEYCLOAK_USER=admin \
+       --env KEYCLOAK_PASSWORD=password \
+       --env DB_VENDOR=h2 quay.io/keycloak/keycloak:12.0.4
+
+Follow the logs until Keycloak is ready:
+
+.. code-block:: bash
+
+   $ docker logs --follow keycloak
+   ...
+   14:31:20,766 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: Keycloak 12.0.4 (WildFly Core 13.0.3.Final) started in 23954ms - Started 687 of 972 services (687 services are lazy, passive or on-demand)
+   14:31:20,768 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+   14:31:20,769 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+
+Login to the Keycloak admin UI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Browse to https://localhost:8443/.
+- Accept the self-signed TLS certificate.
+- Click on `Administration Console`.
+- Login as user `admin` password `password`.
+
+Create a realm
+~~~~~~~~~~~~~~
+
+- Hover over `Master` in the top left and click on the `Add Realm`
+  button that appears.
+- Set the field values as follows then click `Create`:
+
+  ===================  ======================================
+  Field                Value
+  ===================  ======================================
+  Name                 `krill`
+  ===================  ======================================
+
+Create a client application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tip:: This is where we register Krill with the OpenID Connect provider.
+
+Continuing in the KeyCloak web UI with realm set to `krill`:
+
+- Click `Clients` (top left) then `Create` (top right).
+- Set the field values as follows then click `Save`:
+
+  ===================  ======================================
+  Field                Value
+  ===================  ======================================
+  Client ID            `krill`
+  ===================  ======================================
+
+- On the `Settings` tab that is shown next set the field values as
+  follows then click `Save` at the bottom.
+
+  ===================  ======================================
+  Field                Value
+  ===================  ======================================
+  Consent Required     `ON`
+  Access Type          `confidential`
+  Valid Redirect URIs  `https://localhost:3000/auth/callback`
+  ===================  ======================================
+
+- Generate credentials for Krill to use:
+
+  - Open the `Credentials` tab (at the top).
+  - Copy the `Secret` value somewhere safe, we'll need it later.
+
+Configure a role mapper
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tip:: This is where we create custom claims that Krill can detect and
+         use to determine which rights in Krill to assign to the user.
+
+- Open the `Mappers` tab (at the top) and then click `Create`.
+- Set field values as follows then click `Save` at the bottom:
+
+  =====================  ======================================
+  Field                  Value
+  =====================  ======================================
+  Name                   `krill_role`
+  Mapper Type            `User Attribute`
+  User Attribute         `role`
+  Token Claim Name       `role`
+  Claim JSON Type        `String`
+  =====================  ======================================
+
+Create the users
+~~~~~~~~~~~~~~~~
+
+- Click `Users` (on the left) then click `Add User` (top right).
+- Set field values as follows then click `Save` at the bottom:
+
+  =====================  ======================================
+  Field                  Value
+  =====================  ======================================
+  Username               `<THE USERS NAME>`
+  =====================  ======================================
+
+- Open the `Credentials` tab and set the field values as follows:
+
+  =====================  ======================================
+  Field                  Value
+  =====================  ======================================
+  Password               `<THE USERS PASSWORD>`
+  Password Confirmation  `<THE USERS PASSWORD>`
+  =====================  ======================================
+
+- Set `Temporary` to `OFF`.
+- Click `Set Password`.
+- When asked `"Are you sure you want to set a password for this user?"` click `Set password`.
+
+- Open the `Attributes` tab.
+
+  - Enter Key `role` with value `readonly` and press `Add`.
+  - Click `Save` at the bottom.
+
+Repeat the above adding the other users.
+
+----
+
+3. Configure Krill
+""""""""""""""""""
+
+Add the following to your ``krill.conf`` file: *(remove or comment out
+any existing ``auth_type`` line)*
+
+.. code-block:: none
+
+   auth_type = "openid-connect"
+   
+   [auth_openidconnect]
+   issuer_url = "https://localhost:8443/auth/realms/krill"
+   client_id = "krill"
+   client_secret = "<SECRET VALUE SAVED EARLIER>"
+
+   [auth_openidconnect.claims]
+   id = { jmespath="preferred_username" }   
+
+----
+
+4. Go!
+
+Restart Krill and browse to the Krill web user interface. Your
+users should now be able to login with the Keycloak login form.
+
+.. image:: img/keycloak-krill-login.png
+
+Once logged in your users should have the role that you assigned
+to them:
+
+.. image:: img/keycloak-user-properties-in-krill.png

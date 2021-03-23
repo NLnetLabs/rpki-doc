@@ -98,7 +98,7 @@ remember when using Config File Users:
 Setting it up
 -------------
 
-The following steps are required to use local users in your Krill setup:
+The following steps are required to use local users in your Krill setup.
 
 1. Decide on the settings to be configured.
 """""""""""""""""""""""""""""""""""""""""""
@@ -115,6 +115,7 @@ sally             wdGypnx5 readonly
 dave_the_octopus  qnky8Zuj readwrite
 ================= ======== =========
 
+----
 
 2. Configure Krill
 """"""""""""""""""
@@ -141,11 +142,13 @@ to ``krill.conf``. The end result should look something like this:
    "sally"            = { attributes={ role="readonly" },  password_hash="..." }
    "dave_the_octopus" = { attributes={ role="readwrite" }, password_hash="..." }
 
+----
+
 3. Go!
 """"""
 
 Restart Krill and deliver the chosen passwords to the respective users to
-whom they belong.
+whom they belong. The users should now be able to login to your Krill instance.
 
 .. Warning:: Take whatever steps you think are necessary to ensure that the
              passwords are delivered **securely** to your users.
