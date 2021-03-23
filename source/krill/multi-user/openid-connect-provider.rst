@@ -177,7 +177,7 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
 Setting it up (using Keycloak)
---------------------0---------
+------------------------------
 
 The following steps are required to use OpenID Connect Users in your Krill setup.
 
