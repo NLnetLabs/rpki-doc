@@ -21,7 +21,7 @@ logging in, rather than the secret token that is usually required:
     :width: 100%
     :alt: Config file login screen
 
-    Using config file user credentials to access Krill
+    Using config file user credentials to login to Krill
 
 .. Note:: It is important to realize that Krill is not a complete user management
           system and that Config File Users therefore have some :ref:`limitations <limitations>`.
@@ -75,6 +75,10 @@ remember when using Config File Users:
 - Krill has no feature for requiring a user to change their password on first
   login. As such, by issuing users with passwords you become responsible for
   delivering the new password to them securely.
+
+- OpenID Connect providers often have support for one-time passwords (OTP)
+  or other secondary lines of defence to protect than account than just a
+  username and password. Krill does not have this capability.
 
 - Krill has no feature for generating cryptographically strong passwords. You
   are responsible for choosing sufficiently strong passwords for your users.
