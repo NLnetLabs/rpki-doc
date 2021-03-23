@@ -6,7 +6,11 @@
 RPKI Documentation
 ==================
 
-.. image:: https://img.shields.io/github/last-commit/NLnetLabs/rpki-doc.svg?label=last%20updated&style=flat-square
+|lastupdated| |discord|
+
+.. |lastupdated| image:: https://img.shields.io/github/last-commit/NLnetLabs/rpki-doc.svg?label=last%20updated&style=flat-square
+
+.. |discord| image:: https://img.shields.io/discord/818584154278199396?label=rpki%20on%20discord&logo=discord&style=flat-square
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI),
 the community-driven technology based on open standards that is aimed at making
@@ -14,23 +18,16 @@ Internet routing more secure. If you are new to this documentation, we recommend
 that you read the :ref:`introduction page <doc_about_intro>` to get an overview
 of what this documentation has to offer.
 
-The table of contents below and in the sidebar should let you easily access the
-documentation for your topic of interest. You can also use the search function
-in the top left corner.
-
 .. note:: This documentation is an open source project maintained by the RPKI
           team at NLnet Labs, with contributions from  the network operator
           community around the world. We always appreciate your feedback and
           improvements.
 
           You can submit an issue or pull request on the `GitHub repository
-          <https://github.com/NLnetLabs/rpki-doc/issues>`_, or post a message on
+          <https://github.com/NLnetLabs/rpki-doc/issues>`_, post a message on
           the `RPKI mailing list
-          <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_.  If you are
-          interested in providing a translation for this project,  please read
-          `this guide
-          <https://docs.readthedocs.io/en/latest/guides/manage-translations.html>`_
-          to get started.
+          <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_ or discuss RPKI
+          on `Discord <https://discord.gg/WaPgs8vEKy>`_. 
 
 The main documentation is organised into the following sections:
 
