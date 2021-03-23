@@ -481,8 +481,8 @@ Repeat the above adding the other users.
 3. Configure Krill
 """"""""""""""""""
 
-Add the following to your ``krill.conf`` file: *(remove or comment out
-any existing ``auth_type`` line)*
+Add the following to your ``krill.conf`` file: (remove or comment out
+any existing ``auth_type`` line)
 
 .. parsed-literal::
 
