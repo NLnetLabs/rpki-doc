@@ -204,7 +204,7 @@ steps must be taken:
    signing up to a cloud service, or arranging for support from your
    internal IT department to have changes made to your in-house provider
    on your behalf.
-
+   v
    \
 
 3. **Register Krill with the provider**
@@ -494,7 +494,7 @@ any existing ``auth_type`` line)*
    client_secret = "<SECRET VALUE SAVED EARLIER>"
    insecure = true [7]_
 
-.. [7] Do **NOT** use this in a production setting. We have to set insecure
+.. [7] Do **NOT** use this in a production setting. We have to set `insecure`
        to `true` in this demonstration because our Keycloak instance does
        not have a real TLS certificate. Without `insecure` set to `true`
        Krill would reject the insecure self-signed TLS certificate.
