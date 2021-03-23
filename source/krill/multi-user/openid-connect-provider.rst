@@ -25,7 +25,7 @@ Krill web user interface:
     :width: 100%
     :alt: Azure ActiveDirectory login screen
 
-    Enter Azure Active Directory credentials to access Krill
+    Using Azure Active Directory credentials to access Krill
 
 To use OpenID Connect Users in Krill you will either need to run your own
 OpenID Connect provider or use one provided by a 3rd party service
@@ -135,7 +135,7 @@ Known limitations
 -----------------
 
 OpenID Connect Users avoid the problems with :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`
-but requires more effort to setup and maintain:
+but require more effort to setup and maintain:
 
 - Requires operating another service or using a 3rd party service.
 - Confguring Krill and the OpenID Connect provider is more involved than
@@ -161,9 +161,9 @@ Any OpenID Connect provider that you choose must implement the following standar
 
 Krill has been tested with the following OpenID Connect providers (in alphabetical order):
 
-- `Amazon Cognito <https://aws.amazon.com/cognito/>`_
-- `Keycloak <https://www.keycloak.org/>`_
-- `Microsoft Azure Active Directory <https://azure.microsoft.com/en-us/services/active-directory/>`_
+- `Amazon Cognito <https://docs.aws.amazon.com/cognito/latest/developerguide/open-id.html>`_
+- `Keycloak <https://www.keycloak.org/docs/latest/server_admin/index.html#oidc-clients>`_
+- `Microsoft Azure Active Directory <https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/auth-oidc>`_
 - `Micro Focus NetIQ Access Manager 4.5 <https://www.netiq.com/documentation/access-manager-45-developer-documentation/administration-rest-api-guide/data/oauth-openid-connect-api.html>`_
 
 .. warning:: Krill has been verified to be able to login and logout with `Google Cloud <https://developers.google.com/identity/protocols/oauth2/openid-connect>`_
@@ -179,7 +179,7 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
 Setting it up
 -------------
 
-The following steps are required to use local users in your Krill setup.
+The following steps are required to use OpenID Connect Users in your Krill setup.
 
 .. note:: The manner of configuring the provider varies greatly between
           providers. We will use `Keycloak <https://www.keycloak.org/>`_
@@ -191,6 +191,12 @@ The following steps are required to use local users in your Krill setup.
           which ``krill.conf`` configuration settings and values are
           correct for your situation.
 
+.. tip:: You will see some footnote references (in the form `\[n\]`) in
+         the instructions below. We'll come back to these after we have
+         everything working. When a footnote is on a provider or Krill
+         setting value do **NOT** include the `\[n\]` part in the value
+         that you use!
+
 1. Decide on the settings to be configured.
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -198,13 +204,13 @@ Decide which usernames you are going to configure, and what :ref:`role <doc_kril
 and password they should have. For this example let's assume we want to
 configure the following users:
 
-================= ======== =========
-Username          Password Role
-================= ======== =========
-joe@example.com   dFdsapE5 admin
-sally             wdGypnx5 readonly
-dave_the_octopus  qnky8Zuj readwrite
-================= ======== =========
+================= ================= ========= =========
+Username          Email             Password  Role
+================= ================= ========= =========
+joe@example.com   joe@example.com   dFdsapE5  admin
+sally             sally@example.com wdGypnx5  readonly
+dave_the_octopus  dave@example.com  qnky8Zuj  readwrite
+================= ================= ========= =========
 
 And let's assume that we are going to use a local Docker `Keycloak <https://www.keycloak.org/>`_
 container as our OpenID Connect provider.
@@ -219,7 +225,6 @@ Let's walk through configuring the provider step by step:
 .. contents::
   :local:
   :depth: 1
-
 
 Download and run Keycloak
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,9 +292,8 @@ Continuing in the KeyCloak web UI with realm set to `krill`:
   ===================  ======================================
   Field                Value
   ===================  ======================================
-  Consent Required     `ON`
-  Access Type          `confidential`
-  Valid Redirect URIs  `https://localhost:3000/auth/callback`
+  Access Type          `confidential` [1]
+  Valid Redirect URIs  `https://localhost:3000/*` [2]
   ===================  ======================================
 
 - Generate credentials for Krill to use:
@@ -326,6 +330,7 @@ Create the users
   Field                  Value
   =====================  ======================================
   Username               `<THE USERS NAME>`
+  Email [3]              `<THE USERS EMAIL ADDRESS>`
   =====================  ======================================
 
 - Open the `Credentials` tab and set the field values as follows:
@@ -364,13 +369,12 @@ any existing ``auth_type`` line)*
    issuer_url = "https://localhost:8443/auth/realms/krill"
    client_id = "krill"
    client_secret = "<SECRET VALUE SAVED EARLIER>"
-
-   [auth_openidconnect.claims]
-   id = { jmespath="preferred_username" }   
+   insecure = true [4]
 
 ----
 
 4. Go!
+""""""
 
 Restart Krill and browse to the Krill web user interface. Your
 users should now be able to login with the Keycloak login form.
@@ -381,3 +385,7 @@ Once logged in your users should have the role that you assigned
 to them:
 
 .. image:: img/keycloak-user-properties-in-krill.png
+
+
+TODO: Come back to the footnotes
+TODO: Advanced use cases

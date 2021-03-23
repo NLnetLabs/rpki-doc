@@ -21,7 +21,7 @@ logging in, rather than the secret token that is usually required:
     :width: 100%
     :alt: Config file login screen
 
-    Enter config file user credentials to access Krill
+    Using config file user credentials to access Krill
 
 .. Note:: It is important to realize that Krill is not a complete user management
           system and that Config File Users therefore have some :ref:`limitations <limitations>`.
@@ -98,7 +98,7 @@ remember when using Config File Users:
 Setting it up
 -------------
 
-The following steps are required to use local users in your Krill setup.
+The following steps are required to use Config File Users in your Krill setup.
 
 1. Decide on the settings to be configured.
 """""""""""""""""""""""""""""""""""""""""""
