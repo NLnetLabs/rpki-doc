@@ -176,8 +176,8 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              users to indicate which role they should receive, e.g. by
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
-Setting it up
--------------
+Setting it up (overview)
+------------------------
 
 The process for setting up Krill to support login by users of an OpenID
 Connect provider follows the same basic pattern for all providers but
