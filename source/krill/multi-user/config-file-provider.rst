@@ -5,6 +5,13 @@ Config File Users
 
 .. versionadded:: v0.9.0
 
+.. contents::
+  :local:
+  :depth: 1
+
+Introduction
+------------
+
 By setting ``auth_type = "config-file"`` in ``krill.conf`` you can configure Krill
 to require users to enter a username and password in the web user interface when
 logging in, rather than the secret token that is usually required:
