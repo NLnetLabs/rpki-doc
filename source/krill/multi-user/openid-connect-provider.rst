@@ -514,7 +514,156 @@ to them:
 
 .. image:: img/keycloak-user-properties-in-krill.png
 
+----
+
 Setting it up (with other providers)
 ------------------------------------
 
-TO DO
+The OpenID Connect Users support within Krill is intended to be able to
+connect to and work with as many OpenID Connect providers as possible.
+
+As such there are quite a few extra configuration options listed in
+``krill.conf`` each of which is accompanied by documentation explaining
+what it does and how to use it.
+
+Rather than duplicate that documentation here, instead we will focus on
+a few of the more difficult features to use and problems to overcome.
+
+Simple claim mapping
+""""""""""""""""""""
+
+Imagine that you want to show users by their name in the Krill web user
+interface and not by their email address, and that you know that the
+full name is available in a claim called `name`.
+
+This can be achieved using a config section that looks like this in
+``krill.conf``:
+
+.. code-block:: none
+
+   [auth_openidconnect.claims]
+   id = { jmespath="name" }
+
+This tells Krill to search all of the claim data it receives for a field
+called `name` and use that as the ID for the user in Krill. This ID will
+also be logged in the Krill event history as the actor responsible for
+any events that they caused.
+
+What is JMESPath? According to `https://jmespath.org/ <https://jmespath.org/>`_:
+
+  *"JMESPath is a query language for JSON."*
+
+JSON is the format that OpenID Connect claim data is provided in by the
+provider. JMESPath can therefore be used to tell Krill which particular
+part from within the JSON it should use.
+
+This is a very trivial example of the power of JMESPath. You can find
+out more about it at the `https://jmespath.org/ <https://jmespath.org/>`_
+website and in ``krill.conf``. Krill comes with a couple of extensions
+to JMESPath syntax which are also documented in ``krill.conf``.
+
+Advanced claim mapping
+""""""""""""""""""""""
+
+Imagine that your users already exist in an OpenID Connect compatible
+identity provider and that the only distinguishing feature that you can
+use to assign them admin or some other role within Krill is their group
+membership. Now imagine that these groups do not have nice friendly
+names but instead are identified by an array of UUIDs!
+
+How do you tell Krill which users should have readonly access and which
+users should be have readwrite access?
+
+This is actually a real situation you can encounter with Azure Active
+Directory. JMESPath can also be used to handle this scenario, albeit
+with a much more complicated expression:
+
+.. code-block:: none
+
+   [auth_openidconnect.claims]
+   ro_role = { jmespath="resub(groups[?@ == 'gggggggg-gggg-gggg-gggg-gggggggggggg'] | [0], '^.+$', 'readonly')", dest="role" }
+   rw_role = { jmespath="resub(groups[?@ == 'hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh'] | [0], '^.+$', 'readwrite')", dest="role" }
+
+Let's break the `ro_role` claim mapping rule down:
+
+  - `gggg` and `hhhh` values represent the UUIDs of the groups to find in a
+    claim array called `groups`.
+  - The `resub` JMESPath function is a Krill extension to JMESPath that performs
+    regular expression based substitution.
+  - `groups[?@ == '...']` finds all entries in the `groups` array that match the
+    specified UUID.
+  - We then assume that there is only ever zero or one matches and just use the
+    first match `| [0]` found.
+  - Then we instruct Krill to take the entire value with `^.+$`.
+  - And to replace it with the value `readonly`.
+  - Finally, although instead of assigning the value `readonly` to the user 
+    attribute `ro_role`, `dest` is used to instead store `readonly` in a user
+    attribute called `role`.
+
+As `role` is the user attribute that the Krill authorization policy engine looks
+at by default this will cause the user to be assigned the readonly role if their
+user is a member of the group with the UUID value that represents the "readonly"
+group!
+
+If we had only one rule we could write `role` on the left, but as we have two
+rules that both try to provide a value for the same user attribute and the keys
+on the left of the `=` must be unique, we use the `dest` trick to map any value
+found to the `role` user attribute.
+
+More claim mapping
+""""""""""""""""""
+
+Now imagine that the group membership is instead expressed not as array elements
+that each exactly match some group name or UUID that we can look for, but that
+each array element is a long string composed of `key=value` comma separated pairs.
+
+This can happen when the identity provider expresses group memberships in LDAP
+X.500 format (see `RFC 2253 Lightweight Directory Access Protocol (v3):
+UTF-8 String Representation of Distinguished Names <https://www.ietf.org/rfc/rfc2253.txt>`_).
+
+For example you might see something like ``CN=Joe Bloggs,OU=NetworkTeam-Admins,DC=mycorp.com``,
+representing a user called Joe who is in the administrators group of the
+networking team of a company called mycorp.com.
+
+Hopefully you'll only need simple rules but also equally hopefully if you need
+more powerful matching Krill will be up to the task. For example, here's a more
+complicated rule:
+
+.. code-block:: none
+
+   dynamic_role = { jmespath="resub(memberof[?starts_with(@, 'CN=DL-Krill-')] | [0], '^CN=DL-Krill-(?P<role>[^-,]+).+', '$role')" }
+
+This rule will match elements of an array called `memberof` whose value starts
+with ``CN=DL-Krill-``, and wlll then extract just the part after that upto a
+comma or dash, and will use that captured value as the Krill ``role`` user
+attribute!
+
+Trace logging
+"""""""""""""
+
+If you think your OpenID Connect provider should be providing certain
+claims about your users but are not sure, or if you are not redirected
+properly to the OpenID Connect provider login page or are not redirected
+post-login back to Krill, setting ``log_level = "trace"`` will show you
+exactly what Krill is doing, which requests it is sending to the OpenID
+Connect provider and which responses it is receiving.
+
+Note however that some of the communication will be between your browser
+and the OpenID Connect provider and that will not be visible in the Krill
+logs. To monitor that you will need to use the network inspector tool of
+your browser to see the requests and responses being exchanged.
+
+.. warning:: Trace level logging is VERY verbose.
+
+Missing claims
+""""""""""""""
+
+If you find that expected claim data is indeed not being sent by the
+provider this may not be an issue with the provider, rather it may be
+that the provider requires that Krill ask to be sent those claims.
+
+Look at the ``extra_login_scopes`` setting in ``krill.conf``, at
+`OpenID Connect Core 1.0 section 5.4 Requesting Claims using Scope Values <https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims>`_
+and at the documentation for your provider. Try and determine if
+there is a particular "scope" value that should be sent by Krill that
+is not currently being sent.
