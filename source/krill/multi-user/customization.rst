@@ -55,13 +55,9 @@ policy:
   - Being a member of a team grants access to the CAs that the team
     works with.
 
-The example works by defining the team names in the policy file (as
-there is no way to define something new that is independent of Users
-in the config file, you can only add new attributes or claim mappings,
-not non-user related properties).
-
-Each team is given a name and a list of CAs it works with. Krill is
-then extended to understand two new user attributes:
+The example works by defining the team names in the policy file. Each
+team is given a name and a list of CAs it works with. Krill is then
+extended to understand two new user attributes:
 
   - `team` - which team a user belongs to
   - `teamrole` - which role the user has in the team
