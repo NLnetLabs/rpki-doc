@@ -176,59 +176,6 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              users to indicate which role they should receive, e.g. by
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
-Standard claims
----------------
-
-The OpenID Connect specification defines the following "standard" claims:
-
-.. hlist::
-   :columns: 4
-
-   * sub
-   * name
-   * given_name
-   * family_name
-   * middle_name
-   * nickname
-   * preferred_username
-   * profile
-   * picture
-   * website
-   * email
-   * email_verified
-   * gender
-   * birthdate
-   * zoneinfo
-   * locale
-   * phone_number
-   * phone_number_verified
-   * address
-   * updated_at
-
-Only some of these could be useful either to display in the Krill web user
-interface, or to use as the user ID in Krill, or to base authorization 
-decisions on.
-
-The most useful data to base role assignment on would be an actual "role"
-claim or to match against some notion of groups that the user is a member
-of. As you can see these are not part of the standard and so will either
-vary from provider to provider in how they are offered, or may not be
-offered at all, or may be possible by defining custom claims.
-
-For more information see the `OpenID Connect Core 1.0 specification section 5.1 Standard Claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_ 
-and consult your providers documentation. Below are some links to
-information about non-standard claims offered by providers that Krill has
-been tested with:
-
-  * Azure Active Directory:
-
-    * `How to: Provide optional claims to your app <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`_
-    * `Configure group claims for applications with Azure Active Directory <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`_
-
-  * Amazon Cognito:
-
-    * `Using Tokens with User Pools <https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html>`_
-
 Setting it up
 -------------
 
@@ -248,11 +195,30 @@ steps must be taken:
    example:
 
      - Which URL will Krill be available at?
+
+       \
+
      - Which user(s) will have admin rights in Krill?
+
+       \
+
      - Is there some property of these users that distinguishes them
        from other users (for example they may already be members of some
        internal Active Directory group) or will you need to mark them out
        in some way so that Krill can spot that they should be admins?
+
+       \
+
+     - Is this property available by default as part of the `standard claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_
+       sent by the provider to the client, or is it a provider
+       specific claim or will it need to be configured in the provider
+       as a custom claim? [1]_
+
+       .. [1] Some provider specific information regarding claims can
+              be found at the following links:
+              Microsoft Azure Active Directory (`here <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`_
+              and `here <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`_),
+              Amazon Cognito (`here <https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html>`_)
 
 2. **Gain access to the provider**
 
@@ -265,7 +231,7 @@ steps must be taken:
 
 3. **Register Krill with the provider**
    
-   You will need to supply the Krill redirect URLs: [1]_
+   You will need to supply the Krill redirect URLs: [2]_
 
      - https://yourdomain/auth/callback
      - https://yourdomain/ *(if the provider supports Connect RP-Initiated
@@ -274,18 +240,18 @@ steps must be taken:
    You should receive back from the registration process three pieces of
    information that will be needed to configure Krill:
 
-   - The provider OpenID Connect Discovery 1.0 issuer URL [2]_
+   - The provider OpenID Connect Discovery 1.0 issuer URL [3]_
    - A client ID
    - A client secret
 
    \
 
-   .. [1] Alternatively your provider may support wildcard redirect URLs in
+   .. [2] Alternatively your provider may support wildcard redirect URLs in
       which case you can supply https://yourdomain/\*. However wildcard URLs
       are not advised as they could potentially be abused to redirect
       requests to other locations.
    
-   .. [2] A correct URL will either end in /.well-known/openid-configuration
+   .. [3] A correct URL will either end in /.well-known/openid-configuration
       or should that appended to it, e.g. the Google issuer URL is: https://accounts.google.com/.well-known/openid-configuration
 
 4. **Create users, groups and/or claims in the provider**
@@ -311,15 +277,18 @@ steps must be taken:
 
 5. **Configure additional provider features**
 
-   How long are the tokens issued by the provider valid for? Can the
-   provider issue refresh tokens? These properties affect how long a user
-   can remain logged in to Krill.
+   - How long are the tokens issued by the provider valid for? Can the
+     provider issue refresh tokens? These properties affect how long a user
+     can remain logged in to Krill.
    
-   You should also ensure that the provider has a real TLS certificate, or
-   for in-house certificates you will need a copy of the Certificate
-   Authority root certificate so that you can configure Krill to trust it.
-   If neither are possible you can configure Krill to trust the insecure
-   certificate anyway, but this is not advised.
+   - Ensure that the provider has a real TLS certificate, or for in-house
+     certificates you will need a copy of the Certificate Authority root
+     certificate so that you can configure Krill to trust it. If neither
+     are possible you can configure Krill to trust the insecure certificate
+     anyway, but this is not advised.
+
+   - Do you need to configure the provider to ensure that the claims you
+     want to use will be sent to Krill?
 
    \
 
@@ -343,6 +312,10 @@ In this section you will see how to setup `Keycloak <https://www.keycloak.org/>`
 as an OpenID Connect provider for Krill.
 
 The following steps are required to use OpenID Connect Users in your Krill setup.
+
+.. contents::
+  :local:
+  :depth: 1
 
 1. Decide on the settings to be configured.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -447,8 +420,8 @@ Continuing in the KeyCloak web UI with realm set to `krill`:
   ===================  ======================================
   Field                Value
   ===================  ======================================
-  Access Type          `confidential` [3]_
-  Valid Redirect URIs  `https://localhost:3000/*` [4]_
+  Access Type          `confidential` [4]_
+  Valid Redirect URIs  `https://localhost:3000/*` [5]_
   ===================  ======================================
 
 - Generate credentials for Krill to use:
@@ -456,9 +429,9 @@ Continuing in the KeyCloak web UI with realm set to `krill`:
   - Open the `Credentials` tab (at the top).
   - Copy the `Secret` value somewhere safe, we'll need it later.
 
-.. [3] Krill is an OAuth 2.0 "Confidential Client" as defined
+.. [4] Krill is an OAuth 2.0 "Confidential Client" as defined
        in `RFC 6749 Section 2.1 <https://tools.ietf.org/html/rfc6749#section-2.1>`_.
-.. [4] We could configure this explicitly as two separate
+.. [5] We could configure this explicitly as two separate
        redirect URLs: https://localhost:3000/auth/callback (for
        post-login) and https://localhost:3000/ (for post-logout).
        However, as this is a localhost demo and Keycloak supports
@@ -493,7 +466,7 @@ Create the users
   Field                  Value
   =====================  ======================================
   Username               `<THE USERS NAME>`
-  Email [5]_             `<THE USERS EMAIL ADDRESS>`
+  Email [6]]_             `<THE USERS EMAIL ADDRESS>`
   =====================  ======================================
 
 - Open the `Credentials` tab and set the field values as follows:
@@ -505,7 +478,7 @@ Create the users
   Password Confirmation  `<THE USERS PASSWORD>`
   =====================  ======================================
 
-- Leave `Temporary` set to `ON`. [6]_
+- Leave `Temporary` set to `ON`. [7]_
 - Click `Set Password`.
 - When asked `"Are you sure you want to set a password for this user?"` click `Set password`.
 
@@ -516,14 +489,14 @@ Create the users
 
 Repeat the above adding the other users.
 
-.. [5] By default Krill expects there to be an "email" claim in the ID
+.. [6] By default Krill expects there to be an "email" claim in the ID
        Token response from the provider. If we didn't setup an email
        here we would need to define a claim mapping so that Krill could
        extract the `Username` value that we provide from some other
        claim field. In the case of Keycloak that would be the 
        `preferred_username` field. We'll revisit this topic later.
 
-.. [6] This is a good example of where using an OpenID Connect provider
+.. [7] This is a good example of where using an OpenID Connect provider
        has benefits over using :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`.
        By leaving `Temporary` set to `ON`, Keycloak will require the
        user to change their password on first login. Krill doesn't have
@@ -548,9 +521,9 @@ any existing ``auth_type`` line)
    issuer_url = "https://localhost:8443/auth/realms/krill"
    client_id = "krill"
    client_secret = "<SECRET VALUE SAVED EARLIER>"
-   insecure = true [7]_
+   insecure = true [8]_
 
-.. [7] Do **NOT** use this in a production setting. We have to set `insecure`
+.. [8] Do **NOT** use this in a production setting. We have to set `insecure`
        to `true` in this demonstration because our Keycloak instance does
        not have a real TLS certificate. Without `insecure` set to `true`
        Krill would reject the insecure self-signed TLS certificate.
@@ -584,6 +557,51 @@ what it does and how to use it.
 
 Rather than duplicate that documentation here, instead we will focus on
 a few of the more difficult features to use and problems to overcome.
+
+.. contents::
+  :local:
+  :depth: 1
+
+Understanding claims
+~~~~~~~~~~~~~~~~~~~~
+
+Before we look at how to match claims let's first take a look at what
+claims actually are and what it is that Krill has to match against.
+
+Claims are part of the JSON data sent by the provider to the client.
+Krill must first extract this JSON data from the encoded, signed JWT
+data. The resulting claims look something like this:
+
+.. code-block:: json
+
+   {
+     "iss": "http://server.example.com",
+     "sub": "248289761001",
+     "aud": "s6BhdRkqt3",
+     "nonce": "n-0S6_WzA2Mj",
+     "exp": 1311281970,
+     "iat": 1311280970,
+     "name": "Jane Doe",
+     "given_name": "Jane",
+     "family_name": "Doe",
+     "gender": "female",
+     "birthdate": "0000-10-31",
+     "email": "janedoe@example.com",
+     "picture": "http://example.com/janedoe/me.jpg"
+   }
+
+Source: https://openid.net/specs/openid-connect-core-1_0.html#id_tokenExample
+
+Thus if you were to configure Krill to use the "given_name" claim
+as the ID of the user in Krill, like so:
+
+.. code-block:: none
+
+   [auth_openidconnect.claims]
+   id = { jmespath="given_name" }
+
+Then in this example Krill would use the value "Jane" as the ID of the
+user logged in to Krill.
 
 Matching claims by name
 ~~~~~~~~~~~~~~~~~~~~~~~
