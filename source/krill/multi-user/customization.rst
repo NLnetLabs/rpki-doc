@@ -12,6 +12,10 @@ Custom Authorization Policies
 Introduction
 ------------
 
+.. note:: This is an advanced topic, you don't need this feature to
+          get started with Named Users. If you are considering
+          implementing a custom authorization policy `we'd love to hear from you <mailto:rpki-team@nlnetlabs.nl>`_!
+
 Custom authorization policies are a way of extending Krill by supplying
 one or more files containing rules that will be added to those used by
 Krill when deciding if a given action by a user should be permitted or
@@ -95,7 +99,7 @@ files to load on startup.
           Krill is running.
 
           For policies that only contain rules this is not a
-          problem as the rules would not be expected to change
+          problem as the  would not be expected to change
           very often, if ever.
 
           However, for policies that define configuration in the
@@ -106,4 +110,108 @@ files to load on startup.
 Writing custom policies
 -----------------------
 
-TO DO
+Policies are written in the Polar language. The following articles
+from the Oso website can help you get started with Polar:
+
+  - `The Polar Language <https://docs.osohq.com/rust/learn/polar-foundations.html>`_
+  - `Write Oso Policies (30 min) <https://docs.osohq.com/rust/getting-started/policies.html>`_
+  - `Polar Syntax Reference <https://docs.osohq.com/rust/reference/polar/polar-syntax.html>`_
+  - `Rust Types in Polar <https://docs.osohq.com/rust/reference/polar/classes.html>`_
+
+The core policies and permissions that Krill uses are embedded into
+Krill itself and cannot be changed. It is however possible to add
+new roles and to add new logic based around the value of custom user
+attributes.
+
+Defining new roles
+""""""""""""""""""
+
+Krill roles are defined by ``role_allow("rolename", action: Permission)``
+Polar rules. The rule is tested if the role of the current user is
+"rolename". The current role definitions test if the requested
+action is in a set defined to be valid for that role.
+
+.. tip:: You can see the built-in `role <https://github.com/NLnetLabs/krill/blob/master/defaults/roles.polar>`_
+         and `permission <https://github.com/NLnetLabs/krill/blob/master/src/daemon/auth/common/permissions.rs>`_
+         definitions in the Krill GitHub repository.
+
+To define a new role that grants read only rights plus the right to
+update ROAs one could write the following Polar rule:
+
+.. code-block:: none
+
+   role_allow("roawrite", action: Permission)
+       role_allow("readonly", action) or
+       action = ROUTES_UPDATE;
+
+This example is actually taken from the `role-per-ca-demo.polar` policy.
+
+Defining new rules
+""""""""""""""""""
+
+Let's write a rule that completely prevents the update of ROAs.
+
+When Oso does a permission check the search for a matching rule
+starts by matching rules of the form ``allow(actor, action, resource)``.
+
+The Krill policy delegates from its `allow` rules immediately to a
+special ``disallow(actor, action, resource)`` rule. The only definition
+of the ``disallow()`` rule in Krill by says ``if false``, i.e. nothing
+is disallowed.
+
+While technically you can prevent an action by ``cut``ing out of an
+``allow()`` rule that is more specific than any other ``allow()`` rules,
+it's not always possible to ensure that your rule is the most specific
+match. That's where ``disallow()`` comes in handy.
+
+Let's use ``disallow()`` to implement our rule.
+
+.. tip:: "resource" in this context is a Polar term and should not be
+         confused with the RPKI term "resource".
+
+Create a file called ``no_roa_updates.polar`` containing the following
+content:
+
+.. code-block:: none
+
+   # define our new rule: disallow all ROA updates
+   disallow(_, ROUTES_UPDATE, _);
+
+   # we could also write this more explicitly like so:
+   # disallow(_, ROUTES_UPDATE, _) if true;
+
+   # add a test to check that our new rule works by
+   # showing that an admin user can no longer update
+   # ROAs!
+   ?= not allow(new Actor("test", { role: "admin" }), ROUTES_UPDATE, new Handle("some_ca"));
+
+Let's break this down:
+
+  - The ``_`` character is Polar syntax for "match any".
+  - Lines starting with ``#`` are comments.
+  - Lines starting with ``?=`` defines self-test inline queries that
+    will be executed when Krill starts. If a self-test inline query
+    fails Krill will exit with an error.
+
+The rule that we have created says that for any actor trying to update
+a ROA on any "resource" (i.e. Certificate Authority), succeed (i.e.
+disallow the attempt).
+
+If we now set ``auth_policies = [ "path/to/no_roa_updates.polar" ]``
+in our ``krill.conf`` file and restart Krill it will no longer be
+possible for anyone to update ROAs.
+
+This is obviously not the most useful policy, but it demonstrates
+the idea :-)
+
+Diagnosing issues
+"""""""""""""""""
+
+If a rule doesn't work as expected a good way to investigate is to
+add more self-test inline queries.
+
+If that fails you can set ``log_level = "debug"`` and set O/S
+environment variable ``POLAR_LOG=1`` when runnng Krill. This will
+cause a huge amount of internal Polar diagnostic logging which
+will show exactly which rules Polar evaluated in which order with
+which parameters and what the results were.
