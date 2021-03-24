@@ -216,8 +216,8 @@ steps must be taken:
 
        .. [1] Some provider specific information regarding claims can
               be found at the following links:
-              Microsoft Azure Active Directory (`here <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`_
-              and `here <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`_),
+              Microsoft Azure Active Directory (`here <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`__
+              and `here <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`__),
               Amazon Cognito (`here <https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html>`_)
 
 2. **Gain access to the provider**
