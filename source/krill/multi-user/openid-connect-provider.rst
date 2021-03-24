@@ -252,7 +252,7 @@ steps must be taken:
       requests to other locations.
    
    .. [3] A correct URL will either end in /.well-known/openid-configuration
-      or should that appended to it, e.g. the Google issuer URL is: https://accounts.google.com/.well-known/openid-configuration
+      or should have that appended to it, e.g. the Google issuer URL is: https://accounts.google.com/.well-known/openid-configuration
 
 4. **Create users, groups and/or claims in the provider**
    
