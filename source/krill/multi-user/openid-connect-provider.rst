@@ -749,27 +749,6 @@ with ``CN=DL-Krill-``, and wlll then extract just the part after that upto a
 comma or dash, and will use that captured value as the Krill ``role`` user
 attribute!
 
-Diagnosing problems
-~~~~~~~~~~~~~~~~~~~
-
-If you think your OpenID Connect provider should be providing certain
-claims about your users but are not sure, or if you are not redirected
-properly to the OpenID Connect provider login page or are not redirected
-post-login back to Krill, setting ``log_level = "debug"`` will give you
-more information about what Krill is doing, and setting ``log_level = "trace"``
-will allow you to see the OpenID Connect requests and responses being sent
-to and received from the provider.
-
-Note however that some of the communication will be between your browser
-and the OpenID Connect provider and that will not be visible in the Krill
-logs. To monitor that you will need to use the network inspector tool of
-your browser to see the requests and responses being exchanged.
-
-.. warning:: Trace level logging is VERY verbose and can reveal sensitive
-             information such as OAuth 2.0 Access Tokens and users profile
-             data. Only enable trace level logging while investigating a
-             problem. Normally it should be sufficient to use ``log_level = "warn"``.
-
 Requesting missing claims
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -782,3 +761,27 @@ Look at the ``extra_login_scopes`` setting in ``krill.conf``, at
 and at the documentation for your provider. Try and determine if
 there is a particular "scope" value that should be sent by Krill that
 is not currently being sent.
+
+Diagnosing login problems
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you think your OpenID Connect provider should be providing certain
+claims about your users but are not sure, or if you are not redirected
+properly to the OpenID Connect provider login page or are not redirected
+post-login back to Krill, you can increase the log level.
+
+  - ``log_level = "debug"`` will cause Krill to log more about what it is
+    doing.
+  - ``log_level = "trace"`` will cause Krill to log OpenID Connect requests
+    and responses.
+
+Note however that some of the communication will be between your browser
+and the OpenID Connect provider and that will not be visible in the Krill
+logs. To monitor that you will need to use the network inspector tool of
+your browser to see the requests and responses being exchanged.
+
+.. warning:: Trace level logging is VERY verbose and can reveal sensitive
+             information such as OAuth 2.0 Access Tokens and users profile
+             data. Only enable trace level logging while investigating a
+             problem. Normally it should be sufficient to use ``log_level = "warn"``.
+
