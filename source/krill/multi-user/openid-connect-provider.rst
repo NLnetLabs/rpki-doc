@@ -204,7 +204,7 @@ steps must be taken:
    signing up to a cloud service, or arranging for support from your
    internal IT department to have changes made to your in-house provider
    on your behalf.
-   v
+   
    \
 
 3. **Register Krill with the provider**
