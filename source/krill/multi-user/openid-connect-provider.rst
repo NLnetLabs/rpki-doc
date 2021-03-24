@@ -195,7 +195,7 @@ steps must be taken:
      - Which user(s) will have admin rights in Krill?
      - Is there some property of these users that distinguishes them
        from other users (for example they may already be members of some
-       interal Active Directory group) or will you need to mark them out
+       internal Active Directory group) or will you need to mark them out
        in some way so that Krill can spot that they should be admins?
 
 2. **Gain access to the provider**
