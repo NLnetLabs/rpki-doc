@@ -13,9 +13,7 @@ Permissions
 -----------
 
 Internally within Krill each REST API endpoint requires the logged in user to have
-a specific Krill permission in order to execute the request. You do not need to be
-aware of these permissions or permission mappings (except perhaps if you wish to
-customize the Krill authorization behaviour via :ref:`custom authorization policies <doc_krill_multi_user_custom_policies>`).
+a specific Krill permission in order to execute the request.
 
 Role Based Access Control
 -------------------------
