@@ -225,7 +225,7 @@ Repository Response XML you can then update your CA's repository using:
 
 .. code-block:: bash
 
-  $ krillc repo update -reponse <path-to-xml>
+  $ krillc repo update --response <path-to-xml>
 
 
 Krill will then make sure that objects are moved properly, and that a new
