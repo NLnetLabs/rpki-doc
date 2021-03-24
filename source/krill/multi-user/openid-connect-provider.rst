@@ -514,10 +514,10 @@ Repeat the above adding the other users.
        has benefits over using :ref:`Config File Users <doc_krill_multi_user_config_file_provider>`.
        By leaving `Temporary` set to `ON`, Keycloak will require the
        user to change their password on first login. Krill doesn't have
-       this functionality itself. We should still attempt to communicate
-       an initial unique password securely to the user, but the
-       opportunity for abuse is limited and we as admins won't know the
-       actual password the user sets for themselves. 
+       this functionality itself. This doesn't remove the need to
+       communicate an initial unique password securely to the user, but
+       the opportunity for abuse is more limited and passwords are not
+       so readily visible to the Krill operator.
 
 ----
 
