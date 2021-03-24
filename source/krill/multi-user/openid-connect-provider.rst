@@ -83,7 +83,7 @@ redirected to the login page of the OpenID Connect provider. This is
 
 For example, when logging in to a Krill instance connected to the OpenID
 Connect provider in a large company, the end user might see a very familiar
-login page. That's becausae it is probably a page they have to login to in
+login page. That's because it is probably a page they have to login to in
 order to use many other services in their company. Often this login page
 will even be themed to match the corporate branding.
 
