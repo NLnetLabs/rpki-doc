@@ -24,6 +24,27 @@ OpenID Connect Users
 Introduction
 ------------
 
+.. tip:: While OpenID Connect 1.0 compliant providers all implement the same
+         protocol, they do not all use the same combination of features from
+         the underlying OAuth 2.0 or the OpenID Connect 1.0 standards, they
+         each have the freedom to serve their own set of custom claims and to
+         structure that data as they wish, and they each have their own user
+         interface and/or API for configuring the provider. That's a lot of
+         variation.
+
+         We've tested support for OpenID Connect Users with a few different
+         providers but we haven't tested it with **your** provider and the
+         way that you configure your provider could be very different than
+         anything we've tested.
+
+         If you plan to use this feature please `get in touch <mailto:rpki-team@nlnetlabs.nl>`_
+         with us, we'd love to hear about how it's being used and to learn
+         what works and what could be improved.
+
+         Thanks,
+
+         The RPKI team at NLnet Labs.
+
 `OpenID Connect <https://openid.net/connect/>`_ is a widely supported
 standard that builds on the OAuth 2.0 standard to authenticate users
 and provide basic profile information about those users.
