@@ -15,6 +15,23 @@ Permissions
 Internally within Krill each REST API endpoint requires the logged in user to have
 a specific Krill permission in order to execute the request.
 
+
+User Attributes
+---------------
+
+User attributes are assigned by the identity provider, either in the
+``krill.conf`` file for locally defined users, or in the management interface of
+the OpenID Connect provider that manages your users.
+
+.. Warning:: By default, user attributes and their values are shown in the Krill
+             web user interface and the web user interface stores these 
+             attributes in browser local storage. To prevent sensitive attributes
+             being revealed in the browser you can mark them as private. One
+             possible use for this is to restrict access using the ``exc_cas``
+             attribute but not reveal the name of the restricted CA by doing
+             so. See ``auth_private_attributes`` in ``krill.conf`` file for more
+             information.
+
 Role Based Access Control
 -------------------------
 
@@ -38,19 +55,3 @@ Attribute Based Access Control
 Krill supports ``inc_cas`` and ``exc_cas`` user attributes which can be used
 to permit or deny access to one or more Certificate Authorities in Krill. User
 attributes can also be used to make decisions in :ref:`custom authorization policies <doc_krill_multi_user_custom_policies>`.
-
-User Attributes
----------------
-
-User attributes are assigned by the identity provider, either in the
-``krill.conf`` file for locally defined users, or in the management interface of
-the OpenID Connect provider that manages your users.
-
-.. Warning:: By default, user attributes and their values are shown in the Krill
-             web user interface and the web user interface stores these 
-             attributes in browser local storage. To prevent sensitive attributes
-             being revealed in the browser you can mark them as private. One
-             possible use for this is to restrict access using the ``exc_cas``
-             attribute but not reveal the name of the restricted CA by doing
-             so. See ``auth_private_attributes`` in ``krill.conf`` file for more
-             information.
