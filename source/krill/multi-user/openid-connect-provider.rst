@@ -7,7 +7,7 @@ OpenID Connect Users
 
 .. contents::
   :local:
-  :depth: 1
+  :depth: 2
 
 Introduction
 ------------
@@ -176,8 +176,64 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              users to indicate which role they should receive, e.g. by
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
-Setting it up (overview)
-------------------------
+Standard claims
+---------------
+
+The OpenID Connect specification defines the following "standard" claims:
+
+.. hlist::
+   :columns: 4
+
+   * sub
+   * name
+   * given_name
+   * family_name
+   * middle_name
+   * nickname
+   * preferred_username
+   * profile
+   * picture
+   * website
+   * email
+   * email_verified
+   * gender
+   * birthdate
+   * zoneinfo
+   * locale
+   * phone_number
+   * phone_number_verified
+   * address
+   * updated_at
+
+Only some of these could be useful either to display in the Krill web user
+interface, or to use as the user ID in Krill, or to base authorization 
+decisions on.
+
+The most useful data to base role assignment on would be an actual "role"
+claim or to match against some notion of groups that the user is a member
+of. As you can see these are not part of the standard and so will either
+vary from provider to provider in how they are offered, or may not be
+offered at all, or may be possible by defining custom claims.
+
+For more information see the `OpenID Connect Core 1.0 specification section 5.1 Standard Claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_ 
+and consult your providers documentation. Below are some links to
+information about non-standard claims offered by providers that Krill has
+been tested with:
+
+  * Azure Active Directory:
+
+    * `How to: Provide optional claims to your app <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`_
+    * `Configure group claims for applications with Azure Active Directory <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`_
+
+  * Amazon Cognito:
+
+    * `Using Tokens with User Pools <https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html>`_
+
+Setting it up
+-------------
+
+Overview
+""""""""
 
 The process for setting up Krill to support login by users of an OpenID
 Connect provider follows the same basic pattern for all providers but
@@ -280,8 +336,8 @@ steps must be taken:
    .. tip:: The ``krill.conf`` file contains example configurations for
             providers that Krill has been tested with.
 
-Setting it up (using Keycloak)
-------------------------------
+Using Keycloak
+""""""""""""""
 
 In this section you will see how to setup `Keycloak <https://www.keycloak.org/>`__
 as an OpenID Connect provider for Krill.
@@ -289,7 +345,7 @@ as an OpenID Connect provider for Krill.
 The following steps are required to use OpenID Connect Users in your Krill setup.
 
 1. Decide on the settings to be configured.
-"""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For this example let's assume we want to configure the following users:
 
@@ -308,7 +364,7 @@ https://localhost:8443/.
 ----
 
 2. Configure the provider
-"""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's walk through configuring the provider step by step:
 
@@ -317,7 +373,7 @@ Let's walk through configuring the provider step by step:
   :depth: 1
 
 Download and run Keycloak
-~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++
 
 .. code-block:: bash
 
@@ -346,7 +402,7 @@ Follow the logs until Keycloak is ready:
    14:31:20,769 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
 
 Login to the Keycloak admin UI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++
 
 - Browse to https://localhost:8443/.
 - Accept the self-signed TLS certificate.
@@ -354,7 +410,7 @@ Login to the Keycloak admin UI
 - Login as user `admin` password `password`.
 
 Create a realm
-~~~~~~~~~~~~~~
+++++++++++++++
 
 .. note:: A realm is a Keycloak concept and is a good example of how
           providers differ in what needs to be done to set them up.
@@ -370,7 +426,7 @@ Create a realm
   ===================  ======================================
 
 Create a client application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++
 
 .. tip:: This is where we register Krill with the OpenID Connect provider.
 
@@ -409,7 +465,7 @@ Continuing in the KeyCloak web UI with realm set to `krill`:
        wildcard redirect URLs we can keep it simple in this case.
 
 Configure a role mapper
-~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++
 
 .. tip:: This is where we create custom claims that Krill can detect and
          use to determine which rights in Krill to assign to the user.
@@ -428,7 +484,7 @@ Configure a role mapper
   =====================  ======================================
 
 Create the users
-~~~~~~~~~~~~~~~~
+++++++++++++++++
 
 - Click `Users` (on the left) then click `Add User` (top right).
 - Set field values as follows then click `Save` at the bottom:
@@ -479,7 +535,7 @@ Repeat the above adding the other users.
 ----
 
 3. Configure Krill
-""""""""""""""""""
+~~~~~~~~~~~~~~~~~~
 
 Add the following to your ``krill.conf`` file: (remove or comment out
 any existing ``auth_type`` line)
@@ -502,7 +558,7 @@ any existing ``auth_type`` line)
 ----
 
 4. Go!
-""""""
+~~~~~~
 
 Restart Krill and browse to the Krill web user interface. Your
 users should now be able to login with the Keycloak login form.
@@ -516,8 +572,8 @@ to them:
 
 ----
 
-Setting it up (with other providers)
-------------------------------------
+With other providers
+""""""""""""""""""""
 
 The OpenID Connect Users support within Krill is intended to be able to
 connect to and work with as many OpenID Connect providers as possible.
@@ -529,8 +585,8 @@ what it does and how to use it.
 Rather than duplicate that documentation here, instead we will focus on
 a few of the more difficult features to use and problems to overcome.
 
-Simple claim mapping
-""""""""""""""""""""
+Matching claims by name
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Imagine that you want to show users by their name in the Krill web user
 interface and not by their email address, and that you know that the
@@ -547,7 +603,7 @@ This can be achieved using a config section that looks like this in
 This tells Krill to search all of the claim data it receives for a field
 called `name` and use that as the ID for the user in Krill. This ID will
 also be logged in the Krill event history as the actor responsible for
-any events that they caused.
+any events that they caused.h
 
 What is JMESPath? According to `https://jmespath.org/ <https://jmespath.org/>`_:
 
@@ -562,8 +618,8 @@ out more about it at the `https://jmespath.org/ <https://jmespath.org/>`_
 website and in ``krill.conf``. Krill comes with a couple of extensions
 to JMESPath syntax which are also documented in ``krill.conf``.
 
-Advanced claim mapping
-""""""""""""""""""""""
+Matching claims by value
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Imagine that your users already exist in an OpenID Connect compatible
 identity provider and that the only distinguishing feature that you can
@@ -610,8 +666,8 @@ rules that both try to provide a value for the same user attribute and the keys
 on the left of the `=` must be unique, we use the `dest` trick to map any value
 found to the `role` user attribute.
 
-More claim mapping
-""""""""""""""""""
+Matching claims by partial value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now imagine that the group membership is instead expressed not as array elements
 that each exactly match some group name or UUID that we can look for, but that
@@ -638,25 +694,29 @@ with ``CN=DL-Krill-``, and wlll then extract just the part after that upto a
 comma or dash, and will use that captured value as the Krill ``role`` user
 attribute!
 
-Trace logging
-"""""""""""""
+Diagnosing problems
+~~~~~~~~~~~~~~~~~~~
 
 If you think your OpenID Connect provider should be providing certain
 claims about your users but are not sure, or if you are not redirected
 properly to the OpenID Connect provider login page or are not redirected
-post-login back to Krill, setting ``log_level = "trace"`` will show you
-exactly what Krill is doing, which requests it is sending to the OpenID
-Connect provider and which responses it is receiving.
+post-login back to Krill, setting ``log_level = "debug"`` will give you
+more information about what Krill is doing, and setting ``log_level = "trace"``
+will allow you to see the OpenID Connect requests and responses being sent
+to and received from the provider.
 
 Note however that some of the communication will be between your browser
 and the OpenID Connect provider and that will not be visible in the Krill
 logs. To monitor that you will need to use the network inspector tool of
 your browser to see the requests and responses being exchanged.
 
-.. warning:: Trace level logging is VERY verbose.
+.. warning:: Trace level logging is VERY verbose and can reveal sensitive
+             information such as OAuth 2.0 Access Tokens and users profile
+             data. Only enable trace level logging while investigating a
+             problem. Normally it should be sufficient to use ``log_level = "warn"``.
 
-Missing claims
-""""""""""""""
+Requesting missing claims
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you find that expected claim data is indeed not being sent by the
 provider this may not be an issue with the provider, rather it may be
