@@ -1,7 +1,7 @@
 .. _doc_krill_multi_user_access_control:
 
-Permissions, Roles, Resources & Attributes
-==========================================
+Permissions, Roles, CAs & Attributes
+===================================
 
 .. versionadded:: v0.9.0
 
@@ -31,8 +31,8 @@ The default roles are:
 
 - ``admin``    : Grants users unrestricted access.
 - ``readwrite``: Grants users the right to list, view and modify *existing*
-  resources.
-- ``readonly`` : Grants users the right to list and view resources only.
+  CAs.
+- ``readonly`` : Grants users the right to list and view CAs only.
 
 Attribute Based Access Control
 ------------------------------
