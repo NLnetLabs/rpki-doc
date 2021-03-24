@@ -83,7 +83,7 @@ redirected to the login page of the OpenID Connect provider. This is
 
 For example, when logging in to a Krill instance connected to the OpenID
 Connect provider in a large company, the end user might see a very familiar
-login page. That's becausae it is probably a page they have to login to in
+login page. That's because it is probably a page they have to login to in
 order to use many other services in their company. Often this login page
 will even be themed to match the corporate branding.
 
@@ -251,7 +251,7 @@ steps must be taken:
      - Which user(s) will have admin rights in Krill?
      - Is there some property of these users that distinguishes them
        from other users (for example they may already be members of some
-       interal Active Directory group) or will you need to mark them out
+       internal Active Directory group) or will you need to mark them out
        in some way so that Krill can spot that they should be admins?
 
 2. **Gain access to the provider**
@@ -260,7 +260,7 @@ steps must be taken:
    signing up to a cloud service, or arranging for support from your
    internal IT department to have changes made to your in-house provider
    on your behalf.
-   v
+   
    \
 
 3. **Register Krill with the provider**
