@@ -1,5 +1,17 @@
 .. _doc_krill_multi_user_openid_connect_provider:
 
+..
+  Define a CSS style which we can use to make links italic, as this isn't
+  otherwise possible with reStructuredText.
+
+.. raw:: html
+
+  <style type="text/css">
+    div.sourcelink {
+      font-style: italic;
+    }
+  </style>
+
 OpenID Connect Users
 ====================
 
@@ -574,25 +586,27 @@ Claims are part of the JSON data sent by the provider to the client.
 Krill must first extract this JSON data from the encoded, signed JWT
 data. The resulting claims look something like this:
 
-.. code-block:: json
+  .. code-block:: json
+  
+     {
+       "iss": "http://server.example.com",
+       "sub": "248289761001",
+       "aud": "s6BhdRkqt3",
+       "nonce": "n-0S6_WzA2Mj",
+       "exp": 1311281970,
+       "iat": 1311280970,
+       "name": "Jane Doe",
+       "given_name": "Jane",
+       "family_name": "Doe",
+       "gender": "female",
+       "birthdate": "0000-10-31",
+       "email": "janedoe@example.com",
+       "picture": "http://example.com/janedoe/me.jpg"
+     }
 
-   {
-     "iss": "http://server.example.com",
-     "sub": "248289761001",
-     "aud": "s6BhdRkqt3",
-     "nonce": "n-0S6_WzA2Mj",
-     "exp": 1311281970,
-     "iat": 1311280970,
-     "name": "Jane Doe",
-     "given_name": "Jane",
-     "family_name": "Doe",
-     "gender": "female",
-     "birthdate": "0000-10-31",
-     "email": "janedoe@example.com",
-     "picture": "http://example.com/janedoe/me.jpg"
-   }
+  .. container:: sourcelink
 
-Source: https://openid.net/specs/openid-connect-core-1_0.html#id_tokenExample
+     Source: https://openid.net/specs/openid-connect-core-1_0.html#id_tokenExample
 
 Thus if you were to configure Krill to use the "given_name" claim
 as the ID of the user in Krill, like so:
