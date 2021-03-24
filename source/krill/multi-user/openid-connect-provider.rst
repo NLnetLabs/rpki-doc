@@ -468,7 +468,7 @@ Create the users
   Field                  Value
   =====================  ======================================
   Username               `<THE USERS NAME>`
-  Email [6]]_             `<THE USERS EMAIL ADDRESS>`
+  Email [6]_             `<THE USERS EMAIL ADDRESS>`
   =====================  ======================================
 
 - Open the `Credentials` tab and set the field values as follows:
