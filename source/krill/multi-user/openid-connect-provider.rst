@@ -292,6 +292,8 @@ steps must be taken:
 
    \
 
+   \
+
 6. **Configure Krill**
 
    Lastly, add the issuer URL, client ID and client secret to ``krill.conf``
