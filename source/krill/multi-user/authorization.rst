@@ -1,7 +1,7 @@
 .. _doc_krill_multi_user_access_control:
 
-Permissions, Roles, CAs & Attributes
-===================================
+Permissions, Roles & Attributes
+===============================
 
 .. versionadded:: v0.9.0
 
