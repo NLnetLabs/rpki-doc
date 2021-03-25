@@ -498,7 +498,7 @@ Create the users
 
 - Open the `Attributes` tab.
 
-  - Enter Key `role` with value `readonly` and press `Add`.
+  - Enter Key `role` with value `<THE USERS ROLE>` and press `Add`.
   - Click `Save` at the bottom.
 
 Repeat the above adding the other users.
