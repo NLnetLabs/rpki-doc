@@ -99,7 +99,7 @@ files to load on startup.
           Krill is running.
 
           For policies that only contain rules this is not a
-          problem as the  would not be expected to change
+          problem as they would not be expected to change
           very often, if ever.
 
           However, for policies that define configuration in the
