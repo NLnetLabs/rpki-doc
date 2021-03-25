@@ -77,7 +77,7 @@ remember when using Config File Users:
   delivering the new password to them securely.
 
 - OpenID Connect providers often have support for one-time passwords (OTP)
-  or other secondary lines of defence to protect than account than just a
+  or other secondary lines of defence to protect an account than just a
   username and password. Krill does not have this capability.
 
 - Krill has no feature for generating cryptographically strong passwords. You
