@@ -156,8 +156,8 @@ starts by matching rules of the form ``allow(actor, action, resource)``.
 
 The Krill policy delegates from its `allow` rules immediately to a
 special ``disallow(actor, action, resource)`` rule. The only definition
-of the ``disallow()`` rule in Krill by says ``if false``, i.e. nothing
-is disallowed.
+of the ``disallow()`` rule in Krill by default says ``if false``, i.e.
+nothing is disallowed.
 
 While technically you can prevent an action by ``cut``ing out of an
 ``allow()`` rule that is more specific than any other ``allow()`` rules,
