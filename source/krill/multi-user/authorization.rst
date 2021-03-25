@@ -5,7 +5,7 @@ Permissions, Roles & Attributes
 
 .. versionadded:: v0.9.0
 
-This page summarized the different ways that Krill supports for restricting access
+This page summarizes the different ways that Krill supports for restricting access
 to *named users* that login to Krill. For backward compatibility, users that
 authenticate with the secret token are given unrestricted access to Krill.
 
