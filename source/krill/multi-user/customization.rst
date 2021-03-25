@@ -159,7 +159,7 @@ special ``disallow(actor, action, resource)`` rule. The only definition
 of the ``disallow()`` rule in Krill by default says ``if false``, i.e.
 nothing is disallowed.
 
-While technically you can prevent an action by ``cut``ing out of an
+While technically you can prevent an action by ``cut`` -ing out of an
 ``allow()`` rule that is more specific than any other ``allow()`` rules,
 it's not always possible to ensure that your rule is the most specific
 match. That's where ``disallow()`` comes in handy.
