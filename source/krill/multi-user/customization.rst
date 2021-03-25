@@ -154,6 +154,9 @@ Let's write a rule that completely prevents the update of ROAs.
 When Oso does a permission check the search for a matching rule
 starts by matching rules of the form ``allow(actor, action, resource)``.
 
+.. tip:: "resource" in this context is a Polar term and should not be
+         confused with the RPKI term "resource".
+
 The Krill policy delegates from its `allow` rules immediately to a
 special ``disallow(actor, action, resource)`` rule. The only definition
 of the ``disallow()`` rule in Krill by default says ``if false``, i.e.
@@ -165,9 +168,6 @@ it's not always possible to ensure that your rule is the most specific
 match. That's where ``disallow()`` comes in handy.
 
 Let's use ``disallow()`` to implement our rule.
-
-.. tip:: "resource" in this context is a Polar term and should not be
-         confused with the RPKI term "resource".
 
 Create a file called ``no_roa_updates.polar`` containing the following
 content:
