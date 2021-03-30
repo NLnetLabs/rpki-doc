@@ -1,4 +1,5 @@
-[![Documentation Status](https://readthedocs.org/projects/rpki/badge/?version=latest)](https://rpki.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/rpki/badge/?version=latest)](https://rpki.readthedocs.io/en/latest/?badge=latest
+[![](https://img.shields.io/discord/818584154278199396?label=rpki%20on%20discord&logo=discord)](https://discord.gg/8dvKB5Ykhy)
 
 This readme was largely copied from the excellent [Godot](https://github.com/godotengine/godot-docs) documentation, with thanks to Juan Linietsky, Ariel Manzur and the Godot community. 
 
