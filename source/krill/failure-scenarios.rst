@@ -144,7 +144,7 @@ repository server IP to be considered *RPKI Invalid*, Relying Party software
 will retrieve these ROAs and promptly those networks will drop the repository
 prefix. This means that even if/when operators fix the ROAs, the validators will
 not be able to retrieve the updated information until their cached manifest and
-CRLs go stale. This issue can persist for a minimum of 8 hours and a maximum of
-24 hours.
+CRLs go stale. Since the manifest and CRL will be issued together with the new
+troublesome ROA, this issue will typically persist for 24 hours.
 
 
