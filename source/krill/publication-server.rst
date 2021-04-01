@@ -262,17 +262,6 @@ As there is no UI support for this, you will need to use the command line
 interface using the :ref:`krillc publisher<cmd_krillc_publishers>` subcommand
 to manage publishers.
 
-List Publishers
-"""""""""""""""
-
-You can list all current publishers using the following command:
-
-.. code-block:: bash
-
-  $ krillpubc list
-  Publishers: acme-corp-intl
-
-
 Add a Publisher
 """""""""""""""
 
@@ -299,6 +288,18 @@ response XML for a configured publisher using the following:
 .. code-block:: bash
 
   $ krillpubc response --publisher <publisher-handle>
+
+
+List Publishers
+"""""""""""""""
+
+You can list all current publishers using the following command:
+
+.. code-block:: bash
+
+  $ krillpubc list
+  Publishers: acme-corp-intl
+
 
 Migrate existing Krill CAs
 --------------------------
