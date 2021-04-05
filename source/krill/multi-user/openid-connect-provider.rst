@@ -1,5 +1,8 @@
 .. _doc_krill_multi_user_openid_connect_provider:
 
+OpenID Connect Users
+====================
+
 ..
   Define a CSS style which we can use to make links italic, as this isn't
   otherwise possible with reStructuredText.
@@ -11,9 +14,6 @@
       font-style: italic;
     }
   </style>
-
-OpenID Connect Users
-====================
 
 .. versionadded:: v0.9.0
 
