@@ -38,6 +38,8 @@ link to the relevant subcommands of the :ref:`command line interface (CLI)<doc_k
 Login
 -----
 
+.. tip:: To login to the web user interface using named users instead of the secret token, see :ref:`Login with Named Users<doc_krill_multi_user>`.
+
 The login will ask you to enter the secret token you configured for Krill.
 
 .. figure:: img/krill-ui-enter-password.png

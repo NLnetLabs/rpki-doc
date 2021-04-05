@@ -61,6 +61,7 @@ line and through an API.
    parent-interactions
    cli
    api
+   multi-user
    monitoring
    publication-server
    docker

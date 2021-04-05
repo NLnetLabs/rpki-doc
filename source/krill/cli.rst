@@ -364,6 +364,7 @@ Creates a configuration file for krill and prints it to STDOUT.
        help      Prints this message or the help of the given subcommand(s)
        :ref:`repo<cmd_krillc_config_repo>`      Use a self-hosted repository (not recommended)
        :ref:`simple<cmd_krillc_config_simple>`    Use a 3rd party repository for publishing
+       :ref:`user<cmd_krillc_config_user>`    Configure local users and rights
 
 .. _cmd_krillc_config_simple:
 
@@ -406,6 +407,22 @@ repository.
         -l, --logfile <path>    Override the default path (./krill.log) for the log file.
             --rrdp <uri>        Specify the base https URI for your RRDP (excluding notify.xml), must end with '/'
             --rsync <uri>       Specify the base rsync URI for your repository. must end with '/'.
+
+.. _cmd_krillc_config_user:
+
+krillc config user
+^^^^^^^^^^^^^^^^^^
+
+Generate a user authentication configuration file fragment.
+
+.. parsed-literal::
+
+    USAGE:
+        krillc config user [FLAGS] [OPTIONS] --id <id>
+    
+    OPTIONS:
+        -a, --attribute <attr>...    Specify key=value pair attributes to give the user in Krill
+        --id <id>                    Specify the id (e.g. username, email) to generate configuration for
 
 ....
 
