@@ -810,7 +810,7 @@ like this:
 
 This will cause a user that logs in via the OpenID Connect provider who
 has a ``given_name`` claim value of ``Joe Bloggs`` to be granted the
-``admin` role in Krill.
+``admin`` role in Krill.
 
 Requesting missing claims
 ~~~~~~~~~~~~~~~~~~~~~~~~~
