@@ -188,6 +188,14 @@ Krill has been tested with the following OpenID Connect providers (in alphabetic
              users to indicate which role they should receive, e.g. by
              grouping them or `configuring custom claims <https://cloud.google.com/identity-platform/docs/how-to-configure-custom-claims>`_.
 
+.. tip:: If your provider does not offer sufficient control over the
+         claim values it exposes to Krill, or if you do not have the
+         ability to change these values to meet your needs, Krill
+         supports a :ref:`hybrid mode <hybrid-mode>` whereby
+         authentication is handled by the OpenID Connect provider, but
+         authorization can be based in whole or in part on config file
+         defined user attributes.
+
 Setting it up
 -------------
 
@@ -231,6 +239,11 @@ steps must be taken:
               Microsoft Azure Active Directory (`here <https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims>`__
               and `here <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims>`__),
               Amazon Cognito (`here <https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html>`_)
+
+     - If no suitable claim values can be arranged with the provider,
+       consider using :ref:`hybrid mode <hybrid-mode>` instead.
+
+     \
 
 2. **Gain access to the provider**
 
@@ -727,6 +740,77 @@ This rule will match elements of an array called `memberof` whose value starts
 with ``CN=DL-Krill-``, and wlll then extract just the part after that upto a
 comma or dash, and will use that captured value as the Krill ``role`` user
 attribute!
+
+.. _hybrid-mode:
+
+Matching claims to config values (aka 'hybrid' mode)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Usually when defining a claim mapping there is no need to define the source of
+the claim. Krill will search all of the different OpenID Connect provider
+claim sources that it supports (standard and additional claims in both the ID
+Token and User Info responses) for a matching claim.
+
+However, if needed you can specify the claim source explicitly on a per claim
+basis. Possible uses for this include:
+
+  - Selecting the right claim when the same claim name exists in more than one
+    claim source but with different values.
+  
+  - Defining user attributes in the Krill configuration when the claim values
+    cannot be configured in the provider (perhaps due to lack of support by or
+    access to the provider). This is known as hybrid mode because it causes
+    Krill to use a hybrid of OpenID Connect provider for authentication and
+    config file defined user attributes for authorization.
+
+When defining a claim mapping we have so far seen ``jmespath`` and ``dest``
+settings, but there is also a ``source`` setting. The source can be set to one
+of the following values:
+
+  - ``config-file``
+  - ``id-token-standard-claim``
+  - ``id-token-additional-claim``
+  - ``user-info-standard-claim``
+  - ``user-info-additional-claim``
+
+The first one is the really interesting one. The rest should hopefully never
+be needed as by default Krill searches all of the possible OpenID Connect
+provider claim sources that it supports.
+
+When using the ``config-file`` source there are two changes in the way that
+Krill looks up the claim value:
+
+  1. The ``jmespath`` setting is not used. Instead an attribute with the
+     same name as the TOML key of the claim mapping is looked for on the
+     user.
+
+  2. The user attributes are taken from a config file entry with the ``id``
+     of the current user is looked up in the ``[auth_users]`` config file
+     section.
+
+Note that the ``id`` of the current user is still determined by a normal
+OpenID Connect claim lookup, i.e. by default the ``email`` value reported
+by the provider for the user is used unless you define a claim mapping for
+``id`` explicitly.
+
+For example, to identify users by the given name reported by the OpenID
+Connect provider, and to set their role using entries in ``krill.conf``
+instead of basing the role on provider claim values, you could do something
+like this:
+
+.. code-block:: none
+
+   [auth_users]
+   "Joe Bloggs"  = { attributes={ role="admin" } }
+   "Sally Alley" = { attributes={ role="readonly" } }
+
+   [auth_openidconnect.claims]
+   id   = { jmespath="given_name" }
+   role = { source="config-file" }
+
+This will cause a user that logs in via the OpenID Connect provider who
+has a ``given_name`` claim value of ``Joe Bloggs`` to be granted the
+``admin` role in Krill.
 
 Requesting missing claims
 ~~~~~~~~~~~~~~~~~~~~~~~~~
