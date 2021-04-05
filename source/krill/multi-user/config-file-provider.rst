@@ -87,7 +87,7 @@ remember when using Config File Users:
   adding them to your ``krill.conf`` file you become responsible for protecting
   them.
 
-- If you lose you ``krill.conf`` file you will also lose the password hashes
+- If you lose your ``krill.conf`` file you will also lose the password hashes
   and will have to reset your users passwords unless you have a (**secure**)
   copy elsewhere.
 
