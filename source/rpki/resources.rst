@@ -38,6 +38,7 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `JDR: explore, inspect and troubleshoot anything RPKI <https://jdr.nlnetlabs.nl/>`_, by NLnet Labs
 - `RPKIviews: download historic raw RPKI data <http://www.rpkiviews.org/>`_, by Job Snijders
 - `ROA Use World Map and Country Data <https://stats.labs.apnic.net/roas>`_, by APNIC Labs
+- `RPKI Portal <https://rpki.cloudflare.com>`_, by Cloudflare
 
 .. index:: Operational experiences
 
