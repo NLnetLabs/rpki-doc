@@ -45,6 +45,9 @@ There are several initiatives that measure the adoption and data quality of RPKI
 Operational Experiences
 -----------------------
 
+`RPKI Deployment Considerations for ISPs https://docs.google.com/document/d/1fGsuDpLSn0ZN3-Pa-4aAciGH-Qc0K5AHZ1GyFRAHow4/edit?usp=sharing`_
+   Document by Rich Compton - Charter Communications, with contributions from the operator community
+
 `Using RPKI with IXP Manager <https://docs.ixpmanager.org/features/rpki/>`_
    Documentation to set up Routinator, OctoRPKI and the RIPE NCC Validator with BIRD 2.x
 
