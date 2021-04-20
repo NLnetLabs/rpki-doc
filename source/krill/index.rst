@@ -3,6 +3,11 @@
 Krill
 =====
 
+.. Warning:: This is the documentation for Krill 0.8.2. Starting from the
+             production release of Krill 0.9, which is currently available as a 
+             Release Candidate, this documentation will be moved to 
+             `krill.readthedocs.io <https://krill.readthedocs.io>`_.
+
 Krill is a free, open source Resource Public Key Infrastructure (RPKI) daemon,
 featuring a Certificate Authority (CA) and publication server, written by `NLnet
 Labs <https://nlnetlabs.nl>`_.
