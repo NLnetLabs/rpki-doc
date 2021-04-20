@@ -53,18 +53,15 @@ The main documentation is organised into the following sections:
    rpki/using-rpki-data
    rpki/router-support
    rpki/resources
+   tools
 
 .. toctree::
    :maxdepth: 2
    :caption: RPKI Tools
    :name: sec-rpki-tools
 
-   tools
    krill/index
-   routinator/index
-   rtrlib/index
-   rpkivalidator3/index
-   rpkiclient/index
+
 
 Index
 =====
