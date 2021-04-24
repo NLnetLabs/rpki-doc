@@ -51,9 +51,16 @@ The main documentation is organised into the following sections:
    rpki/securing-bgp
    rpki/implementation-models
    rpki/using-rpki-data
-   rpki/router-support
-   rpki/resources
-   tools
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Operations
+   :name: sec-rpki-ops
+   
+   ops/router-support
+   ops/resources
+   ops/tools
 
 .. toctree::
    :maxdepth: 2
