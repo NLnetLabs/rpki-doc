@@ -52,15 +52,14 @@ The main documentation is organised into the following sections:
    rpki/implementation-models
    rpki/using-rpki-data
 
-
 .. toctree::
    :maxdepth: 2
    :caption: Operations
    :name: sec-rpki-ops
    
+   ops/tools
    ops/router-support
    ops/resources
-   ops/tools
 
 .. toctree::
    :maxdepth: 2
@@ -68,7 +67,6 @@ The main documentation is organised into the following sections:
    :name: sec-rpki-tools
 
    krill/index
-
 
 Index
 =====
