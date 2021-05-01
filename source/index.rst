@@ -61,13 +61,6 @@ The main documentation is organised into the following sections:
    ops/router-support
    ops/resources
 
-.. toctree::
-   :maxdepth: 2
-   :caption: RPKI Tools
-   :name: sec-rpki-tools
-
-   krill/index
-
 Index
 =====
 
