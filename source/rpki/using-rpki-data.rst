@@ -54,7 +54,7 @@ for retrieval, standardised in :RFC:`8182`. This protocol uses HTTPS,
 which makes development and implementation easier, and opens up possibilities
 for Content Delivery Networks to participate in serving RPKI data. Work to
 `deprecate rsync
-<https://datatracker.ietf.org/doc/draft-sidrops-bruijnzeels-deprecate-rsync/>`_
+<https://datatracker.ietf.org/doc/draft-ietf-sidrops-prefer-rrdp/>`_
 altogether is ongoing in the IETF.
 
 Once the data has been downloaded, the validator will verify the signatures on
