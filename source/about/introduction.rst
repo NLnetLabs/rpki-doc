@@ -73,5 +73,6 @@ This documentation is organised into three main sections:
   order for you to get a good sense of the requirements and moving parts. It
   will help you choose the right RPKI solution for your organisation, with
   regards to generating, publishing and using RPKI data.
-- The :ref:`sec-rpki-tools` section is about various open source projects that
-  are maintained to support RPKI.
+- The :ref:`sec-rpki-ops` section is about various open source projects that
+  are maintained to support RPKI, as well as router support and external
+  resources.
