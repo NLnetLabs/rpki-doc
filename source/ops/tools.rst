@@ -79,7 +79,7 @@ Supporting Tools
    rpki-ov-checker is an open source utility to quickly analyse BGP RIB dumps
    and the potential impact of deploying "invalid is reject" routing policies.
 
-:ref:`rtrlib`
+`rtrlib <https://github.com/rtrlib/rtrlib>`_`
    The RTRlib implements the client-side of the RPKI-RTR protocol
    (:RFC:`6810`, :RFC:`8210`) and BGP Prefix Origin
    Validation (:RFC:`6811`). This also enables the maintenance of

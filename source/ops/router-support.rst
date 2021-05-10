@@ -57,7 +57,7 @@ based on the result. :ref:`Relying party software<doc_tools>` such as
 Routinator and rpki-client can export validated data in a format that OpenBGPD
 can parse.
 
-:ref:`rtrlib` is a C library that implements the client side of the RPKI-RTR
+RTRLib is a C library that implements the client side of the RPKI-RTR
 protocol, as well as route origin validation. RTRlib powers RPKI in BGP software
 routers such as `FRR <https://frrouting.org/>`_. In a nutshell, it maintains
 data from RPKI relying party software and allows to verify whether an autonomous
