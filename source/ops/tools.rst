@@ -58,9 +58,9 @@ Supporting Tools
    investigating emerging BGP security extensions and supporting protocols such
    as RPKI Origin Validation and BGPSec Path Validation.
 
-`GoRTR <https://github.com/cloudflare/gortr>`_
-   An open-source implementation of RPKI to Router protocol
-   (:RFC:`6810`) using the Go programming language. 
+`StayRTR <https://github.com/bgp/stayrtr/>`_
+   An open-source implementation of RPKI to Router protocol (:RFC:`6810`) using
+   the Go programming language. This is a hard fork of GoRTR.
 
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
@@ -79,7 +79,7 @@ Supporting Tools
    rpki-ov-checker is an open source utility to quickly analyse BGP RIB dumps
    and the potential impact of deploying "invalid is reject" routing policies.
 
-`rtrlib <https://github.com/rtrlib/rtrlib>`_`
+`rtrlib <https://github.com/rtrlib/rtrlib>`_
    The RTRlib implements the client-side of the RPKI-RTR protocol
    (:RFC:`6810`, :RFC:`8210`) and BGP Prefix Origin
    Validation (:RFC:`6811`). This also enables the maintenance of
