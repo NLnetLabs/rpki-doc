@@ -10,13 +10,13 @@ you to some of the specifics of RPKI.
 ROAs, VRPs and ROV
 ------------------
 
-It's quite common to use the term ROA and VRP interchangably, but they are quite
+It's quite common to use the term ROA and VRP interchangeably, but they are quite
 different.
 
 Route Origin Attestations (ROAs) are cryptographically signed objects that
 contain a statement authorising a *single* Autonomous System Number (ASN) to
 originate one or more IP prefixes, along with their maximum prefix length. A ROA
-can only be created by the legitimate holder of the IP prefixes contained witin
+can only be created by the legitimate holder of the IP prefixes contained within
 it.
 
 RPKI Relying Party software performs cryptographic verification on all published
@@ -41,5 +41,5 @@ is compared to a BGP route. If the route origin is authorised by the VRP, it is
 considered "RPKI Valid", if it isn't it is "RPKI Invalid". If nothing can be
 said about the validity of the route, it is considered "RPKI NotFound".
 
-Only a ROA that has passed cryptographic verification – i.e. a *Valid ROA* – can
-make a BGP route "RPKI Valid" or "RPKI Invalid". 
+Only a ROA that has passed cryptographic verification – i.e. a *Validated ROA* –
+can make a BGP route "RPKI Valid" or "RPKI Invalid". 
