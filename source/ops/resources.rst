@@ -39,7 +39,7 @@ There are several initiatives that measure the adoption and data quality of RPKI
 - `RPKIviews: download historic raw RPKI data <http://www.rpkiviews.org/>`_, by Job Snijders
 - `ROA Use World Map and Country Data <https://stats.labs.apnic.net/roas>`_, by APNIC Labs
 - `RPKI Portal <https://rpki.cloudflare.com>`_, by Cloudflare
-- `LACNIC Member Tools <https://toosl.labs.lacnic.net/tools>`_, by LACNIC
+- `LACNIC Member Tools <https://tools.labs.lacnic.net/tools>`_, by LACNIC
 
 .. index:: Operational experiences
 
