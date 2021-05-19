@@ -33,6 +33,21 @@ Relying Party Software
 .. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1392153429431123975>`_
 .. [#] Scheduled to be `discontinued on 1 July 2021 <https://labs.ripe.net/Members/nathalie_nathalie/life-cycle-of-the-ripe-ncc-rpki-validator-1>`_
 
+.. index:: RTR Server software
+
+RTR Server Software
+-------------------
+
+.. csv-table:: 
+   :header: "Name", "Maintainer", "Language", "Last Commit" 
+
+   "`GoRTR <https://github.com/cloudflare/gortr>`_ [#]_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/gortr?label=%20&style=flat-square"
+   "`StayRTR <https://github.com/bgp/stayrtr/>`_ [#]_", "bgp", "Go", ".. image:: https://img.shields.io/github/last-commit/bgp/stayrtr?label=%20&style=flat-square"
+   "`RTRTR <https://github.com/NLnetLabs/rtrtr>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/rtrtr?label=%20&style=flat-square"
+
+.. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1394144623489019904>`_
+.. [#] A hard fork of GoRTR
+
 .. index:: Certificate Authority software
 
 Certificate Authority Software
@@ -59,10 +74,6 @@ Supporting Tools
    investigating emerging BGP security extensions and supporting protocols such
    as RPKI Origin Validation and BGPSec Path Validation.
 
-`StayRTR <https://github.com/bgp/stayrtr/>`_
-   An open-source implementation of RPKI to Router protocol (:RFC:`6810`) using
-   the Go programming language. This is a hard fork of GoRTR.
-
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
    It can account, classify, aggregate, replicate and export forwarding-plane
@@ -85,7 +96,3 @@ Supporting Tools
    (:RFC:`6810`, :RFC:`8210`) and BGP Prefix Origin
    Validation (:RFC:`6811`). This also enables the maintenance of
    router keys, which are required to deploy BGPSec.
-
-`RTRTR <https://github.com/NLnetLabs/rtrtr>`__
-   An RPKI data proxy allowing operators to centralise validation and distribute
-   the validated data to various locations via the RTR protocol or HTTPS.
