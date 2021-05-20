@@ -74,6 +74,10 @@ Supporting Tools
    investigating emerging BGP security extensions and supporting protocols such
    as RPKI Origin Validation and BGPSec Path Validation.
 
+`krill-sync <https://github.com/NLnetLabs/krill-sync>`_
+   A tool to synchronize an RRDP and/or Rsync server with a "hidden" remote 
+   :rfc:`8182` RRDP publication point.
+
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
    It can account, classify, aggregate, replicate and export forwarding-plane
