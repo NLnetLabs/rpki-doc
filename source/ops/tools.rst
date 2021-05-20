@@ -46,7 +46,7 @@ RTR Server Software
    "`RTRTR <https://github.com/NLnetLabs/rtrtr>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/rtrtr?label=%20&style=flat-square"
 
 .. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1394144623489019904>`_
-.. [#] A hard fork of GoRTR
+.. [#] A fork of GoRTR
 
 .. index:: Certificate Authority software
 
