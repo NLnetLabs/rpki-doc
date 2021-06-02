@@ -6,11 +6,7 @@ Introduction
 ============
 
 Welcome to the documentation of the Resource Public Key Infrastructure (RPKI).
-Here, we aim to offer an overview of the RPKI technology itself, as well as some
-of the tools that are being developed for it. Any software implementer is welcome
-to add documentation for their tools to this project.
-
-This page gives a broad overview of the RPKI and how it can help make Internet
+These pages offer a broad overview of the RPKI and how it can help make Internet
 routing using the Border Gateway Protocol (BGP) more secure. This way, you will
 learn how RPKI can benefit your organisation, as well as helping others to be
 more secure on the Internet.
