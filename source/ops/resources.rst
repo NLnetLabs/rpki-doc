@@ -17,7 +17,7 @@ The :ref:`doc_tools` page an overview of all available tools for using RPKI.
 Books
 -----
 
-:download:`BGP RPKI: Instructions for use <https://labs.ripe.net/Members/flavio_luciani_1/bgp-rpki-instructions-for-use>`, by Flavio Luciani & Tiziano Tofoni (PDF)
+:download:`BGP RPKI: Instructions for use <https://labs.ripe.net/author/flavio_luciani_1/for-a-safer-internet-instructions-to-use-rpki/>`, by Flavio Luciani & Tiziano Tofoni (PDF)
 
 :download:`Juniper Day One: Deploying BGP Routing Security <https://www.juniper.net/documentation/en_US/day-one-books/DO_BGP_SecureRouting2.0.pdf>`, by Melchior Aelmans & Niels Raijer (PDF)
 
