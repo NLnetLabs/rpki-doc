@@ -186,9 +186,8 @@ serving the RPKI data set globally, at scale. In addition, HTTPS is well
 supported in programming languages so development of relying party software
 becomes easier and more robust.
 
-Currently, RRDP is implemented on the server side by the ARIN, RIPE NCC and
-APNIC. Most RPKI Validator implementations either already have RRDP support, or
-have it on the short term roadmap.
+Currently, almost all RPKI publication points support RRDP. All RPKI Validator 
+implementations have RRDP support as well, and prefer using it over rsync. 
 
 The five RIRs provide a Hosted RPKI system, so why would I want to run a Delegated RPKI system myself instead?
 --------------------------------------------------------------------------------------------------------------
