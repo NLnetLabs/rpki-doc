@@ -32,7 +32,7 @@ Relying Party Software
 
 .. [#] Due to a temporary resource shortage, the project’s development has slowed down to essential maintenance. `[Source] <https://nicmx.github.io/FORT-validator/>`_
 .. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1392153429431123975>`_
-.. [#] Scheduled to be discontinued on 1 July 2021. `[Source] <https://labs.ripe.net/Members/nathalie_nathalie/life-cycle-of-the-ripe-ncc-rpki-validator-1>`_
+.. [#] Discontinued on 1 July 2021. `[Source] <https://www.ripe.net/publications/news/announcements/ending-support-for-the-ripe-ncc-rpki-validator>`_
 
 .. index:: RTR Server software
 
