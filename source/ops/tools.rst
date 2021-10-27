@@ -22,7 +22,7 @@ Relying Party Software
    :header: "Name", "Maintainer", "Language", "Last Commit" 
 
    "`FORT Validator <https://github.com/NICMx/FORT-validator>`_ [#]_", "NIC.mx", "C", ".. image:: https://img.shields.io/github/last-commit/NICMx/FORT-validator?label=%20&style=flat-square"
-   "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_ [#]_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/cfrpki?label=%20&style=flat-square"
+   "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/cfrpki?label=%20&style=flat-square"
    "`rcynic <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python 2", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"   
    "`Routinator <https://github.com/NLnetLabs/routinator>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/routinator?label=%20&style=flat-square"
    "`rpki-client <https://github.com/rpki-client/rpki-client-portable>`_", "OpenBSD", "C", ".. image:: https://img.shields.io/github/last-commit/rpki-client/rpki-client-portable?label=%20&style=flat-square"
@@ -31,7 +31,6 @@ Relying Party Software
    "`RPSTIR2 <https://github.com/bgpsecurity/rpstir2>`_", "ZDNS", "Go", ".. image:: https://img.shields.io/github/last-commit/bgpsecurity/rpstir2?label=%20&style=flat-square"
 
 .. [#] Due to a temporary resource shortage, the project’s development has slowed down to essential maintenance. `[Source] <https://nicmx.github.io/FORT-validator/>`_
-.. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1392153429431123975>`_
 .. [#] Discontinued on 1 July 2021. `[Source] <https://www.ripe.net/publications/news/announcements/ending-support-for-the-ripe-ncc-rpki-validator>`_
 
 .. index:: RTR Server software
