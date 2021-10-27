@@ -75,8 +75,10 @@ Supporting Tools
    as RPKI Origin Validation and BGPSec Path Validation.
 
 `krill-sync <https://github.com/NLnetLabs/krill-sync>`_
-   A tool to synchronize an RRDP and/or Rsync server with a "hidden" remote 
-   :rfc:`8182` RRDP publication point.
+   This tool uses the RRDP data from a (single) "hidden" backend RPKI
+   Publication Server to make a consistent local copy of that data. This is
+   intended to facilitate a redundant set up where one or more public https and
+   rsync servers are used to make the RPKI repository content available.
 
 `pmacct <http://pmacct.net>`_
    pmacct is a small set of multi-purpose passive network monitoring tools.
