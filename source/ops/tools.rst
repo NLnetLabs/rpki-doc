@@ -44,6 +44,7 @@ RTR Server Software
    "`GoRTR <https://github.com/cloudflare/gortr>`_ [#]_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/gortr?label=%20&style=flat-square"
    "`StayRTR <https://github.com/bgp/stayrtr/>`_ [#]_", "bgp", "Go", ".. image:: https://img.shields.io/github/last-commit/bgp/stayrtr?label=%20&style=flat-square"
    "`RTRTR <https://github.com/NLnetLabs/rtrtr>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/rtrtr?label=%20&style=flat-square"
+   "`rpkirtr <https://github.com/mellowdrifter/rpkirtr>`_", "Darren O'Connor", "Go", ".. image:: https://img.shields.io/github/last-commit/mellowdrifter/rpkirtr?label=%20&style=flat-square"
 
 .. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1394144623489019904>`_
 .. [#] A fork of GoRTR
