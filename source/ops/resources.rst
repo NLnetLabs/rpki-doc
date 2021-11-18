@@ -113,5 +113,5 @@ operational guidance on how to deploy and operate SIDR technologies in existing
 and new networks.
 
 All relevant drafts and standards can be found in the archives of these two
-working groups, with a few exceptions, such as `draft-ietf-grow-rpki-as-cones
-<https://tools.ietf.org/html/draft-ietf-grow-rpki-as-cones>`_.
+working groups as well as the `RPKI RFCs Graph
+<https://rpki-rfc.routingsecurity.net>`_.
