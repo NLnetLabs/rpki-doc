@@ -28,7 +28,7 @@ It also adds a couple of useful features.
 
 Origin validation is currently the only functionality that is operationally
 used. The five RIRs provide functionality for it, there is open source software
-available for creation and publication of data, and all major router vendors
+available for creation, publication and use of data, and all major router vendors
 have implemented ROV in their platforms. Various router software implementations
 offer support for it, as well.
 
