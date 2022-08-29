@@ -11,6 +11,10 @@ This page is not meant for experts, and many technicalities will be glossed over
 in order to be able to provide easy to understand answers for all knowledge
 levels.
 
+.. note:: Perhaps someone told you that your routes are not yet covered under a
+          RPKI ROA. The pointers on this page are equally applicable to the
+          case where RPKI is completely new to you. Read on to find out more.
+
 What is RPKI or ROA?
 --------------------
 RPKI stands for Resource Public Key Infrastructure, ROA stands for Route Origin
@@ -74,5 +78,5 @@ portals:
 It is important to note that initially, for there to be an RPKI Invalid route,
 someone must have already entered into one of the above portals and made a ROA
 for the IP space in question.  There is no way for it to have to been done by
-itself.  In other words, there must already be an account at the RIR that is
+itself. In other words, there must already be an account at the RIR that is
 linked to the owner of the IP space.
