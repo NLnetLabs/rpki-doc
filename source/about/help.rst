@@ -78,5 +78,5 @@ itself. In other words, there must already be an account at the RIR that is
 linked to the owner of the IP space.
 
 .. note:: Perhaps someone told you that your routes are not yet covered under a
-          RPKI ROA. The pointers in this section are equally applicable to the
-          case where RPKI is completely new to you.
+          RPKI ROA (NotFound). The pointers in this section are equally
+          applicable to the case where RPKI is completely new to you.
