@@ -81,10 +81,6 @@ synchronise the management of *"route"* objects in the IRR with the ROAs that
 are created. An application programming interface (API) may be provided to make
 batch processing easier.
 
-To improve retrieval of published RPKI data by relying party software, the RPKI
-Repository Delta Protocol (RRDP) protocol (:RFC:`8182`) was developed.
-Support for this standard is listed as well.
-
 Lastly, `nonrepudiation
 <https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_
 refers to the inability for a party to dispute or deny having performed an
@@ -93,10 +89,10 @@ action.
 +-----------------------+----------+----------+----------+----------+----------+
 |                       | APNIC    | AFRINIC  | ARIN     | LACNIC   | RIPE NCC |
 +=======================+==========+==========+==========+==========+==========+
-| Support for delegated |  Yes     | Yes [#]_ | Yes      | Yes [#]_ | Yes      |
+| Support for delegated |  Yes     | No [#]_  | Yes      | Yes [#]_ | Yes      |
 | RPKI                  |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Publication service   | Yes [#]_ | No       | No [#]_  | No       | No       |
+| Publication service   |  Yes     | No       | Yes      | No       | Yes      |
 | for delegated RPKI    |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | Multi-user support    |  Yes     | Yes [#]_ | Yes      | No       | Yes      |
@@ -114,24 +110,14 @@ action.
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  No      | No       | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Publication via RRDP  |  Yes     | Yes      | Yes      | Yes      | Yes      |
-+-----------------------+----------+----------+----------+----------+----------+
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
 
 .. [#] Available in the test environment only.
 .. [#] Available upon request.
-.. [#] Available upon request.
-.. [#] On the `roadmap <https://www.arin.net/participate/community/acsp/suggestions/2020-1/>`_
 .. [#] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
 .. [#] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [#] Explicit opt-in feature.
-
-A final differentiator is the publication interval of each RIR repository.
-Please keep in mind that once a ROA is created by a user in one of the hosted
-systems, it can take between several minutes up to multiple hours
-before the object is published and available for download, depending on the RIR
-system you use.
 
 .. index:: Delegated RPKI
 
