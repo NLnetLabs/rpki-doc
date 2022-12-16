@@ -115,7 +115,7 @@ action.
 
 .. [#] Available in the test environment only.
 .. [#] Available upon request.
-.. [#] Requires a `client X.509 certificate <https://afrinic.net/support/bpki-for-election-purposes/bpki-enrolment-process>`_ to use RPKI.
+.. [#] Requires a `client X.509 certificate <https://afrinic.net/support/bpki/what-is-a-bpki>`_ to use RPKI.
 .. [#] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [#] Explicit opt-in feature.
 
