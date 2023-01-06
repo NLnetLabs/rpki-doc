@@ -88,7 +88,7 @@ In a forged origin attack, a malicious actor spoofs the AS number of another
 network. With a minimal ROA length, the attack does not work for sub-prefixes
 that are not covered by overly long maxLength. For example, if, instead of
 10.0.0.0/16-24, one issues 10.0.0.0/16 and 10.0.42.0/24, a forged origin attack
-cannot succeed against 10.0.666.0/24. They must attack the whole /16, which is
+cannot succeed against 10.0.66.0/24. They must attack the whole /16, which is
 more likely to be noticed because of its size.
 
 .. index:: RPKI validity
