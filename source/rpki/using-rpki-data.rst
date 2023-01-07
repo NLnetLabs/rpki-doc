@@ -42,9 +42,7 @@ Fetching and Verifying
 
 Various open source relying party software packages, also known as RPKI
 validators, are available in order to download, verify and process RPKI data.
-Please note that most RPKI validators come preinstalled with TALs for all RIRs
-except the one for ARIN, as they require users to first review and agree to
-their `Relying Party Agreement <https://www.arin.net/resources/rpki/tal.html>`_.
+Please note that most RPKI validators come preinstalled with TALs for all RIRs.
 
 When the validator runs, it will start retrieval at each of the RIR trust
 anchors and follows the chain of trust to fetch all published certificates and
