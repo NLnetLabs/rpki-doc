@@ -20,15 +20,17 @@ trust. In the case of RPKI, these are the five Regional Internet Registries.
 Connecting to the Trust Anchor
 ------------------------------
 
-When you want to retrieve all RPKI data, you connect to the trust anchor that
-each RIR provides. The root certificate contains pointers to its children, which
-contain pointers to their children, and so on. These certificates, and other
-cryptographic material such as ROAs, can be published in the repository that the
-RIR provides, or a repository operated by an organisation who either runs
-delegated RPKI themselves, or hosts a repository as a service. As a person who
-wants to fetch and validate the data, formally known as a relying party, it is
-not a concern where data is published. By simply connecting to the trust anchor,
-the chain of trust is followed automatically.
+When you want to retrieve all RPKI data, you connect to the trust anchor
+that each RIR provides. The trust anchor is an :RFC:`6487` compliant X.509
+certificate used to 'anchor' the 'root' of a certificate hierarchy The root
+certificate contains pointers to its children, which contain pointers to their
+children, and so on. These certificates, and other cryptographic material
+such as ROAs, can be published in the repository that the RIR provides,
+or a repository operated by an organisation who either runs delegated RPKI
+themselves, or hosts a repository as a service. As a person who wants to fetch
+and validate the data, formally known as a relying party, it is not a concern
+where data is published. By simply connecting to the trust anchor, the chain
+of trust is followed automatically.
 
 The RIR trust anchor is found through a static trust anchor locator (TAL), which
 is a very  simple file that contains a URL to retrieve the trust anchor and a
