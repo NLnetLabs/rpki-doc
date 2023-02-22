@@ -22,7 +22,7 @@ Connecting to the Trust Anchor
 
 When you want to retrieve all RPKI data, you connect to the trust anchor
 that each RIR provides. The trust anchor is an :RFC:`6487` compliant X.509
-certificate used to 'anchor' the 'root' of a certificate hierarchy The root
+certificate used to 'anchor' the 'root' of a certificate hierarchy. The root
 certificate contains pointers to its children, which contain pointers to their
 children, and so on. These certificates, and other cryptographic material
 such as ROAs, can be published in the repository that the RIR provides,
