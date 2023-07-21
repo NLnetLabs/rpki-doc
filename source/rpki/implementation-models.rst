@@ -95,17 +95,17 @@ action.
 | Publication service   |  Yes     | No       | Yes      | No       | Yes      |
 | for delegated RPKI    |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Multi-user support    |  Yes     | Yes [#]_ | Yes      | No       | Yes      |
+| Multi-user support    |  Yes     | Yes      | Yes      | No       | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Two-factor            |  Yes     | Yes      | Yes [#]_ | No       | Yes      |
+| Two-factor            |  Yes     | Yes      | Yes      | No       | Yes      |
 | authentication        |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | BGP route collector   |  Yes     | No       | No       | Yes      | Yes      |
 | suggestions           |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Auto-renew ROAs       |  Yes     | No       | No       | Yes [#]_ | Yes      |
+| Auto-renew ROAs       |  Yes     | No       | Yes      | Yes [#]_ | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Match "route" objects |  Yes     | No       | No       | No       | No       |
+| Match "route" objects |  Yes     | No       | Yes      | No       | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  No      | No       | Yes      | No       | Yes      |
@@ -115,8 +115,6 @@ action.
 
 .. [#] Available in the test environment only.
 .. [#] Available upon request.
-.. [#] Requires a `client X.509 certificate <https://afrinic.net/support/bpki/what-is-a-bpki>`_ to use RPKI.
-.. [#] Requires a `ROA Request Key Pair <https://www.arin.net/resources/manage/rpki/hosted/#roarequestkeypair>`_.
 .. [#] Explicit opt-in feature.
 
 .. index:: Delegated RPKI
