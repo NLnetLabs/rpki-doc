@@ -155,7 +155,7 @@ instances easier to pinpoint and address.
 With origin validation being deployed in more and more places, there are several
 efforts to build upon this to offer out-of-band path validation. Autonomous
 system provider authorisation (ASPA) currently has the most traction in the
-IETF, and is described in these drafts: `draft-azimov-sidrops-aspa-profile
-<https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and
-`draft-azimov-sidrops-aspa-verification
-<https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
+IETF, and is described in these drafts: `draft-ietf-sidrops-aspa-profile
+<https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-profile>`_ and
+`draft-ietf-sidrops-aspa-verification
+<https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification>`_.
