@@ -16,12 +16,15 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import os
+import datetime
 import sphinx_rtd_theme
+import requests
 
 # -- Project information -----------------------------------------------------
 
 project = u'RPKI'
-copyright = u'2018-2021, NLnet Labs (CC-BY 3.0)'
+copyright = u'2018-2024, NLnet Labs (CC-BY 3.0)'
 author = u'The RPKI Team'
 
 # The short X.Y version
@@ -29,6 +32,17 @@ version = u''
 # The full version, including alpha/beta/rc tags
 release = u''
 
+try:
+    response_versions = requests.get(
+        f"https://readthedocs.org/api/v2/version/?project__slug=rpki&active=true",
+        timeout=2,
+    ).json()
+    versions = [
+        (version["slug"], f"/{version['project']['language']}/{version['slug']}/")
+        for version in response_versions["results"]
+    ]
+except Exception:
+    versions = []
 
 # -- General configuration ---------------------------------------------------
 
@@ -43,6 +57,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
     'sphinxcontrib.plantuml'
+    'sphinx_rtd_theme'
 ]
 
 # If true, figures, tables and code-blocks are automatically numbered if they have a caption.
@@ -111,6 +126,36 @@ html_static_path = ['resources']
 #
 # html_sidebars = {}
 
+# Set canonical URL from the Read the Docs Domain
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+scheme = "https"
+
+html_context = {
+        'html_theme': html_theme,
+        'current_version': version,
+        'version_slug': version,
+
+        'PRODUCTION_DOMAIN': "readthedocs.org",
+        'versions': versions,
+        # "downloads": downloads,
+        # "subprojects": subprojects,
+
+        'slug': "unbound",
+        'rtd_language': language,
+        'canonical_url': html_baseurl,
+
+        'conf_py_path': "/source/",
+
+        'github_user': "NLnetLabs",
+        'github_repo': "rpki-doc",
+        'github_version': os.environ.get("READTHEDOCS_GIT_IDENTIFIER", "main"),
+        'display_github': True,
+        'READTHEDOCS': True,
+        'using_theme': False,
+        'new_theme': True,
+        'source_suffix': ".rst",
+        'docsearch_disabled': False,
+    }
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
