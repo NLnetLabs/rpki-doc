@@ -56,7 +56,7 @@ except Exception:
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
-    'sphinxcontrib.plantuml'
+    'sphinxcontrib.plantuml',
     'sphinx_rtd_theme'
 ]
 
