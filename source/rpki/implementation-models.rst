@@ -81,11 +81,6 @@ synchronise the management of *"route"* objects in the IRR with the ROAs that
 are created. An application programming interface (API) may be provided to make
 batch processing easier.
 
-Lastly, `nonrepudiation
-<https://www.arin.net/resources/manage/rpki/faq/#why-must-i-create-a-key-pair-to-use-rpki>`_
-refers to the inability for a party to dispute or deny having performed an
-action.
-
 +-----------------------+----------+----------+----------+----------+----------+
 |                       | APNIC    | AFRINIC  | ARIN     | LACNIC   | RIPE NCC |
 +=======================+==========+==========+==========+==========+==========+
@@ -110,8 +105,7 @@ action.
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  Yes     | No       | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Nonrepudiation        |  No      | No       | Yes      | No       | No       |
-+-----------------------+----------+----------+----------+----------+----------+
+
 
 .. [#] Available in the test environment only.
 .. [#] Available upon request.
