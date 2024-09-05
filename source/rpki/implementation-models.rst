@@ -95,27 +95,26 @@ action.
 | Publication service   |  Yes     | No       | Yes      | No       | Yes      |
 | for delegated RPKI    |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Multi-user support    |  Yes     | Yes      | Yes      | No       | Yes      |
+| Multi-user support    |  Yes     | Yes      | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Two-factor            |  Yes     | Yes      | Yes      | No       | Yes      |
+| Two-factor            |  Yes     | Yes      | Yes      | Yes      | Yes      |
 | authentication        |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | BGP route collector   |  Yes     | No       | No       | Yes      | Yes      |
 | suggestions           |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| Auto-renew ROAs       |  Yes     | No       | Yes      | Yes [#]_ | Yes      |
+| Auto-renew ROAs       |  Yes     | No       | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Match "route" objects |  Yes     | No       | Yes      | No       | No       |
+| Match "route" objects |  Yes     | No       | No       | No       | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
-| API                   |  No      | No       | Yes      | No       | Yes      |
+| API                   |  Yes     | No       | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Nonrepudiation        |  No      | No       | Yes      | No       | No       |
 +-----------------------+----------+----------+----------+----------+----------+
 
 .. [#] Available in the test environment only.
 .. [#] Available upon request.
-.. [#] Explicit opt-in feature.
 
 .. index:: Delegated RPKI
 
