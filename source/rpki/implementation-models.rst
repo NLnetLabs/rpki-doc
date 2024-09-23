@@ -100,7 +100,7 @@ batch processing easier.
 +-----------------------+----------+----------+----------+----------+----------+
 | Auto-renew ROAs       |  Yes     | No       | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
-| Match "route" objects |  Yes     | No       | No       | No       | No       |
+| Match "route" objects |  Yes     | No       | No       | Yes      | No       |
 | with ROAs             |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
 | API                   |  Yes     | No       | Yes      | Yes      | Yes      |
