@@ -113,5 +113,4 @@ operational guidance on how to deploy and operate SIDR technologies in existing
 and new networks.
 
 All relevant drafts and standards can be found in the archives of these two
-working groups as well as the `RPKI RFCs Graph
-<https://rpki-rfc.routingsecurity.net>`_.
+working groups.
