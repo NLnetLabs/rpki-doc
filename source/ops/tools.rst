@@ -22,8 +22,6 @@ Relying Party Software
    :header: "Name", "Maintainer", "Language", "Last Commit" 
 
    "`FORT Validator <https://github.com/NICMx/FORT-validator>`_", "NIC.mx", "C", ".. image:: https://img.shields.io/github/last-commit/NICMx/FORT-validator?label=%20&style=flat-square"
-   "`OctoRPKI <https://github.com/cloudflare/cfrpki#octorpki>`_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/cfrpki?label=%20&style=flat-square"
-   "`rcynic <https://github.com/dragonresearch/rpki.net>`_", "Dragon Research Labs", "Python 2", ".. image:: https://img.shields.io/github/last-commit/dragonresearch/rpki.net?label=%20&style=flat-square"   
    "`Routinator <https://github.com/NLnetLabs/routinator>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/routinator?label=%20&style=flat-square"
    "`rpki-client <https://github.com/rpki-client/rpki-client-portable>`_", "OpenBSD", "C", ".. image:: https://img.shields.io/github/last-commit/rpki-client/rpki-client-portable?label=%20&style=flat-square"
    "`rpki-prover <https://github.com/lolepezy/rpki-prover>`_", "Misha Puzanov", "Haskell", ".. image:: https://img.shields.io/github/last-commit/lolepezy/rpki-prover?label=%20&style=flat-square"
@@ -37,13 +35,9 @@ RTR Server Software
 .. csv-table:: 
    :header: "Name", "Maintainer", "Language", "Last Commit" 
 
-   "`GoRTR <https://github.com/cloudflare/gortr>`_ [#]_", "Cloudflare", "Go", ".. image:: https://img.shields.io/github/last-commit/cloudflare/gortr?label=%20&style=flat-square"
-   "`StayRTR <https://github.com/bgp/stayrtr/>`_ [#]_", "bgp", "Go", ".. image:: https://img.shields.io/github/last-commit/bgp/stayrtr?label=%20&style=flat-square"
+   "`StayRTR <https://github.com/bgp/stayrtr/>`_", "bgp", "Go", ".. image:: https://img.shields.io/github/last-commit/bgp/stayrtr?label=%20&style=flat-square"
    "`RTRTR <https://github.com/NLnetLabs/rtrtr>`_", "NLnet Labs", "Rust", ".. image:: https://img.shields.io/github/last-commit/nlnetlabs/rtrtr?label=%20&style=flat-square"
    "`rpkirtr <https://github.com/mellowdrifter/rpkirtr>`_", "Darren O'Connor", "Go", ".. image:: https://img.shields.io/github/last-commit/mellowdrifter/rpkirtr?label=%20&style=flat-square"
-
-.. [#] Unmaintained since the developer got a new job. `[Source] <https://twitter.com/lpoinsig/status/1394144623489019904>`_
-.. [#] A fork of GoRTR
 
 .. index:: Certificate Authority software
 
