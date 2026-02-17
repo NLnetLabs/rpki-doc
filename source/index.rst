@@ -25,9 +25,7 @@ of what this documentation has to offer.
           improvements.
 
           You can submit an issue or pull request on the `GitHub repository
-          <https://github.com/NLnetLabs/rpki-doc/issues>`_, post a message on
-          the `RPKI mailing list
-          <https://lists.nlnetlabs.nl/mailman/listinfo/rpki>`_ or discuss RPKI
+          <https://github.com/NLnetLabs/rpki-doc/issues>`_, or discuss RPKI
           on `Discord <https://discord.gg/WaPgs8vEKy>`_. 
 
 The main documentation is organised into the following sections:
