@@ -61,7 +61,7 @@ RTRLib is a C library that implements the client side of the RPKI-RTR
 protocol, as well as route origin validation. RTRlib powers RPKI in BGP software
 routers such as `FRR <https://frrouting.org/>`_. In a nutshell, it maintains
 data from RPKI relying party software and allows to verify whether an autonomous
-system (AS) is the legitimate origin AS, based on the fetched valid ROA data.
+system (AS) is the legitimate origin AS, based on the fetched validated ROA data.
 `BGP‑SRx
 <https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype>`_
 by NIST is a prototype that can perform similar functions.

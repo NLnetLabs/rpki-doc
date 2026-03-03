@@ -37,6 +37,7 @@ The main documentation is organised into the following sections:
 
    about/introduction
    about/faq
+   about/terminology
    about/help
 
 .. toctree::
