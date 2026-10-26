@@ -24,8 +24,9 @@ import requests
 # -- Project information -----------------------------------------------------
 
 project = u'RPKI'
-copyright = u'2018-2024, NLnet Labs (CC-BY 3.0)'
-author = u'The RPKI Team'
+year = datetime.datetime.now().year
+copyright = f'2018–{year}, NLnet Labs (CC-BY 3.0)'
+author = u'NLnet Labs'
 
 # The short X.Y version
 version = u''
