@@ -266,34 +266,12 @@ your prefix. Imagine what could happen if you haven’t signed your prefixes...
 Miscellaneous
 =============
 
-Why isn't the ARIN RPKI TAL like other public key files?
---------------------------------------------------------
-
-Unlike the other RIRs, which distribute their TAL publicly, ARIN has a policy requiring users 
-to explicitly agree to terms and conditions concerning its TAL. Note that this policy is not 
-without controversy as 
-`discussed here <https://readlist.com/lists/trapdoor.merit.edu/nanog/26/131135.html>`__ and 
-`here <https://seclists.org/nanog/2019/Jan/118>`__ on the NANOG list. 
-
-Job Snijders made a 
-`video <https://www.youtube.com/watch?v=oBwAQep7Q7o>`_ explaining his perspective on the ARIN TAL. 
-Christopher Yoo and David Wishnick authored a paper titled 
-`Lowering Legal Barriers to RPKI Adoption <https://scholarship.law.upenn.edu/faculty_scholarship/2035/>`_.
-
-Ben Cox performed various RPKI measurements and concluded that the ARIN TAL is used far
-less than TALs from their RIR counter parts. This has led to a situation where ROAs
-created under the ARIN TAL offer less protection against BGP incidents than other RIRs.
-`State of RPKI: Q4 2018 <https://blog.benjojo.co.uk/post/state-of-rpki-in-2018>`_.
-
 What is the global adoption and data quality of RPKI like?
 ----------------------------------------------------------
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
-- `RPKI Analytics <https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/>`__, by NLnet Labs
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
-- `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
-- `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
 
 I want to use the RPKI services from a specific RIR that I'm not currently a member of. Can I transfer my resources?
