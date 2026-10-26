@@ -20,11 +20,14 @@ that you read the :ref:`introduction page <doc_about_intro>` to get an overview
 of what this documentation has to offer.
 
 .. note:: This documentation is an open source project maintained by the RPKI
-          team at NLnet Labs, with contributions from  the network operator
-          community around the world. We always appreciate your feedback and
-          improvements.
+          team at `NLnet Labs <https://nlnetlabs.nl/>`_, who collectively have
+          decades of experience with internet software, security and standards. 
+          NLnet Labs develops the RPKI Validator solution `Routinator
+          <https://nlnetlabs.nl/projects/routing/routinator/>`_ and the RPKI
+          Certification Authority `Krill https://nlnetlabs.nl/projects/routing/krill/>`_.
 
-          You can submit an issue or pull request on the `GitHub repository
+          We always appreciate your feedback and improvements. You can submit 
+          an issue or pull request on the `GitHub repository
           <https://github.com/NLnetLabs/rpki-doc/issues>`_, or discuss RPKI
           on `Discord <https://discord.gg/WaPgs8vEKy>`_. 
 
