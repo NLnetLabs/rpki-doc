@@ -24,7 +24,7 @@ of what this documentation has to offer.
           decades of experience with internet software, security and standards. 
           NLnet Labs develops the RPKI Validator solution `Routinator
           <https://nlnetlabs.nl/projects/routing/routinator/>`_ and the RPKI
-          Certification Authority `Krill https://nlnetlabs.nl/projects/routing/krill/>`_.
+          Certification Authority `Krill <https://nlnetlabs.nl/projects/routing/krill/>`_.
 
           We always appreciate your feedback and improvements. You can submit 
           an issue or pull request on the `GitHub repository
