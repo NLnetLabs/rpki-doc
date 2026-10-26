@@ -28,17 +28,12 @@ Insights and Statistics
 
 There are several initiatives that measure the adoption and data quality of RPKI:
 
-- `Cirrus Certificate Transparency Log <https://ct.cloudflare.com/logs/cirrus>`_, by Cloudflare
 - `Global certificate and ROA statistics <http://certification-stats.ripe.net>`_, by RIPE NCC
 - `RPKI Deployment Monitor <https://rpki-monitor.antd.nist.gov>`_, by NIST
-- `The RPKI Observatory <https://nusenu.github.io/RPKI-Observatory/>`_, by nusenu
-- `RPKI connection test <http://sg-pub.ripe.net/jasper/rpki-web-test/>`_, by RIPE Labs
 - `The rpki-client console <http://console.rpki-client.org>`_, by the OpenBSD project
-- `JDR: explore, inspect and troubleshoot anything RPKI <https://jdr.nlnetlabs.nl/>`_, by NLnet Labs
 - `RPKIviews: download historic raw RPKI data <http://www.rpkiviews.org/>`_, by Job Snijders
 - `ROA Use World Map and Country Data <https://stats.labs.apnic.net/roas>`_, by APNIC Labs
 - `RPKI Portal <https://rpki.cloudflare.com>`_, by Cloudflare
-- `LACNIC Member Tools <https://tools.labs.lacnic.net/tools>`_, by LACNIC
 
 .. index:: Operational experiences
 
