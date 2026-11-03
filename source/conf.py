@@ -18,8 +18,6 @@
 
 import os
 import datetime
-import sphinx_rtd_theme
-import requests
 
 # -- Project information -----------------------------------------------------
 
@@ -33,18 +31,6 @@ version = u''
 # The full version, including alpha/beta/rc tags
 release = u''
 
-try:
-    response_versions = requests.get(
-        f"https://readthedocs.org/api/v2/version/?project__slug=rpki&active=true",
-        timeout=2,
-    ).json()
-    versions = [
-        (version["slug"], f"/{version['project']['language']}/{version['slug']}/")
-        for version in response_versions["results"]
-    ]
-except Exception:
-    versions = []
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -57,8 +43,7 @@ except Exception:
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
-    'sphinxcontrib.plantuml',
-    'sphinx_rtd_theme'
+    'sphinxcontrib.plantuml'
 ]
 
 # If true, figures, tables and code-blocks are automatically numbered if they have a caption.
@@ -84,7 +69,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -100,17 +85,79 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_theme = 'furo'
+html_title = 'RPKI documentation'
+html_css_files = ['css/nlnetlabs.css']
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
+# Keep the edit link pointed at the version being built on Read the Docs.
 html_theme_options = {
-    'collapse_navigation': False,
-    'titles_only': False
-  }
+    'source_repository': 'https://github.com/NLnetLabs/rpki-doc/',
+    'source_branch': os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'main'),
+    'source_directory': 'source/',
+    'light_logo': 'images/nlnetlabs-wordmark.svg',
+    'dark_logo': 'images/nlnetlabs-wordmark-white.svg',
+    'light_css_variables': {
+        'font-stack': '"NLnet Labs Montserrat", system-ui, sans-serif',
+        'font-stack--headings': '"NLnet Labs Mackinac", Georgia, serif',
+        'color-sidebar-link-text--top-level': 'var(--color-foreground-primary)',
+        'color-sidebar-link-text': 'var(--color-foreground-secondary)',
+        'color-link-underline': 'var(--color-brand-content)',
+        'color-link-underline--visited': 'var(--color-brand-content)',
+        'color-brand-visited': 'var(--color-brand-content)',
+        'color-sidebar-item-background--hover': 'var(--color-background-hover)',
+        'color-foreground-primary': '#231f20',
+        'color-foreground-secondary': '#625c5b',
+        'color-foreground-muted': '#625c5b',
+        'color-background-primary': '#ffffff',
+        'color-background-secondary': '#f8f5f3',
+        'color-background-hover': '#f1ebe7',
+        'color-background-border': '#d8d0ca',
+        'color-brand-primary': '#a83f0c',
+        'color-brand-content': '#a83f0c',
+    },
+    'dark_css_variables': {
+        'font-stack': '"NLnet Labs Montserrat", system-ui, sans-serif',
+        'font-stack--headings': '"NLnet Labs Mackinac", Georgia, serif',
+        'color-sidebar-link-text--top-level': 'var(--color-foreground-primary)',
+        'color-sidebar-link-text': 'var(--color-foreground-secondary)',
+        'color-link-underline': 'var(--color-brand-content)',
+        'color-link-underline--visited': 'var(--color-brand-content)',
+        'color-brand-visited': 'var(--color-brand-content)',
+        'color-sidebar-item-background--hover': 'var(--color-background-hover)',
+        'color-foreground-primary': '#faf7f4',
+        'color-foreground-secondary': '#c5bdb7',
+        'color-foreground-muted': '#c5bdb7',
+        'color-background-primary': '#231f20',
+        'color-background-secondary': '#2d292a',
+        'color-background-hover': '#383334',
+        'color-background-border': '#655b56',
+        'color-brand-primary': '#ff9b64',
+        'color-brand-content': '#ff9b64',
+    },
+}
+
+# Admonition colours: information, attention and warnings.
+# Keep Furo's layout and icons; only override its colour variables.
+for mode, information, attention, warning in (
+    ('light', ('#625c5b', '#f1ebe7'), ('#a83f0c', '#feecdf'), ('#a83232', '#fbe9e7')),
+    ('dark', ('#c5bdb7', '#383334'), ('#ff9b64', '#42312a'), ('#ffabab', '#482c30')),
+):
+    colours = html_theme_options[f'{mode}_css_variables']
+    colours['color-admonition-background'] = 'var(--color-background-primary)'
+    colours['color-admonition-title'] = information[0]
+    colours['color-admonition-title-background'] = information[1]
+    for kinds, (accent, background) in (
+        (('note', 'seealso', 'hint', 'tip', 'admonition-todo'), information),
+        (('attention', 'important', 'caution'), attention),
+        (('warning', 'danger', 'error'), warning),
+    ):
+        for kind in kinds:
+            colours[f'color-admonition-title--{kind}'] = accent
+            colours[f'color-admonition-title-background--{kind}'] = background
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -129,35 +176,6 @@ html_static_path = ['resources']
 
 # Set canonical URL from the Read the Docs Domain
 html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
-scheme = "https"
-
-html_context = {
-        'html_theme': html_theme,
-        'current_version': version,
-        'version_slug': version,
-
-        'PRODUCTION_DOMAIN': "readthedocs.org",
-        'versions': versions,
-        # "downloads": downloads,
-        # "subprojects": subprojects,
-
-        'slug': "unbound",
-        'rtd_language': language,
-        'canonical_url': html_baseurl,
-
-        'conf_py_path': "/source/",
-
-        'github_user': "NLnetLabs",
-        'github_repo': "rpki-doc",
-        'github_version': os.environ.get("READTHEDOCS_GIT_IDENTIFIER", "main"),
-        'display_github': True,
-        'READTHEDOCS': True,
-        'using_theme': False,
-        'new_theme': True,
-        'source_suffix': ".rst",
-        'docsearch_disabled': False,
-    }
-
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
@@ -259,8 +277,6 @@ def setup(app):
                         objname='module sub-command',
                         indextemplate='pair: %s; module sub-command',
                         parse_node=parse_cmd_args_node)
-    app.add_css_file('css/dark.css')
-    app.add_css_file('css/light.css')
 
 # -- Options for extlinks extension
 
