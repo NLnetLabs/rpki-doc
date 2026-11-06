@@ -55,3 +55,9 @@ label:has(+ input:focus-visible) {
   outline: 2px solid var(--color-brand-content);
   outline-offset: 3px;
 }
+
+/* Distinguish code blocks on both page and tab backgrounds. */
+.highlight {
+  border: 1px solid var(--color-background-border);
+  border-radius: 4px;
+}
