@@ -84,6 +84,18 @@ Supporting Tools
    operators can a good grasp on how their connectivity to the rest of the
    Internet would look like after deploying a *"invalid == reject"* policy.
 
+`RAVEN <https://github.com/nokia/bgp-routing-security-monitor>`_
+   RAVEN (Routing Analysis, Validation, and Event Network) is an open-source,
+   single-binary routing security observability tool. It accepts BMP sessions
+   directly from routers, connects to RPKI validators via RTR (v1 and v2), and
+   annotates every received route in real time with its ROV state, ASP path 
+   validation result per draft-ietf-sidrops-aspa-verification, and a combined 
+   security posture. Unlike external BGP monitors, RAVEN operates on your 
+   network's internal routing state, giving operators visibility into what their 
+   routers are actually receiving and whether it is RPKI and ASPA valid. Results 
+   are exposed through a CLI, Prometheus metrics, Grafana dashboards, and an 
+   event engine for webhook notifications and automated Flowspec response.
+
 `rpki-ov-checker <https://github.com/job/rpki-ov-checker>`_
    rpki-ov-checker is an open source utility to quickly analyse BGP RIB dumps
    and the potential impact of deploying "invalid is reject" routing policies.
