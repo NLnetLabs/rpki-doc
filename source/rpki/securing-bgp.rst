@@ -8,12 +8,9 @@ Now that we've looked at how the RPKI structure is built and understand the
 basics of Internet routing, we can look at how RPKI can be used to make BGP more
 secure.
 
-RPKI provides a set of building blocks allowing for various levels of protection
-of the routing system. The initial goal is to provide route origin validation,
-offering a stepping stone to providing path validation in the future. Both
-origin validation and path validation are documented IETF standards. In
-addition, there are drafts describing autonomous system provider authorisation,
-aimed at providing a more lightweight, incremental approach to path validation.
+Networks use RPKI data to check both the origin of an announcement and
+provider relationships along its AS path. These checks address different
+routing problems and can be used together.
 
 .. index:: Route Origin Validation
 
@@ -132,30 +129,10 @@ routing decisions based on these three outcomes. In the
 Path Validation
 ---------------
 
-Currently, RPKI only provides origin validation. While BGPsec path validation is
-a desirable characteristic and standardised in :RFC:`8205`, real-world
-deployment may prove limited for the foreseeable future. However, RPKI origin
-validation functionality addresses a large portion of the problem surface.
+Route origin validation checks the origin AS of a prefix. An announcement can
+pass this check even if an intermediate AS has leaked the route.
 
-For many networks, the most important prefixes can be found one AS hop away
-(coming from a specific peer, for example), and this is the case for large
-portions of the Internet from the perspective of a transit provider - entities
-which are ideally situated to act on RPKI data and accept only valid routes for
-redistribution.
-
-Furthermore, the vast majority of route hijacks are unintentional, and are
-caused by ‘fat-fingering’, where an operator accidentally originates a prefix
-they are not the holder of.
-
-Origin validation would mitigate most of these problems, offering immediate
-value of the system. While a malicious party could still take advantage of the
-lack of path validation, widespread RPKI implementation would make such
-instances easier to pinpoint and address.
-
-With origin validation being deployed in more and more places, there are several
-efforts to build upon this to offer out-of-band path validation. Autonomous
-system provider authorisation (ASPA) currently has the most traction in the
-IETF, and is described in these drafts: `draft-ietf-sidrops-aspa-profile
-<https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-profile>`_ and
-`draft-ietf-sidrops-aspa-verification
-<https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification>`_.
+:ref:`doc_rpki_aspa` describes how networks use signed provider declarations
+to check relationships along the AS path. BGPsec, specified in :RFC:`8205`,
+uses signatures added by participating routers as they propagate an
+announcement.
