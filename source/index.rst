@@ -50,6 +50,7 @@ The main documentation is organised into the following sections:
    rpki/introduction
    rpki/bgp-routing
    rpki/securing-bgp
+   rpki/aspa
    rpki/implementation-models
    rpki/using-rpki-data
 

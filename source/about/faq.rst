@@ -302,10 +302,6 @@ be much better off walking into the data center and confiscate your equipment.
 What are the long-term plans for RPKI?
 --------------------------------------
 
-With RPKI Route Origin Validation being deployed in more and more places, there
-are several efforts to build upon this to offer out-of-band Path Validation.
-Autonomous System Provider Authorisation (ASPA) currently has the most traction
-in the IETF, defined in these drafts: `draft-azimov-sidrops-aspa-profile
-<https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile>`_ and
-`draft-azimov-sidrops-aspa-verification
-<https://tools.ietf.org/html/draft-azimov-sidrops-aspa-verification>`_.
+ASPA extends the use of RPKI to checking provider relationships along a BGP
+path. See :ref:`doc_rpki_aspa` for how networks publish their provider lists
+and use the resulting data in routing policy.
