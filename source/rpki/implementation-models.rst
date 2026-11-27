@@ -90,6 +90,8 @@ batch processing easier.
 | Publication service   |  Yes     | No       | Yes      | No       | Yes      |
 | for delegated RPKI    |          |          |          |          |          |
 +-----------------------+----------+----------+----------+----------+----------+
+| ASPA publication      |  Yes     | No       | Yes      | Yes      | Yes      |
++-----------------------+----------+----------+----------+----------+----------+
 | Multi-user support    |  Yes     | Yes      | Yes      | Yes      | Yes      |
 +-----------------------+----------+----------+----------+----------+----------+
 | Two-factor            |  Yes     | Yes      | Yes      | Yes      | Yes      |
